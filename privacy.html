@@ -161,12 +161,23 @@
 
         <h2>Third-Party Services</h2>
 
-        <h3>Lyrics Search (Optional Feature)</h3>
-        <p>When you use the optional "Search for lyrics online" feature, the app makes requests to the ChartLyrics API (<a href="http://www.chartlyrics.com" target="_blank">www.chartlyrics.com</a>) to fetch song lyrics based on the song title and artist you provide.</p>
+        <h3>Online Search Features (Optional)</h3>
+        <p>When you use the optional online search features, the app makes requests to third-party APIs:</p>
 
-        <p><strong>What's sent:</strong> Only the song title and artist name you enter</p>
-        <p><strong>What's received:</strong> Publicly available lyrics data from ChartLyrics</p>
-        <p><strong>No tracking:</strong> ChartLyrics is a free, public API that does not track users</p>
+        <p><strong>Lyrics Search:</strong> When searching for song lyrics, the app queries:</p>
+        <ul>
+            <li><strong>ChartLyrics API</strong> (<a href="http://www.chartlyrics.com" target="_blank">www.chartlyrics.com</a>) - Primary lyrics source</li>
+            <li><strong>Lyrics.ovh API</strong> (<a href="https://lyricsovh.docs.apiary.io" target="_blank">lyricsovh.docs.apiary.io</a>) - Backup lyrics source when ChartLyrics is unavailable</li>
+        </ul>
+
+        <p><strong>Song Autocomplete:</strong> When typing in the search bar, the app queries:</p>
+        <ul>
+            <li><strong>iTunes Search API</strong> (<a href="https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/" target="_blank">Apple iTunes Search</a>) - For song title and artist suggestions</li>
+        </ul>
+
+        <p><strong>What's sent:</strong> Only the song title and/or artist name you enter</p>
+        <p><strong>What's received:</strong> Publicly available song data and lyrics</p>
+        <p><strong>No tracking:</strong> These are public APIs that do not require authentication or track individual users</p>
 
         <h3>Apple In-App Purchase</h3>
         <p>When you purchase the Pro unlock, the transaction is processed entirely by Apple through the App Store. We do not collect, store, or have access to any payment information. Your purchase is linked to your Apple ID and managed by Apple.</p>
@@ -185,7 +196,9 @@
 
         <h2>Children's Privacy</h2>
 
-        <p>GigScroll is suitable for users of all ages (rated 4+). Since we do not collect any data, there are no special considerations for children's privacy beyond the protections already described in this policy.</p>
+        <p>GigScroll is rated 12+ due to the ability to search for and view song lyrics that may contain mature content. While we do not collect any data from users of any age, parents should be aware that the app allows searching for lyrics from any publicly available song, which may include explicit or mature content.</p>
+
+        <p>Since we do not collect any data, there are no special considerations for children's privacy beyond the protections already described in this policy.</p>
 
         <h2>Data Security</h2>
 
