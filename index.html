@@ -265,6 +265,25 @@
             margin-left: 10px;
         }
 
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 20px 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 40px 25px;
@@ -330,6 +349,8 @@
                     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
                 </a>
             </div> -->
+
+            <a href="guide.html" class="cta-button">📖 View Complete User Guide</a>
         </div>
 
         <div class="contact">
@@ -338,6 +359,7 @@
 
         <div class="footer">
             <p>
+                <a href="guide.html">User Guide</a> |
                 <a href="privacy.html">Privacy Policy</a> |
                 <a href="mailto:support@moonquakemedia.com">Support</a>
             </p>
