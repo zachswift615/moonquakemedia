@@ -1,0 +1,4 @@
+{
+  "layout": "layouts/privacy.njk",
+  "permalink": "/legal/{{ page.fileSlug }}/"
+}

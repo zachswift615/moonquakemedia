@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Build output
+_site/
+.cache/
+
+# OS files
+.DS_Store
+
+# Old HTML backup
+old-html-backup/

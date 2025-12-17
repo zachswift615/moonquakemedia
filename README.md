@@ -1,149 +1,208 @@
 # Moonquake Media Website
 
-Official website for Moonquake Media - creators of GigScroll and other music apps for performers.
+Official website for Moonquake Media - creators of GigScroll and other apps for performers and creators.
 
 ## Live Site
 
 - **Production:** https://moonquakemedia.com
-- **GitHub Pages:** https://zachswift615.github.io/moonquakemedia/ (or your username)
 
-## Pages
+## Tech Stack
 
-- `/` - Landing page with app showcase
-- `/privacy.html` - Privacy policy for GigScroll (required by App Store)
+- **Static Site Generator:** [Eleventy (11ty)](https://www.11ty.dev/)
+- **Templating:** Nunjucks
+- **CSS:** Tailwind CSS
+- **Deployment:** GitHub Actions → GitHub Pages
 
-## Setup Instructions
+## Development
 
-### 1. Push to GitHub
+### Prerequisites
+
+- Node.js 18+
+
+### Setup
 
 ```bash
-cd /Users/zachswift/projects/moonquakemedia-site
-git add .
-git commit -m "Initial website with landing page and privacy policy"
-git branch -M main
-git remote add origin https://github.com/zachswift615/moonquakemedia.git
-git push -u origin main
+npm install
 ```
 
-### 2. Enable GitHub Pages
+### Commands
 
-1. Go to repo **Settings** → **Pages**
-2. **Source:** Deploy from a branch
-3. **Branch:** main / (root)
-4. Click **Save**
-5. Wait 2-3 minutes for deployment
-
-### 3. Configure Custom Domain (Namecheap → GitHub)
-
-#### On Namecheap:
-
-1. Go to your domain dashboard for `moonquakemedia.com`
-2. Click **Advanced DNS**
-3. Add these DNS records:
-
-**For root domain (moonquakemedia.com):**
-```
-Type: A Record
-Host: @
-Value: 185.199.108.153
-TTL: Automatic
-
-Type: A Record
-Host: @
-Value: 185.199.109.153
-TTL: Automatic
-
-Type: A Record
-Host: @
-Value: 185.199.110.153
-TTL: Automatic
-
-Type: A Record
-Host: @
-Value: 185.199.111.153
-TTL: Automatic
+```bash
+npm run dev      # Start dev server at http://localhost:8080 (with hot reload)
+npm run build    # Build for production (output: _site/)
 ```
 
-**For www subdomain:**
+---
+
+## Content Editing Guide
+
+### Site-Wide Settings
+
+**File:** `src/_data/site.json`
+
+```json
+{
+  "name": "Moonquake Media",
+  "tagline": "Professional apps for creators and performers",
+  "email": "support@moonquakemedia.com",
+  "year": 2025
+}
 ```
-Type: CNAME Record
-Host: www
-Value: zachswift615.github.io (or your GitHub username)
-TTL: Automatic
-```
 
-4. **Save all records**
-5. Wait 10-30 minutes for DNS propagation
+### Homepage App Cards
 
-#### On GitHub:
+**File:** `src/_data/apps.json`
 
-1. Go to repo **Settings** → **Pages**
-2. **Custom domain:** Enter `moonquakemedia.com`
-3. Click **Save**
-4. Wait for DNS check (green checkmark)
-5. ✅ **Enable "Enforce HTTPS"** (wait until DNS is verified)
+Edit app name, tagline, icon, and status badge here. Changes appear on the homepage.
 
-### 4. Verify It Works
+---
 
-- Visit https://moonquakemedia.com
-- Visit https://moonquakemedia.com/privacy.html
-- Both should load with HTTPS (may take 24 hours for certificate)
+### App Pages
 
-## Updating the Site
+**Files:** `src/apps/gigscroll.md`, `src/apps/listen2.md`
 
-### After App Store Approval
+Edit the frontmatter (YAML between `---`) to change:
 
-Uncomment the App Store badge in `index.html`:
+| Field | Description |
+|-------|-------------|
+| `title` | App name |
+| `tagline` | Short description |
+| `status` | `available` or `coming` (controls badge color) |
+| `appStoreUrl` | App Store link |
+| `features` | Array of `{icon, title, description}` objects |
+| `screenshots` | Array of `{src, alt}` pairs |
+| `price` | Price display (e.g., "$24.99") |
+| `priceNote` | Text below price |
+| `howItWorks` | Step-by-step flow (array of `{title, description}`) |
+
+---
+
+### User Guides
+
+**Files:** `src/guides/gigscroll.md`, `src/guides/listen2.md`
+
+- **Frontmatter:** Controls title, subtitle, table of contents, and IAP notice banner
+- **Content:** Write in Markdown with HTML div wrappers for styled boxes
+
+**Styled boxes:**
 
 ```html
-<div class="badge">
-    <a href="YOUR_APP_STORE_URL">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-             alt="Download on the App Store">
-    </a>
+<div class="tip-box">
+<h4>💡 Tip Title</h4>
+<p>Tip content here</p>
+</div>
+
+<div class="warning-box">
+<h4>⚠️ Warning Title</h4>
+<p>Warning content</p>
+</div>
+
+<div class="feature-box">
+<h4>Feature Title</h4>
+<p>Feature content</p>
 </div>
 ```
 
-Replace `YOUR_APP_STORE_URL` with your actual App Store link.
+**Button labels:** `<span class="button-label">Save</span>`
 
-### Making Changes
+**Sections:** Wrap each section in `<div class="content-section" id="section-id">...</div>`
+
+---
+
+### Privacy Policies
+
+**Files:** `src/legal/gigscroll-privacy.md`, `src/legal/listen2-privacy.md`
+
+Edit frontmatter fields:
+- `lastUpdated` - Date string
+- `summary` - Short summary shown at top
+
+Content is written in standard Markdown.
+
+---
+
+### Adding a New App
+
+1. Add entry to `src/_data/apps.json`
+2. Create `src/apps/newapp.md` (copy an existing one as template)
+3. Create `src/guides/newapp.md`
+4. Create `src/legal/newapp-privacy.md`
+5. Add app icon to `src/images/`
+
+---
+
+### Styling
+
+**Tailwind config:** `tailwind.config.js` - Edit colors, fonts
+
+**Custom CSS:** `src/css/main.css` - Component classes in `@layer components`
+
+---
+
+## Project Structure
+
+```
+src/
+├── _data/                  # Global data files
+│   ├── apps.json           # App list for homepage
+│   └── site.json           # Site metadata
+├── _includes/
+│   ├── layouts/            # Page layouts
+│   │   ├── base.njk        # HTML boilerplate
+│   │   ├── app.njk         # App product pages
+│   │   ├── guide.njk       # User guide pages
+│   │   └── privacy.njk     # Privacy policy pages
+│   └── components/
+│       ├── footer.njk      # Site footer
+│       └── lightbox.njk    # Image lightbox
+├── apps/                   # App pages (Markdown)
+├── guides/                 # User guide pages (Markdown)
+├── legal/                  # Privacy policies (Markdown)
+├── css/
+│   └── main.css            # Tailwind CSS + custom styles
+├── images/                 # Static images
+└── index.njk               # Homepage
+```
+
+---
+
+## Deployment
+
+The site auto-deploys via GitHub Actions when you push to `main`:
 
 ```bash
-# Edit files
 git add .
-git commit -m "Update description"
+git commit -m "Update content"
 git push
-# Changes go live in 2-3 minutes
 ```
 
-## Using in App Store Connect
+Changes go live in 2-3 minutes.
 
-### Privacy Policy URL:
+---
+
+## App Store URLs
+
+| Purpose | URL |
+|---------|-----|
+| Privacy Policy (GigScroll) | `https://moonquakemedia.com/legal/gigscroll-privacy/` |
+| Privacy Policy (Listen2) | `https://moonquakemedia.com/legal/listen2-privacy/` |
+| Marketing URL | `https://moonquakemedia.com` |
+| Support URL | `https://moonquakemedia.com/apps/gigscroll/` |
+
+---
+
+## Custom Domain Setup (Namecheap)
+
+Already configured. If you need to reconfigure:
+
+**A Records (root domain):**
 ```
-https://moonquakemedia.com/privacy.html
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
 ```
 
-### Marketing URL:
-```
-https://moonquakemedia.com
-```
+**CNAME (www):** `zachswift615.github.io`
 
-## Files
-
-- `index.html` - Main landing page
-- `privacy.html` - Privacy policy (App Store required)
-- `CNAME` - Custom domain configuration
-- `README.md` - This file
-
-## Support Email
-
-Set up email forwarding for: `support@moonquakemedia.com` → your personal email
-
-(Can set up in Namecheap under "Email Forwarding" or use a service like Gmail, Zoho)
-
-## Future Additions
-
-- Add more apps as you build them
-- Blog for release announcements
-- Press kit / media resources
-- Testimonials from users
+Then in GitHub repo Settings → Pages → Custom domain: `moonquakemedia.com`

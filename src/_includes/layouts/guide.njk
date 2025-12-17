@@ -1,0 +1,53 @@
+---
+layout: layouts/base.njk
+bodyClass: bg-gray-100
+footerStyle: bordered
+---
+
+{% set footerLinks = [
+    { url: "/apps/" + slug + "/", text: title },
+    { url: "/legal/" + slug + "-privacy/", text: "Privacy Policy" },
+    { url: "mailto:" + site.email, text: "Support" }
+] %}
+
+<header class="gradient-hero text-white py-10 text-center shadow-md">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">{{ title }} User Guide</h1>
+    <p class="text-lg opacity-90">{{ subtitle | default("Your Complete Guide") }}</p>
+</header>
+
+<nav class="text-center py-5 bg-white shadow-sm">
+    <a href="/apps/{{ slug }}/" class="mx-4 text-primary-500 font-semibold hover:underline">&larr; Back to {{ title }}</a>
+    {% for section in toc %}
+    <a href="#{{ section.id }}" class="mx-4 text-primary-500 font-semibold hover:underline hidden md:inline">{{ section.short }}</a>
+    {% endfor %}
+</nav>
+
+{% if iapNotice %}
+<div class="bg-yellow-100 border-2 border-yellow-400 rounded-xl p-5 mx-auto my-8 max-w-4xl shadow-lg">
+    <div class="flex items-start gap-4">
+        <span class="text-3xl text-yellow-600">{% icon "alert-triangle", "w-8 h-8" %}</span>
+        <div>
+            <h3 class="text-yellow-800 text-xl font-semibold mb-2">{{ iapNotice.title }}</h3>
+            <p class="text-yellow-800 mb-2">{{ iapNotice.message }}</p>
+            <p class="text-yellow-700 text-sm italic">{{ iapNotice.updated }}</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<main class="max-w-4xl mx-auto px-5 py-10">
+    {% if toc and toc.length %}
+    <div class="content-section">
+        <h2 class="!border-0 !pb-0">Table of Contents</h2>
+        <ul class="list-none mt-5">
+            {% for section in toc %}
+            <li class="my-2">
+                <a href="#{{ section.id }}" class="text-gray-800 text-lg hover:text-primary-500">{{ loop.index }}. {{ section.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {{ content | safe }}
+</main>

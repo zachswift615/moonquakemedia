@@ -1,0 +1,100 @@
+---
+layout: layouts/base.njk
+footerStyle: bordered
+---
+
+{% set footerLinks = [
+    { url: "/guides/" + slug + "/", text: "User Guide" },
+    { url: "/legal/" + slug + "-privacy/", text: "Privacy Policy" },
+    { url: "mailto:" + site.email, text: "Support" }
+] %}
+
+<div class="gradient-hero min-h-screen flex items-center justify-center p-5">
+    <div class="max-w-3xl w-full bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center">
+        <a href="/" class="inline-block mb-5 text-primary-500 font-medium hover:underline">&larr; Back to {{ site.name }}</a>
+
+        <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-5">{{ title }}</h1>
+        <p class="text-lg md:text-xl text-gray-600 mb-10">{{ tagline }}</p>
+
+        <div class="bg-gray-50 rounded-2xl p-8 my-10">
+            <div class="mb-5">
+                <img src="{{ appIcon }}" alt="{{ title }} App Icon" class="app-icon mx-auto">
+            </div>
+
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
+                {{ title }}
+                {% if status == "available" %}
+                <span class="badge badge-available ml-2 align-middle text-base">Now Available!</span>
+                {% else %}
+                <span class="badge badge-coming ml-2 align-middle text-base">Coming Soon</span>
+                {% endif %}
+            </h2>
+
+            <p class="text-gray-600 text-lg mb-6">{{ tagline }}</p>
+
+            {% if screenshots and screenshots.length %}
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-8">
+                {% for screenshot in screenshots %}
+                <img src="{{ screenshot.src }}" alt="{{ screenshot.alt }}" class="screenshot">
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if features and features.length %}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8 text-left">
+                {% for feature in features %}
+                <div class="feature">
+                    <div class="feature-icon text-2xl mb-2">{% icon feature.icon, "w-8 h-8" %}</div>
+                    <h3>{{ feature.title }}</h3>
+                    <p>{{ feature.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if status == "available" and appStoreUrl %}
+            <a href="{{ appStoreUrl }}" target="_blank" rel="noopener noreferrer" class="inline-block my-4">
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="h-12 hover:scale-105 transition-transform">
+            </a>
+            {% elif status == "coming" %}
+            <div class="bg-gray-100 rounded-lg p-5 my-6">
+                <p class="text-gray-500">Coming soon to the App Store</p>
+            </div>
+            {% endif %}
+
+            {% if price %}
+            <div class="my-6">
+                <span class="inline-block gradient-hero text-white px-6 py-3 rounded-full text-xl font-semibold shadow-lg">{{ price }}</span>
+                {% if priceNote %}
+                <p class="text-gray-500 text-sm mt-3">{{ priceNote }}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if howItWorks and howItWorks.length %}
+            <div class="bg-white rounded-2xl p-6 my-8">
+                <h2 class="text-primary-500 text-xl font-bold mb-6">How It Works</h2>
+                <div class="flex justify-center gap-5 flex-wrap">
+                    {% for step in howItWorks %}
+                    <div class="flex-1 min-w-[150px] max-w-[200px] text-center">
+                        <div class="w-12 h-12 gradient-hero text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">{{ loop.index }}</div>
+                        <h4 class="text-gray-800 font-semibold mb-2">{{ step.title }}</h4>
+                        <p class="text-gray-600 text-sm">{{ step.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <a href="/guides/{{ slug }}/" class="cta-button">View Complete User Guide</a>
+        </div>
+
+        <div class="mt-6">
+            <p class="text-gray-600">Questions or feedback? <a href="mailto:{{ site.email }}" class="text-primary-500 font-semibold">{{ site.email }}</a></p>
+        </div>
+    </div>
+</div>
+
+{% if screenshots and screenshots.length %}
+{% include "components/lightbox.njk" %}
+{% endif %}

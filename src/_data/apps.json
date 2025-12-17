@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "gigscroll",
+    "name": "GigScroll",
+    "tagline": "The essential lyrics teleprompter for live performers",
+    "icon": "/images/GigScrollAppIconOfficial.png",
+    "status": "available",
+    "statusText": "Available Now"
+  },
+  {
+    "slug": "listen2",
+    "name": "Listen2",
+    "tagline": "Your personal audiobook narrator with natural voices",
+    "icon": "/images/Listen2AppIcon.png",
+    "status": "coming",
+    "statusText": "Coming Soon"
+  }
+]

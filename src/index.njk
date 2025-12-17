@@ -1,0 +1,26 @@
+---
+title: Apps for Creators
+layout: layouts/base.njk
+footerStyle: light
+showContact: true
+---
+
+<div class="gradient-hero min-h-screen flex items-center justify-center p-5">
+    <div class="max-w-4xl text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">{{ site.name }}</h1>
+        <p class="text-lg md:text-xl text-white/90 mb-12">{{ site.tagline }}</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-5">
+            {% for app in apps %}
+            <a href="/apps/{{ app.slug }}/" class="app-card text-center">
+                <div class="mb-5">
+                    <img src="{{ app.icon }}" alt="{{ app.name }} App Icon" class="app-icon mx-auto">
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ app.name }}</h2>
+                <p class="text-gray-600 text-base mb-5">{{ app.tagline }}</p>
+                <span class="badge badge-{{ app.status }}">{{ app.statusText }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

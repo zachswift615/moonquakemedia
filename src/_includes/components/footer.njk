@@ -1,0 +1,18 @@
+<footer class="text-center py-10 {% if footerStyle == 'bordered' %}bg-white mt-10 border-t border-gray-200{% else %}mt-12{% endif %}">
+    {% if footerLinks %}
+    <p class="mb-4">
+        {% for link in footerLinks %}
+        <a href="{{ link.url }}" class="mx-2 text-primary-500 hover:underline">{{ link.text }}</a>
+        {% if not loop.last %}|{% endif %}
+        {% endfor %}
+    </p>
+    {% endif %}
+    <p class="{% if footerStyle == 'light' %}text-white/80{% else %}text-gray-500{% endif %} text-sm">
+        &copy; {{ site.year }} {{ site.name }}. All rights reserved.
+    </p>
+    {% if showContact %}
+    <p class="mt-2">
+        <a href="mailto:{{ site.email }}" class="{% if footerStyle == 'light' %}text-white/90{% else %}text-primary-500{% endif %}">Contact Support</a>
+    </p>
+    {% endif %}
+</footer>
