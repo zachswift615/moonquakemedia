@@ -1,0 +1,207 @@
+---
+layout: layouts/base.njk
+---
+<!-- Listen2 Premium Landing Page Layout -->
+<div class="bg-[#050507] min-h-screen text-slate-200 font-sans selection:bg-indigo-500 selection:text-white overflow-x-hidden">
+
+  <!-- Blurry Background Orbs -->
+  <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-900/20 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-900/20 rounded-full blur-[120px]"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
+    <a href="/" class="text-2xl font-bold tracking-tighter text-white hover:text-indigo-400 transition-colors">Listen2</a>
+    <div class="flex gap-6 items-center">
+      <a href="/guides/{{ slug }}/" class="hidden md:inline-block text-sm font-medium hover:text-white text-slate-400 transition-colors">Guide</a>
+      <a href="mailto:{{ site.email }}" class="hidden md:inline-block text-sm font-medium hover:text-white text-slate-400 transition-colors">Support</a>
+      <a href="{{ appStoreUrl }}" class="bg-white text-black px-5 py-2.5 rounded-full text-sm font-bold hover:scale-105 transition-transform">Download</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative px-6 pt-16 pb-24 md:pt-32 md:pb-40 text-center max-w-5xl mx-auto">
+    
+    {% if status == "beta" %}
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-8">
+      <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span> Public Beta
+    </div>
+    {% endif %}
+
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1]">
+      <span class="block text-white">Turn documents</span>
+      <span class="block bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">into audiobooks.</span>
+    </h1>
+
+    <p class="text-lg md:text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+      Listen to PDFs, EPUBs, and web articles with ultra-realistic AI voices. <br class="hidden md:inline">100% on-device. Private. No subscription.
+    </p>
+
+    <!-- Visual Hero Element -->
+    <div class="relative w-full max-w-lg mx-auto aspect-square md:aspect-video md:h-96 md:max-w-4xl flex items-center justify-center">
+        <!-- Main Device Mockup Placeholder or Icon -->
+        <div class="relative z-10 w-32 h-32 md:w-48 md:h-48 bg-black rounded-[2.5rem] shadow-2xl border-4 border-slate-800 flex items-center justify-center p-6 bg-gradient-to-b from-slate-900 to-black">
+            <img src="{{ appIcon }}" alt="Listen2 Icon" class="w-full h-full object-cover rounded-[1.5rem]">
+        </div>
+
+        <!-- Floating "Bento" Cards (Decorations) -->
+        <div class="absolute top-1/4 left-0 md:left-10 bg-slate-900/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl transform -rotate-6 animate-float-slow">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center text-red-400">PDF</div>
+                <div class="text-left">
+                    <div class="h-2 w-16 bg-slate-700 rounded mb-1"></div>
+                    <div class="h-2 w-10 bg-slate-800 rounded"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-1/4 right-0 md:right-10 bg-slate-900/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl transform rotate-3 animate-float-delayed">
+             <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center text-green-400">EPUB</div>
+                <div class="text-left">
+                    <div class="h-2 w-20 bg-slate-700 rounded mb-1"></div>
+                    <div class="h-2 w-12 bg-slate-800 rounded"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </header>
+
+  <!-- Feature Grid (Bento Style) -->
+  <section class="px-6 py-20 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
+      
+        <!-- Feature 1: Universal Import -->
+        <div class="group relative overflow-hidden bg-slate-900/40 border border-white/5 hover:border-white/10 rounded-3xl p-8 hover:bg-slate-900/60 transition-all duration-500">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity opacity-50 group-hover:opacity-100"></div>
+            <div class="relative z-10 w-full max-w-[60%]">
+                <h3 class="text-3xl font-bold mb-3 text-white drop-shadow-md">Import Anything</h3>
+                <p class="text-slate-400 text-lg mb-8 drop-shadow-sm font-medium">PDF, EPUB, Text, Clipboard. If it's text, we can read it.</p>
+            </div>
+            <div class="absolute bottom-0 right-0 w-[55%] translate-x-16 translate-y-12">
+                 <img src="/images/Listen2-library.png" class="shadow-2xl opacity-90 rounded-xl" alt="Library Interface">
+            </div>
+        </div>
+
+        <!-- Feature 2: Natural Voices (Wide) -->
+        <div class="md:col-span-2 group relative overflow-hidden bg-gradient-to-br from-indigo-900/20 to-slate-900/40 border border-white/5 hover:border-indigo-500/20 rounded-3xl p-8 hover:bg-slate-900/60 transition-all duration-500">
+            <div class="relative z-10 max-w-md">
+                <h3 class="text-3xl font-bold mb-3 text-white">Human-Quality Voices</h3>
+                <div class="flex gap-4 mb-8">
+                     <span class="px-3 py-1 rounded-md bg-indigo-500/20 text-indigo-300 text-sm font-medium">Neural Engine</span>
+                     <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-sm font-medium">On-Device</span>
+                </div>
+                <p class="text-slate-400 text-lg">Experience 40+ voices that sound remarkably human. They breathe, pause, and intonate just like a real person.</p>
+            </div>
+            <div class="absolute bottom-0 right-0 w-[60%] translate-x-8 translate-y-8">
+                <img src="/images/Listen2-voices.png" class="shadow-2xl opacity-90 rounded-xl" alt="Voice Library">
+            </div>
+        </div>
+
+        <!-- Feature 3: Highlight Sync -->
+        <div class="md:col-span-2 group relative overflow-hidden bg-slate-900/40 border border-white/5 hover:border-white/10 rounded-3xl p-8 hover:bg-slate-900/60 transition-all duration-500 flex flex-col md:flex-row items-center gap-8">
+             <div class="flex-1">
+                <h3 class="text-3xl font-bold mb-3 text-white">Follow Along</h3>
+                <p class="text-slate-400 text-lg">Every word lights up as it's spoken. Perfect for retention, comprehension, and staying focused.</p>
+             </div>
+             <div class="flex-1 relative w-full h-64">
+                 <img src="/images/Listen2-reader.png" class="absolute top-0 left-0 w-full h-full object-cover object-top rounded-xl border border-white/10 shadow-2xl" alt="Reader View">
+             </div>
+        </div>
+
+        <!-- Feature 4: Offline Privacy -->
+        <div class="group relative overflow-hidden bg-slate-900/40 border border-white/5 hover:border-green-500/20 rounded-3xl p-8 hover:bg-slate-900/60 transition-all duration-500">
+             <div class="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity opacity-50 group-hover:opacity-100"></div>
+            <h3 class="text-3xl font-bold mb-3 text-white">Private & Offline</h3>
+            <p class="text-slate-400 text-lg mb-8">No servers. No cloud. Your documents never leave this device.</p>
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-slate-800 text-3xl">
+                🔒
+            </div>
+        </div>
+
+    </div>
+  </section>
+
+  <!-- Detailed Content (SEO / FAQs / Tables) -->
+  <section class="px-6 py-20 bg-black/20">
+      <div class="max-w-3xl mx-auto prose prose-invert prose-lg prose-headings:font-bold prose-headings:text-white prose-a:text-indigo-400 hover:prose-a:text-indigo-300">
+          {{ content | safe }}
+      </div>
+  </section>
+
+  <!-- Final CTA -->
+  <footer class="py-24 text-center border-t border-white/5">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8 text-white">Start listening today.</h2>
+      <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+            <a href="{{ appStoreUrl }}" class="bg-white text-black px-8 py-4 rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]">
+                Download on App Store
+            </a>
+            {% if testFlightUrl %}
+            <a href="{{ testFlightUrl }}" class="text-slate-400 hover:text-white font-medium px-6 py-4 transition-colors">
+                Join Beta
+            </a>
+            {% endif %}
+      </div>
+      <div class="mt-20 text-slate-600 text-sm">
+          <p>&copy; {{ "" | year }} Listen2. All rights reserved.</p>
+          <div class="flex gap-4 justify-center mt-4">
+              <a href="/legal/{{ slug }}-privacy/" class="hover:text-slate-400">Privacy</a>
+              <a href="/guides/{{ slug }}/" class="hover:text-slate-400">Guide</a>
+          </div>
+      </div>
+  </footer>
+
+</div>
+
+<style>
+/* Custom animations if Tailwind config doesn't have them */
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(-6deg); }
+    50% { transform: translateY(-20px) rotate(-6deg); }
+}
+@keyframes float-delayed {
+    0%, 100% { transform: translateY(0) rotate(3deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+}
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float-delayed 7s ease-in-out infinite 1s; }
+
+/* Markdown Table Styling */
+.prose table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2em 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prose thead {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.prose th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 700;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prose td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #cbd5e1; /* slate-300 */
+}
+
+.prose tr:last-child td {
+    border-bottom: none;
+}
+
+.prose tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+</style>
