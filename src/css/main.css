@@ -441,6 +441,7 @@
 }
 
 .marketing-hero-icon {
+  display: inline-block;
   width: 8rem;
   height: 8rem;
   border-radius: 22%;
