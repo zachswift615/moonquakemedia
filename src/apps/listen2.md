@@ -5,6 +5,7 @@ slug: listen2
 tagline: Turn Any Document Into an Audiobook
 testFlightUrl: https://testflight.apple.com/join/uRrWXCba
 status: beta
+appIcon: /images/Listen2AppIcon.png
 ---
 
 PDF, EPUB, or pasted text—Listen2 reads it aloud with natural voices and word-level highlighting. All on-device. No subscription.

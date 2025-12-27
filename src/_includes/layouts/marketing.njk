@@ -35,6 +35,9 @@ layout: layouts/base.njk
 
     <!-- Hero Section -->
     <header class="marketing-hero">
+        {% if appIcon %}
+        <img src="{{ appIcon }}" alt="{{ title }} App Icon" class="marketing-hero-icon">
+        {% endif %}
         <h1 class="marketing-hero-title">{{ tagline }}</h1>
         {% if status == "beta" and testFlightUrl %}
         <a href="{{ testFlightUrl }}" target="_blank" rel="noopener noreferrer" class="cta-button-marketing">
