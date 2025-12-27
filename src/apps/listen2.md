@@ -117,7 +117,7 @@ Listen2 was engineered from the ground up with accessibility in mind. Full Voice
 | Word highlighting | ✅ | ❌ | ❌ |
 | No subscription | ✅ | ❌ | ✅ |
 | No account required | ✅ | ❌ | ❌ |
-| 40+ voice options | ✅ | ❌ | ❌ |
+| 20+ voice options | ✅ | ❌ | ❌ |
 | Adjustable speed | ✅ | ✅ | ✅ |
 | Privacy-first | ✅ | ❌ | ❌ |
 
