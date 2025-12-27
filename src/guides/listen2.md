@@ -85,8 +85,9 @@ There are several ways to add content to your Listen2 library:
 Your library shows all imported documents with their progress. You can:
 
 - **Search** - Use the search bar to find documents by title
-- **Sort** - Sort by title, date added, or last read
 - **Delete** - Swipe left on any document to delete it
+- **See progress** - See how far along you are in each document
+- **See date added** - See how long ago you imported each document
 
 ### Progress Tracking
 
@@ -102,15 +103,16 @@ Listen2 automatically saves your reading position. When you return to a document
 
 - **Play/Pause** - Start or stop reading
 - **Speed** - Adjust reading speed (0.5x to 2.0x)
-- **Skip Forward/Back** - Jump by sentence or paragraph
+- **Skip Forward/Back** - Jump by paragraph
 
 ### Navigation
 
 While listening, you can:
 
-- **Tap any word** to jump to that position
-- **Drag the progress bar** to scrub through the document
-- **Use the skip buttons** to move by sentence
+- **Tap any paragraph** to jump to that position
+- **Use the skip buttons** to move by paragraphs
+- **Use the Table of Contents** to navigate to a new chapter or section
+- **Use the search** to navigate to a specific location by search term
 
 ### Background Playback
 
@@ -176,8 +178,7 @@ Listen2 comes with one high-quality voice pre-installed, so you can start listen
 Listen2 uses Piper voices, which are high-quality, natural-sounding text-to-speech voices. To browse and download additional voices:
 
 1. Go to the Voices section
-2. Browse by language or search for a specific voice
-3. Tap a voice to preview it
+2. Tap the play button to preview each voice
 4. Tap Download to add it to your device
 
 <div class="feature-box">
@@ -190,7 +191,7 @@ Listen2 uses Piper voices, which are high-quality, natural-sounding text-to-spee
 
 - Downloaded voices are stored locally on your device
 - You can delete voices you no longer need to save space
-- Each voice is typically 15-50 MB depending on quality
+- Each voice is typically around 60-75 MB 
 
 ### Switching Voices
 
