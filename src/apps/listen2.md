@@ -6,6 +6,15 @@ tagline: Turn Any Document Into an Audiobook
 testFlightUrl: https://testflight.apple.com/join/uRrWXCba
 status: beta
 appIcon: /images/Listen2AppIcon.png
+screenshots:
+  - src: /images/Listen2-library.png
+    alt: Your Documents, Ready to Listen - PDF, EPUB, Google Drive, Clipboard, Markdown, Plain Text
+  - src: /images/Listen2-reader.png
+    alt: Turn Any Document Into an Audiobook - Every word lights up as it's spoken
+  - src: /images/Listen2-voices.png
+    alt: 25+ Natural Voices - All Offline, Always Private
+  - src: /images/Listen2-settings.png
+    alt: Listen Your Way - Speed, Voice & Highlighting Controls
 ---
 
 PDF, EPUB, or pasted text—Listen2 reads it aloud with natural voices and word-level highlighting. All on-device. No subscription.

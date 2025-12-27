@@ -457,6 +457,47 @@
   }
 }
 
+/* Screenshot gallery */
+.marketing-screenshots {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.marketing-screenshot {
+  flex-shrink: 0;
+  width: 200px;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.marketing-screenshot:hover {
+  transform: scale(1.02);
+}
+
+@media (min-width: 768px) {
+  .marketing-screenshots {
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .marketing-screenshot {
+    width: 240px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .marketing-screenshot {
+    width: 280px;
+  }
+}
+
 /* Main content */
 .marketing-content {
   max-width: 48rem;

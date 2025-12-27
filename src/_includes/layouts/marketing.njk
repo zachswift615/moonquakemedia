@@ -51,6 +51,14 @@ layout: layouts/base.njk
         {% else %}
         <div class="hero-coming-soon">Coming Soon</div>
         {% endif %}
+
+        {% if screenshots and screenshots.length %}
+        <div class="marketing-screenshots">
+            {% for screenshot in screenshots %}
+            <img src="{{ screenshot.src }}" alt="{{ screenshot.alt }}" class="marketing-screenshot">
+            {% endfor %}
+        </div>
+        {% endif %}
     </header>
 
     <!-- Main Content -->
