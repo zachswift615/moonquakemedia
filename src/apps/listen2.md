@@ -36,11 +36,11 @@ Unlike basic text-to-speech, Listen2 uses advanced audio alignment to highlight 
 
 ### Natural Voices, Completely Offline
 
-**40+ Voices. Zero Internet Required.**
+**20+ Voices. Zero Internet Required.**
 
 Listen2 uses Piper neural TTS—the same technology behind the best open-source voice assistants. Every voice is downloaded once and runs entirely on your device. No internet connection, no cloud processing, no privacy concerns.
 
-- 40+ voices (English US, UK, etc.)
+- 20+ voices (English US, UK, etc.)
 - Male, female, and neutral voice options
 - Preview any voice before downloading
 - Quality options from lightweight to studio-grade
@@ -131,7 +131,7 @@ Listen2 was engineered from the ground up with accessibility in mind. Full Voice
 | No subscription | ✅ | ❌ | ❌ ($60/yr) | ❌ |
 | No cloud upload | ✅ | ❌ | ❌ | ❌ |
 | Google Drive import | ✅ | ✅ | ✅ | ✅ |
-| 40+ voice choices | ✅ | ✅ | ✅ | Limited |
+| 20+ voice choices | ✅ | ✅ | ✅ | Limited |
 | VoiceOver optimized | ✅ | Partial | ✅ | Partial |
 | One-time price | ✅ | ❌ ($139/yr) | ✅ (~$20) | ❌ |
 
