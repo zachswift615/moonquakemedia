@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+bodyClass: bg-gray-100 p-5
+---
+
+<div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-md">
+    <a href="/apps/{{ slug }}/" class="inline-block mb-8 text-primary-500 font-medium hover:underline">&larr; Back to {{ appName }}</a>
+
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Terms of Use</h1>
+    <p class="text-gray-500 mb-10">Last updated: {{ lastUpdated }}</p>
+
+    <div class="highlight-box mb-8">
+        <p><strong>Summary:</strong> {{ summary }}</p>
+    </div>
+
+    <article class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3 prose-p:mb-4 prose-p:leading-relaxed prose-ul:my-4 prose-li:my-1 prose-a:text-primary-500">
+        {{ content | safe }}
+    </article>
+
+    <p class="mt-10 text-center text-gray-500">
+        <a href="/apps/{{ slug }}/" class="text-primary-500 hover:underline">Back to {{ appName }}</a>
+    </p>
+</div>
