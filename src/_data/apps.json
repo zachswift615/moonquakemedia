@@ -12,7 +12,7 @@
     "name": "Listen2",
     "tagline": "Your personal audiobook narrator with natural voices",
     "icon": "/images/Listen2AppIcon.png",
-    "status": "coming",
-    "statusText": "Coming Soon"
+    "status": "available",
+    "statusText": "Available Now"
   }
 ]

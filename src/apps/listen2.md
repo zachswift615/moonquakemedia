@@ -3,8 +3,8 @@ layout: layouts/listen2.njk
 title: Listen2
 slug: listen2
 tagline: Turn Any Document Into an Audiobook
-testFlightUrl: https://testflight.apple.com/join/uRrWXCba
-status: beta
+appStoreUrl: https://apps.apple.com/us/app/listen-2-reader/id6755753624
+status: available
 appIcon: /images/Listen2AppIcon.png
 screenshots:
   - src: /images/Listen2-library.png
