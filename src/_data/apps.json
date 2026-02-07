@@ -14,5 +14,13 @@
     "icon": "/images/Listen2AppIcon.png",
     "status": "available",
     "statusText": "Available Now"
+  },
+  {
+    "slug": "quietus",
+    "name": "Quietus",
+    "tagline": "Professional ambient sound generator with binaural beats and journey automation",
+    "icon": "/images/QuietusAppIcon.png",
+    "status": "coming",
+    "statusText": "Coming Soon"
   }
 ]

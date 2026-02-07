@@ -10,7 +10,7 @@ showContact: true
         <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">{{ site.name }}</h1>
         <p class="text-lg md:text-xl text-white/90 mb-12">{{ site.tagline }}</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-5">
             {% for app in apps %}
             <a href="/apps/{{ app.slug }}/" class="app-card text-center">
                 <div class="mb-5">
