@@ -3,12 +3,6 @@ layout: layouts/base.njk
 footerStyle: bordered
 ---
 
-{% set footerLinks = [
-    { url: "/guides/" + slug + "/", text: "User Guide" },
-    { url: "/legal/" + slug + "-privacy/", text: "Privacy Policy" },
-    { url: "mailto:" + site.email, text: "Support" }
-] %}
-
 <div class="gradient-hero min-h-screen flex items-center justify-center p-5">
     <div class="max-w-3xl w-full bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center">
         <a href="/" class="inline-block mb-5 text-primary-500 font-medium hover:underline">&larr; Back to {{ site.name }}</a>
@@ -90,6 +84,11 @@ footerStyle: bordered
         </div>
 
         <div class="mt-6">
+            <p class="mb-3">
+                <a href="/guides/{{ slug }}/" class="mx-2 text-primary-500 hover:underline">User Guide</a> |
+                <a href="/legal/{{ slug }}-privacy/" class="mx-2 text-primary-500 hover:underline">Privacy Policy</a> |
+                <a href="/legal/{{ slug }}-terms/" class="mx-2 text-primary-500 hover:underline">Terms of Use</a>
+            </p>
             <p class="text-gray-600">Questions or feedback? <a href="mailto:{{ site.email }}" class="text-primary-500 font-semibold">{{ site.email }}</a></p>
         </div>
     </div>
