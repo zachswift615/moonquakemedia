@@ -23,6 +23,7 @@ module.exports = function(eleventyConfig) {
 
   // Copy static assets
   eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("CNAME");
 
   // Watch CSS for changes
