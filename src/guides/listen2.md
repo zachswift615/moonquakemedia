@@ -151,7 +151,7 @@ To manage your documents, swipe left on any row to delete it. Or press and hold 
 
 <div class="tip-box">
 <h4>{% icon "lightbulb", "inline-icon" %} Automatic Position Saving</h4>
-<p>You never have to worry about losing your place. Listen2 saves your position automatically whenever you pause or leave a document. Come back three days later, open it up, and you're right where you stopped. No manual bookmarking needed just to keep your place.</p>
+<p>Listen2 saves your position automatically whenever you pause or leave a document. Come back three days later, open it up, and you're right where you stopped. That being said, there are times when the auto position saving doesn't work like if the app crashes before saving or if your phone dies during playback. I prefer the belt and suspenders approach and use bookmarks liberally.</p>
 </div>
 
 But here's the thing that matters most: Listen2 remembers where you are in every document, not just the last one. You can jump between five different books over the course of a week and each one picks up exactly where you left off. It's the kind of thing you stop noticing because it just works.
@@ -210,7 +210,7 @@ When you open a document as part of a collection, the reader adds a bit of conte
 
 <div class="feature-box">
 <h4>{% icon "eye", "inline-icon" %} With VoiceOver</h4>
-<p>All buttons in the top and bottom bars have descriptive labels and hints, so you always know what a control does before you activate it. One thing to note: double-tap-to-seek on words is disabled when VoiceOver is running, because VoiceOver uses its own double-tap gesture for activation. You can still tap paragraphs to jump playback using VoiceOver's standard activate gesture. When VoiceOver explore is active — your finger is on the screen moving between elements — auto-scrolling pauses so the text stays still while you explore. Once you lift your finger, use the crosshairs "Jump to Playback Position" button in the top bar to snap back to the current reading position.</p>
+<p>All buttons in the top and bottom bars have descriptive labels and hints, so you always know what a control does before you activate it. One thing to note: double-tap-to-seek on words is disabled when VoiceOver is running, because VoiceOver uses its own double-tap gesture for activation. You can select a line of text via exploring and double tap the line with a single finger to start playback from that line. When VoiceOver explore is active on the text surface — your finger is on the screen moving between elements — auto-scrolling pauses so the text stays still while you explore. Once you lift your finger, use the crosshairs "Jump to Playback Position" button in the top bar to snap back to the current reading position.</p>
 </div>
 
 </div>
@@ -268,7 +268,7 @@ Reading along while someone talks is surprisingly hard if the words aren't visua
 
 You've got three levels to choose from: **Word**, **Sentence**, and **Off**.
 
-**Word** is the default, and it's the most precise. Each word lights up the moment it's spoken. Listen2 runs a speech alignment engine entirely on your device to figure out exactly when each word starts and ends. That's what makes per-word tracking possible without any cloud connection — the timing analysis happens locally, in real time.
+**Word** is the default, and it's the most precise. Each word lights up the moment it's spoken. Listen2 runs a speech alignment engine entirely on your device to figure out exactly when each word starts and ends. But if you don't pay attention to the word highlighting, you may get better battery performance having it set to "sentence" or "off". 
 
 **Sentence** highlights the full sentence being read. Less visual movement, still gives you a clear anchor for where the voice is.
 
@@ -342,6 +342,8 @@ Some voice models pack multiple speakers into a single download. You'll spot the
 
 This matters more than you'd think. Two speakers from the same voice model can sound completely different — one warm and conversational, another crisp and formal. Same underlying engine, very different feel.
 
+Note that single speaker voices usually sound better overall than a multi-speaker voice, but this is subjective to each person so try them both out and see for yourself.
+
 <div class="tip-box">
 <h4>{% icon "lightbulb", "inline-icon" %} Experiment with Voices</h4>
 <p>Try a few different voices. Some feel better for fiction, others for technical content. And if a voice has multiple speakers, audition a few — the same voice model can sound very different between speakers.</p>
@@ -376,7 +378,7 @@ There's a Reset to Defaults button if you wander too far and want to start over.
 
 You know the feeling of making a great mixtape. You pick the tracks, put them in the right order, maybe add a little commentary between songs to set the mood. Collections are that, but for reading. You grab a set of documents from your library, arrange them in the order you want, and hit play. Everything plays through front to back — one article flows into the next, with optional narrated intros between them that you write yourself.
 
-Line up your morning commute listening. Build a course reading list. Put together a set of essays for your book club. One tap and the whole thing plays.
+Line up your morning commute listening. Build a course reading list. Put together a set of essays for your book club. One tap and the whole thing plays with a little chime between documents.
 
 #### Creating a Collection
 
@@ -388,7 +390,7 @@ You can also add documents to an existing collection without leaving your librar
 
 #### Intros & Citations
 
-Between any two documents, you can add an intro — a short text segment you write yourself that gets read aloud as a transition. Think of it as the little commentary between tracks on a good album. Something like "This next piece is from 1962, when the author was living in Paris..." or even just a sentence of context about what's coming next and why you included it.
+Between any two documents, you can add an intro — a short text segment you write yourself that gets read aloud as a transition. Think of it as the little commentary between tracks on a good radio station. Something like "This next piece is from 1962, when the author was living in Paris..." or even just a sentence of context about what's coming next and why you included it.
 
 Intros show up as expandable items in the collection detail view, each with their own play button. They get narrated by your current voice just like any other text. When you play through a collection, intros play automatically between documents. No extra taps.
 
