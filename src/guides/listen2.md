@@ -365,9 +365,37 @@ Two sliders in settings let you shape how your voice sounds. Both apply to Piper
 
 There's a Reset to Defaults button if you wander too far and want to start over. And if you tweak these settings while audio is already playing, you get a choice: "Apply Now" clears the audio buffer and switches immediately, or "Apply Soon" lets the current audio finish before the new settings kick in.
 
+#### Pronunciation Rules *(new in v1.4.0)*
+
+Sometimes the voice mispronounces a word. A character name, a technical term, an abbreviation. You hear it wrong once and it pulls you out of the listening experience every time after that.
+
+Pronunciation rules let you fix this. You tell the app "when you see this text, say this instead." The displayed text stays exactly the same — only the spoken output changes.
+
+Open pronunciation rules from the quick settings gear icon while reading, or from the main settings screen under Voice. Tap <span class="button-label">+</span> to create a rule. You'll set a match pattern (the text the voice gets wrong), choose whether it should match the exact word or any text containing the pattern, and then tell it what to say instead — or tell it to stay silent and skip the matched text entirely.
+
+A few things that come in handy:
+
+- **Fixing names.** If the voice says "Kaethe" wrong, create a rule that replaces it with a spelling the voice handles naturally, like "Kahtuh." Write replacements as words the voice can read, not phonetic notation.
+- **Spelling out abbreviations.** For something like "NASA," use periods between letters: "N.A.S.A." — this tells the voice to spell it out letter by letter. Spaces between letters don't work as well.
+- **Silencing footnotes.** The app ships with built-in rules for common footnote markers like [1], [2], and reference symbols like † and §. Toggle them on in the rule list and those markers disappear from the audio without touching the display text.
+
+Rules can be **global** (apply everywhere) or **document-scoped** (apply only to a specific document). When you open pronunciation rules from the reader's quick settings, you can create rules scoped to whatever you're currently reading. Document-scoped rules take priority over global ones when both match the same text.
+
+You can toggle rules on and off, reorder them by dragging, and delete any rule you've created. Built-in rules can be toggled but not edited or deleted.
+
+<div class="tip-box">
+<h4>{% icon "lightbulb", "inline-icon" %} Writing Good Replacements</h4>
+<p>The key insight: write replacements as natural English words the voice can pronounce, not phonetic guides. "Kahtuh" works. "KAH-tuh" doesn't — the voice reads uppercase letters individually. For abbreviations, use periods (N.A.S.A.) not spaces (N A S A).</p>
+</div>
+
 <div class="feature-box">
 <h4>{% icon "eye", "inline-icon" %} With VoiceOver</h4>
 <p>Voice rows in the Voice Library have rotor actions for "Play Sample" and "Stop Sample" so you can preview without navigating away. Download progress and status are announced as they change. The multi-speaker browser is a searchable list — type to filter, double-tap to select a speaker.</p>
+</div>
+
+<div class="feature-box">
+<h4>{% icon "eye", "inline-icon" %} Pronunciation Rules with VoiceOver</h4>
+<p>The rule list announces each rule's name, pattern, output, scope, and enabled state. Built-in rules are identified as "Built-in rule, not editable." The add/edit form follows a logical swipe order through all fields. Segmented controls for scope, match type, and output type announce their current selection. Validation errors are announced when you try to save an incomplete rule.</p>
 </div>
 
 </div>
@@ -598,6 +626,8 @@ If you reinstall the app or switch to a new device, go to Settings and tap "Rest
 </div>
 
 **Highlighting seems out of sync.** This can happen with unusual formatting or at very fast speech rates. The audio itself is still correct — it's only the visual tracking that may drift. Switching to sentence-level highlighting smooths it out.
+
+**Voice keeps mispronouncing a word.** Create a pronunciation rule. Go to quick settings (gear icon) while reading, tap Pronunciation Rules, and add a rule for that word. The trick is writing the replacement as a natural word the voice can read — not phonetic notation. For abbreviations, use periods between letters (N.A.S.A.) instead of spaces.
 
 **Non-English voice mispronouncing numbers or dates.** Download the language pack for that voice's language. Go to the Voice Library, then Language Packs. These grammar packs teach the voice how to expand numbers, dates, and currency into proper spoken words. English has one built in, but other languages need the download.
 
