@@ -8,11 +8,11 @@ status: available
 appIcon: /images/Listen2AppIcon.png
 screenshots:
   - src: /images/Listen2-library.png
-    alt: Your Documents, Ready to Listen - PDF, EPUB, Google Drive, Clipboard, Markdown, Plain Text
+    alt: Your Documents, Ready to Listen - PDF, EPUB, DOCX, DAISY, Clipboard, Plain Text
   - src: /images/Listen2-reader.png
     alt: Turn Any Document Into an Audiobook - Every word lights up as it's spoken
   - src: /images/Listen2-voices.png
-    alt: 25+ Natural Voices - All Offline, Always Private
+    alt: 70+ Natural Voices in 8 Languages - All Offline, Always Private
   - src: /images/Listen2-settings.png
     alt: Listen Your Way - Speed, Voice & Highlighting Controls
 ---
@@ -34,14 +34,15 @@ Unlike basic text-to-speech, Listen2 uses advanced audio alignment to highlight 
 
 ### Natural Voices, Completely Offline
 
-**20+ Voices. Zero Internet Required.**
+**70+ Voices. 8 Languages. Zero Internet Required.**
 
 Listen2 uses Piper neural TTS—the same technology behind the best open-source voice assistants. Every voice is downloaded once and runs entirely on your device. No internet connection, no cloud processing, no privacy concerns.
 
-- 20+ voices (English US, UK, etc.)
-- Male, female, and neutral voice options
+- 70+ voices across English, Spanish, French, German, Swedish, Hungarian, Italian, and Russian
+- Multi-speaker voice models with dozens of unique speakers each
 - Preview any voice before downloading
 - Quality options from lightweight to studio-grade
+- Optional language packs for natural number, date, and currency pronunciation
 
 > Works on airplane mode. Works in the subway. Works everywhere.
 
@@ -49,16 +50,17 @@ Listen2 uses Piper neural TTS—the same technology behind the best open-source 
 
 ### Multi-Format Import
 
-**PDF. EPUB. Google Drive. Clipboard. Done.**
+**PDF. EPUB. DOCX. DAISY. Clipboard. Done.**
 
-Stop converting files or emailing documents to yourself. Listen2 imports directly from your Files app, Google Drive shared links, or just paste text from anywhere. Smart text processing handles hyphenation, headers, and messy PDF layouts.
+Stop converting files or emailing documents to yourself. Listen2 imports directly from the iOS Files app—which means iCloud Drive, Dropbox, Google Drive, OneDrive, and anything else you've connected. Or just paste text from anywhere. Smart text processing handles hyphenation, headers, and messy PDF layouts.
 
 **Supported Formats:**
 - PDF (with smart layout extraction)
 - EPUB (with chapter detection)
+- DOCX (Word documents)
+- DAISY (accessibility-focused audiobook format)
 - Plain text and Markdown
 - Clipboard (paste anything)
-- Google Drive shared links
 
 ---
 
@@ -80,6 +82,28 @@ We built Listen2 for people who read sensitive material—legal documents, medic
 - ✅ Local document storage
 - ✅ One-time purchase
 - ✅ Works in airplane mode
+
+---
+
+### Collections
+
+**Curate Your Own Playlists**
+
+Group documents into ordered collections—like playlists for reading. Add narrated intros between documents to create a guided listening experience. Share entire collections with others as `.listen2collection` files.
+
+- Drag-and-drop reordering
+- Write narrated intros between documents
+- Source citations with URLs for each item
+- Progress tracking across the collection
+- Export and share complete collections
+
+---
+
+### Bookmarks & Search
+
+**Find and Mark What Matters**
+
+Full-text search across your entire library. Drop bookmarks anywhere in a document and jump back to them instantly. Your reading position is saved automatically.
 
 ---
 
@@ -107,11 +131,14 @@ Listen2 was engineered from the ground up with accessibility in mind. Full Voice
 |---------|---------|---------|-------|
 | Your own PDFs | ✅ | ❌ | ❌ |
 | Your own EPUBs | ✅ | ❌ | ❌ |
+| DOCX & DAISY support | ✅ | ❌ | ❌ |
 | Works offline | ✅ | ✅ | ✅ |
 | Word highlighting | ✅ | ❌ | ❌ |
 | No subscription | ✅ | ❌ | ✅ |
 | No account required | ✅ | ❌ | ❌ |
-| 20+ voice options | ✅ | ❌ | ❌ |
+| 70+ voice options | ✅ | ❌ | ❌ |
+| 8 languages | ✅ | ❌ | ❌ |
+| Collections & playlists | ✅ | ❌ | ❌ |
 | Adjustable speed | ✅ | ✅ | ✅ |
 | Privacy-first | ✅ | ❌ | ❌ |
 
@@ -124,8 +151,10 @@ Listen2 was engineered from the ground up with accessibility in mind. Full Voice
 | 100% offline | ✅ | ❌ | Partial | ❌ |
 | No subscription | ✅ | ❌ | ❌ ($60/yr) | ❌ |
 | No cloud upload | ✅ | ❌ | ❌ | ❌ |
-| Google Drive import | ✅ | ✅ | ✅ | ✅ |
-| 20+ voice choices | ✅ | ✅ | ✅ | Limited |
+| 70+ voice choices | ✅ | ✅ | ✅ | Limited |
+| 8 languages | ✅ | ✅ | ✅ | Limited |
+| DOCX & DAISY support | ✅ | Partial | ✅ | Partial |
+| Collections | ✅ | ❌ | ❌ | ❌ |
 | VoiceOver optimized | ✅ | Partial | ✅ | Partial |
 | One-time price | ✅ | ❌ ($139/yr) | ✅ (~$20) | ❌ |
 
@@ -136,13 +165,13 @@ Listen2 was engineered from the ground up with accessibility in mind. Full Voice
 ### General
 
 **Q: What file formats does Listen2 support?**
-A: PDF, EPUB, plain text, Markdown, and anything you can copy to your clipboard. You can also import directly from Google Drive shared links.
+A: PDF, EPUB, DOCX, DAISY, plain text, Markdown, and anything you can copy to your clipboard. Import from the iOS Files app, which connects to iCloud Drive, Dropbox, Google Drive, OneDrive, and more.
 
 **Q: Does it work offline?**
 A: Yes, 100%. Once you've downloaded a voice, everything runs on your device. No internet required for synthesis or playback.
 
 **Q: What languages are supported?**
-A: The first release focuses on high-quality English voices (US, UK, and other accents). Support for more languages will be coming in future updates.
+A: Listen2 currently supports 8 languages: English, Spanish, French, German, Swedish, Hungarian, Italian, and Russian. More languages are planned for future updates.
 
 ### Privacy
 
@@ -158,4 +187,4 @@ A: No. Listen2 requires no account, no login, no email. Just download and start 
 A: No. Listen2 is a one-time purchase. Pay once, own forever.
 
 **Q: Is there a free trial?**
-A: Yes. You get a full-featured free trial so you can make sure Listen2 works for you before purchasing.
+A: Yes. You get a full-featured 7-day free trial so you can make sure Listen2 works for you before purchasing.
