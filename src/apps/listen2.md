@@ -30,8 +30,6 @@ Unlike basic text-to-speech, Listen2 uses advanced audio alignment to highlight 
 - Automatically adjusts to your device's capabilities
 - Disable entirely if you prefer audio-only
 
-> "The highlighting is why I finally finished my thesis reading list." — Early tester
-
 ---
 
 ### Natural Voices, Completely Offline
@@ -61,8 +59,6 @@ Stop converting files or emailing documents to yourself. Listen2 imports directl
 - Plain text and Markdown
 - Clipboard (paste anything)
 - Google Drive shared links
-
-> "I just paste my professor's lecture notes and listen on the way to class." — University student
 
 ---
 
@@ -100,8 +96,6 @@ Listen2 was engineered from the ground up with accessibility in mind. Full Voice
 - Large text and Dynamic Type support
 - High contrast mode support
 - No essential gestures—buttons for everything
-
-> "Finally an app that treats accessibility as a feature, not an afterthought." — VoiceOver user
 
 ---
 
