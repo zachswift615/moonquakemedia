@@ -317,16 +317,30 @@ The voice is the whole experience. A great voice makes a two-hour reading sessio
 
 Listen2 ships with one high-quality English voice already installed. No downloads, no setup — you can start listening the moment you open the app. But that's just the starting point.
 
+#### Voice Engines *(new in v1.5.0)*
+
+Listen2 now has two voice engines: **Piper** and **Supertonic**.
+
+**Piper** is the original engine — fast, lightweight, and available in dozens of languages. These are the voices you already know. They run great on any device and cover the widest range of languages.
+
+**Supertonic** is the new high-fidelity engine. It uses a flow-matching neural architecture that produces more natural, expressive speech. Supertonic voices sound closer to human narration — smoother prosody, more natural rhythm, clearer articulation. The trade-off is that synthesis takes a bit more processing power and the voices are currently English-only.
+
+Here's the nice part about Supertonic: all its voices share a single engine. Download any Supertonic voice and you get access to all of them — male and female, different styles. The engine download happens once, and after that switching between Supertonic voices is instant.
+
+Both engines work side by side. You can switch between Piper and Supertonic voices freely — even mid-document. The app handles everything behind the scenes.
+
 #### Browsing Voices
 
 Open the Voice Library from the main settings screen or from your library. You'll find dozens of voices spanning English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, and more.
 
 <div class="feature-box">
 <h4>{% icon "globe", "inline-icon" %} Available Languages</h4>
-<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, and others. New voices and languages are added over time.</p>
+<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, and others. Piper voices cover all of these. Supertonic voices are currently English-only, with more languages coming.</p>
 </div>
 
-Every voice has a play button right on the row so you can preview it before committing to a download. Filter the list by language, quality level (high or medium), or download status — all voices, downloaded only, or not yet downloaded. Sort by name, language, or downloaded-first. Between the filters and sorting, you can narrow things down fast even as the library grows.
+Every voice has a play button right on the row so you can preview it before committing to a download. Filter the list by voice engine, language, quality level (high or medium), or download status — all voices, downloaded only, or not yet downloaded. Sort by name, language, or downloaded-first. Between the filters and sorting, you can narrow things down fast even as the library grows.
+
+When multiple voice engines are available, the Sort & Filter sheet includes a Voice Engine filter. Use it to show only Piper voices, only Supertonic voices, or all voices at once.
 
 #### Downloading & Managing
 
@@ -357,13 +371,29 @@ If a voice needs a grammar pack, you'll see a prompt. Download it, and numbers a
 
 #### Voice Tuning
 
-Two sliders in settings let you shape how your voice sounds. Both apply to Piper voices.
+Each engine has its own tuning controls. The settings screen automatically shows the right set based on which voice is active.
+
+**Piper Voice Tuning**
+
+Two sliders shape how Piper voices sound.
 
 **Expressiveness** (0.00 to 1.00) controls pitch and tone variation. Set it low and the voice goes flat, almost monotone. Set it high and you get more animated, dynamic delivery. Default is 0.667.
 
 **Duration Variation** (0.00 to 1.00) controls phoneme timing — how long each sound is held. Low means even, mechanical pacing. High means more natural rhythm with subtle pauses and rushes. Default is 0.80.
 
-There's a Reset to Defaults button if you wander too far and want to start over. And if you tweak these settings while audio is already playing, you get a choice: "Apply Now" clears the audio buffer and switches immediately, or "Apply Soon" lets the current audio finish before the new settings kick in.
+**Supertonic Voice Quality** *(new in v1.5.0)*
+
+Four parameters let you dial in Supertonic's output.
+
+**Articulation Speed** (0.70 to 1.30) controls how much time the model allocates per word. Lower values give the model more room to pronounce clearly — words come out more precise but the natural pace slows down. Higher values speed up articulation but may clip syllables. Default is 0.79.
+
+**Duration Buffer** (0% to 30%) adds extra time after the model's predicted speech length. This prevents words from being cut off at the end of sentences. If you hear the last word getting clipped, bump this up. Default is 14%.
+
+**Quality Steps** (10 to 40) controls how many denoising passes the model runs. More steps produce cleaner, more natural audio but take longer to generate. 32 is a good balance between quality and speed. Default is 32.
+
+**Variation** (0.50 to 1.50) controls how much randomness shapes the audio. Lower values sound smoother and more consistent. Higher values introduce more expressiveness but can also cause the voice to shift accents between sentences. Default is 0.85.
+
+There's a Reset to Defaults button for each engine if you wander too far and want to start over. And if you tweak these settings while audio is already playing, you get a choice: "Apply Now" clears the audio buffer and switches immediately, or "Apply Soon" lets the current audio finish before the new settings kick in.
 
 #### Pronunciation Rules *(new in v1.4.0)*
 
@@ -624,6 +654,10 @@ If you reinstall the app or switch to a new device, go to Settings and tap "Rest
 <h4>{% icon "alert-triangle", "inline-icon" %} Scanned PDFs</h4>
 <p>If a PDF imports but shows garbled text or nothing at all, it's likely a scanned image rather than real text. Listen2 can't read pixels — it needs actual text content. Try copying the text manually from the source and using clipboard import instead.</p>
 </div>
+
+**Supertonic voice skips or clips words.** If a Supertonic voice occasionally swallows the end of a word or rushes through a phrase, try increasing the Duration Buffer in Voice Quality settings. The default values (Articulation Speed 0.79, Duration Buffer 14%) are tuned to minimize this, but some text patterns — especially long technical words or unusual names — benefit from a bit more room. Bumping Duration Buffer to 20% or lowering Articulation Speed to 0.75 can help.
+
+**Supertonic voice switches between accents.** You might notice a Supertonic voice drifting between British and American accents within the same document. This is a known characteristic of the underlying model — the voice learned from a mix of accent styles, and certain text patterns can push it toward one or the other. Lowering the Variation slider in Voice Quality settings can help stabilize the accent. This is something we're actively working to improve.
 
 **Highlighting seems out of sync.** This can happen with unusual formatting or at very fast speech rates. The audio itself is still correct — it's only the visual tracking that may drift. Switching to sentence-level highlighting smooths it out.
 
