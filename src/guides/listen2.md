@@ -323,7 +323,7 @@ Listen2 now has two voice engines: **Piper** and **Supertonic**.
 
 **Piper** is the original engine — fast, lightweight, and available in dozens of languages. These are the voices you already know. They run great on any device and cover the widest range of languages.
 
-**Supertonic** is the new high-fidelity engine. It uses a flow-matching neural architecture that produces more natural, expressive speech. Supertonic voices sound closer to human narration — smoother prosody, more natural rhythm, clearer articulation. The trade-off is that synthesis takes a bit more processing power and the voices are currently English-only.
+**Supertonic** is the new high-fidelity engine. It uses a flow-matching neural architecture that produces more natural, expressive speech. Supertonic voices sound closer to human narration — smoother prosody, more natural rhythm, clearer articulation. We custom-converted the models to run natively on Apple's Neural Engine through CoreML, so you get high-fidelity audio without unnecessary battery drain. The voices are currently English-only, with more languages coming.
 
 Here's the nice part about Supertonic: all its voices share a single engine. Download any Supertonic voice and you get access to all of them — male and female, different styles. The engine download happens once, and after that switching between Supertonic voices is instant.
 
