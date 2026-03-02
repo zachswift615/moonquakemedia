@@ -632,7 +632,7 @@
           });
 
           doc.setTextColor(0, 0, 0);
-          y = boxTop + boxH + 0.1;
+          y = boxTop + boxH + 0.25;
           break;
         }
       }
