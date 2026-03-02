@@ -15,11 +15,36 @@ footerStyle: bordered
     <p class="text-lg opacity-90">{{ subtitle | default("Your Complete Guide") }}</p>
 </header>
 
-<nav class="text-center py-5 bg-white shadow-sm">
-    <a href="/apps/{{ slug }}/" class="mx-4 text-primary-500 font-semibold hover:underline">&larr; Back to {{ title }}</a>
-    {% for section in toc %}
-    <a href="#{{ section.id }}" class="mx-4 text-primary-500 font-semibold hover:underline hidden md:inline">{{ section.short }}</a>
-    {% endfor %}
+<nav class="flex items-center justify-between py-4 px-5 bg-white shadow-sm">
+    <a href="/apps/{{ slug }}/" class="text-primary-500 font-semibold hover:underline whitespace-nowrap">&larr; Back to {{ title }}</a>
+    <div class="hidden md:flex items-center gap-4 overflow-x-auto mx-4">
+        {% for section in toc %}
+        <a href="#{{ section.id }}" class="text-primary-500 font-semibold hover:underline whitespace-nowrap">{{ section.short }}</a>
+        {% endfor %}
+    </div>
+    <div class="relative">
+        <button id="guide-download-btn"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="Download guide in different formats"
+                class="guide-download-btn">
+            Download <span class="hidden sm:inline">Guide </span>&#9662;
+        </button>
+        <div id="guide-download-menu" role="menu" aria-label="Export formats" hidden class="guide-download-menu">
+            <button role="menuitem" data-format="docx" tabindex="-1">
+                <span class="guide-download-format">Word Document (.docx)</span>
+                <span class="guide-download-desc">For editing and review</span>
+            </button>
+            <button role="menuitem" data-format="pdf" tabindex="-1">
+                <span class="guide-download-format">PDF</span>
+                <span class="guide-download-desc">For reading and printing</span>
+            </button>
+            <button role="menuitem" data-format="epub" tabindex="-1">
+                <span class="guide-download-format">EPUB</span>
+                <span class="guide-download-desc">For reading in Listen2 or ebook apps</span>
+            </button>
+        </div>
+    </div>
 </nav>
 
 {% if iapNotice %}
@@ -51,3 +76,8 @@ footerStyle: bordered
 
     {{ content | safe }}
 </main>
+
+<script defer src="https://cdn.jsdelivr.net/npm/docx@9/build/index.umd.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/jspdf@latest/dist/jspdf.umd.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/jszip@latest/dist/jszip.min.js"></script>
+<script defer src="/assets/guide-export.js"></script>

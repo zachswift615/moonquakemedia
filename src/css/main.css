@@ -151,6 +151,50 @@
     @apply text-primary-500;
   }
 
+  /* Guide download dropdown */
+  .guide-download-btn {
+    @apply bg-primary-500 text-white px-4 py-2 rounded-lg font-semibold text-sm cursor-pointer whitespace-nowrap border-none;
+  }
+
+  .guide-download-btn:hover {
+    @apply bg-primary-600;
+  }
+
+  .guide-download-btn:disabled {
+    @apply opacity-60 cursor-wait;
+  }
+
+  .guide-download-menu {
+    @apply absolute right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 z-50;
+    min-width: 260px;
+  }
+
+  .guide-download-menu button {
+    @apply w-full text-left px-4 py-3 border-none bg-transparent cursor-pointer block;
+  }
+
+  .guide-download-menu button:hover,
+  .guide-download-menu button:focus {
+    @apply bg-gray-50 outline-none;
+  }
+
+  .guide-download-menu button:first-child {
+    @apply rounded-t-lg;
+  }
+
+  .guide-download-menu button:last-child {
+    @apply rounded-b-lg;
+  }
+
+  .guide-download-format {
+    @apply block font-semibold text-gray-800 text-sm;
+  }
+
+  .guide-download-desc {
+    @apply block text-gray-500 text-xs;
+    margin-top: 2px;
+  }
+
   /* Screenshots grid */
   .screenshot {
     @apply w-full h-auto rounded-2xl shadow-lg transition-transform duration-300 cursor-pointer;
