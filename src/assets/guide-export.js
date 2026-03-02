@@ -541,24 +541,98 @@
         }
 
         case 'box': {
-          checkPageBreak(0.5);
-          doc.setFont('helvetica', 'bolditalic');
-          doc.setFontSize(11);
-          doc.setTextColor(136, 136, 136);
-          doc.text('[' + node.boxType + ': ' + node.title + ']', x + 0.2, y);
-          y += 0.25;
-          doc.setTextColor(0, 0, 0);
+          // Measure box height by collecting all text lines
+          var boxPad = 0.15;
+          var boxInnerW = maxW - 0.35 - boxPad; // left border + padding
+          var boxLines = [];
 
+          // Title line
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(11);
+          var titleLines = doc.splitTextToSize(node.boxType + ': ' + node.title, boxInnerW);
+          titleLines.forEach(function (l) { boxLines.push({ text: l, style: 'bold', size: 11 }); });
+
+          // Body content — flatten to text lines
           (node.children || []).forEach(function (child) {
-            renderNode(child, x + 0.2, maxW - 0.4);
+            var childText = '';
+            if (child.type === 'paragraph') {
+              childText = (child.runs || []).map(function (r) { return r.text; }).join('');
+            } else if (child.type === 'list') {
+              (child.items || []).forEach(function (item) {
+                var t = '\u2022  ' + item.map(function (r) { return r.text; }).join('');
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                doc.splitTextToSize(t, boxInnerW).forEach(function (l) {
+                  boxLines.push({ text: l, style: 'normal', size: 11 });
+                });
+              });
+              return;
+            } else if (child.type === 'ordered-list') {
+              var n = 1;
+              (child.items || []).forEach(function (item) {
+                var t = n + '.  ' + item.map(function (r) { return r.text; }).join('');
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                doc.splitTextToSize(t, boxInnerW).forEach(function (l) {
+                  boxLines.push({ text: l, style: 'normal', size: 11 });
+                });
+                n++;
+              });
+              return;
+            }
+            if (childText) {
+              doc.setFont('helvetica', 'normal');
+              doc.setFontSize(11);
+              doc.splitTextToSize(childText, boxInnerW).forEach(function (l) {
+                boxLines.push({ text: l, style: 'normal', size: 11 });
+              });
+            }
           });
 
-          doc.setFont('helvetica', 'italic');
-          doc.setFontSize(11);
-          doc.setTextColor(136, 136, 136);
-          doc.text('[/' + node.boxType + ']', x + 0.2, y);
-          y += 0.25;
+          var lineH = 0.20;
+          var boxH = boxLines.length * lineH + 2 * boxPad;
+
+          // Page break if box doesn't fit — but allow split for very tall boxes
+          checkPageBreak(Math.min(boxH, 1.5));
+
+          // Colors by box type
+          var borderColor, bgColor;
+          if (node.boxType === 'TIP') {
+            borderColor = [245, 158, 11]; bgColor = [255, 251, 235];
+          } else if (node.boxType === 'WARNING') {
+            borderColor = [239, 68, 68]; bgColor = [254, 242, 242];
+          } else {
+            borderColor = [59, 130, 246]; bgColor = [239, 246, 255];
+          }
+
+          var boxTop = y - 0.12;
+
+          // Draw background
+          doc.setFillColor(bgColor[0], bgColor[1], bgColor[2]);
+          doc.rect(x, boxTop, maxW, boxH, 'F');
+
+          // Draw left border
+          doc.setFillColor(borderColor[0], borderColor[1], borderColor[2]);
+          doc.rect(x, boxTop, 0.05, boxH, 'F');
+
+          // Render text lines
+          var textX = x + 0.2;
+          y = boxTop + boxPad;
+          boxLines.forEach(function (line, i) {
+            doc.setFont('helvetica', line.style);
+            doc.setFontSize(line.size);
+            if (i === 0) {
+              // Title in the border color
+              doc.setTextColor(borderColor[0], borderColor[1], borderColor[2]);
+            } else {
+              doc.setTextColor(51, 51, 51);
+            }
+            y += lineH;
+            doc.text(line.text, textX, y);
+          });
+
           doc.setTextColor(0, 0, 0);
+          y = boxTop + boxH + 0.1;
           break;
         }
       }
