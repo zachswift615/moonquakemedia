@@ -160,6 +160,10 @@
     @apply bg-primary-600;
   }
 
+  .guide-download-btn:focus-visible {
+    @apply outline-2 outline-offset-2 outline-white ring-2 ring-primary-500;
+  }
+
   .guide-download-btn:disabled {
     @apply opacity-60 cursor-wait;
   }
@@ -175,7 +179,11 @@
 
   .guide-download-menu button:hover,
   .guide-download-menu button:focus {
-    @apply bg-gray-50 outline-none;
+    @apply bg-gray-50;
+  }
+
+  .guide-download-menu button:focus-visible {
+    @apply outline-2 outline-offset-[-2px] outline-primary-500;
   }
 
   .guide-download-menu button:first-child {

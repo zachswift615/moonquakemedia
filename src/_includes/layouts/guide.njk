@@ -26,9 +26,10 @@ footerStyle: bordered
         <button id="guide-download-btn"
                 aria-haspopup="true"
                 aria-expanded="false"
-                aria-label="Download guide in different formats"
+                aria-controls="guide-download-menu"
+                aria-live="polite"
                 class="guide-download-btn">
-            Download <span class="hidden sm:inline">Guide </span>&#9662;
+            Download <span class="hidden sm:inline">Guide </span><span aria-hidden="true">&#9662;</span>
         </button>
         <div id="guide-download-menu" role="menu" aria-label="Export formats" hidden class="guide-download-menu">
             <button role="menuitem" data-format="docx" tabindex="-1">
