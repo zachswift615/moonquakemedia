@@ -107,6 +107,8 @@ Tap <span class="button-label">+</span>, choose "Import from Link," and paste in
 
 This is probably the most convenient option for web browsing. You're in Safari or any other app, you see something you want to listen to later, and you tap the Share button. Choose Listen2 from the share sheet. The article gets imported and will be waiting in your library. No copy-pasting, no switching apps, no typing in URLs.
 
+And if you import a bunch of articles throughout the day this way, you can batch them into a collection in two taps — see Web Article Collections in the Collections section.
+
 #### Siri Shortcut
 
 If you've got text on your clipboard and want to skip the UI entirely, just say "Read my clipboard in Listen2." It imports the clipboard text and starts playing automatically. Hands-free from start to finish.
@@ -331,11 +333,11 @@ Both engines work side by side. You can switch between Piper and Supertonic voic
 
 #### Browsing Voices
 
-Open the Voice Library from the main settings screen or from your library. You'll find dozens of voices spanning English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, and more.
+Open the Voice Library from the main settings screen or from your library. You'll find dozens of voices spanning English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Vietnamese, and more.
 
 <div class="feature-box">
 <h4>{% icon "globe", "inline-icon" %} Available Languages</h4>
-<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, and others. Piper voices cover all of these. Supertonic voices are currently English-only, with more languages coming.</p>
+<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Vietnamese, and others. Piper voices cover all of these. Supertonic voices are currently English-only, with more languages coming.</p>
 </div>
 
 Every voice has a play button right on the row so you can preview it before committing to a download. Filter the list by voice engine, language, quality level (high or medium), or download status — all voices, downloaded only, or not yet downloaded. Sort by name, language, or downloaded-first. Between the filters and sorting, you can narrow things down fast even as the library grows.
@@ -368,6 +370,8 @@ Note that single speaker voices usually sound better overall than a multi-speake
 Non-English voices can optionally download a grammar pack for their language. These handle text normalization — turning things like "1,234" into "one thousand two hundred thirty-four" instead of reading out individual digits. Same for dates, currency, and other formatted text.
 
 If a voice needs a grammar pack, you'll see a prompt. Download it, and numbers and dates will sound natural. You can manage these from the Language Packs screen — download, delete, or retry if something went wrong. They're small and make a real difference in how polished the output sounds.
+
+One thing to know: grammar pack coverage varies by language. Most handle numbers, dates, and currency well. Vietnamese normalizes numbers and basic text correctly, but currency symbols (like ₫ or $) and measurement units (km, kg, kWh) currently pass through as-is. The voice will still read the text — it just won't expand "100000 ₫" into words the way it would for other languages. This is on our list to improve.
 
 #### Voice Tuning
 
@@ -440,11 +444,21 @@ Line up your morning commute listening. Build a course reading list. Put togethe
 
 #### Creating a Collection
 
-Go to the Collections tab in your library and tap the + button to create a new one. Give it a name. You can optionally add a description and cover artwork from your photo library, but neither is required.
+Go to the Collections tab in your library and tap the + button. You'll see a menu with two options: "New Collection" for building one from scratch, and "Create Web Article Collection" for a quick shortcut (more on that below). Choose "New Collection," give it a name. You can optionally add a description and cover artwork from your photo library, but neither is required.
 
 Then add documents. You'll see your full library to pick from. Once they're in, drag to reorder them the way you want, swipe to remove anything that doesn't belong. The collection detail screen shows an item count, a document count, and a play button right at the top.
 
 You can also add documents to an existing collection without leaving your library. Long-press any document and choose "Add to Collection" from the context menu. Quick and easy.
+
+#### Web Article Collections
+
+Here's the scenario. You're importing articles from Safari throughout the day — one here, one there, maybe five or six by the evening. Now you want to listen through them on a walk. Normally you'd create a collection, add each article one by one, name it, etc. Web Article Collections skip all that.
+
+Tap the + button on the Collections tab and choose "Create Web Article Collection." The app finds all your loose web articles — the ones you've imported but haven't organized into a collection yet — and lets you batch them up in two taps. Pick how many you want (5, 10, 25, or all of them), accept or edit the auto-generated name, and tap Create. The collection builds itself from your most recent articles, newest first, and drops you right into it ready to play.
+
+This is the answer to "I want auto-play across documents" and "I want to clean up when I'm done." Collections already auto-advance from one document to the next. So once your articles are in a collection, you press play and the whole batch plays straight through. And when you're finished, delete the collection and choose "Delete Collection and Documents" to clear everything out in one shot.
+
+If you don't have any web articles yet, the sheet walks you through how to import them — open Safari, tap share, choose Listen2. And if all your web articles are already in collections, it tells you that too.
 
 #### Intros & Citations
 
@@ -472,6 +486,19 @@ Everything else in the reader works exactly the same. Same speed controls, same 
 Tap the export button in the toolbar on a collection's detail screen. Listen2 packages everything up — documents, intros, structure, the works — into a `.listen2collection` file. Share it via AirDrop, Messages, email, whatever you've got. The recipient opens it in Listen2 and gets the whole collection intact, ready to play.
 
 Importing works the other direction. Open a `.listen2collection` file from Files, a link, or another app and Listen2 handles it. If you already have that collection, it lets you know.
+
+#### Deleting a Collection
+
+Swipe left on a collection in the list and tap delete. You'll get a choice: "Delete Collection Only" or "Delete Collection and Documents."
+
+The first option removes the collection but leaves every document in your library. The structure goes away, but the content stays. The second option removes the collection and deletes the documents along with it — handy when you've finished a batch of articles and want a clean slate.
+
+Here's the safety net: if a document belongs to another collection too, it won't be deleted. Only documents that are exclusively in the collection you're removing get cleaned up. So you can't accidentally lose something that's still part of another playlist.
+
+<div class="tip-box">
+<h4>{% icon "lightbulb", "inline-icon" %} The Listen-and-Clean-Up Workflow</h4>
+<p>Import articles throughout the day, batch them into a web article collection, listen through the whole thing, then delete the collection with its documents when you're done. Fresh library, no clutter.</p>
+</div>
 
 <div class="feature-box">
 <h4>{% icon "list-bullet", "inline-icon" %} What to Use Collections For</h4>
