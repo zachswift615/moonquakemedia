@@ -403,6 +403,29 @@ Four parameters let you dial in Supertonic's output.
 
 There is a Reset to Defaults button for each engine if you wander too far and want to start over. And if you tweak these settings while audio is already playing, you get a choice: "Apply Now" clears the audio buffer and switches immediately, or "Apply Soon" lets the current audio finish before the new settings kick in.
 
+#### Voice Presets *(new in v1.5.0)*
+
+Here is the problem presets solve. You find the perfect tuning for Luna — she sounds crisp and clear at Articulation Speed 0.90 with Quality Steps 28. But then you switch to Atlas for a different book, and those settings come along for the ride. Atlas sounds better with completely different values. Without presets, you are manually adjusting sliders every time you switch voices.
+
+Presets let you save a set of tuning parameters and load them onto any voice. Each voice can have its own settings, independent of every other voice. Change Luna's Articulation Speed and Atlas does not budge.
+
+**How it works.** By default, all voices share one set of global tuning parameters. When you save or load a preset onto a voice, that voice *detaches* from the global settings and gets its own copy. The section header tells you the current state — "Global" means the voice is using shared settings, a preset name like "Crisp Narration" means it loaded that preset, and "Custom" means it has its own settings that do not match any preset.
+
+**Saving a preset.** Open the Presets screen from the tuning section (there is a "Presets" link below "Reset to Defaults"). Tap "Save Current as Preset." The app suggests a name based on the voice — accept it or type your own. Saving captures the current slider values and also detaches the voice, so future slider changes only affect this voice.
+
+**Loading a preset.** On the Presets screen, tap any saved preset to load it onto the current voice. The sliders update immediately. For Piper voices, you get the same "Apply Now" or "Apply Soon" choice you see when changing sliders.
+
+**Using Global Settings.** If a voice is detached and you want it to go back to sharing settings with everyone else, tap "Use Global Settings" on the Presets screen. The voice-specific settings are removed and the sliders revert to the global values.
+
+**Reset to Defaults** still works the same way, with one nuance. If the voice is detached, it resets *that voice's* settings to factory defaults but keeps it detached. The voice does not rejoin the global pool — it just gets fresh default values of its own. If the voice is using global settings, it resets the global values, which affects all voices that have not been detached.
+
+Presets are filtered by engine. Supertonic presets only appear when a Supertonic voice is active, and Piper presets only appear for Piper voices. Deleting a preset from the library does not affect any voice that already loaded it — the loaded values are a snapshot, not a live link.
+
+<div class="tip-box">
+<h4>{% icon "lightbulb", "inline-icon" %} One Preset, Many Voices</h4>
+<p>You can load the same preset onto multiple voices. Each gets its own independent copy of the values. Adjusting a slider on one voice does not change the others — they are snapshots, not shared references.</p>
+</div>
+
 #### Pronunciation Rules *(new in v1.4.0)*
 
 Sometimes the voice mispronounces a word. A character name, a technical term, an abbreviation. You hear it wrong once and it pulls you out of the listening experience every time after that.
@@ -434,6 +457,11 @@ You can toggle rules on and off, reorder them by dragging, and delete any rule y
 <div class="feature-box">
 <h4>{% icon "eye", "inline-icon" %} Pronunciation Rules with VoiceOver</h4>
 <p>The rule list announces each rule's name, pattern, output, scope, and enabled state. Built-in rules are identified as "Built-in rule, not editable." The add/edit form follows a logical swipe order through all fields. Segmented controls for scope, match type, and output type announce their current selection. Validation errors are announced when you try to save an incomplete rule.</p>
+</div>
+
+<div class="feature-box">
+<h4>{% icon "eye", "inline-icon" %} Voice Presets with VoiceOver</h4>
+<p>The Presets screen announces the current state ("Using global settings," "Using custom settings," or "Based on: preset name") as static text. Each saved preset row has a "Read Parameters" rotor action that announces all parameter values with their display names — for example, "Articulation Speed 0.79, Duration Buffer 14%, Quality Steps 32, Variation 0.85." Double-tap a preset row to load it. Swipe-to-delete uses the standard VoiceOver delete action. The "Save current settings as a preset" button includes a hint describing what will happen.</p>
 </div>
 
 </div>
