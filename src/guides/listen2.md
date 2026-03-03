@@ -329,7 +329,7 @@ Listen2 now has two voice engines: **Piper** and **Supertonic**.
 
 **Piper** is the original engine — fast, lightweight, and available in dozens of languages. These are the voices you already know. They run well on any device and cover the widest range of languages.
 
-**Supertonic** is the new high-fidelity engine. It uses a flow-matching neural architecture that produces more natural, expressive speech. Supertonic voices sound closer to human narration — smoother prosody, more natural rhythm, clearer articulation. The models were custom-converted to run natively on Apple's Neural Engine through CoreML, so you get high-fidelity audio without unnecessary battery drain. The voices are currently English-only, with more languages coming.
+**Supertonic** is the new high-fidelity engine. It uses a flow-matching neural architecture that produces more natural, expressive speech. Supertonic voices sound closer to human narration — smoother prosody, more natural rhythm, clearer articulation. The models were custom-converted to run natively on Apple's Neural Engine through CoreML, so you get high-fidelity audio without unnecessary battery drain. Supertonic supports English, Spanish, and French, with more languages coming.
 
 Here is the nice part about Supertonic: all its voices share a single engine. Download any Supertonic voice and you get access to all of them — male and female, distinctive styles. The engine download happens once, and after that switching between Supertonic voices is instant.
 
@@ -341,10 +341,10 @@ Open the Voice Library from the main settings screen or from your library. You w
 
 <div class="feature-box">
 <h4>{% icon "globe", "inline-icon" %} Available Languages</h4>
-<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Vietnamese, and others. Piper voices cover all of these. Supertonic voices are currently English-only, with more languages coming.</p>
+<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Vietnamese, and others. Piper voices cover all of these. Supertonic voices support English, Spanish, and French, with more languages coming.</p>
 </div>
 
-Every voice has a play button right on the row so you can preview it before committing to a download. Filter the list by voice engine, language, quality level (high or medium), or download status — all voices, downloaded only, or not yet downloaded. Sort by name, language, or downloaded-first. Between the filters and sorting, you can narrow things down fast even as the library grows.
+Every voice has a play button right on the row so you can preview it before committing to a download. For Supertonic voices, samples play in whatever language is currently selected — so you can hear how each voice sounds in Spanish or French, not just English. Filter the list by voice engine, language, quality level (high or medium), or download status — all voices, downloaded only, or not yet downloaded. Sort by name, language, or downloaded-first. Between the filters and sorting, you can narrow things down fast even as the library grows.
 
 When multiple voice engines are available, the Sort & Filter sheet includes a Voice Engine filter. Use it to show only Piper voices, only Supertonic voices, or all voices at once.
 
@@ -367,6 +367,36 @@ Note that single-speaker voices usually sound better overall than a multi-speake
 <div class="tip-box">
 <h4>{% icon "lightbulb", "inline-icon" %} Experiment with Voices</h4>
 <p>Try several different voices. Some feel better for fiction, others for technical content. And if a voice has multiple speakers, audition a few — the same voice model can sound quite different between speakers.</p>
+</div>
+
+#### Supertonic Languages *(new in v1.5.0)*
+
+Supertonic voices are multilingual. The same voice — Luna, Atlas, any of them — can read in English, Spanish, or French. You choose the language once and it applies to all Supertonic voices until you change it.
+
+When a Supertonic voice is active, a language card appears at the top of the Voice Library and in the quick settings voice picker. Tap it to open the language picker. Select a language and the voice switches immediately — the synthesis queue flushes and re-synthesizes from your current position in the new language.
+
+Voice sample previews are language-aware too. When you tap the play button on a Supertonic voice, you hear a sample in whatever language is currently selected. Switch to Spanish, tap play on Luna, and you hear Luna speaking Spanish. This makes it easy to compare how different voices handle a given language before committing.
+
+<div class="tip-box">
+<h4>{% icon "lightbulb", "inline-icon" %} Language Applies Globally</h4>
+<p>The Supertonic language setting is global — it applies to every Supertonic voice, not just the active one. If you switch from Luna to Atlas, both will use the same language. You do not need to set it per voice.</p>
+</div>
+
+#### Custom Voices *(new in v1.5.0)*
+
+If you have cloned your voice using Supertone Voice Builder, you can import it into Listen2 and use it as a fully functional Supertonic voice.
+
+Open the Voice Library and scroll to the bottom. When the Supertonic engine is installed, you will see an "Import Custom Voice" card. Tap it, and a file picker opens. Select the JSON file exported from Voice Builder. The app validates the file structure, then asks you to name the voice. Type a name — or accept the filename it suggests — and tap Import.
+
+Your custom voice appears in a "Custom Voices" section in the Voice Library, with a "Custom" badge to distinguish it from the built-in voices. It works exactly like any built-in Supertonic voice: same language support, same tuning controls, same quality. Tap it to set it as active, and you will hear your cloned voice reading your documents.
+
+Custom voices also get sample previews. The first time you tap the play button, the app synthesizes a short sample clip on device in the current language. After that first synthesis, playback is instant from cache. Change the language and tap play again — it synthesizes a new sample in the new language.
+
+To remove a custom voice, swipe left on it in the Voice Library and tap Delete. If the deleted voice was active, the app falls back to the first built-in Supertonic voice, or to the bundled Piper voice if the Supertonic engine is not installed.
+
+<div class="warning-box">
+<h4>{% icon "alert-triangle", "inline-icon" %} Keep Your Voice File</h4>
+<p>Listen2 copies the voice file into its own storage during import. But if you delete the custom voice from the app, the copy is removed. Keep a backup of your original Voice Builder JSON file in case you want to re-import later.</p>
 </div>
 
 #### Language Packs
@@ -451,7 +481,7 @@ You can toggle rules on and off, reorder them by dragging, and delete any rule y
 
 <div class="feature-box">
 <h4>{% icon "eye", "inline-icon" %} Voice Management with VoiceOver</h4>
-<p>Voice rows in the Voice Library have rotor actions for "Play Sample" and "Stop Sample" so you can preview without navigating away. Download progress and status are announced as they change. The multi-speaker browser is a searchable list — type to filter, double-tap to select a speaker.</p>
+<p>Voice rows in the Voice Library have rotor actions for "Play Sample" and "Stop Sample" so you can preview without navigating away. Download progress and status are announced as they change. The multi-speaker browser is a searchable list — type to filter, double-tap to select a speaker. The Supertonic language card announces the current language and hints "Double tap to change Supertonic language." Custom voice rows include a play button that shows a loading indicator during on-device synthesis — VoiceOver announces when the sample is ready.</p>
 </div>
 
 <div class="feature-box">
