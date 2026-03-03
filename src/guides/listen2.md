@@ -329,7 +329,7 @@ Listen2 now has two voice engines: **Piper** and **Supertonic**.
 
 **Piper** is the original engine — fast, lightweight, and available in dozens of languages. These are the voices you already know. They run well on any device and cover the widest range of languages.
 
-**Supertonic** is the new high-fidelity engine. It uses a flow-matching neural architecture that produces more natural, expressive speech. Supertonic voices sound closer to human narration — smoother prosody, more natural rhythm, clearer articulation. The models were custom-converted to run natively on Apple's Neural Engine through CoreML, so you get high-fidelity audio without unnecessary battery drain. Supertonic supports English, Spanish, and French, with more languages coming.
+**Supertonic** is the new high-fidelity engine. It uses a flow-matching neural architecture that produces more natural, expressive speech. Supertonic voices sound closer to human narration — smoother prosody, more natural rhythm, clearer articulation. The models were custom-converted to run natively on Apple's Neural Engine through CoreML, so you get high-fidelity audio without unnecessary battery drain. Supertonic supports English, Spanish, French, and Portuguese, with more languages coming.
 
 Here is the nice part about Supertonic: all its voices share a single engine. Download any Supertonic voice and you get access to all of them — male and female, distinctive styles. The engine download happens once, and after that switching between Supertonic voices is instant.
 
@@ -341,7 +341,7 @@ Open the Voice Library from the main settings screen or from your library. You w
 
 <div class="feature-box">
 <h4>{% icon "globe", "inline-icon" %} Available Languages</h4>
-<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Vietnamese, and others. Piper voices cover all of these. Supertonic voices support English, Spanish, and French, with more languages coming.</p>
+<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Vietnamese, and others. Piper voices cover all of these. Supertonic voices support English, Spanish, French, and Portuguese, with more languages coming.</p>
 </div>
 
 Every voice has a play button right on the row so you can preview it before committing to a download. For Supertonic voices, samples play in whatever language is currently selected — so you can hear how each voice sounds in Spanish or French, not just English. Filter the list by voice engine, language, quality level (high or medium), or download status — all voices, downloaded only, or not yet downloaded. Sort by name, language, or downloaded-first. Between the filters and sorting, you can narrow things down fast even as the library grows.
@@ -354,7 +354,7 @@ Tap the download button next to any voice and you will see it move through three
 
 To delete a voice, swipe left on it in the Voice Library. The bundled voice cannot be removed — it is your safety net. At the bottom of the library screen there is a storage info section that tells you how many voices you have installed and the total disk space they are using. Handy when you are cleaning house.
 
-And switching voices while you are reading is fast. Tap the voice button in the reader's bottom bar to open the voice picker. It shows all your downloaded voices, filterable by language. Tap one to switch. You can audition voices right from the picker too, so you do not have to leave the reader to find the right fit.
+It is straightforward to switching voices while listening to a book or document. Tap the voice button in the reader's bottom bar to open the voice picker. It shows all your downloaded voices, filterable by language. Tap one to switch. You can audition voices right from the picker too, so you do not have to leave the reader to find the right fit.
 
 #### Multi-Speaker Voices
 
@@ -371,7 +371,7 @@ Note that single-speaker voices usually sound better overall than a multi-speake
 
 #### Supertonic Languages *(new in v1.5.0)*
 
-Supertonic voices are multilingual. The same voice — Luna, Atlas, any of them — can read in English, Spanish, or French. You choose the language once and it applies to all Supertonic voices until you change it.
+Supertonic voices are multilingual. The same voice — Luna, Atlas, any of them — can read in English, Spanish, French, or Portuguese. You choose the language once and it applies to all Supertonic voices until you change it.
 
 When a Supertonic voice is active, a language card appears at the top of the Voice Library and in the quick settings voice picker. Tap it to open the language picker. Select a language and the voice switches immediately — the synthesis queue flushes and re-synthesizes from your current position in the new language.
 
