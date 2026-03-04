@@ -19,6 +19,9 @@ toc:
   - id: performance
     title: Performance Mode
     short: Performance
+  - id: foot-pedal
+    title: Foot Pedal Controls
+    short: Foot Pedal
   - id: customization
     title: Customization
     short: Customization
@@ -277,9 +280,92 @@ Tap the **X** or **Done** button in the top corner to exit back to the song edit
 
 </div>
 
+<div class="content-section" id="foot-pedal">
+
+## 5. Foot Pedal Controls
+
+### Hands-Free Performance
+
+GigScroll supports Bluetooth foot pedals and keyboards for hands-free teleprompter control. Map physical buttons to actions like play/pause, speed adjustment, and song navigation so you never have to touch the screen mid-performance.
+
+### Setting Up Your Foot Pedal
+
+1. Pair your Bluetooth foot pedal or keyboard with your iPad via **Settings → Bluetooth**
+2. In GigScroll, go to **Settings → Foot Pedal**
+3. Turn on the **Enable Foot Pedal Controls** toggle
+4. Your pedal is ready to use with the default key mappings
+
+<div class="feature-box">
+<h4>{% icon "footprints", "inline-icon" %} Available Actions</h4>
+<p>You can map any key to these 5 actions:</p>
+<ul>
+<li><strong>Play / Pause</strong> - Start or stop auto-scrolling</li>
+<li><strong>Speed Up</strong> - Increase scroll speed by 0.1x</li>
+<li><strong>Speed Down</strong> - Decrease scroll speed by 0.1x</li>
+<li><strong>Next Song</strong> - Advance to the next song in a setlist</li>
+<li><strong>Previous Song</strong> - Go back to the previous song in a setlist</li>
+</ul>
+</div>
+
+### Default Key Mappings
+
+GigScroll comes pre-configured with **AirTurn Mode 2** defaults, which work out of the box with most AirTurn foot pedals:
+
+| Action | Default Key |
+|--------|------------|
+| Play / Pause | Space |
+| Speed Up | ↓ Down Arrow |
+| Speed Down | ↑ Up Arrow |
+| Next Song | → Right Arrow |
+| Previous Song | ← Left Arrow |
+
+### Remapping Keys
+
+To assign a different key to any action:
+
+1. Go to **Settings → Foot Pedal**
+2. Make sure the toggle is **ON**
+3. Tap the action you want to remap (e.g., "Speed Up")
+4. The row will highlight and show **"Press a pedal button..."**
+5. Press the button on your foot pedal or keyboard
+6. The new key is assigned immediately
+
+If the key you pressed was already assigned to a different action, GigScroll will automatically remove it from the old action and show a brief notification letting you know.
+
+### Reset to Defaults
+
+If your mappings get mixed up, tap **Reset to Defaults** at the bottom of the Foot Pedal settings screen to restore the original AirTurn Mode 2 key assignments.
+
+### Using Your Foot Pedal in Performance
+
+Once configured, simply enter Performance mode and use your foot pedal. No extra steps needed.
+
+A few things to keep in mind:
+
+- **Speed changes are silent** - Adjusting speed via pedal won't reveal hidden on-screen controls, keeping your display clean
+- **Key repeat is ignored** - Holding down a button fires the action only once, so you won't accidentally skip through songs or rapidly toggle play/pause
+- **The speed jog wheel takes priority** - If the speed jog wheel is open, pedal presses are paused until you close it
+
+<div class="tip-box">
+<h4>{% icon "lightbulb", "inline-icon" %} Foot Pedal Tips</h4>
+<ul>
+<li><strong>Test before the gig</strong> - Verify all your mappings work as expected during soundcheck</li>
+<li><strong>Any Bluetooth keyboard works</strong> - You don't need a dedicated foot pedal. A small Bluetooth keyboard or numpad works too</li>
+<li><strong>Disable when not in use</strong> - Turn the toggle off if you're using a regular Bluetooth keyboard for typing and don't want key presses intercepted</li>
+<li><strong>Mappings persist</strong> - Your key assignments and toggle state are saved automatically and survive app restarts</li>
+</ul>
+</div>
+
+<div class="warning-box">
+<h4>{% icon "alert-triangle", "inline-icon" %} Important</h4>
+<p>When foot pedal controls are enabled, mapped keys are intercepted in Performance mode. If you use a Bluetooth keyboard for other purposes (like editing lyrics), make sure to <strong>disable the toggle</strong> when you're not performing.</p>
+</div>
+
+</div>
+
 <div class="content-section" id="customization">
 
-## 5. Customization
+## 6. Customization
 
 ### Choosing a Theme
 
@@ -358,7 +444,7 @@ Ballads typically need slower speeds, while uptempo songs need faster scrolling.
 
 <div class="content-section" id="data-management">
 
-## 6. Data Management
+## 7. Data Management
 
 ### Export All Songs & Setlists
 
@@ -425,7 +511,7 @@ If you purchased GigScroll Pro and need to restore it on a new device:
 
 <div class="content-section" id="pro-features">
 
-## 7. Pro Features
+## 8. Pro Features
 
 ### Free vs Pro
 
@@ -458,7 +544,7 @@ Once you upgrade, you'll see **"Pro Unlocked ✓"** in Settings, and the upgrade
 
 <div class="content-section" id="tips">
 
-## 8. Tips & Tricks
+## 9. Tips & Tricks
 
 ### For Live Performance
 
@@ -509,7 +595,7 @@ Once you upgrade, you'll see **"Pro Unlocked ✓"** in Settings, and the upgrade
 
 <div class="content-section" id="troubleshooting">
 
-## 9. Troubleshooting
+## 10. Troubleshooting
 
 ### Lyrics Not Found
 
