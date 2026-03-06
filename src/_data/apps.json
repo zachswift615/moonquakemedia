@@ -20,8 +20,8 @@
     "name": "Speak2",
     "tagline": "Local voice dictation for macOS with AI-powered transcription",
     "icon": "/images/Speak2AppIcon.png",
-    "status": "coming",
-    "statusText": "Coming Soon"
+    "status": "available",
+    "statusText": "Available Now"
   },
   {
     "slug": "quietus",

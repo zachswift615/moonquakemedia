@@ -3,8 +3,9 @@ title: Speak2
 slug: speak2
 tagline: Local voice dictation for macOS with AI-powered transcription
 description: "Speak2 is a macOS menu bar app for voice dictation. Hold a key, speak, and your words appear instantly in any app. 100% on-device, private, no cloud."
-status: coming
+status: available
 appIcon: /images/Speak2AppIcon.png
+downloadUrl: https://github.com/zachswift615/speak2/releases/latest
 features:
   - icon: "mic"
     title: Hold-to-Speak

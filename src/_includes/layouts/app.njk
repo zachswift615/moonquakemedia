@@ -50,9 +50,11 @@ footerStyle: bordered
             <a href="{{ appStoreUrl }}" target="_blank" rel="noopener noreferrer" class="inline-block my-4">
                 <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="h-12 hover:scale-105 transition-transform">
             </a>
+            {% elif status == "available" and downloadUrl %}
+            <a href="{{ downloadUrl }}" target="_blank" rel="noopener noreferrer" class="cta-button my-4">Download</a>
             {% elif status == "coming" %}
             <div class="bg-gray-100 rounded-lg p-5 my-6">
-                <p class="text-gray-500">Coming soon to the App Store</p>
+                <p class="text-gray-500">Coming soon</p>
             </div>
             {% endif %}
 
