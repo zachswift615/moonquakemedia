@@ -19,6 +19,8 @@ footerStyle: bordered
                 {{ title }}
                 {% if status == "available" %}
                 <span class="badge badge-available ml-2 align-middle text-base">Now Available!</span>
+                {% elif status == "beta" %}
+                <span class="badge badge-beta ml-2 align-middle text-base">Public Beta</span>
                 {% else %}
                 <span class="badge badge-coming ml-2 align-middle text-base">Coming Soon</span>
                 {% endif %}
@@ -52,6 +54,8 @@ footerStyle: bordered
             </a>
             {% elif status == "available" and downloadUrl %}
             <a href="{{ downloadUrl }}" target="_blank" rel="noopener noreferrer" class="cta-button my-4">Download</a>
+            {% elif status == "beta" and testFlightUrl %}
+            <a href="{{ testFlightUrl }}" target="_blank" rel="noopener noreferrer" class="cta-button my-4">Join the Beta on TestFlight</a>
             {% elif status == "coming" %}
             <div class="bg-gray-100 rounded-lg p-5 my-6">
                 <p class="text-gray-500">Coming soon</p>
