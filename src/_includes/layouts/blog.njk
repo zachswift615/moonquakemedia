@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+ogType: article
+rss: true
+---
+<div class="min-h-screen bg-white">
+  <!-- Navigation -->
+  <nav class="border-b border-gray-200 bg-white">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/" class="text-xl font-bold text-gray-900 no-underline hover:text-primary-500 hover:no-underline">{{ site.name }}</a>
+      <div class="flex gap-6 items-center">
+        <a href="/apps/listen2/" class="text-sm text-gray-600 no-underline hover:text-primary-500 hover:no-underline">Listen2</a>
+        <a href="/blog/" class="text-sm text-gray-600 no-underline hover:text-primary-500 hover:no-underline">Blog</a>
+        <a href="mailto:{{ site.email }}" class="text-sm text-gray-600 no-underline hover:text-primary-500 hover:no-underline">Support</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Article -->
+  <article class="max-w-3xl mx-auto px-6 py-12">
+    <header class="mb-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">{{ title }}</h1>
+      <div class="flex items-center gap-4 text-sm text-gray-500">
+        <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+        <span>&middot;</span>
+        <span>{{ content | readingTime }}</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg prose-gray max-w-none prose-headings:text-gray-900 prose-a:text-primary-500 hover:prose-a:text-primary-600 prose-img:rounded-xl">
+      {{ content | safe }}
+    </div>
+
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <a href="/blog/" class="text-primary-500 font-medium no-underline hover:underline">&larr; All posts</a>
+    </footer>
+  </article>
+</div>

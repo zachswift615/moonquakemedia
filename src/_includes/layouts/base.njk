@@ -4,7 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}{% if title %} | {% endif %}{{ site.name }}</title>
+    {% if description %}
+    <meta name="description" content="{{ description }}">
+    {% endif %}
+
+    <!-- Apple Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=LISTEN2_APP_STORE_ID">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ ogTitle or title }}{% if title %} | {% endif %}{{ site.name }}">
+    <meta property="og:description" content="{{ ogDescription or description or site.tagline }}">
+    <meta property="og:type" content="{{ ogType or 'website' }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    {% if ogImage %}
+    <meta property="og:image" content="{{ site.url }}{{ ogImage }}">
+    {% else %}
+    <meta property="og:image" content="{{ site.url }}/images/Listen2AppIcon.png">
+    {% endif %}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ ogTitle or title }}{% if title %} | {% endif %}{{ site.name }}">
+    <meta name="twitter:description" content="{{ ogDescription or description or site.tagline }}">
+    {% if ogImage %}
+    <meta name="twitter:image" content="{{ site.url }}{{ ogImage }}">
+    {% else %}
+    <meta name="twitter:image" content="{{ site.url }}/images/Listen2AppIcon.png">
+    {% endif %}
+
+    {% block head %}{% endblock %}
+
     <link rel="stylesheet" href="/css/main.css">
+    {% if rss %}<link rel="alternate" type="application/rss+xml" title="{{ site.name }} Blog" href="/blog/feed.xml">{% endif %}
 </head>
 <body class="{% block bodyClass %}{% endblock %}">
     {% block content %}{{ content | safe }}{% endblock %}

@@ -1,0 +1,41 @@
+---
+title: Blog
+description: "Tips, guides, and insights about text-to-speech, document reading, and getting more from your iPhone."
+layout: layouts/base.njk
+permalink: /blog/
+rss: true
+---
+<div class="min-h-screen bg-white">
+  <!-- Navigation -->
+  <nav class="border-b border-gray-200 bg-white">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/" class="text-xl font-bold text-gray-900 no-underline hover:text-primary-500 hover:no-underline">{{ site.name }}</a>
+      <div class="flex gap-6 items-center">
+        <a href="/apps/listen2/" class="text-sm text-gray-600 no-underline hover:text-primary-500 hover:no-underline">Listen2</a>
+        <a href="/blog/" class="text-sm font-medium text-primary-500 no-underline hover:no-underline">Blog</a>
+        <a href="mailto:{{ site.email }}" class="text-sm text-gray-600 no-underline hover:text-primary-500 hover:no-underline">Support</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-3xl mx-auto px-6 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Blog</h1>
+    <p class="text-gray-500 mb-12">Tips and guides for getting more from your documents.</p>
+
+    <div class="space-y-10">
+      {% for post in collections.blog %}
+      <article class="group">
+        <a href="{{ post.url }}" class="block no-underline hover:no-underline">
+          <h2 class="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-primary-500 transition-colors mb-2">{{ post.data.title }}</h2>
+          <div class="flex items-center gap-4 text-sm text-gray-400 mb-3">
+            <time datetime="{{ post.data.date | isoDate }}">{{ post.data.date | readableDate }}</time>
+            <span>&middot;</span>
+            <span>{{ post.content | readingTime }}</span>
+          </div>
+          <p class="text-gray-600 leading-relaxed">{{ post.data.excerpt or (post.content | excerpt) }}</p>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</div>

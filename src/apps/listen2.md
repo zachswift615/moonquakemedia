@@ -1,7 +1,8 @@
 ---
 layout: layouts/listen2.njk
-title: Listen2
+title: "Listen2 - Turn Any Document Into an Audiobook"
 slug: listen2
+description: "Listen2 converts PDFs, EPUBs, and Word docs into audiobooks with 70+ natural AI voices. Fully offline, private, no subscription. Free 7-day trial."
 tagline: Turn Any Document Into an Audiobook
 appStoreUrl: https://apps.apple.com/us/app/listen-2-reader/id6755753624
 status: available
