@@ -75,11 +75,11 @@ There is no account to create. No email to enter. No tracking of any kind. You d
 Listen2 is not just a "paste text and press play" app. It includes:
 
 - **Word-level highlighting** — Every word lights up as it is spoken, improving comprehension and making it easy to follow along
-- **Collections** — Group documents into playlists with narrated intros and transition chimes, like a personal podcast
+- **Collections** — Group documents into playlists with narrated intros and transition chimes, like a [personal podcast](/blog/turn-saved-articles-into-personal-podcast/)
 - **DAISY book support** — The accessibility-focused audiobook format used by libraries and organizations serving readers with disabilities
 - **Multi-format import** — PDF (with smart text extraction), EPUB (with chapter detection), DOCX, plain text, Markdown, and clipboard
 - **Bookmarks and full-text search** across your entire library
 
 ## The Bottom Line
 
-If you need text-to-speech that works everywhere — on planes, in tunnels, in the middle of a national park — the answer is an app that does not depend on the internet at all. [Listen2](https://apps.apple.com/us/app/listen-2-reader/id6755753624) puts two neural TTS engines on your device, supports 10 languages, and costs less than a single month of most competitors. Try it free for 7 days and hear the difference.
+If you need text-to-speech that works everywhere — on planes, in tunnels, in the middle of a national park — the answer is an app that does not depend on the internet at all. [Listen2](/apps/listen2/) puts two neural TTS engines on your device, supports 10 languages, and costs less than a single month of most competitors. [Try it free for 7 days](https://apps.apple.com/us/app/listen-2-reader/id6755753624) and hear the difference. For specific use cases, see how to [listen to PDFs on your iPhone](/blog/how-to-listen-to-pdfs-on-your-iphone/) or learn about Listen2's [full VoiceOver accessibility support](/blog/listen2-voiceover-accessibility/).

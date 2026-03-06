@@ -42,7 +42,7 @@ You get three highlighting modes: word, sentence, or paragraph. Pick whichever f
 
 ## It Works Completely Offline
 
-Listen2 runs two neural text-to-speech engines — Piper and Supertonic — entirely on your device. You download a voice once, and from that point on, everything happens locally. No internet connection. No cloud processing. No data leaving your phone.
+Listen2 runs two neural text-to-speech engines — Piper and Supertonic — entirely on your device. You download a voice once, and from that point on, everything happens locally. No internet connection. No cloud processing. No data leaving your phone. If you want to learn more about how the voices work offline, read our [deep dive on offline text-to-speech](/blog/best-offline-text-to-speech-app-iphone-2026/).
 
 This matters for more than just convenience. If you are reading confidential documents — legal filings, medical records, financial reports — you do not want that text being sent to a server somewhere. With Listen2, your documents stay on your device. Period.
 
@@ -56,7 +56,7 @@ On iOS 26 and later, Listen2 can use AI Vision extraction to read scanned PDFs. 
 
 While PDF support is a standout feature, Listen2 also handles EPUB files (with full chapter detection), Word documents (DOCX), DAISY audiobook format, plain text, and Markdown. If you have text, Listen2 can read it.
 
-You can even paste content directly from your clipboard or share articles from Safari using the share extension.
+You can even paste content directly from your clipboard or share articles from Safari using the share extension. If you read a lot of web articles, check out our guide on [turning saved articles into a personal podcast](/blog/turn-saved-articles-into-personal-podcast/).
 
 ## Try It Yourself
 

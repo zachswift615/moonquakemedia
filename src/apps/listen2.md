@@ -189,3 +189,12 @@ A: No. Listen2 is a one-time purchase. Pay once, own forever.
 
 **Q: Is there a free trial?**
 A: Yes. You get a full-featured 7-day free trial so you can make sure Listen2 works for you before purchasing.
+
+---
+
+## From the Blog
+
+- [How to Listen to PDFs on Your iPhone](/blog/how-to-listen-to-pdfs-on-your-iphone/) — Import any PDF and hear it read aloud with natural AI voices
+- [Turn Your Saved Articles into a Personal Podcast](/blog/turn-saved-articles-into-personal-podcast/) — Use the share extension and collections to build a listening playlist
+- [The Best Offline Text-to-Speech App for iPhone in 2026](/blog/best-offline-text-to-speech-app-iphone-2026/) — A deep dive into Listen2's dual neural TTS engines
+- [Using Listen2 with VoiceOver](/blog/listen2-voiceover-accessibility/) — How every screen is built for screen reader accessibility

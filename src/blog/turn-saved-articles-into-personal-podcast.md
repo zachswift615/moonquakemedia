@@ -47,10 +47,10 @@ This is the closest thing to having a personal podcast producer who reads your b
 
 Everything in Listen2 runs on your device. Once you have captured an article through the share extension, the text is stored locally. The AI voices run locally. Playback works in airplane mode, in a tunnel, in the middle of nowhere.
 
-There is no account to create. No data syncing to a cloud. No tracking of what you read or listen to. Your reading habits are your business.
+There is no account to create. No data syncing to a cloud. No tracking of what you read or listen to. Your reading habits are your business. For a deeper look at how offline TTS works on iPhone, see our post on [the best offline text-to-speech app for iPhone](/blog/best-offline-text-to-speech-app-iphone-2026/).
 
 ## Reclaim Your Reading List
 
 If your saved articles outnumber your read articles by a ratio of 10 to 1, you are not alone. The solution is not to save fewer articles — it is to change the format. Turn your reading list into a listening list and put those commute hours to work.
 
-[Listen2 is available on the App Store](https://apps.apple.com/us/app/listen-2-reader/id6755753624) as a one-time purchase with a 7-day free trial. No subscription, no account, no strings. Import your first article in under 30 seconds and see how it sounds.
+[Listen2 is available on the App Store](https://apps.apple.com/us/app/listen-2-reader/id6755753624) as a one-time purchase with a 7-day free trial. No subscription, no account, no strings. Import your first article in under 30 seconds and see how it sounds. You can also use the same app to [listen to PDFs](/blog/how-to-listen-to-pdfs-on-your-iphone/) and other document formats.

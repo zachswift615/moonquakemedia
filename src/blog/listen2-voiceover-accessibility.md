@@ -59,4 +59,4 @@ Reach out at [support@moonquakemedia.com](mailto:support@moonquakemedia.com). Fe
 
 ## Try It Yourself
 
-Listen2 is available on the [App Store](https://apps.apple.com/us/app/listen-2-reader/id6755753624) with a 7-day free trial. One-time purchase after that — no subscription, no account, no tracking. If you want a deeper look at how every screen works with VoiceOver, the [full user guide](/guides/listen2/) has VoiceOver-specific callouts throughout each section.
+Listen2 is available on the [App Store](https://apps.apple.com/us/app/listen-2-reader/id6755753624) with a 7-day free trial. One-time purchase after that — no subscription, no account, no tracking. If you want a deeper look at how every screen works with VoiceOver, the [full user guide](/guides/listen2/) has VoiceOver-specific callouts throughout each section. You can also read about [how Listen2 handles PDFs](/blog/how-to-listen-to-pdfs-on-your-iphone/) or explore the [offline TTS technology](/blog/best-offline-text-to-speech-app-iphone-2026/) that powers it.
