@@ -109,7 +109,9 @@ Tap <span class="button-label">+</span>, choose "Import from Link," and paste in
 
 #### Using the Share Extension
 
-This is the most convenient option for web browsing. When you are in Safari or any other app, you see something you want to listen to later, and you tap the Share button. Choose Listen2 from the share sheet. The article gets imported and will be waiting in your library. No copy-pasting, no switching apps, no typing in URLs.
+This is the most convenient option for web browsing. When you are in Safari or any other app, you see something you want to listen to later, and you tap the Share button. Choose Listen2 from the share sheet. Listen2 extracts the article and shows you a preview — the title, site name, and full text — so you can confirm the content looks right before saving. Tap Save, and the article gets added to your library. If a page does not extract well (some pages rely heavily on JavaScript), you will see an error with the option to try again or cancel.
+
+When you switch to Listen2 after saving, the app picks up the new article immediately and shows a brief loading indicator while it finishes importing. No need to close and reopen the app.
 
 And if you import a batch of articles throughout the day this way, you can group them into a collection in two taps — see Web Article Collections in the Collections section.
 
