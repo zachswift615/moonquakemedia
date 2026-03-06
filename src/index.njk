@@ -5,7 +5,15 @@ footerStyle: light
 showContact: true
 ---
 
-<div class="gradient-hero min-h-screen flex items-center justify-center p-5">
+<div class="gradient-hero min-h-screen flex flex-col p-5">
+    <nav class="flex justify-between items-center max-w-4xl w-full mx-auto">
+        <span class="text-white font-bold text-lg">{{ site.name }}</span>
+        <div class="flex gap-6 items-center">
+            <a href="/blog/" class="text-white/80 hover:text-white text-sm font-medium no-underline hover:no-underline transition-colors">Blog</a>
+            <a href="mailto:{{ site.email }}" class="text-white/80 hover:text-white text-sm font-medium no-underline hover:no-underline transition-colors">Support</a>
+        </div>
+    </nav>
+    <div class="flex-1 flex items-center justify-center">
     <div class="max-w-4xl text-center">
         <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">{{ site.name }}</h1>
         <p class="text-lg md:text-xl text-white/90 mb-12">{{ site.tagline }}</p>
@@ -22,5 +30,6 @@ showContact: true
             </a>
             {% endfor %}
         </div>
+    </div>
     </div>
 </div>
