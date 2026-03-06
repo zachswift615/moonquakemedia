@@ -16,6 +16,14 @@
     "statusText": "Available Now"
   },
   {
+    "slug": "speak2",
+    "name": "Speak2",
+    "tagline": "Local voice dictation for macOS with AI-powered transcription",
+    "icon": "/images/Speak2AppIcon.png",
+    "status": "coming",
+    "statusText": "Coming Soon"
+  },
+  {
     "slug": "quietus",
     "name": "Quietus",
     "tagline": "Professional ambient sound generator with binaural beats and journey automation",

@@ -6,7 +6,7 @@ showContact: true
 ---
 
 <div class="gradient-hero min-h-screen flex flex-col p-5">
-    <nav class="flex justify-between items-center max-w-4xl w-full mx-auto">
+    <nav class="flex justify-between items-center max-w-5xl w-full mx-auto">
         <span class="text-white font-bold text-lg">{{ site.name }}</span>
         <div class="flex gap-6 items-center">
             <a href="/blog/" class="text-white/80 hover:text-white text-sm font-medium no-underline hover:no-underline transition-colors">Blog</a>
@@ -14,11 +14,11 @@ showContact: true
         </div>
     </nav>
     <div class="flex-1 flex items-center justify-center">
-    <div class="max-w-4xl text-center">
+    <div class="max-w-5xl text-center">
         <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">{{ site.name }}</h1>
         <p class="text-lg md:text-xl text-white/90 mb-12">{{ site.tagline }}</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-5">
             {% for app in apps %}
             <a href="/apps/{{ app.slug }}/" class="app-card text-center">
                 <div class="mb-5">
