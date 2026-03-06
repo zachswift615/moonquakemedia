@@ -165,6 +165,9 @@ Listen2 was engineered from the ground up with accessibility in mind. Full Voice
 
 ### General
 
+**Q: Is Listen2 the same as "Listen 2 Reader" on the App Store?**
+A: Yes. Listen2 is listed as "Listen 2 Reader" on the App Store, but it's the same app. Search for either name to find it.
+
 **Q: What file formats does Listen2 support?**
 A: PDF, EPUB, DOCX, DAISY, plain text, Markdown, and anything you can copy to your clipboard. Import from the iOS Files app, which connects to iCloud Drive, Dropbox, Google Drive, OneDrive, and more.
 
