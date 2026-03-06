@@ -4,8 +4,10 @@ footerStyle: bordered
 ---
 
 <div class="gradient-hero min-h-screen flex items-center justify-center p-5">
-    <div class="max-w-3xl w-full bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center">
-        <a href="/" class="inline-block mb-5 text-primary-500 font-medium hover:underline">&larr; Back to {{ site.name }}</a>
+    <main id="main-content" class="max-w-3xl w-full bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center">
+        <nav aria-label="Breadcrumb">
+            <a href="/" class="inline-block mb-5 text-primary-500 font-medium hover:underline">&larr; Back to {{ site.name }}</a>
+        </nav>
 
         <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-5">{{ title }}</h1>
         <p class="text-lg md:text-xl text-gray-600 mb-10">{{ tagline }}</p>
@@ -89,15 +91,17 @@ footerStyle: bordered
             <a href="/guides/{{ slug }}/" class="cta-button">View Complete User Guide</a>
         </div>
 
-        <div class="mt-6">
+        <footer class="mt-6">
             <p class="mb-3">
-                <a href="/guides/{{ slug }}/" class="mx-2 text-primary-500 hover:underline">User Guide</a> |
-                <a href="/legal/{{ slug }}-privacy/" class="mx-2 text-primary-500 hover:underline">Privacy Policy</a> |
+                <a href="/guides/{{ slug }}/" class="mx-2 text-primary-500 hover:underline">User Guide</a>
+                <span aria-hidden="true">|</span>
+                <a href="/legal/{{ slug }}-privacy/" class="mx-2 text-primary-500 hover:underline">Privacy Policy</a>
+                <span aria-hidden="true">|</span>
                 <a href="/legal/{{ slug }}-terms/" class="mx-2 text-primary-500 hover:underline">Terms of Use</a>
             </p>
             <p class="text-gray-600">Questions or feedback? <a href="mailto:{{ site.email }}" class="text-primary-500 font-semibold">{{ site.email }}</a></p>
-        </div>
-    </div>
+        </footer>
+    </main>
 </div>
 
 {% if screenshots and screenshots.length %}

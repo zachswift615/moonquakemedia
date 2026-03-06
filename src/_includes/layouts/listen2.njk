@@ -30,7 +30,7 @@ layout: layouts/base.njk
   </div>
 
   <!-- Navigation -->
-  <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
+  <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto" aria-label="Main navigation">
     <a href="/" class="text-2xl font-bold tracking-tighter text-white hover:text-indigo-400 transition-colors">Listen2</a>
     <div class="flex gap-6 items-center">
       <a href="/guides/{{ slug }}/" class="hidden md:inline-block text-sm font-medium hover:text-white text-slate-400 transition-colors">Guide</a>
@@ -59,10 +59,10 @@ layout: layouts/base.njk
     </p>
 
     <!-- Visual Hero Element -->
-    <div class="relative w-full max-w-lg mx-auto aspect-square md:aspect-video md:h-96 md:max-w-4xl flex items-center justify-center">
+    <div class="relative w-full max-w-lg mx-auto aspect-square md:aspect-video md:h-96 md:max-w-4xl flex items-center justify-center" aria-hidden="true">
         <!-- Main Device Mockup Placeholder or Icon -->
         <div class="relative z-10 w-32 h-32 md:w-48 md:h-48 bg-black rounded-[2.5rem] shadow-2xl border-4 border-slate-800 flex items-center justify-center p-6 bg-gradient-to-b from-slate-900 to-black">
-            <img src="{{ appIcon }}" alt="Listen2 Icon" class="w-full h-full object-cover rounded-[1.5rem]">
+            <img src="{{ appIcon }}" alt="" class="w-full h-full object-cover rounded-[1.5rem]">
         </div>
 
         <!-- Floating "Bento" Cards (Decorations) -->
@@ -89,7 +89,8 @@ layout: layouts/base.njk
   </header>
 
   <!-- Feature Grid (Bento Style) -->
-  <section class="px-6 py-20 max-w-7xl mx-auto">
+  <main id="main-content">
+  <section class="px-6 py-20 max-w-7xl mx-auto" aria-label="Features">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
       
         <!-- Feature 1: Universal Import -->
@@ -145,14 +146,15 @@ layout: layouts/base.njk
   </section>
 
   <!-- Detailed Content (SEO / FAQs / Tables) -->
-  <section class="px-6 py-20 bg-black/20">
+  <section class="px-6 py-20 bg-black/20" aria-label="Details and FAQ">
       <div class="max-w-3xl mx-auto prose prose-invert prose-lg prose-headings:font-bold prose-headings:text-white prose-a:text-indigo-400 hover:prose-a:text-indigo-300">
           {{ content | safe }}
       </div>
   </section>
+  </main>
 
   <!-- Final CTA -->
-  <footer class="py-24 text-center border-t border-white/5">
+  <footer class="py-24 text-center border-t border-white/5" aria-label="Page footer">
       <h2 class="text-4xl md:text-5xl font-bold mb-8 text-white">Start listening today.</h2>
       <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
             <a href="{{ appStoreUrl }}" class="bg-white text-black px-8 py-4 rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]">
@@ -164,11 +166,11 @@ layout: layouts/base.njk
             </a>
             {% endif %}
       </div>
-      <div class="mt-20 text-slate-600 text-sm">
+      <div class="mt-20 text-slate-400 text-sm">
           <p>&copy; {{ "" | year }} Listen2. All rights reserved.</p>
           <div class="flex gap-4 justify-center mt-4">
-              <a href="/legal/{{ slug }}-privacy/" class="hover:text-slate-400">Privacy</a>
-              <a href="/guides/{{ slug }}/" class="hover:text-slate-400">Guide</a>
+              <a href="/legal/{{ slug }}-privacy/" class="hover:text-white text-slate-400">Privacy</a>
+              <a href="/guides/{{ slug }}/" class="hover:text-white text-slate-400">Guide</a>
           </div>
       </div>
   </footer>
@@ -187,6 +189,13 @@ layout: layouts/base.njk
 }
 .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
 .animate-float-delayed { animation: float-delayed 7s ease-in-out infinite 1s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-float-delayed {
+    animation: none;
+  }
+}
 
 /* Markdown Table Styling */
 .prose table {

@@ -15,9 +15,9 @@ footerStyle: bordered
     <p class="text-lg opacity-90">{{ subtitle | default("Your Complete Guide") }}</p>
 </header>
 
-<nav class="flex items-center justify-between py-4 px-5 bg-white shadow-sm">
+<nav class="flex items-center justify-between py-4 px-5 bg-white shadow-sm" aria-label="Guide navigation">
     <a href="/apps/{{ slug }}/" class="text-primary-500 font-semibold hover:underline whitespace-nowrap">&larr; Back to {{ title }}</a>
-    <div class="hidden md:flex items-center gap-4 overflow-x-auto mx-4">
+    <div class="hidden md:flex items-center gap-4 overflow-x-auto mx-4" role="navigation" aria-label="Guide sections">
         {% for section in toc %}
         <a href="#{{ section.id }}" class="text-primary-500 font-semibold hover:underline whitespace-nowrap">{{ section.short }}</a>
         {% endfor %}
@@ -61,7 +61,7 @@ footerStyle: bordered
 </div>
 {% endif %}
 
-<main class="max-w-4xl mx-auto px-5 py-10">
+<main id="main-content" class="max-w-4xl mx-auto px-5 py-10">
     {% if toc and toc.length %}
     <div class="content-section">
         <h2 class="!border-0 !pb-0">Table of Contents</h2>

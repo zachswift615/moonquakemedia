@@ -10,6 +10,35 @@
   a {
     @apply text-primary-500 no-underline hover:underline;
   }
+
+  /* Skip navigation link */
+  .skip-link {
+    @apply absolute bg-primary-500 text-white px-4 py-2 rounded-b-lg font-semibold text-sm z-[100];
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    transition: transform 0.2s;
+  }
+
+  .skip-link:focus {
+    transform: translateX(-50%) translateY(0);
+    @apply no-underline;
+  }
+
+  /* Global focus-visible indicator */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500;
+    outline-style: solid;
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer components {
@@ -40,8 +69,14 @@
     @apply bg-white rounded-2xl p-8 shadow-xl transition-all duration-300 cursor-pointer block no-underline text-inherit;
   }
 
-  .app-card:hover {
+  .app-card:hover,
+  .app-card:focus-visible {
     @apply -translate-y-2 shadow-2xl no-underline;
+  }
+
+  .app-card:focus-visible {
+    @apply outline-2 outline-offset-4 outline-white;
+    outline-style: solid;
   }
 
   /* App icons */
@@ -208,17 +243,27 @@
     @apply w-full h-auto rounded-2xl shadow-lg transition-transform duration-300 cursor-pointer;
   }
 
-  .screenshot:hover {
+  .screenshot:hover,
+  .screenshot:focus-visible {
     @apply scale-105;
+  }
+
+  .screenshot:focus-visible {
+    @apply outline-2 outline-offset-4 outline-white ring-2 ring-primary-500;
   }
 }
 
 /* Lightbox styles */
 .lightbox {
-  @apply hidden fixed inset-0 bg-black/95 z-50 items-center justify-center;
+  @apply fixed inset-0 bg-black/95 z-50 items-center justify-center;
+  display: none;
 }
 
 .lightbox.active {
+  @apply flex;
+}
+
+.lightbox:focus-within {
   @apply flex;
 }
 
@@ -250,6 +295,13 @@
 .lightbox-prev:hover,
 .lightbox-next:hover {
   @apply bg-white/20;
+}
+
+.lightbox-close:focus-visible,
+.lightbox-prev:focus-visible,
+.lightbox-next:focus-visible {
+  @apply outline-2 outline-offset-2 outline-white;
+  outline-style: solid;
 }
 
 .lightbox-counter {
@@ -371,6 +423,11 @@
   color: var(--text-primary);
 }
 
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .theme-toggle .icon-moon {
   display: none;
 }
@@ -470,6 +527,11 @@
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
   text-decoration: none;
   color: white;
+}
+
+.cta-button-marketing:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 4px;
 }
 
 .cta-button-small {
@@ -652,13 +714,17 @@
   border-collapse: collapse;
   margin: 2rem 0;
   font-size: 0.95rem;
-  overflow-x: auto;
-  display: block;
 }
 
-@media (min-width: 768px) {
+.marketing-content .table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Wrap tables in scrollable container on mobile while preserving table semantics */
+@media (max-width: 767px) {
   .marketing-content table {
-    display: table;
+    min-width: 500px;
   }
 }
 

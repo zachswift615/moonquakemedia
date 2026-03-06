@@ -1,11 +1,11 @@
-<footer class="text-center py-10 {% if footerStyle == 'bordered' %}bg-white mt-10 border-t border-gray-200{% else %}mt-12{% endif %}">
+<footer class="text-center py-10 {% if footerStyle == 'bordered' %}bg-white mt-10 border-t border-gray-200{% else %}mt-12{% endif %}" aria-label="Site footer">
     {% if footerLinks %}
-    <p class="mb-4">
+    <nav class="mb-4" aria-label="Footer links">
         {% for link in footerLinks %}
         <a href="{{ link.url }}" class="mx-2 text-primary-500 hover:underline">{{ link.text }}</a>
-        {% if not loop.last %}|{% endif %}
+        {% if not loop.last %}<span aria-hidden="true">|</span>{% endif %}
         {% endfor %}
-    </p>
+    </nav>
     {% endif %}
     <p class="{% if footerStyle == 'light' %}text-white/80{% else %}text-gray-500{% endif %} text-sm">
         &copy; {{ site.year }} {{ site.name }}. All rights reserved.

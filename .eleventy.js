@@ -49,7 +49,7 @@ module.exports = function(eleventyConfig) {
       // Add classes to the SVG element
       const defaultClasses = "lucide-icon";
       const allClasses = className ? `${defaultClasses} ${className}` : defaultClasses;
-      svg = svg.replace('<svg', `<svg class="${allClasses}"`);
+      svg = svg.replace('<svg', `<svg class="${allClasses}" aria-hidden="true" focusable="false"`);
       return svg;
     } catch (e) {
       console.warn(`Icon not found: ${iconName}`);

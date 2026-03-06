@@ -6,9 +6,9 @@ showContact: true
 ---
 
 <div class="gradient-hero min-h-screen flex flex-col p-5">
-    <nav class="flex justify-between items-center max-w-5xl w-full mx-auto">
-        <a href="/" class="flex items-center gap-2 no-underline hover:no-underline">
-            <img src="/images/moonquake-logo.png" alt="{{ site.name }} Logo" class="w-7 h-7">
+    <nav class="flex justify-between items-center max-w-5xl w-full mx-auto" aria-label="Main navigation">
+        <a href="/" class="flex items-center gap-2 no-underline hover:no-underline" aria-current="page">
+            <img src="/images/moonquake-logo.png" alt="" class="w-7 h-7" aria-hidden="true">
             <span class="text-white font-bold text-lg">{{ site.name }}</span>
         </a>
         <div class="flex gap-6 items-center">
@@ -16,16 +16,16 @@ showContact: true
             <a href="mailto:{{ site.email }}" class="text-white/80 hover:text-white text-sm font-medium no-underline hover:no-underline transition-colors">Support</a>
         </div>
     </nav>
-    <div class="flex-1 flex items-center justify-center">
+    <main id="main-content" class="flex-1 flex items-center justify-center">
     <div class="max-w-5xl text-center">
         <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">{{ site.name }}</h1>
         <p class="text-lg md:text-xl text-white/90 mb-12">{{ site.tagline }}</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-5" role="list" aria-label="Our apps">
             {% for app in apps %}
-            <a href="/apps/{{ app.slug }}/" class="app-card text-center">
+            <a href="/apps/{{ app.slug }}/" class="app-card text-center" role="listitem">
                 <div class="mb-5">
-                    <img src="{{ app.icon }}" alt="{{ app.name }} App Icon" class="app-icon mx-auto">
+                    <img src="{{ app.icon }}" alt="" class="app-icon mx-auto" aria-hidden="true">
                 </div>
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ app.name }}</h2>
                 <p class="text-gray-600 text-base mb-5">{{ app.tagline }}</p>
@@ -34,5 +34,5 @@ showContact: true
             {% endfor %}
         </div>
     </div>
-    </div>
+    </main>
 </div>

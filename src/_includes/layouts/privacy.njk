@@ -3,13 +3,15 @@ layout: layouts/base.njk
 bodyClass: bg-gray-100 p-5
 ---
 
-<div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-md">
-    <a href="/apps/{{ slug }}/" class="inline-block mb-8 text-primary-500 font-medium hover:underline">&larr; Back to {{ appName }}</a>
+<main id="main-content" class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-md">
+    <nav aria-label="Breadcrumb">
+        <a href="/apps/{{ slug }}/" class="inline-block mb-8 text-primary-500 font-medium hover:underline">&larr; Back to {{ appName }}</a>
+    </nav>
 
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Privacy Policy</h1>
     <p class="text-gray-500 mb-10">Last updated: {{ lastUpdated }}</p>
 
-    <div class="highlight-box mb-8">
+    <div class="highlight-box mb-8" role="note">
         <p><strong>Summary:</strong> {{ summary }}</p>
     </div>
 
@@ -20,4 +22,4 @@ bodyClass: bg-gray-100 p-5
     <p class="mt-10 text-center text-gray-500">
         <a href="/apps/{{ slug }}/" class="text-primary-500 hover:underline">Back to {{ appName }}</a>
     </p>
-</div>
+</main>
