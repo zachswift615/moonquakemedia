@@ -5,35 +5,35 @@ rss: true
 ---
 <div class="min-h-screen bg-white">
   <!-- Navigation -->
-  <nav class="border-b border-gray-200 bg-white" aria-label="Main navigation">
-    <div class="max-w-3xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="/" class="text-xl font-bold text-gray-900 no-underline hover:text-primary-500 hover:no-underline">{{ site.name }}</a>
+  <nav class="border-b border-gray-100 bg-white" aria-label="Main navigation">
+    <div class="max-w-2xl mx-auto px-6 py-5 flex justify-between items-center">
+      <a href="/" class="text-base font-semibold text-gray-950 no-underline tracking-tight hover:text-gray-600 hover:no-underline transition-colors">{{ site.name }}</a>
       <div class="flex gap-6 items-center">
-        <a href="/apps/listen2/" class="text-sm text-gray-600 no-underline hover:text-primary-500 hover:no-underline">Listen2</a>
-        <a href="/blog/" class="text-sm text-gray-600 no-underline hover:text-primary-500 hover:no-underline" aria-current="page">Blog</a>
-        <a href="mailto:{{ site.email }}" class="text-sm text-gray-600 no-underline hover:text-primary-500 hover:no-underline">Support</a>
+        <a href="/apps/listen2/" class="text-sm text-gray-400 no-underline hover:text-gray-950 hover:no-underline transition-colors">Listen2</a>
+        <a href="/blog/" class="text-sm text-gray-400 no-underline hover:text-gray-950 hover:no-underline transition-colors">Blog</a>
+        <a href="mailto:{{ site.email }}" class="text-sm text-gray-400 no-underline hover:text-gray-950 hover:no-underline transition-colors">Support</a>
       </div>
     </div>
   </nav>
 
   <!-- Article -->
   <main id="main-content">
-    <article class="max-w-3xl mx-auto px-6 py-12">
-      <header class="mb-10">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">{{ title }}</h1>
-        <div class="flex items-center gap-4 text-sm text-gray-500">
-          <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
-          <span aria-hidden="true">&middot;</span>
-          <span>{{ content | readingTime }}</span>
+    <article class="max-w-2xl mx-auto px-6 pt-16 pb-20">
+      <header class="mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <time datetime="{{ date | isoDate }}" class="text-xs text-gray-300 font-medium tracking-wide uppercase">{{ date | readableDate }}</time>
+          <span class="text-gray-200" aria-hidden="true">&middot;</span>
+          <span class="text-xs text-gray-300">{{ content | readingTime }}</span>
         </div>
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-950 leading-tight tracking-tight">{{ title }}</h1>
       </header>
 
-      <div class="prose prose-lg prose-gray max-w-none prose-headings:text-gray-900 prose-a:text-primary-500 hover:prose-a:text-primary-600 prose-img:rounded-xl">
+      <div class="prose prose-gray max-w-none prose-headings:text-gray-950 prose-headings:tracking-tight prose-headings:font-semibold prose-p:text-gray-500 prose-p:leading-relaxed prose-li:text-gray-500 prose-a:text-gray-950 prose-a:underline prose-a:underline-offset-2 prose-a:decoration-gray-300 hover:prose-a:decoration-gray-950 prose-img:rounded-xl prose-strong:text-gray-700 prose-blockquote:text-gray-400 prose-blockquote:border-gray-200">
         {{ content | safe }}
       </div>
 
-      <footer class="mt-16 pt-8 border-t border-gray-200">
-        <a href="/blog/" class="text-primary-500 font-medium no-underline hover:underline">&larr; All posts</a>
+      <footer class="mt-20 pt-8 border-t border-gray-100">
+        <a href="/blog/" class="text-sm text-gray-400 font-medium no-underline hover:text-gray-950 hover:no-underline transition-colors">&larr; All posts</a>
       </footer>
     </article>
   </main>
