@@ -34,9 +34,9 @@ layout: layouts/base.njk
   <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto" aria-label="Main navigation">
     <a href="/" class="text-2xl font-bold tracking-tighter text-white hover:text-indigo-400 transition-colors">Listen2</a>
     <div class="flex gap-6 items-center">
-      <a href="/guides/{{ slug }}/" class="hidden md:inline-block text-sm font-medium hover:text-white text-slate-400 transition-colors">Guide</a>
-      <a href="/blog/" class="hidden md:inline-block text-sm font-medium hover:text-white text-slate-400 transition-colors">Blog</a>
-      <a href="mailto:{{ site.email }}" class="hidden md:inline-block text-sm font-medium hover:text-white text-slate-400 transition-colors">Support</a>
+      <a href="/guides/{{ slug }}/" class="hidden md:inline-block text-sm font-medium hover:text-white text-slate-300 transition-colors">Guide</a>
+      <a href="/blog/" class="hidden md:inline-block text-sm font-medium hover:text-white text-slate-300 transition-colors">Blog</a>
+      <a href="mailto:{{ site.email }}" class="hidden md:inline-block text-sm font-medium hover:text-white text-slate-300 transition-colors">Support</a>
       <a href="{{ appStoreUrl }}" class="bg-white text-black px-5 py-2.5 rounded-full text-sm font-bold hover:scale-105 transition-transform">Download</a>
     </div>
   </nav>
@@ -55,7 +55,7 @@ layout: layouts/base.njk
       <span class="block bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">into audiobooks.</span>
     </h1>
 
-    <p class="text-lg md:text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+    <p class="text-lg md:text-xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
       Listen to PDFs, EPUBs, Word docs, and more with 70+ natural AI voices in 8 languages. <br class="hidden md:inline">100% on-device. Private. No subscription.
     </p>
 
@@ -63,7 +63,7 @@ layout: layouts/base.njk
     <div class="relative w-full max-w-lg mx-auto aspect-square md:aspect-video md:h-96 md:max-w-4xl flex items-center justify-center" aria-hidden="true">
         <!-- Main Device Mockup Placeholder or Icon -->
         <div class="relative z-10 w-32 h-32 md:w-48 md:h-48 bg-black rounded-[2.5rem] shadow-2xl border-4 border-slate-800 flex items-center justify-center p-6 bg-gradient-to-b from-slate-900 to-black">
-            <img src="{{ appIcon }}" alt="" class="w-full h-full object-cover rounded-[1.5rem]">
+            <img src="{{ appIcon }}" alt="" aria-hidden="true" class="w-full h-full object-cover rounded-[1.5rem]">
         </div>
 
         <!-- Floating "Bento" Cards (Decorations) -->
@@ -99,7 +99,7 @@ layout: layouts/base.njk
             <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity opacity-50 group-hover:opacity-100"></div>
             <div class="relative z-10 w-full max-w-[60%]">
                 <h3 class="text-3xl font-bold mb-3 text-white drop-shadow-md">Import Anything</h3>
-                <p class="text-slate-400 text-lg mb-8 drop-shadow-sm font-medium">PDF, EPUB, DOCX, DAISY, Text, Clipboard. If it's text, we can read it.</p>
+                <p class="text-slate-300 text-lg mb-8 drop-shadow-sm font-medium">PDF, EPUB, DOCX, DAISY, Text, Clipboard. If it's text, we can read it.</p>
             </div>
             <div class="absolute bottom-0 right-0 w-[55%] translate-x-16 translate-y-12">
                  <img src="/images/Listen2-library.png" class="shadow-2xl opacity-90 rounded-xl" alt="Library Interface">
@@ -115,7 +115,7 @@ layout: layouts/base.njk
                      <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-sm font-medium">On-Device</span>
                      <span class="px-3 py-1 rounded-md bg-blue-500/20 text-blue-300 text-sm font-medium">8 Languages</span>
                 </div>
-                <p class="text-slate-400 text-lg">Experience 70+ voices across 8 languages that sound remarkably human. They breathe, pause, and intonate just like a real person.</p>
+                <p class="text-slate-300 text-lg">Experience 70+ voices across 8 languages that sound remarkably human. They breathe, pause, and intonate just like a real person.</p>
             </div>
             <div class="absolute bottom-0 right-0 w-[60%] translate-x-8 translate-y-8">
                 <img src="/images/Listen2-voices.png" class="shadow-2xl opacity-90 rounded-xl" alt="Voice Library">
@@ -126,7 +126,7 @@ layout: layouts/base.njk
         <div class="md:col-span-2 group relative overflow-hidden bg-slate-900/40 border border-white/5 hover:border-white/10 rounded-3xl p-8 hover:bg-slate-900/60 transition-all duration-500 flex flex-col md:flex-row items-center gap-8">
              <div class="flex-1">
                 <h3 class="text-3xl font-bold mb-3 text-white">Follow Along</h3>
-                <p class="text-slate-400 text-lg">Every word lights up as it's spoken. Perfect for retention, comprehension, and staying focused.</p>
+                <p class="text-slate-300 text-lg">Every word lights up as it's spoken. Perfect for retention, comprehension, and staying focused.</p>
              </div>
              <div class="flex-1 relative w-full h-64">
                  <img src="/images/Listen2-reader.png" class="absolute top-0 left-0 w-full h-full object-cover object-top rounded-xl border border-white/10 shadow-2xl" alt="Reader View">
@@ -137,7 +137,7 @@ layout: layouts/base.njk
         <div class="group relative overflow-hidden bg-slate-900/40 border border-white/5 hover:border-green-500/20 rounded-3xl p-8 hover:bg-slate-900/60 transition-all duration-500">
              <div class="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity opacity-50 group-hover:opacity-100"></div>
             <h3 class="text-3xl font-bold mb-3 text-white">Private & Offline</h3>
-            <p class="text-slate-400 text-lg mb-8">No servers. No cloud. Your documents never leave this device.</p>
+            <p class="text-slate-300 text-lg mb-8">No servers. No cloud. Your documents never leave this device.</p>
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-slate-800 text-3xl">
                 🔒
             </div>
@@ -162,16 +162,16 @@ layout: layouts/base.njk
                 Download on App Store
             </a>
             {% if testFlightUrl %}
-            <a href="{{ testFlightUrl }}" class="text-slate-400 hover:text-white font-medium px-6 py-4 transition-colors">
+            <a href="{{ testFlightUrl }}" class="text-slate-300 hover:text-white font-medium px-6 py-4 transition-colors">
                 Join Beta
             </a>
             {% endif %}
       </div>
-      <div class="mt-20 text-slate-400 text-sm">
+      <div class="mt-20 text-slate-300 text-sm">
           <p>&copy; {{ "" | year }} Listen2. All rights reserved.</p>
           <div class="flex gap-4 justify-center mt-4">
-              <a href="/legal/{{ slug }}-privacy/" class="hover:text-white text-slate-400">Privacy</a>
-              <a href="/guides/{{ slug }}/" class="hover:text-white text-slate-400">Guide</a>
+              <a href="/legal/{{ slug }}-privacy/" class="hover:text-white text-slate-300">Privacy</a>
+              <a href="/guides/{{ slug }}/" class="hover:text-white text-slate-300">Guide</a>
           </div>
       </div>
   </footer>

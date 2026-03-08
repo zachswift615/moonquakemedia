@@ -11,9 +11,9 @@ rss: true
     <div class="max-w-2xl mx-auto px-6 py-5 flex justify-between items-center">
       <a href="/" class="text-base font-semibold text-gray-950 no-underline tracking-tight hover:text-gray-600 hover:no-underline transition-colors">{{ site.name }}</a>
       <div class="flex gap-6 items-center">
-        <a href="/apps/listen2/" class="text-sm text-gray-400 no-underline hover:text-gray-950 hover:no-underline transition-colors">Listen2</a>
+        <a href="/apps/listen2/" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Listen2</a>
         <a href="/blog/" class="text-sm text-gray-950 font-medium no-underline hover:no-underline" aria-current="page">Blog</a>
-        <a href="mailto:{{ site.email }}" class="text-sm text-gray-400 no-underline hover:text-gray-950 hover:no-underline transition-colors">Support</a>
+        <a href="mailto:{{ site.email }}" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Support</a>
       </div>
     </div>
   </nav>
@@ -21,36 +21,36 @@ rss: true
   <main id="main-content" class="max-w-2xl mx-auto px-6 pt-16 pb-20">
     <header class="mb-14">
       <h1 class="text-3xl font-bold text-gray-950 tracking-tight mb-3">Blog</h1>
-      <p class="text-gray-400 text-base">Tips and guides for getting more from our apps.</p>
+      <p class="text-gray-500 text-base">Tips and guides for getting more from our apps.</p>
     </header>
 
     <div class="flex flex-wrap gap-2 mb-12" role="group" aria-label="Filter by app">
       <button data-filter="all" class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium bg-gray-950 text-white border border-gray-950 transition-all" aria-pressed="true">All</button>
-      <button data-filter="listen2" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-400 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">Listen2</button>
-      <button data-filter="gigscroll" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-400 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">GigScroll</button>
-      <button data-filter="speak2" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-400 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">Speak2</button>
+      <button data-filter="listen2" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">Listen2</button>
+      <button data-filter="gigscroll" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">GigScroll</button>
+      <button data-filter="speak2" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">Speak2</button>
     </div>
 
     <div id="blog-posts" class="divide-y divide-gray-100">
       {% for post in collections.blog %}
       <article class="group blog-post py-8 first:pt-0" data-app="{% if 'listen2' in post.data.tags %}listen2{% elif 'gigscroll' in post.data.tags %}gigscroll{% elif 'speak2' in post.data.tags %}speak2{% endif %}">
         <div class="flex items-center gap-3 mb-3">
-          <time datetime="{{ post.data.date | isoDate }}" class="text-xs text-gray-300 font-medium tracking-wide uppercase">{{ post.data.date | readableDate }}</time>
-          <span class="text-gray-200" aria-hidden="true">&middot;</span>
-          <span class="text-xs text-gray-300">{{ post.content | readingTime }}</span>
+          <time datetime="{{ post.data.date | isoDate }}" class="text-xs text-gray-500 font-medium tracking-wide uppercase">{{ post.data.date | readableDate }}</time>
+          <span class="text-gray-300" aria-hidden="true">&middot;</span>
+          <span class="text-xs text-gray-500">{{ post.content | readingTime }}</span>
           <span class="text-gray-200" aria-hidden="true">&middot;</span>
           {% if 'listen2' in post.data.tags %}
-          <span class="text-xs font-medium text-gray-400 bg-gray-50 px-2 py-0.5 rounded">Listen2</span>
+          <span class="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded">Listen2</span>
           {% elif 'gigscroll' in post.data.tags %}
-          <span class="text-xs font-medium text-gray-400 bg-gray-50 px-2 py-0.5 rounded">GigScroll</span>
+          <span class="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded">GigScroll</span>
           {% elif 'speak2' in post.data.tags %}
-          <span class="text-xs font-medium text-gray-400 bg-gray-50 px-2 py-0.5 rounded">Speak2</span>
+          <span class="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded">Speak2</span>
           {% endif %}
         </div>
         <h2 class="text-lg md:text-xl font-semibold mb-2 tracking-tight">
           <a href="{{ post.url }}" class="text-gray-950 no-underline hover:no-underline group-hover:text-gray-500 transition-colors">{{ post.data.title }}</a>
         </h2>
-        <p class="text-gray-400 text-sm leading-relaxed">{{ post.data.excerpt or (post.content | excerpt) }}</p>
+        <p class="text-gray-500 text-sm leading-relaxed">{{ post.data.excerpt or (post.content | excerpt) }}</p>
       </article>
       {% endfor %}
     </div>
@@ -61,11 +61,11 @@ rss: true
           const filter = btn.dataset.filter;
           document.querySelectorAll('.filter-btn').forEach(b => {
             b.classList.remove('active', 'bg-gray-950', 'text-white', 'border-gray-950');
-            b.classList.add('text-gray-400', 'border-gray-200');
+            b.classList.add('text-gray-500', 'border-gray-200');
             b.setAttribute('aria-pressed', 'false');
           });
           btn.classList.add('active', 'bg-gray-950', 'text-white', 'border-gray-950');
-          btn.classList.remove('text-gray-400', 'border-gray-200');
+          btn.classList.remove('text-gray-500', 'border-gray-200');
           btn.setAttribute('aria-pressed', 'true');
           document.querySelectorAll('.blog-post').forEach(post => {
             post.style.display = (filter === 'all' || post.dataset.app === filter) ? '' : 'none';
