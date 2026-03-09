@@ -553,6 +553,7 @@ You can toggle rules on and off, reorder them by dragging, and delete any rule y
 <div class="feature-box">
 <h4>{% icon "eye", "inline-icon" %} Pronunciation Rules with VoiceOver</h4>
 <p>The rule list announces each rule's name, pattern, output, scope, and enabled state. Built-in rules are identified as "Built-in rule, not editable." The add/edit form follows a logical swipe order through all fields. Segmented controls for scope, match type, and output type announce their current selection. Validation errors are announced when you try to save an incomplete rule.</p>
+<p><strong>Known issue:</strong> The toggle switch for enabling or disabling a rule in the list does not respond to a standard double-tap. To flip the toggle, double-tap and hold instead. This activates the switch as expected. A fix is planned for a future update.</p>
 </div>
 
 <div class="feature-box">
