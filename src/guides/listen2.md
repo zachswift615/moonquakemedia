@@ -48,7 +48,7 @@ toc:
 
 ## 1. Getting Started
 
-For years, your options when considering how best to listen to text read aloud on iOS have relied on the tried and true built-in system voices (robotic, flat) or cloud-based services that charge a monthly fee, send your documents to someone else's servers, and often restrict usage. Listen2 is a third option. It runs high-quality, natural-sounding voices entirely on your device. No account, no cloud processing, no tracking. Your documents stay on your phone and never leave.
+For years, your options when considering how best to listen to text read aloud on iOS have relied on the built-in system voices or cloud-based services that charge a monthly fee, send your documents to someone else's servers, and often restrict usage. Listen2 takes a different approach. It runs multiple voice engines entirely on your device — from high-fidelity neural voices to Apple's own system voices — all without an account, cloud processing, or tracking. Your documents stay on your phone and never leave.
 
 In one sentence: Listen2 turns your documents into personal audiobooks using on-device text-to-speech.
 
@@ -156,9 +156,26 @@ Each row in the list shows you what you need at a glance: the document title, a 
 
 When your library gets big enough that scrolling feels tedious, there is a search bar at the top. Type the first few characters of a title and the list filters down instantly.
 
-You will also notice a second tab at the top — Collections. That is for curated playlists of documents, and it is covered in detail in Section 8. For now, just know it is there.
+You will also notice a second tab at the top — Collections. That is for curated playlists of documents, and it is covered in detail in Section 9. For now, just know it is there.
 
-To manage your documents, swipe left on any row to delete it. Or press and hold on a document to bring up a context menu — from there you can add it to a collection.
+#### Sorting Your Library
+
+By default, documents are sorted by most recently read. But you can change that. Tap the sort button in the toolbar (the up-and-down arrows icon) to open the sort sheet. Six options are available:
+
+- **Recent** — most recently read documents first. This is the default.
+- **Title (A to Z)** — alphabetical.
+- **Title (Z to A)** — reverse alphabetical.
+- **Newest First** — most recently imported documents at the top.
+- **Oldest First** — first imported documents at the top.
+- **Type** — grouped by document format (PDF, EPUB, Text, and so on), then alphabetical within each group.
+
+Your sort preference is remembered across sessions. Set it once and it sticks.
+
+#### Managing Documents
+
+To manage your documents, swipe left on any row to delete it. Press and hold on a document to bring up a context menu with more options — from there you can **rename** the document or **add it to a collection**.
+
+Renaming is useful when the imported title does not match what you want to see. Long-press the document, tap Rename, type the new title, and confirm. The original file is untouched — only the display title in your library changes.
 
 <div class="tip-box">
 <h4>{% icon "lightbulb", "inline-icon" %} Automatic Position Saving</h4>
@@ -169,7 +186,7 @@ But here is the thing that matters most: Listen2 remembers where you are in ever
 
 <div class="feature-box">
 <h4>{% icon "eye", "inline-icon" %} Your Library with VoiceOver</h4>
-<p>Navigate the document list by swiping left and right. Each row announces the document title, reading progress, and time since last read. Delete is available as a custom action — swipe up or down on a row to find it. The search field sits at the top of the screen.</p>
+<p>Navigate the document list by swiping left and right. Each row announces the document title, reading progress, and time since last read. Delete is available as a custom action — swipe up or down on a row to find it. Rename and Add to Collection are also available as accessibility actions on each row. The sort button in the toolbar announces the current sort order. The search field sits at the top of the screen.</p>
 </div>
 
 </div>
@@ -391,17 +408,34 @@ Voices are the heart of the listening experience. A great voice makes a two-hour
 
 Listen2 ships with one high-quality English voice already installed. No downloads, no setup — you can start listening the moment you open the app. But that is just the starting point.
 
-#### Voice Engines *(new in v1.5.0)*
+#### Voice Engines
 
-Listen2 now has two voice engines: **Piper** and **Supertonic**.
+Listen2 has three voice engines: **Piper**, **Supertonic**, and **System**.
 
 **Piper** is the original engine — fast, lightweight, and available in dozens of languages. These are the voices you already know. They run well on any device and cover the widest range of languages.
 
-**Supertonic** is the new high-fidelity engine. It uses a flow-matching neural architecture that produces more natural, expressive speech. Supertonic voices sound closer to human narration — smoother prosody, more natural rhythm, clearer articulation. The models were custom-converted to run natively on Apple's Neural Engine through CoreML, so you get high-fidelity audio without unnecessary battery drain. Supertonic supports English, Spanish, French, and Portuguese, with more languages coming.
+**Supertonic** is the high-fidelity engine. It uses a flow-matching neural architecture that produces more natural, expressive speech. Supertonic voices sound closer to human narration — smoother prosody, more natural rhythm, clearer articulation. The models were custom-converted to run natively on Apple's Neural Engine through CoreML, so you get high-fidelity audio without unnecessary battery drain. Supertonic supports English, Spanish, French, and Portuguese, with more languages coming.
 
 Here is the nice part about Supertonic: all its voices share a single engine. Download any Supertonic voice and you get access to all of them — male and female, distinctive styles. The engine download happens once, and after that switching between Supertonic voices is instant.
 
-Both engines work side by side. You can switch between Piper and Supertonic voices freely — even mid-document. The app handles everything behind the scenes.
+**System** voices are Apple's built-in speech synthesis voices — the same ones available across iOS. They require no download within Listen2 because they are already on your device (though higher-quality tiers may need to be downloaded from iOS Settings first). System voices are available in every language Apple supports and come in several quality tiers:
+
+- **Premium** and **Enhanced** — the highest quality system voices. These sound significantly better than the defaults and are shown in Listen2 by default.
+- **Compact**, **Basic**, **Eloquence**, **Novelty**, and **Standard** — lower-quality tiers that are hidden by default but can be revealed in the voice filter settings if you want to browse them.
+
+System voices are a great option if battery life is your priority. Because they use Apple's native speech synthesizer directly — no neural network inference, no model loading — they are the lightest option on your battery. If you are listening for hours and want to stretch your charge, system voices are the way to go.
+
+Here is the important part: Premium and Enhanced voices are not installed on your device by default. You need to download them from iOS Settings before they will show up in Listen2. The process is straightforward but easy to miss if you do not know where to look.
+
+1. Open the **Settings** app on your iPhone or iPad.
+2. Go to **Accessibility**, then **Spoken Content** (on iOS 26 and later, this is called **Read & Speak**).
+3. Tap **Voices**, then select your language (for example, **English**).
+4. You will see a list of voice names. Each one has a quality label underneath it — look for voices marked **Premium** or **Enhanced**. These are the ones worth downloading. Premium voices are the highest quality Apple offers, and Enhanced voices are a step below but still sound very good.
+5. Tap a Premium or Enhanced voice and tap **Download**. The download size varies but is typically a few hundred megabytes per voice.
+
+Once a voice finishes downloading in iOS Settings, it appears in Listen2 automatically — no restart needed. If you skip this step and open Listen2's voice library with the System engine filter on, you will only see the lower-quality voices that come pre-installed on every device. The default voices work fine, but the Enhanced and Premium voices offer a far superior listening experience.
+
+All three engines work side by side. You can switch between Piper, Supertonic, and System voices freely — even mid-document. Word-level highlighting works with all three engines. The app handles everything behind the scenes.
 
 #### Browsing Voices
 
@@ -409,12 +443,16 @@ Open the Voice Library from the main settings screen or from your library. You w
 
 <div class="feature-box">
 <h4>{% icon "globe", "inline-icon" %} Available Languages</h4>
-<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Vietnamese, and others. Piper voices cover all of these. Supertonic voices support English, Spanish, French, and Portuguese, with more languages coming.</p>
+<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Vietnamese, and others. Piper voices cover all of these. Supertonic voices support English, Spanish, French, and Portuguese, with more languages coming. System voices are available in every language Apple supports — which is nearly every language on the planet.</p>
 </div>
 
-Every voice has a play button right on the row so you can preview it before committing to a download. For Supertonic voices, samples play in whatever language is currently selected — so you can hear how each voice sounds in Spanish or French, not just English. Filter the list by voice engine, language, quality level (high or medium), or download status — all voices, downloaded only, or not yet downloaded. Sort by name, language, or downloaded-first. Between the filters and sorting, you can narrow things down fast even as the library grows.
+Every voice has a play button right on the row so you can preview it before committing to a download. For Supertonic voices, samples play in whatever language is currently selected — so you can hear how each voice sounds in Spanish or French, not just English.
 
-When multiple voice engines are available, the Sort & Filter sheet includes a Voice Engine filter. Use it to show only Piper voices, only Supertonic voices, or all voices at once.
+The Sort & Filter sheet gives you precise control over what appears in the list. You can toggle each voice engine on or off independently — show only Piper, only System, only Supertonic, or any combination. When the System engine is visible, an additional section appears for filtering by quality tier — toggle Premium, Enhanced, Compact, and others on or off individually. Only Premium and Enhanced are shown by default, since these are the tiers worth using for extended listening.
+
+Beyond engines and tiers, you can filter by download status (all voices, downloaded only, or not yet downloaded), by language, and by Piper quality level (high or medium). Sort by name, language, or downloaded-first. The language filter is smart — it only shows languages that have voices in your currently visible engines and tiers, so you are never looking at an empty list.
+
+All filter and sort preferences persist across sessions. Set them once and they stay put until you change them. The same filters are available in the quick settings voice picker inside the reader, so you do not have to leave your document to narrow down voices.
 
 #### Downloading & Managing
 
@@ -477,7 +515,7 @@ One thing to know: grammar pack coverage varies by language. Most handle numbers
 
 #### Voice Tuning
 
-Each engine has its own tuning controls. The settings screen automatically shows the right set based on which voice is active.
+Each engine has its own tuning controls. The settings screen automatically shows the right set based on which voice is active. System voices have no tuning parameters — their quality is determined by the tier you download from iOS Settings.
 
 **Piper Voice Tuning**
 
@@ -549,7 +587,7 @@ You can toggle rules on and off, reorder them by dragging, and delete any rule y
 
 <div class="feature-box">
 <h4>{% icon "eye", "inline-icon" %} Voice Management with VoiceOver</h4>
-<p>Voice rows in the Voice Library have rotor actions for "Play Sample" and "Stop Sample" so you can preview without navigating away. Download progress and status are announced as they change. The multi-speaker browser is a searchable list — type to filter, double-tap to select a speaker. The Supertonic language card announces the current language and hints "Double tap to change Supertonic language." Custom voice rows include a play button that shows a loading indicator during on-device synthesis — VoiceOver announces when the sample is ready.</p>
+<p>Voice rows in the Voice Library have rotor actions for "Play Sample" and "Stop Sample" so you can preview without navigating away. Download progress and status are announced as they change. The multi-speaker browser is a searchable list — type to filter, double-tap to select a speaker. The Supertonic language card announces the current language and hints "Double tap to change Supertonic language." Custom voice rows include a play button that shows a loading indicator during on-device synthesis — VoiceOver announces when the sample is ready. Engine and tier filter toggles in the Sort & Filter sheet all have accessibility hints describing their show/hide behavior.</p>
 </div>
 
 <div class="feature-box">
