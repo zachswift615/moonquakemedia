@@ -60,6 +60,9 @@
       "whisper": 7
     }
   },
+  "el_GR-rapunzelina-low": {
+    "num_speakers": 1
+  },
   "en_GB-alan-medium": {
     "num_speakers": 1
   },
