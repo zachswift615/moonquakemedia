@@ -439,11 +439,11 @@ All three engines work side by side. You can switch between Piper, Supertonic, a
 
 #### Browsing Voices
 
-Open the Voice Library from the main settings screen or from your library. You will find dozens of voices spanning English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Vietnamese, and more.
+Open the Voice Library from the main settings screen or from your library. You will find dozens of voices spanning English, Spanish, French, German, Greek, Hindi, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Arabic, Turkish, Vietnamese, and more.
 
 <div class="feature-box">
 <h4>{% icon "globe", "inline-icon" %} Available Languages</h4>
-<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Vietnamese, and others. Piper voices cover all of these. Supertonic voices support English, Spanish, French, and Portuguese, with more languages coming. System voices are available in every language Apple supports — which is nearly every language on the planet.</p>
+<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Greek, Hindi, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Arabic, Turkish, Vietnamese, and others. Piper voices cover all of these. Supertonic voices support English, Spanish, French, and Portuguese, with more languages coming. System voices are available in every language Apple supports — which is nearly every language on the planet.</p>
 </div>
 
 Every voice has a play button right on the row so you can preview it before committing to a download. For Supertonic voices, samples play in whatever language is currently selected — so you can hear how each voice sounds in Spanish or French, not just English.
