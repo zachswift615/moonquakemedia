@@ -1370,6 +1370,15 @@
   "sv_SE-nst-medium": {
     "num_speakers": 1
   },
+  "tr_TR-dfki-medium": {
+    "num_speakers": 1
+  },
+  "tr_TR-fahrettin-medium": {
+    "num_speakers": 1
+  },
+  "tr_TR-fettah-medium": {
+    "num_speakers": 1
+  },
   "vi_VN-25hours_single-low": {
     "num_speakers": 1
   },
