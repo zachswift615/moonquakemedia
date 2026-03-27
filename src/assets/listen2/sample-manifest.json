@@ -1227,6 +1227,9 @@
       "986": 824
     }
   },
+  "en_US-linda-medium": {
+    "num_speakers": 1
+  },
   "en_US-ljspeech-medium": {
     "num_speakers": 1
   },
