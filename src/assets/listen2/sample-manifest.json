@@ -1337,6 +1337,126 @@
   "it_IT-riccardo-x_low": {
     "num_speakers": 1
   },
+  "kokoro-af_alloy": {
+    "num_speakers": 1
+  },
+  "kokoro-af_aoede": {
+    "num_speakers": 1
+  },
+  "kokoro-af_bella": {
+    "num_speakers": 1
+  },
+  "kokoro-af_heart": {
+    "num_speakers": 1
+  },
+  "kokoro-af_jessica": {
+    "num_speakers": 1
+  },
+  "kokoro-af_kore": {
+    "num_speakers": 1
+  },
+  "kokoro-af_nicole": {
+    "num_speakers": 1
+  },
+  "kokoro-af_nova": {
+    "num_speakers": 1
+  },
+  "kokoro-af_river": {
+    "num_speakers": 1
+  },
+  "kokoro-af_sarah": {
+    "num_speakers": 1
+  },
+  "kokoro-af_sky": {
+    "num_speakers": 1
+  },
+  "kokoro-am_adam": {
+    "num_speakers": 1
+  },
+  "kokoro-am_echo": {
+    "num_speakers": 1
+  },
+  "kokoro-am_eric": {
+    "num_speakers": 1
+  },
+  "kokoro-am_fenrir": {
+    "num_speakers": 1
+  },
+  "kokoro-am_liam": {
+    "num_speakers": 1
+  },
+  "kokoro-am_michael": {
+    "num_speakers": 1
+  },
+  "kokoro-am_onyx": {
+    "num_speakers": 1
+  },
+  "kokoro-am_puck": {
+    "num_speakers": 1
+  },
+  "kokoro-am_santa": {
+    "num_speakers": 1
+  },
+  "kokoro-bf_alice": {
+    "num_speakers": 1
+  },
+  "kokoro-bf_emma": {
+    "num_speakers": 1
+  },
+  "kokoro-bf_isabella": {
+    "num_speakers": 1
+  },
+  "kokoro-bf_lily": {
+    "num_speakers": 1
+  },
+  "kokoro-bm_daniel": {
+    "num_speakers": 1
+  },
+  "kokoro-bm_fable": {
+    "num_speakers": 1
+  },
+  "kokoro-bm_george": {
+    "num_speakers": 1
+  },
+  "kokoro-bm_lewis": {
+    "num_speakers": 1
+  },
+  "kokoro-ef_dora": {
+    "num_speakers": 1
+  },
+  "kokoro-em_alex": {
+    "num_speakers": 1
+  },
+  "kokoro-ff_siwis": {
+    "num_speakers": 1
+  },
+  "kokoro-hf_alpha": {
+    "num_speakers": 1
+  },
+  "kokoro-hf_beta": {
+    "num_speakers": 1
+  },
+  "kokoro-hm_omega": {
+    "num_speakers": 1
+  },
+  "kokoro-hm_psi": {
+    "num_speakers": 1
+  },
+  "kokoro-if_sara": {
+    "num_speakers": 1
+  },
+  "kokoro-im_nicola": {
+    "num_speakers": 1
+  },
+  "kokoro-pf_dora": {
+    "num_speakers": 1
+  },
+  "kokoro-pm_alex": {
+    "num_speakers": 1
+  },
+  "kokoro-pm_santa": {
+    "num_speakers": 1
+  },
   "pt_BR-cadu-medium": {
     "num_speakers": 1
   },
