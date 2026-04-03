@@ -228,9 +228,9 @@ Between these two gestures — tap for paragraph, double-tap for word — you ca
 
 #### Bottom Bar
 
-The bottom bar handles playback controls and quick adjustments, left to right.
+The bottom bar handles playback controls and quick adjustments, laid out in two rows.
 
-The **speed button** shows your current rate (like "1.0x") and opens a speed picker when you tap it. Next is the **progress bar** with a percentage readout so you always know how far through the document you are. The **voice picker** lets you swap voices on the fly without opening settings. Then the **skip back** and **skip forward** buttons jump between paragraphs. And the **play/pause button** sits right in the center where your thumb expects it.
+The top row has the **speed button** (showing your current rate, like "1.0x"), a **seekable progress bar** that you can drag to jump anywhere in the document, and the **voice picker** to swap voices on the fly. Below the progress bar sit elapsed time, a jump-to-percentage button, and remaining time — all updating every second during playback. The bottom row has the **skip back** and **skip forward** buttons, which jump between paragraphs, and the **play/pause button** in the center where your thumb expects it. When a timer is active, the countdown replaces the play button area.
 
 #### Collection Context
 
@@ -259,7 +259,7 @@ The skip buttons sit on either side of the play button. By default, they jump by
 
 #### Speed
 
-Tap the speed button in the bottom bar to open the speed sheet. You can go from 0.5x all the way up to 2.5x, in 0.1x increments. Start at 1.0x. Then bump it up a notch every few sessions. Most people land somewhere around 1.2x to 1.5x for casual reading. For dense or technical material, 1.0x is the right call. There is no badge of honor for listening fast — the goal is comprehension.
+Tap the speed button in the bottom bar to open the speed sheet. You can go from 0.5x all the way up to 2.5x, in 0.1x increments. Start at 1.0x. Then bump it up a notch every few sessions. Most people land somewhere around 1.2x to 1.5x for casual reading. For dense or technical material, 1.0x is the right call. There is no badge of honor for listening fast — the goal is comprehension. Note that Kokoro voices are capped at 1.4x — the model needs to keep up with real-time synthesis, so faster speeds are not available for that engine.
 
 <div class="tip-box">
 <h4>{% icon "lightbulb", "inline-icon" %} Adjust Speed Gradually</h4>
@@ -270,18 +270,39 @@ Tap the speed button in the bottom bar to open the speed sheet. You can go from 
 
 This one is subtle, but it matters. There is a configurable gap between paragraphs — from 0.0 seconds up to 1.0 seconds. It gives you a beat to process what you just heard before the next paragraph starts. Think of it like the white space on a printed page. You will find it in settings.
 
+#### Duration and Progress
+
+Listen2 estimates how long your document will take to read based on the active voice engine and your current playback speed. The bottom bar shows a seekable progress bar with elapsed time on the left and remaining time on the right, both in H:MM:SS format. A percentage button sits between them — tap it to type a specific percentage and jump straight there.
+
+The duration starts as an estimate and gets more accurate as you listen. Listen2 measures the actual speed of the voice engine during synthesis and refines the estimate in real time. By a few minutes in, the numbers are close to exact.
+
+The progress bar is fully seekable. Drag it to jump anywhere in the document. This works for long books just as well as short articles — drag to the 40% mark of a 300-page PDF and playback resumes from that spot.
+
+<div class="tip-box">
+<h4>{% icon "lightbulb", "inline-icon" %} Quick Navigation</h4>
+<p>For precise jumps, tap the percentage button between the time labels and type a number. For example, type "50" to jump to the halfway point. Faster than dragging when you know exactly where you want to go.</p>
+</div>
+
+#### Timer
+
+Set a timer and Listen2 pauses playback when it expires. Open Quick Settings from the gear icon in the reader and scroll to the Timer section. You will find four preset durations — 15, 30, 45, and 60 minutes — plus a custom field where you can type any value from 1 to 120 minutes. Use the plus and minus buttons to adjust in 5-minute increments.
+
+An optional audio cue toggle plays a gentle tone when the timer finishes, so you know time is up even if you were not watching. Tap Start and the countdown begins. The remaining time appears in the bottom bar next to the play button, replacing the normal controls while the timer is active. Tap the countdown to cancel it at any time.
+
+This is not just for falling asleep. Set a 30-minute timer when you want to cap your listening session — whether it is knowing when to start cooking dinner, catching your bus stop, or wrapping up a study block.
+
 #### Background Playback and Now Playing
 
-Switch apps, lock your screen, put your phone in your bag. The voice keeps going. Your lock screen shows the document title, current section or chapter name, and cover artwork if the document has it. You always know what is playing at a glance, even without opening Listen2.
+Switch apps, lock your screen, put your phone in your bag. The voice keeps going. Your lock screen shows the document title, current section or chapter name, cover artwork if the document has it, and a progress scrubber that you can drag to seek. Elapsed time and total duration are displayed alongside the scrubber, so you always know how far along you are — even without opening Listen2.
 
 <div class="feature-box">
 <h4>{% icon "headphones", "inline-icon" %} Control Playback from Anywhere</h4>
-<p>You can control playback from five places: the in-app bottom bar, the lock screen, Control Center, AirPods or any headphone remote, and Apple Watch. Same controls, same behavior, no matter where you reach for them.</p>
+<p>You can control playback from five places: the in-app bottom bar, the lock screen, Control Center, AirPods or any headphone remote, and Apple Watch. The lock screen scrubber lets you drag to seek anywhere in the document. Same controls, same behavior, no matter where you reach for them.</p>
 </div>
 
 <div class="feature-box">
 <h4>{% icon "eye", "inline-icon" %} Playback Controls with VoiceOver</h4>
-<p>The speed control supports VoiceOver adjustable actions — swipe up to increase speed, swipe down to decrease, in 0.1× increments. The Play/Pause button carries the "Starts Media Session" accessibility trait, so VoiceOver announces it appropriately. Lock screen and Control Center controls work identically with VoiceOver active — no special gestures needed.</p>
+<p>The progress bar is an adjustable element — swipe up to seek forward 5%, swipe down to seek back 5%. VoiceOver announces the current position as a percentage, for example "Reading progress, 42 percent." The speed control supports VoiceOver adjustable actions — swipe up to increase speed, swipe down to decrease, in 0.1× increments. The Play/Pause button carries the "Starts Media Session" accessibility trait, so VoiceOver announces it appropriately. Timer preset buttons announce their duration and selection state. The custom minutes field has a label, value, and hint. The start and cancel buttons describe exactly what they do. Lock screen and Control Center controls work identically with VoiceOver active — no special gestures needed.</p>
 </div>
 
 </div>
@@ -406,24 +427,32 @@ Both settings live in Quick Settings, accessible from the gear button in the rea
 
 Voices are the heart of the listening experience. A great voice makes a two-hour reading session feel effortless. A poor one makes you quit after three paragraphs. This is worth getting right.
 
-Listen2 ships with one high-quality English voice already installed. No downloads, no setup — you can start listening the moment you open the app. But that is just the starting point.
+Listen2 ships with one high-quality English voice already installed — Zara, a custom-trained neural voice bundled right in the app. No downloads, no setup — you can start listening the moment you open the app. But that is just the starting point.
 
 #### Voice Engines
 
-Listen2 has three voice engines: **Piper**, **Supertonic**, and **System**.
+Listen2 has four voice engines: **Piper**, **Kokoro**, **Supertonic**, and **System**. Each voice in the Voice Library displays a color-coded engine badge so you always know which engine it belongs to.
 
-**Piper** is the original engine — fast, lightweight, and available in dozens of languages. These are the voices you already know. They run well on any device and cover the widest range of languages.
+**Piper** is the original engine — fast, lightweight, and available in 13 languages. These are the voices you already know. They run well on any device and cover the widest range of languages. The bundled Zara voice runs on the Piper engine, marked with a gold "Listen2" badge to distinguish it from downloadable Piper voices (which carry a blue badge).
 
-**Supertonic** is the high-fidelity engine. It uses a flow-matching neural architecture that produces more natural, expressive speech. Supertonic voices sound closer to human narration — smoother prosody, more natural rhythm, clearer articulation. The models were custom-converted to run natively on Apple's Neural Engine through CoreML, so you get high-fidelity audio without unnecessary battery drain. Supertonic supports English, Spanish, French, and Portuguese, with more languages coming.
+**Kokoro** is the premium engine. It uses a large neural model that produces more expressive, natural-sounding speech than Piper — richer intonation, better pacing, and smoother prosody. Kokoro supports 8 languages: English, Spanish, French, Hindi, Italian, Portuguese, Vietnamese, and Chinese. It has 53 voices and carries a purple badge.
 
-Here is the nice part about Supertonic: all its voices share a single engine. Download any Supertonic voice and you get access to all of them — male and female, distinctive styles. The engine download happens once, and after that switching between Supertonic voices is instant.
+Here is the important part about Kokoro downloads: **all 53 voices are included in a single engine download.** The file size you see listed beside each Kokoro voice is the shared engine size, not an individual voice. Tap download on any Kokoro voice and you get the engine plus every voice in one shot. After that first download, switching between any Kokoro voice is instant — no additional downloads needed.
+
+There are a few things to know about Kokoro. Because the model is large, playback speed is capped at 1.4x to keep up with real-time synthesis. Kokoro requires a device with at least 6 GB of RAM — on older devices that do not meet this threshold, Kokoro voices will not appear in the Voice Library. And because the model runs a larger neural network on device, your phone will produce more heat and use more energy during extended playback compared to Piper. But once you hear the quality difference, it is hard to go back.
+
+**Supertonic** is the high-fidelity engine. It uses a flow-matching neural architecture that produces more natural, expressive speech. Supertonic voices sound closer to human narration — smoother prosody, more natural rhythm, clearer articulation. The models were custom-converted to run natively on Apple's Neural Engine through CoreML, so you get high-fidelity audio without unnecessary battery drain. Supertonic supports English, Spanish, French, and Portuguese, with more languages coming. Voices carry an orange badge.
+
+Here is the nice part about Supertonic: **all its voices share a single engine download**, just like Kokoro. Download any Supertonic voice and you get the engine plus every Supertonic voice in one shot. The file size you see listed beside each voice is the shared engine size. After that first download, switching between Supertonic voices is instant — no additional downloads needed.
+
+One thing to be aware of: Supertonic's underlying flow-matching architecture is occasionally prone to skipping words or short phrases during synthesis. The default voice quality parameters are tuned to minimize this, but it is a known characteristic of how the model works and cannot be fully prevented. If accuracy matters more than fidelity for a particular document, Piper or Kokoro are more reliable in this regard.
 
 **System** voices are Apple's built-in speech synthesis voices — the same ones available across iOS. They require no download within Listen2 because they are already on your device (though higher-quality tiers may need to be downloaded from iOS Settings first). System voices are available in every language Apple supports and come in several quality tiers:
 
 - **Premium** and **Enhanced** — the highest quality system voices. These sound significantly better than the defaults and are shown in Listen2 by default.
 - **Compact**, **Basic**, **Eloquence**, **Novelty**, and **Standard** — lower-quality tiers that are hidden by default but can be revealed in the voice filter settings if you want to browse them.
 
-System voices are a great option if battery life is your priority. Because they use Apple's native speech synthesizer directly — no neural network inference, no model loading — they are the lightest option on your battery. If you are listening for hours and want to stretch your charge, system voices are the way to go.
+System voices are the best option when battery life and energy efficiency are your priority. Because they use Apple's native speech synthesizer directly — no neural network inference, no model loading — they have the lowest energy impact of any engine in Listen2. Even lighter than Piper. If you are listening for hours and want to stretch your charge, or if your device runs warm with the neural engines, Premium or Enhanced system voices are the way to go.
 
 Here is the important part: Premium and Enhanced voices are not installed on your device by default. You need to download them from iOS Settings before they will show up in Listen2. The process is straightforward but easy to miss if you do not know where to look.
 
@@ -435,20 +464,20 @@ Here is the important part: Premium and Enhanced voices are not installed on you
 
 Once a voice finishes downloading in iOS Settings, it appears in Listen2 automatically — no restart needed. If you skip this step and open Listen2's voice library with the System engine filter on, you will only see the lower-quality voices that come pre-installed on every device. The default voices work fine, but the Enhanced and Premium voices offer a far superior listening experience.
 
-All three engines work side by side. You can switch between Piper, Supertonic, and System voices freely — even mid-document. Word-level highlighting works with all three engines. The app handles everything behind the scenes.
+All four engines work side by side. You can switch between Piper, Kokoro, Supertonic, and System voices freely — even mid-document. Word-level highlighting works with all four engines. The app handles everything behind the scenes — only one engine is loaded at a time, so switching between engines tears down the old one before starting the new one.
 
 #### Browsing Voices
 
-Open the Voice Library from the main settings screen or from your library. You will find dozens of voices spanning English, Spanish, French, German, Greek, Hindi, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Arabic, Turkish, Vietnamese, and more.
+Open the Voice Library from the main settings screen or from your library. You will find over 100 voices spanning 13 languages. Every voice row displays a color-coded engine badge — blue for Piper, purple for Kokoro, orange for Supertonic, gold for the bundled Listen2 voice, and gray for System — so you can tell at a glance which engine each voice uses.
 
 <div class="feature-box">
 <h4>{% icon "globe", "inline-icon" %} Available Languages</h4>
-<p>Listen2's Voice Library covers a wide range of languages: English, Spanish, French, German, Greek, Hindi, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, Arabic, Turkish, Vietnamese, and others. Piper voices cover all of these. Supertonic voices support English, Spanish, French, and Portuguese, with more languages coming. System voices are available in every language Apple supports — which is nearly every language on the planet.</p>
+<p>Listen2 supports 13 languages: English, Spanish, Portuguese, Italian, French, German, Hungarian, Turkish, Swedish, Russian, Greek, Hindi, and Vietnamese. Piper voices cover all 13. Kokoro voices cover 8 (English, Spanish, French, Hindi, Italian, Portuguese, Vietnamese, and Chinese). Supertonic voices support English, Spanish, French, and Portuguese. System voices are available in every language Apple supports — which is nearly every language on the planet.</p>
 </div>
 
 Every voice has a play button right on the row so you can preview it before committing to a download. For Supertonic voices, samples play in whatever language is currently selected — so you can hear how each voice sounds in Spanish or French, not just English.
 
-The Sort & Filter sheet gives you precise control over what appears in the list. You can toggle each voice engine on or off independently — show only Piper, only System, only Supertonic, or any combination. When the System engine is visible, an additional section appears for filtering by quality tier — toggle Premium, Enhanced, Compact, and others on or off individually. Only Premium and Enhanced are shown by default, since these are the tiers worth using for extended listening.
+The Sort & Filter sheet gives you precise control over what appears in the list. You can toggle each voice engine on or off independently — show only Piper, only Kokoro, only System, or any combination. When the System engine is visible, an additional section appears for filtering by quality tier — toggle Premium, Enhanced, Compact, and others on or off individually. Only Premium and Enhanced are shown by default, since these are the tiers worth using for extended listening.
 
 Beyond engines and tiers, you can filter by download status (all voices, downloaded only, or not yet downloaded), by language, and by Piper quality level (high or medium). Sort by name, language, or downloaded-first. The language filter is smart — it only shows languages that have voices in your currently visible engines and tiers, so you are never looking at an empty list.
 
@@ -587,7 +616,7 @@ You can toggle rules on and off, reorder them by dragging, and delete any rule y
 
 <div class="feature-box">
 <h4>{% icon "eye", "inline-icon" %} Voice Management with VoiceOver</h4>
-<p>Voice rows in the Voice Library have rotor actions for "Play Sample" and "Stop Sample" so you can preview without navigating away. Download progress and status are announced as they change. The multi-speaker browser is a searchable list — type to filter, double-tap to select a speaker. The Supertonic language card announces the current language and hints "Double tap to change Supertonic language." Custom voice rows include a play button that shows a loading indicator during on-device synthesis — VoiceOver announces when the sample is ready. Engine and tier filter toggles in the Sort & Filter sheet all have accessibility hints describing their show/hide behavior.</p>
+<p>Each voice row announces the voice name, language, quality, engine name, and file size. The engine badge reads as "{engine} engine" — for example, "Kokoro engine" or "Piper engine." The accessibility value tells you the current state: "Active voice," "Downloaded," or "Not downloaded." Voice rows have rotor actions for "Play Sample" and "Stop Sample" so you can preview without navigating away. Download progress and status are announced as they change. The multi-speaker browser is a searchable list — type to filter, double-tap to select a speaker. The Supertonic language card announces the current language and hints "Double tap to change Supertonic language." Custom voice rows include a play button that shows a loading indicator during on-device synthesis — VoiceOver announces when the sample is ready. Engine and tier filter toggles in the Sort & Filter sheet all have accessibility hints describing their show/hide behavior.</p>
 </div>
 
 <div class="feature-box">
@@ -778,7 +807,7 @@ A text-to-speech app is, by definition, an accessibility tool. It takes text and
 
 <div class="feature-box">
 <h4>{% icon "accessibility", "inline-icon" %} Accessibility Features at a Glance</h4>
-<p>Full VoiceOver support on every screen. Two accessible fonts — OpenDyslexic and Atkinson Hyperlegible. Dynamic Type integration with all iOS accessibility size categories. Generous line spacing up to 2.0x and character spacing up to 20%. VoiceOver-aware auto-scroll that pauses when you explore the reader. AI-generated figure descriptions that make images in your documents audible.</p>
+<p>Full VoiceOver support on every screen. Two accessible fonts — OpenDyslexic and Atkinson Hyperlegible. Dynamic Type integration with all iOS accessibility size categories. Generous line spacing up to 2.0x and character spacing up to 20%. VoiceOver-aware auto-scroll that pauses when you explore the reader. Seekable progress bar with adjustable actions for VoiceOver (5% increments). Timer controls with descriptive labels, values, and hints. Engine badges on voice rows that read as "{engine} engine." AI-generated figure descriptions that make images in your documents audible.</p>
 </div>
 
 #### VoiceOver
@@ -787,7 +816,7 @@ Every button has a descriptive label and hint. Interactive elements use appropri
 
 Rotor actions show up where they add value. In the Voice Library, you can Play Sample or Stop Sample directly from the rotor without hunting for buttons. In lists, delete is available as a custom action. These are the kinds of things that make the difference between an app that technically works with VoiceOver and one that feels good to use with it.
 
-The reader deserves a special mention. When you explore the reading area with your finger, auto-scrolling pauses so the text stays still while you move through it. And if you lose your place, the "Jump to Playback Position" button (visually, this button looks like crosshairs) brings the current reading line back into view. Navigate the top and bottom bars like any standard toolbar: swipe through controls, double-tap to activate.
+The reader deserves a special mention. When VoiceOver is active, the top and bottom bars stay visible at all times — they do not auto-hide the way they do for sighted users. When you explore the reading area with your finger, auto-scrolling pauses so the text stays still while you move through it. And if you lose your place, the "Jump to Playback Position" button (visually, this button looks like crosshairs) brings the current reading line back into view. Navigate the top and bottom bars like any standard toolbar: swipe through controls, double-tap to activate.
 
 Each earlier section of this guide includes a VoiceOver callout covering that specific screen's interactions. If you are looking for how VoiceOver works on a particular screen, check that section first.
 
@@ -851,9 +880,13 @@ If you reinstall the app or switch to a new device, go to Settings and tap "Rest
 <p>If a PDF imports but shows garbled text or nothing at all, it is likely a scanned image rather than real text. Listen2 cannot read pixels — it needs actual text content. Try copying the text manually from the source and using clipboard import instead.</p>
 </div>
 
-**Supertonic voice skips or clips words.** If a Supertonic voice occasionally swallows the end of a word or rushes through a phrase, try increasing the Duration Buffer in Voice Quality settings. The default values (Articulation Speed 0.79, Duration Buffer 14%) are tuned to minimize this, but some text patterns — especially long technical words or unusual names — benefit from a bit more room. Bumping Duration Buffer to 20% or lowering Articulation Speed to 0.75 can help.
+**Supertonic voice skips or clips words.** Supertonic's flow-matching architecture is occasionally prone to skipping words or short phrases. The default voice quality parameters are tuned to minimize this, but it is a known characteristic of how the model works and cannot be fully prevented. If word accuracy matters more than fidelity for a particular document, Piper or Kokoro are more reliable choices.
 
 **Supertonic voice switches between accents.** You might notice a Supertonic voice drifting between British and American accents within the same document. This is a known characteristic of the underlying model — the voice learned from a mix of accent styles, and certain text patterns can push it toward one or the other. Lowering the Variation slider in Voice Quality settings can help stabilize the accent. This is something we are actively working to improve.
+
+**Kokoro voices not showing up.** Kokoro requires a device with at least 6 GB of RAM. On older iPhones and iPads that do not meet this threshold, Kokoro voices will not appear in the Voice Library. This is not a bug — the model is too large to run reliably on those devices.
+
+**Phone gets warm with Kokoro.** Because Kokoro runs a larger neural network on device, your phone will produce more heat and use more energy during extended playback compared to Piper. This is normal. If heat or battery life is a concern for a particular session, switch to a Piper voice — or for the absolute lowest energy impact, use an Apple Premium or Enhanced system voice.
 
 **Highlighting seems out of sync.** This can happen with unusual formatting or at very fast speech rates. The audio itself is still correct — it is only the visual tracking that may drift. Switching to sentence-level highlighting smooths it out.
 

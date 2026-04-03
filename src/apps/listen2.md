@@ -2,7 +2,7 @@
 layout: layouts/listen2.njk
 title: "Listen2 - Turn Any Document Into an Audiobook"
 slug: listen2
-description: "Listen2 converts PDFs, EPUBs, and Word docs into audiobooks with 70+ natural AI voices. Fully offline, private, no subscription. Free 7-day trial."
+description: "Listen2 converts PDFs, EPUBs, and Word docs into audiobooks with 100+ natural AI voices across 13 languages. Four voice engines, all offline, no subscription. Free 7-day trial."
 tagline: Turn Any Document Into an Audiobook
 appStoreUrl: https://apps.apple.com/us/app/listen-2-reader/id6755753624
 status: available
@@ -13,7 +13,7 @@ screenshots:
   - src: /images/Listen2-reader.png
     alt: Turn Any Document Into an Audiobook - Every word lights up as it's spoken
   - src: /images/Listen2-voices.png
-    alt: 70+ Natural Voices in 8 Languages - All Offline, Always Private
+    alt: 100+ Natural Voices in 13 Languages - All Offline, Always Private
   - src: /images/Listen2-settings.png
     alt: Listen Your Way - Speed, Voice & Highlighting Controls
 ---
@@ -35,14 +35,16 @@ Unlike basic text-to-speech, Listen2 uses advanced audio alignment to highlight 
 
 ### Natural Voices, Completely Offline
 
-**70+ Voices. 8 Languages. Zero Internet Required.**
+**100+ Voices. 13 Languages. Four Engines. Zero Internet Required.**
 
-Listen2 uses Piper neural TTS—the same technology behind the best open-source voice assistants. Every voice is downloaded once and runs entirely on your device. No internet connection, no cloud processing, no privacy concerns.
+Listen2 runs four voice engines entirely on your device. **Piper** covers 13 languages with fast, lightweight neural voices. **Kokoro** is a premium engine with 53 voices across 8 languages — smoother, more expressive speech for devices with 6 GB of RAM or more. **Supertonic** uses flow-matching neural models on Apple's Neural Engine for high-fidelity output in English, Spanish, French, and Portuguese. And **Apple System** voices give you access to every language Apple supports with zero download inside Listen2.
 
-- 70+ voices across English, Spanish, French, German, Swedish, Hungarian, Italian, and Russian
+A high-quality English voice ships bundled in the app. No download, no setup — you are listening in seconds.
+
+- 100+ voices across English, Spanish, Portuguese, Italian, French, German, Hungarian, Turkish, Swedish, Russian, Greek, Hindi, and Vietnamese
 - Multi-speaker voice models with dozens of unique speakers each
 - Preview any voice before downloading
-- Quality options from lightweight to studio-grade
+- Engine badges on every voice so you know exactly what you are getting
 - Optional language packs for natural number, date, and currency pronunciation
 
 > Works on airplane mode. Works in the subway. Works everywhere.
@@ -62,6 +64,27 @@ Stop converting files or emailing documents to yourself. Listen2 imports directl
 - DAISY (accessibility-focused audiobook format)
 - Plain text and Markdown
 - Clipboard (paste anything)
+
+---
+
+### Duration Estimation & Progress
+
+**Know How Long You Have Left**
+
+Listen2 estimates the total duration of your document based on the active voice engine's speed and your playback rate. A seekable progress bar shows your position, with elapsed and remaining time displayed below. Drag the bar to jump anywhere in the document, or enter a percentage to skip straight to that point. The lock screen shows the same progress — drag the scrubber from your pocket without opening the app.
+
+- Elapsed and remaining time in H:MM:SS format
+- Seekable progress bar with drag-to-seek and jump-to-percentage
+- Lock screen and Now Playing scrubber integration
+- Duration refines as you listen, getting more accurate over time
+
+---
+
+### Timer
+
+**Set It and Forget It**
+
+Set a timer and Listen2 pauses playback when it expires. Useful for more than falling asleep — set a 30-minute timer so you know when to stop crocheting and start cooking dinner, or cap your commute listening so you do not miss your stop. Choose from 15, 30, 45, or 60 minute presets, or set a custom duration from 1 to 120 minutes. An optional audio cue plays a gentle tone when time is up. The countdown appears in the bottom bar while active.
 
 ---
 
@@ -117,10 +140,12 @@ Listen2 was engineered from the ground up with accessibility in mind. Full Voice
 **Accessibility Features:**
 - Full VoiceOver compatibility
 - Every button has descriptive labels and hints
+- Progress bar with VoiceOver adjustable actions — swipe to seek in 5% increments
+- Timer controls with full VoiceOver labels, values, and hints
 - Controls stay visible for accessibility users
 - Large text and Dynamic Type support
 - High contrast mode support
-- No essential gestures—buttons for everything
+- No essential gestures — buttons for everything
 
 ---
 
@@ -137,8 +162,10 @@ Listen2 was engineered from the ground up with accessibility in mind. Full Voice
 | Word highlighting | ✅ | ❌ | ❌ |
 | No subscription | ✅ | ❌ | ✅ |
 | No account required | ✅ | ❌ | ❌ |
-| 70+ voice options | ✅ | ❌ | ❌ |
-| 8 languages | ✅ | ❌ | ❌ |
+| 100+ voice options | ✅ | ❌ | ❌ |
+| 13 languages | ✅ | ❌ | ❌ |
+| Timer | ✅ | ✅ | ✅ |
+| Duration estimation | ✅ | ✅ | ❌ |
 | Collections & playlists | ✅ | ❌ | ❌ |
 | Adjustable speed | ✅ | ✅ | ✅ |
 | Privacy-first | ✅ | ❌ | ❌ |
@@ -152,8 +179,9 @@ Listen2 was engineered from the ground up with accessibility in mind. Full Voice
 | 100% offline | ✅ | ❌ | Partial | ❌ |
 | No subscription | ✅ | ❌ | ❌ ($60/yr) | ❌ |
 | No cloud upload | ✅ | ❌ | ❌ | ❌ |
-| 70+ voice choices | ✅ | ✅ | ✅ | Limited |
-| 8 languages | ✅ | ✅ | ✅ | Limited |
+| 100+ voice choices | ✅ | ✅ | ✅ | Limited |
+| 13 languages | ✅ | ✅ | ✅ | Limited |
+| Multiple TTS engines | ✅ (4) | ❌ | ❌ | ❌ |
 | DOCX & DAISY support | ✅ | Partial | ✅ | Partial |
 | Collections | ✅ | ❌ | ❌ | ❌ |
 | VoiceOver optimized | ✅ | Partial | ✅ | Partial |
@@ -175,7 +203,10 @@ A: PDF, EPUB, DOCX, DAISY, plain text, Markdown, and anything you can copy to yo
 A: Yes, 100%. Once you've downloaded a voice, everything runs on your device. No internet required for synthesis or playback.
 
 **Q: What languages are supported?**
-A: Listen2 currently supports 8 languages: English, Spanish, French, German, Swedish, Hungarian, Italian, and Russian. More languages are planned for future updates.
+A: Listen2 supports 13 languages: English, Spanish, Portuguese, Italian, French, German, Hungarian, Turkish, Swedish, Russian, Greek, Hindi, and Vietnamese. Coverage varies by engine — Piper covers all 13, Kokoro covers 8, and Supertonic covers 4. Apple System voices add every language Apple supports on top of that.
+
+**Q: What voice engines does Listen2 have?**
+A: Four engines, each with different strengths. **Piper** is fast and lightweight with the widest language coverage. **Kokoro** is a premium engine with more expressive, natural-sounding speech (requires 6 GB RAM). **Supertonic** runs high-fidelity flow-matching models on Apple's Neural Engine. **System** uses Apple's built-in voices for maximum language coverage and minimal battery use. All run entirely on device.
 
 ### Privacy
 
