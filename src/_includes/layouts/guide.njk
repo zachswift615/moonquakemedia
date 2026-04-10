@@ -91,17 +91,6 @@ footerStyle: bordered
     </div>
 </nav>
 
-{# ── Row 2: Section quick-nav (scrollable) ── #}
-{% if toc and toc.length %}
-<nav class="guide-sections-nav" aria-label="Guide sections">
-    <div class="guide-sections-scroll" role="list">
-        {% for section in toc %}
-        <a href="#{{ section.id }}" role="listitem" class="guide-sections-link">{{ section.short }}</a>
-        {% endfor %}
-    </div>
-</nav>
-{% endif %}
-
 {# ── Version status banners ── #}
 {% if currentStatus == "beta" %}
 <div class="bg-purple-50 border-2 border-purple-300 rounded-xl p-5 mx-auto my-8 max-w-4xl shadow-lg">
