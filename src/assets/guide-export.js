@@ -9,6 +9,23 @@
 (function () {
   'use strict';
 
+  // ========== Version Helper ==========
+
+  function getGuideVersion() {
+    var main = document.getElementById('main-content');
+    return main && main.dataset.guideVersion ? main.dataset.guideVersion : '';
+  }
+
+  function guideTitle() {
+    var v = getGuideVersion();
+    return v ? 'Listen2 User Guide (' + v + ')' : 'Listen2 User Guide';
+  }
+
+  function guideFilename(ext) {
+    var v = getGuideVersion();
+    return v ? 'Listen2-User-Guide-' + v + '.' + ext : 'Listen2-User-Guide.' + ext;
+  }
+
   // ========== DOM Parser ==========
 
   function parseGuideContent() {
@@ -268,7 +285,7 @@
 
     // Title
     children.push(new Paragraph({
-      children: [new TextRun({ text: 'Listen2 User Guide', bold: true, size: 48, font: 'Arial' })],
+      children: [new TextRun({ text: guideTitle(), bold: true, size: 48, font: 'Arial' })],
       heading: HeadingLevel.TITLE,
       spacing: { after: 400 },
     }));
@@ -435,7 +452,7 @@
     });
 
     return Packer.toBlob(doc).then(function (blob) {
-      downloadBlob(blob, 'Listen2-User-Guide.docx');
+      downloadBlob(blob, guideFilename('docx'));
     });
   }
 
@@ -649,7 +666,7 @@
         // No cover image — render a text title page
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(36);
-        doc.text('Listen2 User Guide', PAGE_W / 2, PAGE_H / 2 - 0.5, { align: 'center' });
+        doc.text(guideTitle(), PAGE_W / 2, PAGE_H / 2 - 0.5, { align: 'center' });
         doc.setFontSize(14);
         doc.setFont('helvetica', 'normal');
         doc.text('Your Complete Guide to Personal Audiobooks', PAGE_W / 2, PAGE_H / 2 + 0.3, { align: 'center' });
@@ -660,7 +677,7 @@
         content.forEach(function (node) {
           renderNode(node, MARGIN, CONTENT_W);
         });
-        doc.save('Listen2-User-Guide.pdf');
+        doc.save(guideFilename('pdf'));
       });
   }
 
@@ -733,7 +750,7 @@
         return zip.generateAsync({ type: 'blob', mimeType: 'application/epub+zip' });
       })
       .then(function (blob) {
-        downloadBlob(blob, 'Listen2-User-Guide.epub');
+        downloadBlob(blob, guideFilename('epub'));
       });
   }
 
@@ -762,7 +779,7 @@
         '<html xmlns="http://www.w3.org/1999/xhtml">\n' +
         '<head><title>Cover</title></head>\n' +
         '<body style="margin:0;padding:0;text-align:center">\n' +
-        '  <img src="images/cover.png" alt="Listen2 User Guide" style="max-width:100%;max-height:100vh"/>\n' +
+        '  <img src="images/cover.png" alt="' + guideTitle() + '" style="max-width:100%;max-height:100vh"/>\n' +
         '</body>\n' +
         '</html>');
     }
@@ -786,7 +803,7 @@
       '<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="uid">\n' +
       '  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">\n' +
       '    <dc:identifier id="uid">listen2-user-guide</dc:identifier>\n' +
-      '    <dc:title>Listen2 User Guide</dc:title>\n' +
+      '    <dc:title>' + guideTitle() + '</dc:title>\n' +
       '    <dc:language>en</dc:language>\n' +
       '    <meta property="dcterms:modified">' + now + '</meta>\n' +
       '  </metadata>\n' +

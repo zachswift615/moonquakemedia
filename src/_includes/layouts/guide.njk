@@ -132,7 +132,7 @@ footerStyle: bordered
 </div>
 {% endif %}
 
-<main id="main-content" class="max-w-4xl mx-auto px-5 py-10">
+<main id="main-content" class="max-w-4xl mx-auto px-5 py-10"{% if guideVersion %} data-guide-version="{{ guideVersion }}"{% endif %}
     {% if toc and toc.length %}
     <div class="content-section">
         <h2 class="!border-0 !pb-0">Table of Contents</h2>
