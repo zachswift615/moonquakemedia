@@ -10,13 +10,55 @@ footerStyle: bordered
     { url: "mailto:" + site.email, text: "Support" }
 ] %}
 
+{# ── Version data lookup ── #}
+{% set versions = guideVersions[slug] if guideVersions and guideVersions[slug] else [] %}
+{% set currentStatus = null %}
+{% set latestVersionSlug = null %}
+{% for v in versions %}
+  {% if v.version == guideVersion %}{% set currentStatus = v.status %}{% endif %}
+  {% if v.status == "latest" %}{% set latestVersionSlug = v.version %}{% endif %}
+{% endfor %}
+
 <header class="gradient-hero text-white py-10 text-center shadow-md">
     <h1 class="text-3xl md:text-4xl font-bold mb-2">{{ title }} User Guide</h1>
     <p class="text-lg opacity-90">{{ subtitle | default("Your Complete Guide") }}</p>
 </header>
 
 <nav class="flex items-center justify-between py-4 px-5 bg-white shadow-sm" aria-label="Guide navigation">
-    <a href="/apps/{{ slug }}/" class="text-primary-500 font-semibold hover:underline whitespace-nowrap">&larr; Back to {{ title }}</a>
+    <div class="flex items-center gap-3">
+        <a href="/apps/{{ slug }}/" class="text-primary-500 font-semibold hover:underline whitespace-nowrap">&larr; Back to {{ title }}</a>
+        {% if versions | length > 0 %}
+        <div class="relative" id="version-selector">
+            <button id="version-btn"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="version-menu"
+                    class="version-selector-btn">
+                {{ guideVersion }}
+                {% if currentStatus == "latest" %}<span class="version-badge version-badge-latest">Latest</span>
+                {% elif currentStatus == "beta" %}<span class="version-badge version-badge-beta">Beta</span>
+                {% elif currentStatus == "legacy" %}<span class="version-badge version-badge-legacy">Legacy</span>
+                {% endif %}
+                <span aria-hidden="true">&#9662;</span>
+            </button>
+            <ul id="version-menu" role="listbox" aria-label="Guide version" hidden class="version-menu">
+                {% for v in versions %}
+                <li role="option"
+                    {% if v.version == guideVersion %}aria-selected="true"{% endif %}>
+                    <a href="/guides/{{ slug }}/{{ v.version }}/"
+                       class="version-menu-item{% if v.version == guideVersion %} version-menu-item-active{% endif %}">
+                        <span class="version-menu-label">{{ v.label }}</span>
+                        {% if v.status == "latest" %}<span class="version-badge version-badge-latest">Latest</span>
+                        {% elif v.status == "beta" %}<span class="version-badge version-badge-beta">Beta</span>
+                        {% elif v.status == "legacy" %}<span class="version-badge version-badge-legacy">Legacy</span>
+                        {% endif %}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
     <div class="hidden md:flex items-center gap-4 overflow-x-auto mx-4" role="navigation" aria-label="Guide sections">
         {% for section in toc %}
         <a href="#{{ section.id }}" class="text-primary-500 font-semibold hover:underline whitespace-nowrap">{{ section.short }}</a>
@@ -47,6 +89,35 @@ footerStyle: bordered
         </div>
     </div>
 </nav>
+
+{# ── Version status banners ── #}
+{% if currentStatus == "beta" %}
+<div class="bg-purple-50 border-2 border-purple-300 rounded-xl p-5 mx-auto my-8 max-w-4xl shadow-lg">
+    <div class="flex items-start gap-4">
+        <span class="text-3xl text-purple-500">{% icon "flask-conical", "w-8 h-8" %}</span>
+        <div>
+            <h3 class="text-purple-800 text-xl font-semibold mb-1">Beta Documentation</h3>
+            <p class="text-purple-700 mb-0">You're viewing the guide for a pre-release version. Content may change before the final release.
+                {% if latestVersionSlug %}<a href="/guides/{{ slug }}/{{ latestVersionSlug }}/" class="text-purple-800 font-semibold underline">View the current stable guide &rarr;</a>{% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if currentStatus == "legacy" %}
+<div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mx-auto my-8 max-w-4xl shadow-lg">
+    <div class="flex items-start gap-4">
+        <span class="text-3xl text-amber-500">{% icon "archive", "w-8 h-8" %}</span>
+        <div>
+            <h3 class="text-amber-800 text-xl font-semibold mb-1">Archived Documentation</h3>
+            <p class="text-amber-700 mb-0">This guide is for an older version and may not reflect the current app.
+                {% if latestVersionSlug %}<a href="/guides/{{ slug }}/{{ latestVersionSlug }}/" class="text-amber-800 font-semibold underline">View the current guide &rarr;</a>{% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endif %}
 
 {% if iapNotice %}
 <div class="bg-yellow-100 border-2 border-yellow-400 rounded-xl p-5 mx-auto my-8 max-w-4xl shadow-lg">
@@ -82,3 +153,35 @@ footerStyle: bordered
 <script defer src="https://cdn.jsdelivr.net/npm/jspdf@latest/dist/jspdf.umd.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/jszip@latest/dist/jszip.min.js"></script>
 <script defer src="/assets/guide-export.js"></script>
+
+{% if versions | length > 0 %}
+<script>
+(function() {
+  var btn = document.getElementById('version-btn');
+  var menu = document.getElementById('version-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var open = !menu.hidden;
+    menu.hidden = open;
+    btn.setAttribute('aria-expanded', String(!open));
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) {
+      menu.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !menu.hidden) {
+      menu.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.focus();
+    }
+  });
+})();
+</script>
+{% endif %}

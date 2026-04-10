@@ -819,3 +819,62 @@
 .badge-beta {
   @apply bg-primary-500;
 }
+
+/* Version selector */
+.version-selector-btn {
+  @apply flex items-center gap-1.5 bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg text-sm font-semibold cursor-pointer border border-gray-200;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.version-selector-btn:hover {
+  @apply bg-gray-200 border-gray-300;
+}
+
+.version-selector-btn:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary-500;
+  outline-style: solid;
+}
+
+.version-badge {
+  @apply text-xs font-bold px-1.5 py-0.5 rounded;
+}
+
+.version-badge-latest {
+  @apply bg-green-100 text-green-800;
+}
+
+.version-badge-beta {
+  @apply bg-purple-100 text-purple-800;
+}
+
+.version-badge-legacy {
+  @apply bg-amber-100 text-amber-800;
+}
+
+.version-menu {
+  @apply absolute left-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 z-50 py-1;
+  min-width: 200px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.version-menu li {
+  margin: 0;
+}
+
+.version-menu-item {
+  @apply flex items-center gap-2 w-full px-4 py-2.5 text-sm text-gray-700 no-underline;
+  transition: background-color 0.1s;
+}
+
+.version-menu-item:hover {
+  @apply bg-gray-50 no-underline;
+}
+
+.version-menu-item-active {
+  @apply bg-primary-500/5 text-primary-500 font-semibold;
+}
+
+.version-menu-label {
+  @apply font-medium;
+}

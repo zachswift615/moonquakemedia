@@ -1,0 +1,23 @@
+---
+layout: false
+permalink: /guides/listen2/
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  {%- set latestVersion = null -%}
+  {%- for v in guideVersions.listen2 -%}
+    {%- if v.status == "latest" -%}
+      {%- set latestVersion = v.version -%}
+    {%- endif -%}
+  {%- endfor -%}
+  <meta http-equiv="refresh" content="0; url=/guides/listen2/{{ latestVersion }}/">
+  <link rel="canonical" href="{{ site.url }}/guides/listen2/{{ latestVersion }}/">
+  <title>Redirecting to Listen2 User Guide</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/guides/listen2/{{ latestVersion }}/">Listen2 User Guide {{ latestVersion }}</a>...</p>
+</body>
+</html>
