@@ -24,71 +24,83 @@ footerStyle: bordered
     <p class="text-lg opacity-90">{{ subtitle | default("Your Complete Guide") }}</p>
 </header>
 
-<nav class="flex items-center justify-between py-4 px-5 bg-white shadow-sm" aria-label="Guide navigation">
-    <div class="flex items-center gap-3">
-        <a href="/apps/{{ slug }}/" class="text-primary-500 font-semibold hover:underline whitespace-nowrap">&larr; Back to {{ title }}</a>
-        {% if versions | length > 0 %}
-        <div class="relative" id="version-selector">
-            <button id="version-btn"
-                    aria-haspopup="listbox"
-                    aria-expanded="false"
-                    aria-controls="version-menu"
-                    class="version-selector-btn">
-                {{ guideVersion }}
-                {% if currentStatus == "latest" %}<span class="version-badge version-badge-latest">Latest</span>
-                {% elif currentStatus == "beta" %}<span class="version-badge version-badge-beta">Beta</span>
-                {% elif currentStatus == "legacy" %}<span class="version-badge version-badge-legacy">Legacy</span>
-                {% endif %}
-                <span aria-hidden="true">&#9662;</span>
-            </button>
-            <ul id="version-menu" role="listbox" aria-label="Guide version" hidden class="version-menu">
-                {% for v in versions %}
-                <li role="option"
-                    {% if v.version == guideVersion %}aria-selected="true"{% endif %}>
-                    <a href="/guides/{{ slug }}/{{ v.version }}/"
-                       class="version-menu-item{% if v.version == guideVersion %} version-menu-item-active{% endif %}">
-                        <span class="version-menu-label">{{ v.label }}</span>
-                        {% if v.status == "latest" %}<span class="version-badge version-badge-latest">Latest</span>
-                        {% elif v.status == "beta" %}<span class="version-badge version-badge-beta">Beta</span>
-                        {% elif v.status == "legacy" %}<span class="version-badge version-badge-legacy">Legacy</span>
-                        {% endif %}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
+{# ── Row 1: Back link, version selector, download ── #}
+<nav class="guide-toolbar" aria-label="Guide tools">
+    <div class="guide-toolbar-row">
+        <div class="flex items-center gap-3 min-w-0">
+            <a href="/apps/{{ slug }}/" class="text-primary-500 font-semibold hover:underline whitespace-nowrap">&larr; <span class="hidden sm:inline">Back to </span>{{ title }}</a>
+            {% if versions | length > 0 %}
+            <div class="relative" id="version-selector">
+                <button id="version-btn"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="version-menu"
+                        aria-label="Guide version: {{ guideVersion }}{% if currentStatus == 'latest' %}, latest release{% elif currentStatus == 'beta' %}, beta pre-release{% elif currentStatus == 'legacy' %}, archived version{% endif %}"
+                        class="version-selector-btn">
+                    <span aria-hidden="true">{{ guideVersion }}</span>
+                    {% if currentStatus == "latest" %}<span class="version-badge version-badge-latest" aria-hidden="true">Latest</span>
+                    {% elif currentStatus == "beta" %}<span class="version-badge version-badge-beta" aria-hidden="true">Beta</span>
+                    {% elif currentStatus == "legacy" %}<span class="version-badge version-badge-legacy" aria-hidden="true">Legacy</span>
+                    {% endif %}
+                    <span aria-hidden="true">&#9662;</span>
+                </button>
+                <ul id="version-menu" role="menu" aria-label="Switch guide version" hidden class="version-menu">
+                    {% for v in versions %}
+                    <li role="none">
+                        <a href="/guides/{{ slug }}/{{ v.version }}/"
+                           role="menuitem"
+                           tabindex="-1"
+                           aria-current="{% if v.version == guideVersion %}page{% else %}false{% endif %}"
+                           class="version-menu-item{% if v.version == guideVersion %} version-menu-item-active{% endif %}">
+                            <span class="version-menu-label">{{ v.label }}</span>
+                            {% if v.status == "latest" %}<span class="version-badge version-badge-latest"><span class="sr-only">(</span>Latest<span class="sr-only">)</span></span>
+                            {% elif v.status == "beta" %}<span class="version-badge version-badge-beta"><span class="sr-only">(</span>Beta<span class="sr-only">)</span></span>
+                            {% elif v.status == "legacy" %}<span class="version-badge version-badge-legacy"><span class="sr-only">(</span>Legacy<span class="sr-only">)</span></span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
-    </div>
-    <div class="hidden md:flex items-center gap-4 overflow-x-auto mx-4" role="navigation" aria-label="Guide sections">
-        {% for section in toc %}
-        <a href="#{{ section.id }}" class="text-primary-500 font-semibold hover:underline whitespace-nowrap">{{ section.short }}</a>
-        {% endfor %}
-    </div>
-    <div class="relative">
-        <button id="guide-download-btn"
-                aria-haspopup="true"
-                aria-expanded="false"
-                aria-controls="guide-download-menu"
-                aria-live="polite"
-                class="guide-download-btn">
-            Download <span class="hidden sm:inline">Guide </span><span aria-hidden="true">&#9662;</span>
-        </button>
-        <div id="guide-download-menu" role="menu" aria-label="Export formats" hidden class="guide-download-menu">
-            <button role="menuitem" data-format="docx" tabindex="-1">
-                <span class="guide-download-format">Word Document (.docx)</span>
-                <span class="guide-download-desc">For editing and review</span>
+        <div class="relative">
+            <button id="guide-download-btn"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-controls="guide-download-menu"
+                    aria-live="polite"
+                    class="guide-download-btn">
+                Download <span class="hidden sm:inline">Guide </span><span aria-hidden="true">&#9662;</span>
             </button>
-            <button role="menuitem" data-format="pdf" tabindex="-1">
-                <span class="guide-download-format">PDF</span>
-                <span class="guide-download-desc">For reading and printing</span>
-            </button>
-            <button role="menuitem" data-format="epub" tabindex="-1">
-                <span class="guide-download-format">EPUB</span>
-                <span class="guide-download-desc">For reading in Listen2 or ebook apps</span>
-            </button>
+            <div id="guide-download-menu" role="menu" aria-label="Export formats" hidden class="guide-download-menu">
+                <button role="menuitem" data-format="docx" tabindex="-1">
+                    <span class="guide-download-format">Word Document (.docx)</span>
+                    <span class="guide-download-desc">For editing and review</span>
+                </button>
+                <button role="menuitem" data-format="pdf" tabindex="-1">
+                    <span class="guide-download-format">PDF</span>
+                    <span class="guide-download-desc">For reading and printing</span>
+                </button>
+                <button role="menuitem" data-format="epub" tabindex="-1">
+                    <span class="guide-download-format">EPUB</span>
+                    <span class="guide-download-desc">For reading in Listen2 or ebook apps</span>
+                </button>
+            </div>
         </div>
     </div>
 </nav>
+
+{# ── Row 2: Section quick-nav (scrollable) ── #}
+{% if toc and toc.length %}
+<nav class="guide-sections-nav" aria-label="Guide sections">
+    <div class="guide-sections-scroll" role="list">
+        {% for section in toc %}
+        <a href="#{{ section.id }}" role="listitem" class="guide-sections-link">{{ section.short }}</a>
+        {% endfor %}
+    </div>
+</nav>
+{% endif %}
 
 {# ── Version status banners ── #}
 {% if currentStatus == "beta" %}
@@ -161,25 +173,59 @@ footerStyle: bordered
   var menu = document.getElementById('version-menu');
   if (!btn || !menu) return;
 
+  var items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
+
+  function openMenu() {
+    menu.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+    // Focus the current-page item, or the first item
+    var current = menu.querySelector('[aria-current="page"]') || items[0];
+    if (current) current.focus();
+  }
+
+  function closeMenu(restoreFocus) {
+    menu.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+    if (restoreFocus) btn.focus();
+  }
+
   btn.addEventListener('click', function(e) {
     e.stopPropagation();
-    var open = !menu.hidden;
-    menu.hidden = open;
-    btn.setAttribute('aria-expanded', String(!open));
+    menu.hidden ? openMenu() : closeMenu(true);
+  });
+
+  btn.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      openMenu();
+    }
+  });
+
+  menu.addEventListener('keydown', function(e) {
+    var idx = items.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      items[(idx + 1) % items.length].focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      items[(idx - 1 + items.length) % items.length].focus();
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      items[0].focus();
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      items[items.length - 1].focus();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      closeMenu(true);
+    } else if (e.key === 'Tab') {
+      closeMenu(false);
+    }
   });
 
   document.addEventListener('click', function(e) {
     if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) {
-      menu.hidden = true;
-      btn.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !menu.hidden) {
-      menu.hidden = true;
-      btn.setAttribute('aria-expanded', 'false');
-      btn.focus();
+      closeMenu(false);
     }
   });
 })();

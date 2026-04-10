@@ -820,9 +820,47 @@
   @apply bg-primary-500;
 }
 
+/* Guide toolbar (two-row nav) */
+.guide-toolbar {
+  @apply bg-white shadow-sm;
+}
+
+.guide-toolbar-row {
+  @apply flex items-center justify-between py-3 px-4 gap-3;
+}
+
+/* Section quick-nav strip */
+.guide-sections-nav {
+  @apply bg-white border-t border-gray-100 overflow-hidden;
+}
+
+.guide-sections-scroll {
+  @apply flex gap-1 px-4 py-2 overflow-x-auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.guide-sections-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.guide-sections-link {
+  @apply text-sm font-medium text-gray-500 px-3 py-1.5 rounded-full whitespace-nowrap no-underline;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.guide-sections-link:hover {
+  @apply bg-primary-500/10 text-primary-500 no-underline;
+}
+
+.guide-sections-link:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary-500;
+  outline-style: solid;
+}
+
 /* Version selector */
 .version-selector-btn {
-  @apply flex items-center gap-1.5 bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg text-sm font-semibold cursor-pointer border border-gray-200;
+  @apply flex items-center gap-1.5 bg-gray-100 text-gray-700 px-2.5 py-1.5 rounded-lg text-sm font-semibold cursor-pointer border border-gray-200;
   transition: background-color 0.15s, border-color 0.15s;
 }
 
@@ -867,8 +905,14 @@
   transition: background-color 0.1s;
 }
 
-.version-menu-item:hover {
+.version-menu-item:hover,
+.version-menu-item:focus {
   @apply bg-gray-50 no-underline;
+}
+
+.version-menu-item:focus-visible {
+  @apply bg-gray-50 outline-2 outline-offset-[-2px] outline-primary-500 no-underline;
+  outline-style: solid;
 }
 
 .version-menu-item-active {
@@ -877,4 +921,16 @@
 
 .version-menu-label {
   @apply font-medium;
+}
+
+/* Screen-reader only utility */
+.sr-only {
+  @apply absolute overflow-hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
