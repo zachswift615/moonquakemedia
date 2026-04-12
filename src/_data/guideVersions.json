@@ -1,6 +1,7 @@
 {
   "listen2": [
-    { "version": "v1.8.0-beta", "label": "v1.8.0 Beta", "status": "beta" },
-    { "version": "v1.7.0", "label": "v1.7.0", "status": "latest" }
+    { "version": "v1.9.0-beta", "label": "v1.9.0 Beta", "status": "beta" },
+    { "version": "v1.8.0", "label": "v1.8.0", "status": "latest" },
+    { "version": "v1.7.0", "label": "v1.7.0", "status": "legacy" }
   ]
 }
