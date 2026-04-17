@@ -82,13 +82,15 @@ Binaural beats play slightly different frequencies in each ear, and your brain p
 
 ### Brainwave States
 
-- **Delta (0.5–4 Hz)** — Deep sleep
-- **Theta (4–8 Hz)** — Deep meditation
-- **Alpha (8–12 Hz)** — Relaxation and creativity
-- **Beta (12–30 Hz)** — Focus and alertness
-- **Gamma (30–40 Hz)** — Peak cognitive performance
+- **Delta (0.5–4 Hz)** — associated with sleep
+- **Theta (4–8 Hz)** — associated with meditation
+- **Alpha (8–12 Hz)** — associated with relaxation
+- **Beta (12–30 Hz)** — associated with focus
+- **Gamma (30–40 Hz)** — associated with alertness
 
-Use headphones for the full binaural effect — speakers cannot produce the necessary per-ear separation.
+Use headphones for the full binaural effect; speakers cannot produce the necessary per-ear separation.
+
+*Binaural beats are not a medical treatment. If you have epilepsy or a seizure disorder, consult your doctor before use.*
 
 </div>
 
@@ -149,7 +151,7 @@ Share individual presets as `.quietuspreset` files or bundles as `.quietuspack` 
 
 - **Layer voices for depth** — use one voice for low-frequency warmth and another for high-frequency texture
 - **Use slow LFOs** — rates below 0.1 Hz create subtle, evolving movement that prevents listener fatigue
-- **Program a sleep journey** — start with alpha-range binaural beats for relaxation, transition to delta for deep sleep over 60–90 minutes, then fade to silence
+- **Program a sleep journey** — start with alpha-range binaural beats, transition to delta over 60–90 minutes, then fade to silence
 - **Headphones for binaural** — binaural beats require headphones to work; speakers blend the channels and eliminate the effect
 - **Safe listening** — use moderate volume levels, especially for extended sessions. The lookahead limiter protects against peaks but doesn't replace responsible volume management
 

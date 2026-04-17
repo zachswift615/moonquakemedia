@@ -96,7 +96,7 @@ After setup, Speak2 appears as a microphone icon in the macOS menu bar. The icon
 | **Purple** | Refining — AI is cleaning and improving the transcribed text. |
 | **Yellow (animated)** | Loading — Speak2 is loading a speech model into memory. |
 
-Click the menu bar icon to open the status menu. From this menu, you can select a speech model, configure your hotkey, access the quick dictionary, and open settings.
+Click the menu bar icon to open the status menu. From this menu, you can select a speech model, configure your hotkey, access the quick dictionary, open your transcription history, and open settings.
 
 <div class="tip-box"><h4>{% icon "lightbulb", "inline-icon" %} Your Privacy Is Protected</h4><p>Speak2 runs entirely on your Mac. Your voice recordings are processed locally and are never sent to any server. This ensures complete privacy for all dictation.</p></div>
 
@@ -380,6 +380,30 @@ Both Built-in and Ollama modes accept a custom prompt. The prompt is added befor
 - To create a custom prompt, type your instructions in the prompt field.
 - To restore the original prompt, click <span class="button-label">Reset to Default</span>.
 
+### Advanced — Few-shot Examples
+
+In Built-in mode, Speak2 sends two example pairs to the language model along with your transcription. Each pair shows a raw (messy) version of a message and the cleaned version. These examples teach the model the style of cleanup to perform. Because they are sent on every request, they strongly influence the model's output.
+
+The examples are editable under **Settings → AI Refine → Advanced → Few-shot examples**. Each pair has two fields:
+
+- **Raw (user)** — A sample messy transcription, as if spoken aloud with filler words and false starts.
+- **Cleaned (assistant)** — The corresponding polished version that the model should produce.
+
+Click <span class="button-label">Reset Examples to Defaults</span> at any time to restore the originals. Leave a field blank to fall back to the default for that example.
+
+Most users do not need to change these. They are primarily exposed for non-English dictation (see below).
+
+### Dictating in Other Languages
+
+The default Refinement Prompt and the Advanced example pairs are written in English. This is fine for English dictation, but for any other language it biases the Built-in model (Qwen 2.5 1.5B) toward translating your output into English.
+
+Qwen 2.5 is natively multilingual and supports languages including Dutch, Spanish, French, German, Italian, Portuguese, Japanese, Chinese, Korean, and many more. To get reliable refinement in your language, translate **both** of the following into that language:
+
+1. The **Refinement Prompt** in **Settings → AI Refine → Refinement Prompt**
+2. The four example fields in **Settings → AI Refine → Advanced → Few-shot examples** (both Raw and Cleaned, for both pairs)
+
+An informational banner appears at the top of the AI Refine settings as a reminder. If you dictate in multiple languages, keep the language you dictate in most often as your primary setup. For dictation in a second language, you may need to switch settings manually before and after.
+
 ### Status Indicator
 
 When AI refinement is active, the menu bar icon turns purple and displays a sparkles symbol. This indicates that the AI is processing your text. When refinement is complete, the cleaned text is pasted automatically.
@@ -400,7 +424,12 @@ Speak2 keeps a record of your recent transcriptions. You can review, search, cop
 
 ### 7.1 Viewing History
 
-Open **Settings → History** to view your transcription history. Entries are grouped by time period:
+There are two ways to open your transcription history:
+
+- Click the Speak2 menu bar icon and choose **History...** This is the fastest path.
+- Or open **Settings → History** to view the same list inside the Settings window.
+
+Entries are grouped by time period:
 
 - **Today**
 - **Yesterday**
@@ -437,7 +466,16 @@ Your entire history is saved as a JSON file. This is useful for record-keeping o
 
 Click <span class="button-label">Clear All</span> to delete all history entries. A confirmation dialog appears before deletion proceeds. This action cannot be undone.
 
-### 7.6 Storage Limits
+### 7.6 Disabling History and Auto-Delete
+
+You can control whether transcriptions are saved to history, and how long they are kept, under **Settings → General → Transcription History**.
+
+- **Save transcriptions to history** — Turn this toggle off to stop saving new transcriptions. Existing entries are preserved but no new ones will be added. Turn it back on at any time to resume saving.
+- **Auto-delete after N minutes** — Enter the number of minutes you want entries to be kept. Entries older than this threshold are automatically removed. Set this to **0** to keep history indefinitely (up to the storage limit below). The sweep runs on app launch and every 60 seconds while Speak2 is running.
+
+For example, setting auto-delete to **10** gives you scratch-space behavior: history is available to review and copy immediately after dictation, but automatically clears itself so nothing sensitive is left sitting around.
+
+### 7.7 Storage Limits
 
 Speak2 stores up to **500** transcription entries. When the limit is reached, the oldest entries are removed automatically to make room for new ones.
 
@@ -531,8 +569,23 @@ This section lists common problems and their solutions. If your issue is not lis
 - Make sure your cursor is placed inside a text field before you begin dictating.
 - Some applications use restricted text fields that do not accept programmatic paste. Try dictating into TextEdit to confirm Speak2 is working. If text appears in TextEdit but not in another application, the issue is with that application's text field.
 - Check that a speech model is downloaded and loaded. The menu bar status should show "Ready."
+- Speak2 supports pasting into floating quick-launcher overlays (such as Claude Desktop's option-option chat window) as of v1.8.1. If you are on an older version and paste is not landing in such overlays, update Speak2.
 
-### 9.3 Poor Transcription Accuracy
+### 9.3 Original Clipboard Content Pastes Instead of Transcription
+
+**Problem:** After dictation, the contents of your clipboard from *before* you dictated appear in the target application instead of (or alongside) the transcribed text. This most commonly affects remote sessions such as SSH terminals, where you may see the original clipboard appear character-by-character.
+
+**Cause:** Speak2 briefly puts the transcription on your clipboard, simulates Cmd+V, then restores your original clipboard contents. On slow remote connections, the restore can happen before the remote side has finished reading the injected text, so the remote app ends up reading your original clipboard.
+
+**Solution:**
+
+- Open **Settings → General → Paste Behavior**.
+- Increase the **Clipboard restore delay** from the default of 100ms. Try **500ms** first. For very slow connections, try **1000ms** or higher. The maximum is 2000ms.
+- Dictate into the problem application again. If the issue persists, increase the delay further until the paste is reliable.
+
+This setting only affects how long Speak2 waits before restoring your clipboard. It does not delay the paste itself or add latency to local applications.
+
+### 9.4 Poor Transcription Accuracy
 
 **Problem:** The transcribed text contains many errors or incorrect words.
 
@@ -544,7 +597,7 @@ This section lists common problems and their solutions. If your issue is not lis
 - Add frequently misheard words to the **Personal Dictionary** with aliases for common mistakes.
 - Enable **AI Refinement** to clean up filler words and false starts automatically.
 
-### 9.4 Model Download Fails
+### 9.5 Model Download Fails
 
 **Problem:** A model download does not complete or produces an error.
 
@@ -555,7 +608,7 @@ This section lists common problems and their solutions. If your issue is not lis
 - Try downloading a smaller model first to confirm the download process works.
 - If a download stops partway through, try again. Downloads resume from where they stopped.
 
-### 9.5 AI Refinement Not Working (Built-in)
+### 9.6 AI Refinement Not Working (Built-in)
 
 **Problem:** The built-in AI refinement does not produce results or is very slow.
 
@@ -565,7 +618,7 @@ This section lists common problems and their solutions. If your issue is not lis
 - Make sure your Mac has sufficient available memory. The built-in model uses approximately 1–2 GB of RAM.
 - If refinement is slow on first use, this is expected. The model needs time to initialize. Subsequent refinements will be faster.
 
-### 9.6 AI Refinement Not Working (Ollama)
+### 9.7 AI Refinement Not Working (Ollama)
 
 **Problem:** Ollama refinement fails or produces an error.
 
@@ -577,7 +630,7 @@ This section lists common problems and their solutions. If your issue is not lis
 - Check that your firewall is not blocking the connection.
 - The default timeout is 30 seconds. Very large transcriptions may require more time.
 
-### 9.7 Microphone Not Detected
+### 9.8 Microphone Not Detected
 
 **Problem:** Speak2 does not detect your microphone or recording produces no audio.
 
@@ -587,7 +640,7 @@ This section lists common problems and their solutions. If your issue is not lis
 - Check that your microphone is selected as the input device in **System Settings → Sound → Input**.
 - If you connected a new microphone while Speak2 was running, restart Speak2.
 
-### 9.8 High Memory Usage
+### 9.9 High Memory Usage
 
 **Problem:** Speak2 uses a large amount of memory (RAM).
 
@@ -597,15 +650,19 @@ This section lists common problems and their solutions. If your issue is not lis
 - If both a speech model and the AI refinement model are loaded simultaneously, memory usage will be higher. Disable AI refinement if memory is a concern.
 - Close and reopen Speak2 to release memory held by models that are no longer in use.
 
-### 9.9 Contact Support
+### 9.10 Contact Support
 
-If the solutions above do not resolve your issue, contact the Speak2 support team.
+If the solutions above do not resolve your issue, there are two ways to reach us. GitHub is preferred for bug reports and feature requests — issues filed there are public, searchable, and get tracked alongside development.
 
-- **Email:** [support@moonquakemedia.com](mailto:support@moonquakemedia.com)
-- **Include the following information:**
-  - Your macOS version
-  - Your Mac model
-  - A clear description of the problem
-- Screenshots or screen recordings are helpful.
+- **GitHub Issues (preferred):** [github.com/zachswift615/speak2/issues](https://github.com/zachswift615/speak2/issues) — Open a new issue. Other users may be able to help too, and fixes ship faster when bugs are tracked here.
+- **Email:** [support@moonquakemedia.com](mailto:support@moonquakemedia.com) — For private support requests or anything you would rather not discuss publicly.
+
+When reporting a problem, please include:
+
+- Your macOS version
+- Your Mac model
+- The Speak2 version (shown in **Settings → General → About**)
+- A clear description of the problem and the steps to reproduce it
+- Screenshots or screen recordings, if applicable
 
 </div>
