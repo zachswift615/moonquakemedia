@@ -28,7 +28,7 @@
     "name": "Quietus",
     "tagline": "Professional ambient sound generator with binaural beats and journey automation",
     "icon": "/images/QuietusAppIcon.png",
-    "status": "beta",
-    "statusText": "Public Beta"
+    "status": "available",
+    "statusText": "Available Now"
   }
 ]

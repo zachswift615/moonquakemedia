@@ -2,8 +2,8 @@
 title: Quietus
 slug: quietus
 tagline: Professional ambient sound generator with binaural beats and journey automation
-status: beta
-testFlightUrl: https://testflight.apple.com/join/zu5HXxYM
+status: available
+appStoreUrl: https://apps.apple.com/us/app/quietus-sleep-focus-sounds/id6757405542
 appIcon: /images/QuietusAppIcon.png
 price: "Free / $12.99"
 priceNote: "7-day free trial, then $12.99 one-time purchase for unlimited playback"
