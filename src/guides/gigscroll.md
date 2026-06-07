@@ -205,12 +205,16 @@ GigScroll creates a `.gigscroll` file that contains the setlist and all of its s
 
 ### 3.7 Playing a Setlist
 
-1. Open the setlist.
-2. Tap the green <span class="button-label">Play Setlist</span> button at the bottom of the screen.
+There are two ways to start playing a setlist:
 
-GigScroll enters Performance Mode and begins with the first song in the setlist. You can advance to the next song in order as you perform.
+- **Start from the beginning**: tap the green <span class="button-label">Play Setlist</span> button at the bottom of the screen. GigScroll enters Performance Mode and begins with the first song.
+- **Start from any song in the list**: tap the **play button** next to the song's position number. Performance Mode begins on that song, with the rest of the setlist still loaded so you can use <span class="button-label">Next Song</span> and <span class="button-label">Previous Song</span> to move around.
+
+Tapping the rest of the row (title or artist) still opens the song editor — only the small play button starts performance.
 
 If the setlist contains no songs, an alert appears and Performance Mode does not start. Add at least one song before playing.
+
+<div class="tip-box"><h4>{% icon "lightbulb", "inline-icon" %} Jumping In Mid-Set</h4><p>The per-song play buttons are designed for the moment when something interrupts your set — a phone call, a tuning break, a chat with the audience — and you need to resume on song 7 without tapping <span class="button-label">Next Song</span> six times. Tap the play button on the song you want, and Performance Mode starts right there.</p></div>
 
 <div class="feature-box"><h4>{% icon "list", "inline-icon" %} Setlist Organization Ideas</h4><p>You can create as many setlists as you need. Here are common ways to organize them:</p>
 <ul>
@@ -242,7 +246,7 @@ There are two ways to enter Performance Mode:
 The Performance Mode screen has three areas:
 
 - **Header Bar**: The <span class="button-label">Back</span> button is on the left. The song title appears in the center in bold text. In setlist mode, a position indicator (for example, "Song 2 of 5") appears below the title. If video recording is enabled in Settings, a camera button appears in the top-right corner.
-- **Main Area**: Your lyrics are displayed in large, center-aligned text. The font and size match the settings you have chosen.
+- **Main Area**: Your lyrics are displayed in large text. The font, size, and alignment (center by default, or left-aligned if you turn on **Left-Align Lyrics** in Settings) match the settings you have chosen.
 - **Control Panel**: A toolbar at the bottom of the screen contains playback and navigation controls.
 
 ### 4.3 Control Panel
@@ -268,7 +272,7 @@ When you tap <span class="button-label">Play</span>, the lyrics scroll from bott
 
 ### 4.6 Manual Scrolling
 
-Swipe up or down on the lyrics area to scroll manually. Auto-scrolling pauses automatically while you are scrolling by hand. When you stop swiping, you can tap <span class="button-label">Play</span> to resume auto-scrolling.
+Swipe up or down on the lyrics area at any time to scroll manually — including during playback, and including when the control panel is hidden. Auto-scrolling pauses automatically while you are dragging, and resumes when you stop. There is no need to tap the screen first to "unlock" scrolling. This makes it easy to quickly reposition mid-song if you need to jump back to the chorus or skip ahead a verse.
 
 ### 4.7 Auto-Hide Controls
 
@@ -551,6 +555,10 @@ To set the default scroll speed for new songs, navigate to **Settings → Defaul
 ### 7.5 Per-Song Scroll Speed
 
 During Performance Mode, you can adjust the scroll speed for the current song using the <span class="button-label">+</span> and <span class="button-label">−</span> buttons or by opening the speed jog wheel. The adjusted speed is saved to the song automatically and will be used the next time you perform that song.
+
+### 7.6 Lyrics Alignment
+
+By default, lyrics are center-aligned during performance. If you prefer a left-aligned layout — closer to how lyric sheets are typically printed — navigate to **Settings → Left-Align Lyrics** and turn the toggle on. The change applies the next time you open a song.
 
 </div>
 
