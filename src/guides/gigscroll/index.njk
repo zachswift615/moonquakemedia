@@ -1,0 +1,23 @@
+---
+layout: false
+permalink: /guides/gigscroll/
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  {%- set latestVersion = null -%}
+  {%- for v in guideVersions.gigscroll -%}
+    {%- if v.status == "latest" -%}
+      {%- set latestVersion = v.version -%}
+    {%- endif -%}
+  {%- endfor -%}
+  <meta http-equiv="refresh" content="0; url=/guides/gigscroll/{{ latestVersion }}/">
+  <link rel="canonical" href="{{ site.url }}/guides/gigscroll/{{ latestVersion }}/">
+  <title>Redirecting to GigScroll User Guide</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/guides/gigscroll/{{ latestVersion }}/">GigScroll User Guide {{ latestVersion }}</a>...</p>
+</body>
+</html>
