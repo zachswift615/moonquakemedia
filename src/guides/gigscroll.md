@@ -133,7 +133,6 @@ If no songs in your local library match your search, GigScroll automatically sea
 Well-formatted lyrics are easier to read during a performance. Follow these guidelines:
 
 - **Separate sections with blank lines.** Place an empty line between each verse, chorus, and bridge.
-- **Label each section.** Use labels such as `[Verse 1]`, `[Chorus]`, `[Bridge]`, or `[Outro]` on their own line before each section.
 - **Keep lines short.** Lines under 80 characters are easier to read on the teleprompter.
 
 ### 2.6 Deleting Songs
