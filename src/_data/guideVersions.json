@@ -11,6 +11,6 @@
     { "version": "v1.8.0", "label": "v1.8.0", "status": "legacy" }
   ],
   "gigshed": [
-    { "version": "v1.0.0", "label": "v1.0.0 Beta", "status": "beta" }
+    { "version": "v1.0.0", "label": "v1.0.0", "status": "latest" }
   ]
 }
