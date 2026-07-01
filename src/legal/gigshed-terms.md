@@ -3,6 +3,7 @@ title: Terms of Use - GigShed
 layout: layouts/terms.njk
 slug: gigshed
 appName: GigShed
+appStoreId: "6783093886"
 lastUpdated: July 1, 2026
 summary: GigShed is an on-device practice tool for musicians. It is free to use for your first songs, with an optional one-time purchase to unlock unlimited songs. No subscriptions, no recurring charges. You are responsible for having the rights to any audio you import.
 ---

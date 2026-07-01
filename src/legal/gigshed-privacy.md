@@ -2,6 +2,7 @@
 title: Privacy Policy - GigShed
 slug: gigshed
 appName: GigShed
+appStoreId: "6783093886"
 lastUpdated: July 1, 2026
 summary: GigShed does not collect, store, or share any of your personal data. Your songs, stems, charts, and everything you create stay on your device. Audio you import is never uploaded anywhere.
 ---
