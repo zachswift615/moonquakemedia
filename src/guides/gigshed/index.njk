@@ -7,12 +7,14 @@ eleventyExcludeFromCollections: true
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  {#- Prefer the latest release; fall back to the newest beta, then the first listed version -#}
   {%- set latestVersion = null -%}
+  {%- set betaVersion = null -%}
   {%- for v in guideVersions.gigshed -%}
-    {%- if v.status == "latest" -%}
-      {%- set latestVersion = v.version -%}
-    {%- endif -%}
+    {%- if v.status == "latest" and not latestVersion -%}{%- set latestVersion = v.version -%}{%- endif -%}
+    {%- if v.status == "beta" and not betaVersion -%}{%- set betaVersion = v.version -%}{%- endif -%}
   {%- endfor -%}
+  {%- set latestVersion = latestVersion or betaVersion or guideVersions.gigshed[0].version -%}
   <meta http-equiv="refresh" content="0; url=/guides/gigshed/{{ latestVersion }}/">
   <link rel="canonical" href="{{ site.url }}/guides/gigshed/{{ latestVersion }}/">
   <title>Redirecting to GigShed User Guide</title>

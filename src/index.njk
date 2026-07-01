@@ -28,7 +28,7 @@ showContact: true
                 <div class="mb-5">
                     <img src="{{ app.icon }}" alt="" class="app-icon mx-auto" aria-hidden="true">
                 </div>
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ app.name }}</h2>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2 {% if app.brandFont %}font-brand{% endif %}">{{ app.name }}</h2>
                 <p class="text-gray-600 text-base mb-5">{{ app.tagline }}</p>
                 <span class="badge badge-{{ app.status }}">{{ app.statusText }}</span>
             </a>

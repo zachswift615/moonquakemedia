@@ -1,5 +1,14 @@
 [
   {
+    "slug": "gigshed",
+    "name": "GigShed",
+    "tagline": "Woodshed any song — stems, key & tempo, and chord charts, all on device",
+    "icon": "/images/GigShedAppIcon.png",
+    "status": "beta",
+    "statusText": "Public Beta",
+    "brandFont": true
+  },
+  {
     "slug": "gigscroll",
     "name": "GigScroll",
     "tagline": "The essential lyrics teleprompter for live performers",

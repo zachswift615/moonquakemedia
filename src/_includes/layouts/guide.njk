@@ -20,7 +20,7 @@ footerStyle: bordered
 {% endfor %}
 
 <header class="gradient-hero text-white py-10 text-center shadow-md">
-    <h1 class="text-3xl md:text-4xl font-bold mb-2">{{ title }} User Guide</h1>
+    <h1 class="text-3xl md:text-4xl font-bold mb-2"><span class="{% if brandFont %}font-brand{% endif %}">{{ title }}</span> User Guide</h1>
     <p class="text-lg opacity-90">{{ subtitle | default("Your Complete Guide") }}</p>
 </header>
 

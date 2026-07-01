@@ -1,3 +1,12 @@
+/* Space Grotesk — GigShed brand/wordmark font (self-hosted, SIL OFL) */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk-Variable.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -904,4 +913,43 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* GigShed brand wordmark */
+.font-brand {
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* ── Inline guide screenshots (GigShed) ── */
+.guide-figure {
+  @apply my-8 flex flex-col items-center;
+}
+
+.guide-figure.guide-figure-wide {
+  /* full-width UI captures (e.g. iPad, wide sheets) */
+}
+
+.guide-screenshot {
+  @apply rounded-2xl shadow-xl border border-gray-200 bg-black;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+}
+
+.guide-figure-wide .guide-screenshot {
+  max-width: 640px;
+}
+
+.guide-figcaption {
+  @apply mt-3 text-sm text-gray-500 text-center max-w-md;
+}
+
+/* Two screenshots side by side on wider viewports */
+.guide-figure-row {
+  @apply my-8 flex flex-col sm:flex-row items-center justify-center gap-6;
+}
+
+.guide-figure-row .guide-screenshot {
+  max-width: 260px;
 }
