@@ -6,6 +6,9 @@ tagline: Woodshed any song — stems, key & tempo, and chord charts, all on devi
 description: "GigShed splits any song into vocals, drums, bass, and the rest, changes key and speed, and builds a chords-and-lyrics chart — entirely on your iPhone or iPad. On-device, offline, one-time purchase. Now in public beta on TestFlight."
 status: beta
 appIcon: /images/GigShedAppIcon.png
+ogImage: /images/og-gigshed.png
+appStoreId: "6783093886"
+appStoreUrl: https://apps.apple.com/app/id6783093886
 testFlightUrl: https://testflight.apple.com/join/7gtu3U2T
 price: Free in Beta
 priceNote: One-time $14.99 after launch — no subscription, no account, first 5 songs free.
