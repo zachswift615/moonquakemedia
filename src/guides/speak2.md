@@ -91,12 +91,13 @@ After setup, Speak2 appears as a microphone icon in the macOS menu bar. The icon
 | Icon Color | State |
 |---|---|
 | **Gray** | Ready — Speak2 is idle and waiting for input. |
+| **Orange** | Starting microphone — you pressed the hotkey and Speak2 is bringing the microphone up. Audio is not being captured yet. |
 | **Red** | Recording — Speak2 is capturing audio from your microphone. |
 | **Cyan** | Transcribing — The speech model is converting audio to text. |
 | **Purple** | Refining — AI is cleaning and improving the transcribed text. |
 | **Yellow (animated)** | Loading — Speak2 is loading a speech model into memory. |
 
-Click the menu bar icon to open the status menu. From this menu, you can select a speech model, configure your hotkey, access the quick dictionary, open your transcription history, and open settings.
+Click the menu bar icon to open the status menu. From this menu, you can select a speech model, choose a microphone, configure your hotkey, access the quick dictionary, open your transcription history, and open settings.
 
 <div class="tip-box"><h4>{% icon "lightbulb", "inline-icon" %} Your Privacy Is Protected</h4><p>Speak2 runs entirely on your Mac. Your voice recordings are processed locally and are never sent to any server. This ensures complete privacy for all dictation.</p></div>
 
@@ -140,8 +141,8 @@ This mode is useful when you want to dictate longer passages without holding a k
 
 When you dictate, Speak2 performs several steps in sequence:
 
-1. **You press the hotkey** — Recording begins. The menu bar icon turns red.
-2. **You speak into your microphone** — Speak2 captures your audio.
+1. **You press the hotkey** — Speak2 starts the microphone. The menu bar icon turns orange and a small "Starting microphone…" panel appears on screen. As soon as audio is actually flowing, the icon turns red and recording begins.
+2. **You speak into your microphone** — Speak2 captures your audio. Wait for the red icon before you start talking; with the built-in microphone this is usually under a second, with AirPods and other Bluetooth headsets it can take two seconds or more (see [Microphones and Bluetooth Headsets](#microphones) below).
 3. **You release or double-press the hotkey** — Recording stops.
 4. **Transcription** — Speak2 sends the audio to your selected speech model for transcription. The menu bar icon turns cyan.
 5. **Personal dictionary** — If you have configured personal dictionary replacements, they are applied to the transcribed text.
@@ -156,11 +157,35 @@ The Speak2 menu bar icon changes color to show the current state:
 | Color | State |
 |---|---|
 | **Gray** | Idle — Speak2 is ready for input |
+| **Orange** | Starting microphone — the hotkey is pressed but the microphone is not delivering audio yet |
 | **Red** | Recording — Speak2 is capturing audio from your microphone |
 | **Cyan** | Transcribing — The speech model is converting audio to text |
 | **Purple** | Refining — AI is cleaning and improving the transcribed text |
 
 When the icon returns to gray, dictation is complete and the text has been pasted.
+
+<a id="microphones"></a>
+
+### Microphones and Bluetooth Headsets
+
+*The microphone picker, the orange "starting microphone" state, and "Keep microphone ready" were introduced in Speak2 1.10.0.*
+
+Speak2 works with any audio input macOS can see: the built-in microphone, USB microphones and audio interfaces (including multi-input interfaces such as a Scarlett 2i2), and AirPods or other Bluetooth headsets.
+
+**Choosing a microphone.** By default Speak2 follows the **System Default** input — whatever is selected in **System Settings → Sound → Input**. You can pin Speak2 to a specific device instead:
+
+- Click the menu bar icon and open the **Microphone** submenu, or
+- Open **Settings → General → Microphone** and choose a device from the **Input device** menu.
+
+The list updates as devices are plugged in or removed. If the device you chose is not connected, Speak2 falls back to the system default. Pinning a device is useful when macOS keeps choosing the wrong input — for example, when a headset disconnects, macOS can switch the default input to a silent virtual device installed by conferencing or audio-routing software.
+
+**Wait for red.** Starting a microphone takes a moment, and Speak2 only turns the icon red (and the overlay dot from orange to red) once audio is genuinely arriving. Bluetooth headsets are the slow case: AirPods take roughly two seconds to switch into their microphone mode after you press the hotkey. Anything you say before the icon turns red is not captured.
+
+**Keep microphone ready.** If you dictate in quick succession, set **Settings → General → Microphone → Keep microphone ready after dictation** to 10 seconds or more. Speak2 then keeps the microphone open for that long after each dictation so the next press starts instantly. The trade-off is that macOS shows its microphone-in-use indicator for the whole window, and Bluetooth headsets stay in headset mode (lower music quality) until it ends.
+
+**Switching devices mid-dictation.** If the input device changes while you are recording — you take an AirPod out, plug in a headset, or macOS changes the default input — Speak2 automatically switches to the new device and keeps recording. Expect a gap of about a second while macOS re-routes audio.
+
+**Silent recordings.** If a recording contains nothing but digital silence (typically because the selected input is a virtual device with no signal), Speak2 shows an error naming the device instead of pasting nothing. Choose a different microphone and try again.
 
 <div class="warning-box"><h4>{% icon "alert-triangle", "inline-icon" %} Accessibility Permission Required</h4><p>Speak2 requires Accessibility permission to detect hotkeys globally and to paste text into other applications. If text is not appearing after dictation, verify that Accessibility permission is granted in <strong>System Settings → Privacy & Security → Accessibility</strong>.</p></div>
 
@@ -185,13 +210,16 @@ Speak2 can display a floating overlay panel that shows your words as they are tr
 
 Live transcription is now enabled. The overlay panel will appear each time you begin a recording.
 
+Even with live transcription turned off, a small version of the panel appears briefly while the microphone is starting ("Starting microphone…" with an orange dot) and disappears as soon as audio is flowing. This gives you a clear cue for when to start speaking.
+
 ### How It Works
 
 When you start recording, a transparent panel appears near the bottom center of your screen, just above the Dock. This panel displays the following:
 
-- **Recording indicator** — A pulsing red dot on the left side of the panel. This dot confirms that Speak2 is actively recording.
+- **Recording indicator** — A pulsing dot on the left side of the panel. It is orange while the microphone is starting and turns red once Speak2 is actively capturing audio.
 - **Confirmed text** — Words that have been recognized with high confidence. These words appear in regular weight.
 - **Unconfirmed text** — Words that are still being processed by the speech engine. These words appear in italic and in a lighter color. As processing completes, unconfirmed words become confirmed.
+- **"Starting microphone..."** — Shown while the microphone is being brought up. Audio is not being captured yet; wait until this changes before speaking.
 - **"Listening..."** — If no words have been recognized yet, the panel displays this message. It means Speak2 is active and waiting for speech input.
 
 The panel resizes automatically as more text is transcribed. The maximum width of the panel is 80% of your screen width or 700 pixels, whichever is smaller.
@@ -630,17 +658,31 @@ This setting only affects how long Speak2 waits before restoring your clipboard.
 - Check that your firewall is not blocking the connection.
 - The default timeout is 30 seconds. Very large transcriptions may require more time.
 
-### 9.8 Microphone Not Detected
+### 9.8 No Audio, Wrong Microphone, or "Delivered Only Silence"
 
-**Problem:** Speak2 does not detect your microphone or recording produces no audio.
+**Problem:** Nothing is transcribed, or Speak2 shows an error such as *"'ZoomAudioDevice' delivered only silence. Choose a different microphone."*
 
 **Solutions:**
 
 - Verify that Microphone permission is granted in **System Settings → Privacy & Security → Microphone**.
-- Check that your microphone is selected as the input device in **System Settings → Sound → Input**.
-- If you connected a new microphone while Speak2 was running, restart Speak2.
+- Check which microphone Speak2 is using: click the menu bar icon and open the **Microphone** submenu. **System Default** shows the device macOS currently uses. If it names a virtual device (Zoom, BlackHole, Loopback, VB-Cable and similar) rather than a real microphone, pick your microphone explicitly. This commonly happens after a Bluetooth headset disconnects.
+- If you selected a specific device and it is not connected, Speak2 falls back to the system default. Reconnect the device or select another one.
+- Multi-input audio interfaces are supported; your microphone can be on any input channel.
+- If the wrong microphone is being used, you do not need to restart Speak2 — the device list updates as devices come and go, and each dictation uses the current selection.
 
-### 9.9 High Memory Usage
+### 9.9 The First Word Is Missing
+
+**Problem:** The beginning of what you said is cut off — most often with AirPods or another Bluetooth headset.
+
+**Cause:** Bluetooth headsets take a moment (about two seconds for AirPods) to switch into microphone mode after you press the hotkey. Anything said before that is never captured.
+
+**Solutions:**
+
+- Wait for the menu bar icon to turn **red** (and the overlay dot to change from orange to red) before speaking. Orange means the microphone is still starting.
+- Turn on **Settings → General → Microphone → Keep microphone ready after dictation** so consecutive dictations start instantly.
+- If you are reporting a problem, `defaults write com.zachswift.speak2 debugSaveRecordings -bool YES` in Terminal makes Speak2 keep the last five raw recordings in `~/Library/Application Support/Speak2/debug-recordings/`, which is very helpful for support. Delete the setting again with `defaults delete com.zachswift.speak2 debugSaveRecordings`.
+
+### 9.10 High Memory Usage
 
 **Problem:** Speak2 uses a large amount of memory (RAM).
 
@@ -650,7 +692,7 @@ This setting only affects how long Speak2 waits before restoring your clipboard.
 - If both a speech model and the AI refinement model are loaded simultaneously, memory usage will be higher. Disable AI refinement if memory is a concern.
 - Close and reopen Speak2 to release memory held by models that are no longer in use.
 
-### 9.10 Contact Support
+### 9.11 Contact Support
 
 If the solutions above do not resolve your issue, there are two ways to reach us. GitHub is preferred for bug reports and feature requests — issues filed there are public, searchable, and get tracked alongside development.
 
