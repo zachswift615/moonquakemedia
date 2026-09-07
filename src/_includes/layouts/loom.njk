@@ -1,0 +1,556 @@
+---
+layout: layouts/base.njk
+---
+{#
+  LOOM landing page.
+
+  Authored as a design and exported as static HTML; this layout is that
+  export carried across into the site's build, the same way the Listen2
+  page is a bespoke layout under _includes/layouts/. The page's content
+  file is src/apps/loom.md, which sets the /loom/ permalink.
+
+  Four things changed on the way in, and nothing else:
+    1. assets/*.png            -> /assets/loom/*.png
+    2. the content container   -> <main id="main-content">, so base.njk's
+                                  skip-link has a target
+    3. the Google Fonts <link> -> @font-face on self-hosted woff2 below
+    4. the four href="#" links -> inert, visibly not-yet-live controls.
+                                  Grep LOOM-LINK-PENDING.
+
+  If the design changes, re-export and regenerate rather than editing
+  this file by hand — otherwise the two versions drift.
+#}
+<style>
+  /* ------------------------------------------------------------------
+     LOOM landing page — self-hosted webfonts.
+
+     The design was authored against fonts.googleapis.com. The site self-
+     hosts its webfonts instead (see the Space Grotesk face in
+     src/css/main.css), so these are the same two families served from
+     /assets/fonts/. Both are variable fonts: one file covers the whole
+     weight range the design uses (Archivo 400-700, JetBrains Mono
+     400-700). Licences sit beside them as *-OFL.txt.
+     ------------------------------------------------------------------ */
+  @font-face {
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 400 700;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url('/assets/fonts/archivo-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 400 700;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url('/assets/fonts/archivo-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('/assets/fonts/jetbrains-mono-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('/assets/fonts/jetbrains-mono-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+
+  /* The design's own base rules, carried across from the export verbatim.
+     They come after /css/main.css in the cascade, so they win where the
+     site's Tailwind base layer would otherwise reach this page. */
+  html, body { margin: 0; padding: 0; background: #0B0C0E; }
+  body { font-family: Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  a { color: #4CC9F0; text-decoration: none; }
+  a:hover { color: #8AD9F5; text-decoration: underline; }
+  *:focus-visible { outline: 2px solid #7FDBFF; outline-offset: 2px; }
+  img { max-width: 100%; }
+
+  /* The site footer (components/footer.njk) lands on this page's dark
+     ground, as it does on the Listen2 page. */
+  body > footer { color: #6B7078; }
+</style>
+
+<div style="background:#0B0C0E;color:#E8EAED;font-family:Archivo,sans-serif;-webkit-font-smoothing:antialiased;">
+
+  <div style="position:sticky;top:0;z-index:20;background:rgba(11,12,14,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #23262C;">
+    <div style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:14px;">
+      <img src="/assets/loom/loom-icon.png" alt="" style="width:30px;height:30px;border-radius:7px;display:block;flex:none;">
+      <div style="font-size:19px;font-weight:700;letter-spacing:0.02em;flex:none;">LOOM</div>
+      <div style="flex:1;min-width:0;"></div>
+      <div style="display:flex;align-items:center;gap:26px;">
+        <a href="#arrange" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">ARRANGE</a>
+        <a href="#mixer" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">MIXER</a>
+        <a href="#honest" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">WHAT IT ISN'T</a>
+        <a href="#get" style="padding:9px 20px;border-radius:6px;background:#4CC9F0;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;">GET LOOM</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" style="max-width:1240px;margin:0 auto;padding:0 32px;">
+
+    <div style="padding:104px 0 0;display:flex;flex-direction:column;gap:34px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:7px;height:7px;border-radius:2px;background:#35D07F;flex:none;"></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.2em;color:#8A9099;">LIVE LOOPING INSTRUMENT · MACOS</div>
+      </div>
+      <h1 style="margin:0;font-size:clamp(46px,6.4vw,88px);font-weight:700;letter-spacing:-0.035em;line-height:0.98;max-width:15ch;text-wrap:balance;">A loop station that plays itself.</h1>
+      <p style="margin:0;font-size:clamp(18px,2vw,23px);line-height:1.5;color:#C7CDD4;max-width:60ch;text-wrap:pretty;">Record and overdub on five tracks the way you would on a hardware looper. Then draw those same commands on a timeline, and the song presses its own buttons while you play. One engine underneath both, so nothing you learn at the loop station stops being true in the arrangement.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;">
+        <!-- LOOM-LINK-PENDING (DMG download): not wired up yet, by the owner's ruling that a
+     sandbox checkout must never ship. When it goes live, restore this to a
+     live anchor and drop the muted styling:
+       <a href="THE .DMG DOWNLOAD URL — the notarized LOOM-<version>.dmg" style="padding:15px 28px;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD FOR MACOS</a>
+     -->
+        <span aria-disabled="true" style="padding:15px 28px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;background:#141619;border:1px solid #2C3038;color:#6B7078;cursor:default;">DOWNLOAD — NOT YET AVAILABLE</span>
+        <!-- LOOM-LINK-PENDING (Polar checkout): not wired up yet, by the owner's ruling that a
+     sandbox checkout must never ship. When it goes live, restore this to a
+     live anchor and drop the muted styling:
+       <a href="THE POLAR CHECKOUT URL — production polar.sh, never the sandbox" style="padding:15px 28px;border-radius:8px;background:#171A1F;border:1px solid #2C3038;color:#E8EAED;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;">BUY A LICENCE</a>
+     -->
+        <span aria-disabled="true" style="padding:15px 28px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;background:#141619;border:1px solid #2C3038;color:#6B7078;cursor:default;">BUY A LICENCE — NOT YET AVAILABLE</span>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;color:#8A9099;">14-day trial, every feature<br>Apple Silicon · macOS 13.3+</div>
+      </div>
+    </div>
+
+    <div style="padding:64px 0 0;">
+      <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
+        <img src="/assets/loom/shot-looper.png" alt="LOOM looper view with five tracks, three rings mid-state and the track panel open" style="width:100%;height:auto;display:block;">
+      </div>
+      <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">LOOPER · FIVE TRACKS · THE RING SAYS WHAT THE NEXT PRESS DOES</div>
+    </div>
+
+    <div style="padding:112px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+      
+        <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">ONE PRESS</div>
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.01em;line-height:1.25;">No arming, ever</div>
+          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The ring’s centre says what the next press will do. There is no record-arm step and no separate play button — both are on record as decisions.</div>
+        </div>
+      
+        <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FFB020;">THE GRID FOLLOWS YOU</div>
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.01em;line-height:1.25;">Your first loop sets the tempo</div>
+          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Close a free-length loop with quantize off and LOOM derives the tempo from what you played, while the transport rolls, with nothing extra pressed.</div>
+        </div>
+      
+        <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#35D07F;">TWELVE STATES</div>
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.01em;line-height:1.25;">Never colour alone</div>
+          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Every ring phase has its own arc treatment, and a wedge marks a command that is scheduled and has not happened yet.</div>
+        </div>
+      
+        <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4CC9F0;">TO THE SAMPLE</div>
+          <div style="font-size:17px;font-weight:600;letter-spacing:-0.01em;line-height:1.25;">One engine, two routes</div>
+          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The loop station and the arrangement drive the same engine, so a region fires exactly what your hands would have.</div>
+        </div>
+      
+    </div>
+
+    <div style="padding:128px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#8A9099;">THE GAP</div>
+        <h2 style="margin:0;font-size:clamp(30px,3.4vw,42px);font-weight:700;letter-spacing:-0.025em;line-height:1.08;text-wrap:balance;">When ALK2 went away, so did the idea.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">zenAud.io's ALK2 was discontinued, and the thing it did — an arrangement that performs a looper — went with it. Everything else asks you to choose: the immediacy of a loop pedal, or the structure of a timeline.</p>
+        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">LOOM aims at that gap without giving up the hardware-looper flow to get there. Press the ring and it records — there is no arm step, and there never will be. Draw the same command on a lane and it fires on its own tick, to the sample.</p>
+      </div>
+    </div>
+
+    <div id="arrange" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#4CC9F0;">ARRANGE</div>
+        <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Draw the performance. Play over it.</h2>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Regions on a track's lane, three verbs: <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FF4438;">REC</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FFB020;">DUB</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#35D07F;">PLAY</span>. A gap means the track is stopped, so you never draw a stop — LOOM synthesises it at the region's end. This is the half a hardware looper cannot do.</p>
+      </div>
+      <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
+        <img src="/assets/loom/shot-arrange.png" alt="LOOM arrange view: eighteen regions across five lanes with the playhead mid-arrangement" style="width:100%;height:auto;display:block;">
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;padding-top:8px;">
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Perform from the top, or from here</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Play the whole arrangement from bar 1, or from wherever you put the playhead. STOP stays live throughout.</div>
+          </div>
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Mouse or keyboard, fully</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Drag a body to move, an edge to trim, past the window edge to scroll under it. ⌘Z steps the arrangement’s own undo, and one drag is one step even when it shoved three neighbours aside.</div>
+          </div>
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Eleven zoom steps</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">8 to 224 pixels per bar, all zooming about the pointer, plus FIT and a FOLLOW toggle for whether the view chases the playhead.</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div style="padding:120px 0 0;">
+      <div style="border:1px solid #3A2320;border-radius:14px;background:linear-gradient(180deg,#15100F,#0F1114);padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:22px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:3px;height:19px;background:#FF4438;flex:none;border-radius:1px;"></div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#FF6A5E;">ALL OR NOTHING</div>
+        </div>
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-0.03em;line-height:1.06;max-width:24ch;text-wrap:balance;">It tells you before it plays.</h2>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#C7CDD4;max-width:66ch;text-wrap:pretty;">If any region in the arrangement cannot be played correctly, nothing starts. The notice row says why — one line per bad region, each a full sentence that leads with what to change rather than an error code.</p>
+        <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;max-width:66ch;text-wrap:pretty;">The alternative most software picks is to play seven of your eight regions and drop the eighth silently. You find out from the audience.</p>
+      </div>
+    </div>
+
+    <div id="mixer" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIXER &amp; EFFECTS</div>
+        <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">A real desk behind the loops.</h2>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Four banks off one switch — loop tracks, inputs, master, buses. Eight insert slots on every strip, four effects to put in them, and every chain runs in stereo on every placement. Chains save with the song.</p>
+      </div>
+      <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
+        <img src="/assets/loom/shot-eq.png" alt="LOOM mixer with the effect drawer open on a parametric EQ, magnitude response and live spectrum" style="width:100%;height:auto;display:block;">
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+        <div style="border:1px solid #23262C;border-radius:10px;overflow:hidden;background:#101216;">
+          <img src="/assets/loom/shot-delay.png" alt="LOOM effect drawer open on a delay with ping pong enabled" style="width:100%;height:auto;display:block;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;justify-content:center;">
+          
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:6px;height:6px;border-radius:2px;background:#A78BFA;flex:none;margin-top:8px;"></div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
+                <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Four effects, six-band EQ</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Parametric EQ with a live spectrum behind the curve, a compressor drawing its transfer curve, reverb and a ping-pong delay.</div>
+              </div>
+            </div>
+          
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:6px;height:6px;border-radius:2px;background:#4CC9F0;flex:none;margin-top:8px;"></div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
+                <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">One faders row, four destinations</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">MAIN, CUE, FX 1, FX 2 — whichever is selected, every fader in the rack is addressing it. No per-strip send knob to hunt for.</div>
+              </div>
+            </div>
+          
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:6px;height:6px;border-radius:2px;background:#35D07F;flex:none;margin-top:8px;"></div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
+                <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Three buses, and where sound leaves by</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">CUE tapped pre-fader so a strip pulled down for the room stays in your headphones. An OUTPUT picker on every bus and the master.</div>
+              </div>
+            </div>
+          
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:6px;height:6px;border-radius:2px;background:#FFB020;flex:none;margin-top:8px;"></div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
+                <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Typed values, honest refusals</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Every parameter takes a typed value as well as a drag, and a value outside the range is refused by name rather than quietly rounded.</div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:128px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:48px;align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#35D07F;">OFFLINE BY CONSTRUCTION</div>
+        <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">The venue's WiFi is not your problem.</h2>
+        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">LOOM opens no connection, sends no request and reads nothing back. Not on launch, not on a schedule, not to check a licence, not to fetch a font. No account, no activation server, nothing reporting home. Your licence is verified on your own Mac.</p>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#8A9099;text-wrap:pretty;">A build check enforces it: no code LOOM writes reaches a network entry point, and the check fails the build if any does. Two buttons hand an address to your browser — buying a licence, and looking up the latest version. That is the whole of it.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#23262C;border:1px solid #23262C;border-radius:12px;overflow:hidden;">
+        
+          <div style="background:#0F1114;padding:22px 20px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:#35D07F;">0</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;line-height:1.5;color:#8A9099;">ACCOUNTS TO MAKE</div>
+          </div>
+        
+          <div style="background:#0F1114;padding:22px 20px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:#35D07F;">0</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;line-height:1.5;color:#8A9099;">ACTIVATION SERVERS</div>
+          </div>
+        
+          <div style="background:#0F1114;padding:22px 20px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:#35D07F;">0</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;line-height:1.5;color:#8A9099;">REQUESTS SENT</div>
+          </div>
+        
+          <div style="background:#0F1114;padding:22px 20px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:#35D07F;">0</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;line-height:1.5;color:#8A9099;">TELEMETRY</div>
+          </div>
+        
+          <div style="background:#0F1114;padding:22px 20px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:#35D07F;">0</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;line-height:1.5;color:#8A9099;">SEATS TO DEAUTHORISE</div>
+          </div>
+        
+          <div style="background:#0F1114;padding:22px 20px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:#35D07F;">1</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;line-height:1.5;color:#8A9099;">FILE ON YOUR DISK</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div style="padding:128px 0 0;display:flex;flex-direction:column;gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:70ch;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#8A9099;">EVERYTHING ELSE IT DOES</div>
+        <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Built for the twenty minutes you are on stage.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
+        
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">LOOPING</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Five tracks, quantized both ways</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Launch on immediate, next beat, next bar or next cycle; stop on immediate, end of beat, bar or loop — per track and as a song default. Pre-set lengths to 32 bars, and a fixed recording closes itself.</div>
+          </div>
+        
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FFB020;">LAYERS</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Sum or replace, undo on every track</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">SUM keeps every layer, REPLACE overwrites under the pass. One layer of undo and redo per track, independent of the arrangement’s own stack.</div>
+          </div>
+        
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#35D07F;">MONITORING</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">You hear yourself immediately</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Input 1 is audible at launch, everything else starts muted, and nothing has to be armed — or even to exist — for that to be true.</div>
+          </div>
+        
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4CC9F0;">INPUTS</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Pan into the take, stereo links</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">An input’s pan is recorded, not just monitored. Link inputs 1, 3, 5 or 7 to the one after it and the pair becomes one strip with one chain across both channels.</div>
+          </div>
+        
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#A78BFA;">YOUR FILES</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Every pass is a WAV you can open</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">32-bit float, two-channel, at your interface’s sample rate, written when the pass closes with no save step. Songs are folders in ~/Music/LOOM.</div>
+          </div>
+        
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">HARDWARE</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Change interface mid-session</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">No relaunch. Your routing is captured and restored across the change, and LOOM warns you first when a track still holds audio — counting the loss in the heading.</div>
+          </div>
+        
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FFB020;">WHEN IT SPEAKS</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">One notice row, and it remembers</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">The same height whether it holds a two-line refusal or nothing, so nothing on screen moves. LOG opens everything LOOM told you this session, selectable and copyable.</div>
+          </div>
+        
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#35D07F;">ACCESSIBILITY</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Keyboard-complete, and it talks</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">A self-test walks the live window and fails the build unless every command control is named and reachable. The notice line and the focused track’s phase are announced, on one switch you can silence for a set.</div>
+          </div>
+        
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4CC9F0;">THE MANUAL</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Inside the app, as a PDF</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">⌘? opens it. No network call — it is on your machine, so it is there on a stage, behind a captive portal, and at two in the morning.</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div id="honest" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:34px;">
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:70ch;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#8A9099;">WHAT LOOM DOES NOT HAVE</div>
+        <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Read this before you buy it.</h2>
+        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">LOOM refuses to draw a control that is wired to nothing, because on stage that reads as a bug. The application ships a manual page listing what is deliberately absent. Here is the same list. Some of these are decisions; some are simply not built yet, and the difference is marked.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;">
+        
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:center;gap:9px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.13em;padding:3px 8px;border-radius:3px;background:#1E2A22;color:#5BD99A;">BY DECISION</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;color:#8A9099;">not coming back</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #23262C;">
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">A record-arm step</div>
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">A separate play button</div>
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Track names — strips are numbered</div>
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">A light theme</div>
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Effect reordering, or presets of any kind</div>
+              
+            </div>
+          </div>
+        
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:center;gap:9px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.13em;padding:3px 8px;border-radius:3px;background:#2A2418;color:#FFCB63;">NOT BUILT YET</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;color:#8A9099;">on the roadmap</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #23262C;">
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">MIDI mapping and MIDI learn</div>
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">First-party virtual instruments</div>
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Automation, or an input row in arrange</div>
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Marquee selection and batch region edits</div>
+              
+            </div>
+          </div>
+        
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:center;gap:9px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.13em;padding:3px 8px;border-radius:3px;background:#25272C;color:#C7CDD4;">NOT PLANNED</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;color:#8A9099;">out of scope</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #23262C;">
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Plugins — no VST, AU or CLAP</div>
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Time-stretching or tempo change to recorded audio</div>
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Waveforms, anywhere in the interface</div>
+              
+                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Windows, Linux, or Intel Macs</div>
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div style="padding:120px 0 0;">
+      <div style="border:1px solid #23262C;border-radius:14px;background:#0F1114;padding:clamp(30px,3.6vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIDI, PRECISELY</div>
+          <h3 style="margin:0;font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;">A pedalboard drives the whole instrument.</h3>
+          <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Every track has its own octave with the same seven commands in the same order, and the global verbs have an octave of their own. The map starts at note 36, so a 49-key controller reaches the first four tracks with nothing transposed. A live monitor on the bottom rail shows the last message received, in every view, so you can answer <em style="color:#C7CDD4;font-style:normal;">is LOOM seeing my controller</em> without leaving what you are doing.</p>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">The map is compiled in. There is no MIDI learn, no binding editor and no way to reassign a note — that is on the roadmap, not in this version. Notes only: CC is displayed and bound to nothing, and there is no clock, MTC or MMC in or out.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:2px;background:#23262C;border:1px solid #23262C;border-radius:8px;overflow:hidden;">
+          
+            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 1</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">36 – 42</div>
+            </div>
+          
+            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 2</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">48 – 54</div>
+            </div>
+          
+            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 3</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">60 – 66</div>
+            </div>
+          
+            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 4</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">72 – 78</div>
+            </div>
+          
+            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 5</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">84 – 90</div>
+            </div>
+          
+            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">GLOBALS</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#4CC9F0;flex:none;">96 – 101</div>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div id="get" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:36px;">
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:62ch;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#35D07F;">GET LOOM</div>
+        <h2 style="margin:0;font-size:clamp(32px,4vw,54px);font-weight:700;letter-spacing:-0.03em;line-height:1.02;text-wrap:balance;">Fourteen days, everything unlocked.</h2>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">Nothing watermarked, nothing limited inside a session, no account to make. When the trial ends, a licence is a block of text you open once — LOOM checks it on your Mac at launch and never again. A check will never interrupt a running LOOM.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+        <div style="border:1px solid #2C3038;border-radius:12px;background:linear-gradient(180deg,#12201A,#0F1114);padding:30px 28px;display:flex;flex-direction:column;gap:16px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#35D07F;">STEP ONE</div>
+          <div style="font-size:21px;font-weight:600;letter-spacing:-0.02em;">Download and play</div>
+          <div style="font-size:15px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The disk image, direct. Open it, drag LOOM to Applications, and you hear yourself the moment it launches.</div>
+          <div style="flex:1;min-height:8px;"></div>
+          <!-- LOOM-LINK-PENDING (DMG download): not wired up yet, by the owner's ruling that a
+     sandbox checkout must never ship. When it goes live, restore this to a
+     live anchor and drop the muted styling:
+       <a href="THE .DMG DOWNLOAD URL — the notarized LOOM-<version>.dmg" style="padding:14px 0;text-align:center;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD .DMG</a>
+     -->
+        <span aria-disabled="true" style="padding:14px 0;text-align:center;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;background:#141619;border:1px solid #2C3038;color:#6B7078;cursor:default;">DOWNLOAD .DMG — NOT YET AVAILABLE</span>
+        </div>
+        <div style="border:1px solid #2C3038;border-radius:12px;background:#0F1114;padding:30px 28px;display:flex;flex-direction:column;gap:16px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#4CC9F0;">STEP TWO</div>
+          <div style="font-size:21px;font-weight:600;letter-spacing:-0.02em;">Buy a licence</div>
+          <div style="font-size:15px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Checkout runs on Polar. You get a licence key, trade it for your licence file, and keep the file — it never expires and moving Macs is copying it.</div>
+          <div style="flex:1;min-height:8px;"></div>
+          <!-- LOOM-LINK-PENDING (Polar checkout): not wired up yet, by the owner's ruling that a
+     sandbox checkout must never ship. When it goes live, restore this to a
+     live anchor and drop the muted styling:
+       <a href="THE POLAR CHECKOUT URL — production polar.sh, never the sandbox" style="padding:14px 0;text-align:center;border-radius:8px;background:#171A1F;border:1px solid #2C3038;color:#E8EAED;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">BUY ON POLAR</a>
+     -->
+        <span aria-disabled="true" style="padding:14px 0;text-align:center;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;background:#141619;border:1px solid #2C3038;color:#6B7078;cursor:default;">BUY ON POLAR — NOT YET AVAILABLE</span>
+        </div>
+        <div style="border:1px solid #23262C;border-radius:12px;background:#0F1114;padding:30px 28px;display:flex;flex-direction:column;gap:14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#8A9099;">REQUIREMENTS</div>
+          <div style="display:flex;flex-direction:column;gap:0;">
+            
+              <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">MACOS</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">13.3 Ventura or later</div>
+              </div>
+            
+              <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">CHIP</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">Apple Silicon only — no Intel build</div>
+              </div>
+            
+              <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">AUDIO</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">An interface, or the Mac’s built-in input</div>
+              </div>
+            
+              <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">NETWORK</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">None, at any point</div>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:112px 0 0;">
+      <div style="border-top:1px solid #23262C;padding:34px 0 64px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+        <img src="/assets/loom/loom-icon.png" alt="" style="width:26px;height:26px;border-radius:6px;display:block;flex:none;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;color:#8A9099;">LOOM · MOONQUAKE MEDIA</div>
+        <div style="flex:1;min-width:40px;"></div>
+        <!-- LOOM-LINK-PENDING (licence claim page): resolves to /loom/licence.html,
+             which does not exist yet. The licence-claim page is a separate piece of
+             work; when it lands at that path this link is already correct, and until
+             then it 404s. -->
+        <a href="licence.html" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;">CLAIM YOUR LICENCE</a>
+        <a href="mailto:support@moonquakemedia.com" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;">SUPPORT</a>
+      </div>
+    </div>
+
+  </main>
+</div>

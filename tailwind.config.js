@@ -1,6 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{njk,md,html}"],
+  content: [
+    "./src/**/*.{njk,md,html}",
+    // The LOOM landing page is a carried-across static export: every rule it
+    // needs is inline or in its own <style> block, and it uses no Tailwind
+    // class at all. Scanning it only makes the extractor mistake words like
+    // "outline" and "ring" for class names and emit dead CSS site-wide.
+    "!./src/_includes/layouts/loom.njk",
+  ],
   darkMode: 'class',
   theme: {
     extend: {
