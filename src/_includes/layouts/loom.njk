@@ -133,7 +133,20 @@ layout: layouts/base.njk
 
     <div style="padding:64px 0 0;">
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
-        <img src="/assets/loom/shot-looper.png" alt="LOOM looper view with five tracks, three rings mid-state and the track panel open" style="width:100%;height:auto;display:block;">
+        <!-- SCREENSHOTS: v1.0.0, captured 2026-09-08. The four files keep their shot-*.png
+             names rather than the capture names, because loom.md's `ogImage` points at
+             shot-looper.png and social platforms cache an og:image by URL — a rename would
+             orphan every card already scraped. The mapping, for the next refresh:
+               shot-looper.png  <- looper-view.png
+               shot-arrange.png <- arrange-view.png
+               shot-eq.png      <- mixer-view-EQ-panel-open.png
+               shot-delay.png   <- mixer-delay-open.png
+             ⚠️ EVERY ALT HERE MAKES A COUNTABLE CLAIM — "eighteen regions", "six bands",
+             "ping pong on" — so each was read off the new image before this commit rather
+             than carried across. An alt that describes the previous build is worse than a
+             stale screenshot: the screenshot is merely old, the alt is untrue, and the only
+             reader who gets the untrue one is the reader who cannot see the image. -->
+        <img src="/assets/loom/shot-looper.png" alt="LOOM looper view: five track rings reading play, record, overdub, empty and stopped, with the track panel open on track 2" style="width:100%;height:auto;display:block;">
       </div>
       <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">LOOPER · FIVE TRACKS · THE RING SAYS WHAT THE NEXT PRESS DOES</div>
     </div>
@@ -225,11 +238,11 @@ layout: layouts/base.njk
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Four banks off one switch — loop tracks, inputs, master, buses. Eight insert slots on every strip, four effects to put in them, and every chain runs in stereo on every placement. Chains save with the song.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
-        <img src="/assets/loom/shot-eq.png" alt="LOOM mixer with the effect drawer open on a parametric EQ, magnitude response and live spectrum" style="width:100%;height:auto;display:block;">
+        <img src="/assets/loom/shot-eq.png" alt="LOOM mixer with the effect drawer open on a parametric EQ: magnitude response drawn over a live spectrum, six bands, and a compressor in the next slot" style="width:100%;height:auto;display:block;">
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
         <div style="border:1px solid #23262C;border-radius:10px;overflow:hidden;background:#101216;">
-          <img src="/assets/loom/shot-delay.png" alt="LOOM effect drawer open on a delay with ping pong enabled" style="width:100%;height:auto;display:block;">
+          <img src="/assets/loom/shot-delay.png" alt="LOOM effect drawer open on a delay with ping pong on, third in a chain after a parametric EQ and a reverb" style="width:100%;height:auto;display:block;">
         </div>
         <div style="display:flex;flex-direction:column;gap:20px;justify-content:center;">
           
