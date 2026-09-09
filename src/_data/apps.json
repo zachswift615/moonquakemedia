@@ -1,11 +1,20 @@
 [
   {
+    "slug": "loom",
+    "name": "LOOM",
+    "tagline": "A loop station that plays itself",
+    "icon": "/assets/loom/loom-icon.png",
+    "status": "available",
+    "statusText": "Available Now",
+    "url": "/loom/"
+  },
+  {
     "slug": "gigshed",
     "name": "GigShed",
     "tagline": "Woodshed any song — stems, key & tempo, and chord charts, all on device",
     "icon": "/images/GigShedAppIcon.png",
-    "status": "beta",
-    "statusText": "Public Beta",
+    "status": "available",
+    "statusText": "Available Now",
     "brandFont": true
   },
   {

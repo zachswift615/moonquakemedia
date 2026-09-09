@@ -24,7 +24,9 @@ showContact: true
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-5" role="list" aria-label="Our apps">
             {% for app in apps %}
-            <a href="/apps/{{ app.slug }}/" class="app-card text-center" role="listitem">
+            {# `url` overrides the /apps/<slug>/ default. LOOM needs it: its page is at
+               /loom/, not /apps/loom/, so without this its tile would 404. #}
+            <a href="{{ app.url or ("/apps/" + app.slug + "/") }}" class="app-card text-center" role="listitem">
                 <div class="mb-5">
                     <img src="{{ app.icon }}" alt="" class="app-icon mx-auto" aria-hidden="true">
                 </div>
