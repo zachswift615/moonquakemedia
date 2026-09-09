@@ -139,7 +139,8 @@ layout: layouts/base.njk
              orphan every card already scraped. The mapping, for the next refresh:
                shot-looper.png  <- looper-view.png
                shot-arrange.png <- arrange-view.png
-               shot-eq.png      <- mixer-view-EQ-panel-open.png
+               shot-eq.png      <- EQ-with-curve.png   (NOT mixer-view-EQ-panel-open.png,
+                                    whose bands all sat at 0.0 dB, so the curve read flat)
                shot-delay.png   <- mixer-delay-open.png
              ⚠️ EVERY ALT HERE MAKES A COUNTABLE CLAIM — "eighteen regions", "six bands",
              "ping pong on" — so each was read off the new image before this commit rather
@@ -238,7 +239,7 @@ layout: layouts/base.njk
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Four banks off one switch — loop tracks, inputs, master, buses. Eight insert slots on every strip, four effects to put in them, and every chain runs in stereo on every placement. Chains save with the song.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
-        <img src="/assets/loom/shot-eq.png" alt="LOOM mixer with the effect drawer open on a parametric EQ: magnitude response drawn over a live spectrum, six bands, and a compressor in the next slot" style="width:100%;height:auto;display:block;">
+        <img src="/assets/loom/shot-eq.png" alt="LOOM mixer with the effect drawer open on a parametric EQ: the response curve drawn over a live spectrum, six bands from a high pass to a low pass, cut in the low mids and lifted above 2 kHz" style="width:100%;height:auto;display:block;">
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
         <div style="border:1px solid #23262C;border-radius:10px;overflow:hidden;background:#101216;">
