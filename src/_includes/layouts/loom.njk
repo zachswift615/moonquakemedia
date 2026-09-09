@@ -518,11 +518,17 @@ layout: layouts/base.njk
         <img src="/assets/loom/loom-icon.png" alt="" style="width:26px;height:26px;border-radius:6px;display:block;flex:none;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;color:#8A9099;">LOOM · MOONQUAKE MEDIA</div>
         <div style="flex:1;min-width:40px;"></div>
-        <!-- LOOM-LINK-PENDING (licence claim page): resolves to /loom/licence.html,
-             which does not exist yet. The licence-claim page is a separate piece of
-             work; when it lands at that path this link is already correct, and until
-             then it 404s. -->
-        <a href="licence.html" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;">CLAIM YOUR LICENCE</a>
+        <!-- ⛔ THIS WAS A LIVE 404. It pointed at a relative licence page, resolving to
+             /loom/licence.html, under a note saying the claim page was "a separate piece of
+             work" that had not landed. It landed: the licence service is deployed, and the
+             page that trades a Polar licence key for the customer's LOOM.loomlicence file is
+             /redeem on it. The note outlived the thing it was waiting for.
+             It is an absolute URL to the service rather than a path here because the service
+             is a different application on a different host. If it ever moves behind
+             licence.moonquakemedia.com, this is one of four places that names it — the others
+             are Polar's success URL, its webhook and the Custom benefit's note. -->
+        <a href="https://web-production-5d00dd.up.railway.app/redeem" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;">CLAIM YOUR LICENCE</a>
+        <a href="/legal/loom-privacy/" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;">PRIVACY</a>
         <a href="mailto:support@moonquakemedia.com" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;">SUPPORT</a>
       </div>
     </div>

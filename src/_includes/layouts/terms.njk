@@ -3,9 +3,11 @@ layout: layouts/base.njk
 bodyClass: bg-gray-100 p-5
 ---
 
+{# `backUrl` overrides the /apps/<slug>/ breadcrumb. LOOM needs it: its permalink is
+   /loom/, not /apps/loom/, so the default would put two 404s on its legal pages. #}
 <main id="main-content" class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-md">
     <nav aria-label="Breadcrumb">
-        <a href="/apps/{{ slug }}/" class="inline-block mb-8 text-primary-500 font-medium hover:underline">&larr; Back to {{ appName }}</a>
+        <a href="{{ backUrl or ("/apps/" + slug + "/") }}" class="inline-block mb-8 text-primary-500 font-medium hover:underline">&larr; Back to {{ appName }}</a>
     </nav>
 
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Terms of Use</h1>
@@ -20,6 +22,6 @@ bodyClass: bg-gray-100 p-5
     </article>
 
     <p class="mt-10 text-center text-gray-500">
-        <a href="/apps/{{ slug }}/" class="text-primary-500 hover:underline">Back to {{ appName }}</a>
+        <a href="{{ backUrl or ("/apps/" + slug + "/") }}" class="text-primary-500 hover:underline">Back to {{ appName }}</a>
     </p>
 </main>
