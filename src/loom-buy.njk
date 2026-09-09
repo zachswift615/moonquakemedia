@@ -1,0 +1,67 @@
+---
+# /loom/buy — THE PURCHASE URL COMPILED INTO EVERY SHIPPED LOOM BINARY.
+#
+# ⛔ THIS PATH CAN NEVER BE CHANGED FOR A COPY THAT HAS ALREADY BEEN SOLD, and that is the entire
+# reason it exists. `loom::licence::kPurchaseUrl` in the LOOM checkout is the literal string
+# "https://moonquakemedia.com/loom/buy", the app's licence card opens it in the browser, and
+# `LaunchPolicy.ThePurchaseLinkIsTheOwnersDomainAndNotAStorefront` asserts the string IS this and
+# does NOT contain "polar" — so the substitution can never be made later by a convenient shortcut.
+#
+# The owner's ruling, recorded in modules/loom_control/include/loom/licence/LicenceStore.h:
+#   "a URL compiled into a copy that has already been sold can never be changed for that copy. A
+#    domain he controls can be re-pointed the day the merchant changes; a merchant's own URL
+#    becomes a dead link in every binary in the field."
+#
+# ⭐ WHEN THE MERCHANT CHANGES, THIS FILE IS THE ONE PLACE TO EDIT. The LOOM landing page's two
+# BUY buttons point here rather than at Polar for exactly that reason — and for a second one: a
+# redirect only the in-app button uses is a path nobody exercises, so it would be discovered
+# broken by someone who has not bought yet and will now not bother. Sending the website's buyers
+# through it too means the link that matters most is the link used most.
+#
+# ⚠️ NO BUILD-TIME DEPENDENCY, NO LAYOUT, NO EXTERNAL REQUEST. Three redirects, deliberately, in
+# falling order of how much has to work: a <meta refresh> that needs no JavaScript, a
+# location.replace() that is faster and does not trap the back button (an ordinary assign would
+# bounce a customer pressing Back straight forward again), and a real anchor for when both fail.
+# It is styled only enough not to flash white on the way past.
+permalink: /loom/buy/index.html
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="refresh" content="0;url=https://buy.polar.sh/polar_cl_vBWlI9buwGaMeiqrD3m5xE8OgupPWgJn73lBK4YgdGh">
+<title>Buy LOOM</title>
+<style>
+  /* #0B0C0E is the LOOM page's own ground (loom.njk's base rules), not the near-black used for
+     TEXT on the green button — those are two different colours and this page had the second.
+     ⭐ THE WEBFONTS ARE DELIBERATELY NOT LOADED HERE. This page is visible for about 200ms before
+     it redirects; two woff2 files would be 66 KB fetched to render a sentence nobody finishes
+     reading, and `font-display: swap` means the fallback is what most people would see anyway.
+     The colours carry the brand; the typeface cannot in the time available. /loom/version, which
+     people actually read, loads the real families. */
+  html,body{margin:0;height:100%;background:#0B0C0E;color:#E8EAED;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+  main{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:18px;padding:32px;text-align:center}
+  p{margin:0;font-size:15px;line-height:1.6;color:#8A9099}
+  *:focus-visible{outline:2px solid #7FDBFF;outline-offset:2px}
+  a{display:inline-block;padding:14px 26px;border-radius:8px;background:#35D07F;color:#08090B;
+    text-decoration:none;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:13px;font-weight:700;letter-spacing:0.09em}
+</style>
+</head>
+<body>
+<main>
+  <p>Taking you to the LOOM checkout&hellip;</p>
+  <a href="https://buy.polar.sh/polar_cl_vBWlI9buwGaMeiqrD3m5xE8OgupPWgJn73lBK4YgdGh">CONTINUE TO CHECKOUT</a>
+</main>
+<script>
+  // replace(), not assign(): Back from the checkout must return to wherever the customer came
+  // from, not to this page, which would immediately send them forward again.
+  location.replace("https://buy.polar.sh/polar_cl_vBWlI9buwGaMeiqrD3m5xE8OgupPWgJn73lBK4YgdGh");
+</script>
+</body>
+</html>

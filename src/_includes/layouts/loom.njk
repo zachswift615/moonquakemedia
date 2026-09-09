@@ -107,18 +107,19 @@ layout: layouts/base.njk
       <h1 style="margin:0;font-size:clamp(46px,6.4vw,88px);font-weight:700;letter-spacing:-0.035em;line-height:0.98;max-width:15ch;text-wrap:balance;">A loop station that plays itself.</h1>
       <p style="margin:0;font-size:clamp(18px,2vw,23px);line-height:1.5;color:#C7CDD4;max-width:60ch;text-wrap:pretty;">Record and overdub on five tracks the way you would on a hardware looper. Then draw those same commands on a timeline, and the song presses its own buttons while you play. One engine underneath both, so nothing you learn at the loop station stops being true in the arrangement.</p>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;">
-        <!-- LOOM-LINK-PENDING (DMG download): not wired up yet, by the owner's ruling that a
-     sandbox checkout must never ship. When it goes live, restore this to a
-     live anchor and drop the muted styling:
-       <a href="THE .DMG DOWNLOAD URL — the notarized LOOM-<version>.dmg" style="padding:15px 28px;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD FOR MACOS</a>
-     -->
-        <span aria-disabled="true" style="padding:15px 28px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;background:#141619;border:1px solid #2C3038;color:#6B7078;cursor:default;">DOWNLOAD — NOT YET AVAILABLE</span>
-        <!-- LOOM-LINK-PENDING (Polar checkout): not wired up yet, by the owner's ruling that a
-     sandbox checkout must never ship. When it goes live, restore this to a
-     live anchor and drop the muted styling:
-       <a href="THE POLAR CHECKOUT URL — production polar.sh, never the sandbox" style="padding:15px 28px;border-radius:8px;background:#171A1F;border:1px solid #2C3038;color:#E8EAED;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;">BUY A LICENCE</a>
-     -->
-        <span aria-disabled="true" style="padding:15px 28px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;background:#141619;border:1px solid #2C3038;color:#6B7078;cursor:default;">BUY A LICENCE — NOT YET AVAILABLE</span>
+        <!-- ⛔ LINKED STRAIGHT OUT TO GITHUB RELEASES, AND DELIBERATELY NOT THROUGH A REDIRECT
+     ON THIS DOMAIN. GitHub Pages is static, so a /loom/download hop could only be a meta-refresh
+     page — strictly worse than an anchor, for no gain: unlike /loom/buy, this URL is not compiled
+     into any shipped binary, so there is nothing to protect from becoming unchangeable. The
+     `latest/download/LOOM.dmg` form resolves to the newest release forever, which is why
+     publishing a version needs no edit here. -->
+        <a href="{{ releases.latestDmgUrl }}" style="padding:15px 28px;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD FOR MACOS</a>
+        <!-- ⛔ /loom/buy AND NOT THE POLAR URL. That path is `loom::licence::kPurchaseUrl`,
+     compiled into every shipped binary and unchangeable for a copy already sold, so it is the
+     one place in the world that names the merchant. Pointing this button at Polar directly
+     would leave that redirect exercised only by the in-app button — a path nobody tests until
+     it is broken. See src/loom-buy.njk. -->
+        <a href="/loom/buy" style="padding:15px 28px;border-radius:8px;background:#171A1F;border:1px solid #2C3038;color:#E8EAED;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;">BUY A LICENCE</a>
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;color:#8A9099;">14-day trial, every feature<br>Apple Silicon · macOS 13.3+</div>
       </div>
     </div>
@@ -161,10 +162,10 @@ layout: layouts/base.njk
     <div style="padding:128px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:start;">
       <div style="display:flex;flex-direction:column;gap:20px;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#8A9099;">THE GAP</div>
-        <h2 style="margin:0;font-size:clamp(30px,3.4vw,42px);font-weight:700;letter-spacing:-0.025em;line-height:1.08;text-wrap:balance;">When ALK2 went away, so did the idea.</h2>
+        <h2 style="margin:0;font-size:clamp(30px,3.4vw,42px);font-weight:700;letter-spacing:-0.025em;line-height:1.08;text-wrap:balance;">The software that did this is gone.</h2>
       </div>
       <div style="display:flex;flex-direction:column;gap:18px;">
-        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">zenAud.io's ALK2 was discontinued, and the thing it did — an arrangement that performs a looper — went with it. Everything else asks you to choose: the immediacy of a loop pedal, or the structure of a timeline.</p>
+        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">There was a program that did this once — an arrangement that performs a looper — and it is not sold or maintained any more. Everything else asks you to choose: the immediacy of a loop pedal, or the structure of a timeline.</p>
         <p style="margin:0;font-size:17.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">LOOM aims at that gap without giving up the hardware-looper flow to get there. Press the ring and it records — there is no arm step, and there never will be. Draw the same command on a lane and it fires on its own tick, to the sample.</p>
       </div>
     </div>
@@ -373,7 +374,7 @@ layout: layouts/base.njk
         <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Read this before you buy it.</h2>
         <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">LOOM refuses to draw a control that is wired to nothing, because on stage that reads as a bug. The application ships a manual page listing what is deliberately absent. Here is the same list. Some of these are decisions; some are simply not built yet, and the difference is marked.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px 48px;max-width:860px;">
         
           <div style="display:flex;flex-direction:column;gap:14px;">
             <div style="display:flex;align-items:center;gap:9px;">
@@ -409,24 +410,6 @@ layout: layouts/base.njk
                 <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Automation, or an input row in arrange</div>
               
                 <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Marquee selection and batch region edits</div>
-              
-            </div>
-          </div>
-        
-          <div style="display:flex;flex-direction:column;gap:14px;">
-            <div style="display:flex;align-items:center;gap:9px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.13em;padding:3px 8px;border-radius:3px;background:#25272C;color:#C7CDD4;">NOT PLANNED</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;color:#8A9099;">out of scope</div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #23262C;">
-              
-                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Plugins — no VST, AU or CLAP</div>
-              
-                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Time-stretching or tempo change to recorded audio</div>
-              
-                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Waveforms, anywhere in the interface</div>
-              
-                <div style="padding:11px 0;border-bottom:1px solid #1A1D22;font-size:15px;line-height:1.45;color:#C7CDD4;">Windows, Linux, or Intel Macs</div>
               
             </div>
           </div>
@@ -490,24 +473,16 @@ layout: layouts/base.njk
           <div style="font-size:21px;font-weight:600;letter-spacing:-0.02em;">Download and play</div>
           <div style="font-size:15px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The disk image, direct. Open it, drag LOOM to Applications, and you hear yourself the moment it launches.</div>
           <div style="flex:1;min-height:8px;"></div>
-          <!-- LOOM-LINK-PENDING (DMG download): not wired up yet, by the owner's ruling that a
-     sandbox checkout must never ship. When it goes live, restore this to a
-     live anchor and drop the muted styling:
-       <a href="THE .DMG DOWNLOAD URL — the notarized LOOM-<version>.dmg" style="padding:14px 0;text-align:center;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD .DMG</a>
-     -->
-        <span aria-disabled="true" style="padding:14px 0;text-align:center;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;background:#141619;border:1px solid #2C3038;color:#6B7078;cursor:default;">DOWNLOAD .DMG — NOT YET AVAILABLE</span>
+          <!-- Direct to GitHub Releases, for the reason written at the hero button above. -->
+          <a href="{{ releases.latestDmgUrl }}" style="padding:14px 0;text-align:center;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD .DMG</a>
         </div>
         <div style="border:1px solid #2C3038;border-radius:12px;background:#0F1114;padding:30px 28px;display:flex;flex-direction:column;gap:16px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#4CC9F0;">STEP TWO</div>
           <div style="font-size:21px;font-weight:600;letter-spacing:-0.02em;">Buy a licence</div>
           <div style="font-size:15px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Checkout runs on Polar. You get a licence key, trade it for your licence file, and keep the file — it never expires and moving Macs is copying it.</div>
           <div style="flex:1;min-height:8px;"></div>
-          <!-- LOOM-LINK-PENDING (Polar checkout): not wired up yet, by the owner's ruling that a
-     sandbox checkout must never ship. When it goes live, restore this to a
-     live anchor and drop the muted styling:
-       <a href="THE POLAR CHECKOUT URL — production polar.sh, never the sandbox" style="padding:14px 0;text-align:center;border-radius:8px;background:#171A1F;border:1px solid #2C3038;color:#E8EAED;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">BUY ON POLAR</a>
-     -->
-        <span aria-disabled="true" style="padding:14px 0;text-align:center;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;background:#141619;border:1px solid #2C3038;color:#6B7078;cursor:default;">BUY ON POLAR — NOT YET AVAILABLE</span>
+          <!-- /loom/buy, for the reason written at the hero button above. -->
+          <a href="/loom/buy" style="padding:14px 0;text-align:center;border-radius:8px;background:#171A1F;border:1px solid #2C3038;color:#E8EAED;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">BUY ON POLAR</a>
         </div>
         <div style="border:1px solid #23262C;border-radius:12px;background:#0F1114;padding:30px 28px;display:flex;flex-direction:column;gap:14px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#8A9099;">REQUIREMENTS</div>

@@ -32,6 +32,13 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # src/_data/releases.js reads the GitHub Releases API at build time. Unauthenticated it
+          # is 60 requests/hour PER IP and Actions runners share addresses, so a busy hour would
+          # 403 the fetch — which that file deliberately turns into a FAILED BUILD rather than a
+          # version page with no version on it. This token raises the limit to 1000/hour and needs
+          # no extra permission: `contents: read` above already covers reading a public repo.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
