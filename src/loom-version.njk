@@ -110,7 +110,7 @@ eleventyExcludeFromCollections: true
   </div>
 
   <div class="row">
-    <a class="btn" href="{{ releases.latestDmgUrl }}">DOWNLOAD LOOM {{ releases.latest.version }}</a>
+    <a class="btn" href="{{ releases.latestDmgUrl }}">DOWNLOAD LATEST &middot; {{ releases.latest.version }}</a>
     <span class="meta">{{ releases.latest.dmgSize }} &middot; macOS 13.3+<br>Apple silicon &middot; 14-day trial, every feature</span>
   </div>
 
@@ -126,6 +126,13 @@ eleventyExcludeFromCollections: true
   {% if releases.older.length %}
   <div>
     <h2>Previous builds</h2>
+    <!-- ⭐ THE LIST SAYS, IN WORDS, THAT YOU DO NOT HAVE TO CHOOSE. A page listing several
+         downloads makes a decision for the reader whether it means to or not, and the answer is
+         the same for almost everybody. Saying so costs one sentence and removes the deliberation;
+         the older builds stay reachable for the person who actually has a reason. -->
+    <p style="margin:0 0 18px">Kept so an old build stays reachable at a permanent address. Unless
+       you are pinning a specific version, <strong style="color:#C7CDD4">take the latest above</strong>
+       — it is the one both download buttons on the LOOM page give you.</p>
     <ul>
       {% for r in releases.older %}
       <li>
@@ -135,6 +142,12 @@ eleventyExcludeFromCollections: true
       </li>
       {% endfor %}
     </ul>
+  </div>
+  {% else %}
+  <div>
+    <h2>Previous builds</h2>
+    <p>None yet — {{ releases.latest.version }} is the first release. Older versions will be listed
+       here with permanent download addresses as they are superseded.</p>
   </div>
   {% endif %}
 

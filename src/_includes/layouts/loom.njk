@@ -120,7 +120,14 @@ layout: layouts/base.njk
      would leave that redirect exercised only by the in-app button — a path nobody tests until
      it is broken. See src/loom-buy.njk. -->
         <a href="/loom/buy" style="padding:15px 28px;border-radius:8px;background:#171A1F;border:1px solid #2C3038;color:#E8EAED;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;">BUY A LICENCE</a>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;color:#8A9099;">14-day trial, every feature<br>Apple Silicon · macOS 13.3+</div>
+        <!-- ⭐ THE VERSION IS ALWAYS LABELLED "LATEST" AND IS NEVER A CHOICE HERE. Both download
+             buttons resolve to releases/latest/download, so what this line names is exactly what
+             the button gives you — it comes from the same `releases` data, read from the GitHub
+             Releases API at build time, so the page cannot advertise a version it does not ship.
+             Older builds exist and have permanent addresses, but they live on /loom/version where
+             somebody has gone looking for them. Nobody should have to decide which LOOM to
+             download on the page whose job is to give them LOOM. -->
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;color:#8A9099;">Latest ({{ releases.latest.version }}) · {{ releases.latest.dmgSize }} · 14-day trial<br>Apple Silicon · macOS 13.3+ · <a href="/loom/version">all versions</a></div>
       </div>
     </div>
 
@@ -473,6 +480,7 @@ layout: layouts/base.njk
           <div style="font-size:21px;font-weight:600;letter-spacing:-0.02em;">Download and play</div>
           <div style="font-size:15px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The disk image, direct. Open it, drag LOOM to Applications, and you hear yourself the moment it launches.</div>
           <div style="flex:1;min-height:8px;"></div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6B7078;">LATEST · {{ releases.latest.version }} · {{ releases.latest.dmgSize }}</div>
           <!-- Direct to GitHub Releases, for the reason written at the hero button above. -->
           <a href="{{ releases.latestDmgUrl }}" style="padding:14px 0;text-align:center;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD .DMG</a>
         </div>
@@ -508,6 +516,11 @@ layout: layouts/base.njk
                 <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">None, at any point</div>
               </div>
             
+              <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">VERSION</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">{{ releases.latest.version }} — <a href="/loom/version">release history</a></div>
+              </div>
+            
           </div>
         </div>
       </div>
@@ -528,6 +541,7 @@ layout: layouts/base.njk
              licence.moonquakemedia.com, this is one of four places that names it — the others
              are Polar's success URL, its webhook and the Custom benefit's note. -->
         <a href="https://web-production-5d00dd.up.railway.app/redeem" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;">CLAIM YOUR LICENCE</a>
+        <a href="/loom/version" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;">VERSIONS</a>
         <a href="/legal/loom-privacy/" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;">PRIVACY</a>
         <a href="mailto:support@moonquakemedia.com" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.12em;">SUPPORT</a>
       </div>
