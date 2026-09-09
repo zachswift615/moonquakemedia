@@ -23,6 +23,25 @@
 # location.replace() that is faster and does not trap the back button (an ordinary assign would
 # bounce a customer pressing Back straight forward again), and a real anchor for when both fail.
 # It is styled only enough not to flash white on the way past.
+# ─────────────────────────────────────────────────────────────────────────────────────────────
+# ⛔ THIS CURRENTLY POINTS AT THE LAUNCH-PRICE CHECKOUT LINK. REVERT IT WHEN THE WINDOW CLOSES.
+#
+#   launch  polar_cl_vYqmwMuetEWn43iqv6xqBJEsr3eUunynGGTCy46HYJQ   $99  (preset "Launch Price"
+#                                                                  discount, -$50.99, no code)
+#   full    polar_cl_vBWlI9buwGaMeiqrD3m5xE8OgupPWgJn73lBK4YgdGh   $149.99  ← revert to this
+#
+# Verified on the live checkout 2026-09-08: subtotal $149.99, Launch Price -$50.99, total $99,
+# applied with nothing typed by the customer.
+#
+# ⚠️ THE DISCOUNT'S OWN `ends_at` IS THE BACKSTOP AND NOT THE PLAN. It is not known whether a
+# checkout link whose preset discount has expired falls back to full price or errors, and day 31
+# of a launch is the wrong time to find out. Swap the id above back to the full-price link on
+# purpose, before that date.
+#
+# ⭐ Changing the line below changes the price behind EVERY Buy button in existence — both on the
+# LOOM page and the one compiled into every copy of LOOM already downloaded, which cannot be
+# changed any other way. That is what this file is for.
+# ─────────────────────────────────────────────────────────────────────────────────────────────
 permalink: /loom/buy/index.html
 eleventyExcludeFromCollections: true
 ---
@@ -32,7 +51,7 @@ eleventyExcludeFromCollections: true
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta http-equiv="refresh" content="0;url=https://buy.polar.sh/polar_cl_vBWlI9buwGaMeiqrD3m5xE8OgupPWgJn73lBK4YgdGh">
+<meta http-equiv="refresh" content="0;url=https://buy.polar.sh/polar_cl_vYqmwMuetEWn43iqv6xqBJEsr3eUunynGGTCy46HYJQ">
 <title>Buy LOOM</title>
 <style>
   /* #0B0C0E is the LOOM page's own ground (loom.njk's base rules), not the near-black used for
@@ -56,12 +75,12 @@ eleventyExcludeFromCollections: true
 <body>
 <main>
   <p>Taking you to the LOOM checkout&hellip;</p>
-  <a href="https://buy.polar.sh/polar_cl_vBWlI9buwGaMeiqrD3m5xE8OgupPWgJn73lBK4YgdGh">CONTINUE TO CHECKOUT</a>
+  <a href="https://buy.polar.sh/polar_cl_vYqmwMuetEWn43iqv6xqBJEsr3eUunynGGTCy46HYJQ">CONTINUE TO CHECKOUT</a>
 </main>
 <script>
   // replace(), not assign(): Back from the checkout must return to wherever the customer came
   // from, not to this page, which would immediately send them forward again.
-  location.replace("https://buy.polar.sh/polar_cl_vBWlI9buwGaMeiqrD3m5xE8OgupPWgJn73lBK4YgdGh");
+  location.replace("https://buy.polar.sh/polar_cl_vYqmwMuetEWn43iqv6xqBJEsr3eUunynGGTCy46HYJQ");
 </script>
 </body>
 </html>
