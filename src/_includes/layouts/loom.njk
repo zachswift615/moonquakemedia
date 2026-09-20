@@ -105,7 +105,7 @@ layout: layouts/base.njk
         <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.2em;color:#8A9099;">LIVE LOOPING INSTRUMENT · MACOS</div>
       </div>
       <h1 style="margin:0;font-size:clamp(46px,6.4vw,88px);font-weight:700;letter-spacing:-0.035em;line-height:0.98;max-width:15ch;text-wrap:balance;">A loop station that plays itself.</h1>
-      <p style="margin:0;font-size:clamp(18px,2vw,23px);line-height:1.5;color:#C7CDD4;max-width:60ch;text-wrap:pretty;">Record and overdub on five tracks the way you would on a hardware looper. Then draw those same commands on a timeline, and the song presses its own buttons while you play. One engine underneath both, so nothing you learn at the loop station stops being true in the arrangement.</p>
+      <p style="margin:0;font-size:clamp(18px,2vw,23px);line-height:1.5;color:#C7CDD4;max-width:60ch;text-wrap:pretty;">Record and overdub on five tracks the way you would on a hardware looper. Then draw those same commands on a timeline, and the song presses its own buttons while you play. Both routes run the same engine, so what you learn at the loop station still holds in the arrangement.</p>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;">
         <!-- ⛔ LINKED STRAIGHT OUT TO GITHUB RELEASES, AND DELIBERATELY NOT THROUGH A REDIRECT
      ON THIS DOMAIN. GitHub Pages is static, so a /loom/download hop could only be a meta-refresh
@@ -162,7 +162,7 @@ layout: layouts/base.njk
         <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">ONE PRESS</div>
           <div style="font-size:17px;font-weight:600;letter-spacing:-0.01em;line-height:1.25;">No arming, ever</div>
-          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The ring’s centre says what the next press will do. There is no record-arm step and no separate play button — both are on record as decisions.</div>
+          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The ring's centre says what the next press will do. There is no record-arm step and no separate play button, and leaving both out was deliberate.</div>
         </div>
       
         <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px;">
@@ -191,8 +191,8 @@ layout: layouts/base.njk
         <h2 style="margin:0;font-size:clamp(30px,3.4vw,42px);font-weight:700;letter-spacing:-0.025em;line-height:1.08;text-wrap:balance;">The software that did this is gone.</h2>
       </div>
       <div style="display:flex;flex-direction:column;gap:18px;">
-        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">There was a program that did this once — an arrangement that performs a looper — and it is not sold or maintained any more. Everything else asks you to choose: the immediacy of a loop pedal, or the structure of a timeline.</p>
-        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">LOOM aims at that gap without giving up the hardware-looper flow to get there. Press the ring and it records — there is no arm step, and there never will be. Draw the same command on a lane and it fires on its own tick, to the sample.</p>
+        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">There was a program that did this once, an arrangement that performs a looper, and it is not sold or maintained any more. Everything else asks you to choose between the immediacy of a loop pedal and the structure of a timeline.</p>
+        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">LOOM aims at that gap without giving up the hardware-looper flow to get there. Press the ring and it records, with no arm step in the way. Draw that same command on a lane and it fires on its own tick, to the sample.</p>
       </div>
     </div>
 
@@ -200,11 +200,11 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#4CC9F0;">ARRANGE</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Draw the performance. Play over it.</h2>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Regions on a track's lane, three verbs: <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FF4438;">REC</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FFB020;">DUB</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#35D07F;">PLAY</span>. A gap means the track is stopped, so you never draw a stop — LOOM synthesises it at the region's end. This is the half a hardware looper cannot do.</p>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Under the regions, automation lanes move the desk. A fader, a pan, a mute, any control on any effect — and a node that drops a whole saved rack into a chain, named on the lane so the song reads as a row of passages.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Regions on a track's lane, three verbs: <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FF4438;">REC</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FFB020;">DUB</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#35D07F;">PLAY</span>. A gap means the track is stopped, so you never draw a stop; LOOM puts one in at the region's end. This is the half a hardware looper cannot do.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Under the regions, automation lanes move the desk while the song plays: a fader, a pan, a mute, or any control on any effect. A single node can drop a whole saved rack into a chain, and the lane carries its name, so the song reads as a row of named passages.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
-        <img src="/assets/loom/shot-arrange.png" alt="LOOM arrange view: thirteen regions across five track lanes, with automation lanes underneath — two FX 2 send levels, a main level, a pan, and two rack preset lanes whose bands are named Nasty Acoust G2B, Chorus Delay AC and Clean ACG" style="width:100%;height:auto;display:block;">
+        <img src="/assets/loom/shot-arrange.png" alt="LOOM arrange view: thirteen regions across five track lanes, and automation lanes underneath it: two FX 2 send levels, a main level, a pan, and two rack preset lanes whose bands are named Nasty Acoust G2B, Chorus Delay AC and Clean ACG" style="width:100%;height:auto;display:block;">
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;padding-top:8px;">
         
@@ -248,8 +248,8 @@ layout: layouts/base.njk
           <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#FF6A5E;">ALL OR NOTHING</div>
         </div>
         <h2 style="margin:0;font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-0.03em;line-height:1.06;max-width:24ch;text-wrap:balance;">It tells you before it plays.</h2>
-        <p style="margin:0;font-size:18px;line-height:1.6;color:#C7CDD4;max-width:66ch;text-wrap:pretty;">If any region in the arrangement cannot be played correctly, nothing starts. The notice row says why — one line per bad region, each a full sentence that leads with what to change rather than an error code.</p>
-        <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;max-width:66ch;text-wrap:pretty;">The alternative most software picks is to play seven of your eight regions and drop the eighth silently. You find out from the audience.</p>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#C7CDD4;max-width:66ch;text-wrap:pretty;">If any region in the arrangement cannot be played correctly, nothing starts. The notice row says why, one line per bad region, each a full sentence that leads with what to change instead of an error code.</p>
+        <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;max-width:66ch;text-wrap:pretty;">The check runs before the first note, because the middle of a song is a bad place to find out that a region was never going to fire.</p>
       </div>
     </div>
 
@@ -257,7 +257,7 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIXER &amp; EFFECTS</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">A real desk behind the loops.</h2>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Four banks off one switch — loop tracks, inputs, master, buses. Eight insert slots on every strip, and every chain runs in stereo on every placement. Chains save with the song.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Four banks off one switch: loop tracks, inputs, master, buses. Eight insert slots on every strip, and every chain runs in stereo wherever you put it. Chains save with the song.</p>
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Nine effects to put in them: parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, cab and a guitar amp. Save one slot as a preset or a whole chain as a rack, and the arrangement can load either while you play.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
@@ -272,8 +272,8 @@ layout: layouts/base.njk
             <div style="display:flex;gap:14px;align-items:flex-start;">
               <div style="width:6px;height:6px;border-radius:2px;background:#A78BFA;flex:none;margin-top:8px;"></div>
               <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
-                <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Nine effects, six-band EQ</div>
-                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">EQ with a live spectrum behind the curve, a compressor drawing its transfer curve, reverb, a ping-pong delay that locks to the beat, a noise gate, chorus, octave, cab and amp.</div>
+                <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Effects that show their work</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The EQ draws a live spectrum behind its six-band response curve, and the compressor draws its transfer curve with a gain-reduction meter beside it.</div>
               </div>
             </div>
           
@@ -281,7 +281,7 @@ layout: layouts/base.njk
               <div style="width:6px;height:6px;border-radius:2px;background:#4CC9F0;flex:none;margin-top:8px;"></div>
               <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
                 <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">One faders row, four destinations</div>
-                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">MAIN, CUE, FX 1, FX 2 — whichever is selected, every fader in the rack is addressing it. No per-strip send knob to hunt for.</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">MAIN, CUE, FX 1, FX 2. Whichever one is selected, every fader in the rack is addressing it, so there is no per-strip send knob to hunt for.</div>
               </div>
             </div>
           
@@ -289,7 +289,7 @@ layout: layouts/base.njk
               <div style="width:6px;height:6px;border-radius:2px;background:#35D07F;flex:none;margin-top:8px;"></div>
               <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
                 <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Three buses, and where sound leaves by</div>
-                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">CUE tapped pre-fader so a strip pulled down for the room stays in your headphones. An OUTPUT picker on every bus and the master.</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">CUE is tapped pre-fader, so a strip you pull down for the room stays up in your headphones. The master and the cue each choose which pair of outputs they leave by.</div>
               </div>
             </div>
           
@@ -317,7 +317,7 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">PRESETS &amp; RACKS</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Save a sound. Recall it mid-song.</h2>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">A preset is one effect’s settings. A rack is a whole chain — which effect is in each slot, every setting, and which slots are bypassed. LOOM ships a library of both and keeps yours beside them. Loading a rack replaces the chain in one step, and ⌘Z takes it back.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">A preset is one effect's settings. A rack is a whole chain: which effect is in each slot, every setting, and which slots are bypassed. LOOM ships a library of both and keeps yours beside them. Loading a rack replaces the chain in one step, and ⌘Z takes it back.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
         <img src="/assets/loom/shot-racks.png" alt="LOOM’s rack browser over the mixer, listing factory racks named Vocal Air, Guitar Ambient, Drum Glue, Acoustic Stage, G2B, Bass DI, Pad Wash, Octave Lead and Wide Clean, each with a row of slot chips naming the effects in it, above the performer’s own saved racks" style="width:100%;height:auto;display:block;">
@@ -328,7 +328,7 @@ layout: layouts/base.njk
           <img src="/assets/loom/shot-amp.png" alt="LOOM effect drawer open on the guitar amp: CLEAN, CRUNCH and HIGH GAIN models, gain and tight controls, a bass, mid, treble and presence tone stack, and a 4x12 closed cab, second in a chain after a noise gate" style="width:100%;height:auto;display:block;">
         </div>
         <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
-          <img src="/assets/loom/shot-chorus.png" alt="LOOM effect drawer open on the chorus: rate, depth, a sine or triangle shape, one to four voices, and four stereo constructions — offset, split, opposed and mono — third in a chain after an amp" style="width:100%;height:auto;display:block;">
+          <img src="/assets/loom/shot-chorus.png" alt="LOOM effect drawer open on the chorus: rate, depth, a sine or triangle shape, one to four voices, and four stereo constructions (offset, split, opposed and mono), third in a chain after an amp" style="width:100%;height:auto;display:block;">
         </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;padding-top:8px;">
@@ -345,7 +345,7 @@ layout: layouts/base.njk
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
             <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">A swap fades, it does not click</div>
-            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Changing the effect in a slot while the chain is running fades over 50 ms and waits for the fade to finish, so a rack change mid-song is a dip rather than a pop.</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Changing the effect in a slot while the chain is running fades over 50 ms and waits for the fade to finish, so a rack change mid-song sounds like a short dip instead of a pop.</div>
           </div>
         
       </div>
@@ -355,8 +355,8 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#FF4438;">PERFORMANCE RECORDING</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Play the set. Mix it later.</h2>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">RECORD on the transport writes your whole performance as separate WAV files — each loop track on its own, each effects bus on its own, the main mix, and groups you build yourself out of live inputs or out of tracks and buses. Every file starts at the same moment and stays in step, so the folder drops straight into a DAW and lines up at zero.</p>
-        <p style="margin:0;font-size:17px;line-height:1.6;color:#8A9099;text-wrap:pretty;">This is on top of the takes in the song, not instead of them. Play the whole thing once, then balance it against a video, or re-process a guitar that was too loud in the room, without asking the audience for another take.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">RECORD on the transport writes your whole performance as separate WAV files: each loop track on its own, each effects bus on its own, the main mix, and any groups you build out of live inputs or out of tracks and buses. Every file starts at the same moment and stays in step, so the folder drops straight into a DAW and lines up at zero.</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#8A9099;text-wrap:pretty;">You still get the takes in the song; this is a second set of files alongside them. Play the whole thing once, then balance it against a video or re-process a guitar that was too loud in the room, without asking the audience for another take.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
         <img src="/assets/loom/shot-record-setup.png" alt="LOOM’s Record setup sheet: five loop tracks and two effects buses ticked, the CUE bus left off, ten files per recording at 3.84 MB/s, and a panel working out the disk cost and the hours of room left" style="width:100%;height:auto;display:block;">
@@ -365,12 +365,12 @@ layout: layouts/base.njk
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
             <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">You choose what goes in which file</div>
-            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">A group sums the sources you tick into one stereo file. Live inputs in one, loop tracks and buses in another — LOOM keeps them apart because the two line up at different moments.</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">A group sums the sources you tick into one stereo file. Live inputs go in one group and loop tracks and buses in another, because the two line up at different moments and one file can only have one starting point.</div>
           </div>
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
             <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">It says what it will cost first</div>
-            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Megabytes per second, files per recording, free space, and how many hours of room that is — before you press anything, not after the disk fills.</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Megabytes per second, files per recording, free space, and how many hours of room that leaves you, all worked out before you press anything.</div>
           </div>
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
@@ -385,8 +385,8 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:20px;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#35D07F;">OFFLINE BY CONSTRUCTION</div>
         <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">The venue's WiFi is not your problem.</h2>
-        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">LOOM opens no connection, sends no request and reads nothing back. Not on launch, not on a schedule, not to check a licence, not to fetch a font. No account, no activation server, nothing reporting home. Your licence is verified on your own Mac.</p>
-        <p style="margin:0;font-size:16px;line-height:1.6;color:#8A9099;text-wrap:pretty;">A build check enforces it: no code LOOM writes reaches a network entry point, and the check fails the build if any does. Two buttons hand an address to your browser — buying a licence, and looking up the latest version. That is the whole of it.</p>
+        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">LOOM opens no connection and sends no request, at launch or at any point afterwards. It does not phone home to check your licence, and it does not fetch fonts from anywhere. There is no account to make and no activation server to reach, because your licence is verified on your own Mac.</p>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#8A9099;text-wrap:pretty;">A build check enforces it: no code LOOM writes reaches a network entry point, and the build fails if any does. Two buttons hand an address to your browser, one for buying a licence and one for looking up the latest version. That is the whole of it.</p>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#23262C;border:1px solid #23262C;border-radius:12px;overflow:hidden;">
         
@@ -426,14 +426,14 @@ layout: layouts/base.njk
     <div style="padding:128px 0 0;display:flex;flex-direction:column;gap:40px;">
       <div style="display:flex;flex-direction:column;gap:16px;max-width:70ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#8A9099;">EVERYTHING ELSE IT DOES</div>
-        <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Built for the twenty minutes you are on stage.</h2>
+        <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Built for playing live.</h2>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
         
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">LOOPING</div>
             <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Five tracks, quantized both ways</div>
-            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Launch on immediate, next beat, next bar or next cycle; stop on immediate, end of beat, bar or loop — per track and as a song default. Pre-set lengths to 32 bars, and a fixed recording closes itself.</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Launch on immediate, next beat, next bar or next cycle; stop on immediate, end of beat, bar or loop. Set it per track or as a song default. Pre-set lengths up to 32 bars, and a fixed recording closes itself.</div>
           </div>
         
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
@@ -445,13 +445,13 @@ layout: layouts/base.njk
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#35D07F;">MONITORING</div>
             <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">You hear yourself immediately</div>
-            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Input 1 is audible at launch, everything else starts muted, and nothing has to be armed — or even to exist — for that to be true.</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Input 1 is audible at launch and everything else starts muted. Nothing has to be armed, or even to exist, for that to be true.</div>
           </div>
         
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4CC9F0;">INPUTS</div>
             <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Pan into the take, stereo links</div>
-            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">An input’s pan is recorded, not just monitored. Link inputs 1, 3, 5 or 7 to the one after it and the pair becomes one strip with one chain across both channels.</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">An input's pan goes into the take as well as into what you hear. Link inputs 1, 3, 5 or 7 to the one after it and the pair becomes one strip with one chain across both channels.</div>
           </div>
         
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
@@ -463,7 +463,7 @@ layout: layouts/base.njk
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">HARDWARE</div>
             <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Change interface mid-session</div>
-            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">No relaunch. Your routing is captured and restored across the change, and LOOM warns you first when a track still holds audio — counting the loss in the heading.</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">No relaunch. Your routing is captured and restored across the change, and LOOM warns you first when a track still holds audio, counting the loss in the heading.</div>
           </div>
         
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
@@ -481,7 +481,7 @@ layout: layouts/base.njk
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4CC9F0;">THE MANUAL</div>
             <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Inside the app, as a PDF</div>
-            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">⌘? opens it. No network call — it is on your machine, so it is there on a stage, behind a captive portal, and at two in the morning.</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">⌘/ opens it. It is a PDF on your own machine rather than a page on a website, so a captive portal at the venue makes no difference to it.</div>
           </div>
         
       </div>
@@ -493,7 +493,7 @@ layout: layouts/base.njk
           <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIDI, PRECISELY</div>
           <h3 style="margin:0;font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;">A pedalboard drives the whole instrument.</h3>
           <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Every track has its own octave with the same seven commands in the same order, and the global verbs have an octave of their own. The map starts at note 36, so a 49-key controller reaches the first four tracks with nothing transposed. A live monitor on the bottom rail shows the last message received, in every view, so you can answer <em style="color:#C7CDD4;font-style:normal;">is LOOM seeing my controller</em> without leaving what you are doing.</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">The map is compiled in. There is no MIDI learn, no binding editor and no way to reassign a note — that is on the roadmap, not in this version. Notes only: CC is displayed and bound to nothing, and there is no clock, MTC or MMC in or out.</p>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">The map is compiled in. There is no MIDI learn, no binding editor and no way to reassign a note; that is on the roadmap rather than in this version. Notes only: CC is displayed and bound to nothing, and there is no clock, MTC or MMC in or out.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:2px;background:#23262C;border:1px solid #23262C;border-radius:8px;overflow:hidden;">
           
@@ -535,7 +535,7 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:62ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#35D07F;">GET LOOM</div>
         <h2 style="margin:0;font-size:clamp(32px,4vw,54px);font-weight:700;letter-spacing:-0.03em;line-height:1.02;text-wrap:balance;">Fourteen days, everything unlocked.</h2>
-        <p style="margin:0;font-size:18px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">Nothing watermarked, nothing limited inside a session, no account to make. When the trial ends, a licence is a block of text you open once — LOOM checks it on your Mac at launch and never again. A check will never interrupt a running LOOM.</p>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">Nothing is watermarked, nothing is limited inside a session, and there is no account to make. When the trial ends, a licence is a block of text you open once, and LOOM checks it on your Mac at launch and never again. A check will never interrupt a running LOOM.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
         <div style="border:1px solid #2C3038;border-radius:12px;background:linear-gradient(180deg,#12201A,#0F1114);padding:30px 28px;display:flex;flex-direction:column;gap:16px;">
@@ -550,7 +550,7 @@ layout: layouts/base.njk
         <div style="border:1px solid #2C3038;border-radius:12px;background:#0F1114;padding:30px 28px;display:flex;flex-direction:column;gap:16px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#4CC9F0;">STEP TWO</div>
           <div style="font-size:21px;font-weight:600;letter-spacing:-0.02em;">Buy a licence</div>
-          <div style="font-size:15px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Checkout runs on Polar. You get a licence key, trade it for your licence file, and keep the file — it never expires and moving Macs is copying it.</div>
+          <div style="font-size:15px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Checkout runs on Polar. You get a licence key, trade it for your licence file, and keep the file. It never expires, and moving Macs is copying it.</div>
           <div style="flex:1;min-height:8px;"></div>
           <!-- /loom/buy, for the reason written at the hero button above. -->
           <a href="/loom/buy" style="padding:14px 0;text-align:center;border-radius:8px;background:#171A1F;border:1px solid #2C3038;color:#E8EAED;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">BUY ON POLAR</a>
@@ -566,7 +566,7 @@ layout: layouts/base.njk
             
               <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
                 <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">CHIP</div>
-                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">Apple Silicon only — no Intel build</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">Apple Silicon only (no Intel build)</div>
               </div>
             
               <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
@@ -581,7 +581,7 @@ layout: layouts/base.njk
             
               <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
                 <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">VERSION</div>
-                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">{{ releases.latest.version }} — <a href="/loom/version">release history</a></div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">{{ releases.latest.version }} (<a href="/loom/version">release history</a>)</div>
               </div>
             
           </div>
