@@ -91,6 +91,7 @@ layout: layouts/base.njk
       <div style="display:flex;align-items:center;gap:26px;">
         <a href="#arrange" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">ARRANGE</a>
         <a href="#mixer" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">MIXER</a>
+        <a href="#record" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">RECORD</a>
         <a href="#get" style="padding:9px 20px;border-radius:6px;background:#4CC9F0;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;">GET LOOM</a>
       </div>
     </div>
@@ -132,21 +133,26 @@ layout: layouts/base.njk
 
     <div style="padding:64px 0 0;">
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
-        <!-- SCREENSHOTS: v1.0.0, captured 2026-09-08. The four files keep their shot-*.png
-             names rather than the capture names, because loom.md's `ogImage` points at
-             shot-looper.png and social platforms cache an og:image by URL — a rename would
-             orphan every card already scraped. The mapping, for the next refresh:
-               shot-looper.png  <- looper-view.png
-               shot-arrange.png <- arrange-view.png
-               shot-eq.png      <- EQ-with-curve.png   (NOT mixer-view-EQ-panel-open.png,
-                                    whose bands all sat at 0.0 dB, so the curve read flat)
-               shot-delay.png   <- mixer-delay-open.png
-             ⚠️ EVERY ALT HERE MAKES A COUNTABLE CLAIM — "eighteen regions", "six bands",
-             "ping pong on" — so each was read off the new image before this commit rather
-             than carried across. An alt that describes the previous build is worse than a
-             stale screenshot: the screenshot is merely old, the alt is untrue, and the only
-             reader who gets the untrue one is the reader who cannot see the image. -->
-        <img src="/assets/loom/shot-looper.png" alt="LOOM looper view: five track rings reading play, record, overdub, empty and stopped, with the track panel open on track 2" style="width:100%;height:auto;display:block;">
+        <!-- SCREENSHOTS: captured 2026-09-19, off ~/Desktop/loom-screenshots-2026-09-19.
+             The four originals keep their shot-*.png names rather than the capture names,
+             because loom.md's `ogImage` points at shot-looper.png and social platforms cache
+             an og:image by URL — a rename would orphan every card already scraped. The
+             mapping, for the next refresh:
+               shot-looper.png       <- loop-view.png
+               shot-arrange.png      <- arrange-view-automation.png
+               shot-eq.png           <- mixer-eq-effect.png
+               shot-delay.png        <- mixer-delay-effect-sync-options.png
+               shot-amp.png          <- mixer-amp-effect.png        (new this refresh)
+               shot-racks.png        <- effect-rack-presets.png     (new this refresh)
+               shot-record-setup.png <- record-setup.png            (new this refresh)
+               shot-chorus.png       <- mixer-chorus-effect.png     (copied in, not placed)
+               shot-presets.png      <- effect-presets.png          (copied in, not placed)
+             ⚠️ EVERY ALT HERE MAKES A COUNTABLE CLAIM — "six bands", "thirteen divisions",
+             "ten files" — so each was read off the new image before this commit rather than
+             carried across. An alt that describes the previous build is worse than a stale
+             screenshot: the screenshot is merely old, the alt is untrue, and the only reader
+             who gets the untrue one is the reader who cannot see the image. -->
+        <img src="/assets/loom/shot-looper.png" alt="LOOM looper view: five track rings reading REC, DUB, PLAY, STOPPED and EMPTY, the track panel open on track 1, and the notice row reading that ten files are being recorded" style="width:100%;height:auto;display:block;">
       </div>
       <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">LOOPER · FIVE TRACKS · THE RING SAYS WHAT THE NEXT PRESS DOES</div>
     </div>
@@ -195,9 +201,10 @@ layout: layouts/base.njk
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#4CC9F0;">ARRANGE</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Draw the performance. Play over it.</h2>
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Regions on a track's lane, three verbs: <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FF4438;">REC</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FFB020;">DUB</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#35D07F;">PLAY</span>. A gap means the track is stopped, so you never draw a stop — LOOM synthesises it at the region's end. This is the half a hardware looper cannot do.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Under the regions, automation lanes move the desk. A fader, a pan, a mute, any control on any effect — and a node that drops a whole saved rack into a chain, named on the lane so the song reads as a row of passages.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
-        <img src="/assets/loom/shot-arrange.png" alt="LOOM arrange view: eighteen regions across five lanes with the playhead mid-arrangement" style="width:100%;height:auto;display:block;">
+        <img src="/assets/loom/shot-arrange.png" alt="LOOM arrange view: thirteen regions across five track lanes, with automation lanes underneath — two FX 2 send levels, a main level, a pan, and two rack preset lanes whose bands are named Nasty Acoust G2B, Chorus Delay AC and Clean ACG" style="width:100%;height:auto;display:block;">
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;padding-top:8px;">
         
@@ -214,6 +221,21 @@ layout: layouts/base.njk
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
             <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Eleven zoom steps</div>
             <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">8 to 224 pixels per bar, all zooming about the pointer, plus FIT and a FOLLOW toggle for whether the view chases the playhead.</div>
+          </div>
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #A78BFA;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Automate the desk, not just the loops</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">A strip’s level on any of its four fader axes, its pan, its mute, an effect slot’s bypass, and every control on every effect you have put in a slot.</div>
+          </div>
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #A78BFA;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">A node can load a whole rack</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Drop a saved preset into one slot, or a saved rack across a whole chain, at the bar you put it on. The band that follows carries the name in force.</div>
+          </div>
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #A78BFA;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">A lane holds values, not a reference</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The node takes a copy of the entry’s settings, so a song you performed last month sounds the way it sounded whatever you have done to your library since.</div>
           </div>
         
       </div>
@@ -235,22 +257,23 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIXER &amp; EFFECTS</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">A real desk behind the loops.</h2>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Four banks off one switch — loop tracks, inputs, master, buses. Eight insert slots on every strip, four effects to put in them, and every chain runs in stereo on every placement. Chains save with the song.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Four banks off one switch — loop tracks, inputs, master, buses. Eight insert slots on every strip, and every chain runs in stereo on every placement. Chains save with the song.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Nine effects to put in them: parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, cab and a guitar amp. Save one slot as a preset or a whole chain as a rack, and the arrangement can load either while you play.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
-        <img src="/assets/loom/shot-eq.png" alt="LOOM mixer with the effect drawer open on a parametric EQ: the response curve drawn over a live spectrum, six bands from a high pass to a low pass, cut in the low mids and lifted above 2 kHz" style="width:100%;height:auto;display:block;">
+        <img src="/assets/loom/shot-eq.png" alt="LOOM mixer with the effect drawer open on a parametric EQ: the response curve drawn over a live spectrum, six bands from a high pass to a low pass, cut at 300 Hz and lifted above 3 kHz, in a chain loaded from the Vocal Air rack" style="width:100%;height:auto;display:block;">
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
         <div style="border:1px solid #23262C;border-radius:10px;overflow:hidden;background:#101216;">
-          <img src="/assets/loom/shot-delay.png" alt="LOOM effect drawer open on a delay with ping pong on, third in a chain after a parametric EQ and a reverb" style="width:100%;height:auto;display:block;">
+          <img src="/assets/loom/shot-delay.png" alt="LOOM effect drawer open on a delay, third in a chain after a parametric EQ and a compressor, showing thirteen beat divisions from 1⁄1 down to 1⁄16T with 1⁄8 selected" style="width:100%;height:auto;display:block;">
         </div>
         <div style="display:flex;flex-direction:column;gap:20px;justify-content:center;">
           
             <div style="display:flex;gap:14px;align-items:flex-start;">
               <div style="width:6px;height:6px;border-radius:2px;background:#A78BFA;flex:none;margin-top:8px;"></div>
               <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
-                <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Four effects, six-band EQ</div>
-                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Parametric EQ with a live spectrum behind the curve, a compressor drawing its transfer curve, reverb and a ping-pong delay.</div>
+                <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Nine effects, six-band EQ</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">EQ with a live spectrum behind the curve, a compressor drawing its transfer curve, reverb, a ping-pong delay that locks to the beat, a noise gate, chorus, octave, cab and amp.</div>
               </div>
             </div>
           
@@ -278,7 +301,83 @@ layout: layouts/base.njk
               </div>
             </div>
           
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:6px;height:6px;border-radius:2px;background:#E04AC1;flex:none;margin-top:8px;"></div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
+                <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">The delay can lock to the beat</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Switch it from FREE to SYNC, pick a division, and it follows the song’s tempo. A division too long for the delay line is drawn dimmed rather than silently clamped.</div>
+              </div>
+            </div>
+          
         </div>
+      </div>
+    </div>
+
+    <div style="padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">PRESETS &amp; RACKS</div>
+        <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Save a sound. Recall it mid-song.</h2>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">A preset is one effect’s settings. A rack is a whole chain — which effect is in each slot, every setting, and which slots are bypassed. LOOM ships a library of both and keeps yours beside them. Loading a rack replaces the chain in one step, and ⌘Z takes it back.</p>
+      </div>
+      <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
+        <img src="/assets/loom/shot-racks.png" alt="LOOM’s rack browser over the mixer, listing factory racks named Vocal Air, Guitar Ambient, Drum Glue, Acoustic Stage, G2B, Bass DI, Pad Wash, Octave Lead and Wide Clean, each with a row of slot chips naming the effects in it, above the performer’s own saved racks" style="width:100%;height:auto;display:block;">
+      </div>
+      <div style="padding:4px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">THE RACK BROWSER · FACTORY AND YOUR OWN · LOAD REPLACES THE CHAIN IN ONE STEP</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;padding-top:24px;">
+        <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
+          <img src="/assets/loom/shot-amp.png" alt="LOOM effect drawer open on the guitar amp: CLEAN, CRUNCH and HIGH GAIN models, gain and tight controls, a bass, mid, treble and presence tone stack, and a 4x12 closed cab, second in a chain after a noise gate" style="width:100%;height:auto;display:block;">
+        </div>
+        <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
+          <img src="/assets/loom/shot-chorus.png" alt="LOOM effect drawer open on the chorus: rate, depth, a sine or triangle shape, one to four voices, and four stereo constructions — offset, split, opposed and mono — third in a chain after an amp" style="width:100%;height:auto;display:block;">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;padding-top:8px;">
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">The bar tells you where you stand</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">EDITED when a setting has moved, FACTORY on one that ships with LOOM, AUTOMATED when a lane is driving it, OVERRIDE when you have picked a different one by hand mid-performance.</div>
+          </div>
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">A chain has its own undo</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">⌘Z steps the effect chain you are working in, separately from the arrangement’s stack, and one gesture is one step even when it moved every slot.</div>
+          </div>
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">A swap fades, it does not click</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Changing the effect in a slot while the chain is running fades over 50 ms and waits for the fade to finish, so a rack change mid-song is a dip rather than a pop.</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div id="record" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#FF4438;">PERFORMANCE RECORDING</div>
+        <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Play the set. Mix it later.</h2>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">RECORD on the transport writes your whole performance as separate WAV files — each loop track on its own, each effects bus on its own, the main mix, and groups you build yourself out of live inputs or out of tracks and buses. Every file starts at the same moment and stays in step, so the folder drops straight into a DAW and lines up at zero.</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#8A9099;text-wrap:pretty;">This is on top of the takes in the song, not instead of them. Play the whole thing once, then balance it against a video, or re-process a guitar that was too loud in the room, without asking the audience for another take.</p>
+      </div>
+      <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
+        <img src="/assets/loom/shot-record-setup.png" alt="LOOM’s Record setup sheet: five loop tracks and two effects buses ticked, the CUE bus left off, ten files per recording at 3.84 MB/s, and a panel working out the disk cost and the hours of room left" style="width:100%;height:auto;display:block;">
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;padding-top:8px;">
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">You choose what goes in which file</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">A group sums the sources you tick into one stereo file. Live inputs in one, loop tracks and buses in another — LOOM keeps them apart because the two line up at different moments.</div>
+          </div>
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">It says what it will cost first</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Megabytes per second, files per recording, free space, and how many hours of room that is — before you press anything, not after the disk fills.</div>
+          </div>
+        
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">A dropout is written down</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">If the disk cannot keep up, the gap is filled with silence in every file at once so they stay in step, and its time and length go into a Markers.txt you can read in any editor.</div>
+          </div>
+        
       </div>
     </div>
 
@@ -358,7 +457,7 @@ layout: layouts/base.njk
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#A78BFA;">YOUR FILES</div>
             <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Every pass is a WAV you can open</div>
-            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">32-bit float, two-channel, at your interface’s sample rate, written when the pass closes with no save step. Songs are folders in ~/Music/LOOM.</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">32-bit float, two-channel, at your interface’s sample rate, written when the pass closes with no save step. Songs are folders in ~/Music/LOOM, and performance recordings are folders beside them.</div>
           </div>
         
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
