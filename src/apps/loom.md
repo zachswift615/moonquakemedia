@@ -13,7 +13,7 @@ permalink: /loom/
 slug: loom
 title: "LOOM — A Loop Station That Plays Itself"
 tagline: A loop station that plays itself
-description: "LOOM is a macOS live-looping instrument. Record and overdub on five tracks, then draw those same commands on a timeline so the song presses its own buttons while you play."
+description: "LOOM is a live looper for the Mac. Record and overdub on five tracks like you would on a pedal, then draw the same moves on a timeline and the song presses its own buttons while you play."
 ogImage: /assets/loom/shot-looper.png
 # LOOM is a macOS app. It has no App Store listing, so base.njk must not
 # advertise one — without this the page would carry the site's default
