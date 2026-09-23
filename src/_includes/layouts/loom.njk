@@ -80,25 +80,35 @@ layout: layouts/base.njk
   /* The site footer (components/footer.njk) lands on this page's dark
      ground, as it does on the Listen2 page. */
   body > footer { color: #6B7078; }
+
+  /* Phone widths. The design was laid out for a desktop window: its nav row
+     needs about 470px, and its 32px gutters leave too little room for the
+     content. Below 600px the section links give way to GET LOOM alone and the
+     gutters narrow. The grids handle themselves: each minmax() floor is
+     min(<floor>, 100%), so a column never asks for more than the page has. */
+  @media (max-width: 600px) {
+    .loom-nav-link { display: none; }
+    .loom-gutter { padding-left: 16px !important; padding-right: 16px !important; }
+  }
 </style>
 
 <div style="background:#0B0C0E;color:#E8EAED;font-family:Archivo,sans-serif;-webkit-font-smoothing:antialiased;">
 
   <div style="position:sticky;top:0;z-index:20;background:rgba(11,12,14,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #23262C;">
-    <div style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:14px;">
+    <div class="loom-gutter" style="max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:14px;">
       <img src="/assets/loom/loom-icon.png" alt="" style="width:30px;height:30px;border-radius:7px;display:block;flex:none;">
       <div style="font-size:19px;font-weight:700;letter-spacing:0.02em;flex:none;">LOOM</div>
       <div style="flex:1;min-width:0;"></div>
       <div style="display:flex;align-items:center;gap:26px;">
-        <a href="#arrange" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">ARRANGE</a>
-        <a href="#mixer" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">MIXER</a>
-        <a href="#record" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">RECORD</a>
+        <a href="#arrange" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">ARRANGE</a>
+        <a href="#mixer" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">MIXER</a>
+        <a href="#record" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">RECORD</a>
         <a href="#get" style="padding:9px 20px;border-radius:6px;background:#4CC9F0;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;">GET LOOM</a>
       </div>
     </div>
   </div>
 
-  <main id="main-content" style="max-width:1240px;margin:0 auto;padding:0 32px;">
+  <main id="main-content" class="loom-gutter" style="max-width:1240px;margin:0 auto;padding:0 32px;">
 
     <div style="padding:104px 0 0;display:flex;flex-direction:column;gap:34px;">
       <div style="display:flex;align-items:center;gap:12px;">
@@ -167,7 +177,7 @@ layout: layouts/base.njk
       <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">LOOPER · FIVE TRACKS · EACH RING SHOWS WHAT YOUR NEXT PRESS WILL DO</div>
     </div>
 
-    <div style="padding:112px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+    <div style="padding:112px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px;">
       
         <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">ONE PRESS</div>
@@ -195,7 +205,7 @@ layout: layouts/base.njk
       
     </div>
 
-    <div style="padding:128px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:start;">
+    <div style="padding:128px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:start;">
       <div style="display:flex;flex-direction:column;gap:20px;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#8A9099;">WHY LOOM</div>
         <h2 style="margin:0;font-size:clamp(30px,3.4vw,42px);font-weight:700;letter-spacing:-0.025em;line-height:1.08;text-wrap:balance;">The last app that did this isn’t around anymore.</h2>
@@ -216,7 +226,7 @@ layout: layouts/base.njk
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
         <img src="/assets/loom/shot-arrange.png" alt="LOOM’s arrange view: thirteen regions across five track lanes, with automation lanes below for two FX 2 send levels, a main level, a pan, and two rack lanes with sections named Nasty Acoust G2B, Chorus Delay AC and Clean ACG" style="width:100%;height:auto;display:block;">
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;padding-top:8px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:28px;padding-top:8px;">
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
             <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Start from the top or from anywhere</div>
@@ -273,7 +283,7 @@ layout: layouts/base.njk
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
         <img src="/assets/loom/shot-eq.png" alt="LOOM’s mixer with the effect drawer open on a parametric EQ: the response curve over a live spectrum, six bands from a high pass to a low pass, a cut at 300 Hz and a lift above 3 kHz, in a chain loaded from the Vocal Air rack" style="width:100%;height:auto;display:block;">
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px;">
         <div style="border:1px solid #23262C;border-radius:10px;overflow:hidden;background:#101216;">
           <img src="/assets/loom/shot-delay.png" alt="The effect drawer open on a delay, third in a chain after a parametric EQ and a compressor, with thirteen beat divisions from 1⁄1 down to 1⁄16T and 1⁄8 selected" style="width:100%;height:auto;display:block;">
         </div>
@@ -333,7 +343,7 @@ layout: layouts/base.njk
         <img src="/assets/loom/shot-racks.png" alt="LOOM’s rack browser over the mixer, listing the factory racks Vocal Air, Guitar Ambient, Drum Glue, Acoustic Stage, G2B, Bass DI, Pad Wash, Octave Lead and Wide Clean, each with chips naming the effects in it, above the user’s own saved racks" style="width:100%;height:auto;display:block;">
       </div>
       <div style="padding:4px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">RACK BROWSER · FACTORY AND USER PRESETS · LOADING ONE SWAPS THE WHOLE FX CHAIN</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;padding-top:24px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:24px;padding-top:24px;">
         <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
           <img src="/assets/loom/shot-amp.png" alt="The effect drawer open on the guitar amp: CLEAN, CRUNCH and HIGH GAIN models, gain and tight controls, bass, mid, treble and presence, and a closed 4x12 cab, second in a chain after a noise gate" style="width:100%;height:auto;display:block;">
         </div>
@@ -341,7 +351,7 @@ layout: layouts/base.njk
           <img src="/assets/loom/shot-chorus.png" alt="The effect drawer open on the chorus: rate, depth, sine or triangle shape, one to four voices, and four stereo modes (offset, split, opposed and mono), third in a chain after an amp" style="width:100%;height:auto;display:block;">
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;padding-top:8px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:28px;padding-top:8px;">
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
             <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Always know what’s loaded</div>
@@ -371,7 +381,7 @@ layout: layouts/base.njk
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
         <img src="/assets/loom/shot-record-setup.png" alt="LOOM’s Record setup sheet: five loop tracks and two effects buses ticked, the CUE bus off, ten files per recording at 3.84 MB/s, and a panel showing the disk cost and hours of space left" style="width:100%;height:auto;display:block;">
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;padding-top:8px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:28px;padding-top:8px;">
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
             <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">You choose what goes in which file</div>
@@ -391,7 +401,7 @@ layout: layouts/base.njk
       </div>
     </div>
 
-    <div style="padding:128px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:48px;align-items:center;">
+    <div style="padding:128px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:48px;align-items:center;">
       <div style="display:flex;flex-direction:column;gap:20px;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#35D07F;">FULLY OFFLINE</div>
         <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">The venue’s WiFi isn’t your problem.</h2>
@@ -438,7 +448,7 @@ layout: layouts/base.njk
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#8A9099;">AND THE REST</div>
         <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Built for playing live.</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px;">
         
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">LOOPING</div>
@@ -498,7 +508,7 @@ layout: layouts/base.njk
     </div>
 
     <div style="padding:120px 0 0;">
-      <div style="border:1px solid #23262C;border-radius:14px;background:#0F1114;padding:clamp(30px,3.6vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start;">
+      <div style="border:1px solid #23262C;border-radius:14px;background:#0F1114;padding:clamp(30px,3.6vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:40px;align-items:start;">
         <div style="display:flex;flex-direction:column;gap:16px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIDI</div>
           <h3 style="margin:0;font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;">Run the whole thing from a pedalboard.</h3>
@@ -547,7 +557,7 @@ layout: layouts/base.njk
         <h2 style="margin:0;font-size:clamp(32px,4vw,54px);font-weight:700;letter-spacing:-0.03em;line-height:1.02;text-wrap:balance;">Fourteen days, everything unlocked.</h2>
         <p style="margin:0;font-size:18px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">No watermarks, no session limits, no account. When the trial’s up, your licence is a small file you open once. LOOM checks it on your Mac at launch and never again, so a licence check will never interrupt you mid-set.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:20px;">
         <div style="border:1px solid #2C3038;border-radius:12px;background:linear-gradient(180deg,#12201A,#0F1114);padding:30px 28px;display:flex;flex-direction:column;gap:16px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#35D07F;">STEP ONE</div>
           <div style="font-size:21px;font-weight:600;letter-spacing:-0.02em;">Download and play</div>
