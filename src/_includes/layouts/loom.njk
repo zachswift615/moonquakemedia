@@ -100,6 +100,7 @@ layout: layouts/base.njk
       <div style="font-size:19px;font-weight:700;letter-spacing:0.02em;flex:none;">LOOM</div>
       <div style="flex:1;min-width:0;"></div>
       <div style="display:flex;align-items:center;gap:26px;">
+        <a href="#instruments" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">INSTRUMENTS</a>
         <a href="#arrange" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">ARRANGE</a>
         <a href="#mixer" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">MIXER</a>
         <a href="#record" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">RECORD</a>
@@ -116,7 +117,7 @@ layout: layouts/base.njk
         <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.2em;color:#8A9099;">LIVE LOOPER FOR MACOS</div>
       </div>
       <h1 style="margin:0;font-size:clamp(46px,6.4vw,88px);font-weight:700;letter-spacing:-0.035em;line-height:0.98;max-width:15ch;text-wrap:balance;">A loop station that plays itself.</h1>
-      <p style="margin:0;font-size:clamp(18px,2vw,23px);line-height:1.5;color:#C7CDD4;max-width:60ch;text-wrap:pretty;">Record and overdub on five tracks like you would on a hardware looper. Then draw the same moves on a timeline, and the song presses its own buttons while you play. It’s one engine underneath, so everything you learn looping live works the same way in the arrangement.</p>
+      <p style="margin:0;font-size:clamp(18px,2vw,23px);line-height:1.5;color:#C7CDD4;max-width:60ch;text-wrap:pretty;">Record and overdub on five audio tracks like you would on a hardware looper, and loop a synth, drums and a sampler on four more. Then draw the same moves on a timeline, and the song presses its own buttons while you play. It’s one engine underneath, so everything you learn looping live works the same way in the arrangement.</p>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;">
         <!-- ⛔ LINKED STRAIGHT OUT TO GITHUB RELEASES, AND DELIBERATELY NOT THROUGH A REDIRECT
      ON THIS DOMAIN. GitHub Pages is static, so a /loom/download hop could only be a meta-refresh
@@ -167,14 +168,21 @@ layout: layouts/base.njk
                shot-record-setup.png <- record-setup.png            (new this refresh)
                shot-chorus.png       <- mixer-chorus-effect.png     (copied in, not placed)
                shot-presets.png      <- effect-presets.png          (copied in, not placed)
+             The 1.2 refresh, off ~/Desktop/loom-screenshots-instruments-1.2:
+               shot-looper.png        <- looper.png                 (replaced: ROWS layout)
+               shot-record-setup.png  <- loom-recording-setup-green.png (replaced: instrument rows)
+               shot-looper-banks.png  <- looper-view-banks.png      (new; macOS menu and title bar cropped off)
+               shot-synth.png         <- synth.png                  (new)
+               shot-drums.png         <- drum-instrument-midi-connected.png (new)
+               shot-sampler.png       <- sampler-slicer.png         (new)
              ⚠️ EVERY ALT HERE MAKES A COUNTABLE CLAIM — "six bands", "thirteen divisions",
              "ten files" — so each was read off the new image before this commit rather than
              carried across. An alt that describes the previous build is worse than a stale
              screenshot: the screenshot is merely old, the alt is untrue, and the only reader
              who gets the untrue one is the reader who cannot see the image. -->
-        <img src="/assets/loom/shot-looper.png" alt="LOOM’s looper view: five track rings showing REC, DUB, PLAY, STOPPED and EMPTY, the track panel open on track 1, and the notice row saying ten files are being recorded" style="width:100%;height:auto;display:block;">
+        <img src="/assets/loom/shot-looper.png" alt="LOOM’s looper in two rows: five audio tracks above, their rings showing PLAY, DUB, REC, STOPPED and EMPTY, and four instrument tracks below, all playing. A MIDI IN card lists the connected controllers, and the side panel is open on instrument track 4, a sampler" style="width:100%;height:auto;display:block;">
       </div>
-      <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">LOOPER · FIVE TRACKS · EACH RING SHOWS WHAT YOUR NEXT PRESS WILL DO</div>
+      <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">LOOPER · FIVE AUDIO TRACKS AND FOUR INSTRUMENT TRACKS · EACH RING SHOWS WHAT YOUR NEXT PRESS WILL DO</div>
     </div>
 
     <div style="padding:112px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px;">
@@ -192,7 +200,7 @@ layout: layouts/base.njk
         </div>
       
         <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px;">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#35D07F;">TWELVE STATES</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#35D07F;">EVERY STATE</div>
           <div style="font-size:17px;font-weight:600;letter-spacing:-0.01em;line-height:1.25;">Readable without colour</div>
           <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Each ring state has its own arc pattern as well as its own colour. A wedge marks a command that’s queued and waiting to happen.</div>
         </div>
@@ -216,12 +224,87 @@ layout: layouts/base.njk
       </div>
     </div>
 
+    <div id="instruments" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#E04AC1;">INSTRUMENTS</div>
+        <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Loop a synth, drums and a sampler via MIDI</h2>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Four instrument tracks sit beside the five audio tracks. Each one plays LOOM’s own synth, drum machine or sampler from a MIDI keyboard or pad controller, with the same ring, STOP, UNDO and CLEAR as an audio track.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">LOOM loops the notes, not the sound. Change the preset, the kit or any setting while the loop plays, and the loop plays on with the new sound. You never have to play the part again to hear it on a different instrument.</p>
+      </div>
+      <div>
+        <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
+          <img src="/assets/loom/shot-synth.png" alt="The synth editor docked under a row of all nine track rings, with every section on one page: two oscillators, the filter and its envelope, the amp envelope, two LFOs, VOICE with UNISON at 4, DETUNE and SPREAD, and the arpeggiator with its grid of rates" style="width:100%;height:auto;display:block;">
+        </div>
+        <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">SYNTH · EVERY CONTROL ON ONE PAGE AT FULL SCREEN</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:24px;">
+        <div>
+          <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
+            <img src="/assets/loom/shot-drums.png" alt="The drum editor with the Trap n Clap kit and the Trap n Crash pattern loaded: a grid of kick, snare, hats, tom and clap, with the playing step lit and hits played between steps drawn where they sound. Below it are the kick’s first layer with a sine source, its envelope, the tube waveguide, and the kit and step controls with BARS set to 4" style="width:100%;height:auto;display:block;">
+          </div>
+          <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">DRUM MACHINE · THE GRID IS THE LOOP ITSELF</div>
+        </div>
+        <div>
+          <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
+            <img src="/assets/loom/shot-sampler.png" alt="The sampler in SLICE mode with one of LOOM’s own recorded takes cut into twelve slices, each slice coloured on the waveform and mapped to its own key from C3 to B3" style="width:100%;height:auto;display:block;">
+          </div>
+          <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">SAMPLER · SLICE A TAKE AND PLAY IT FROM THE KEYS</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px;padding-top:8px;">
+
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#E04AC1;">SYNTH</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Two oscillators, a filter and an arpeggiator</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Two oscillators with a sub and noise, a filter with four types and its own envelope, two LFOs, glide, unison of up to four voices with detune and stereo spread, and an arpeggiator that steps on the song’s grid. In full screen every control and a picture of each oscillator, envelope and LFO fit in one view.</div>
+          </div>
+
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FFB020;">DRUM MACHINE</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">The grid is the loop itself</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Hits you play on pads show up in the step grid, and steps you click play in the loop, even while it plays. Each step has its own velocity, accent and ratchet. Set the loop to 1, 2, 4 or 8 bars, and a longer loop starts as a copy of the first. Each drum layers two sounds, from a sine or saw to filtered noise, and can ring through a tube or string resonator.</div>
+          </div>
+
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#35D07F;">SAMPLER</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Chop a sample and play it from the keys</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Load a WAV or AIFF and play it across the keys, or switch to SLICE and LOOM cuts it at its transients, one slice per key. Click a slice to hear it, and chop again right where you heard it. MONO makes each slice cut off the last, which is what you want for vocal chops.</div>
+          </div>
+
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4CC9F0;">RECORD QUANTIZE</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Quantize you can take back</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">LOOM keeps each take exactly as you played it and quantizes from that while the loop plays. Tighten a loose take after you record it, or set STRENGTH to OFF to hear it the way you played it.</div>
+          </div>
+
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">PASS BY PASS</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Undo every overdub, one at a time</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Each overdub on an instrument track is its own pass. UNDO takes them off one at a time, back to the first take, and REDO puts them back.</div>
+          </div>
+
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#A78BFA;">MIDI INPUTS</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Pads on one channel, keys on another</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Each instrument track picks its own device and channel, so pads on channel 10 can play the drums while the keys play the synth. An audio track can also record an instrument, which turns a MIDI loop into audio.</div>
+          </div>
+
+      </div>
+      <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;max-width:74ch;text-wrap:pretty;">LOOM’s instruments are its own: 3rd party plug-ins are not supported for stability. There is not currently a piano roll, no MIDI file import or export and no MIDI output.</p>
+      <div style="padding-top:16px;">
+        <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
+          <img src="/assets/loom/shot-looper-banks.png" alt="The looper in BANKS layout: the five audio tracks at full size, their rings showing PLAY, DUB, REC, STOPPED and EMPTY, with AUDIO and INST tabs above them that switch to the four instrument tracks" style="width:100%;height:auto;display:block;">
+        </div>
+        <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">LOOPER · BANKS LAYOUT · AUDIO OR INSTRUMENT TRACKS AT FULL SIZE</div>
+      </div>
+    </div>
+
     <div id="arrange" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#4CC9F0;">ARRANGE</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Draw the performance. Play over it.</h2>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Each track has a lane, and you draw regions on it with three verbs: <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FF4438;">REC</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FFB020;">DUB</span> and <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#35D07F;">PLAY</span>. Empty space means the track is stopped. This is the part a hardware looper can’t do without MIDI control from an external sequencer.</p>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Below the regions, automation lanes work the mixer while the song plays: faders, pans, mutes and effect parameters. One node can load a whole saved rack into an FX chain, and the lane shows the rack’s name, so you can read the song as a row of named sections.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Each track has a lane, instrument tracks included, and you draw regions on it with three verbs: <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FF4438;">REC</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FFB020;">DUB</span> and <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#35D07F;">PLAY</span>. Empty space means the track is stopped. This is the part a hardware looper can’t do without MIDI control from an external sequencer.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Below the regions, automation lanes work the mixer and the instruments while the song plays: faders, pans, mutes, effect parameters and any instrument control. One node can load a whole saved rack into an FX chain, or a synth preset, drum kit or pattern onto an instrument track, and the lane shows its name, so you can read the song as a row of named sections.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
         <img src="/assets/loom/shot-arrange.png" alt="LOOM’s arrange view: thirteen regions across five track lanes, with automation lanes below for two FX 2 send levels, a main level, a pan, and two rack lanes with sections named Nasty Acoust G2B, Chorus Delay AC and Clean ACG" style="width:100%;height:auto;display:block;">
@@ -245,7 +328,7 @@ layout: layouts/base.njk
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #A78BFA;padding-top:16px;">
             <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Automate the mixer too</div>
-            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Any strip’s level on each of its four fader destinations, its pan and mute, each effect slot’s bypass, and the effect’s controls as well.</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Any strip’s level on each of its four fader destinations, its pan and mute, each effect slot’s bypass, the effect’s controls, and every control on an instrument. An INPUT lane changes which controller an instrument track listens to, at the bar you choose.</div>
           </div>
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #A78BFA;padding-top:16px;">
@@ -277,7 +360,7 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIXER &amp; EFFECTS</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">A full mixer behind the loops.</h2>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">One switch flips between four banks: loop tracks, inputs, master and buses. Every strip has eight insert slots, every chain runs in stereo, and the mixer state and FX chains save with the song.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">One switch flips between the banks: loop tracks, instruments, inputs, master and buses. Every strip has eight insert slots, instruments included, every chain runs in stereo, and the mixer state and FX chains save with the song.</p>
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">For effects you get a parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, cab and guitar amp. Save a single effect as a preset or a whole chain as a rack, and the arrangement can load either one while you play.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
@@ -325,7 +408,7 @@ layout: layouts/base.njk
               <div style="width:6px;height:6px;border-radius:2px;background:#E04AC1;flex:none;margin-top:8px;"></div>
               <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
                 <div style="font-size:16px;font-weight:600;letter-spacing:-0.01em;">Tempo-synced delay</div>
-                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Switch the delay from FREE to SYNC, pick a division, and it follows the song’s tempo. You know you’re gonna reach for the dotted eighth note option.</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Switch the delay from FREE to SYNC, pick a division, and it follows the song’s tempo. You know you’re gonna reach for the dotted eighth note option. There’s a PING PONG mode too.</div>
               </div>
             </div>
           
@@ -375,11 +458,11 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#FF4438;">PERFORMANCE RECORDING</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Perform the song. Mix it later.</h2>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Hit RECORD on the transport and LOOM saves your whole performance as separate WAV files: one per loop track, one per effects bus, the main mix, and any groups you set up from live inputs or from tracks and buses. Every file starts at the same moment and stays in sync, so you can drop the files into a DAW and it all lines up at zero.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Hit RECORD on the transport and LOOM saves your whole performance as separate WAV files: one per loop track, one per instrument track, one per effects bus, the main mix, and any groups you set up from live inputs or from tracks and buses. Every file starts at the same moment and stays in sync, so you can drop the files into a DAW and it all lines up at zero.</p>
         <p style="margin:0;font-size:17px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Your takes still save to the song as usual; this is an extra set of files. Play the set once, then balance it against the video later or re-process a guitar that was too loud in the room.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
-        <img src="/assets/loom/shot-record-setup.png" alt="LOOM’s Record setup sheet: five loop tracks and two effects buses ticked, the CUE bus off, ten files per recording at 3.84 MB/s, and a panel showing the disk cost and hours of space left" style="width:100%;height:auto;display:block;">
+        <img src="/assets/loom/shot-record-setup.png" alt="LOOM’s Record setup sheet: three of the five loop tracks and two of the four instrument tracks ticked, each writing its own WAV file, seven files per recording at 2.69 MB/s, and a panel showing 9.7 GB an hour and 2.3 hours of room on the disk" style="width:100%;height:auto;display:block;">
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:28px;padding-top:8px;">
         
@@ -452,7 +535,7 @@ layout: layouts/base.njk
         
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">LOOPING</div>
-            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Five tracks, quantized in and out</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Every track, quantized in and out</div>
             <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Start right away or on the next beat, bar or cycle. Stop right away or at the end of the beat, bar or loop. Set it per track or as the song’s default. You can also pre-set a length of up to 32 bars, and the recording closes itself when it gets there.</div>
           </div>
         
@@ -476,7 +559,7 @@ layout: layouts/base.njk
         
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#A78BFA;">YOUR FILES</div>
-            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Every take is a WAV you can open</div>
+            <div style="font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Every audio take is a WAV you can open</div>
             <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">32-bit float, stereo, at your interface’s sample rate, written the moment the take ends. Songs are folders in ~/Music/LOOM, and performance recordings sit next to them.</div>
           </div>
         
@@ -511,40 +594,60 @@ layout: layouts/base.njk
       <div style="border:1px solid #23262C;border-radius:14px;background:#0F1114;padding:clamp(30px,3.6vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:40px;align-items:start;">
         <div style="display:flex;flex-direction:column;gap:16px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIDI</div>
-          <h3 style="margin:0;font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;">Run the whole thing from a pedalboard.</h3>
-          <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Each track gets its own octave, with the same seven commands in the same order, and the global controls get an octave of their own. The map starts at note 36, so a 49-key controller reaches the first four tracks without transposing. A MIDI monitor on the bottom bar shows the last message received, in every view, so you can check that LOOM is seeing your controller without leaving what you’re doing.</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">The note map is fixed for now. There’s no MIDI learn and no way to reassign notes yet, but it’s on the roadmap. LOOM responds to notes only: CC messages show up in the monitor but don’t control anything, and there’s no MIDI clock, MTC or MMC in or out, but those are also planned.</p>
+          <h3 style="margin:0;font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;">Play it and run it from MIDI.</h3>
+          <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Play the synth, drum machine and sampler from any MIDI keyboard or pad controller, and drive every track and the transport from MIDI notes on a channel of their own, 16 by default. Each track, audio or instrument, gets its own octave with the same seven commands in the same order. A MIDI monitor on the bottom bar shows the last message received, in every view, so you can check that LOOM is seeing your controller.</p>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">The command map is fixed for now. There’s no MIDI learn and no way to reassign notes yet, but it’s on the roadmap. Commands answer notes only: CC doesn’t control the mixer or effects, and there’s no MIDI clock, MTC or MMC in or out, and no MIDI output. Clear pads are held for a second, so a stray foot can’t wipe a loop. If your controller is set up for LOOM 1.0, switch MIDI MAP to the 1.0 layout.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:2px;background:#23262C;border:1px solid #23262C;border-radius:8px;overflow:hidden;">
           
             <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
               <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 1</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">36 – 42</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">0 – 6</div>
             </div>
           
             <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
               <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 2</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">48 – 54</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">12 – 18</div>
             </div>
           
             <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
               <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 3</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">60 – 66</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">24 – 30</div>
             </div>
           
             <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
               <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 4</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">72 – 78</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">36 – 42</div>
             </div>
           
             <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
               <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 5</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">84 – 90</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">48 – 54</div>
+            </div>
+          
+            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">INST 1</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#E04AC1;flex:none;">72 – 78</div>
+            </div>
+          
+            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">INST 2</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#E04AC1;flex:none;">84 – 90</div>
+            </div>
+          
+            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">INST 3</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#E04AC1;flex:none;">96 – 102</div>
+            </div>
+          
+            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">INST 4</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#E04AC1;flex:none;">108 – 114</div>
             </div>
           
             <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
               <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">GLOBALS</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#4CC9F0;flex:none;">96 – 101</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#4CC9F0;flex:none;">120 – 125</div>
             </div>
           
         </div>
@@ -592,6 +695,11 @@ layout: layouts/base.njk
               <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
                 <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">AUDIO</div>
                 <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">An audio interface, or the Mac’s built-in input</div>
+              </div>
+            
+              <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">MIDI</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">Optional: any class-compliant keyboard or pad controller to play the instruments</div>
               </div>
             
               <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
