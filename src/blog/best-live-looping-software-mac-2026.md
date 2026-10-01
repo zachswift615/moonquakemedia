@@ -91,7 +91,11 @@ A tabletop looper is the contrast case. The Boss RC-505mkII has five simultaneou
 
 [LOOM](/loom/) is the looper I build. It is a dedicated live looper for the Mac with five audio loop tracks you play like a hardware looper, plus four instrument tracks that play its own synth, drum machine and sampler from MIDI.
 
+{% blogshot "/images/blog/best-live-looping-software-mac-2026/looper.png", "LOOM's looper with five audio tracks above and four instrument tracks below. The rings read PLAY, DUB, REC, STOPPED and EMPTY, and a MIDI IN card lists the connected controllers", "The looper: five audio tracks above, four instrument tracks below." %}
+
 What it does differently is the arrange view. You draw `REC`, `DUB` and `PLAY` regions on a timeline, add automation lanes for the mixer and effects, and the song presses its own buttons while you play. The arrangement drives the same engine as the looper, so a region does exactly what a press of the track's ring button would. I wrote a separate guide on [arranging a live looping song in advance](/blog/arrange-live-looping-song-in-advance/).
+
+{% blogshot "/images/blog/best-live-looping-software-mac-2026/arrange.png", "LOOM's arrange view: REC, DUB and PLAY regions on five audio tracks and three instrument tracks, with automation lanes for a pan and an FX 1 level, preset lanes holding Trap n Clap and Zach Dusty Poly, and a rack lane", "The arrange view. Each region fires what a press on the track's ring would." %}
 
 The rest:
 

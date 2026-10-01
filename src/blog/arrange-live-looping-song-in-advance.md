@@ -33,6 +33,8 @@ Each track gets a lane, instrument tracks included. You draw regions on a lane, 
 | `DUB` | The track starts an overdub over what it already holds. |
 | `PLAY` | The track starts playing what it already holds. |
 
+{% blogshot "/images/blog/arrange-live-looping-song-in-advance/arrange.png", "LOOM's arrange view: REC, DUB and PLAY regions on five audio tracks and three instrument tracks, with automation lanes for a pan and an FX 1 level, preset lanes holding Trap n Clap and Zach Dusty Poly, and a rack lane", "Regions on the track lanes, with automation, preset and rack lanes under them." %}
+
 There is no stop region. A gap means stopped: LOOM stops a track at the end of each of its regions, so the track is silent in the space between two of them. A track with no regions plays nothing for the whole song.
 
 Regions fire on their own tick, to the sample. A `DUB` region on beat 3 of bar 7 starts its overdub on beat 3 of bar 7, and you press nothing.
@@ -94,6 +96,8 @@ A rack lane loads a saved rack, a whole effects chain, into a strip at the bar y
 
 Each change is a node, and the band after it carries the name of what is loaded until the next change. So the lane reads as a row of named sections: a clean verse rack, a heavier chorus rack, a dub breakdown. You can read the song's structure off the screen.
 
+{% blogshot "/images/blog/arrange-live-looping-song-in-advance/rack-lane.png", "A rack lane whose bands read Vocal Air, G2B, Wide Clean, Drum G and Guitar Ambient", "A rack lane reads as a row of named sections." %}
+
 A node keeps its own copy of the settings. If you later edit or delete that preset in your library, every song that used it still sounds the way it did.
 
 ### How precise automation is
@@ -107,6 +111,8 @@ The header row has three buttons:
 - `PERFORM FROM TOP` plays the arrangement from bar 1. `⇧Return` presses it from the keyboard, and MIDI note 125 presses it from a pad or footswitch in any view.
 - `PERFORM FROM HERE` plays it from wherever you placed the playhead, which is how you rehearse the bridge without playing the whole song.
 - `PERFORMANCE STOP` lets go of the arrangement and leaves everything playing.
+
+{% blogshot "/images/blog/arrange-live-looping-song-in-advance/perform-buttons.png", "PERFORM FROM TOP, PERFORM FROM HERE and a dimmed PERFORMANCE STOP", "PERFORMANCE STOP is dimmed until a performance is running." %}
 
 That last one is the escape hatch. If the song is going well and you want to stretch the outro, press `PERFORMANCE STOP`. The transport keeps rolling, every loop keeps playing, and from that moment you run the looper by hand. To pick the arrangement back up, press `STOP` and then `PERFORM FROM HERE`.
 

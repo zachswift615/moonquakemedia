@@ -103,6 +103,37 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // A captioned screenshot in a blog post: `{% blogshot "/images/blog/<post>/x.png", "alt", "caption" %}`.
+  // One-off pictures, not kept in sync with the product the way the web manual's are. LOOM draws at
+  // two pixels per point, so each picture is shown no wider than half its pixel width: a cropped
+  // control stays at the size it is on screen instead of being blown up to the column. Rendered on
+  // one line, because a line break inside an HTML block ends it in Markdown.
+  eleventyConfig.addAsyncShortcode("blogshot", async function(src, alt, caption = "") {
+    const metadata = await Image(path.join(__dirname, "src", src), {
+      widths: [640, 1024, 1600, "auto"],
+      formats: ["avif", "webp", "png"],
+      outputDir: path.join(__dirname, "_site", "img"),
+      urlPath: "/img/",
+      cacheOptions: { duration: "30d", directory: ".cache" },
+      sharpPngOptions: { compressionLevel: 9 },
+      sharpWebpOptions: { quality: 82 },
+      sharpAvifOptions: { quality: 58 },
+    });
+    const natural = metadata.png[metadata.png.length - 1].width;
+    const shown = Math.min(672, Math.round(natural / 2));
+    const html = generateImageHTML(metadata, {
+      alt,
+      sizes: `(min-width: 720px) ${shown}px, min(${shown}px, calc(100vw - 48px))`,
+      loading: "lazy",
+      decoding: "async",
+      style: `width:100%;max-width:${shown}px;height:auto;display:block;margin:0 auto;border-radius:10px;border:1px solid #e5e7eb;`,
+    }).replace(/\n\s*/g, "");
+    const cap = caption ? `<figcaption style="text-align:center;">${caption}</figcaption>` : "";
+    // A full window shrunk into the column is too small to read, so it opens at full size.
+    const body = natural / 2 > 672 ? `<a href="${src}" title="Open at full size">${html}</a>` : html;
+    return `<figure style="margin:2em 0;">${body}${cap}</figure>`;
+  });
+
   // Last-modified date for the sitemap: the newest commit touching the page's source or any
   // layout it names. Falls back to the build date (no git, or a shallow CI clone).
   const { execFileSync } = require('child_process');

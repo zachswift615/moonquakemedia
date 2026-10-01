@@ -23,6 +23,8 @@ Yes, as long as the controller can send MIDI note messages. LOOM's commands resp
 
 LOOM listens to every MIDI source macOS reports, so there is no device list to configure. You can plug a controller in while LOOM is running, and the notice row confirms it.
 
+{% blogshot "/images/blog/live-looping-mac-midi-foot-controller/midi-in.png", "LOOM's MIDI IN card listing four connected sources, IAC Driver Bus 1, KeyLab mkII 49 MIDI, KeyLab mkII 49 DAW and Clarett 4Pre USB, with CH 16 · LOOP COMMANDS at its foot", "Every source LOOM hears, with the command channel at the foot of the card." %}
+
 ## How LOOM's MIDI note map works
 
 Every track gets its own octave of notes, and every octave has the same commands in the same order. There is no MIDI learn and no mapping editor yet, so you set your controller to the notes LOOM expects rather than the other way round.
@@ -61,6 +63,8 @@ The `+0` note is not a dedicated record button. It does what the ring button on 
 - While overdubbing, it punches out.
 - On a stopped track that holds a loop, it plays the loop again.
 
+{% blogshot "/images/blog/live-looping-mac-midi-foot-controller/track-strip.png", "A LOOM track strip whose ring reads EMPTY with RECORD as its next action, above MUTE, SOLO, STOP @ LOOP, UNDO, REDO and CLEAR", "The ring says what the next press does. On an empty track, it records." %}
+
 That last case matters on stage: a switch that always meant "record" would record over the loop you just stopped.
 
 If you prefer switches that do exactly one thing, use `+1` (always overdub) and `+6` (always play). You can mix both approaches on the same board.
@@ -83,6 +87,8 @@ Type "C-1" into an editor that uses the Arturia naming and you get note 12, whic
 LOOM's commands listen on one channel, the command channel. It is 16 by default. Notes on any other channel never reach the commands; they go to whichever instrument track is listening on that channel.
 
 This is what lets one controller do two jobs. Put the pads or footswitches on channel 16 and leave the keys on channel 1. The pads run the looper, and the keys play a synth on an instrument track.
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 items-start">{% blogshot "/images/blog/live-looping-mac-midi-foot-controller/midi-channel.png", "The side panel's MIDI settings: MIDI CH set to 16 and MIDI MAP set to 1.x layout", "MIDI CH: the channel LOOM's commands listen on." %}{% blogshot "/images/blog/live-looping-mac-midi-foot-controller/instrument-channel.png", "An instrument track's tab: a synth listening to any device on channel 1", "An instrument track playing from channel 1." %}</div>
 
 If your controller can only transmit on one channel, do it the other way round: leave the controller where your instrument needs it and change LOOM's command channel to one you can spare. Set `MIDI CH` in the side panel's `GLOBAL` tab. It takes effect immediately and is saved per Mac, not per song.
 
@@ -109,6 +115,8 @@ The Clear command (`+5`) and ALL CLEAR (note 122) only fire after you hold the s
 ## Check your controller before you trust it
 
 LOOM's bottom rail has a `MIDI` readout in every view. It shows the last message received:
+
+<!-- SHOT WANTED: the bottom rail MIDI readout right after a pad press, reading 16 · N0 · 100 with the tick. -->
 
 ```
 MIDI  16 · N36 · 100 ✓

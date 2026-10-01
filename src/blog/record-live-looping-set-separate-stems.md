@@ -55,6 +55,8 @@ Open **File ▸ Record Setup…** or press `⌥⌘R`. The sheet lists every stre
 
 Tick the rows you want, or press `TICK EVERYTHING`. Your ticks belong to this Mac, not to the song, so they stay the same in every song you open. That suits a gig: set it up once at soundcheck and every song in the set records the same way.
 
+{% blogshot "/images/blog/record-live-looping-set-separate-stems/record-setup.png", "LOOM's Record setup sheet with nine of sixteen streams ticked, each loop track and instrument track row naming its WAV file, and a cost panel reading 3.46 MB/s, 12.4 GB an hour, 8.3 GB free and 0.7 hours of room in amber", "Record Setup. On a disk with 8.3 GB free, the room left shows 0.7 hours, in amber." %}
+
 ### Check the disk cost before the show
 
 The sheet shows what your ticks will cost: megabytes per second, gigabytes per hour, the number of files per recording, the free space on the disk and how many hours of recording that leaves. The rate turns amber above 4.4 MB/s, and the hours figure turns amber under two hours.
@@ -66,6 +68,8 @@ Every file is 32-bit float, stereo, at your interface's sample rate. At 48 kHz t
 A loop track's file holds what that track plays back. It does not hold your live vocal or the guitar you are playing over the loops. For that you need a group.
 
 Groups are built on the mixer's routing page: open the mixer, choose `MASTER` in the `BANK` row, then `ROUTING` in the `PAGE` row. Record Setup has a button that takes you straight there. Press `+ NEW GROUP` and tick its sources.
+
+<!-- SHOT WANTED: the mixer ROUTING page with a LIVE group and a PLAYBACK group, ideally one track row reading DRY · FX 1 MISSING with ADD FX 1 beside it. -->
 
 A group is one of two kinds, decided by the first source you tick:
 
@@ -85,6 +89,8 @@ The routing page warns you about this. When you tick a track whose send bus is n
 ## Step 3: press RECORD and play
 
 `RECORD` sits on the top bar between the `MOVE` set and the tempo field. It reads `REC 00:00` in grey when nothing is recording. Press it to start and it turns red, with the time showing how much audio the files hold. Press it again to stop, and every file is closed and complete.
+
+{% blogshot "/images/blog/record-live-looping-set-separate-stems/top-bar-recording.png", "LOOM's top bar while recording: ROLL lit green and the RECORD button red at REC 00:02, beside a locked tempo of 85.0", "RECORD running. The button turns red and counts the recorded time." %}
 
 A few things it does not do:
 
@@ -119,6 +125,8 @@ Take 5 2026-09-19/
 ```
 
 Drag the WAV files into any DAW and place them all at zero. They start at the same moment, so they line up without nudging. From there it is a normal mix: rebalance the loops, re-process a guitar that was too loud in the room, or sync the audio to a video of the show.
+
+<!-- SHOT WANTED: a DAW (Logic, Ableton or similar) with one recording folder dropped in, every stem lined up at zero. -->
 
 ## Back up before and after
 
