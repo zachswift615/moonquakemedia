@@ -1,6 +1,6 @@
 ---
 title: Blog
-description: "Tips, guides, and insights about text-to-speech, document reading, and getting more from your iPhone."
+description: "Guides from Moonquake Media: live looping on a Mac with LOOM, text-to-speech, dictation, and apps for performing musicians."
 layout: layouts/base.njk
 permalink: /blog/
 rss: true
@@ -11,6 +11,7 @@ rss: true
     <div class="max-w-2xl mx-auto px-6 py-5 flex justify-between items-center">
       <a href="/" class="text-base font-semibold text-gray-950 no-underline tracking-tight hover:text-gray-600 hover:no-underline transition-colors">{{ site.name }}</a>
       <div class="flex gap-6 items-center">
+        <a href="/loom/" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">LOOM</a>
         <a href="/apps/listen2/" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Listen2</a>
         <a href="/blog/" class="text-sm text-gray-950 font-medium no-underline hover:no-underline" aria-current="page">Blog</a>
         <a href="mailto:{{ site.email }}" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Support</a>
@@ -26,6 +27,7 @@ rss: true
 
     <div class="flex flex-wrap gap-2 mb-12" role="group" aria-label="Filter by app">
       <button data-filter="all" class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium bg-gray-950 text-white border border-gray-950 transition-all" aria-pressed="true">All</button>
+      <button data-filter="loom" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">LOOM</button>
       <button data-filter="listen2" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">Listen2</button>
       <button data-filter="gigscroll" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">GigScroll</button>
       <button data-filter="speak2" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">Speak2</button>
@@ -33,13 +35,15 @@ rss: true
 
     <div id="blog-posts" class="divide-y divide-gray-100">
       {% for post in collections.blog %}
-      <article class="group blog-post py-8 first:pt-0" data-app="{% if 'listen2' in post.data.tags %}listen2{% elif 'gigscroll' in post.data.tags %}gigscroll{% elif 'speak2' in post.data.tags %}speak2{% endif %}">
+      <article class="group blog-post py-8 first:pt-0" data-app="{% if 'loom' in post.data.tags %}loom{% elif 'listen2' in post.data.tags %}listen2{% elif 'gigscroll' in post.data.tags %}gigscroll{% elif 'speak2' in post.data.tags %}speak2{% endif %}">
         <div class="flex items-center gap-3 mb-3">
           <time datetime="{{ post.data.date | isoDate }}" class="text-xs text-gray-500 font-medium tracking-wide uppercase">{{ post.data.date | readableDate }}</time>
           <span class="text-gray-300" aria-hidden="true">&middot;</span>
           <span class="text-xs text-gray-500">{{ post.content | readingTime }}</span>
           <span class="text-gray-200" aria-hidden="true">&middot;</span>
-          {% if 'listen2' in post.data.tags %}
+          {% if 'loom' in post.data.tags %}
+          <span class="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded">LOOM</span>
+          {% elif 'listen2' in post.data.tags %}
           <span class="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded">Listen2</span>
           {% elif 'gigscroll' in post.data.tags %}
           <span class="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded">GigScroll</span>
