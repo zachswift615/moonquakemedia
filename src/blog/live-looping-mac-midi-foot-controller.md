@@ -116,8 +116,6 @@ The Clear command (`+5`) and ALL CLEAR (note 122) only fire after you hold the s
 
 LOOM's bottom rail has a `MIDI` readout in every view. It shows the last message received:
 
-<!-- SHOT WANTED: the bottom rail MIDI readout right after a pad press, reading 16 · N0 · 100 with the tick. -->
-
 ```
 MIDI  16 · N36 · 100 ✓
 ```
@@ -129,6 +127,8 @@ Use it like this:
 - **Still a dash after you press a switch?** LOOM is not receiving from that device. Check the cable, power and the controller's mode. Changing note numbers will not help.
 - **Ends in `·`?** Read the channel and the note. Wrong channel means the switch is not on the command channel. Wrong note usually means you are an octave out.
 - **Ends in `✓`?** It worked. Still check it is the note you meant, because an octave error often lands on another track's cluster, which also ends in `✓`.
+
+{% blogshot "/images/blog/live-looping-mac-midi-foot-controller/midi-readout.png", "The MIDI readout on LOOM's bottom rail reading 1 · N36 · 37 followed by a dot", "Note 36 on channel 1 at velocity 37. It ends in a dot because channel 1 is not the command channel, which is how a note played into an instrument track reads.", 412 %}
 
 ## A worked example with a pad controller
 

@@ -128,7 +128,7 @@ Take 5 2026-09-19/
 
 Drag the WAV files into any DAW and place them all at zero. They start at the same moment, so they line up without nudging. From there it is a normal mix: rebalance the loops, re-process a guitar that was too loud in the room, or sync the audio to a video of the show.
 
-<!-- SHOT WANTED: a DAW (Logic, Ableton or similar) with one recording folder dropped in, every stem lined up at zero. -->
+{% blogshot "/images/blog/record-live-looping-set-separate-stems/stems-in-logic.png", "One LOOM recording in Logic Pro: two group files, five loop track files and the FX 1 and FX 2 bus files on their own tracks, every region starting at the same bar, under a movie track", "One recording dropped into Logic Pro. Every file starts at the same bar." %}
 
 ## Back up before and after
 

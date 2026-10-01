@@ -108,7 +108,9 @@ module.exports = function(eleventyConfig) {
   // two pixels per point, so each picture is shown no wider than half its pixel width: a cropped
   // control stays at the size it is on screen instead of being blown up to the column. Rendered on
   // one line, because a line break inside an HTML block ends it in Markdown.
-  eleventyConfig.addAsyncShortcode("blogshot", async function(src, alt, caption = "") {
+  // An optional fourth argument sets the shown width in pixels, for a strip too small to read at
+  // half size.
+  eleventyConfig.addAsyncShortcode("blogshot", async function(src, alt, caption = "", width = 0) {
     const metadata = await Image(path.join(__dirname, "src", src), {
       widths: [640, 1024, 1600, "auto"],
       formats: ["avif", "webp", "png"],
@@ -120,7 +122,7 @@ module.exports = function(eleventyConfig) {
       sharpAvifOptions: { quality: 58 },
     });
     const natural = metadata.png[metadata.png.length - 1].width;
-    const shown = Math.min(672, Math.round(natural / 2));
+    const shown = Math.min(672, width || Math.round(natural / 2));
     const html = generateImageHTML(metadata, {
       alt,
       sizes: `(min-width: 720px) ${shown}px, min(${shown}px, calc(100vw - 48px))`,

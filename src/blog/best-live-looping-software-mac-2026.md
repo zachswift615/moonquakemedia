@@ -21,9 +21,10 @@ Live looping software for the Mac falls into three groups. There are DAWs with l
 
 Before comparing products, decide what you actually need:
 
-- **Hands-free control.** Can you run it from a MIDI foot controller or pad controller? Does it need a custom mapping, or is there a fixed layout?
+- **Foot and pad control.** Can you run it from a MIDI foot controller or pad controller? Does it need a custom mapping, or is there a fixed layout?
 - **Plug-in hosting.** Do you need your own AU or VST instruments and effects inside the looper?
-- **Structure.** Do you loop everything by hand, or do you want the software to play part of the song for you?
+- **Hands-free performance.** Does every record and overdub need a press from you, or can the software run the looping moves while you just play?
+- **Stability on stage.** What happens to the show if one part of the rig misbehaves?
 - **Recording.** Can you capture the set as separate tracks for mixing later?
 - **Platform and price.** Mac, iPad, one-time, subscription or free?
 
@@ -35,7 +36,7 @@ Live also includes a Looper audio effect in every edition. Ableton describes it 
 
 **Where it is better:** Live is a full DAW. It hosts VST2, VST3 and Audio Unit plug-ins in every edition, and it is the deepest tool here for production after the gig.
 
-**Where it is weaker for looping:** you build the looping workflow yourself out of clips, the Looper device and controller mappings. Live 12 Intro is also limited to 16 audio and MIDI tracks and 16 scenes.
+**Where it is weaker for looping:** you build the looping workflow yourself out of clips, the Looper device and controller mappings. Having Live run the looper for you during a song takes more again: a MIDI track that sends notes out through a virtual MIDI port and back into Live, each note mapped to a clip's record or launch control, and a piano roll where you have to remember which note does what. It works, and it is a lot to build and keep working. Live 12 Intro is also limited to 16 audio and MIDI tracks and 16 scenes.
 
 **Price:** Live 12 Intro is $99, Standard is $349 and Suite is $749. It requires macOS 11 Big Sur or later.
 
@@ -89,22 +90,31 @@ A tabletop looper is the contrast case. The Boss RC-505mkII has five simultaneou
 
 ## LOOM
 
-[LOOM](/loom/) is the looper I build. It is a dedicated live looper for the Mac with five audio loop tracks you play like a hardware looper, plus four instrument tracks that play its own synth, drum machine and sampler from MIDI.
+[LOOM](/loom/) is the looper I build. It is a live looper for the Mac with five audio loop tracks you play like a hardware looper, plus four instrument tracks that play its own synth, drum machine and sampler from MIDI.
 
 {% blogshot "/images/blog/best-live-looping-software-mac-2026/looper.png", "LOOM's looper with five audio tracks above and four instrument tracks below. The rings read PLAY, DUB, REC, STOPPED and EMPTY, and a MIDI IN card lists the connected controllers", "The looper: five audio tracks above, four instrument tracks below." %}
 
-What it does differently is the arrange view. You draw `REC`, `DUB` and `PLAY` regions on a timeline, add automation lanes for the mixer and effects, and the song presses its own buttons while you play. The arrangement drives the same engine as the looper, so a region does exactly what a press of the track's ring button would. I wrote a separate guide on [arranging a live looping song in advance](/blog/arrange-live-looping-song-in-advance/).
+### Hands-free looping: the song runs the looper
+
+Every other tool here has you operate the looper while you perform, with your hands or your feet. LOOM can take that job off you. In the arrange view you draw `REC`, `DUB` and `PLAY` regions on a timeline, add automation lanes for the mixer, the effects and the instruments, and press `PERFORM FROM TOP`. From then on the song presses its own buttons. You can move from guitar to keys to vocals without touching the looper, and the audience watches you play instead of watching you work a pedalboard.
 
 {% blogshot "/images/blog/best-live-looping-software-mac-2026/arrange.png", "LOOM's arrange view: REC, DUB and PLAY regions on five audio tracks and three instrument tracks, with automation lanes for a pan and an FX 1 level, preset lanes holding Trap n Clap and Zach Dusty Poly, and a rack lane", "The arrange view. Each region fires what a press on the track's ring would." %}
 
+The arrangement drives the same engine as the looper, so a region does exactly what a press of the track's ring button would. When you want to loop by hand, LOOM also has a fixed MIDI note map for every track and the transport, so a foot controller or pad controller works too, and `PERFORMANCE STOP` hands the song back to you at any point. There are separate guides on [arranging a live looping song in advance](/blog/arrange-live-looping-song-in-advance/) and [setting up a foot controller or pad controller](/blog/live-looping-mac-midi-foot-controller/).
+
+### Instruments and effects built for the stage
+
+Everything you can put in a LOOM chain is LOOM's own: the synth, drum machine and sampler, and the parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, cab and guitar amp. That is a deliberate choice for live use. A third-party plug-in runs inside the app that hosts it, so a plug-in that crashes takes the whole app down with it, mid-song, and one that grabs memory or CPU at the wrong moment causes a dropout.
+
+Because LOOM owns all of the code that makes sound, it decides exactly how much memory and processing each part uses. Its audio code never allocates memory, waits on a lock or touches the disk while it plays, and LOOM's tests run under a real-time sanitizer that flags any code that does. If your sound depends on one particular plug-in, a plug-in host such as MainStage or Gig Performer is the better home for it.
+
 The rest:
 
-- A mixer with eight insert slots per strip, and its own parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, cab and guitar amp. Presets and whole racks can load from the arrangement mid-song.
+- A mixer with eight insert slots per strip. Presets and whole racks of effects can load from the arrangement mid-song.
 - Performance recording to separate WAV files: one per loop track, instrument track and effects bus, plus the main mix and groups of live inputs, all starting in sync. See [how to record a looping set as stems](/blog/record-live-looping-set-separate-stems/).
-- A fixed MIDI note map for every track and the transport, on channel 16 by default. See [setting up a foot controller or pad controller](/blog/live-looping-mac-midi-foot-controller/).
 - No network code. It never connects to the internet, and the licence is checked on your Mac.
 
-**Where it is weaker:** LOOM does not host third-party plug-ins. Its instruments and effects are its own. There is no piano roll, no MIDI output and no MIDI clock in or out, and the MIDI note map is fixed, with no MIDI learn yet. It runs on Apple Silicon Macs only, with macOS 13.3 or later, and there is no iPad version. If you depend on your own AU instruments or effects, Ableton Live, MainStage or Gig Performer will suit you better.
+**What it does not do yet:** there is no piano roll, no MIDI output and no MIDI clock in or out, and the MIDI note map is fixed, with no MIDI learn yet. It runs on Apple Silicon Macs only, with macOS 13.3 or later, and there is no iPad version.
 
 **Price:** a one-time licence at ${{ loomPricing.listPrice }}{% if loomPricing.onLaunch %}, with a launch price of ${{ loomPricing.price | replace(".00", "") }} until {{ loomPricing.launchEndsReadable }}, 2026{% endif %}. There is a 14-day trial with every feature unlocked.
 
@@ -115,7 +125,7 @@ The rest:
 - **You want a free looper and do not mind setup:** SooperLooper or Möbius 3.
 - **You perform from an iPad:** Loopy Pro.
 - **You want physical controls and no computer:** a hardware looper like the RC-505mkII.
-- **You want a pedal-style looper on the Mac that can also play a pre-drawn arrangement:** [try LOOM](/loom/).
+- **You want the song to run the looper while you play every part:** [try LOOM](/loom/).
 
 ## Frequently asked questions
 
@@ -131,9 +141,13 @@ Not natively yet. As of October 2026, the developer's Mac page says the Mac vers
 
 Yes. Every edition of Live 12 includes the Looper effect, and Session view lets you launch and record clips in any order during a performance.
 
-### Can LOOM host AU or VST plug-ins?
+### Can you live loop on a Mac without touching the looper?
 
-No. LOOM uses its own synth, drum machine, sampler and effects. If you need third-party plug-ins on stage, a DAW or a host like MainStage or Gig Performer is a better fit.
+Yes, in LOOM. Draw the song's `REC`, `DUB` and `PLAY` moves in the arrange view and press `PERFORM FROM TOP`, and the song runs the looper while you play. In Ableton Live you can build something similar with a MIDI track routed back into Live through a virtual MIDI port and mapped to clip controls.
+
+### Why does LOOM use only its own instruments and effects?
+
+For stability on stage. A plug-in runs inside the app that hosts it, so a crash or a CPU spike in someone else's code can stop the show. Because every instrument and effect in LOOM is its own, it controls the memory and processing every sound uses.
 
 ### Does live looping software need an internet connection?
 
