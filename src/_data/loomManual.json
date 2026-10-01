@@ -1,0 +1,118 @@
+{
+  "version": "1.2.0",
+  "sourceCommit": "a525f504",
+  "chapters": [
+    {
+      "order": 1,
+      "slug": "welcome",
+      "url": "/loom/manual/welcome/",
+      "title": "Welcome to LOOM",
+      "description": "LOOM is a live looping performance instrument. You record and overdub audio on its audio tracks and MIDI on its instrument tracks, and either perform..."
+    },
+    {
+      "order": 2,
+      "slug": "keyboard",
+      "url": "/loom/manual/keyboard/",
+      "title": "Keyboard shortcuts",
+      "description": "The keys on this page are checked against the keys the shipping window responds to, in both directions, so this list is complete."
+    },
+    {
+      "order": 3,
+      "slug": "midi-mapping",
+      "url": "/loom/manual/midi-mapping/",
+      "title": "MIDI mapping",
+      "description": "LOOM responds to a fixed, built-in set of notes that covers every track and the global controls. There is no mapping editor and no MIDI learn, so you..."
+    },
+    {
+      "order": 4,
+      "slug": "privacy",
+      "url": "/loom/manual/privacy/",
+      "title": "Privacy",
+      "description": "LOOM collects nothing and makes no network calls. It does not call home at launch, check anything on a schedule, or fetch a font. A venue's..."
+    },
+    {
+      "order": 5,
+      "slug": "the-window",
+      "url": "/loom/manual/the-window/",
+      "title": "The window",
+      "description": "This chapter and the ones after it describe the LOOM window control by control, in the order you meet things on screen: this page, then the top bar..."
+    },
+    {
+      "order": 6,
+      "slug": "top-bar",
+      "url": "/loom/manual/top-bar/",
+      "title": "The top bar",
+      "description": "The top bar reads left to right and is on screen in every view. It carries the song's identity, the transport, the tempo, the click, where you are in..."
+    },
+    {
+      "order": 7,
+      "slug": "track-strips",
+      "url": "/loom/manual/track-strips/",
+      "title": "The globals row and the track strips",
+      "description": "The looper view's body has three parts: the globals row across the top, the track strips under it, and the side panel down the right edge. The side..."
+    },
+    {
+      "order": 8,
+      "slug": "the-arrange-view",
+      "url": "/loom/manual/the-arrange-view/",
+      "title": "The arrange view",
+      "description": "The arrange view is where you draw what the song does before you play it. You place regions on a track's lane. Each region carries a verb (record..."
+    },
+    {
+      "order": 9,
+      "slug": "the-mixer",
+      "url": "/loom/manual/the-mixer/",
+      "title": "The mixer",
+      "description": "The mixer is the third view. It shows faders side by side, with rows across the top that say which faders you are looking at and what they address. It..."
+    },
+    {
+      "order": 10,
+      "slug": "side-panel",
+      "url": "/loom/manual/side-panel/",
+      "title": "The side panel",
+      "description": "The side panel runs down the right edge of the window in the looper, the arrange view and the mixer. It has three modes and shows one at a time: GLOBAL..."
+    },
+    {
+      "order": 11,
+      "slug": "bottom-rails",
+      "url": "/loom/manual/bottom-rails/",
+      "title": "The bottom rails",
+      "description": "Two bands run across the bottom of the window in every view. Everything on them is named and carries its value as its accessible description. LOG, at..."
+    },
+    {
+      "order": 12,
+      "slug": "dialogs",
+      "url": "/loom/manual/dialogs/",
+      "title": "Dialogs",
+      "description": "LOOM has five dialogs: Save song, Replace a saved song, the at-risk warning (which appears before three different gestures), Open song and the session..."
+    },
+    {
+      "order": 13,
+      "slug": "instrument-tracks",
+      "url": "/loom/manual/instrument-tracks/",
+      "title": "Instrument tracks",
+      "description": "An instrument track plays one of LOOM's own instruments from a MIDI controller and records what you play as MIDI notes rather than audio. It loops the..."
+    },
+    {
+      "order": 14,
+      "slug": "your-recordings",
+      "url": "/loom/manual/your-recordings/",
+      "title": "Where your recordings live",
+      "description": "Everything you play is a file on your own disk, in a folder you can open, copy and back up."
+    },
+    {
+      "order": 15,
+      "slug": "your-licence",
+      "url": "/loom/manual/your-licence/",
+      "title": "Your licence",
+      "description": "LOOM checks your licence once, when it starts, and not again while it runs. If LOOM opened, it keeps working until you quit it. A trial that runs out..."
+    },
+    {
+      "order": 16,
+      "slug": "reporting-a-problem",
+      "url": "/loom/manual/reporting-a-problem/",
+      "title": "Reporting a problem",
+      "description": "If LOOM does something you did not expect, you can send a report to the person who makes it. LOOM writes the report to a file, and you send the file."
+    }
+  ]
+}

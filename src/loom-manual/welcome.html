@@ -1,0 +1,81 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/welcome/
+manualSlug: welcome
+---
+{% raw %}
+<p>LOOM is a live looping performance instrument. You record and overdub audio on its audio tracks and MIDI on its <a href="/loom/manual/instrument-tracks/">instrument tracks</a>, and either perform by hand at the looper or play the tracks against an arrangement you drew in advance. LOOM makes no network calls, so it runs on a Mac with no internet connection.</p>
+<p>This manual describes the window control by control. Start with <strong>Your first loop</strong>, then use the rest as a reference.</p>
+<p>The manual is a PDF that ships inside LOOM, so you have it on your own disk. Choose <strong>File ▸ User Guide</strong> or press <code>⌘/</code>. It opens in Preview, or in whichever app your Mac uses for PDFs.</p>
+<h2 id="your-first-loop">Your first loop</h2>
+<p>You need an audio interface, or your Mac's built-in input.</p>
+<ol>
+<li>
+<p>Open LOOM. The notice line at the bottom left reads <code>opening the audio device...</code>, then <code>engine running</code> once the interface is open.</p>
+<figure class="shot shot-step"><img src="/assets/loom/manual/first.engine-running.webp" width="428" height="48" loading="lazy" decoding="async" alt="The notice line once the interface is open."><figcaption>The notice line once the interface is open.</figcaption></figure>
+</li>
+<li>
+<p>Choose your interface. In the side panel's <code>GLOBAL</code> tab, turn the <code>INPUT DEVICE</code> and <code>OUTPUT DEVICE</code> chips. Both start at <code>(system default)</code>. See <a href="/loom/manual/side-panel/">the side panel</a>.</p>
+<figure class="shot shot-step"><img src="/assets/loom/manual/first.device-chips.webp" width="279" height="108" loading="lazy" decoding="async" alt="The INPUT DEVICE and OUTPUT DEVICE chips."><figcaption>The INPUT DEVICE and OUTPUT DEVICE chips.</figcaption></figure>
+</li>
+<li>
+<p>You already hear yourself. Plug into input 1 and you hear it in the speakers, with nothing to arm or switch on. Inputs 2 and up start muted. Unmute the input you are playing in the mixer's <code>INPUTS</code> bank (<code>⌘3</code>). The bank starts on <code>SHOW</code> <code>ASSIGNED</code>, which lists only the inputs a track records, so choose <code>ALL</code> to see the others. See <a href="/loom/manual/the-mixer/">The mixer</a>.</p>
+<figure class="shot shot-step"><img src="/assets/loom/manual/first.mixer-inputs.webp" width="540" height="500" loading="lazy" decoding="async" alt="The INPUTS bank on a two-input interface, with SHOW on ALL. IN 1 is open, and IN 2 is muted."><figcaption>The INPUTS bank on a two-input interface, with SHOW on ALL. IN 1 is open, and IN 2 is muted.</figcaption></figure>
+</li>
+<li>
+<p>Choose the input a track records. Open the <code>TRACK</code> tab and, under <code>SOURCE</code>, switch on each input the track records (<code>IN 1</code>, <code>IN 2</code>, and so on). Every track starts on input 1, so if you play one instrument into input 1, skip this step.</p>
+<figure class="shot shot-step"><img src="/assets/loom/manual/first.track-input.webp" width="301" height="128" loading="lazy" decoding="async" alt="The SOURCE section of the TRACK tab. IN 1 is on."><figcaption>The SOURCE section of the TRACK tab. IN 1 is on.</figcaption></figure>
+</li>
+<li>
+<p>The first track's ring already has keyboard focus. LOOM puts it there when the window opens, so you do not have to find it. <code>←</code> and <code>→</code> move between tracks and land on the new track's ring.</p>
+<figure class="shot shot-step"><img src="/assets/loom/manual/first.ring-focused.webp" width="108" height="108" loading="lazy" decoding="async" alt="The first track's ring, with the white focus ring around it."><figcaption>The first track's ring, with the white focus ring around it.</figcaption></figure>
+</li>
+<li>
+<p>Press the ring, with <code>Space</code> or <code>Return</code>, to start recording. The ring says <code>REC</code> while it records, with <code>→ PLAY</code> in small type below it: your next press closes the loop and plays it.</p>
+<figure class="shot shot-step"><img src="/assets/loom/manual/first.ring-rec.webp" width="108" height="108" loading="lazy" decoding="async" alt="The ring while it records."><figcaption>The ring while it records.</figcaption></figure>
+<blockquote>
+<p>The first <code>Space</code> or <code>Return</code> after LOOM opens starts recording, because the keyboard is already on the ring. To move away from the ring, press <code>Tab</code> first.</p>
+</blockquote>
+</li>
+<li>
+<p>Press the ring again to close the loop. The track plays the take back and repeats it until you stop it. The ring now reads <code>PLAY</code>, with <code>→ OVERDUB</code> in small type below it. The large word is the track's current state, and the arrowed word is what your next press does. See <a href="/loom/manual/track-strips/#the-ring">The ring</a> for every state and what each press does.</p>
+<figure class="shot shot-step"><img src="/assets/loom/manual/first.ring-play.webp" width="108" height="108" loading="lazy" decoding="async" alt="The ring once the loop is closed."><figcaption>The ring once the loop is closed.</figcaption></figure>
+</li>
+<li>
+<p>Stop the track. From the ring, press <code>Tab</code> until you reach <code>STOP</code>. The fader, <code>MUTE</code> and <code>SOLO</code> come before it. Once the track stops, the ring offers <code>PLAY</code> again.</p>
+<figure class="shot shot-step"><img src="/assets/loom/manual/first.ring-stopped.webp" width="126" height="174" loading="lazy" decoding="async" alt="The strip after the track stops. The fader, MUTE and SOLO sit between the ring and STOP."><figcaption>The strip after the track stops. The fader, MUTE and SOLO sit between the ring and STOP.</figcaption></figure>
+</li>
+</ol>
+<p><code>UNDO</code> on that track removes the last layer. <code>CLEAR</code> discards the track's material, and you cannot get it back. LOOM writes your recording to disk once the loop closes. See <a href="/loom/manual/your-recordings/">Where your recordings live</a>.</p>
+<blockquote>
+<p><strong>VoiceOver:</strong> the notice line is spoken whenever its text changes. LOOM uses it to tell you that a press was refused, that the tempo moved, or that the device opened. Speech depends on <code>ANNOUNCE</code>, in the side panel's <code>ACCESSIBILITY</code> section, which starts on at every launch.</p>
+</blockquote>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><strong><a href="/loom/manual/keyboard/">Keyboard shortcuts</a></strong> — every key the window answers to.</li>
+<li><strong><a href="/loom/manual/midi-mapping/">MIDI mapping</a></strong> — the notes LOOM answers, one octave per track, and what to know before you plug a controller into the same Mac.</li>
+<li><strong><a href="/loom/manual/privacy/">Privacy</a></strong> — what LOOM collects, and what it sends.</li>
+</ul>
+<p>The rest of the manual covers the window control by control, in the order you meet it on screen:</p>
+<ul>
+<li><strong><a href="/loom/manual/the-window/">The window</a></strong> — its layout, the words this manual uses, the menu bar, and what <em>accessible</em> means here.</li>
+<li><strong><a href="/loom/manual/top-bar/">The top bar</a></strong> — SONG, the <code>MOVE</code> set (<code>TO TOP</code>, <code>ROLL</code>, <code>STOP</code>), TEMPO, CLICK, the beat LEDs, FOCUS and the view switcher.</li>
+<li><strong><a href="/loom/manual/track-strips/">The globals row and the track strips</a></strong> — everything that acts on every track, and everything on one.</li>
+<li><strong><a href="/loom/manual/the-arrange-view/">The arrange view</a></strong> — the regions you draw, the keys that edit them, and the PERFORM buttons: <code>PERFORM FROM TOP</code>, <code>PERFORM FROM HERE</code> and <code>PERFORMANCE STOP</code>.</li>
+<li><strong><a href="/loom/manual/the-mixer/">The mixer</a></strong> — a fader for each loop track, a strip for each input you hear yourself through, and the line that says what they address.</li>
+<li><strong><a href="/loom/manual/side-panel/">The side panel</a></strong> — the song's settings and one track's.</li>
+<li><strong><a href="/loom/manual/bottom-rails/">The bottom rails</a></strong> — DEVICE, NOTICE and the status readouts.</li>
+<li><strong><a href="/loom/manual/dialogs/">Dialogs</a></strong> — saving, replacing, opening, the at-risk warning, and the session log.</li>
+<li><strong><a href="/loom/manual/your-recordings/">Where your recordings live</a></strong> — the songs folder, the audio files in it, and how to back them up.</li>
+<li><strong><a href="/loom/manual/your-licence/">Your licence</a></strong> — the trial, entering a licence, and what to do if LOOM will not open.</li>
+<li><strong><a href="/loom/manual/reporting-a-problem/">Reporting a problem</a></strong> — what to send, and how to get it.</li>
+</ul>
+<h2 id="what-this-manual-does-not-cover">What this manual does not cover</h2>
+<ul>
+<li><strong>What VoiceOver actually says.</strong> This manual gives the name, role and description each control passes to the accessibility layer, which is the part LOOM controls. How macOS presents that, including what it does with a control scrolled out of view in a scrolling panel, is platform behaviour. It is checked by hand and not described here.</li>
+<li><strong>Exact pixel sizes and colours.</strong> Sizes appear only where they change what you can do.</li>
+<li><strong>What each state means musically.</strong> The manual lists the ring's phases and how each one looks. What a <code>WAIT SWAP</code> is <em>for</em> belongs in a guide to performing.</li>
+<li><strong>The engine's behaviour behind a control.</strong> The manual says what each control writes to, but not how the audio thread acts on it.</li>
+<li><strong>The <code>--loom-ui-selftest</code> and <code>--loom-ui-snapshot</code> command-line modes.</strong> These are development tools, not part of the UI. The manual mentions the self-test only where it defines what <em>accessible</em> means in LOOM.</li>
+</ul>
+{% endraw %}

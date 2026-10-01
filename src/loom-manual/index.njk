@@ -1,0 +1,13 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/
+title: LOOM User Manual
+seoTitle: "LOOM User Manual: Live Looper for Mac"
+description: "The complete LOOM user manual: looping, MIDI controllers, the arrange view, the mixer and effects, instrument tracks, recording and your licence."
+---
+<p>This is the manual for LOOM {{ loomManual.version }}, a live looper for Mac. It covers every control in the order you meet it on screen, starting with how to record your first loop.</p>
+<ol class="manual-toc">
+{%- for c in loomManual.chapters %}
+  <li><a href="{{ c.url }}"><span class="manual-toc-title">{{ c.title }}</span><span class="manual-toc-desc">{{ (loomManualSeo[c.slug].description if loomManualSeo[c.slug] else c.description) }}</span></a></li>
+{%- endfor %}
+</ol>

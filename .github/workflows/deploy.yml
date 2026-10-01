@@ -4,6 +4,12 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # A daily rebuild, because a static page changes only when it is built. Two things depend on the
+  # calendar rather than on a commit: LOOM's price (src/_data/loomPricing.js flips from the launch
+  # price to the list price on the first build after the window closes) and the release list,
+  # which a release publishes without touching this repository.
+  schedule:
+    - cron: "17 6 * * *"
 
 permissions:
   contents: read
@@ -20,6 +26,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history: the sitemap's <lastmod> is each page's last commit (gitLastmod in
+          # .eleventy.js), and a shallow clone would date every page to the newest commit.
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -29,6 +39,17 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      # The responsive screenshots @11ty/eleventy-img generates (AVIF is slow to encode). Keyed
+      # on the source images, so a new screenshot regenerates and nothing else does.
+      - name: Cache generated images
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache
+            _site/img
+          key: eleventy-img-${{ hashFiles('src/assets/loom/*.png', 'src/assets/loom/*.jpg') }}
+          restore-keys: eleventy-img-
 
       - name: Build
         run: npm run build
@@ -58,3 +79,36 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Tell Bing (and through it ChatGPT search and Copilot), Yandex and the other IndexNow engines
+  # which pages changed, so they are recrawled within hours instead of whenever. Google does not
+  # use IndexNow; it reads the sitemap Search Console already has. Runs only on a push, and only
+  # for the URLs whose <lastmod> in the LIVE sitemap is from the last two days, so the daily
+  # rebuild with no changes submits nothing. The key file is src/<key>.txt, public by design.
+  indexnow:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Submit changed URLs to IndexNow
+        run: |
+          KEY=6ab4ad30192a7159787a554dcf843601
+          curl -fsS https://moonquakemedia.com/sitemap.xml -o sitemap.xml
+          python3 - "$KEY" <<'PY'
+          import json, re, sys, urllib.request, datetime
+          key = sys.argv[1]
+          xml = open("sitemap.xml").read()
+          since = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=2)
+          urls = [loc for loc, mod in re.findall(r"<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>", xml)
+                  if datetime.datetime.fromisoformat(mod.replace("Z", "+00:00")) >= since]
+          print(f"{len(urls)} changed URL(s)")
+          if not urls:
+              sys.exit(0)
+          body = json.dumps({"host": "moonquakemedia.com", "key": key,
+                             "keyLocation": f"https://moonquakemedia.com/{key}.txt",
+                             "urlList": urls}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          with urllib.request.urlopen(req) as r:
+              print("IndexNow:", r.status)
+          PY

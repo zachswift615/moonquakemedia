@@ -1,0 +1,6 @@
+{#- LOOM's price as a line of text, from src/_data/loomPricing.js. -#}
+{%- if loomPricing.onLaunch -%}
+${{ loomPricing.price | replace(".00", "") }} launch price until {{ loomPricing.launchEndsReadable }}, then ${{ loomPricing.listPrice }} · one-time
+{%- else -%}
+${{ loomPricing.listPrice }} · one-time purchase
+{%- endif -%}

@@ -1,0 +1,88 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/your-recordings/
+manualSlug: your-recordings
+---
+{% raw %}
+<p>Everything you play is a file on your own disk, in a folder you can open, copy and back up.</p>
+<h2 id="the-songs-folder">The songs folder</h2>
+<p>LOOM keeps your songs in:</p>
+<p><code>~/Music/LOOM</code></p>
+<p>That is the <code>LOOM</code> folder inside the <code>Music</code> folder in your home folder. LOOM creates it the first time it needs it.</p>
+<p>Each song is a folder rather than a single file. The folder is named after the song and ends in <code>.loom</code>:</p>
+<p><code>~/Music/LOOM/Take 5.loom</code></p>
+<p>Characters a filename cannot hold become hyphens, so a song you named <code>Take 5 / reprise</code> is saved as <code>Take-5---reprise.loom</code>. The name you typed is kept inside the song, spaces and all, and the <a href="/loom/manual/dialogs/#open-song">Open song</a> list shows that name.</p>
+<h2 id="what-is-inside-a-song">What is inside a song</h2>
+<p><code>Take 5.loom/
+    session.json
+    takes/
+        take-00000000000000000042.wav
+        take-00000000000000000042.peaks</code></p>
+<ul>
+<li><strong><code>session.json</code></strong> holds the song: the tempo, the arrangement, the track settings, and which take each track is holding.</li>
+<li><strong><code>takes/</code></strong> holds the audio. Every recorded pass is one file.</li>
+<li><strong><code>.peaks</code></strong> files are drawing data derived from the take beside them. They are not recordings.</li>
+</ul>
+<p>Each take is a WAV file: 32-bit float, two channels, at the sample rate your interface was running at when you recorded it. Every LOOM track records two channels; see <a href="/loom/manual/track-strips/#what-a-track-records">Track strips</a>. Both channels hold the same audio unless you panned the track's inputs apart on the mixer's <code>INPUTS</code> bank, in which case the take is a true stereo file. Any audio application can open one. LOOM writes the samples you played without re-rendering them, so a take you copy out of this folder is what came out of your instrument.</p>
+<h2 id="when-the-audio-reaches-the-disk">When the audio reaches the disk</h2>
+<p>A take is written when the pass that made it closes. While you play, the recording is held in memory. When you close the loop, LOOM writes the file on a separate thread. The file appears whole or not at all: LOOM writes the audio beside its final name and moves it into place only when it is complete.</p>
+<p>You do not need to save for your audio to reach the disk. <code>⌘S</code> writes <code>session.json</code>. It does not record or re-encode your audio, and on the song you have open it does not copy it either. Only <em>Save As…</em> copies audio; see <a href="#saving-a-copy-of-a-song">Saving a copy of a song</a>.</p>
+<p>A pass you are still playing is not on disk. If LOOM stops running before a pass closes, that pass is lost. Every take already written survives.</p>
+<p>Saving and quitting both tidy the folder, and they do it cautiously. A take is removed only when a newer take on the same track has replaced it, and that newer take is named in the saved song and present in the folder. Anything the song still names stays, and a track's newest recording is never removed, because nothing has replaced it.</p>
+<p>If the song names a recording the folder does not hold, or the folder holds one no track claims, LOOM says so on the notice line when you save, so you do not first find out when you open the song.</p>
+<h2 id="saving-a-copy-of-a-song">Saving a copy of a song</h2>
+<p><em>Save As…</em> (<code>⇧⌘S</code>) with a new name gives you a second song, and both songs are complete. LOOM copies the recorded audio into the new song's folder and leaves the folder you saved from unchanged. You can open either song afterwards and its tracks play.</p>
+<p>The copy is real audio rather than a link to the first song's files, so from then on the two songs are independent. Deleting one, or tidying its folder, does not affect the other.</p>
+<p>Because the save copies the audio, saving a copy takes slightly longer than an ordinary save. For songs of the size you make in practice, you will not notice the difference.</p>
+<p>Naming a song for the first time is different, because only one song is involved. See <a href="#a-song-you-have-not-named">A song you have not named</a>.</p>
+<h2 id="a-song-you-have-not-named">A song you have not named</h2>
+<p>LOOM records into a folder from the moment you start playing, even before you name the song. An unnamed song gets its own folder beside your named songs. The folder is named <code>Untitled</code> followed by the date and time you started the song:</p>
+<p><code>~/Music/LOOM/Untitled-20260827-214103.loom</code></p>
+<p>The stamp is <code>YYYYMMDD-HHMMSS</code> in your local time, so unnamed songs sort in the order you played them. If a second unnamed song starts in the same second, its folder gets <code>-2</code> on the end, and a third gets <code>-3</code>, so two unnamed songs never share a folder.</p>
+<p>Your audio is in that folder. When you save the song under a name, LOOM moves your recordings into the named song's folder. It moves them rather than copying them, and never re-encodes them. Saving a song that already has a name under a <em>new</em> name works differently; see <a href="#saving-a-copy-of-a-song">Saving a copy of a song</a>.</p>
+<p>Unnamed folders stay where they are until you remove them. They appear in the <a href="/loom/manual/dialogs/#open-song">Open song</a> list, so you can reopen one and give it a name.</p>
+<h2 id="what-loom-opens-when-you-start-it">What LOOM opens when you start it</h2>
+<p>LOOM opens the song you were in when you last quit. Every time it saves, it records which song folder that is, and it reads that back at the next launch.</p>
+<p>LOOM also keeps a recovery copy of the session, outside your songs folder:</p>
+<p><code>~/Library/Application Support/LOOM/LastSession.loom</code></p>
+<p>The recovery copy is a full copy of the session and is rewritten every time LOOM saves. You do not open it yourself. LOOM uses it in one case: if your song's folder has been moved, renamed or deleted since you last quit, LOOM opens the recovery copy instead and the <a href="/loom/manual/bottom-rails/">notice line</a> names the file that is missing. LOOM keeps the song's name, so your next save writes the song back where it belongs.</p>
+<p>If the recovery copy itself cannot be read, LOOM opens the song your last save recorded, says on the notice line that the last session could not be read, and writes a fresh recovery copy at the next save. A recovery copy written by a newer version of LOOM is left alone, and the notice line says that instead.</p>
+<p>The recovery copy belongs to this Mac. Copying <code>~/Music/LOOM</code> to another Mac copies your songs but not this file, and the other Mac does not need it.</p>
+<h2 id="backing-up">Backing up</h2>
+<p>Copy <code>~/Music/LOOM</code>. The folder is self-contained: songs, settings and audio. A copy of it opens on another Mac with LOOM installed.</p>
+<p>To keep one song, copy its <code>.loom</code> folder. To keep only the audio, copy the <code>.wav</code> files inside its <code>takes</code> folder. They are ordinary audio files and need nothing from LOOM to play.</p>
+<p>Make a copy before a show. Two gestures inside LOOM delete audio, and neither asks a second time:</p>
+<ul>
+<li><strong><code>CLEAR</code> and <code>ALL CLEAR</code></strong> discard a track's material. <code>UNDO</code> does not put it back.</li>
+<li><strong>Replacing a saved song</strong> deletes that song's whole folder, recorded takes included. See <a href="/loom/manual/dialogs/#replace-a-saved-song">Replace a saved song</a>.</li>
+</ul>
+<h2 id="when-the-folder-cannot-be-written">When the folder cannot be written</h2>
+<p>If LOOM cannot open the takes folder when a session starts, the session still runs and the <a href="/loom/manual/bottom-rails/">notice line</a> says so, naming the folder and the reason:</p>
+<blockquote>
+<p>recorded audio will NOT be saved: the takes folder in "…" could not be opened</p>
+</blockquote>
+<p>You can play and loop in that state. Nothing is written to disk until the folder is reachable, so fix the folder before you record a take you want to keep.</p>
+<h2 id="performance-recordings">Performance recordings</h2>
+<p><code>RECORD</code> on the transport records your whole performance as separate files, one for each stream you ticked in <em>File ▸ Record Setup…</em>. See <a href="/loom/manual/top-bar/#record">RECORD</a> and <a href="/loom/manual/dialogs/#record-setup">Record setup</a>. These recordings are separate from your songs and their takes, and nothing goes into the song's folder.</p>
+<p>Each recording is a folder in:</p>
+<p><code>~/Music/LOOM/Recordings</code></p>
+<p>The folder is named for the song and the date, for example <code>Take 5 2026-09-19</code>. A second recording of the same song on the same day is <code>Take 5 2026-09-19 (2)</code>.</p>
+<p><code>Take 5 2026-09-19/
+    Track 1.wav
+    Track 2.wav
+    Instrument 1.wav
+    CUE.wav
+    FX 1.wav
+    Main Mix.wav
+    Group 1.wav
+    Markers.txt</code></p>
+<p>Each file is named for the stream it holds: a loop track by its position, an instrument track by its number, a bus by the name the mixer gives it, and a group by its number. Groups are numbered, not named, so a group's file keeps its name for as long as the group exists; see <a href="/loom/manual/the-mixer/#groups-the-routing-page">Groups: the <code>ROUTING</code> page</a>.</p>
+<p>Each WAV file is 32-bit float, two channels, at your interface's sample rate. All the files in one recording start at the same moment and stay in sync, so you can drop the folder into any audio application and line the files up at zero.</p>
+<p>A file larger than 4 GB continues in a second file. At 48 kHz a stereo file reaches that size after about three hours. The next part has a name like <code>Track 1 (2).wav</code>, and recording carries on.</p>
+<p>If LOOM stops unexpectedly, the files are still readable. While it records, LOOM updates each file's length every few seconds, so a file is readable up to the last update.</p>
+<h3 id="markerstxt">Markers.txt</h3>
+<p>Each recording has one <code>Markers.txt</code>, a plain text file you can open in any text editor. Its first line names the recording and its sample rate. After that, each line records one gap:</p>
+<p><code>gap at 01:12.004 (frame 3456192), 10.667 ms (512 frames)</code></p>
+<p>A gap is a moment when the disk could not keep up and LOOM dropped a block of audio. LOOM fills the gap with silence in every file at once, so the files stay in sync. The line gives the gap's time from the start of the recording, its position in samples, and its length. A gap at the very end of a recording is not filled; its line says <code>at the end, not filled</code>.</p>
+<p>LOOM writes each line when the gap happens, so the file is complete even if LOOM stops unexpectedly. A recording with no gaps has the line <code>no gaps</code>.</p>
+{% endraw %}

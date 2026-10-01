@@ -1,0 +1,1354 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/the-mixer/
+manualSlug: the-mixer
+---
+{% raw %}
+<p>The mixer is the third view. It shows faders side by side, with rows across the top that say which faders you are looking at and what they address. It uses the same body band as the looper and the arrange view, so the top bar, the notice row and the status rail stay where they are when you switch to it.</p>
+<p>Open it with <code>⌘3</code>, with the <code>MIXER</code> cell of the <code>VIEW</code> switcher at the right end of the top bar, or from the <strong>View</strong> menu. <a href="/loom/manual/keyboard/">Keyboard shortcuts</a> lists the keys. A few keys belong to this view. <code>M</code> and <code>S</code> mute and solo the focused strip, and they work only while the keyboard is somewhere in the rack. <code>F</code> moves the <code>FADERS</code> row to the next bus, and the digits <code>1</code> to <code>5</code>, with no modifier, choose a bank. <code>F</code> and the digits work from anywhere in this view.</p>
+<p>The <code>BANK</code> row chooses which faders the rack shows, and the <code>FADERS</code> row chooses what they address: the <code>MAIN</code> mix or one of the three sends. <code>LOOP TRACKS</code> has one fader per loop track, for the material you have already recorded. <code>INSTRUMENTS</code> has one fader per instrument track. <code>INPUTS</code> has your interface's own channels: what you are playing right now, on its way to the speakers. <code>MASTER</code> is the output page, with the click strip, the cue strip and the master strip. Nothing on it is a track, a device input or an effects return. <code>BUSES</code> has one strip per effects bus, <code>FX 1</code> and <code>FX 2</code>. Each bank shows the <code>MAIN</code> mix or one of the three sends. The master is the exception: it has no send, and it says so. The <code>MASTER</code> bank also has a <code>ROUTING</code> page, where you build the groups that <code>RECORD</code> can write. See <a href="#groups-the-routing-page">Groups: the <code>ROUTING</code> page</a>.</p>
+<p>The master strip is on screen in every bank, except on the <code>ROUTING</code> page, which has no faders. It sits at the right-hand end of the rack, past the last fader, and stays there while the rest of the row scrolls. Its two-bar meter reads what is leaving LOOM, so it tells you whether you are clipping the interface, usually while you are reaching for another fader. Choosing <code>MASTER</code> in the <code>BANK</code> row hides the other strips and leaves the click and cue strips beside the master.</p>
+<h2 id="the-faders-row-and-the-buses">The <code>FADERS</code> row and the buses</h2>
+<p><code>FADERS</code> has four settings, in one list:</p>
+<p><code>MAIN · CUE · FX 1 · FX 2</code></p>
+<p>Whichever one is selected, every fader in the rack addresses it. On <code>MAIN</code>, a track strip's fader is that track's level in the main mix, what goes to front of house. On <code>CUE</code>, the same fader is how much of that track goes to your headphones. On <code>FX 1</code> or <code>FX 2</code>, it is how much of that track goes into that effects bus.</p>
+<p>That includes the effects bus strips themselves. On <code>MAIN</code>, <code>FX 1</code>'s fader is how loud <code>FX 1</code> is in the main mix. On <code>CUE</code>, it is how much <code>FX 1</code> sends into your headphones. On <code>FX 2</code>, it is how much <code>FX 1</code> sends into <code>FX 2</code>. See <a href="#the-buses-bank">The <code>BUSES</code> bank</a>.</p>
+<p>The <code>CUE</code> strip is the exception. Its fader is its own level, shown on the <code>MAIN</code> page, and the row does not point it at anything. On <code>CUE</code>, <code>FX 1</code> and <code>FX 2</code> the cue strip draws a refusal instead of a fader, because it has no send for those pages to show. The cue strip is on the <code>MASTER</code> bank, with the other outputs. See <a href="#the-cue-strip">The <code>CUE</code> strip</a>.</p>
+<p>No other control chooses the bus. The <code>FADERS</code> setting is the choice, and the selected cell always names what you are about to move.</p>
+<h3 id="each-setting-has-its-own-colour">Each setting has its own colour</h3>
+<p>On a send, every fader in the rack takes that bus's colour: blue for <code>CUE</code>, violet for <code>FX 1</code>, magenta for <code>FX 2</code>, as a faint tint across the strip and as the colour of the caption above each fader. On <code>MAIN</code> there is no tint. A rack with no tint is the main mix, and pulling a fader there changes what the room hears.</p>
+<p>The colour never carries the setting on its own. The <code>FADERS</code> row shows the selected word, and each fader's caption prints the bus it is addressing. Use the colour to check at a glance and the words to be sure.</p>
+<h3 id="the-difference-between-cue-and-the-two-effects-buses">The difference between <code>CUE</code> and the two effects buses</h3>
+<p><code>CUE</code> is tapped <strong>before</strong> the fader and before mute. Pull a strip down for the room, or mute it, and it stays in your headphones at the level you set. This lets you hear something before you bring it in.</p>
+<p><code>FX 1</code> and <code>FX 2</code> are tapped <strong>after</strong> the fader and after mute. Pull a strip down and it leaves the effect too; mute it and its reverb tail stops with it.</p>
+<p>The tap point is the only difference between a headphone feed and an effects send. Each bus strip prints which one it is.</p>
+<h3 id="sends-start-where-they-are-useful">Sends start where they are useful</h3>
+<p>A new track's <code>CUE</code> send starts at unity, so your headphones work the moment you plug them in and you carve the balance by pulling sends down. Its <code>FX 1</code> and <code>FX 2</code> sends start at silence, so nothing lands in an effects bus until you send it there.</p>
+<h3 id="the-effects-buses-also-reach-your-headphones">The effects buses also reach your headphones</h3>
+<p><code>FX 1</code> and <code>FX 2</code> return into the main mix, and they also send into <code>CUE</code> at unity. Put a reverb in <code>FX 1</code>, send a vocal to it, and you hear the reverb in the room and in your headphones.</p>
+<p>You do not need to route anything for this. The buses start this way, so a monitor mix works before you have set anything up.</p>
+<p>To change it, go to the <code>BUSES</code> bank, put the <code>FADERS</code> row on <code>CUE</code>, and move <code>FX 1</code>'s fader. Pull it to the bottom for a dry monitor; the reverb stays in the room.</p>
+<h3 id="how-a-fader-move-reaches-your-headphones">How a fader move reaches your headphones</h3>
+<p>A strip reaches <code>CUE</code> before its fader and reaches <code>FX 1</code> and <code>FX 2</code> after it. Both of those paths end in your headphones, and they answer the same fader move differently:</p>
+<ul>
+<li>the <strong>dry</strong> signal stays where it is, because the <code>CUE</code> send is tapped before the fader;</li>
+<li>the <strong>effect</strong> falls with the fader, because the <code>FX</code> send is tapped after it.</li>
+</ul>
+<p>So a strip you pull down for the room gets drier in your headphones rather than quieter. A strip you pull all the way down is still there, dry, at the level its <code>CUE</code> send sets, with no effect on it.</p>
+<p>The same applies to a track's <code>MUTE</code>: the dry signal stays in your headphones and the effect stops. An input's <code>MUTE</code> is different. It is the monitor switch for that channel, and it silences both.</p>
+<p>An effects bus returns into <code>CUE</code> as a whole rather than strip by strip, so a track whose own <code>CUE</code> send you have pulled down is still audible in your headphones through any effects bus it feeds. To take it out of your headphones completely, pull its <code>FX 1</code> and <code>FX 2</code> sends down as well. A track's <code>MUTE</code> does not do it, because a track's <code>CUE</code> send survives its mute.</p>
+<h2 id="the-buses-bank">The <code>BUSES</code> bank</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/mixer.buses.webp" width="1290" height="812" loading="lazy" decoding="async" alt="The BUSES bank: the FX 1 and FX 2 strips, with the master strip at the right-hand end."><figcaption>The BUSES bank: the FX 1 and FX 2 strips, with the master strip at the right-hand end.</figcaption></figure>
+<p>One strip per effects bus, in the order the <code>FADERS</code> row cycles them: <code>FX 1</code>, <code>FX 2</code>.</p>
+<p>The two strips have the same layout. An effects bus is a return: it goes into the main mix and into your headphones, and the <code>FADERS</code> row is how much of each.</p>
+<p>The <code>CUE</code> strip is not here. It is on the <code>MASTER</code> bank, with the click and the master, because it is an output and not a return. See <a href="#the-cue-strip">The <code>CUE</code> strip</a>.</p>
+<p>Each strip carries:</p>
+<ul>
+<li><strong>the bus's name</strong>, and under it <code>POST-FADER</code>;</li>
+<li><strong>a fader</strong>, which follows the <code>FADERS</code> row. On <code>MAIN</code> it is that bus's own level, how loud the reverb is in the room. On <code>CUE</code>, <code>FX 1</code> or <code>FX 2</code> it is how much this bus sends into that bus;</li>
+<li><strong>a two-bar meter</strong> inside the fader's slot, which shows what the bus is sending;</li>
+<li><strong><code>MUTE</code> and <code>SOLO</code></strong>. See <a href="#muting-and-soloing-a-bus">Muting and soloing a bus</a> below;</li>
+<li><strong>eight insert slots</strong>, the same eight every other strip has. Put a reverb in <code>FX 1</code> and every strip's <code>FX 1</code> send feeds it.</li>
+</ul>
+<p>There is no <code>OUTPUT</code> picker on an effects bus. It does not leave by sockets of its own: it goes into the main mix and into the cue, and the <code>FADERS</code> row sets how much of each. The only two <code>OUTPUT</code> pickers in the mixer are the master's and the cue's, and both are on the <code>MASTER</code> bank.</p>
+<h3 id="an-effects-bus-strips-fader-follows-the-faders-row">An effects bus strip's fader follows the <code>FADERS</code> row</h3>
+<p><code>FX 1</code> and <code>FX 2</code> work the way every other strip in the mixer works. Put the <code>FADERS</code> row on the bus you want to feed, and move the fader of the bus you want to feed it from.</p>
+<table>
+<thead>
+<tr>
+<th><code>FADERS</code> is on</th>
+<th><code>FX 1</code>'s fader sets</th>
+<th><code>FX 2</code>'s fader sets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAIN</code></td>
+<td>how loud <code>FX 1</code> is in the main mix</td>
+<td>how loud <code>FX 2</code> is in the main mix</td>
+</tr>
+<tr>
+<td><code>CUE</code></td>
+<td>how much <code>FX 1</code> sends into your headphones</td>
+<td>how much <code>FX 2</code> sends into your headphones</td>
+</tr>
+<tr>
+<td><code>FX 1</code></td>
+<td><em>nothing — a bus cannot send to itself</em></td>
+<td>how much <code>FX 2</code> sends into <code>FX 1</code></td>
+</tr>
+<tr>
+<td><code>FX 2</code></td>
+<td>how much <code>FX 1</code> sends into <code>FX 2</code></td>
+<td><em>nothing — a bus cannot send to itself</em></td>
+</tr>
+</tbody>
+</table>
+<p>A bus cannot send to itself, so on its own page a strip draws <code>NO SEND</code> where its fader was. Its own level is on the <code>MAIN</code> page.</p>
+<p>Two effects buses cannot feed each other. Send <code>FX 1</code> into <code>FX 2</code> and the send the other way is refused, with a line on the notice row naming both buses and telling you which send to remove first. A signal that returns to where it started grows every time round, and there is no level that makes that safe. Pull the first send to the bottom and the other direction becomes available again.</p>
+<p>On <code>MAIN</code>, a bus strip's fader handle is drawn in that bus's own colour, the same colour the rack takes when the <code>FADERS</code> row is on that bus. On a send page it takes the colour of the bus the row is on, like every other fader in the mixer, so the colour always says which bus the fader is about.</p>
+<p>To set how much of a <em>track or input</em> strip goes into a bus, put the <code>FADERS</code> row on that bus and use that strip's own fader. It is the same gesture.</p>
+<p><code>FX 1</code> and <code>FX 2</code> return into the main mix and into <code>CUE</code>. See <a href="#the-effects-buses-also-reach-your-headphones">The effects buses also reach your headphones</a>.</p>
+<p><code>CUE</code> does not send to other buses, so no strip on this bank can be pointed at it as a destination the way <code>FX 1</code> can be pointed at <code>FX 2</code>. See <a href="#the-cue-strip">The <code>CUE</code> strip</a>.</p>
+<h3 id="the-bus-meter">The bus meter</h3>
+<p>The meter shows what the bus is sending, measured after its effects, after its fader and after its <code>MUTE</code>. Pull the fader down and the bars fall with it; mute the bus and they fall to the floor. Use this reading when you set a send level, because it shows how much of the bus reaches its destination.</p>
+<p>It has two bars, left and right. A bus is a stereo sum, so a reverb that has collapsed to one side shows as one bar moving and the other still.</p>
+<p>A bus with nothing routed to it reads zero, and falls to zero rather than holding the last level it saw. A still meter means no signal, not a meter that has stopped working.</p>
+<h3 id="muting-and-soloing-a-bus">Muting and soloing a bus</h3>
+<p><code>MUTE</code> silences the bus completely. Nothing reaches its destination, and nothing reaches the other buses it sends to. It ramps rather than steps, so it does not click, and the bus's effects keep running underneath: unmute a reverb and you drop back into the tail where it would have been, not into a new one.</p>
+<p>You can mute the <code>CUE</code> bus, and that silences your own headphones. Use it to stop a monitor feeding back or an effect that has run away. The strip lights while it is muted, and one press puts it back.</p>
+<p><code>SOLO</code> puts the bus in the soloed set, along with every strip that sends to it. Solo <code>FX 1</code> and you hear <code>FX 1</code> and the strips feeding it, and nothing else. A reverb with nothing going into it is a tail that decays and then silence, so soloing the bus on its own would tell you very little.</p>
+<p>There is one soloed set and it covers tracks and buses together. A plain press on either kind of strip clears every other solo in the mixer; hold <code>⌥</code> to build a set up instead. Soloing a track keeps the buses that track feeds, so you hear the track with its own reverb rather than dry.</p>
+<p>The <code>CUE</code> bus has no <code>SOLO</code>, and no solo anywhere takes it out. It is your headphone feed, so it stays where it is whatever you solo. It does not return into the main mix, so soloing it would silence the room and leave your headphones exactly as they were.</p>
+<p>Mute wins over solo, on a bus as on a track. A bus that is both stays silent.</p>
+<p>A bus another strip's solo has silenced says so. Its <code>MUTE</code> stays unlit, because it is not muted, and a screen reader is told <em>"it is silent right now because something else is soloed"</em>.</p>
+<p>Both settings are saved with the song. A bus you park muted is still muted when you open the song again.</p>
+<h2 id="the-output-picker">The <code>OUTPUT</code> picker</h2>
+<p>Two strips have an <code>OUTPUT</code> picker: the master and the cue. Both are on the <code>MASTER</code> bank, and on each of them the picker sits above the fader. It chooses which pair of your interface's outputs that signal leaves by.</p>
+<p>The list holds the output pairs your interface actually has, counted the way they are labelled on the hardware: <code>OUT 1-2</code>, <code>OUT 3-4</code>, and so on. The cue's list also holds <code>FOLLOW MAIN</code> and <code>NONE</code>.</p>
+<p><code>FX 1</code> and <code>FX 2</code> have no picker. They are returns: they go into the main mix and into the cue, and how much of each is the <code>FADERS</code> row.</p>
+<p>The cue is not offered the channels the main mix is using. The main mix is summed after the buses, so a cue pointed at the same outputs would be pulled down by the master fader along with the house. Move the main mix and the pairs offered to the cue change with it.</p>
+<p>The master strip's picker has no <code>FOLLOW MAIN</code> entry. The master is the main mix, so there is nothing for it to follow; it can only choose which sockets it leaves by.</p>
+<h3 id="follow-main-keeps-the-cue-above-the-main-mix"><code>FOLLOW MAIN</code> keeps the cue above the main mix</h3>
+<p><code>FOLLOW MAIN</code> is the cue's default. It puts the cue on the pair immediately above the main mix. Move the main mix and the cue moves with it. Change interface and the cue is worked out again from that interface.</p>
+<p>The entry names the pair it currently lands on, so it reads <code>FOLLOW MAIN (OUT 3-4)</code> beside a main mix on outputs 1 and 2. Choose the plain <code>OUT 3-4</code> entry below it instead and the cue is fixed there: it stays on outputs 3 and 4 when you move the main mix.</p>
+<p>The two entries resolve to the same pair now and behave differently when you move the main mix. Choose the fixed pair if you have patched your headphone amplifier to particular sockets. Choose <code>FOLLOW MAIN</code> if you want the cue to stay above the main mix wherever you put it.</p>
+<p>On an interface with no pair above the main mix, <code>FOLLOW MAIN</code> has nowhere to land and the picker reads <code>NO SPARE PAIR</code>. See <a href="#on-a-two-output-interface">On a two-output interface</a>.</p>
+<h3 id="none-sends-the-cue-nowhere"><code>NONE</code> sends the cue nowhere</h3>
+<p>Choose <code>NONE</code> on the cue strip and the cue renders nowhere. Nothing it receives reaches an output, and it costs nothing in the audio path.</p>
+<p>Use it to switch off a headphone feed you are not using.</p>
+<p><code>NONE</code> keeps the output pair you had chosen. The picker reads <code>NONE</code>, but the pair is still stored. Choose a pair again and the cue goes straight back to it, without your having to set it again.</p>
+<p><code>NONE</code> is a deliberate choice. It stays set when you plug in a wider interface, and only you can clear it.</p>
+<p>The master strip has no <code>NONE</code>. A cue sent nowhere still leaves you every other path out of LOOM. A main mix sent nowhere is silence, and you would have no working monitor left while you looked for the control that undoes it.</p>
+<h3 id="on-a-two-output-interface">On a two-output interface</h3>
+<p>A stereo interface has no pair of outputs above the main mix, so the cue cannot be given one. The <code>CUE</code> strip's picker reads <code>NO SPARE PAIR</code>.</p>
+<p>On such an interface your cue is not in the house mix. LOOM does not fall back to outputs 1 and 2, because that would put your headphone mix in front of house.</p>
+<p>Plug in an interface with four or more outputs and the cue appears on the pair above the main mix.</p>
+<h3 id="changing-the-output-fades">Changing the output fades</h3>
+<p>The signal fades down on the pair it is leaving, moves, and fades back up on the pair you chose. The whole change takes about ten milliseconds each way.</p>
+<p>There is a short silence in the middle, and no moment when both pairs carry the signal. LOOM mutes before it moves rather than crossfading, so a signal never arrives at outputs you have not finished patching.</p>
+<p>Choosing <code>NONE</code>, and clearing it again, fade the same way. Nothing on a bus cuts off at full level.</p>
+<h3 id="if-your-interface-cannot-provide-the-pair-you-chose">If your interface cannot provide the pair you chose</h3>
+<p>LOOM keeps your choice rather than changing it to a pair that fits.</p>
+<ul>
+<li><strong>The cue</strong>, if the pair is missing, renders nowhere. Its picker shows the pair you chose, marked <code>(NOT ON THIS DEVICE)</code>, and the strip says so.</li>
+<li><strong>The main mix</strong> falls back to outputs 1 and 2, so you always have a house mix to work with. The master strip shows the pair you chose, marked <code>(NOT ON THIS DEVICE)</code>, and LOOM tells you when the song opens.</li>
+</ul>
+<p>Plug the wider interface back in and both return to the outputs you set, without you doing anything.</p>
+<h3 id="loom-remembers-your-outputs-per-interface">LOOM remembers your outputs per interface</h3>
+<p>Your choices are stored against the audio interface you made them on, and they are restored the next time you open LOOM with that interface connected. They are saved when the session is saved, at ⌘S and when you quit.</p>
+<p>A cue set to <code>NONE</code> is stored as well, and so is the pair underneath it. Silence your headphone feed at a rehearsal on a small interface and the routing you set up on the big one is still there when you plug it back in.</p>
+<p>Output choices belong to the machine, not to the song. A song carries no output channel numbers, so a set built on an eight-output rig opens on a two-output laptop without bringing channels that laptop does not have. Set up the venue's interface at the venue and your own at home; each keeps its own.</p>
+<h2 id="the-header-band">The header band</h2>
+<p>The header is a band across the full width of the view, closed by a hairline. It is one row deep in a window of ordinary size.</p>
+<table>
+<thead>
+<tr>
+<th>Left</th>
+<th>Middle</th>
+<th>Right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BANK</code>, and beside it <code>SHOW</code> on the <code>INPUTS</code> bank or <code>PAGE</code> on the <code>MASTER</code> bank, then <code>S</code></td>
+<td></td>
+<td><code>FADERS</code></td>
+</tr>
+</tbody>
+</table>
+<p>The rows fit on one line at every window size LOOM opens at, including the smallest one with the side panel open.</p>
+<p><code>BANK</code> chooses which rack is below: <code>LOOP TRACKS</code>, <code>INSTRUMENTS</code>, <code>INPUTS</code>, <code>MASTER</code> or <code>BUSES</code>. It is a setting row like the ones in the side panel, with one tab stop, arrows inside it and no modifiers. Switching banks changes which faders are on screen and nothing you can hear. The master strip is drawn in every bank; choosing <code>MASTER</code> hides the other strips and shows the click and cue strips beside it.</p>
+<p><code>FADERS</code> is the same control the looper view's globals row carries, not a copy of it. It chooses which bus every fader in the rack addresses. It is one tab stop named <code>FADERS</code>, and a change is announced at high priority, as it is on the looper surface. <strong>FADERS</strong> on <a href="/loom/manual/track-strips/">the globals row and the track strips</a> explains what it means and why it is never saved.</p>
+<p><code>S</code> clears every solo in the song, on loop tracks, instrument tracks and effect buses alike. It is solid amber while anything is soloed and dead when nothing is. It is the same button the looper view's globals row and the arrange view's header carry, and it sits in the same place in the row. See <strong>S — clear every solo</strong> on <a href="/loom/manual/track-strips/">the globals row and the track strips</a>.</p>
+<p><code>PAGE</code> is on the <code>MASTER</code> bank only. <code>FADERS</code> shows the output strips: the click, the cue and the master. <code>ROUTING</code> shows the groups page in their place. It is a setting row with one tab stop, like <code>BANK</code>.</p>
+<p><code>FADERS</code> keeps its full width however narrow the window gets. <code>BANK</code>, <code>SHOW</code> and <code>PAGE</code> share whatever width is left, each drawn at the width of its own words.</p>
+<h3 id="what-the-header-says-out-loud">What the header says out loud</h3>
+<p>The header used to show a sentence in the middle of the row: <code>MIXER</code>, and under it <code>LOOP TRACKS on the MAIN mix</code>. That sentence is no longer on screen. The rows say the same thing: <code>BANK</code> names the rack, <code>FADERS</code> names the bus, and each fader's caption prints the bus it is addressing.</p>
+<p>A screen reader still hears the sentence, as the first thing in the view's description, followed by the fader state and what it means.</p>
+<h2 id="the-loop-tracks-rack">The LOOP TRACKS rack</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/mixer.loop-tracks.webp" width="1290" height="812" loading="lazy" decoding="async" alt="The LOOP TRACKS bank with no audio device open, with the master strip at the right-hand end."><figcaption>The LOOP TRACKS bank with no audio device open, with the master strip at the right-hand end.</figcaption></figure>
+<p>The rack has one strip per track in the session, in equal columns across the rest of the view and in the same order as the looper's strips. The master strip has a column of its own at the right-hand end. With the side panel open, the rack fits into what is left of the body instead of being drawn under the panel, so collapsing the panel widens every strip.</p>
+<p>Strips narrow down to 173 px, and then the row scrolls. 173 px is what the slot grid needs (four 36 px tiles, three gaps and a margin on each side), and below it a strip would start clipping its own header. Narrow the window further, or open the <code>INPUTS</code> bank on a 32-input interface, and the strips stop shrinking and the row scrolls instead.</p>
+<p>A strip also stops growing at 259 px. Beyond that width the strips keep their size, and the spare room stays between the last strip and the master instead of being shared out. Adding a track then never slides the strips you were reaching for sideways, and a one-track session does not spread a single fader across the whole window.</p>
+<p>The master's column is taken from the width first, and the strips divide what is left. The master is the same width as the strips beside it, with the same minimum and maximum. On a 32-input interface the strips are already at 173 px and scrolling, so they keep their width and you see about one strip fewer: four on screen at a time instead of five. On a five-track song in a 1600 px window it works the other way: nothing scrolls, and each strip is about 200 px instead of about 244.</p>
+<p>The bar under the strips is always shown, with a count beside it. The count reads <code>3 OF 5</code>: how many strips are fully on screen, out of how many there are. Both are drawn even when everything fits, so you never see them for the first time at the moment you need them. The master is not in either number, because it never scrolls and so is never out of view. Drag the bar to move the row. The bar is not a tab stop, because moving the keyboard onto a strip scrolls that strip into view.</p>
+<p>You can also scroll the strips directly, with a two-finger swipe on a trackpad or a wheel on a mouse, with the pointer anywhere over the rack. Both axes work, so it does not matter whether your hardware swipes sideways or only spins.</p>
+<p>A strip has a header, a pan slider, a fader, a mute and solo pair, and eight effect slots:</p>
+<ul>
+<li><strong>the header</strong> — <code>TRACK 3</code>, with a caret in front of it when this is the focused track, and the strip's position in the rack (<code>3/5</code>) drawn small at the right end;</li>
+<li><strong><code>PAN</code></strong>, a small horizontal slider above the fader. The row under it reads <code>PAN</code> at the left and the value at the right: <code>C</code> at centre, <code>L14</code> or <code>R9</code> off it;</li>
+<li><strong>the fader</strong>, with its two-bar meter inside the slot and the handle riding in it, its dB scale beside the slot, and its caption and value to the left;</li>
+<li><strong><code>MUTE</code> and <code>SOLO</code></strong>, two equal halves of a row under the fader;</li>
+<li><strong>the slot grid</strong>, across the foot of the strip under an <code>FX</code> caption — eight numbered tiles, two rows of four, which are this track's insert effects. See <a href="#the-effect-rack">The effect rack</a>.</li>
+</ul>
+<h3 id="pan">Pan</h3>
+<p><code>PAN</code> sets a track's place across the stereo main mix. It reads <code>C</code> in the centre, and <code>L1</code> to <code>L100</code> or <code>R1</code> to <code>R100</code> off it. Drag it, or press <code>←</code> and <code>→</code> (two units a press, one with <code>Shift</code>), and <code>⌥</code>-click to return it to centre. <code>Home</code> is hard left and <code>End</code> is hard right.</p>
+<p>At centre both channels pass at full level, so a track you leave centred is untouched by this control. Panning hard to one side is about 3 dB quieter in the room, because the near channel holds its level all the way across and the far one falls to silence.</p>
+<p>The control is a balance. It sets how much of the track reaches each side rather than moving a point between the speakers. Hard left passes the left channel through untouched and takes the right one to silence; hard right does the reverse. A mixing console's balance control works the same way.</p>
+<p>On a track whose inputs are all centred, a balance and a pan are the same thing, so the control behaves the way you expect whatever is in the track's effect slots.</p>
+<p>On a track recording two sources panned apart they stop being the same thing. Pan such a track hard left and you get the source you put on the left, alone: the balance took the right channel away and the other source was in it. To keep both, leave the track nearer the centre. Where each source sits inside the track is set by the input's own <code>PAN</code>, below.</p>
+<p>A stereo effect changes what that means. A delay with <code>PING PONG</code> on puts some repeats on the left and some on the right; pan that track hard left and the right-side repeats go with the right channel, so you hear the left-side repeats only and the track sounds sparser than it did at centre. Nothing is broken. The balance took the right channel away, and half the repeats were in it. To keep every repeat, leave the track nearer the centre.</p>
+<p>Pan is on the main mix only. It does not move what you hear in your headphones through the cue send.</p>
+<p>On a device whose main output is a single channel the slider is drawn dead and says why: there is nowhere to pan to on one channel. It stays on the strip rather than disappearing, so a strip is the same shape on every interface, and it keeps its <code>PAN</code> label so you can tell a refused control from a missing one. On that output a track plays its left channel only.</p>
+<h3 id="mute-and-solo">Mute and solo</h3>
+<p><code>MUTE</code> takes the track out of the main mix and leaves the cue send alone, so a track muted for the room is still in your headphones. It ramps rather than steps, so muting in the middle of a loop does not click, and the loop keeps playing and stays in phase: unmute and it drops back in exactly where it had got to. It does not stop the transport or touch the recording.</p>
+<p><code>SOLO</code> puts the track in the soloed set. While anything is soloed, only the soloed strips are in the main mix. Clearing the last solo gives you back exactly the mix you had, because solo never writes a mute.</p>
+<p>The soloed set covers tracks and buses together. Soloing a track keeps the buses that track sends to, so you hear it with its own reverb rather than dry, and a plain press clears the buses' solos as well as the other tracks'. The <code>CUE</code> bus is never taken out, so soloing a track does not change what is in your headphones. See <a href="#muting-and-soloing-a-bus">Muting and soloing a bus</a>.</p>
+<p>A plain press on <code>SOLO</code> clears every other strip's solo. Hold <code>⌥</code> to build a set up instead, with an <code>⌥</code>-click or <code>⌥S</code> from the keyboard. <strong>This is the opposite way round from Logic.</strong> LOOM's plain solo is the exclusive one, so if <code>⌥</code> means <em>solo this one alone</em> to your hands, here it means <em>and this one too</em>.</p>
+<p>Mute wins over solo. A track that is both muted and soloed stays silent.</p>
+<p>A strip another track's solo has silenced is dimmed: its name, its fader, its meter and its effect slots all go quiet-coloured, and the word <code>MUTE</code> blinks in blue. The button's fill stays dark, because the track is not muted; something else is keeping it out of the mix. Nothing is wrong with the track. To bring it back, take the other track out of solo or press the <code>S</code> button in the header. The looper view's strips do the same thing for the same reason.</p>
+<p>A track you muted yourself does not blink. Its <code>MUTE</code> is lit, which already says why it is silent.</p>
+<p>A screen reader is told the same thing in words, and told which of the two reasons it is: <em>"it is muted"</em>, or <em>"something else is soloed, so this one is not in the main mix"</em>. It says <em>something else</em> because a soloed bus silences a track the same way a soloed track does.</p>
+<p><code>M</code> and <code>S</code> do the same to the focused track from the keyboard. In the mixer they work while the keyboard is somewhere in the rack and the <code>LOOP TRACKS</code> or <code>INSTRUMENTS</code> bank is showing; in the looper view they work wherever the keyboard is.</p>
+<p>The fader works the way the looper strip's does: the same taper, the same silence-to-unity range with no gain above unity, the same caption naming the bus it addresses, the same two-bar post-fader meter, the same <code>—</code> on a track that holds nothing, and the same keys. It is described under <strong>The fader and its meter</strong> on <a href="/loom/manual/track-strips/">the globals row and the track strips</a>. It is drawn differently here: a scale runs down the left of the slot, and the handle is filled on a track that holds a loop and an outline on one that does not.</p>
+<p>The scale is marked at <code>0</code>, <code>-3</code>, <code>-6</code>, <code>-12</code>, <code>-24</code> and <code>-INF</code> decibels. Every mark is drawn whatever the strip's size, but the numbers beside them are not. A strip too short to hold every number drops the ones that do not fit rather than setting them in smaller type, and always keeps <code>0</code> and <code>-INF</code>. The numbers use the same words as the readout, so <code>-INF</code> on the scale is the position the readout calls <code>-INF</code>.</p>
+<p>A track fader sets what that track's recorded loop plays back at. It does not touch what you hear coming in from your interface. That is the <code>INPUTS</code> bank, below.</p>
+<p>An input strip's fader is the one exception to silence-to-unity. An input's level and its <code>CUE</code> send both run to +6 dB, so you can lift a quiet source in your own headphones without touching what the room hears. Every other fader in LOOM stops at unity.</p>
+<p>Moving a strip's fader does not change which track is focused.</p>
+<p>Pressing anywhere else on a strip focuses that track, the same gesture as pressing a looper strip's background. The top bar's <code>FOCUS</code> readout, the side panel's <code>TRACK</code> tab and the looper view's caret all move with it, because there is one focused track and every surface is drawing it.</p>
+<p>Focus is drawn four ways here too: a filled cap down the strip's left edge (shape), a brighter border (colour), a caret before the number (text), and the strip's own accessible description (words).</p>
+<p>The line across the fader's handle carries the track's state colour, the same colour its ring wears in the looper view. That colour does not show whether the strip holds anything. The handle shows it instead: it is filled on a track that holds a loop and an outline on one that does not, and the readout beside it draws a dash. The same rule applies across the strip: an empty effect slot is an outline, a filled one is solid, and a bypassed one has a line struck across it.</p>
+<p>The focus marks stay bright on a dimmed strip. A strip that a solo has silenced is drawn quiet, but you can still see which strip your next press lands on, whether or not it is sounding.</p>
+<h2 id="the-instruments-rack">The INSTRUMENTS rack</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/mixer.instruments.webp" width="1290" height="812" loading="lazy" decoding="async" alt="The INSTRUMENTS bank: a drum track with the Room kit, a sampler track with no preset loaded, and two synth tracks with the Pad and Bass presets."><figcaption>The INSTRUMENTS bank: a drum track with the Room kit, a sampler track with no preset loaded, and two synth tracks with the Pad and Bass presets.</figcaption></figure>
+<p>The <code>INSTRUMENTS</code> bank has one strip for each <a href="/loom/manual/instrument-tracks/">instrument track</a>, headed <code>INST 1</code>, <code>INST 2</code> and so on. Choose it in the <code>BANK</code> row, or press <code>2</code> while the mixer is showing. A strip has the same controls as a loop track's strip: <code>PAN</code>, the fader, <code>MUTE</code>, <code>SOLO</code> and the slot grid.</p>
+<p>Between <code>MUTE</code> and <code>SOLO</code> and the slot grid, a box names the instrument the track plays, such as <code>SYNTH</code>, and under it the preset loaded on it. If you have not loaded a preset, the box reads <code>no preset loaded</code>. To change the instrument or open its editor, use the track's <code>INST</code> tab. The mixer has no <code>OPEN EDITOR</code>.</p>
+<p><code>MUTE</code> on an instrument strip silences the track everywhere: the main mix, the cue send and any audio track that records it. This is where it differs from a loop track, whose mute leaves the cue send alone. The loop keeps playing and stays in phase, and a muted track does not record. <code>SOLO</code> works as it does on a loop track, and mute wins over solo.</p>
+<p>An instrument track sounds whenever you play it, so its fader always shows a level and its handle is always filled.</p>
+<p>Pressing the strip's background focuses that instrument track, and moves the effect drawer to its chain if the drawer is open.</p>
+<h2 id="the-inputs-rack">The INPUTS rack</h2>
+<p>This is where you set what you hear from your interface while you play. An input is open or muted here and nowhere else: no track has to be armed, no track has to exist, and how many tracks are pointed at an input makes no difference to how loud it is.</p>
+<p>Input 1 starts audible and every other input starts muted. A guitar in input 1 is in the speakers the moment LOOM opens; a guitar in input 3 is silent until you unmute input 3 here. A muted input is still recorded normally by a track that records it, because muting decides what you <em>hear</em> and not what LOOM captures.</p>
+<p>A muted input is a normal setting, not a fault. If you monitor through your interface's own headphone knob you want LOOM's inputs muted, and nothing on this surface treats that as a problem.</p>
+<figure class="shot shot-half"><img src="/assets/loom/manual/song.mixer-inputs.webp" width="540" height="680" loading="lazy" decoding="async" alt="The two input strips of a two-input device. IN 1 is open and every track records it, and IN 2 is muted."><figcaption>The two input strips of a two-input device. IN 1 is open and every track records it, and IN 2 is muted.</figcaption></figure>
+<h3 id="the-signal-map">The signal map</h3>
+<p>The signal map is a single row of thin slots above the rack, one slot for every channel your interface has, all shown at once. It never pages or scrolls; on a wider interface the slots are narrower. Its caption reads <code>SIGNAL MAP · 18 INPUTS · 3 ASSIGNED</code>, and the legend beside it names the marks:</p>
+<table>
+<thead>
+<tr>
+<th>Mark</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A filled cap along the top edge, and a brighter border</td>
+<td>This input's strip is in the rack below.</td>
+</tr>
+<tr>
+<td>A solid rule along the bottom edge</td>
+<td>Some track records this input.</td>
+</tr>
+<tr>
+<td>A dashed rule</td>
+<td>No track records it.</td>
+</tr>
+<tr>
+<td>A thicker border and a brighter number</td>
+<td>The slot you last pressed.</td>
+</tr>
+</tbody>
+</table>
+<p>Pressing a slot selects that input. If the filter was hiding the input, the filter switches to <code>ALL</code> so you can see it. Pressing a slot never assigns anything. Which inputs a track records is a track setting, and it is set on the side panel's <code>TRACK</code> tab.</p>
+<p>The map is not a tab stop. It is a picture, so a screen reader gets all of it in the view's description instead.</p>
+<h3 id="show-assigned-and-all">SHOW: ASSIGNED and ALL</h3>
+<p><code>SHOW</code> is a setting row beside <code>BANK</code>, on the <code>INPUTS</code> bank only. <code>ASSIGNED</code> shows the inputs some track records, usually the two or three you are playing through. <code>ALL</code> shows every channel the interface has. It starts on <code>ASSIGNED</code>.</p>
+<p>An input you cannot see is still audible if it is unmuted. The filter changes what is in the rack, not what you hear. The view's spoken description says how many inputs are shown out of how many there are, and the rack's footer counts the strips it holds.</p>
+<h3 id="an-input-strip">An input strip</h3>
+<p>An input strip has a header, a mono/stereo button, a pan, a fader, a mute and eight effect slots:</p>
+<ul>
+<li><strong>the header</strong> — <code>IN 1</code> at the left, and at the right the tracks that record it, as <code>TRK 1,3</code>, or <code>no destination</code> if none do;</li>
+<li><strong><code>MONO</code> / <code>STEREO</code></strong>, below the header on inputs 1, 3, 5 and 7. It joins this input to the one after it. See <a href="#linking-two-inputs-as-one-stereo-input">Linking two inputs as one stereo input</a>;</li>
+<li><strong><code>PAN</code></strong>, a small horizontal slider above the fader. The row under it reads <code>PAN</code> at the left and the value at the right: <code>C</code> at centre, <code>L14</code> or <code>R9</code> off it;</li>
+<li><strong>the fader</strong>, on whichever bus <code>FADERS</code> is showing;</li>
+<li><strong><code>MUTE</code></strong>, across the foot of the strip;</li>
+<li><strong>the slot grid</strong>, below it — the same eight tiles a track strip carries, opening the same drawer. What differs is what happens to the sound: see <a href="#the-effect-rack">The effect rack</a>.</li>
+</ul>
+<h3 id="what-an-input-strip-changes-permanently-and-what-it-only-changes-for-you">What an input strip changes permanently, and what it only changes for you</h3>
+<p>The effect slots and <code>PAN</code> are recorded into your takes; the fader and the sends are not. They sit next to each other and behave differently, so read this before you record.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Recorded into the take?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The eight effect slots</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>PAN</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>The fader</td>
+<td>No — it sets what you hear</td>
+</tr>
+<tr>
+<td>The <code>CUE</code> and bus sends</td>
+<td>No — they set what you hear</td>
+</tr>
+</tbody>
+</table>
+<p>Pull an input's fader all the way down and the take is unchanged. LOOM takes the recording from a point before the fader, so the fader and the sends decide your monitoring and nothing else. On a mixing console the fader feeds the pan pot; here the fader is a send and the pan is not.</p>
+<p>Set the pan and the effects before you record, and use the fader freely while you play.</p>
+<h3 id="pan-on-an-input">Pan on an input</h3>
+<p><code>PAN</code> sets where this input sits across the stereo field, in what you hear and in what every track records from it. It reads <code>C</code> in the centre, and <code>L1</code> to <code>L100</code> or <code>R1</code> to <code>R100</code> off it. Drag it, or press <code>←</code> and <code>→</code> (two units a press, one with <code>Shift</code>), and <code>⌥</code>-click to return it to centre. <code>Home</code> is hard left and <code>End</code> is hard right. It is the same control, the same taper and the same keys as a track strip's pan.</p>
+<p>This is how you record a stereo track. Pan one input hard left and another hard right, arm both onto one track from the side panel, and the track records two different sources, one on each channel. Both inputs stay in one set on one track, and the pan is what separates them.</p>
+<p>A centred input records onto both channels equally. An input you never touch is centred.</p>
+<p>The control is a balance, like the track strip's. The near channel holds its level all the way across and the far one falls to silence, so an input panned hard to one side is about 3 dB quieter in the room than it was at centre, and at full level on the channel it went to.</p>
+<p>The pan reaches your headphones too. Pan an input left and you hear it on the left of the cue send as well as in the room.</p>
+<p>It comes after this input's effect slots. A ping-pong delay on the input spreads the repeats across the pair first, and the pan then places that pair, so panning hard to one side takes the far-side repeats with it, as it does on a track.</p>
+<p>The slider is live on every interface, including a mono one. A track always records two channels, so an input panned hard right is permanently on the right of your take even on an interface that cannot play the placement back to you. Unlike the track strip's pan, it is never drawn dead.</p>
+<p>The fader is the same control as on the looper strip: the same taper, the same silence-to-unity range with no gain above unity, the same caption naming the bus it addresses, and the same keys.</p>
+<p><code>MUTE</code> is the monitoring switch; there is no separate on/off. It reads <code>MUTE</code> while you can hear the input and <code>MUTED</code> while you cannot, so the label shows the state. Muting remembers the level: unmute and the fader is where you left it. While an input is muted its value reads <code>—</code> rather than a number.</p>
+<p>The destination in the header is a readout of which tracks record this input. You cannot edit it here, because a track's inputs are set from the side panel and this only shows that setting. One input can feed several tracks and one track can record several inputs, so a track may appear against more than one input here.</p>
+<p>The meter in the fader's slot is live, and it moves whether or not the input is muted. Muting decides what you hear, not what LOOM is measuring, and the question this bank usually answers is which channel your microphone is in. A muted input's meter is drawn narrower, so you can see at a glance that you are looking at signal you cannot hear.</p>
+<h3 id="linking-two-inputs-as-one-stereo-input">Linking two inputs as one stereo input</h3>
+<p>Link two inputs when one stereo instrument is plugged into them. Connect a keyboard, a stereo synth or a stereo pedal to inputs 1 and 2, press <code>MONO</code> on input 1, and the two strips become one.</p>
+<p>Press the button again to separate them.</p>
+<p>The button is on inputs 1, 3, 5 and 7 only, and it joins that input to the one after it. Inputs pair as 1+2, 3+4, 5+6 and 7+8. You cannot pair inputs 1 and 7. If your interface has an odd number of inputs, the last one has no button, because there is nothing for it to pair with.</p>
+<p>The button reads the current state. <code>MONO</code> means the two inputs are separate; <code>STEREO</code> means they are joined.</p>
+<h4 id="what-changes-when-you-link">What changes when you link</h4>
+<p>One strip replaces two:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strips</td>
+<td>Two, <code>IN 1</code> and <code>IN 2</code></td>
+<td>One, <code>IN 1-2</code></td>
+</tr>
+<tr>
+<td>Effect slots</td>
+<td>Eight on each, set separately</td>
+<td>Eight, running across both channels</td>
+</tr>
+<tr>
+<td>Meter</td>
+<td>One bar on each</td>
+<td>Two bars in one column, left and right</td>
+</tr>
+<tr>
+<td><code>PAN</code></td>
+<td>A position for each input</td>
+<td>A balance between the two channels</td>
+</tr>
+<tr>
+<td>Fader, <code>MUTE</code>, sends</td>
+<td>One of each per input</td>
+<td>One of each for the pair</td>
+</tr>
+</tbody>
+</table>
+<p>Effects are the reason to link. Unlinked, each input gets its own effect chain and each chain only ever sees one side of the instrument. Linked, one chain sees both sides at once:</p>
+<ul>
+<li><strong>a delay hears both sides of the instrument</strong>, so each side's repeats stay on the side you played them on. See <a href="#the-delay">The delay</a> for what <code>PING PONG</code> starts at on a linked pair;</li>
+<li><strong>a reverb decorrelates across the instrument</strong> instead of across one channel duplicated;</li>
+<li><strong>you set every parameter once</strong> instead of setting it twice and keeping the two in step by hand.</li>
+</ul>
+<p><code>PAN</code> becomes a balance. It is the same slider, the same taper and the same keys, but it moves the pair left or right rather than placing a single input. At centre both channels pass at full level.</p>
+<p>A track that records input 1 records the pair, left on left and right on right. You do not need to change the track's input.</p>
+<h4 id="when-loom-refuses-to-link">When LOOM refuses to link</h4>
+<p>LOOM refuses to link rather than throw away something you set up. The notice line says which of these is the reason:</p>
+<ul>
+<li><strong>a track already records the second input.</strong> The notice names that track. Point it somewhere else, then link.</li>
+<li><strong>the second input has effects in its chain.</strong> Clear that chain, then link. The first input's chain is kept and becomes the pair's chain.</li>
+</ul>
+<p>Linking discards nothing you built, so unlinking has nothing to restore. The second input's fader, mute, sends and pan are untouched the whole time, and they are exactly where you left them when you separate the pair again.</p>
+<p>Linking is never refused in the other direction. You can always unlink.</p>
+<p>Links are saved with the song and come back when you open it.</p>
+<h2 id="the-master-strip">The MASTER strip</h2>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/mixer.master-strip.webp" width="275" height="738" loading="lazy" decoding="async" alt="The master strip, with no audio device open."><figcaption>The master strip, with no audio device open.</figcaption></figure>
+<p>The master strip controls the whole mix, and it is the last thing in LOOM that touches your audio.</p>
+<p>It is at the right-hand end of the rack, in every bank, and it does not scroll. The one place it is not drawn is the <code>MASTER</code> bank's <code>ROUTING</code> page, which takes the whole rack and has no faders. Scroll the loop tracks or run a 32-input interface and the row moves underneath it while the master stays where it is. Choosing <code>MASTER</code> in the <code>BANK</code> row is a filter, not a different place: it hides the other strips and shows this one beside the click and <code>CUE</code> strips. There is only one master strip, so what you read on <code>LOOP TRACKS</code> and what you read on <code>MASTER</code> cannot disagree.</p>
+<p>Its header reads <code>MASTER</code> and, under it, <code>SUM OF</code> and the number of strips the master adds together: every loop track, every instrument track, every strip on the <code>INPUTS</code> bank, and the <code>FX 1</code> and <code>FX 2</code> returns. An input hidden by the <code>SHOW</code> filter is still counted, and a stereo-linked pair counts once. The click and the cue are not counted: the click is added after the master fader, and the cue leaves by its own outputs. The number follows the session.</p>
+<p>Above the fader is the <code>OUTPUT</code> picker, which chooses the pair of outputs the whole mix leaves by. It is the same control the cue strip has, in the same place; see <a href="#the-output-picker">The <code>OUTPUT</code> picker</a>.</p>
+<p>The fader is the level of everything leaving LOOM. It runs from silence to unity like every other fader here, with no gain above unity. The master is the last stage before your interface, so a boost applied there would have nothing after it to catch the clipping it caused. Pull it to the bottom and the room goes properly silent, not just quiet.</p>
+<p>The meter in its slot is what is actually going out, measured after the master's own effects and after the fader. It tells you whether what is leaving the building is too hot, not whether the mix was too hot before you turned it down.</p>
+<p>It has two bars: the left channel of the main mix on the left bar and the right channel on the right one. Two bars at different heights mean your mix is leaning to one side. It is the only meter that shows whether the whole mix has collapsed to a single channel, so check it before you record a set.</p>
+<p>If you have set the main output to a single channel, both bars show the same level, because there is no second channel to read.</p>
+<p>It does not touch your headphones. Pulling the master down takes the room down and leaves the <code>CUE</code> send exactly where it was, so you can kill the house and still hear yourself. A track's <code>MUTE</code> follows the same rule.</p>
+<p>Insert effects work here as they do on any other strip: eight slots across the foot, opening the same drawer. This is where a limiter goes, and it runs on the whole mix.</p>
+<p>The master's effects follow the fader's rule about your headphones. They shape the main mix and stop there, so a limiter on the master changes what the room hears and leaves the <code>CUE</code> send as it was. They also follow the mix: if you move the main mix to a different pair of outputs with the <code>OUTPUT</code> picker, the master effects move with it.</p>
+<h3 id="master-and-the-cue-send"><code>MASTER</code> and the <code>CUE</code> send</h3>
+<p>Switch <code>FADERS</code> to <code>CUE</code> with the master showing and the fader goes away, replaced by a panel reading <code>NO SEND</code>:</p>
+<blockquote>
+<p>The master has no send. It is the main mix, not a source that feeds one.</p>
+</blockquote>
+<p>Nothing is wrong. A send is what one strip contributes to a bus, and the master <em>is</em> the mix. Switch <code>FADERS</code> back to <code>MAIN</code> to reach the master level.</p>
+<p>On <code>LOOP TRACKS</code> and <code>INPUTS</code> that panel sits beside faders that are live cue sends: every other strip in the row is showing what it sends to your headphones, and the master is saying the question does not apply to it. The panel is drawn in the same switched-off face LOOM uses for any action that is deliberately unavailable, and it carries its own sentence, so it reads as a refusal rather than as a strip that failed to draw.</p>
+<p>The master level is saved with the song, so a song reopens at the level you left it. Starting a new song does not reset it: the session is still running and your house level is still your house level. Opening a different song does restore that song's.</p>
+<h2 id="the-cue-strip">The <code>CUE</code> strip</h2>
+<p>The <code>CUE</code> strip is on the <code>MASTER</code> bank, between the click strip and the master. It is your headphone feed, and it is on this bank because it is an output: it leaves LOOM by a pair of your interface's sockets, the way the main mix does. <code>FX 1</code> and <code>FX 2</code> come back into the mix, which is why they are on the <code>BUSES</code> bank and this strip is not.</p>
+<p>Its header reads <code>CUE</code> and, under it, <code>PRE-FADER</code>.</p>
+<figure class="shot shot-half"><img src="/assets/loom/manual/song.mixer-click-cue.webp" width="540" height="734" loading="lazy" decoding="async" alt="The click strip and the CUE strip on a two-output device. The click sends to MAIN, and the CUE strip's OUTPUT picker reads NO SPARE PAIR."><figcaption>The click strip and the CUE strip on a two-output device. The click sends to MAIN, and the CUE strip's OUTPUT picker reads NO SPARE PAIR.</figcaption></figure>
+<p>Its fader is the cue bus's own level, and it is on the <code>MAIN</code> page. The <code>FADERS</code> row does not move it, because the cue does not send to other buses and there is nothing for the row to point it at.</p>
+<p>On <code>CUE</code>, <code>FX 1</code> and <code>FX 2</code> the strip draws <code>NO SEND</code> instead of a fader, and says that its level is on the <code>MAIN</code> page. Every strip on this bank refuses on those three pages, each for its own reason: the master has no send, the click has one level, and the cue has no send. Switch the <code>FADERS</code> row back to <code>MAIN</code> to reach any of the three levels.</p>
+<p>The <code>OUTPUT</code> picker, <code>MUTE</code> and the insert slots stay on every page. They belong to the bus rather than to the <code>FADERS</code> row, so which sockets your headphone feed leaves by, and what is inserted in it, do not change with which faders you are looking at.</p>
+<p>Above the fader is its <code>OUTPUT</code> picker, which chooses the pair of outputs your headphone feed leaves by. See <a href="#the-output-picker">The <code>OUTPUT</code> picker</a>.</p>
+<p><code>MUTE</code> silences your own headphones, and it takes the whole width of the row because this strip has no <code>SOLO</code>. It is solo-safe: no solo anywhere in the mixer takes the cue out of the mix, and a <code>SOLO</code> on it would silence the room while leaving your headphones exactly as they were. See <a href="#muting-and-soloing-a-bus">Muting and soloing a bus</a>.</p>
+<p>It has eight insert slots across the foot, the same eight every other strip has. This is where a limiter for your in-ears goes.</p>
+<p><code>CUE</code> does not send to other buses. It is where your monitor mix ends: it receives from every strip and from both effects buses, and it leaves by its own pair of outputs. If a song file asks for a send out of <code>CUE</code>, LOOM drops that send when it opens the song, keeps everything else, and tells you which direction to route instead. The tap point is the reason. <code>CUE</code> takes every strip <em>before</em> its fader, so a send out of it would put a strip you had pulled down for the room back into the house.</p>
+<h2 id="the-click-strip">The click strip</h2>
+<p>The click strip is on the <code>MASTER</code> bank, at the left-hand end of the rack. It holds the metronome's level and the choice of what hears it.</p>
+<p>Its header reads <code>CLICK</code>, and under it a line saying where the click is going: <code>MAIN</code>, <code>CUE</code>, <code>MAIN + CUE</code> or <code>NO SEND</code>.</p>
+<p>The fader is the click's level. It runs from silence to unity like every other fader here, and it scales the beat and the accented downbeat together, so the downbeat stays louder than the beats at every setting and the click keeps its shape as you bring it up and down.</p>
+<h3 id="the-click-meter">The click meter</h3>
+<p>The meter in the fader's slot shows the click at the level this fader sets. It has one bar, because the click is a single generator rather than a stereo signal. Use it to set the click by eye against the strips beside it, the way you set any other level here.</p>
+<p>It shows the click itself and not the click as sent. Every other meter in this mixer reads what its strip is delivering; this one reads what the click is generating, before the <code>MAIN</code> and <code>CUE</code> sends below it. Switch both sends off and the bar keeps moving, because the click is still running. The two send buttons tell you where the click goes.</p>
+<p>It reads zero when the click is off, and falls to zero rather than holding the last level it saw. Stop the transport and the bar falls with it. A still meter means the click is not sounding, not a meter that has stopped working.</p>
+<p><code>MAIN</code> and <code>CUE</code> are sends, and they work like every other send in the mixer. <code>MAIN</code> puts the click in the mix going to front of house. <code>CUE</code> puts it on the cue send with your headphone mix. Switch on both, either, or neither.</p>
+<p>Each send follows the strip it feeds. Move the main mix to a different pair of outputs with the master strip's <code>OUTPUT</code> picker and the <code>MAIN</code> send moves with it; move the cue with the cue strip's picker and the <code>CUE</code> send moves with it. The click has no output channels of its own to set.</p>
+<p><code>CUE</code> needs four output channels: two for a stereo main mix and two for a separate stereo cue. On a two-output interface the <code>CUE</code> button is unavailable and the strip says how many outputs your device has. A song that asks for the cue still asks for it: open it on an interface that has one and the click is there again.</p>
+<h3 id="a-click-with-no-send-is-still-running">A click with no send is still running</h3>
+<p>Switch both sends off and the click keeps going with nothing coming out. That is a setting rather than a fault. The beat lights in the top bar still flash and the strip's meter keeps moving, so you have the grid in front of you without the room hearing it.</p>
+<p>The <code>CLICK</code> button in the top bar does not change to reflect this. It says whether the click is <em>running</em>, which is a different question from whether you can hear it. The strip's two send buttons answer the second one.</p>
+<p>There is no mute on this strip. The top bar's <code>CLICK</code> button turns the click on and off, and a mute here would only duplicate it.</p>
+<h3 id="the-click-strip-and-the-cue-page">The click strip and the <code>CUE</code> page</h3>
+<p>Switch <code>FADERS</code> to <code>CUE</code> and the click's fader goes away, replaced by a panel reading <code>ONE LEVEL</code>:</p>
+<blockquote>
+<p>The click has one level and it is on the MAIN page. Use the CUE send below to put the click in your headphones.</p>
+</blockquote>
+<p>The click is one generator with one level, so there is no separate cue level for the fader to show. The two send buttons stay live, because where the click goes is the question you are asking when you switch to the cue page.</p>
+<p>The click's level and both sends are saved with the song, so a song reopens with the click where you left it.</p>
+<h2 id="groups-the-routing-page">Groups: the <code>ROUTING</code> page</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/mixer.routing.webp" width="1290" height="812" loading="lazy" decoding="async" alt="The ROUTING page on a rig with no groups."><figcaption>The ROUTING page on a rig with no groups.</figcaption></figure>
+<p>A group sums several sources into one stereo file when you record. Choose <code>MASTER</code> in the <code>BANK</code> row, then <code>ROUTING</code> in the <code>PAGE</code> row. You can also open this page from the <code>MIXER › MASTER › ROUTING</code> button in <a href="/loom/manual/dialogs/#record-setup">Record setup</a>.</p>
+<p>Groups are numbered, not named. Group 1 records to <code>Group 1.wav</code>, and a group keeps its number for as long as it exists: deleting a group does not renumber the others. A new group takes the lowest number no group has. LOOM holds a fixed number of groups on a rig; when every number is taken, the cell under the cards reads <code>THE ROW IS FULL</code> and you delete a group to make another.</p>
+<p>This page builds groups; it does not record them. Tick a group in <a href="/loom/manual/dialogs/#record-setup">Record setup</a> and <code>RECORD</code> writes its file.</p>
+<h3 id="the-groups-column">The groups column</h3>
+<p>One card per group, down the left side. A card shows the group's number, whether it is <code>LIVE</code>, <code>PLAYBACK</code> or <code>EMPTY</code>, and one small label for each source in it. A source that is not on this interface, or not in this song, is struck through. A card whose sources are all missing here also reads <code>NOTHING HERE</code>: the group is kept, and <code>RECORD</code> writes no file for it until you are on a rig and in a song that have its sources.</p>
+<p>Press a card to open that group. <code>+ NEW GROUP</code> makes an empty group and opens it.</p>
+<h3 id="live-or-playback">LIVE or PLAYBACK</h3>
+<p>A group holds live inputs, or tracks and buses, never both.</p>
+<ul>
+<li><strong><code>LIVE</code></strong>: device inputs only.</li>
+<li><strong><code>PLAYBACK</code></strong>: loop tracks, instrument tracks and FX buses.</li>
+</ul>
+<p>The first source you tick decides which it is. The other kind's section then dims, with a line that says so:</p>
+<blockquote>
+<p>This group records live inputs. Tracks and buses go in a group of their own.</p>
+</blockquote>
+<p>or</p>
+<blockquote>
+<p>This group records loop tracks, instrument tracks and buses. Live inputs go in a group of their own.</p>
+</blockquote>
+<p>Untick everything and the group is <code>EMPTY</code> again, so either kind can go in it.</p>
+<p>A live input and a loop track cannot share a file because the recording lines up live inputs with the loops you played along to, and that moves an input's file by a different amount from a track's. One file has one starting point. An instrument track is <code>PLAYBACK</code>: LOOM makes its sound itself, so its file needs no moving, the same as a loop track's.</p>
+<h3 id="the-sources">The sources</h3>
+<p>The right side lists what the open group can hold. Each section says, in small type under its heading, where its sources are taken from.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What a group takes from it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEVICE INPUTS</code></td>
+<td>Each input after its effects, its fader and its pan. A muted input is silent in its groups.</td>
+</tr>
+<tr>
+<td><code>LOOP TRACKS</code></td>
+<td>Each track after its fader and its pan. What a track sends to an FX bus is not in it; it is in that bus.</td>
+</tr>
+<tr>
+<td><code>INSTRUMENT TRACKS</code></td>
+<td>Each instrument track after its fader and its pan, like a loop track. Each row shows what the track plays, such as <code>SYNTH</code>.</td>
+</tr>
+<tr>
+<td><code>FX BUSES</code></td>
+<td>Each bus after its effects, before its return level. The first row is the CUE bus.</td>
+</tr>
+</tbody>
+</table>
+<p>The inputs are a grid. <code>SHOW</code> chooses which inputs the grid holds:</p>
+<ul>
+<li><strong><code>LIVE</code></strong>: the inputs carrying signal now, and the ones already in this group.</li>
+<li><strong><code>IN GROUP</code></strong>: the inputs in this group.</li>
+<li><strong><code>ALL</code></strong>: every input on the interface.</li>
+</ul>
+<p>An input that is also in other groups carries a small <code>+1</code>, <code>+2</code> and so on: the number of other groups it is in. An input a group holds that this interface does not have is drawn with <code>not on this device</code>, so you can still take it out.</p>
+<p>A loop track row shows the buses the track sends to, for example <code>→ FX 1</code>, or <code>no sends</code>.</p>
+<p>Press a source, or move to it and press <code>Space</code>, to put it in the open group or take it out.</p>
+<h3 id="a-dry-track">A dry track</h3>
+<p>A track's file does not carry its effects sends. The reverb or delay you hear on a track comes back on an FX bus, so a <code>PLAYBACK</code> group that holds the track and not the bus records the track dry.</p>
+<p>When you tick a track whose send bus is not in the group:</p>
+<ul>
+<li>the track's row turns purple and is tagged <code>DRY · FX 1 MISSING</code>, naming the bus;</li>
+<li>a line under it says what the group's file will carry without that bus;</li>
+<li>an <code>ADD FX 1</code> button puts the bus in the group;</li>
+<li>the bus's own row gets a dashed purple border and <code>A TRACK HERE NEEDS IT</code>.</li>
+</ul>
+<p>When every bus a ticked track sends to is in the group, the track's row reads <code>WITH FX 1</code> in green.</p>
+<h3 id="deleting-a-group">Deleting a group</h3>
+<p><code>DELETE</code>, at the top of the open group, deletes it. A deleted group's tick in Record setup goes with it, so a new group that later takes the same number is not recorded until you tick it.</p>
+<h3 id="keys-on-this-page">Keys on this page</h3>
+<p>These work while the keyboard is somewhere on the page. See <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>.</p>
+<ul>
+<li><code>↑</code> and <code>↓</code> on a group card open the group above or below and move to its card.</li>
+<li><code>⇧⌘N</code> makes a new group, like <code>+ NEW GROUP</code>. <code>⌘N</code> is <em>New Song</em> and is not used here.</li>
+<li><code>⌘</code> with <code>Delete</code> or <code>Backspace</code> deletes the open group, like <code>DELETE</code>.</li>
+</ul>
+<h3 id="what-is-kept-and-where">What is kept, and where</h3>
+<p>Groups belong to this Mac, not to the song, so they are the same in every song you open. A group keeps a source this song or this interface does not have; it comes back into use on the rig and in the song that have it.</p>
+<h2 id="the-effect-rack">The effect rack</h2>
+<p>Every strip has eight numbered slots, in signal order, and a drawer that opens beside the rack. The slots are the same eight on a loop track and on an input. What differs is what the chain does to the sound, which is described at the end of this section.</p>
+<h3 id="the-slot-grid">The slot grid</h3>
+<p>Two rows of four tiles across the foot of a strip, numbered <code>1</code> to <code>8</code>. Signal runs in at <code>1</code> and out at <code>8</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Tile</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>An outline, with nothing filled in behind the number</td>
+<td>The slot is empty.</td>
+</tr>
+<tr>
+<td>Filled in the track's colour</td>
+<td>An effect is in it and it is running.</td>
+</tr>
+<tr>
+<td>Filled, dimmed, <strong>and a line struck across the tile</strong></td>
+<td>The effect is bypassed.</td>
+</tr>
+<tr>
+<td>A brighter, thicker border</td>
+<td>The drawer has this slot open.</td>
+</tr>
+</tbody>
+</table>
+<p>An empty slot is an outline and a filled one is solid, so you can tell a chain from an empty strip at a glance, even without telling the colours apart.</p>
+<p>A bypassed slot has a line struck through its number rather than a badge over it, so the slot's place in the chain stays readable in every state. The line runs the full width of the tile, through the number, which keeps it readable at the size a strip draws the grid.</p>
+<p>The badge beside the <code>FX</code> caption counts the chain, and it answers a different question when something is bypassed. Ordinarily it reads <code>2/8</code>, how many of the eight slots are filled. As soon as a filled slot is switched out it turns amber and reads <code>2/3 on</code>, how many of the effects on this strip are actually running. The word <code>on</code> tells the two apart, so the amber is never the only signal.</p>
+<p>Empty and bypassed are different states, and both are silent. An empty slot has no effect in it; a bypassed one has an effect that keeps its settings and its place in the chain and is switched out of the signal path. Switching it back in cannot fail. Adding an effect can, if the effect memory is full.</p>
+<p>A bypassed effect does not keep what it was sounding. It fades out and then clears itself, so a delay, a reverb or a chorus you switch back in starts empty: its repeats, its tail or its voices build up again from what you play next instead of resuming where they stopped. Both transitions are silent. You do not hear a click when you switch a slot out, when you switch it back in, or when a delay's repeats, a reverb's tail or a chorus's voices come back.</p>
+<p>Adding a delay, a reverb or a chorus to a slot while you are playing is silent for the same reason. The effect builds up from what you play next instead of arriving all at once.</p>
+<p>Click a slot to open it in the drawer. ⌥-click a filled slot to bypass it in place without opening anything. ⌥-clicking an empty slot does nothing, because there is nothing in it to switch out.</p>
+<h3 id="moving-an-effect-to-another-slot">Moving an effect to another slot</h3>
+<p>In the effect drawer, drag a filled slot onto another slot, or press <code>M</code> on it, move the cursor with the arrow keys, and press <code>M</code> again. <code>Esc</code> puts it back. While you hold the effect, the grid shows the order it will make: the effect sits in the slot it will land in, with a dashed outline, and the effects between have already slid over by one. You can drop it on a filled slot.</p>
+<p>A move keeps each effect's settings, its bypass and the preset name it was loaded from. It is one change, so <code>⌘Z</code> puts the order back. If a rack is loaded, the rack bar reads <code>EDITED</code>, because a rack holds the order. If the effect you have open moves, the drawer stays on it.</p>
+<p>You can move effects only in the drawer, where each slot shows the effect's name. The small grid in a mixer strip has no drag, and <code>M</code> there mutes the strip.</p>
+<h3 id="moving-the-open-drawer-to-another-strip">Moving the open drawer to another strip</h3>
+<p>With the drawer already open, click any strip's empty space and it follows you to that strip's chain. Anywhere on the strip that is not a control counts: the space around the fader, under the name. You do not have to close the drawer, find the strip and open a slot on it.</p>
+<p>It works on every bank: a loop track, an instrument track, an input, a bus and the master.</p>
+<p>A click on a control still does what that control does. The fader moves, the mute toggles, a slot opens. Only the strip's own background moves the drawer.</p>
+<p>Clicking a strip's background never opens the drawer. With the drawer closed, it changes nothing about the drawer. You often click a strip's empty space on the way to a fader, and a pane appearing every time you missed would rearrange the window under your hand.</p>
+<p>The drawer lands on the new strip's chain rather than on a slot. Slot 3 on another strip may be empty or hold a different effect, so the drawer shows you the chain and you choose a slot from it, with the same click you would have used anyway.</p>
+<p>Using the keyboard does the same thing. Tab or arrow into any control on a strip and the open drawer follows to that strip's chain. There is no extra tab stop for this, because the strip is already where you were going.</p>
+<p>On a loop track or an instrument track, clicking the background also focuses that track. On an input, a bus or the master it moves the drawer only: those are not tracks, and your focused track stays where you put it.</p>
+<h3 id="the-drawer">The drawer</h3>
+<p>Opening a slot slides a 548 px pane in beside the rack. Nothing floats over the mixer, and there is nothing to drag, resize or tear off. Its width is the same for every effect, so choosing a different one never moves the strips under your hand.</p>
+<p>Its header says what you are editing: a colour dot, the name of the strip the drawer was opened from, the slot number and the effect. When the side panel is closed, that header is the only thing on screen that names any of it.</p>
+<figure class="shot shot-half"><img src="/assets/loom/manual/song.eq.webp" width="540" height="818" loading="lazy" decoding="async" alt="The drawer open on slot 1 of track 1's chain while the track plays: a parametric EQ with its third band on, in a factory rack marked EDITED. The signal's spectrum is drawn in grey behind the curve."><figcaption>The drawer open on slot 1 of track 1's chain while the track plays: a parametric EQ with its third band on, in a factory rack marked EDITED. The signal's spectrum is drawn in grey behind the curve.</figcaption></figure>
+<p>The name is the one that strip carries in the rack, so the header tells you which chain you are about to change:</p>
+<table>
+<thead>
+<tr>
+<th>Drawer opened from</th>
+<th>Header reads</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A loop track</td>
+<td><code>TRACK 3</code></td>
+</tr>
+<tr>
+<td>An input</td>
+<td><code>IN 2</code></td>
+</tr>
+<tr>
+<td>The master strip</td>
+<td><code>MASTER</code></td>
+</tr>
+<tr>
+<td>A bus</td>
+<td><code>CUE</code>, <code>FX 1</code> or <code>FX 2</code> — the names the <code>FADERS</code> row uses</td>
+</tr>
+</tbody>
+</table>
+<p>The master's header carries no number, because there is one master chain and nothing to number.</p>
+<p>A filled slot opens the effect's controls. An empty slot offers the effects you can add. The breadcrumb button in the header (<code>TRACK 3 · CHAIN</code> on a track, <code>CUE · CHAIN</code> on the cue bus) goes back from an effect to the chain; <code>CLOSE</code> shuts the drawer and gives the width back to the mixer.</p>
+<p>Adding an effect reserves its memory at that moment, so a full pool is a refusal at soundcheck rather than an effect that stops working mid-song. A refusal is written to the notice line and nothing changes.</p>
+<p>Most effects open at settings that change nothing you can hear: a compressor at 1:1, a reverb with its <code>WET</code> at zero and its <code>DRY</code> at 100%, a noise gate with its <code>RANGE</code> at 0 dB. Turn it up from there.</p>
+<p><code>BYPASS SLOT</code> and <code>REMOVE</code> sit at the foot of the drawer. <code>BYPASS SLOT</code> does the same as ⌥-clicking the tile. <code>REMOVE</code> empties the slot and gives its memory back.</p>
+<p>The two look different because you can undo one by pressing it again, while the other throws away an effect you have set up. <code>BYPASS SLOT</code> is the wide button, with the brighter label. <code>REMOVE</code> is the narrow one beside it and is dimmer at rest. It turns red only while your pointer is on it.</p>
+<p>When the song has an automation lane that switches the open slot, <code>BYPASS SLOT</code> carries a mark at its right end: a <code>LANE</code> tag with a small filled square in it, which is the node shape the lane draws, and beside the tag the number of nodes the lane holds, such as <code>2 NODES</code>. A violet bar runs down the button's left edge. The mark is there whenever the lane is, whether or not the arrangement is performing and whether or not the playhead has reached the lane's first node. A screen reader adds <code>Driven by an automation lane</code> and the node count to the button's description.</p>
+<p>The mark does not lock the button. Press <code>BYPASS SLOT</code> and the slot switches, as it does on a slot with no lane. While the arrangement performs, your change holds until the lane's value in force changes: the slot stays as you set it until the lane's next node switches it. When a performance ends, the slot stays where it was.</p>
+<p>The slot tiles on the mixer strips do not carry this mark. Open the slot in the drawer to see it.</p>
+<p>A control an automation lane moves is marked the same way, in the effect's own rows:</p>
+<ul>
+<li><strong>A slider or a row of choices</strong> has a violet bar down the left edge of its row. The slider's fill, or the chosen cell, is violet instead of cyan.</li>
+<li><strong>A cell in the EQ's band table</strong> has a violet outline. Its value and its background stay as they are, so the number stays readable.</li>
+</ul>
+<p>The mark is there whenever the lane is, as it is on <code>BYPASS SLOT</code>. A lane drawn for a different effect than the one in the slot does not mark anything. A screen reader adds <code>Driven by an automation lane</code> and the node count to the control's description, and a band in the EQ names which of its controls are driven. The control still works by hand, on the same terms as <code>BYPASS SLOT</code>.</p>
+<h3 id="racks-and-presets">Racks and presets</h3>
+<p>A rack is a whole chain: which effect is in each slot, every setting, and which slots are bypassed. A preset is one effect's settings and nothing else, not its slot and not whether it is bypassed.</p>
+<p>The drawer carries a bar for each. The <code>RACK</code> bar sits under the header and is there whenever the drawer is open. The <code>PRESET</code> bar sits above the open effect's controls and appears only while an effect is open. Both bars work the same way.</p>
+<p>The name field shows what the chain or the effect was loaded from or last saved as. With nothing loaded it reads <code>no rack loaded</code> or <code>no preset loaded</code>, or <code>no rack</code> or <code>no preset</code> where the field is too narrow for the longer words.</p>
+<p>Click the <code>PRESET</code> bar's name field to open the preset list for the effect in that slot. The list shows the presets that ship with LOOM under <code>FACTORY</code>, and yours under <code>USER</code>. Each row shows the preset's description, or a summary of its settings when it has none. The preset you have loaded reads <code>LOADED</code>, and its name field is outlined while the list is open.</p>
+<p>Click the <code>RACK</code> bar's name field to open the rack list for the chain the drawer is showing. Each row shows the rack's name, its description or how many slots it fills, and a cell for every slot. A filled cell names the effect in it (<code>EQ</code>, <code>CMP</code> for a compressor, <code>DLY</code>, <code>RVB</code>, <code>GATE</code> for a noise gate, <code>CHO</code> for a chorus), and an empty slot is drawn as an outline. The list is the same on every strip: a rack saved on an input loads onto a track, and a track rack onto an input.</p>
+<p>Press <code>LOAD</code> beside a row to load that preset or rack. Moving through the list with the arrow keys changes nothing you hear; <code>Return</code> loads the row you are on. <code>Escape</code>, or a click outside the list, closes it. A preset changes the effect's settings and nothing else, so a bypassed slot stays bypassed, and <code>⌘Z</code> puts back the settings you had before.</p>
+<p>Loading a rack replaces the whole chain. A slot the rack leaves empty is cleared, so a rack with four effects loaded over a chain with six leaves four. It is one change: <code>⌘Z</code> puts back the chain you had, with its names. The notice line names the rack you loaded.</p>
+<p>A word beside the name tells you where that sound stands:</p>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No word</td>
+<td>What you hear is what the saved entry holds.</td>
+</tr>
+<tr>
+<td><code>EDITED</code></td>
+<td>A setting has moved since the entry was loaded or saved. The name stays, because it is still where you started.</td>
+</tr>
+<tr>
+<td><code>FACTORY</code></td>
+<td>The entry ships with LOOM. You cannot save over it.</td>
+</tr>
+<tr>
+<td><code>FACTORY · EDITED</code></td>
+<td>A factory entry, changed since you loaded it.</td>
+</tr>
+<tr>
+<td><code>AUTOMATED</code></td>
+<td>An automation lane moves a setting this entry holds. It joins the other words, as in <code>EDITED · AUTOMATED</code>.</td>
+</tr>
+<tr>
+<td><code>OVERRIDE</code></td>
+<td>You loaded this entry by hand while a <code>RACK PRESET</code> or <code>PRESET</code> lane had loaded a different one. It is the only word shown while it applies.</td>
+</tr>
+</tbody>
+</table>
+<p>A rack reads <code>EDITED</code> when you move an effect to another slot or bypass a slot. A preset does not, because a preset holds neither.</p>
+<p>A setting an automation lane moves does not count as an edit, so a performance on its own never turns on <code>EDITED</code>. On a preset bar, <code>AUTOMATED</code> means a lane on one of that effect's settings. On a rack bar, it also means a lane that switches a slot's bypass.</p>
+<p>When a <code>RACK PRESET</code> lane on this chain, or a <code>PRESET</code> lane on this slot, chooses what loads here, the name field shows <code>LANE</code>. If you load a different entry by hand, it stays until the lane's next node, and the bar reads <code>OVERRIDE</code> until then. Stopping the performance does not clear it. The next performance loads the lane's entry again. See <a href="/loom/manual/the-arrange-view/">The arrange view</a>.</p>
+<p><code>SAVE</code> works while a lane is moving settings. It saves the settings as they are at that moment, and during a performance the notice line says the saved values include what the lanes had reached.</p>
+<p><code>SAVE</code>:</p>
+<ul>
+<li>With nothing loaded, opens the save sheet so you can name the rack or preset.</li>
+<li>With one of your own entries loaded, saves over it straight away.</li>
+<li>On a factory entry, is unavailable. Use <code>SAVE AS…</code> to keep your changes as a copy of your own.</li>
+</ul>
+<p>The <code>···</code> button opens a menu:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SAVE AS…</code></td>
+<td>Saves under a new name, and the bar then shows that name.</td>
+</tr>
+<tr>
+<td><code>GET INFO…</code></td>
+<td>Changes the name and the description in one sheet.</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td>Removes the saved file after asking. The chain keeps its sound, and the bar keeps the name.</td>
+</tr>
+<tr>
+<td><code>REVEAL IN FINDER</code></td>
+<td>Shows the saved file in Finder.</td>
+</tr>
+<tr>
+<td><code>REVERT TO SAVED</code></td>
+<td>Puts back the settings you loaded or last saved.</td>
+</tr>
+</tbody>
+</table>
+<p><code>GET INFO…</code>, <code>DELETE</code> and <code>REVEAL IN FINDER</code> are unavailable on a factory entry, because it has no file. <code>REVERT TO SAVED</code> is available only when the bar reads <code>EDITED</code>. It still works after you delete the file, because the bar keeps the settings it loaded.</p>
+<h4 id="the-save-sheet">The save sheet</h4>
+<p>The sheet has a name field and a description field. The description is what the list shows on that row. A row with no description shows a summary of the settings instead.</p>
+<p>What the sheet holds depends on how you open it:</p>
+<table>
+<thead>
+<tr>
+<th>Opened from</th>
+<th>Name field</th>
+<th>Description field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SAVE</code>, with nothing loaded</td>
+<td>Empty, with the cursor in it</td>
+<td>Empty</td>
+</tr>
+<tr>
+<td><code>SAVE AS…</code></td>
+<td>The loaded entry's name</td>
+<td>Its description</td>
+</tr>
+<tr>
+<td><code>GET INFO…</code></td>
+<td>The entry's name</td>
+<td>Its description</td>
+</tr>
+</tbody>
+</table>
+<p><code>SAVE</code> on one of your own entries that already has a name overwrites it without a sheet.</p>
+<p>Press <code>Escape</code> or <code>CANCEL</code> to close the sheet and save nothing.</p>
+<p>A name LOOM cannot use is refused as you confirm, with the reason under the field and the cursor put back in the field it is about. A name cannot be empty, cannot contain a slash or a colon, cannot start with a period, and has to be about 100 characters or fewer. A description has its own length, which the sheet names when it refuses one. Nothing is saved until the name is one LOOM can write.</p>
+<p>If the name is already one of your own entries, LOOM asks before replacing it. Replacing changes that one file and nothing else: nothing stops playing, and no recorded audio is involved.</p>
+<p>Racks are saved in <code>~/Music/LOOM/Racks</code>, and presets in <code>~/Music/LOOM/Presets</code>, in a folder for each effect.</p>
+<h3 id="the-controls">The controls</h3>
+<p>Every effect except the EQ draws one row per control, under a heading for each group of related controls. The compressor's rows sit under <code>DETECTOR</code>, <code>ENVELOPE</code> and <code>OUTPUT</code>; the gate's under the same three; the delay's under <code>TIME</code>, <code>MIX</code> and <code>TONE</code>; the reverb's under <code>ROOM</code> and <code>MIX</code>; the chorus's under <code>MOTION</code> and <code>MIX</code>. A screen reader reads the heading with the control, so a row announces as <code>THRESHOLD, in DETECTOR</code>.</p>
+<div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/effect.delay.webp" width="548" height="700" loading="lazy" decoding="async" alt="The delay, with SYNC on."><figcaption>The delay, with SYNC on.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/effect.reverb.webp" width="548" height="620" loading="lazy" decoding="async" alt="The reverb."><figcaption>The reverb.</figcaption></figure></div>
+<p>Each row carries the control's name, its value in its own unit, and the control itself. Most controls are a track you can drag. <code>←</code> and <code>→</code> move a track by a hundredth of its travel, <code>Shift</code> with them by a thousandth, and <code>Home</code> and <code>End</code> go to the ends. Dragging and the arrows stay inside the control's range, so neither can ask for a value the effect would refuse.</p>
+<p>Some settings are not a range, and those rows carry a different control:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Control</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Two states</td>
+<td>A switch reading its current state</td>
+<td>The delay's <code>PING PONG</code></td>
+</tr>
+<tr>
+<td>A short fixed list</td>
+<td>A row of cells, one lit</td>
+<td>The reverb's <code>SIZE</code>, the chorus's <code>VOICES</code></td>
+</tr>
+</tbody>
+</table>
+<p>Both take one <code>Tab</code> stop, like a track. On a switch, <code>Return</code> changes it. On a row of cells, <code>←</code> and <code>→</code> move the selection and <code>Home</code> and <code>End</code> go to the ends. You cannot type a value into these settings, because they have no numbers.</p>
+<p>A row with more cells than fit across the drawer wraps onto a second line rather than shrinking its cells. Every cell stays on screen and stays where it is; the row is taller. On a wrapped row, <code>↑</code> and <code>↓</code> move to the cell above and the cell below, and <code>←</code> and <code>→</code> still step one cell at a time through the whole set. The delay's <code>DIVISION</code> is the setting that wraps.</p>
+<p>A switch that is off has a dashed outline as well as reading <code>OFF</code>, so its state does not depend on colour alone. Nothing else on the row is disabled by it.</p>
+<p>A row of cells can also have cells you cannot choose right now. Those are dimmed and have a dashed outline. They stay where they are, so nothing else moves, and <code>←</code> and <code>→</code> step over them. The notice row says why. The delay's <code>DIVISION</code> is the setting that does this.</p>
+<p>The EQ is laid out differently. See <a href="#the-eqs-six-bands">The EQ's six bands</a>.</p>
+<p>The controls scroll when there are more of them than fit, which happens mostly at a short window. Arrowing or tabbing onto a control that is off the bottom scrolls it into view.</p>
+<p>⌥-click a control to put it back to its default, the setting a fresh effect opens at. It is per control, so resetting the reverb's <code>WET</code> leaves its <code>DECAY</code> where you had it. A control whose range runs from a negative value to the same positive value, such as the amp's <code>PRESENCE</code> or a synth's <code>ENV AMT</code>, goes back to 0 instead.</p>
+<p><code>Delete</code> does the same thing from the keyboard: the key marked <code>Delete</code> or <code>Backspace</code>, on the control you have tabbed to. It works on every effect's controls and on the EQ's. When you land on a control, it names the value it would go back to, so you know the result before you press the key.</p>
+<blockquote>
+<p><strong>⌥-click does two different things in this drawer.</strong> On a slot tile in the grid it bypasses that slot. On a control it resets that one control.</p>
+</blockquote>
+<p>Click the printed value, or press <code>Return</code> on the control, to type a number in. <code>Return</code> again takes it; <code>Escape</code> discards it and leaves the control where it was; clicking away takes it, the way every other typed field in LOOM does. Type only the number, without the unit.</p>
+<p>A number outside the control's range is refused by name rather than rounded into range. The notice line says what to type and which control refused, and the control does not move.</p>
+<h3 id="dry-and-wet-are-two-separate-levels">Dry and wet are two separate levels</h3>
+<p>The delay, the reverb and the chorus each have a <code>DRY</code> control and a <code>WET</code> control, and they do not move each other. <code>DRY</code> sets how much of the original signal goes through the slot. <code>WET</code> sets how loud the effect's own output is. Both run from 0% to 100%, and you can have both at 100% at once.</p>
+<p>Turning <code>WET</code> up adds the repeats or the room beside what you are already hearing. It does not make the original signal quieter; for that, turn <code>DRY</code> down.</p>
+<p>A fresh delay or reverb opens with <code>DRY</code> at 100% and <code>WET</code> at 0%, which is the signal you had, unchanged. Turn <code>WET</code> up to hear the effect.</p>
+<p>Common settings:</p>
+<table>
+<thead>
+<tr>
+<th>You want</th>
+<th>Set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the original plus some effect</td>
+<td><code>DRY</code> 100%, <code>WET</code> where it sounds right</td>
+</tr>
+<tr>
+<td>the effect only, with no original</td>
+<td><code>DRY</code> 0%, <code>WET</code> 100%</td>
+</tr>
+<tr>
+<td>the slot doing nothing</td>
+<td><code>DRY</code> 100%, <code>WET</code> 0%</td>
+</tr>
+</tbody>
+</table>
+<p>Both at 0% is silence through that slot. Nothing stops you setting it. If you want the slot out of the way, use <code>BYPASS SLOT</code> instead: that also stops the effect running, which <code>DRY</code> 0% and <code>WET</code> 0% does not.</p>
+<p>The compressor and the EQ have no dry and wet controls. They shape the signal rather than adding something beside it, so there is nothing to blend.</p>
+<h3 id="the-delay">The delay</h3>
+<p>The controls set how far back the echo reads, how much of it comes back, what the repeats sound like, whether they bounce between your speakers, and whether the time is a number of milliseconds or a division of the beat:</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TIME</code></td>
+<td>how far back the echo reads — 1 ms to about 2.7 seconds at 48 kHz. The longest time depends on your sample rate; see below. On <code>SYNC</code> it reads the length of the division and you cannot set it</td>
+</tr>
+<tr>
+<td><code>SYNC</code></td>
+<td>whether <code>TIME</code> is a number of milliseconds or a division of the beat. It is a pair of cells, <code>FREE</code> and <code>SYNC</code>, with the one in force lit. It opens on <code>FREE</code></td>
+</tr>
+<tr>
+<td><code>DIVISION</code></td>
+<td>which division of the beat the delay follows while <code>SYNC</code> is on. It is a row of cells, <code>1/1</code> down to <code>1/16T</code>, wrapped onto two lines, and it opens on <code>1/8</code></td>
+</tr>
+<tr>
+<td><code>FEEDBACK</code></td>
+<td>how much of the output goes back in, which is what makes it repeat rather than echo once. It stops at 95%, which is where a delay would start oscillating instead of dying away</td>
+</tr>
+<tr>
+<td><code>WET</code></td>
+<td>how loud the repeats are. It opens at zero</td>
+</tr>
+<tr>
+<td><code>LOW CUT</code></td>
+<td>takes bass out of the repeats, so they sit under the dry signal instead of fighting it</td>
+</tr>
+<tr>
+<td><code>HIGH CUT</code></td>
+<td>takes top off them, so the tail darkens as it dies, as a tape delay's does and a plain digital one's does not</td>
+</tr>
+<tr>
+<td><code>PING PONG</code></td>
+<td>whether the repeats alternate left and right instead of sitting in the middle. It is a switch rather than a track. It is <strong>on</strong> when you put a delay in a slot, except where the source is already stereo: a stereo-linked input pair, a drum machine, and a sampler holding a stereo sample. There it starts <strong>off</strong></td>
+</tr>
+<tr>
+<td><code>DRY</code></td>
+<td>how much of the original signal goes through the slot. It opens at 100%</td>
+</tr>
+</tbody>
+</table>
+<p>The two cuts are on the feedback path, so each repeat is filtered again. A little goes a long way: after four repeats a high cut has been applied four times.</p>
+<p><code>PING PONG</code> is on to start with, so the first thing you hear when you turn <code>WET</code> up is repeats crossing the stereo field: the first one on the left, the second on the right, the third back on the left, dying away as they go. Turn it off and you get the ordinary delay, the same echo on both sides, with whatever you played coming back where you played it.</p>
+<p>With <code>PING PONG</code> on, each repeat is quieter than the one before it by the same amount, whichever side it is on, and <code>FEEDBACK</code> sets how much quieter each repeat is than the one two before it, on the same side. At 25%, each repeat is half the level of the one before it. With <code>PING PONG</code> off, <code>FEEDBACK</code> sets how much quieter each repeat is than the one before it. So at the same <code>FEEDBACK</code>, the repeats of a ping-pong delay take twice as long to die away as the ordinary delay's.</p>
+<p>On a stereo-linked input pair it starts off instead. A linked pair carries a stereo source, such as the two outputs of a keyboard or a pair of microphones, so the delay is already handed two different signals. With <code>PING PONG</code> off, each side's repeats stay on the side you played them on. Turn it on and the two sides are summed first, and that sum is what alternates, so what you played on the left comes back on the right. The control does the same thing in both places; what changes is what a new delay starts at.</p>
+<p>On an instrument track, a delay starts with <code>PING PONG</code> on for the synth and off for the drum machine, whose parts are already placed across the two sides. On a sampler it follows the sample the track holds when you add the delay: on for a mono sample, or when no sample is loaded, and off for a stereo sample. A sample recorded from a LOOM audio track is stereo, so a delay added to a sampler playing one starts off.</p>
+<p>Linking or unlinking a pair, or loading a different sample into a sampler, leaves a delay you have already set up alone. The starting value applies when you put the delay in the slot and not afterwards. If you link a pair whose delay has <code>PING PONG</code> on, it stays on. Turn it off yourself if you want each side on its own side.</p>
+<p>Switching it while <code>WET</code> is at zero does nothing you can hear. At <code>WET</code> 0% there are no repeats yet, so there is nothing for a side to alternate. Turn <code>WET</code> up first, then try the button.</p>
+<p>It works on a mono part. A single track through a delay with <code>PING PONG</code> on still bounces, because the input is fed into one side and then crosses over. On many delays this control does nothing unless what you feed it is already spread across the two channels; this one does not need that.</p>
+<p>It works in every slot: an input strip's, a loop track's, a bus's and the master's. All four chains run in stereo, so a delay in any of them has two sides to alternate between.</p>
+<p>On an input slot the bounce is printed into the take. An input chain runs before the recorder, so what you hear while you play is what the track plays back. Put the delay on the loop track instead if you want to change it later, because a track chain shapes playback and leaves the recording alone.</p>
+<p>A hard-panned strip loses the repeats on the far side, on an input and on a loop track alike. See <a href="#pan">Pan</a>: the balance takes one channel away, and the repeats that were on it go too.</p>
+<h4 id="setting-the-delay-time-in-beats">Setting the delay time in beats</h4>
+<p><code>SYNC</code> decides where <code>TIME</code> comes from. On <code>FREE</code>, which is where a new delay opens, you set <code>TIME</code> yourself and nothing else moves it. On <code>SYNC</code>, you choose a <code>DIVISION</code> and LOOM works the milliseconds out from the song's tempo.</p>
+<p>While <code>SYNC</code> is on, <code>TIME</code> is a readout. It shows the length of the division you are on, and it dims: you cannot drag it, type into it or reset it, and the drawer tells you to turn <code>SYNC</code> off if you try. Turn <code>SYNC</code> off and <code>TIME</code> becomes a control again, starting from the number it was showing, so what you hear does not jump when you take the delay off the grid.</p>
+<p>Pressing a <code>DIVISION</code> cell changes the delay straight away, and so does turning <code>SYNC</code> on or off. You do not have to touch the tempo for it to take effect.</p>
+<p>The divisions run longest first, from <code>1/1</code>, a whole note, down to <code>1/16T</code>. <code>D</code> means dotted, which is half as long again. <code>T</code> means triplet, which is two thirds as long.</p>
+<p>A new delay opens with <code>TIME</code> at 250 ms and <code>DIVISION</code> at <code>1/8</code>. At 120 bpm, which is the tempo LOOM starts in, those are the same length, so turning <code>SYNC</code> on there does not change what you hear.</p>
+<p>Change the song's tempo and every delay on <code>SYNC</code> follows it. A delay on <code>FREE</code> keeps the time you gave it, whatever the tempo does. Saving a song keeps the division rather than the milliseconds it worked out to, so a song you save at one tempo and reopen at another is still in time.</p>
+<p>Some divisions are longer than the delay line can reach, and which ones depends on the tempo and the sample rate. Those cells are drawn dimmed with a dashed outline, they stay where they are, and they still read their own name so you can see which divisions they are. The notice row names the longest division you can use. Pressing one tells you the same thing and changes nothing.</p>
+<p>If you change the tempo and the division you are on becomes too long, the delay keeps that division and the time it last worked out, and stops following the tempo. The notice row says so. Raise the tempo, or choose a shorter division, and it starts following again.</p>
+<p>How long <code>TIME</code> can go depends on your sample rate. The delay line is a fixed number of samples, so it reaches about 3.0 seconds at 44.1 kHz, about 2.7 seconds at 48 kHz and about 1.4 seconds at 96 kHz. The control's top end follows the sample rate in both directions, so you can set any time the delay can play and no time it cannot. The same ceiling decides which divisions <code>SYNC</code> can offer, so a session at a higher sample rate offers fewer of them.</p>
+<p>A song can hold a <code>TIME</code> longer than your interface can play, for example a song saved at 48 kHz with <code>TIME</code> at 2000 ms and opened at 96 kHz. When the song opens on that interface, including when you switch to the interface with the song open, LOOM sets <code>TIME</code> to the longest time the interface can play. The notice row says so, with the old time, the new time and the sample rate. The delay was already playing that shorter time, so what you hear does not change, and every control on the delay works as usual. The song saves the shorter time from then on.</p>
+<p>If that delay is on <code>SYNC</code> and its division is too long at the song's tempo as well, the notice also names the division and the tempo. The delay keeps the division.</p>
+<h3 id="the-reverb">The reverb</h3>
+<p>Five controls, under two headings. <code>DECAY</code>, <code>DAMPING</code> and <code>SIZE</code> describe the room; <code>WET</code> and <code>DRY</code> decide how much of it you hear.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DECAY</code></td>
+<td>how long the tail takes to die away — 0.2 s to 12 s</td>
+</tr>
+<tr>
+<td><code>DAMPING</code></td>
+<td>how fast the top comes off the tail. Higher is darker, the way a room with soft walls sounds</td>
+</tr>
+<tr>
+<td><code>SIZE</code></td>
+<td>which of three rooms the reverb is: <code>SMALL</code>, <code>MEDIUM</code> or <code>LARGE</code>. It is a row of three cells, not a track</td>
+</tr>
+<tr>
+<td><code>WET</code></td>
+<td>how loud the room is. It opens at zero</td>
+</tr>
+<tr>
+<td><code>DRY</code></td>
+<td>how much of the original signal goes through the slot. It opens at 100%</td>
+</tr>
+</tbody>
+</table>
+<p><code>SIZE</code> has three settings and nothing between them. A room's size is the length of the delay lines inside it, and those lengths are fixed when the effect is created, so a continuous knob would have nothing to land on between the three. That is why the control is three cells.</p>
+<p>The reverb's <code>DECAY</code> is not on an even scale. It runs from 0.2 s to 12 s, and about half its travel is spent under 1.5 s, where most of the useful settings are.</p>
+<p>The delay's <code>TIME</code>, <code>LOW CUT</code> and <code>HIGH CUT</code> are tapered the same way. Musical delay times are ratios, and the two cuts are frequencies; on an even scale a 250 ms delay would sit in the first tenth of the control.</p>
+<p>The chorus's <code>RATE</code> and <code>DEPTH</code> are tapered too, for the same reason: on an even scale everything between a slow swell and a gentle warble would sit in the first quarter of the rate control.</p>
+<p>The gate's <code>ATTACK</code>, <code>HOLD</code> and <code>RELEASE</code> are the same. On an even scale a 1 ms attack would sit in the first hundredth of the control, and every setting you would actually use would be crowded there. The gate's <code>THRESHOLD</code> and <code>RANGE</code> stay even, because decibels are already a ratio scale.</p>
+<p>The EQ's six frequencies are on the same kind of scale. Pitch is logarithmic, so an even control would spend its first twentieth on everything below 1 kHz and the rest on the top four octaves. Here equal movement is equal musical interval: the middle of the travel is about 630 Hz, and one press of an arrow key moves about the same fraction of a semitone wherever you are. Gain and <code>Q</code> stay even, because decibels are already a ratio scale and <code>Q</code> is not one.</p>
+<h3 id="the-eqs-six-bands">The EQ's six bands</h3>
+<p>The EQ draws a row per band, not a row per control: six rows under a magnitude graph, with the columns <code>#</code>, <code>TYPE</code>, <code>FREQ</code>, <code>GAIN</code>, <code>Q</code> and <code>ON</code>. Everything belonging to one band is on one line, and a screen reader announces the band before its controls.</p>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.eq.webp" width="548" height="860" loading="lazy" decoding="async" alt="The EQ at its default settings."><figcaption>The EQ at its default settings.</figcaption></figure>
+<table>
+<thead>
+<tr>
+<th>Band</th>
+<th>Is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1</code></td>
+<td>a high pass</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>a low shelf, or a bell</td>
+</tr>
+<tr>
+<td><code>3</code>, <code>4</code></td>
+<td>bells</td>
+</tr>
+<tr>
+<td><code>5</code></td>
+<td>a high shelf, or a bell</td>
+</tr>
+<tr>
+<td><code>6</code></td>
+<td>a low pass</td>
+</tr>
+</tbody>
+</table>
+<p>Bands 2 and 5 can be a shelf or a bell, and their <code>TYPE</code> cell is a two-way control saying which. The other four have fixed roles, so their <code>TYPE</code> cell is a label rather than a control. It is drawn flatter and dimmer than the two-way cell and reads <code>FIXED</code> under the band's type, so you can see there is no choice to make without pressing it.</p>
+<p><code>FREQ</code>, <code>GAIN</code> and <code>Q</code> are numbers you drag and type into, not sliders. Drag up and down on the number; click it, or press <code>Return</code>, to type one in; arrows nudge it. They behave like the tempo field in the top bar.</p>
+<p>A cell that reads <code>—</code> is a control that band does not have. Only <code>GAIN</code> ever does, because a high pass and a low pass have no gain to set. Every band has a <code>Q</code>, including the two shelves; on a shelf it sets how steeply the shelf climbs.</p>
+<p><code>ON</code> switches the band out. Switching a band off takes it out of the filter completely rather than flattening or turning it down: it stops running, and what comes out of that band is bit for bit what went in. It fades out over about ten milliseconds rather than switching instantly, so doing it mid-song does not click.</p>
+<p>A band that is off has a dashed outline and its button reads <code>OFF</code>, so its state does not depend on colour alone. Its controls stay live, so you can set a band up before you switch it in.</p>
+<p>The high pass and the low pass arrive switched off, the way Logic's Channel EQ ships them. The other four arrive on and flat. Those two are the only bands with no <code>GAIN</code> control: every other band at 0 dB is already doing nothing, and a flat bell is skipped entirely, but a high pass at 20 Hz still takes a little off the bottom octave. So a new EQ passes the sound through untouched until you switch a filter on or move a gain.</p>
+<p>The compressor and the EQ also draw a curve above the controls: the compressor's transfer curve with a dashed 1:1 line behind it, and the EQ's magnitude response. Both are computed from the settings themselves, so they are right the instant you move something.</p>
+<p>The EQ's plot carries a scale on both axes, so you can read a value off the curve rather than only its shape. Across the bottom it runs from <code>20 Hz</code> on the left to <code>20.0k Hz</code> on the right, logarithmically, with marks at <code>100</code>, <code>1k</code> and <code>10k</code>: each octave takes the same width, the way it does on the <code>FREQ</code> cells. Up the right-hand edge it runs in decibels of gain, marked at the top and bottom of the range the bands can reach and halfway to each. The brightest of those rules is <code>0</code>, so a curve lying along it is an EQ that is doing nothing at that frequency.</p>
+<p>The grey shape behind the curve is the signal after the EQ, so you can see the effect the curve is having on it. It is taken at the end of the chain, so any effect in a later slot is in it too. It has no scale of its own and is not meant to be read as a number. The curve is what the EQ is set to do, and the grey shape is the result.</p>
+<p>The compressor also draws a gain-reduction meter, in a narrow strip at the right of its transfer curve, marked <code>GR</code>. It shows how much the compressor is taking off right now, as a bar that grows downward and a reading in decibels below it. It reads <code>0.0</code> when the compressor is not compressing, and it goes to zero rather than freezing the moment you bypass the slot or the chain. It falls at the same rate as the level meters on the strips, so two meters on one screen never tell you different things about how fast something moved.</p>
+<figure class="shot shot-half"><img src="/assets/loom/manual/song.compressor.webp" width="540" height="683" loading="lazy" decoding="async" alt="A compressor in slot 6 of track 3's chain while the track plays. The transfer curve bends at the threshold, away from the dashed 1:1 line, and the GR meter reads -10.9."><figcaption>A compressor in slot 6 of track 3's chain while the track plays. The transfer curve bends at the threshold, away from the dashed 1:1 line, and the GR meter reads -10.9.</figcaption></figure>
+<p>There are no input or output meters in the drawer. Gain reduction is a number the compressor works out anyway in order to do its job, so showing it costs nothing. An input or output level would be a measurement of the signal itself, which nothing in LOOM's engine reports.</p>
+<p>The effects offered are a parametric EQ, a compressor, a noise gate, a delay, a reverb, a chorus, an octave, a cab and an amp.</p>
+<h3 id="the-noise-gate">The noise gate</h3>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.gate.webp" width="548" height="505" loading="lazy" decoding="async" alt="The noise gate at its default settings."><figcaption>The noise gate at its default settings.</figcaption></figure>
+<p>The gate turns the signal down when you stop playing, so the hiss, the amp buzz and the room stop with you. Put it first on an input.</p>
+<p>Five controls, under three headings. <code>THRESHOLD</code> decides when the gate is open; <code>ATTACK</code>, <code>HOLD</code> and <code>RELEASE</code> decide how it moves; <code>RANGE</code> decides how far down it goes.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>THRESHOLD</code></td>
+<td>the level the signal has to reach before the gate opens — -80 dBFS to 0 dBFS, opening at -48 dBFS. Set it above the room and below the quietest note you want through</td>
+</tr>
+<tr>
+<td><code>ATTACK</code></td>
+<td>how fast the gate opens once the signal arrives — 0.05 ms to 100 ms, opening at 1 ms</td>
+</tr>
+<tr>
+<td><code>HOLD</code></td>
+<td>how long it stays open after the signal drops back below the threshold — 1 ms to 1 second, opening at 50 ms. This is what keeps a decaying note from being chopped</td>
+</tr>
+<tr>
+<td><code>RELEASE</code></td>
+<td>how fast it closes once the hold has run out — 1 ms to 2 seconds, opening at 100 ms</td>
+</tr>
+<tr>
+<td><code>RANGE</code></td>
+<td>how far down it goes when it closes — -90 dB to 0 dB, opening at 0 dB</td>
+</tr>
+</tbody>
+</table>
+<p><code>RANGE</code> is why a new gate changes nothing: at 0 dB it turns the signal down by nothing at all. Turn it down to hear the gate work.</p>
+<p>The gate never mutes completely. -90 dB is below the noise floor of any interface, so it is silence in every practical sense, but a gate that slammed to nothing would turn a decaying note into an edit and a room mic into a stutter. <code>RANGE</code> is the control that decides how much of that you want.</p>
+<p>There is no lookahead, because nothing in LOOM delays your signal. A short <code>ATTACK</code> is what protects the front of a note instead.</p>
+<p>The gate reads both sides of a stereo signal together and applies one gain to both, so a note panned hard to one side opens the whole gate rather than half of it.</p>
+<p>The gate draws a curve above its controls: the level going in against the level coming out, with a dashed diagonal behind it. The step is at the threshold and the floor below it is the range. The curve is what the gate settles at. <code>ATTACK</code>, <code>HOLD</code> and <code>RELEASE</code> set how long it takes to get there, so they are not in it.</p>
+<p>There is no open-and-closed light. You can hear a gate working: the sound stops.</p>
+<h3 id="the-chorus">The chorus</h3>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.chorus.webp" width="548" height="591" loading="lazy" decoding="async" alt="The chorus at its default settings."><figcaption>The chorus at its default settings.</figcaption></figure>
+<p>The chorus thickens a sound and spreads it across the stereo field. It runs delayed copies of the signal whose delay drifts up and down, so each copy is slightly out of tune with the original in a way that keeps changing. One copy is the sound of a chorus pedal; four is an ensemble.</p>
+<p>A new chorus arrives sounding. It opens as a Roland Jazz Chorus-style split: the original signal on the left, one drifting copy on the right, at full level. A chorus with its copies turned down is a slot that changes nothing. The cab and the amp also open sounding; every other effect opens at settings you cannot hear.</p>
+<p>Eight controls, under two headings. <code>RATE</code>, <code>DEPTH</code>, <code>SHAPE</code> and <code>VOICES</code> decide the movement; <code>STEREO</code>, <code>WIDTH</code>, <code>DRY</code> and <code>WET</code> decide what reaches the mix.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RATE</code></td>
+<td>how fast the pitch drifts — 0.05 Hz to 8 Hz, opening at 0.6 Hz. Slow is a swell; fast is a warble</td>
+</tr>
+<tr>
+<td><code>DEPTH</code></td>
+<td>how far it drifts — 0.1 ms to 5 ms, opening at 3.5 ms</td>
+</tr>
+<tr>
+<td><code>SHAPE</code></td>
+<td>the path the drift follows. It is a pair of cells, <code>SINE</code> and <code>TRIANGLE</code>, with the one in force lit. It opens on <code>TRIANGLE</code></td>
+</tr>
+<tr>
+<td><code>VOICES</code></td>
+<td>how many delayed copies are running — <code>ONE</code>, <code>TWO</code>, <code>THREE</code> or <code>FOUR</code>, opening at <code>ONE</code></td>
+</tr>
+<tr>
+<td><code>STEREO</code></td>
+<td>how the two sides are made — <code>OFFSET</code>, <code>SPLIT</code>, <code>OPPOSED</code> or <code>MONO</code>, opening at <code>SPLIT</code></td>
+</tr>
+<tr>
+<td><code>WIDTH</code></td>
+<td>how far apart the two sides drift — 0% to 100%. Available in <code>OFFSET</code> and <code>OPPOSED</code>. See below for what it opens at</td>
+</tr>
+<tr>
+<td><code>DRY</code></td>
+<td>how much of the original signal goes through the slot — 0% to 100%, opening at 100%</td>
+</tr>
+<tr>
+<td><code>WET</code></td>
+<td>how loud the copies are — 0% to 100%, opening at 100%</td>
+</tr>
+</tbody>
+</table>
+<p><code>RATE</code> and <code>DEPTH</code> are on a ratio scale, like the reverb's <code>DECAY</code> and the delay's <code>TIME</code>: doubling a rate is what sounds like a step, not adding a hertz to it. About half the travel of each is spent under the settings you reach for most.</p>
+<p><code>VOICES</code> is a row of four cells rather than a knob, because there is nothing between two copies and three. More voices do not make the effect louder: the copies are averaged, so changing the texture does not send you back to <code>WET</code>. The change takes about ten milliseconds, which feels immediate and keeps a change of texture from clicking.</p>
+<p>A new chorus opens at <code>ONE</code> copy, which is the Jazz Chorus arrangement the other defaults are built around: a single delayed copy, split away from the original. What <code>VOICES</code> does above one depends on <code>STEREO</code>. In <code>OFFSET</code> and <code>OPPOSED</code> the copies spread across the stereo field, spaced by <code>WIDTH</code>. In <code>SPLIT</code> and <code>MONO</code> there is one field to put them in, so they stack up in it and thicken the sound instead of widening it. In <code>SPLIT</code> that thickening lands on the side the copies are on.</p>
+<p><code>SHAPE</code> and <code>STEREO</code> are the same kind of control: a fixed set of settings rather than a range, drawn as a row of cells with the setting in force lit. A control drawn this way always shows you the settings you are not on as well as the one you are, so you can read what pressing it will do without pressing it.</p>
+<h4 id="shape-decides-whether-the-drift-moves-evenly-or-gathers-at-the-turns"><code>SHAPE</code> decides whether the drift moves evenly or gathers at the turns</h4>
+<p>What you hear from a chorus is how fast the delay is moving, not where it is. That makes the shape of the drift audible in a way it is not on most modulated effects.</p>
+<p><code>TRIANGLE</code> moves at one speed and reverses at the top and bottom of each sweep. The detune stays even across the whole cycle. This is the movement of a classic chorus pedal, and it is what a new chorus opens with.</p>
+<p><code>SINE</code> slows to a stop at the top and bottom of each sweep and moves fastest through the middle. The detune swells and fades twice a cycle, which sounds fuller and less regular. If you hear the effect gathering around the points where it changes direction, that is this shape.</p>
+<p>Choruses saved before <code>SHAPE</code> existed open on <code>SINE</code>, because that is what they were recorded with. Set them to <code>TRIANGLE</code> if you want the newer movement.</p>
+<h4 id="stereo-decides-how-the-two-sides-are-made"><code>STEREO</code> decides how the two sides are made</h4>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OFFSET</code></td>
+<td>Both sides carry drifting copies, and their drift is offset from each other by <code>WIDTH</code></td>
+</tr>
+<tr>
+<td><code>SPLIT</code></td>
+<td>The original signal leans left and the drifting copies lean right</td>
+</tr>
+<tr>
+<td><code>OPPOSED</code></td>
+<td>Both sides carry drifting copies, moving in opposite directions</td>
+</tr>
+<tr>
+<td><code>MONO</code></td>
+<td>Both sides carry the same drifting copies</td>
+</tr>
+</tbody>
+</table>
+<p><code>SPLIT</code> is what a new chorus opens with. It is the arrangement a Roland Jazz Chorus uses: the dry signal in one speaker and the chorused signal in the other. The width comes from the two sides carrying different signals rather than from the drift being offset.</p>
+<p>In <code>SPLIT</code>, <code>DRY</code> and <code>WET</code> set how far the split opens as well as how loud each part is. At <code>DRY</code> 100% and <code>WET</code> 100% the split is complete: the left is the original and the right is the copies. As you turn either one down the two sides move back together, so at <code>WET</code> 0% both sides carry the original and at <code>DRY</code> 0% both sides carry the copies. Turning either control down never moves the instrument to one side. In every other setting <code>DRY</code> and <code>WET</code> are plain levels.</p>
+<p>Opening the split takes about 3 dB off the original signal, because it stops being in both ears and ends up in one. The copies arrive in the other ear as it goes, so the instrument does not get quieter; the sound spreads rather than drops.</p>
+<p><code>OPPOSED</code> is the widest of the four. <strong>It disappears if the room sums to mono:</strong> the two sides carry the same copies with opposite polarity, so a mono PA cancels them and leaves the original signal alone. <code>OFFSET</code> and <code>SPLIT</code> both survive a mono sum. If you do not know what the house is running, <code>SPLIT</code> is the safe one, which is part of why it is the default.</p>
+<p><code>MONO</code> puts the same copies on both sides. Use it when you want the thickening without any change to the stereo image.</p>
+<h4 id="width-moves-the-two-sides-apart-it-does-not-move-the-sound-to-one-side"><code>WIDTH</code> moves the two sides apart, it does not move the sound to one side</h4>
+<p><code>WIDTH</code> sets how far apart the left and right drift from each other. At 0% both sides move together, which leaves a stereo image exactly as it arrived. At 100% they move against each other, which is what turns a mono source into a wide one.</p>
+<p><code>WIDTH</code> is available in <code>OFFSET</code> and <code>OPPOSED</code>. In <code>SPLIT</code> and <code>MONO</code> there is a single set of drifting copies, so there is no second set for <code>WIDTH</code> to move it away from; the control is dimmed and says so if you try to move it. Because a new chorus opens in <code>SPLIT</code>, <code>WIDTH</code> is dimmed on a chorus you have just added. Set <code>STEREO</code> to <code>OFFSET</code> to use it.</p>
+<p>When <code>WIDTH</code> is available, it opens at a different setting depending on what is feeding the chain:</p>
+<ul>
+<li>On a track, an input that is not stereo-linked, a bus or the master, it opens at <strong>100%</strong>. The source is one signal on both sides, so the chorus is what creates the stereo image at all. The same goes for a synth, and for a sampler holding a mono sample or none.</li>
+<li>On a stereo-linked input pair it opens at <strong>0%</strong>. The two sides are already the instrument's own two sides, and moving them against each other smears an image you set up at the keyboard. The same goes for a drum machine, and for a sampler holding a stereo sample.</li>
+</ul>
+<p>This is the same rule the delay's <code>PING PONG</code> follows, for the same reason. You can change it either way afterwards; the setting only decides what a new chorus opens at.</p>
+<p>There is no graph. A chorus's movement is where the drift is at each instant rather than a fixed shape, so a still picture could not show you anything the sound does not.</p>
+<h3 id="the-octave">The octave</h3>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.octave.webp" width="548" height="489" loading="lazy" decoding="async" alt="The octave at its default settings."><figcaption>The octave at its default settings.</figcaption></figure>
+<p>The octave adds a note one octave below what you play. It is built the way an analog octave pedal is built: it counts the cycles of your signal and puts out a wave at half that rate. It does not work out which note you are playing, so it adds no delay to your signal at all.</p>
+<p><strong>Play one note at a time.</strong> A chord gives the effect two notes to count at once and the result is neither note's octave. That is how this kind of octave works rather than a limitation LOOM adds, and it is what makes it instant. Fast runs and the very end of a fading note can stumble for a moment, which is part of the sound.</p>
+<p>The common use is to play a bass part on a guitar. Turn <code>WET</code> up, bring <code>DRY</code> down, and the guitar becomes the bass.</p>
+<p>Five controls, under two headings. <code>WET</code> and <code>DRY</code> decide what you hear; <code>DYNAMICS</code>, <code>SENSITIVITY</code> and <code>TRACKING</code> decide how the octave follows your playing.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WET</code></td>
+<td>how loud the octave is — 0% to 100%, opening at 0%</td>
+</tr>
+<tr>
+<td><code>DRY</code></td>
+<td>how loud your own signal is beside it — 0% to 100%, opening at 100%</td>
+</tr>
+<tr>
+<td><code>DYNAMICS</code></td>
+<td><code>FOLLOW</code> or <code>FIXED</code>, opening at <code>FOLLOW</code></td>
+</tr>
+<tr>
+<td><code>SENSITIVITY</code></td>
+<td>how quiet a note can be and still be tracked — 0% to 100%, opening at 50%</td>
+</tr>
+<tr>
+<td><code>TRACKING</code></td>
+<td><code>FULL NECK</code>, <code>BALANCED</code> or <code>BASS</code>, opening at <code>BALANCED</code></td>
+</tr>
+</tbody>
+</table>
+<p>A new octave changes nothing until you move something, because <code>WET</code> opens at 0%. Turn <code>WET</code> up to hear it.</p>
+<p><code>WET</code> and <code>DRY</code> are separate levels rather than one balance, so you can have both at full, either on its own, or neither.</p>
+<h4 id="dynamics-decides-whether-the-octave-follows-your-picking"><code>DYNAMICS</code> decides whether the octave follows your picking</h4>
+<p>On <code>FOLLOW</code>, the octave rises and falls with your playing. Pick hard and it is loud; let the note decay and it decays with you. This is how an octave pedal behaves and it is what the effect opens at.</p>
+<p>On <code>FIXED</code>, the octave holds a steady level for as long as a note is sounding, whatever you do with your hands. It sounds like a synthesiser rather than like a pedal, and it is the setting to use when you want the bass part to sit still under everything else.</p>
+<p><code>FIXED</code> fades in and out over a few milliseconds rather than switching, so notes do not click.</p>
+<h4 id="sensitivity-decides-how-quiet-a-note-can-be"><code>SENSITIVITY</code> decides how quiet a note can be</h4>
+<p>Raise it and the octave holds on through the tail of a ringing note. Lower it and the octave speaks only on notes you play deliberately.</p>
+<p>This is the control to reach for when the effect misbehaves, and it goes both ways:</p>
+<ul>
+<li>If the octave keeps sounding between notes, or mutters over string noise, <strong>lower it</strong>.</li>
+<li>If the octave drops out before the note has finished, <strong>raise it</strong>.</li>
+</ul>
+<p>It matters most on <code>FIXED</code>. A steady tone triggered by string noise is a drone, where on <code>FOLLOW</code> the same noise would only produce something very quiet.</p>
+<h4 id="tracking-decides-which-end-of-the-neck-the-octave-is-best-at"><code>TRACKING</code> decides which end of the neck the octave is best at</h4>
+<p>Low notes and high notes ask opposite things of the effect. A low note carries strong overtones that can fool the divider into producing a note an octave too high; filtering them away fixes that, but the same filtering leaves less to work with high on the neck. <code>TRACKING</code> is where you choose.</p>
+<ul>
+<li><code>BALANCED</code> is the default and suits most playing.</li>
+<li><code>FULL NECK</code> tracks best above the twelfth fret. On a low E it can jump between the octave below and the note you played. If you hear that, this setting is the cause.</li>
+<li><code>BASS</code> is the steadiest on the low strings. Use it for bass parts.</li>
+</ul>
+<p>If a low note is unstable, move towards <code>BASS</code>. If notes high on the neck drop out, move towards <code>FULL NECK</code>.</p>
+<p>The octave reads both sides of a stereo signal together and puts the same octave on both, so it sits in the centre rather than spreading. There is only one octave being generated, which is why it survives a mono PA.</p>
+<p>There is no <code>TONE</code> control, and the octave is always the same waveform. The filtering that shapes it is fixed, chosen so the result is a round sub rather than a buzz. <code>TRACKING</code> changes the filtering in front of the divider, which affects how reliably the effect follows you, not what it sounds like.</p>
+<h3 id="the-cab">The cab</h3>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.cab.webp" width="548" height="489" loading="lazy" decoding="async" alt="The cab at its default settings."><figcaption>The cab at its default settings.</figcaption></figure>
+<p>The cab is a speaker cabinet. A drive pedal played straight into an interface sounds harsh and thin, because a real one always reaches the audience through a speaker. Put the cab after a drive, or after anything else you want to sound as if it came out of an amplifier, and it shapes the sound the way a miked cabinet does.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CAB</code></td>
+<td>the voicing. It is a row of cells, <code>NONE</code> and <code>4x12 CLOSED</code>, and it opens on <code>4x12 CLOSED</code></td>
+</tr>
+<tr>
+<td><code>LOW CUT</code></td>
+<td>takes low end out below the frequency you set, from 20 Hz to 500 Hz. It opens at 20 Hz, which is off</td>
+</tr>
+<tr>
+<td><code>HIGH CUT</code></td>
+<td>takes top end out above the frequency you set, from 1.00k Hz to 20.0k Hz. It opens at 20.0k Hz, which is off</td>
+</tr>
+<tr>
+<td><code>WET</code></td>
+<td>how loud the sound through the cabinet is. It opens at 100%</td>
+</tr>
+<tr>
+<td><code>DRY</code></td>
+<td>how loud your signal is without the cabinet, beside it. It opens at 0%</td>
+</tr>
+</tbody>
+</table>
+<p>A new cab is heard as soon as you add it. Unlike the delay and the reverb, it opens with <code>WET</code> at 100% and <code>DRY</code> at 0%, because a cabinet replaces the sound rather than adding something beside it.</p>
+<p>The cab adds no delay to your signal.</p>
+<h4 id="cab-chooses-the-voicing"><code>CAB</code> chooses the voicing</h4>
+<p>A voicing is a set of filters that gives your signal the shape of a kind of cabinet. The voicings are built from filters rather than from recordings of cabinets, so each one sounds the same at every sample rate your interface runs at.</p>
+<ul>
+<li><code>4x12 CLOSED</code> is a closed-back cabinet with four 12-inch speakers. Its filters are fitted to measurements of a real cabinet of that kind. Below about 100 Hz the low end falls away steeply, there is a lift around 130 Hz where the sealed box resonates, the middle is scooped, and above about 4k Hz the top rolls off steeply, the way a guitar speaker's does. It follows the measured cabinet's overall shape, but not the small peaks and dips a particular microphone position adds between about 1.5k Hz and 3k Hz.</li>
+<li><code>NONE</code> is no cabinet at all. Your signal goes through unchanged: the sound of a guitar plugged straight into a desk. It is a sound in its own right rather than an off switch, and you choose it the same way you choose any other voicing.</li>
+</ul>
+<p>The voicings are matched in loudness for a guitar played straight in, so switching between them changes the tone and not the level.</p>
+<p>When you change the voicing while you play, the cab fades from the old voicing to the new one over about 10 ms, so the change does not click.</p>
+<h4 id="low-cut-and-high-cut-trim-the-ends"><code>LOW CUT</code> and <code>HIGH CUT</code> trim the ends</h4>
+<p>Each one cuts at 12 dB per octave past the frequency you set. At the end of its travel, where a new cab opens, each one is off rather than set to a very low or very high frequency.</p>
+<p>They work on every voicing, <code>NONE</code> included. With <code>NONE</code>, they are a quick way to take rumble or fizz off a direct sound.</p>
+<h3 id="the-amp">The amp</h3>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.amp.webp" width="548" height="675" loading="lazy" decoding="async" alt="The amp at its default settings."><figcaption>The amp at its default settings.</figcaption></figure>
+<p>The amp is a guitar amplifier and its speaker cabinet in one slot: a preamp that distorts, a tone stack, a power amp, and the cab's voicings. Plug a guitar straight into your interface, add an amp, and you hear it the way it sounds through a miked amplifier.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MODEL</code></td>
+<td>which amp: <code>CLEAN</code>, <code>CRUNCH</code> or <code>HIGH GAIN</code>. It opens on <code>CLEAN</code></td>
+</tr>
+<tr>
+<td><code>GAIN</code></td>
+<td>how hard the model is driven, from 0% to 100%. It opens at 50%</td>
+</tr>
+<tr>
+<td><code>TIGHT</code></td>
+<td>how loose or tight the amp feels, from 0% to 100%. It opens at 50%</td>
+</tr>
+<tr>
+<td><code>BASS</code></td>
+<td>the low end, from 0% to 100%. It opens at 50%</td>
+</tr>
+<tr>
+<td><code>MID</code></td>
+<td>the middle, from 0% to 100%. It opens at 50%</td>
+</tr>
+<tr>
+<td><code>TREBLE</code></td>
+<td>the top, from 0% to 100%. It opens at 50%</td>
+</tr>
+<tr>
+<td><code>PRESENCE</code></td>
+<td>the top end after the power amp, from -10.0 dB to +10.0 dB. It opens at +2.0 dB</td>
+</tr>
+<tr>
+<td><code>CAB</code></td>
+<td>the cabinet: <code>NONE</code> or <code>4x12 CLOSED</code>, the same voicings as the cab. It opens on <code>4x12 CLOSED</code></td>
+</tr>
+<tr>
+<td><code>WET</code></td>
+<td>how loud the amp is. It opens at 100%</td>
+</tr>
+<tr>
+<td><code>DRY</code></td>
+<td>how loud your guitar is without the amp, beside it. It opens at 0%</td>
+</tr>
+</tbody>
+</table>
+<p>A new amp is heard as soon as you add it, because it opens with <code>WET</code> at 100% and <code>DRY</code> at 0%.</p>
+<p>The amp adds no delay to your signal.</p>
+<h4 id="gain-changes-how-much-the-amp-distorts-not-how-loud-it-is"><code>GAIN</code> changes how much the amp distorts, not how loud it is</h4>
+<p>The amp holds its level as you turn <code>GAIN</code>: it is matched to the loudness of your guitar played straight in. Use <code>WET</code> to set how loud the amp is.</p>
+<p>The amp responds to how hard you play. Near the point where it starts to break up, a note picked lightly stays clean and a note dug in distorts. Turn <code>GAIN</code> down and more of your playing stays clean; turn it up and more of it breaks up.</p>
+<h4 id="model-chooses-how-far-gain-reaches"><code>MODEL</code> chooses how far <code>GAIN</code> reaches</h4>
+<p>Each model is the same amplifier with a different range for <code>GAIN</code>. The tone controls, <code>TIGHT</code> and <code>CAB</code> do the same thing on every model.</p>
+<ul>
+<li><code>CLEAN</code> runs from clean, even when you dig in, through the point where the amp starts to break up. The edge of breakup is a little past the middle of its range.</li>
+<li><code>CRUNCH</code> starts where <code>CLEAN</code> is breaking up and goes on to a driven rhythm sound.</li>
+<li><code>HIGH GAIN</code> goes from saturated to heavily saturated.</li>
+</ul>
+<p>When you change the model while you play, the amp moves to the new drive over about 10 ms, so the change does not click and the level stays where it was.</p>
+<p><code>MODEL</code> has no automation lane yet. To change the model at a point in a song, use a preset or a rack node.</p>
+<h4 id="tight-sets-how-the-amp-holds-together"><code>TIGHT</code> sets how the amp holds together</h4>
+<p>At 0% the amp is loose: more low end reaches the distortion, and the power amp sags under a loud chord, so the chord swells and softens. At 100% the amp is tight: the low end is trimmed before it distorts and the power amp barely sags, so palm mutes and fast low notes stay distinct.</p>
+<h4 id="the-tone-controls-work-together">The tone controls work together</h4>
+<p><code>BASS</code>, <code>MID</code> and <code>TREBLE</code> behave like an amplifier's tone controls rather than like an EQ.</p>
+<ul>
+<li><code>MID</code> mostly cuts. At 0% it scoops the middle deeply, and the scoop narrows as it deepens. Only near 100% does it lift the middle, and then only a little.</li>
+<li><code>BASS</code> and <code>TREBLE</code> affect each other. Raising one takes a little away from the other.</li>
+<li><code>PRESENCE</code> acts after the power amp, so it brightens the distorted sound rather than the guitar going in.</li>
+</ul>
+<h4 id="cab-is-the-cabs-voicing-inside-the-amp"><code>CAB</code> is the cab's voicing, inside the amp</h4>
+<p><code>CAB</code> offers the same voicings as the cab effect, described in <a href="#the-cab">The cab</a>. <code>NONE</code> sends the amp out with no cabinet, which is the sound of an amplifier's line output. Use it when a cab later in the chain supplies the cabinet, or when you want the direct sound.</p>
+<p>When you change <code>CAB</code> while you play, the amp fades from the old cabinet to the new one over about 10 ms, so the change does not click.</p>
+<h4 id="wet-and-dry"><code>WET</code> and <code>DRY</code></h4>
+<p><code>WET</code> is the amp's output level. <code>DRY</code> adds your guitar without the amp beside it, which keeps the attack of the pick under a heavily driven sound.</p>
+<h4 id="where-the-models-come-from">Where the models come from</h4>
+<p>The models are studied from three kinds of amplifier: <code>CLEAN</code> from an American clean combo, <code>CRUNCH</code> from a British crunch head and <code>HIGH GAIN</code> from a modern high-gain head. They are not measurements of any particular product. The <code>4x12 CLOSED</code> voicing is fitted to measurements of a closed-back cabinet with four 12-inch speakers.</p>
+<p>LOOM is not affiliated with or endorsed by any amplifier or speaker manufacturer. Any product names that describe these kinds of amplifier are trademarks of their respective owners.</p>
+<h3 id="track-chains-and-input-chains-are-not-the-same">Track chains and input chains are not the same</h3>
+<p>A track chain is playback-side. It shapes what the recorded loop plays back as, it stays editable forever, and taking an effect out puts the take back the way it was.</p>
+<p>An input chain is pre-record. It is printed into the take and cannot be undone afterwards, so what you record through it is what you have. The drawer says so on the input bank, where the decision is being made. <code>⌘Z</code> on an input chain changes the chain for what you record next, not a take you already recorded.</p>
+<p>Both chains run in stereo. Effects that spread a sound across the two sides (the delay with <code>PING PONG</code> on, the reverb, and the chorus with <code>WIDTH</code> up) work the same in an input slot, a loop track's slot, a bus's and the master's. Every input leaves its chain as a pair, whether the interface handed LOOM one channel or two, and the take carries that pair.</p>
+<p>The difference is when you can change your mind. A spread printed by an input chain is in the recording; the same effect on the loop track shapes playback and can be taken out later. See <a href="/loom/manual/track-strips/#what-a-track-records">Track strips</a>.</p>
+<h3 id="undoing-a-change-to-an-effect-chain">Undoing a change to an effect chain</h3>
+<p>With the keyboard in the effect drawer or on a slot grid, <code>⌘Z</code> undoes the last change to an effect chain and <code>⇧⌘Z</code> redoes it. The notice line says what was undone or redone and on which chain. When the change loaded a rack or a preset, the notice line names it.</p>
+<p>Each of these is one change:</p>
+<ul>
+<li>Adding an effect to a slot, including the settings it opens with.</li>
+<li>Removing an effect.</li>
+<li>Moving an effect to another slot, however far the others slide over.</li>
+<li>Turning bypass on or off for a slot.</li>
+<li>Loading a rack, however many slots it changes.</li>
+<li>Loading a preset into a slot.</li>
+<li>One drag on a control, from the moment you press the mouse button to the moment you release it.</li>
+<li>Holding an arrow key on a control, from the moment you press the key to the moment you release it.</li>
+<li>Typing a value and pressing <code>Return</code>.</li>
+</ul>
+<p>A change that leaves the chain as it was is not recorded, so <code>⌘Z</code> never spends a press on it.</p>
+<p>The history is shared by every chain in the song. <code>⌘Z</code> undoes the most recent change on any chain, which is not always the chain the drawer is showing; the notice line names the chain it changed.</p>
+<p>Automation does not add to the history. Neither does a delay's <code>TIME</code> following a tempo change.</p>
+<p>Saving, renaming and deleting a rack or preset do not add to the history either. <code>⌘Z</code> never removes or restores a saved file. <code>REVERT TO SAVED</code> does add to the history, so <code>⌘Z</code> takes a revert back.</p>
+<p>On an input chain, undo changes the chain and nothing you already recorded through it. A take keeps the sound it was recorded with, and the notice line says so.</p>
+<p>If an effect cannot come back because the effect memory is full, its slot stays empty and the notice line names it. Remove an effect from a chain you are not using, then add it again.</p>
+<p>The history is cleared when you start a new song, when LOOM opens the audio interface, and when the interface restarts, for example after a sample-rate change.</p>
+<h3 id="replacing-an-effect-while-the-chain-is-running">Replacing an effect while the chain is running</h3>
+<p>When you load a rack or a preset onto a chain that is already playing, LOOM keeps the effect in any slot whose type does not change. That effect goes on running: its delay line, its reverb tail and its modulation carry over, and its settings move to the new values rather than jumping to them.</p>
+<p>A slot whose effect type changes is replaced. LOOM fades the outgoing effect out over about 50 ms, then fades the incoming one in over the same length, so the change does not click. You hear that as a short dip while the new effect arrives, most clearly when the effects involved change the level, such as a compressor with makeup gain. Place a rack change where a brief dip suits the music, for example on a rest or at the start of a new section.</p>
+<p>If LOOM cannot load an effect into a slot, because there is no memory left for it or a setting is outside the range this build accepts, it leaves that slot empty and loads the rest of the rack. The notice line names the slot. A delay <code>TIME</code> longer than your interface can hold is not refused: it is set to the longest time the interface holds, and the notice line says so.</p>
+<h3 id="where-your-effects-are-saved">Where your effects are saved</h3>
+<p>Your effects are saved in two places, and they are independent.</p>
+<p><strong>A chain belongs to the song</strong>: which effects are in which slots, their settings, and which of them are bypassed. It is written at <code>⌘S</code> and read back when you open the song. Every chain is saved this way, whether it is on a track, an input, a bus or the master, so a song opens sounding the way you saved it, whatever is in your library.</p>
+<p><strong>A rack or a preset is a file of its own</strong>, and it crosses songs: a vocal chain you built on Tuesday loads into the song you start on Friday. See <a href="#racks-and-presets">Racks and presets</a> for how to save and load them, and for where the files live.</p>
+<p>The name is saved with the song as well. Reopen a song and each bar still shows what that chain and each slot were loaded from, along with <code>EDITED</code> if you had changed anything since.</p>
+<h4 id="loading-takes-a-copy">Loading takes a copy</h4>
+<p>When you load a rack or a preset, the chain takes a copy of its settings. The song holds those settings, not a link to the file.</p>
+<p>So you can tidy your library without touching your songs. Rename a rack, edit it, or delete it, and every song that loaded it sounds exactly as it did. The bar goes on showing the name it loaded from, and <code>REVERT TO SAVED</code> still puts back the settings you loaded, because the chain kept them.</p>
+<p>To take a rack's new settings into an older song, open that song and load the rack again.</p>
+<h2 id="the-keyboard">The keyboard</h2>
+<p>A loop-track strip is five tab stops: <code>PAN</code>, the fader, <code>MUTE</code>, <code>SOLO</code>, then the slot grid. An input strip is four, the same list without <code>SOLO</code>. An input that can pair with the one after it is five: the <code>MONO</code>/<code>STEREO</code> button is the last stop on inputs 1, 3, 5 and 7, after the slot grid, so the four you reach during a set never move when it appears. No control on this surface has a keystroke of its own. The up/down, <code>Home</code> and <code>End</code> rules are the fader's own, <code>BANK</code> and <code>SHOW</code> take the arrows every setting row takes, and all of them are in <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>.</p>
+<p>An effects bus strip is four stops: the fader, <code>MUTE</code>, <code>SOLO</code> and the slot grid. It has no <code>OUTPUT</code> picker. The <code>CUE</code> strip is four for the opposite reason: the fader, its <code>OUTPUT</code> picker, <code>MUTE</code> and the slot grid, with no <code>SOLO</code>. The master strip is three: the fader, its <code>OUTPUT</code> picker and the slot grid.</p>
+<p>An effects bus strip is three stops on its own <code>FADERS</code> page. A bus cannot send to itself, so its fader is not drawn there and there is nothing to tab onto. Its own level is on the <code>MAIN</code> page.</p>
+<p>On the loop tracks, <code>←</code> and <code>→</code> move between strips as they move between tracks everywhere else, and the focus ring goes with the focused track, so <code>→</code> <code>→</code> <code>↑</code> raises the level of the strip you just arrived on.</p>
+<p>On the inputs, <code>←</code> and <code>→</code> still move the focused track, which this bank is not drawing, so <code>Tab</code> is how you move from one input strip to the next.</p>
+<p>The slot grid is one tab stop with a cursor inside it, not eight. Arrows move the cursor between the eight tiles, <code>Home</code> and <code>End</code> go to the ends, and <code>Return</code> or <code>Space</code> opens the tile under it in the drawer. Bypass has no key of its own here. The drawer's <code>BYPASS SLOT</code> button is one stop away and does the same thing.</p>
+<p>Arrowing or tabbing onto a strip that is off the edge scrolls it into view.</p>
+<p>Tab order on this surface is the view switcher, the panel toggle, <code>FADERS</code>, <code>BANK</code>, then <code>SHOW</code> on the <code>INPUTS</code> bank or <code>PAGE</code> on the <code>MASTER</code> bank, then the rack: every strip in turn, left to right, and within a strip its <code>PAN</code>, its fader, <code>MUTE</code>, <code>SOLO</code> on the loop tracks and the instrument tracks, then its slot grid. Last in the rack is the master strip, where it is drawn, with its fader, its <code>OUTPUT</code> picker and its slot grid. After that comes the effect drawer if it is open, and only then the top bar's <code>ROLL</code>, <code>STOP</code>, <code>TEMPO</code> and <code>CLICK</code>, then the side panel's tabs and whatever it is showing.</p>
+<p>On the <code>MASTER</code> bank the rack is the click strip, then the cue strip, then the master. The click's three stops are its fader, its <code>MAIN</code> send and its <code>CUE</code> send.</p>
+<p>On a send page every fader on this bank refuses, and a control that is not drawn is not a tab stop. What remains: the click keeps its two sends, the cue keeps its <code>OUTPUT</code> picker, <code>MUTE</code> and slot grid, and the master keeps its <code>OUTPUT</code> picker and slot grid.</p>
+<p>On the <code>ROUTING</code> page the rack is the page: the group cards from the top, <code>+ NEW GROUP</code>, <code>DELETE</code>, the <code>SHOW</code> row over the inputs, then the inputs, the loop tracks with any <code>ADD</code> button under a track, and the buses.</p>
+<p>On the <code>BUSES</code> bank a strip's stops run down it in the order it is drawn (the fader, <code>MUTE</code>, <code>SOLO</code>, then the slot grid), and then comes the pinned master, as on every other bank.</p>
+<p>That is <a href="/loom/manual/the-window/">the looper's own order</a> with the rack where the strips are: the body of the view before the top bar, and the panel down the right edge last. It reads the same way in all three panel modes, <code>GLOBAL</code>, <code>TRACK</code> and <code>SONG</code>, because the panel is one block and it comes after the rack in every one of them.</p>
+<h2 id="what-the-mixer-saves">What the mixer saves</h2>
+<p>An input's pan, its level and its mute belong to the song, and they are written into it at <code>⌘S</code> and read back when you open it. A song you reopen records from the same inputs, in the same places across the stereo field, as the song you saved. They survive a device change, because what is plugged into which channel does not stop being true when you change interface. A new song resets them; see <a href="#what-a-new-song-resets">What a new song resets</a> below.</p>
+<p>Every chain belongs to the song too: track, input, bus and master chains alike, with their settings and their bypasses. A rack or a preset you saved is a separate file that crosses songs. See <a href="#where-your-effects-are-saved">Where your effects are saved</a>.</p>
+<p>Each bus's level, its <code>MUTE</code>, its <code>SOLO</code> and what it sends to the other buses belong to the song. A bus you park muted comes back muted, and a mix you built with a bus soloed comes back with it soloed. What a bus sends to the other buses is saved the same way, so a song opens with the routing it was saved with.</p>
+<p>The click's level and both of its sends belong to the song, and they are written and read back the same way. A song that asks for the cue send keeps asking for it on an interface that cannot carry one.</p>
+<p>Which bank you were looking at, which way <code>SHOW</code> was set, which <code>PAGE</code> the <code>MASTER</code> bank was on, and whether the effect drawer was open are not saved. Every session starts on <code>LOOP TRACKS</code>, on <code>ASSIGNED</code>, on <code>FADERS</code>, with the drawer shut.</p>
+<p>Groups are not saved with the song. They belong to this Mac, like the ticks in <a href="/loom/manual/dialogs/#record-setup">Record setup</a>, so they are the same in every song you open.</p>
+<h2 id="what-a-new-song-resets">What a new song resets</h2>
+<p>A new song (<code>⌘N</code>) gives you the mixer a new song starts with. Every control on this page goes back to its starting value: the track faders, pans, mutes, solos and their <code>FX 1</code> and <code>FX 2</code> sends; the input strips, including their mutes; the bus levels, mutes, solos and bus-to-bus sends; the master fader; the click; and every effect chain, track, input, bus and master, with its slots and its bypasses.</p>
+<p>Your interface is not touched. LOOM keeps the input and output devices, the sample rate, the buffer size, which inputs each track records from, which output channels carry the main mix and each bus, the MIDI command channel, the latency calibration and the track count. What you hear belongs to the song; which socket it leaves by belongs to the box.</p>
+<p>The input strips come back the way they start: input 1 open, every other input muted. That is the same state LOOM launches in. An interface with every channel live can put a whole stage into the monitors and the mains before you have touched a fader. If you were playing through input 3, unmute it again in the <code>INPUTS</code> bank.</p>
+<p>Nothing that reaches the disk is affected. A new song clears what is loaded and not what is saved. The song you were working on keeps everything you wrote into it at your last <code>⌘S</code>, and opening it again brings its mixer back exactly as you left it.</p>
+<h2 id="the-rest-of-the-window-while-you-are-here">The rest of the window while you are here</h2>
+<p>The top bar and both bottom rails are unchanged. The transport, the tempo, the click, the beat LEDs and the position readout are the same controls doing the same things, and switching to the mixer moves none of them.</p>
+<p><a href="/loom/manual/side-panel/">The side panel</a> follows you here, with all three of its modes and its collapse, in whichever mode you left it in.</p>
+<p>Below about 1400 px wide the effect drawer and the side panel cannot both fit, so opening the drawer puts the panel away. The panel toggle in the top bar brings it back, and doing so closes the drawer. Above that width both stay open and nothing moves. To reach a track's settings here, press the strip you want and then the panel's <code>TRACK</code> tab; or leave the panel on <code>TRACK</code> and press strips, and it follows the focused track.</p>
+<p>Arriving writes <code>showing the mixer</code> to <a href="/loom/manual/bottom-rails/">the notice line</a>, and speaks it if <code>ANNOUNCE</code> is on.</p>
+<h2 id="what-a-screen-reader-gets">What a screen reader gets</h2>
+<p>The view is a named group. Its description opens with the sentence the header used to draw, such as <code>LOOP TRACKS on the MAIN mix</code> or <code>INPUTS on the FX 1 send, 3 of 18 shown</code>, and then says what is on it: the bank, the fader state, how many strips there are, how many stops each of them is, and that the master strip is pinned at the end of the rack, so you know how far to Tab. On the <code>MASTER</code> bank it names the strips it holds, the click, the cue and the master, and says that nothing on it is a track, a device input or an effects return. On the <code>ROUTING</code> page it reads the page's own sentence: which group is open, whether it is <code>LIVE</code> or <code>PLAYBACK</code>, what it holds and the file it records to. On the <code>BUSES</code> bank it says the strips are one per effects bus and that they carry no <code>OUTPUT</code> picker. On the <code>INPUTS</code> bank it also reads the signal map out in words, how many channels the interface has and which of them a track records, because the map itself is a picture.</p>
+<p>Each loop-track strip is a named group, <code>Mixer strip 3</code>, and a screen reader gets the whole strip in one reading: <em>"Strip 3 of 5, track 3, level -9.0 dB. It holds a recorded loop. This is the focused strip. The fader sets what this track sends to front of house."</em> On the cue send the last clause becomes <em>"the fader sets what this track sends to your headphones, pre-fader; the main mix is unchanged."</em></p>
+<p>Each input strip is <code>Mixer input strip 2</code>, and reads down the same way: <em>"Input 3, strip 2 of 4, level 0.0 dB, audible, pan centre. Recorded by TRK 1,3. You hear it because it is unmuted, not because a track is on it. Press MUTE to stop hearing this input through LOOM. Muting remembers the level. The pan and the effects on this input are recorded into the take. The fader and the sends are monitor levels and change nothing that is recorded."</em> A muted strip says <em>"Muted is the normal setting if you monitor through your interface. Press MUTE to hear this input through LOOM."</em> instead, and ends with the same sentence about what is permanent.</p>
+<p>Each bus strip is <code>Mixer bus strip 2</code>, and reads down the same way: <em>"Bus strip FX 1. It taps POST-fader and post-mute, so pulling a strip down or muting it takes that strip out of this bus too. Its level is 0.0 dB. It goes to the main mix. It has no OUTPUT picker: an effects bus returns into the main mix and into the cue rather than leaving by an output of its own, and the FADERS row is where you set how much of each. It has a MUTE and a SOLO. It carries eight insert slots."</em> The <code>CUE</code> strip differs in both of those clauses: it names its <code>OUTPUT</code> picker, and it ends <em>"It has a MUTE. It has no SOLO because it is solo-safe: no solo anywhere takes your headphone feed out of the mix, and soloing it would silence the room rather than isolate anything."</em> On a send page it says its fader is not drawn there, that it has no send, and to put the <code>FADERS</code> row on <code>MAIN</code> for its own level. When the cue is following rather than fixed, the destination clause reads <em>"It goes to outputs 3-4, following the main mix: move the main mix and this moves with it."</em> A bus another strip's solo has silenced adds <em>"It is silent right now because something else is soloed."</em></p>
+<p>The click strip is <code>Mixer click strip</code>, and reads: <em>"The click strip. The metronome's own level and where it goes. Its fader is the click's level, which scales the beat and the accent together so the downbeat stays louder than the beats. Level -6.0 dB. It is sent to the main mix and not to the cue send. There is no mute on this strip: the CLICK button in the top bar turns the click on and off."</em> With both sends off it says the click <em>"is sent nowhere, so it runs and flashes and nothing comes out"</em>, and names that as a setting rather than a fault. On a device with no cue bus it adds how many output channels the device has and that the cue send cannot be switched on tonight.</p>
+<p>Each slot grid reads its whole chain in one pass, for example <code>Track 3 effect slots, eight of them in signal order. Slot 1, noise gate. Slot 2, parametric eq, bypassed. The cursor is on slot 1, noise gate.</code>, and then says what the arrows and <code>Return</code> do. The grid is one control, so the eight tiles are in this sentence rather than being eight stops.</p>
+<p>Each parameter row is a slider with a settable value, named for the control it is (<code>TRACK 3 slot 2 THRESHOLD</code>), and it speaks its value in the unit it is printed in, <code>-15.0 dB</code> rather than <code>-15</code>. Its sentence names its range, says that <code>Return</code> types a value in and that one outside the range is refused rather than rounded, and says what ⌥-click restores it to.</p>
+<p>A row that is a switch or a row of cells says so, and says what its states are called rather than what number is behind them. The chorus's <code>VOICES</code> announces as <code>TRACK 3 slot 2 VOICES, in MOTION</code> and reads <code>TWO</code>, and its sentence names the four settings and says that <code>←</code> and <code>→</code> move between them. It is one stop, not four, so tabbing past a setting with four states costs the same as tabbing past a knob.</p>
+<p>The parameter area is a named scrolling region, <code>Effect parameters</code>, so a screen reader can say what it is about to read down before it starts on a long column.</p>
+<p>Each fader names the surface it is on: <code>Track 3 level in the mixer</code> on the main mix, or the bus by name on a send, as in <code>Track 3 CUE send in the mixer</code> or <code>Track 3 FX 1 send in the mixer</code>. One track has two faders in the window, so the fader has to say which. The input strips' faders name their surface too, and each <code>MUTE</code> names the input it acts on. As on the looper strip, a fader's value can be set through the accessibility layer, not only read.</p>
+<p>A fader's description also says how many meter bars it has. On a track strip, a bus strip, the master and a stereo-linked input pair it says there are two, that the left channel is the left bar and the right channel the right one, and that two bars at different heights mean the signal is not centred. On a click strip and an unlinked input it says there is one.</p>
+<p>The bars themselves are not read out and carry no figure. A level that changes thirty times a second would be announced continuously, and you would be listening to the meter instead of to the music. The number a fader reads out is its own value, which is the one you can change.</p>
+{% endraw %}

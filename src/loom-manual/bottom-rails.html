@@ -1,0 +1,202 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/bottom-rails/
+manualSlug: bottom-rails
+---
+{% raw %}
+<p>Two bands run across the bottom of the window in every view. Everything on them is named and carries its value as its accessible description. <code>LOG</code>, at the right-hand end of the notice line, is a control. <code>DROPOUTS</code> is a control only while it is amber (see <a href="#dropouts-turns-amber-after-a-dropout">DROPOUTS turns amber after a dropout</a>). Every other item is a readout, and a readout is not a tab stop.</p>
+<h2 id="the-notice-line">The notice line</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/bottom.notice-row.webp" width="1156" height="48" loading="lazy" decoding="async" alt="The notice line after ALL START is pressed with no audio device open, and LOG at its right-hand end."><figcaption>The notice line after ALL START is pressed with no audio device open, and LOG at its right-hand end.</figcaption></figure>
+<p>The notice line is a 40 px band across the full width of the window, above the readout rail. Everything LOOM has to tell you appears here: every refusal with its reason, every accepted verb, every device outcome, and the reason a press did nothing.</p>
+<p>The band is always there at the same height, whether or not it has anything to say. Nothing on this row moves, grows or reflows while you play. When there is nothing to report, the band is empty, and the thin rule down its left edge marks where text will appear.</p>
+<p>It holds two lines, which is about 345 characters at the smallest window size. A longer sentence is cut with an ellipsis (<code>…</code>), and the part that remains is the part you can act on. See <a href="#what-the-line-does-and-does-not-say">What the line does and does not say</a>.</p>
+<h3 id="whether-it-needs-you-now">Whether it needs you now</h3>
+<p>The rule down the left edge tells you how soon the line needs your attention, so you can judge it at a glance without reading the sentence.</p>
+<table>
+<thead>
+<tr>
+<th>Left edge</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A thin, dim rule</td>
+<td>Something changed, or a press was refused, and you can read it when you next look down. Most notices look like this, including most refusals: pressing <code>ALL START</code> with nothing recorded draws the thin rule.</td>
+</tr>
+<tr>
+<td>A thick red rule, and the row tinted red</td>
+<td>Something needs you now: the arrangement reports a refusal or a missed region, <code>PERFORM FROM TOP</code>, <code>PERFORM FROM HERE</code> or <code>PERFORMANCE STOP</code> did not do what you pressed, or you are holding a MIDI pad and letting go now does nothing.</td>
+</tr>
+</tbody>
+</table>
+<p>The two differ in the width of the rule as well as its colour, so you can tell them apart even if you cannot distinguish red from grey.</p>
+<p>A screen reader reads the whole sentence, whatever is drawn, including any part an ellipsis cut.</p>
+<table>
+<thead>
+<tr>
+<th>Notice</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>submitted</code></td>
+<td>The command was accepted. What actually happened shows on the ring: the phase word and the arc move when the engine executes, or they do not.</td>
+</tr>
+<tr>
+<td><code>refused</code>, or a reason</td>
+<td>The door refused the press. The reason is the sentence beside it.</td>
+</tr>
+<tr>
+<td><code>engine running</code></td>
+<td>The session started.</td>
+</tr>
+<tr>
+<td><code>no device opened</code></td>
+<td>No interface was opened.</td>
+</tr>
+<tr>
+<td><code>opening the audio device...</code></td>
+<td>Shown at launch while the device opens.</td>
+</tr>
+<tr>
+<td><code>track 3 focused</code></td>
+<td>A focus move.</td>
+</tr>
+<tr>
+<td><code>track 3 records inputs 1, 3 and 4</code></td>
+<td>The track's input set changed. It reads <code>records no inputs</code> when you switch them all off, and <code>on both sides now</code> is appended if the track had been recording a different set on each side.</td>
+</tr>
+<tr>
+<td><code>TEMPO 124.0 BPM</code></td>
+<td>A tempo change.</td>
+</tr>
+<tr>
+<td><code>click audible</code> / <code>click silent</code></td>
+<td>The click toggled.</td>
+</tr>
+<tr>
+<td><code>ALL STOP fires at each track's loop end</code></td>
+<td><code>ALL START Q</code> or <code>ALL STOP Q</code> moved. The time given is what the button will do, which can differ from what the chip says, because each track then resolves on its own quantize. See <a href="/loom/manual/side-panel/#responds-to-globals">The side panel</a>.</td>
+</tr>
+<tr>
+<td><code>faders are on the CUE send</code> / <code>… FX 1 send</code> / <code>… MAIN mix</code></td>
+<td>The <code>FADERS</code> setting moved.</td>
+</tr>
+<tr>
+<td><code>side panel hidden</code> / <code>side panel shown</code></td>
+<td>The panel collapsed or came back.</td>
+</tr>
+<tr>
+<td><code>showing the looper</code> / <code>showing the arrangement</code> / <code>showing the mixer</code></td>
+<td>The view changed.</td>
+</tr>
+<tr>
+<td><code>state announcements on</code> / <code>state announcements off</code></td>
+<td>The announcement switch moved.</td>
+</tr>
+</tbody>
+</table>
+<p>Cancelling any dialog writes a notice saying what was <em>not</em> done, such as <code>save cancelled</code>, <code>open cancelled - nothing was changed</code> or <code>new song cancelled - nothing was cleared</code>, instead of leaving whatever the line said before.</p>
+<p>Three further clauses can be appended after an em dash, in this order: what the session had to fit to your interface (a song written for four inputs, opened on a one-input laptop, names the channels it had to move); what a saved song's effect chains could not be given memory for on this machine; and a problem with the folder takes are written into. For that last one, see <a href="/loom/manual/your-recordings/">Where your recordings live</a>.</p>
+<p><strong>Read the effect clause carefully.</strong> A song saved on a machine with more effect memory opens here with the effects that fit and the rest empty, and LOOM's autosave writes the song back a couple of seconds later with them still empty. If you want those effects back, do not save the song on this machine. Open it again on the machine it came from.</p>
+<p>The clause can appear for a chain you built yourself and saved on a machine with more effect memory (see <a href="/loom/manual/the-mixer/#the-effect-rack">The effect rack</a>). The slots that came back empty are the dim tiles on the strip. There is no setting for how much effect memory a machine gives a chain.</p>
+<p>The notice line is spoken only when its text actually changes, and only if the <code>ANNOUNCE</code> switch is on.</p>
+<p>Nothing writes to the notice line on the refresh timer. Every write comes from a gesture or a session event, so the line does not chatter.</p>
+<h3 id="what-the-line-does-and-does-not-say">What the line does and does not say</h3>
+<p>The line says what changed this time. A sentence that would read word for word the same every time an event happens does not go on this line. It lives here in the manual, or in the accessible description of the control it belongs to. A line that repeats the same explanation every time has to be read in full to find the two numbers that moved, and on stage you need to take it in at a glance.</p>
+<p>The derived tempo is the clearest example. The line reads:</p>
+<blockquote>
+<p>Tempo derived from the loop: 120.000 bpm, assuming 4 bars of 4/4. The TEMPO field now reads it, and is locked while a loop is held.</p>
+</blockquote>
+<p>Every part of that is new: the number, the bar count, the meter and the state of the control. The part that never varies is left off. LOOM reads a phrase as 1, 2, 4, 8 or 16 bars, so a loop that is really 3, 5 or 6 bars long reads as one of those, and its tempo is off by that ratio. That is explained in <a href="/loom/manual/top-bar/">The top bar</a>, under the tempo, where you can read it between songs.</p>
+<p>A refusal leads with what to do about it: <em>"Clear every track and halt the transport to type a tempo. … It is locked while a track holds a recorded loop, because a tempo typed under one moves every bar-quantized press against it."</em> The remedy comes first, then the reason. The line holds two lines, about 345 characters at the smallest window size, and a longer sentence loses its end to an ellipsis, so the part you can act on is the part that has to survive. It reads better still when nothing is cut.</p>
+<h3 id="log">LOG</h3>
+<p><code>LOG</code> sits at the right-hand end of the notice line, in every view. It opens the session log: everything LOOM has told you this session, newest first, in an overlay you can read, select and copy from.</p>
+<p>Use it when a message went past before you finished reading it. The notice line shows one message at a time; the log holds all of them.</p>
+<p>It opens the same overlay as <strong>View ▸ Show Logs</strong> and <code>⇧⌘L</code>, and behaves the same way, including showing the log as it stood when you opened it. See <a href="/loom/manual/dialogs/#session-log">Session log</a>.</p>
+<p><code>Tab</code> reaches it. It comes after the side panel in the window's focus order. Only <code>DROPOUTS</code>, while it is amber, and the <code>i</code> panel, while it is open, come after it. See <a href="/loom/manual/the-window/#what-accessible-means-in-loom">The window</a>. A screen reader names it <em>Show the session log</em>.</p>
+<p>Its space is reserved whatever the notice says. The line's capacity does not change with the message, so a sentence written to fit the row fits it in every state of the window.</p>
+<h2 id="device-rate-block-round-trip-cpu-dropouts-midi">DEVICE, RATE, BLOCK, ROUND TRIP, CPU, DROPOUTS, MIDI</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/bottom.status-rail-left.webp" width="570" height="28" loading="lazy" decoding="async" alt="The left half of the readout rail with no audio device open: DEVICE, RATE and BLOCK."><figcaption>The left half of the readout rail with no audio device open: DEVICE, RATE and BLOCK.</figcaption></figure>
+<figure class="shot shot-full"><img src="/assets/loom/manual/bottom.status-rail-right.webp" width="564" height="28" loading="lazy" decoding="async" alt="The right half of the readout rail with no audio device open: ROUND TRIP, CPU, DROPOUTS and MIDI."><figcaption>The right half of the readout rail with no audio device open: ROUND TRIP, CPU, DROPOUTS and MIDI.</figcaption></figure>
+<figure class="shot shot-full"><img src="/assets/loom/manual/song.status-rail-left.webp" width="570" height="28" loading="lazy" decoding="async" alt="The left half of the readout rail with a device open. The device is the stand-in this manual's pictures are drawn with. DEVICE names it for input and output, and the second name is too long for the cell, so it ends in an ellipsis. RATE reads 48000 Hz and BLOCK 128."><figcaption>The left half of the readout rail with a device open. The device is the stand-in this manual's pictures are drawn with. DEVICE names it for input and output, and the second name is too long for the cell, so it ends in an ellipsis. RATE reads 48000 Hz and BLOCK 128.</figcaption></figure>
+<p>Seven readouts sit on a 30 px rail. <code>DEVICE</code> takes two shares of the width and the other six take one each, because it holds two interface names and each of the others holds a number.</p>
+<table>
+<thead>
+<tr>
+<th>Readout</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEVICE</code></td>
+<td><code>Scarlett 2i2 → Scarlett 2i2</code></td>
+<td>The interfaces the session has open, or <code>(no device open)</code>. If only one side is open, the other reads <code>(none)</code>. It shows the session's devices, not the machine's defaults, so it changes when you change a device. A name too long for the cell is cut with an ellipsis; a screen reader reads all of it.</td>
+</tr>
+<tr>
+<td><code>RATE</code></td>
+<td><code>48000 Hz</code></td>
+<td>The sample rate the device granted. Before a device opens, the rate LOOM will ask for.</td>
+</tr>
+<tr>
+<td><code>BLOCK</code></td>
+<td><code>128</code></td>
+<td>The block size the device granted. Before a device opens, the block size LOOM will ask for.</td>
+</tr>
+<tr>
+<td><code>ROUND TRIP</code></td>
+<td><code>9.31 ms</code></td>
+<td>The composed round-trip latency, or <code>—</code> when there is no verdict.</td>
+</tr>
+<tr>
+<td><code>CPU p50/p99</code></td>
+<td><code>— / —</code></td>
+<td>In the released app, always <code>— / —</code>. See below.</td>
+</tr>
+<tr>
+<td><code>DROPOUTS</code></td>
+<td><code>0</code></td>
+<td>How many times the audio device reported a dropout since it opened, or <code>—</code> when no device is open. Turns amber after a dropout. See below.</td>
+</tr>
+<tr>
+<td><code>MIDI</code></td>
+<td><code>16 · N36 · 100 ✓</code></td>
+<td>The last MIDI message LOOM received. A real measurement. See below.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dropouts-turns-amber-after-a-dropout">DROPOUTS turns amber after a dropout</h3>
+<p>A dropout is a moment when a block of audio reached your audio interface too late, so you may have heard a click or a short gap. macOS reports each one, and <code>DROPOUTS</code> counts those reports. The count starts again from <code>0</code> when the audio device opens or changes.</p>
+<figure class="shot shot-half"><img src="/assets/loom/manual/bottom.dropouts-amber.webp" width="131" height="28" loading="lazy" decoding="async" alt="DROPOUTS after one dropout: the readout is amber, with the label and the count in dark text."><figcaption>DROPOUTS after one dropout: the readout is amber, with the label and the count in dark text.</figcaption></figure>
+<p>When the count rises, <code>DROPOUTS</code> turns amber and the notice line says the audio dropped out. The readout stays amber until you click it, even if the machine keeps up from then on, so you can finish the song and check afterwards.</p>
+<p>Click <code>DROPOUTS</code> to clear the amber. The session log opens with the notice for the first dropout since you last cleared it selected, so you can read what happened just before it. Further dropouts while the readout is amber raise the count but do not write another notice.</p>
+<p>While it is amber, <code>DROPOUTS</code> is also a button: <code>Tab</code> reaches it after <code>LOG</code>, and <code>Return</code> or <code>Space</code> clears it. A screen reader names it <em>DROPOUTS</em>, reads the count, and says that the audio has dropped out since you last cleared it and what pressing it does.</p>
+<p>If dropouts happen often, quit other applications that are using the processor.</p>
+<p>LOOM also notices a near miss: a block that used more than 80% of the time it had but still reached the interface in time. A near miss makes no sound, so it does not change <code>DROPOUTS</code>. LOOM writes it to the session log instead, at most one line every 10 seconds, with the number of near misses since the device opened. Near misses on their own are not a fault. Many of them before a dropout tell you the machine is close to its limit.</p>
+<h3 id="cpu">CPU</h3>
+<p>In the released app, <code>CPU</code> reads <code>— / —</code>. It has room for two figures, the median and the 99th percentile of how long LOOM takes to process a block, as a share of the time it has, and the released app does not measure them. <code>— / —</code> does not indicate a fault. <code>DROPOUTS</code> works in every copy of LOOM.</p>
+<h2 id="midi-the-last-message-loom-received">MIDI — the last message LOOM received</h2>
+<p>This readout is a real measurement, and it is the only place in the window that tells you whether LOOM is hearing your controller.</p>
+<p><code>MIDI  16 · N36 · 100 ✓</code></p>
+<ul>
+<li><code>16</code>: the channel it arrived on, 1 to 16, numbered as your controller numbers them.</li>
+<li><code>N36</code>: a note, number 36. A controller message reads <code>CC74</code>.</li>
+<li><code>100</code>: the velocity, or the controller value.</li>
+<li><code>✓</code>: LOOM matched it to a binding and acted on it. <code>·</code> means it matched nothing.</li>
+</ul>
+<p><code>—</code> means no MIDI has arrived since LOOM started.</p>
+<p>It sits on the rail rather than in a panel so you can see it in every view (LOOPER, ARRANGE and MIXER), because you usually need it while you are in the middle of something else.</p>
+<h3 id="reading-it-when-nothing-is-happening">Reading it when nothing is happening</h3>
+<p>LOOM connects to every MIDI source on your Mac, and its commands have no device list, so this readout tells you what happened to each message:</p>
+<ul>
+<li>Still <code>—</code> after pressing a pad? LOOM is not receiving from that device at all. This is not a mapping problem: check the cable, and check that the controller is powered on and transmitting.</li>
+<li>A line appears and ends in <code>·</code>? LOOM heard the message, but it is not a command: nothing is bound to it, or it arrived on a channel other than the command channel. A note you play into an <a href="/loom/manual/instrument-tracks/">instrument track</a> ends in <code>·</code> for that reason. Read the number. An unexpected note number means the pad sends a different note from the one LOOM expects; a wrong channel means the pad is not on LOOM's command channel. <a href="/loom/manual/midi-mapping/">MIDI mapping</a> covers both.</li>
+<li>Ends in <code>✓</code>? That message did something.</li>
+</ul>
+<p>The number is raw, with no note name, because controllers disagree about note names: note 60 is <code>C3</code> on an Arturia and <code>C4</code> in scientific pitch notation. The number is the only thing both conventions agree on.</p>
+<p>To change the channel, use <code>MIDI CH</code> in the side panel.</p>
+{% endraw %}

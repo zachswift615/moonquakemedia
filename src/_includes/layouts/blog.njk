@@ -9,6 +9,7 @@ rss: true
     <div class="max-w-2xl mx-auto px-6 py-5 flex justify-between items-center">
       <a href="/" class="text-base font-semibold text-gray-950 no-underline tracking-tight hover:text-gray-600 hover:no-underline transition-colors">{{ site.name }}</a>
       <div class="flex gap-6 items-center">
+        <a href="/loom/" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">LOOM</a>
         <a href="/apps/listen2/" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Listen2</a>
         <a href="/blog/" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Blog</a>
         <a href="mailto:{{ site.email }}" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Support</a>
@@ -38,3 +39,48 @@ rss: true
     </article>
   </main>
 </div>
+{%- set faq = content | faqFromHtml %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ site.url }}{{ page.url }}#post",
+      "headline": {{ title | dump | safe }},
+      "description": {{ (description or excerpt or "") | dump | safe }},
+      "url": "{{ site.url }}{{ page.url }}",
+      "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+      "datePublished": "{{ date | isoDate }}",
+      "dateModified": "{{ (updated or date) | isoDate }}",
+      "image": "{{ site.url }}{{ ogImage or '/images/og-default.png' }}",
+      "inLanguage": "en",
+      "keywords": {{ (tags or []) | reject("equalto", "blog") | join(", ") | dump | safe }},
+      "author": { "@id": "{{ site.url }}/#organization" },
+      "publisher": { "@id": "{{ site.url }}/#organization" },
+      "isPartOf": { "@id": "{{ site.url }}/#website" }
+      {%- if "loom" in (tags or []) %},
+      "about": { "@id": "{{ site.url }}/loom/#software" }
+      {%- endif %}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "{{ site.name }}", "item": "{{ site.url }}/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "{{ site.url }}/blog/" },
+        { "@type": "ListItem", "position": 3, "name": {{ title | dump | safe }}, "item": "{{ site.url }}{{ page.url }}" }
+      ]
+    }
+    {%- if faq.length %},
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for item in faq %}
+        { "@type": "Question", "name": {{ item.q | dump | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | dump | safe }} } }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      ]
+    }
+    {%- endif %}
+  ]
+}
+</script>

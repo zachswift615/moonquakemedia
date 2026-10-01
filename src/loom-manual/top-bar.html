@@ -1,0 +1,260 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/top-bar/
+manualSlug: top-bar
+---
+{% raw %}
+<p>The top bar reads left to right and is on screen in every view. It carries the song's identity, the transport, the tempo, the click, where you are in the song, which track your presses land on, and the switch between the three views.</p>
+<p>For keys, see <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>.</p>
+<figure class="shot shot-full"><img src="/assets/loom/manual/looper.top-bar.webp" width="1592" height="113" loading="lazy" decoding="async" alt="The top bar in the looper view, with no audio device open."><figcaption>The top bar in the looper view, with no audio device open.</figcaption></figure>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>What it marks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SONG</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The <code>MOVE</code> set: <code>TO TOP</code>, <code>ROLL</code> and <code>STOP</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>RECORD</td>
+</tr>
+<tr>
+<td>4</td>
+<td>TEMPO</td>
+</tr>
+<tr>
+<td>5</td>
+<td>CLICK and the beat LEDs</td>
+</tr>
+<tr>
+<td>6</td>
+<td>BAR.BEAT.TICK</td>
+</tr>
+<tr>
+<td>7</td>
+<td>FOCUS</td>
+</tr>
+<tr>
+<td>8</td>
+<td>The panel toggle</td>
+</tr>
+<tr>
+<td>9</td>
+<td>The view switcher</td>
+</tr>
+</tbody>
+</table>
+<p>The sections below follow the same order.</p>
+<figure class="shot shot-full"><img src="/assets/loom/manual/song.top-bar-rolling.webp" width="782" height="50" loading="lazy" decoding="async" alt="The middle of the top bar while a song plays: ROLL lit green, a recording running at REC 00:02, the tempo locked behind a dashed frame because the tracks hold loops, the third beat LED filled, and BAR.BEAT.TICK at 3.3.3."><figcaption>The middle of the top bar while a song plays: ROLL lit green, a recording running at REC 00:02, the tempo locked behind a dashed frame because the tracks hold loops, the third beat LED filled, and BAR.BEAT.TICK at 3.3.3.</figcaption></figure>
+<h2 id="song">SONG</h2>
+<p><strong>What it is.</strong> A readout of which song you are in, drawn centred inside a filled well.</p>
+<p><strong>What it does.</strong> Nothing. It only shows the name. To change the name, use <em>Save As…</em> and its dialog.</p>
+<p><strong>What it says.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Face</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UNTITLED</code></td>
+<td>The song has no name yet.</td>
+</tr>
+<tr>
+<td><em>name</em></td>
+<td>The name you typed, read from the file, spaces included.</td>
+</tr>
+<tr>
+<td><em>name</em>  <code>HH:MM</code></td>
+<td>The name, and the time of a save you made in this run of LOOM.</td>
+</tr>
+</tbody>
+</table>
+<p>LOOM stamps the time when the write returns, instead of reading it back from the file. It tells you whether the save you just made worked, not when the file was last written.</p>
+<p><strong>What a screen reader adds.</strong> The description tells apart two states that the drawn word cannot. For an <code>UNTITLED</code> song whose previous session was restored, it says so: your tracks, tempo, click and routing are the ones you left, but nothing has been saved under a name. For a fresh, empty song, it says that instead. For a named song, it says whether the song has been saved in this run and where the writes go.</p>
+<h2 id="the-move-set-to-top-roll-and-stop">The <code>MOVE</code> set — <code>TO TOP</code>, <code>ROLL</code> and <code>STOP</code></h2>
+<p><strong>What it is.</strong> Three buttons under one spoken group name: <em>"Move the playhead - never records."</em> Each carries a small shape beside its word: <code>❙◀</code> for <code>TO TOP</code>, <code>▶</code> for <code>ROLL</code>, <code>■</code> for <code>STOP</code>. <code>TO TOP</code> sends the playhead back to bar 1 and starts nothing. <code>ROLL</code> starts the transport from wherever it already is. <code>STOP</code> stops it, and every track with it. None of the three writes to a track, arms anything, or starts an arrangement. That is why they are grouped and why the group is called <code>MOVE</code>. Before you press any of them, the name tells you that a press cannot affect your take.</p>
+<p><strong><code>ROLL</code> and <code>STOP</code> show the transport's state.</strong> They sit together in one recessed frame, and exactly one of them is lit: <code>STOP</code>, with a raised ground, while the transport is stopped, and <code>ROLL</code>, filled green, while it rolls. Pressing the lit one does nothing, because the transport is already in that state. While the arrangement counts in before bar 1, <code>ROLL</code> is lit amber and reads <code>COUNT</code> and the number of beats left. <code>TO TOP</code> sits outside the frame because it is a command rather than a state. It flashes cyan while you press it and then returns to its normal face. At bar 1 it draws on a darker ground, because there is nowhere for it to send the playhead.</p>
+<p><code>ROLL</code> starts from where the transport is, and <code>STOP</code> leaves it there. Neither goes back to bar 1 on its own, and neither fires an arrangement. The exception is <code>STOP</code> during a count-in: stopping before the downbeat returns the transport to bar 1, because a count-in has nowhere else to leave it. To get back to bar 1 without starting anything, press <code>TO TOP</code>. Press it and then <code>ROLL</code> to audition from the top with nothing armed. In the arrange view you can put the transport anywhere with the playhead instead; see <a href="/loom/manual/the-arrange-view/#the-playhead-and-getting-back-to-the-start">the playhead</a>.</p>
+<p><code>TO TOP</code> is never disabled while the transport rolls. LOOM refuses to move the playhead while the transport rolls, with a sentence instead of a dead face, following its rule that a disabled control tells you why. If you see the refusal, halt the transport first.</p>
+<p><strong>While you are performing, <code>TO TOP</code> and <code>ROLL</code> go dead and <code>STOP</code> does not.</strong> The arrange view's own transport (<code>PERFORM FROM TOP</code> and <code>PERFORM FROM HERE</code>, see <a href="/loom/manual/the-arrange-view/#playing-the-arrangement-the-perform-buttons">the arrange view</a>) arms and rolls an arrangement. For as long as it is running, <code>TO TOP</code> and <code>ROLL</code> are unreachable by mouse and by keyboard, so you cannot seek by accident while a performance is writing to your tracks. <code>STOP</code> stays live throughout: it ends the performance and stops whatever is running. Press it and the whole set comes back live.</p>
+<p>This is separate from the rolling-transport refusal described earlier. A plain <code>ROLL</code> with no arrangement armed leaves the <code>MOVE</code> set available as usual.</p>
+<p>If the keyboard was on <code>TO TOP</code> or <code>ROLL</code> when a performance started, it moves to <code>STOP</code> rather than being dropped, so you land on the one control in the set you can still press.</p>
+<p><strong>What a screen reader says.</strong> The group announces <em>"Move the playhead - never records"</em> before any of the three. The buttons themselves are named <code>Send the playhead to bar 1 without starting the arrangement</code>, <code>Roll transport</code> and <code>Stop transport</code>.</p>
+<p><strong>Three different stops.</strong> All three carry the word, so a screen reader tells them apart by the noun beside it:</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Spoken name</th>
+<th>What it stops</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A strip's own <code>STOP</code></td>
+<td><code>Stop track 3</code></td>
+<td>That one track, on that track's stop quantize.</td>
+</tr>
+<tr>
+<td><code>STOP</code> in the top bar</td>
+<td><code>Stop transport</code></td>
+<td>The transport and everything — including a running arrangement.</td>
+</tr>
+<tr>
+<td><code>ALL STOP</code> in the globals row</td>
+<td><code>Stop all tracks</code></td>
+<td>Every track. The clock keeps running and the click keeps sounding.</td>
+</tr>
+</tbody>
+</table>
+<p>For a screen reader, the accessible descriptions keep them apart.</p>
+<p>A fourth control carries the word but is not a stop. <code>PERFORMANCE STOP</code>, on the arrange view's header row, releases the arrangement and leaves the song playing: the transport goes on rolling and every loop goes on playing. It is not in the table because it stops nothing. A screen reader names it <em>Release the arrangement and keep playing</em>, with no stop in the name. See <a href="/loom/manual/the-arrange-view/#leaving-a-performance-and-keeping-the-song">the arrange view</a>.</p>
+<h2 id="record">RECORD</h2>
+<p><strong>What it is.</strong> A button between the <code>MOVE</code> set and the tempo field. It reads <code>REC</code> and a time, with a red dot, and it reads <code>REC 00:00</code> when nothing is being recorded. It records your performance to disk: one WAV file for each stream ticked in <em>File ▸ Record Setup…</em>, in a new folder in your recordings folder. See <a href="/loom/manual/dialogs/#record-setup">Record setup</a> and <a href="/loom/manual/your-recordings/#performance-recordings">Performance recordings</a>.</p>
+<p><strong>What it does.</strong> Press it to start recording. Press it again to stop. Every file is then closed and complete. Recording does not start or stop the transport, and it does not record into a loop track.</p>
+<p><strong>What it says.</strong> The words are always <code>REC mm:ss</code>, and the button stays the same size. The colour tells you the state. None of the states flash.</p>
+<table>
+<thead>
+<tr>
+<th>Face</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REC 00:00</code>, grey</td>
+<td>Nothing is being recorded.</td>
+</tr>
+<tr>
+<td><code>REC mm:ss</code>, red</td>
+<td>A recording is running. The time is how much audio the files hold.</td>
+</tr>
+<tr>
+<td><code>REC mm:ss</code>, amber</td>
+<td>A recording is running and has had at least one gap. It stays amber until you stop that recording.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>If LOOM cannot start a recording</strong>, the notice line says why and what to do. For example, when nothing is ticked it reads <em>"Tick a stream in File ▸ Record Setup, then press RECORD"</em>, followed by LOOM's reason.</p>
+<p><strong>Gaps.</strong> A gap is a moment when the disk could not keep up and LOOM dropped a block of audio. LOOM fills the gap with silence in every file, so the files stay in step with each other, and writes its time to <code>Markers.txt</code> in the recording's folder. When a gap happens, the button turns amber and the notice line gives its time, for example <em>"A gap at 01:12 was filled with silence."</em></p>
+<p><strong>When you stop.</strong> The notice line gives the number of files, the full path of the recording's folder, and the time of every gap, for example <em>"Recording stopped. 5 files in /Users/you/Music/LOOM/Recordings/Take 5 2026-09-19/. 2 gaps, filled with silence, at 01:12, 03:40. Markers.txt lists them."</em> If the notice line has moved on, <em>View ▸ Show Logs</em> still has the message. To open the folder in Finder, use <code>REVEAL IN FINDER</code> in <em>File ▸ Record Setup…</em>, which names the last recording.</p>
+<p><strong>When a recording stops by itself.</strong> A recording stops, and its files are closed cleanly, when:</p>
+<ul>
+<li>the disk is nearly full;</li>
+<li>a file cannot be written;</li>
+<li>the audio device restarts or you choose a different device;</li>
+<li>you open a song, or start a new one.</li>
+</ul>
+<p>The notice line says which of these happened. When you change songs, it reads <em>"The recording stopped at the song change."</em> Start a new recording in the new song if you want to keep recording.</p>
+<p><strong>What a screen reader adds.</strong> The button's name is always <em>Record the performance</em>. Its description says whether a recording is running, how long it is, how many files it is writing and how many gaps it has. Each new gap and the stop are announced from the notice line.</p>
+<h2 id="tempo">TEMPO</h2>
+<p><strong>What it is.</strong> The project tempo in beats per minute, in one frame of three cells: <code>−</code>, the number and <code>+</code>. It is the only tempo control in LOOM, and it is one tab stop.</p>
+<p><strong>What it does.</strong> Sets the tempo the click and every bar line are counted against.</p>
+<p><strong>Four ways to change it.</strong></p>
+<ul>
+<li><strong>Type it.</strong> Click the number to open the type-in editor. <code>Return</code> commits and <code>Escape</code> discards, and both take effect immediately, not a frame later.</li>
+<li><strong>Drag it.</strong> Two pixels of drag is one step. Dragging up is faster, as on every fader and every DAW tempo field. The drag is measured from where you pressed and is never accumulated, so a long drag cannot creep, and releasing where you started restores the exact value that was there.</li>
+<li><strong>Press <code>−</code> or <code>+</code>.</strong> They auto-repeat if you hold them.</li>
+<li><strong>Use the arrow keys</strong> with the field focused.</li>
+</ul>
+<p>One step of the drag, the steppers or the arrow keys is one beat per minute. Hold <code>Shift</code> on any of the three and a step is a tenth of a beat per minute instead.</p>
+<p>Stepping and typing are different operations. The tempo is held in thousandths of a beat per minute. Stepping is relative, so a song sitting at 137.4 becomes 137.4 plus one step and is not snapped to a whole number. Typing is absolute and rounds to the tenth that the field draws.</p>
+<p><strong>When it is locked.</strong> This field refuses a tempo you type, drag or step unless every track is empty and the transport is stopped. Having no audio device open does not lock it. When the field is locked, its frame goes from solid to dashed, the number and the steppers dim, and nothing moves by a pixel. Click the locked field, and the notice line says why it is locked.</p>
+<p>The lock only stops you changing the tempo by hand. The number can still change by itself: <a href="#the-first-free-loop-sets-the-tempo">The first free loop sets the tempo</a> is the one thing that changes it while the transport rolls.</p>
+<p>The reasons below form a chain, and you have to clear all of them. Finishing a take leaves a track holding a loop, and clearing every track with the transport still rolling leaves the transport rolling. To type a tempo, you need both: every track empty and the transport stopped. To have LOOM derive one, the transport can be rolling, but every other track must be empty. You play the first free loop.</p>
+<table>
+<thead>
+<tr>
+<th>Locked because</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A track holds a recorded loop</td>
+<td>A tempo typed under one moves every bar-quantized press against it. Clear every track <strong>and</strong> halt the transport.</td>
+</tr>
+<tr>
+<td>A track is recording or waiting to</td>
+<td>Finish or stop the take. If it lands a loop, the field stays locked because a track holds a loop.</td>
+</tr>
+<tr>
+<td>The transport is rolling</td>
+<td>Press <code>STOP</code>, or close your first free loop, which sets the tempo without stopping.</td>
+</tr>
+<tr>
+<td>The engine's state could not be read</td>
+<td>Nothing in the window changes this.</td>
+</tr>
+</tbody>
+</table>
+<p>If you are dragging when the lock arrives, the drag is cancelled rather than left tracking your finger over a box that has gone dead.</p>
+<p><strong>What a screen reader gets.</strong> The control is named <code>Project tempo</code> and has the role of a slider with a real, settable value. A screen reader can read the number and set it, and is told the range and that one step is one beat per minute. When the field is locked, the value reports itself as read-only and the reason is added to the end of its description. The name stays <code>Project tempo</code> in both states.</p>
+<p>When the field locks, LOOM says why on the notice line. A locked field leaves the tab order, because <code>Tab</code> should not stop on a control that cannot act, so the reason goes where the keyboard already goes. The notice line shows, word for word, the sentence the field holds.</p>
+<p>LOOM says it once, as the lock arrives, and does not repeat it. It also says nothing when one reason replaces another: when you finish a take, the reason changes from recording to holding a loop without a word. The reason is a long sentence, and hearing it again in the middle of playing is worse than not hearing it. To see the current reason again, click the locked field.</p>
+<blockquote>
+<p><strong>VoiceOver:</strong> the notice line is spoken as the lock arrives. VoiceOver navigation also reaches the locked field itself, reports it unavailable, and reads the reason at the end of its description. Use this to find out why the field will not move after the announcement has passed.</p>
+</blockquote>
+<p>The two stepper buttons are named <code>Tempo down</code> and <code>Tempo up</code> and are not tab stops, because the field's own arrow keys do the same thing. A screen reader's element navigation still finds them.</p>
+<p><strong>With no audio device open the tempo still works.</strong> The field shows the tempo the session will start at. If you type a tempo before you plug in an interface, LOOM builds its first tempo map from that value when the device opens. This state is not locked, and it is when the setting matters most, because the tempo has to be set before the first loop.</p>
+<p>The box is sized to the widest value it could ever draw, so it never changes width.</p>
+<h3 id="the-first-free-loop-sets-the-tempo">The first free loop sets the tempo</h3>
+<p><strong>What it does.</strong> Record the first loop of a song on a <strong>free-length</strong> track whose launch and stop quantize are both <strong>immediate</strong>. When you close it, LOOM reads the tempo off that loop and makes it the song's, so the grid fits what you played instead of your playing having to fit the grid. A hardware looper works the same way when its first loop becomes the clock.</p>
+<p>Your loop starts on a bar line, but usually not bar 1. The grid runs through the whole session instead of starting at your loop, so the bars that went by before you pressed record are counted: if two bars' worth of time passed first, your loop begins at bar 3, beat 1. The bar number is how many whole derived bars fit before your loop, plus one. The ruler shows the audible time before your loop, and this keeps every bar number in the arrange view positive. What matters musically is that your loop starts on a bar line, on beat 1, and is a whole number of bars long, so everything you overdub against it lands where you expect, whatever <code>BAR.BEAT.TICK</code> calls the first bar.</p>
+<p>It happens while the transport rolls, and you press nothing extra. Closing a loop leaves the transport rolling, which is the state this works in. Do not halt the transport to make it fire: halting closes the take and derives nothing. Nothing new sounds at the moment it lands. No loop is touched, and the click picks up the new grid with no stutter and no doubled beat at the seam. In the same frame the TEMPO field shows the new number, and the notice line at the bottom of the window says what was derived.</p>
+<blockquote>
+<p><strong>VoiceOver:</strong> the tempo moves on a control you cannot tab to. Recording a loop leaves the field locked, so the notice line is where LOOM tells you the new tempo and the bar count it read.</p>
+</blockquote>
+<p><strong>What the notice says.</strong> It names the bar count first, <em>"assuming 4 bars of 4/4"</em>, because that is the assumption LOOM made and the only part of the sentence you might disagree with.</p>
+<p><strong>What it does not say.</strong> LOOM reads a phrase as 1, 2, 4, 8 or 16 bars. A loop that is really 3, 5 or 6 bars long is read as one of those, and its tempo is out by that ratio. This applies to every derivation, so the notice line leaves it out. Otherwise the line would repeat the same sentence on every loop, and you would have to re-read it to find the two numbers that had changed. See <a href="/loom/manual/bottom-rails/#what-the-line-does-and-does-not-say">What the line does and does not say</a>.</p>
+<p>If it read the wrong number of bars, the tempo is out by that ratio: a 2-bar phrase read as 4 is half the tempo you played. There is no halve or double button. Instead, set the other tracks to twice or half the bars you meant, which costs nothing and keeps the take.</p>
+<p><strong>What has to be true for it to fire.</strong></p>
+<ul>
+<li>The track's length is <strong>free</strong> and both quantize settings are <strong>immediate</strong>. A track that quantizes to a bar line already has a grid. A free, immediate one does not, so that is when deriving one is useful.</li>
+<li><strong>Every other track is empty.</strong> That is what makes it the first loop. A second free loop does not re-derive, because the first one is still there.</li>
+<li>The loop is closed plainly: the ring press that ends the recording is <code>PLAY</code> or <code>RECORD</code>. Ending the recording into an overdub, a multiply or a mute derives nothing.</li>
+<li>No arrangement is armed.</li>
+<li>The setting <em>first free immediate loop sets song tempo</em> is on. It is on by default and there is no control for it in the window. It is a preference rather than a song setting, so it is restored at launch whatever song you open.</li>
+</ul>
+<p><strong>It comes back when you clear.</strong> Clear every track and the next free loop you close derives the tempo again. LOOM does not remember whether this song has ever derived one. Only what is in the tracks right now counts.</p>
+<p><strong>When it cannot.</strong> If no whole bar count fits your phrase, or the tempo it would land on is outside the range the field accepts, nothing is changed and nothing is snapped. The notice line says which of the two happened.</p>
+<h2 id="click-and-the-beat-leds">CLICK and the beat LEDs</h2>
+<p><strong>What CLICK does.</strong> Turns the click's audio on and off. It is saved with the song, so a song you open comes back with the setting it was saved with. It is in the top bar because you reach for it mid-set. It is named <code>Click audible</code>, and the notice line reports <code>click audible</code> or <code>click silent</code>.</p>
+<p>The beat LEDs are inside the button, to the right of the word, and pressing anywhere on the button toggles the click. The word is dim when the click is silent and bright when it is audible. The LEDs carry the colour that shows the click will be heard.</p>
+<p>The button says whether the click is running, not whether you can hear it. The click's level and its <code>MAIN</code> and <code>CUE</code> sends are on the click strip in the mixer's <code>MASTER</code> bank, and with both sends off the click runs and nothing comes out. This button does not change to reflect that; see <a href="/loom/manual/the-mixer/">The mixer</a>.</p>
+<p><strong>What the LEDs do.</strong> They show two things, each in its own way.</p>
+<p>The <strong>outlines</strong> say whether the click is on. They are amber when it is and grey when it is not, in every state, so an armed click shows as armed even with the transport stopped and nothing moving. Like <code>CLICK</code> itself, they follow the switch, not the routing.</p>
+<p>The <strong>fill</strong> says where you are in the bar. One LED is filled and the others are hollow. The downbeat is always drawn as a wider bar and the others as squares, not only when the beat lands on them, so you can tell which beat it is, and whether it is the downbeat, without colour. During a count-in, <code>ROLL</code> shows how many beats are left before bar one.</p>
+<p>The LEDs flash whether or not the click is audible, so you can still see the beat with the metronome out of the front-of-house mix. With <code>CLICK</code> off, the filled LED is grey instead of amber and keeps moving.</p>
+<p><strong>What a screen reader reads.</strong> The group is named <code>Click beat</code>. Its description is <code>beat 2 of 4</code>, plus <code>count-in N beats remaining</code> while a count-in is running, plus <code>click audible</code> or <code>click silent</code>. With the transport stopped it reads <code>transport stopped, no beat</code>.</p>
+<h2 id="barbeattick">BAR.BEAT.TICK</h2>
+<p>The musical position, drawn as <code>12.3.480</code>. It is a readout and is not a tab stop. It shows an em dash when there is no tempo grid.</p>
+<h2 id="focus">FOCUS</h2>
+<p><strong>What it is.</strong> A readout of which strip a press lands on. The focused strip also shows this in three other ways: a filled cap across its top edge, a tinted border, and a caret before its number.</p>
+<p><strong>Two faces.</strong> At a comfortable width it draws <code>TRACK 3 of 5</code>. When the top bar runs short it draws <code>T3/5</code>. Only the drawn word shortens. The accessible sentence is <code>Track 3 of 5 is focused. Presses that name no track land on it.</code> at every width.</p>
+<h2 id="the-panel-toggle">The panel toggle</h2>
+<p><strong>What it is.</strong> A square button just left of the view switcher, drawn as a window with a panel on its right. It shows and hides the side panel on every view, and hiding the panel widens the view. It is in the top bar because a control that hides a panel has to stay reachable while the panel is hidden.</p>
+<p><strong>What it shows.</strong> While the panel is on screen the button is lit cyan and the panel in its drawing is filled. While the panel is hidden the button is grey and the drawing is hollow. The panel comes back in the mode you left it in: <code>GLOBAL</code>, <code>TRACK n</code> or <code>SONG</code>.</p>
+<p>When the window is narrower than about 1400 px, the mixer's effect drawer takes the panel's place, and the button is grey while it does. Pressing it then closes the drawer and brings the panel back.</p>
+<p><strong>What a screen reader gets.</strong> It is named <code>Toggle side panel</code> in every state and is one tab stop, after the view switcher. Its description says which panel is showing or will come back, because the drawing cannot.</p>
+<h2 id="the-view-switcher">The view switcher</h2>
+<p><strong>What it is.</strong> A three-cell segmented row at the right end of the top bar: <code>LOOPER</code>, <code>ARRANGE</code> and <code>MIXER</code>. It chooses which surface the body of the window shows, and it shows the same state as the <strong>View</strong> menu. See <a href="/loom/manual/keyboard/">Keyboard shortcuts</a> for the keys.</p>
+<p>With the switcher focused, the arrow keys move the selection and <code>Home</code> and <code>End</code> jump to the ends. It takes no modifiers.</p>
+<p><strong>What a screen reader gets.</strong> The row is named <code>VIEW</code> and is one tab stop. Each cell is a radio button, <code>VIEW: LOOPER</code>, <code>VIEW: ARRANGE</code> and <code>VIEW: MIXER</code>, reported as checkable and checked, so a screen reader says which one is selected. The same description sentence is set on the row and on every cell, because a screen reader lands on a cell and a container's description is not inherited by its children.</p>
+<p>The selected cell is lit and carries a 3 px rule under it, so the selection does not rely on colour alone.</p>
+<p>The view changes only what is on screen. It changes no setting and is not saved. Every session starts on the looper.</p>
+<p>The row keeps its full width however narrow the window gets. See <a href="/loom/manual/the-mixer/">The mixer</a> for what is behind the third cell.</p>
+<p><code>Tab</code> does not switch views. It moves through the controls, here as everywhere else.</p>
+{% endraw %}

@@ -1,0 +1,720 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/instrument-tracks/
+manualSlug: instrument-tracks
+---
+{% raw %}
+<p>An instrument track plays one of LOOM's own instruments from a MIDI controller and records what you play as MIDI notes rather than audio. It loops the notes the way an audio track loops a take, and it has the same ring, fader, <code>STOP</code>, <code>UNDO</code>, <code>REDO</code> and <code>CLEAR</code>.</p>
+<p>The instrument tracks sit beside the audio tracks and do not replace any of them. Each one plays one instrument, chosen with <code>KIND</code>: <code>SYNTH</code>, <code>DRUMS</code> or <code>SAMPLER</code>. In a new song, every instrument track is a synth that listens to any MIDI device on channel 1.</p>
+<p>LOOM loops the notes, not the sound. If you change the instrument or its settings while the loop plays, the loop plays on with the new sound.</p>
+<p>To keep the sound as audio, tick the track's <code>INST</code> row in <a href="/loom/manual/dialogs/#record-setup">Record setup</a>. <code>RECORD</code> on the transport then writes it to its own file, <code>Instrument 1.wav</code> for <code>INST 1</code>, beside the loop tracks' files. An instrument track can also go in a <code>PLAYBACK</code> group; see <a href="/loom/manual/the-mixer/#groups-the-routing-page">Groups: the <code>ROUTING</code> page</a>.</p>
+<h2 id="where-the-instrument-tracks-are">Where the instrument tracks are</h2>
+<p>The looper shows the instrument tracks in one of two layouts. Choose one with <code>LAYOUT</code>, at the right end of the globals row.</p>
+<figure class="shot shot-full"><img src="/assets/loom/manual/looper.instrument-row.webp" width="1278" height="387" loading="lazy" decoding="async" alt="The instrument row: instrument tracks 1 to 4, empty, and the MIDI IN card with no MIDI device connected."><figcaption>The instrument row: instrument tracks 1 to 4, empty, and the MIDI IN card with no MIDI device connected.</figcaption></figure>
+<ul>
+<li><strong><code>ROWS</code></strong> shows every track at once: the audio tracks in the top row and the instrument tracks in the row under it. The last slot of the instrument row holds the <code>MIDI IN</code> card.</li>
+<li><strong><code>BANKS</code></strong> shows full-size strips, one bank at a time. The <code>AUDIO</code> and <code>INST</code> tabs beside <code>LAYOUT</code> switch banks. Each tab carries a dot for every track in its bank, in the colour of that track's ring, so you can see a recording or playing track in the bank that is not showing. An empty track's dot is hollow.</li>
+</ul>
+<p>LOOM remembers the layout on this Mac. A song does not carry it.</p>
+<p><code>←</code> and <code>→</code> walk through the audio tracks and then the instrument tracks. In <code>ROWS</code>, <code>↑</code> and <code>↓</code> move between the rows. See <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>.</p>
+<h3 id="the-instrument-strip">The instrument strip</h3>
+<p>An instrument strip has the same controls as an audio strip, in the same places. <a href="/loom/manual/track-strips/">The globals row and the track strips</a> describes them. What is different:</p>
+<ul>
+<li>The header reads <code>I1</code>, <code>I2</code> and so on. Its second line shows the track's MIDI input, such as <code>ANY · CH 1</code>, or <code>NO INPUT</code> when the input is <code>NONE</code>. The line is cyan while the track hears its input. It is grey while another track holds that input, and while the input is <code>NONE</code>. See <a href="#one-input-one-track-at-a-time">One input, one track at a time</a>.</li>
+<li>The <code>i</code> button opens the side panel's <code>INST</code> tab on this track.</li>
+<li><code>MUTE</code> silences the track everywhere, including its cue send. An audio track's <code>MUTE</code> leaves the cue send alone. The loop keeps playing in time while the track is muted.</li>
+<li>The strip's <code>MUTE</code>, its <code>PAN</code> and its level on each fader axis can be automated from the arrange view, as an audio strip's can. See <a href="/loom/manual/the-arrange-view/#channel-controls">Channel controls</a>.</li>
+</ul>
+<h3 id="the-midi-in-card">The MIDI IN card</h3>
+<p>The card lists each MIDI device that is plugged in. Under each device's name it shows which instrument tracks hear that device now, such as <code>→ INST 1</code>, and the channel they listen on, such as <code>CH 1</code>. A device that a track names but that is not plugged in is listed struck through, marked <code>missing</code>. The top right of the card reads <code>ONE AT A TIME</code>; see <a href="#one-input-one-track-at-a-time">One input, one track at a time</a>. The bottom line names LOOM's command channel, such as <code>CH 16 · LOOP COMMANDS</code>.</p>
+<p>The card is a readout. To change what a track listens to, use the <code>INST</code> tab.</p>
+<h2 id="the-inst-tab">The INST tab</h2>
+<p>While an instrument track has focus, the side panel's middle tab reads <code>INST 1</code>, <code>INST 2</code> and so on, and shows that track's settings. Open it with the strip's <code>i</code> button or the tab itself.</p>
+<h3 id="instrument">INSTRUMENT</h3>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/panel.inst-tab.webp" width="301" height="440" loading="lazy" decoding="async" alt="The INST tab for instrument track 1, with no MIDI device connected."><figcaption>The INST tab for instrument track 1, with no MIDI device connected.</figcaption></figure>
+<p><code>KIND</code> chooses what the track plays: <code>SYNTH</code>, <code>DRUMS</code> or <code>SAMPLER</code>. Changing it ends the notes the track is holding and starts the new instrument at its default sound. The loop keeps its notes and plays them on the new instrument.</p>
+<p><code>OPEN EDITOR</code> opens the editor dock at the bottom of the looper on this track. If you press it in the mixer or the arrange view, LOOM switches to the looper first, and if the editor is pinned to another track, the pin moves to this track. In the looper, a pinned editor stays on its track; press <code>PIN</code> to release it first. See <a href="#the-editor-dock">The editor dock</a>, <a href="#the-synth-editor">The synth editor</a>, <a href="#the-drum-editor">The drum editor</a> and <a href="#the-sampler-editor">The sampler editor</a>.</p>
+<h3 id="midi-input">MIDI INPUT</h3>
+<p>The list chooses which MIDI device the track listens to:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>What the track listens to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Any device</code></td>
+<td>Every MIDI device on this Mac.</td>
+</tr>
+<tr>
+<td>A device, by name</td>
+<td>That device only. Each device that is plugged in has a row.</td>
+</tr>
+<tr>
+<td>A device struck through</td>
+<td>A device this track names that is not plugged in. It stays chosen, and the track listens to it again when you plug it in.</td>
+</tr>
+<tr>
+<td><code>NONE</code></td>
+<td>Nothing. The track still plays its loop, but you cannot record on it.</td>
+</tr>
+</tbody>
+</table>
+<p><code>CHANNEL</code> chooses the channel: <code>ANY</code> or <code>1</code> to <code>16</code>. The command channel, where LOOM listens for its own commands, is greyed and marked <code>LOOP COMMANDS</code>, and <code>ANY</code> leaves it out. To play an instrument on that channel, move the command channel first with <code>MIDI CH</code> in the <code>GLOBAL</code> panel. See <a href="/loom/manual/midi-mapping/#putting-loom-on-a-channel-of-its-own">MIDI mapping</a>.</p>
+<p>While the input is <code>NONE</code>, <code>CHANNEL</code> reads <code>NONE</code> and has nothing to choose.</p>
+<p>The input is saved with the song. If you open the song on a rig that does not have the device, the track keeps the device's name and shows it as missing rather than switching to <code>Any device</code>.</p>
+<h3 id="record-quantize">RECORD QUANTIZE</h3>
+<p><code>GRID</code>, <code>STRENGTH</code> and <code>SWING</code> move the notes you record toward a grid. See <a href="#record-quantize">Record quantize</a>.</p>
+<h3 id="timing-recording-and-responds-to-globals">TIMING, RECORDING and RESPONDS TO GLOBALS</h3>
+<p>These rows set when this track launches and stops, where its loop starts when it launches, when it closes a take, and whether the <code>ALL START</code> and <code>ALL STOP</code> buttons take it. They are the rows of an audio track's <code>TRACK</code> panel, with the same values, and they do the same things. See <a href="/loom/manual/side-panel/#the-track-panel">The side panel</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Control</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TIMING</code></td>
+<td><code>LAUNCH QUANTIZE</code></td>
+<td><code>IMMEDIATE</code>, <code>NEXT BEAT</code>, <code>NEXT BAR</code>, <code>NEXT CYCLE</code></td>
+</tr>
+<tr>
+<td><code>TIMING</code></td>
+<td><code>STOP QUANTIZE</code></td>
+<td><code>IMMEDIATE</code>, <code>END OF BEAT</code>, <code>END OF BAR</code>, <code>END OF LOOP</code></td>
+</tr>
+<tr>
+<td><code>TIMING</code></td>
+<td><code>ON LAUNCH</code></td>
+<td><code>KEEP PHASE</code>, <code>FROM THE TOP</code></td>
+</tr>
+<tr>
+<td><code>RECORDING</code></td>
+<td><code>REC COUNT-IN</code></td>
+<td><code>OFF</code>, <code>1 BAR</code> … <code>4 BARS</code></td>
+</tr>
+<tr>
+<td><code>RECORDING</code></td>
+<td><code>LENGTH</code></td>
+<td><code>FREE</code>, <code>1 BAR</code>, <code>2 BARS</code>, <code>4 BARS</code>, <code>8 BARS</code>, <code>16 BARS</code>, <code>32 BARS</code></td>
+</tr>
+<tr>
+<td><code>RECORDING</code></td>
+<td><code>REC ACTION</code></td>
+<td><code>PLAY</code>, <code>OVERDUB</code>, <code>STOP</code></td>
+</tr>
+<tr>
+<td><code>RESPONDS TO GLOBALS</code></td>
+<td><code>FOLLOWS ALL START</code></td>
+<td><code>OFF</code>, <code>ON</code></td>
+</tr>
+<tr>
+<td><code>RESPONDS TO GLOBALS</code></td>
+<td><code>FOLLOWS ALL STOP</code></td>
+<td><code>OFF</code>, <code>ON</code></td>
+</tr>
+</tbody>
+</table>
+<p>Until you change one of these rows, the track follows the song's defaults in the <code>GLOBAL</code> panel. When you change one, the track keeps its own value for every row on this tab, and a later change in the <code>GLOBAL</code> panel no longer moves it. The settings are saved with the song.</p>
+<p><code>ON LAUNCH</code> sets where the loop starts when you launch the track, as it does on an audio track. <code>FROM THE TOP</code> starts the loop at its beginning. <code>KEEP PHASE</code> starts it at the point it would have reached if it had kept playing since it last started. A loop that has not played since you opened the song starts at its beginning with either value. <code>ON LAUNCH</code> starts at <code>FROM THE TOP</code>.</p>
+<p>The audio track's <code>DUB MODE</code> is not on this tab. An overdub on an instrument track always adds its notes to the loop.</p>
+<p><code>ALL START</code> does not start an instrument track that has no loop yet, whatever <code>FOLLOWS ALL START</code> says.</p>
+<p>The strip's <code>STOP</code> face shows this track's stop quantize, with <code>*</code> when it differs from the song's default.</p>
+<h3 id="state">STATE</h3>
+<p><code>OVERRIDES</code> names the settings on this tab that differ from the song's default, such as <code>launch, rec count-in</code>, or reads <code>none — inherits global</code>.</p>
+<p>The tab scrolls when its rows do not fit. Tabbing to a row below the fold scrolls it into view.</p>
+<h2 id="one-input-one-track-at-a-time">One input, one track at a time</h2>
+<p>In a new song every instrument track listens to the same input, so LOOM has to decide which track hears your keyboard. When instrument tracks listen to inputs that overlap, only one of them hears the input at a time. Tracks whose inputs do not overlap are not affected: pads on channel 10 can play one track while a keyboard on channel 1 plays another.</p>
+<p>The track that holds a shared input is the one you most recently focused, or most recently pressed record or overdub on. Pressing record on a track from a MIDI controller claims its input even though it does not move the focus. Focusing an audio track leaves every input where it is, so you can move to an audio track and keep playing the instrument that holds your keyboard.</p>
+<p>If you press record on an instrument track while another track on the same input is recording or overdubbing, the input moves to the new track at the press. The other track closes its take as if you had pressed its ring, and loops. A note you are holding when the input moves ends on the track that started it.</p>
+<p>The header of each instrument strip and the <code>MIDI IN</code> card show which track holds each input.</p>
+<h2 id="recording-on-an-instrument-track">Recording on an instrument track</h2>
+<p>The ring works the way it does on an audio track. Press it on an empty track to record, press it again to close the loop, and press it on a playing track to overdub. If the transport is stopped, the first press starts it. See <a href="/loom/manual/track-strips/#the-ring">The ring</a>.</p>
+<p>When a take launches, stops and closes is set by the track's <code>LAUNCH QUANTIZE</code>, <code>STOP QUANTIZE</code>, <code>REC COUNT-IN</code>, <code>LENGTH</code> and <code>REC ACTION</code> on the <code>INST</code> tab. Until you change them, they follow the <code>GLOBAL</code> panel. See <a href="#timing-recording-and-responds-to-globals">TIMING, RECORDING and RESPONDS TO GLOBALS</a>.</p>
+<p>LOOM refuses to record on a track whose input is <code>NONE</code>, and the notice line says why. Choose an input on the <code>INST</code> tab first.</p>
+<p>What LOOM does at the edges of a take:</p>
+<ul>
+<li><strong>A note played just early.</strong> A note you play up to about 40 milliseconds before the take starts is recorded on the take's first beat.</li>
+<li><strong>A late close.</strong> When the close waits for a bar line and you press a little after one, LOOM closes the loop on the bar line you just passed rather than the next one. A note you played between that bar line and your press is kept, and it plays on beat 1 of the loop.</li>
+<li><strong>A note held over the close.</strong> A note you are still holding when a take or an overdub closes ends there. On the next pass it plays again from its start.</li>
+</ul>
+<h3 id="overdub-undo-and-redo">Overdub, undo and redo</h3>
+<p>Each overdub adds a pass of notes on top of the loop. <code>UNDO</code> removes the last pass, and you can press it again to remove the pass before that, back to the first take. The first take stays. <code>REDO</code> puts back the last pass you removed. If you record a new overdub after an undo, the passes you removed are discarded and <code>REDO</code> cannot bring them back.</p>
+<h3 id="stop-and-clear">STOP and CLEAR</h3>
+<p><code>STOP</code> stops the loop at the moment <code>STOP QUANTIZE</code> sets and ends every note the track is playing. The loop is kept, and a press on the ring plays it again.</p>
+<p><code>CLEAR</code> deletes the loop's notes. Hold it for one second, as on an audio track. The instrument, its sound and the track's settings stay as they are.</p>
+<h2 id="record-quantize_1">Record quantize</h2>
+<p>Record quantize moves each note you record toward a grid. It is set on the <code>INST</code> tab, per track, and saved with the song.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Values</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GRID</code></td>
+<td><code>1/1</code> to <code>1/64</code>, each straight, <code>TRIPLET</code> or <code>DOTTED</code></td>
+<td>The grid the notes move toward. The grid counts from the bar line, so it works in every time signature.</td>
+</tr>
+<tr>
+<td><code>STRENGTH</code></td>
+<td><code>OFF</code>, <code>25%</code>, <code>50%</code>, <code>75%</code>, <code>100%</code></td>
+<td>How far each note moves toward its grid step. <code>100%</code> puts it on the step. <code>OFF</code> leaves the take as you played it.</td>
+</tr>
+<tr>
+<td><code>SWING</code></td>
+<td><code>0%</code> to <code>100%</code>, in steps of 10%</td>
+<td>How late every second grid step sits. <code>0%</code> is straight.</td>
+</tr>
+</tbody>
+</table>
+<p>A new track has <code>GRID</code> at <code>1/16</code>, <code>STRENGTH</code> at <code>OFF</code> and <code>SWING</code> at <code>0%</code>.</p>
+<p>A note keeps its length when it moves. A note that moves onto the end of the loop plays at the loop's start. The notes you overdub are quantized in the same way as the first take.</p>
+<p>The hits of a drum pattern, and the hits you add on the drum grid, are placed exactly, so <code>GRID</code> and <code>STRENGTH</code> do not move them. <code>SWING</code> does: a hit on every second grid step plays late by the same amount as a recorded note on that step, even when <code>STRENGTH</code> is <code>OFF</code>.</p>
+<p>Record quantize acts on the loop that is playing, not only while you record. LOOM keeps each take as you played it and quantizes from that, so you can change the settings at any time:</p>
+<ul>
+<li>To tighten a take after you record it, raise <code>STRENGTH</code> while the loop plays.</li>
+<li>To hear the take exactly as you played it again, set <code>STRENGTH</code> to <code>OFF</code>.</li>
+</ul>
+<h2 id="the-ring-on-an-instrument-track">The ring on an instrument track</h2>
+<p>The ring on an instrument track shows where its loop is, the same way an audio track's ring does. While the loop plays, the arc fills clockwise from the top, and the number counts down the bars and beats to the loop point. While you record the first pass, the number counts up the seconds you have recorded. A stopped track shows a dash.</p>
+<h2 id="the-editor-dock">The editor dock</h2>
+<p><code>OPEN EDITOR</code> on the <code>INST</code> tab opens the editor dock across the bottom of the looper. The dock shows the editor for the instrument the track plays: the synth editor, the drum editor or the sampler editor.</p>
+<p>The dock's header names the track and its instrument, such as <code>INST 1 · SYNTH</code>. It shows the loaded preset and holds <code>SAVE</code>, the <code>···</code> button, <code>PIN</code> and <code>CLOSE</code>. See <a href="#synth-presets">Synth presets</a>.</p>
+<p>The dock follows the focus: focus another instrument track and the dock edits that one. Focusing an audio track leaves the dock where it is. Press <code>PIN</code> to keep the dock on its track while you focus others, and press it again to let it follow the focus. <code>CLOSE</code> closes the dock.</p>
+<h3 id="the-track-strips-while-the-dock-is-open">The track strips while the dock is open</h3>
+<p>The dock is as tall as its editor needs, and the track strips take the rest of the height. While the dock is open, every track, audio and instrument, sits in one row above it. <code>LAYOUT</code> has nothing to choose until you close the dock.</p>
+<p>A strip in that row shows all of its controls when it has room: the fader, <code>MUTE</code>, <code>SOLO</code>, <code>UNDO</code>, <code>REDO</code>, <code>STOP</code> and <code>CLEAR</code>. When it does not, the strip shows only its header, its ring, <code>STOP</code> and <code>CLEAR</code>. The ring then draws no number. It shows its state word, such as <code>PLAY</code>, <code>REC</code> or <code>EMPTY</code>, inside it when the word fits, and otherwise its colour and arc show the state. A muted track shows a thin amber bar between its ring and <code>STOP</code>. The header shows the track's input only when the input fits beside the number. A screen reader reads the input in the strip's description either way.</p>
+<h3 id="how-the-editors-fit-the-window">How the editors fit the window</h3>
+<p>Each editor changes its layout to fit the dock. In a small window it shows fewer controls at once, and you choose what to show with a list or with tabs in the dock's header. In a wider window it adds pictures of the sound, and in a large window it shows every control on one page. Hide the side panel to give the dock more width. Each editor's section describes its layouts.</p>
+<h3 id="how-many-notes-an-instrument-plays">How many notes an instrument plays</h3>
+<p>Each instrument plays a limited number of notes at once:</p>
+<table>
+<thead>
+<tr>
+<th>Instrument</th>
+<th>Notes at once</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Synth</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Drum machine</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Sampler</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>When every voice is sounding and another note starts, the instrument gives the new note a voice in this order:</p>
+<ol>
+<li>A voice that is silent.</li>
+<li>A voice that is releasing after its key went up, oldest note first. On the drum machine, a part cut off by its choke group counts as releasing.</li>
+<li>A note the track's loop is playing, oldest first.</li>
+<li>A note you are holding, oldest first. On the synth, a key the sustain pedal holds counts as held.</li>
+</ol>
+<p>With <code>MODE</code> at <code>MONO</code> or <code>LEGATO</code>, the synth plays one note at a time, and the last key you press wins. A note you play takes over from a note the loop is playing. When you release it, the synth returns to the last key you are still holding.</p>
+<p>With <code>VOICE</code> at <code>MONO</code>, the sampler plays one sound at a time: each new note or slice stops the one that is sounding. See <a href="#amp-voice">AMP · VOICE</a>.</p>
+<h2 id="the-synth-editor">The synth editor</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/looper.synth-editor.webp" width="1262" height="354" loading="lazy" decoding="async" alt="The synth editor in the dock, showing the OSCs section."><figcaption>The synth editor in the dock, showing the OSCs section.</figcaption></figure>
+<p>The synth editor opens in the editor dock when you press <code>OPEN EDITOR</code> on a synth track's <code>INST</code> tab.</p>
+<h3 id="sections">Sections</h3>
+<p>The editor's layout depends on the size of the window. In a smaller window it shows one section at a time. In a wider window it also shows that section's displays in a column on the right. When the window is large enough, such as full screen on a 16-inch MacBook Pro with the side panel open, the editor shows every section on one page in four columns, with a display above every block of controls except <code>VOICE</code>. The page has no section list, and the track strips above the dock fold to a row of rings to make room for it. A window that fills the screen without being full screen is not tall enough for every display, so it shows one section at a time with its displays in the column on the right.</p>
+<p>The list on the left of the editor names the synth's sections: <code>OSCs</code>, <code>FILTER</code>, <code>AMP</code>, <code>LFOs</code>, <code>VOICE</code> and <code>ARP</code>. Click a section to show its page. Each page has a left column and a right column. A row in the left column sits level with the same row in the right column, so a control that only one column has leaves a space in the other.</p>
+<p>Each section button shows a short summary of its settings and a light:</p>
+<ul>
+<li>A filled green light means the section is in the signal path.</li>
+<li>An amber light inside a ring means the section is modulating the sound now.</li>
+<li>A hollow ring means the section is off.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Summary</th>
+<th>Light</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OSCs</code></td>
+<td>The number of oscillators with a <code>LEVEL</code> above 0, followed by <code>+ SUB</code> and <code>+ NOISE</code> when those levels are above 0.</td>
+<td>Off when every level on the page is 0.</td>
+</tr>
+<tr>
+<td><code>FILTER</code></td>
+<td>The filter type.</td>
+<td>Always in the signal path.</td>
+</tr>
+<tr>
+<td><code>AMP</code></td>
+<td>The output <code>LEVEL</code>.</td>
+<td>Always in the signal path.</td>
+</tr>
+<tr>
+<td><code>LFOs</code></td>
+<td>The number of LFOs with a <code>DEPTH</code> above 0, or <code>OFF</code>.</td>
+<td>Amber while an LFO modulates the sound with the mod wheel at rest. Green when only the mod wheel can bring LFO 1 in. Off when both depths are 0.</td>
+</tr>
+<tr>
+<td><code>VOICE</code></td>
+<td>The voice mode, followed by <code>x2</code> or <code>x4</code> while <code>UNISON</code> is on.</td>
+<td>Always in the signal path.</td>
+</tr>
+<tr>
+<td><code>ARP</code></td>
+<td>The arpeggiator's <code>MODE</code> while <code>ARP</code> is on, or <code>OFF</code>.</td>
+<td>In the signal path while <code>ARP</code> is on. Off while it is off.</td>
+</tr>
+</tbody>
+</table>
+<p>The editor reads the lights from the track's settings. It cannot see the mod wheel's position, so the <code>LFOs</code> light assumes the wheel is at rest.</p>
+<p>Each display draws the settings you are editing in cyan. The oscillators, the LFOs and the two envelopes each come in a pair. When only one display of a pair is on screen, it also draws the other set of the pair in grey behind its own, and its label names the grey set. When both displays of a pair are on screen, each draws only its own set.</p>
+<ul>
+<li>The <code>OSC 1</code> and <code>OSC 2</code> displays draw the oscillators over the same time.</li>
+<li>The <code>LFO 1</code> and <code>LFO 2</code> displays draw two cycles of each LFO, so you can compare their shapes. Each label names its LFO's rate.</li>
+<li>The <code>FILTER ENV</code> and <code>AMP ENV</code> displays draw the envelopes for one held note, released at the same moment.</li>
+<li>The <code>FILTER</code> display draws the filter's response.</li>
+<li>The <code>ARP</code> display previews the arpeggiator's steps for a three-note chord: their order, the octaves, the rate over two beats, and each step's gate as the length of its bar.</li>
+</ul>
+<h3 id="working-with-the-controls">Working with the controls</h3>
+<p>The sliders and the rows of cells work the way an effect's controls do. See <a href="/loom/manual/the-mixer/#the-controls">The controls</a> in the mixer chapter.</p>
+<p>Press <code>Tab</code> to move through the section list, then down the left column, then down the right column. On the full-screen page, <code>Tab</code> moves through the <code>OSCs</code> and <code>LFOs</code> switches first, then through the blocks in the order of the section list.</p>
+<h3 id="oscs">OSCs</h3>
+<p>The left column is <code>OSC 1 · SUB</code> and the right column is <code>OSC 2 · NOISE</code>.</p>
+<ul>
+<li><code>OCTAVE</code> moves the oscillator in whole octaves, from <code>-2</code> to <code>+2</code>.</li>
+<li><code>PITCH</code> (OSC 2 only) raises OSC 2 by up to a fifth, from 0 to +7 semitones. It moves smoothly between semitones, so you can sweep it while you play. It adds to <code>OCTAVE</code> and <code>FINE</code>.</li>
+<li><code>FINE</code> tunes the oscillator in cents.</li>
+<li><code>SHAPE</code> morphs the oscillator's waveform.</li>
+<li><code>SYNC</code> (OSC 2 only) restarts OSC 2 each time OSC 1 starts a cycle.</li>
+<li><code>LEVEL</code> sets how loud the oscillator is in the mix.</li>
+<li><code>SUB</code> sets the level of the sub-oscillator, and <code>NOISE</code> the level of the noise source.</li>
+</ul>
+<p>On the full-screen page, OSC 1 and OSC 2 share one block. The <code>OSC 1 | OSC 2</code> switch at the right of the block's title chooses which oscillator's controls you see. Both oscillators always sound, and the switch changes only the view. OSC 1 has no <code>PITCH</code> or <code>SYNC</code>, so those rows are empty while OSC 1 shows, and the controls below them stay in place when you switch. The editor remembers each track's choice while LOOM is open. Presets and songs do not store it.</p>
+<h3 id="filter">FILTER</h3>
+<p>The left column is <code>FILTER</code> and the right column is <code>FILTER ENV</code>, the filter's envelope.</p>
+<ul>
+<li><code>TYPE</code> chooses the filter: <code>LP 12</code>, <code>LP 24</code>, <code>HP</code> or <code>BP</code>.</li>
+<li><code>CUTOFF</code>, <code>RES</code> and <code>DRIVE</code> set the cutoff frequency, the resonance and the drive.</li>
+<li><code>KEY TRK</code> sets how far the cutoff follows the notes you play.</li>
+<li><code>ENV AMT</code> sets how far the filter envelope moves the cutoff. Negative values move it down.</li>
+<li><code>ATTACK</code>, <code>DECAY</code>, <code>SUSTAIN</code> and <code>RELEASE</code> shape the filter envelope, and <code>CURVE</code> bends all of its segments.</li>
+<li><code>VELOCITY</code> sets how much the velocity of each note scales the envelope.</li>
+<li>
+<p><code>LOOP</code> repeats the filter envelope while you hold a key:</p>
+<ol>
+<li>The envelope rises through the attack and falls through the decay to the sustain level.</li>
+<li>Instead of holding at the sustain level, it falls to 0 at the release time.</li>
+<li>It starts the attack again from 0.</li>
+</ol>
+<p>With <code>DECAY</code> at its lowest setting, the envelope falls from the top of the attack. With <code>RELEASE</code> at its lowest setting, the attack starts again as soon as the decay ends. When you release the key, the envelope releases from wherever it is, as it does with <code>LOOP</code> off.</p>
+</li>
+<li>
+<p><code>TO OSC 2</code> bends OSC 2's pitch with the filter envelope, by up to 24 semitones up or down. At 0 it does nothing. With OSC 2's <code>SYNC</code> on, this gives each note a sweep at its start.</p>
+</li>
+</ul>
+<h3 id="amp">AMP</h3>
+<p>The left column is <code>AMP ENV</code>, the amp envelope: <code>ATTACK</code>, <code>DECAY</code>, <code>SUSTAIN</code>, <code>RELEASE</code> and <code>CURVE</code>. The right column is <code>RESPONSE</code>:</p>
+<ul>
+<li><code>VELOCITY</code> sets how much the velocity of each note changes its volume.</li>
+<li><code>LEVEL</code> sets the synth's output level.</li>
+</ul>
+<p>On the full-screen page, <code>VELOCITY</code> and <code>LEVEL</code> sit under the amp envelope's controls, in the <code>AMP ENV</code> block.</p>
+<h3 id="lfos">LFOs</h3>
+<p>The left column is <code>LFO 1</code> and the right column is <code>LFO 2</code>. They have the same controls.</p>
+<ul>
+<li><code>SHAPE</code> chooses the waveform: <code>TRIANGLE</code>, <code>SAW</code>, <code>SQUARE</code> or <code>S&amp;H</code>.</li>
+<li><code>SYNC</code> chooses whether the LFO runs at its own rate (<code>FREE</code>) or follows the tempo (<code>SYNC</code>).</li>
+<li><code>RATE</code> sets the speed. With <code>SYNC</code> at <code>FREE</code>, it is a slider in hertz. With <code>SYNC</code> at <code>SYNC</code>, it is a set of cells, one for each note value from <code>4/1</code> down to <code>1/32</code>, where <code>D</code> means dotted and <code>T</code> means triplet. The cells wrap onto several lines; <code>↑</code> and <code>↓</code> move to the cell above and below.</li>
+<li><code>DEST</code> chooses what the LFO moves. <code>PITCH 1+2</code> moves both oscillators. <code>PITCH 2</code> moves OSC 2 alone, which sweeps the sync timbre when OSC 2's <code>SYNC</code> is on. <code>CUTOFF</code>, <code>MORPH</code> and <code>AMP</code> move the cutoff, the oscillator shape and the volume.</li>
+<li><code>DEPTH</code> sets how far the LFO moves its destination.</li>
+</ul>
+<p>On the full-screen page, LFO 1 and LFO 2 share one block, with an <code>LFO 1 | LFO 2</code> switch at the right of its title. It works the way the <code>OSC 1 | OSC 2</code> switch does: both LFOs always run, and the switch changes only which one's controls you see.</p>
+<h3 id="voice">VOICE</h3>
+<p>The left column is <code>VOICE</code>:</p>
+<ul>
+<li><code>MODE</code> chooses <code>POLY</code>, <code>MONO</code> or <code>LEGATO</code>. <code>POLY</code> plays chords. <code>MONO</code> plays one note at a time and restarts the envelopes on each note. <code>LEGATO</code> plays one note at a time and restarts the envelopes only when no other key is held.</li>
+<li><code>GLIDE</code> sets how long a note takes to slide to the next pitch.</li>
+<li><code>GLIDE LEG</code> chooses when <code>GLIDE</code> acts. It is a different setting from <code>MODE</code>'s <code>LEGATO</code>. With it <code>ON</code>, a note you play glides only while you still hold another key, and a note you play after every key is up starts at its own pitch. The loop's notes follow the same rule among themselves: a loop note glides only while another loop note is held. With the arpeggiator on, the first step of a new chord starts at its own pitch and the steps after it glide.</li>
+<li><code>BEND</code> sets the pitch bend range, in semitones.</li>
+<li><code>WHEEL</code> chooses what the mod wheel does. <code>LFO 1</code> scales LFO 1's depth, <code>CUT</code> opens the cutoff and <code>OFF</code> does nothing.</li>
+<li><code>WHL DEPTH</code> sets how far the mod wheel reaches at the destination <code>WHEEL</code> chooses.</li>
+<li><code>AT CUTOFF</code> sets how far aftertouch opens the cutoff.</li>
+</ul>
+<p>The right column is <code>UNISON</code>. It stacks several voices on every note you play, tuned slightly apart and spread across the stereo field, for a thicker sound:</p>
+<ul>
+<li><code>UNISON</code> chooses how many voices play each note: <code>OFF</code>, <code>2</code> or <code>4</code>. With <code>OFF</code>, each note plays one voice in the centre, and <code>DETUNE</code> and <code>SPREAD</code> have no effect.</li>
+<li><code>DETUNE</code> sets how far apart the stacked voices are tuned. At 0 they play in tune. At 100 % the outermost voices are 50 cents above and below the note. The control has more resolution near the bottom of its travel, where small amounts thicken the sound without making it sound out of tune: at 50 % the outermost voices are 12.5 cents from the note.</li>
+<li><code>SPREAD</code> sets how wide the stacked voices are panned. At 0 every voice is in the centre. At 100 % the outermost voices are hard left and hard right.</li>
+</ul>
+<p>The synth has eight voices, and each stacked voice uses one of them. With <code>UNISON</code> at <code>2</code> the synth plays four notes at a time, and at <code>4</code> it plays two. When you play more notes than that, the oldest note stops to make room, as it does when you play more than eight notes with <code>UNISON</code> off. Each stacked voice starts its oscillators at a different point in their cycle, so the voices do not add up to one louder wave. The synth lowers the level of a stack so that turning <code>UNISON</code> on keeps the sound at about the same volume.</p>
+<p><code>UNISON</code> works in every <code>MODE</code>, with <code>GLIDE</code> and with the arpeggiator. In <code>MONO</code> and <code>LEGATO</code>, the whole stack moves to each new note and glides together. A note that is already sounding keeps its stack when you change <code>UNISON</code>; the change applies from the next note.</p>
+<p>On the full-screen page, <code>UNISON</code>, <code>DETUNE</code> and <code>SPREAD</code> sit under the other voice controls, in the <code>VOICE</code> block.</p>
+<h3 id="arp">ARP</h3>
+<p>The <code>ARP</code> section has the arpeggiator's controls:</p>
+<ul>
+<li><code>ARP</code> turns the arpeggiator on and off.</li>
+<li><code>MODE</code> chooses the order of the notes: <code>UP</code>, <code>DOWN</code>, <code>UP DOWN</code>, <code>RANDOM</code> or <code>AS PLAYED</code>.</li>
+<li><code>RATE</code> chooses the note value of each step, from the same set as an LFO's <code>RATE</code>.</li>
+<li><code>OCTAVES</code> sets how many octaves the arpeggio spans, from <code>1</code> to <code>4</code>.</li>
+<li><code>GATE</code> sets how long each step sounds, as a share of the step.</li>
+</ul>
+<p>While the transport rolls, every arpeggiator step starts on a grid step of <code>RATE</code>. A chord you press between grid steps waits for the next one, and a chord you press and release before then still sounds that step once.</p>
+<h2 id="synth-presets">Synth presets</h2>
+<p>The preset row in the dock's header shows the preset you last loaded or saved on this track, or <code>no preset loaded</code>. The words beside the name are the ones the effect presets use: <code>FACTORY</code> for a preset that ships with LOOM, and <code>EDITED</code> once a control has moved since you loaded or saved it. See <a href="/loom/manual/the-mixer/#racks-and-presets">Racks and presets</a>.</p>
+<p>A song keeps the name of the preset each track was last loaded from or saved as. When you open the song, or when LOOM starts with it, the row shows that name again. It shows <code>EDITED</code> if the track's settings differ from the preset as it is saved now, which happens when you changed a control before saving the song or saved the preset again since. The row reads <code>no preset loaded</code> when the song names no preset, when the preset has been deleted, and after you start a new song or choose a different instrument for the track. This applies to the synth, the drum machine's kits and the sampler.</p>
+<p>Click the name to open the list of synth presets. The presets that ship with LOOM are listed under <code>FACTORY</code> and yours under <code>USER</code>. Press <code>LOAD</code> beside a row, or <code>Return</code> on it, to load it onto the track.</p>
+<table>
+<thead>
+<tr>
+<th>Factory preset</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Pad</code></td>
+<td>Slow saws that open and close with the notes</td>
+</tr>
+<tr>
+<td><code>Bass</code></td>
+<td>One note at a time, an octave down, with a sub</td>
+</tr>
+<tr>
+<td><code>Lead</code></td>
+<td>One note at a time with glide; the mod wheel adds vibrato</td>
+</tr>
+<tr>
+<td><code>Pluck</code></td>
+<td>A short note that closes quickly</td>
+</tr>
+<tr>
+<td><code>Arp</code></td>
+<td>Held notes play upward in sixteenths over two octaves</td>
+</tr>
+</tbody>
+</table>
+<p><code>SAVE</code> opens the save sheet, where you name the preset and give it a description. With one of your own presets loaded, the sheet opens with its name and description filled in. If you keep the name, LOOM asks before it replaces the saved preset. While a factory preset is loaded, <code>SAVE</code> is unavailable.</p>
+<p>The <code>···</code> button beside <code>SAVE</code> opens the menu the effect presets use: <code>SAVE AS…</code>, <code>GET INFO…</code>, <code>DELETE</code>, <code>REVEAL IN FINDER</code> and <code>REVERT TO SAVED</code>. Each item does what it does for an effect preset, and the same items are unavailable on a factory preset. See <a href="/loom/manual/the-mixer/#racks-and-presets">Racks and presets</a>. On an instrument track:</p>
+<ul>
+<li><code>GET INFO…</code> renames the preset's file, and every track that shows the preset shows the new name.</li>
+<li>After <code>DELETE</code>, the row goes on showing the name and the track keeps its sound.</li>
+<li><code>REVERT TO SAVED</code> puts back the settings you loaded or last saved, including after <code>DELETE</code>. It is not added to the history, so <code>⌘Z</code> does not take it back.</li>
+</ul>
+<p>Synth presets are saved in <code>~/Music/LOOM/Presets/Synth</code>. The song saves the synth's settings with the track, so the track sounds the same when you open the song again.</p>
+<h2 id="the-drum-editor">The drum editor</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/looper.drum-editor-pattern.webp" width="1262" height="384" loading="lazy" decoding="async" alt="The drum editor on the PATTERN tab in a medium window, with the factory pattern Trap loaded and no step picked."><figcaption>The drum editor on the PATTERN tab in a medium window, with the factory pattern Trap loaded and no step picked.</figcaption></figure>
+<p>The drum editor opens in the editor dock when you press <code>OPEN EDITOR</code> on a drum track's <code>INST</code> tab. The dock's header names the track, such as <code>INST 2 · DRUMS</code>, and holds the <code>SOUND</code> and <code>PATTERN</code> tabs, the preset row, <code>PIN</code> and <code>CLOSE</code>. In a large window the tabs are replaced by one page. See <a href="#the-drum-editor-in-each-window-size">The drum editor in each window size</a>.</p>
+<h3 id="parts">Parts</h3>
+<p>Each part plays on its own note, from the General MIDI drum map. The track ignores every other note.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KICK</code></td>
+<td>36</td>
+</tr>
+<tr>
+<td><code>SNARE</code></td>
+<td>38</td>
+</tr>
+<tr>
+<td><code>CL HAT</code></td>
+<td>42</td>
+</tr>
+<tr>
+<td><code>OP HAT</code></td>
+<td>46</td>
+</tr>
+<tr>
+<td><code>TOM</code></td>
+<td>45</td>
+</tr>
+<tr>
+<td><code>CLAP</code></td>
+<td>39</td>
+</tr>
+</tbody>
+</table>
+<p>A hit always plays its whole sound. Releasing the key or pad does not shorten it. Each layer's <code>DECAY</code> sets how long that layer lasts.</p>
+<p>A part rings over its own earlier hits unless it is in a choke group. When a part in a choke group plays, it cuts every sound in its group, including its own earlier hits. In the default kit, <code>CL HAT</code> and <code>OP HAT</code> are both in group <code>A</code>, so a closed hat cuts an open hat.</p>
+<h3 id="the-part-list">The part list</h3>
+<p>The list on the left names each part, then <code>WAVEGUIDE</code> and <code>KIT</code>. A part's entry shows the note that plays it and, when the part is in a choke group, the group's letter, such as <code>42 A</code>. <code>WAVEGUIDE</code> shows its <code>TYPE</code>, and <code>KIT</code> shows the kit's <code>LEVEL</code>.</p>
+<p>A filled green light means the entry is in the signal path, and a hollow ring means it is not:</p>
+<ul>
+<li>A part is in the signal path while layer 1's <code>LEVEL</code> is above its lowest setting, or while layer 2 has a <code>SOURCE</code> and its <code>LEVEL</code> is above its lowest setting.</li>
+<li><code>WAVEGUIDE</code> is in the signal path while any part's <code>SEND</code> is above 0 and the waveguide's <code>LEVEL</code> is above its lowest setting.</li>
+<li><code>KIT</code> is in the signal path while its <code>LEVEL</code> is above its lowest setting.</li>
+</ul>
+<h3 id="sound">SOUND</h3>
+<figure class="shot shot-full"><img src="/assets/loom/manual/looper.drum-editor-sound.webp" width="1262" height="384" loading="lazy" decoding="async" alt="The drum editor's SOUND tab in a medium window, showing the SNARE part of the Room kit with its hit and pitch envelope pictures."><figcaption>The drum editor's SOUND tab in a medium window, showing the SNARE part of the Room kit with its hit and pitch envelope pictures.</figcaption></figure>
+<p>Select <code>SOUND</code>, then click an entry in the list to show its page.</p>
+<p>A part is made of layer 1 and layer 2, which play together on every hit. Use them to build a sound from parts: a snare from a tone and a burst of noise, or a kick from a low sine and a short click. The part's page has a left column for one layer and a right column, <code>PART</code>, for what the part does with both.</p>
+<p>The switch at the right of the part's name chooses what the left column shows:</p>
+<ul>
+<li><code>L1</code> shows layer 1, and the column is headed <code>LAYER 1</code>.</li>
+<li><code>L2</code> shows layer 2, and the column is headed <code>LAYER 2</code>.</li>
+<li><code>BOTH</code> shows layer 1's settings, and the column is headed <code>LAYERS 1 + 2</code>. A control you change sets both layers to the new value.</li>
+</ul>
+<p>The switch changes only what you see. Both layers keep playing whichever one is shown.</p>
+<p>Each layer has these controls:</p>
+<ul>
+<li><code>SOURCE</code> chooses what the layer plays: <code>SINE</code>, <code>SAW</code>, or noise through a filter. <code>BP NOISE</code> keeps a band of noise around <code>PITCH</code>, <code>LP NOISE</code> keeps the noise below <code>PITCH</code>, and <code>HP NOISE</code> keeps the noise above it. Layer 2 also has <code>OFF</code>, which silences it.</li>
+<li><code>PITCH</code> sets the pitch of a tone, or where the noise filter cuts.</li>
+<li><code>LEVEL</code> sets the layer's volume.</li>
+<li><code>MOD</code> chooses how the pitch moves during the hit: <code>DECAY</code>, <code>TRI</code> or <code>RAND</code>. <code>AMOUNT</code> sets how far the pitch moves and in which direction, and <code>RATE</code> sets how fast. With <code>DECAY</code>, the pitch starts <code>AMOUNT</code> away and returns to <code>PITCH</code>, and a higher <code>RATE</code> returns it sooner, so the fall is shorter. Most of the audible change is in the lower part of the <code>RATE</code> range.</li>
+<li><code>EG</code> chooses the shape of the layer's volume. <code>EXP</code> rises over <code>ATTACK</code> and fades away over <code>DECAY</code>. <code>LIN</code> rises over <code>ATTACK</code> and falls in a straight line to silence at the end of <code>DECAY</code>. <code>MULTI</code> strikes in quick repeated bursts before it fades over <code>DECAY</code>, the way a hand clap does.</li>
+<li><code>ATTACK</code> and <code>DECAY</code> set how long the layer takes to rise and to fade.</li>
+</ul>
+<p><code>PART</code> has these controls:</p>
+<ul>
+<li><code>PAN</code> sets the part's place in the stereo field.</li>
+<li><code>DRIVE</code> sets how hard each layer drives the saturator.</li>
+<li><code>FOLD</code> folds each layer's wave back on itself for a brighter, harder tone. At <code>0%</code> it does nothing.</li>
+<li><code>BIT</code> lowers the part's resolution for a grainy, lo-fi sound. At <code>0%</code> it does nothing.</li>
+<li><code>SEND</code> sets how much of the part goes to the waveguide.</li>
+<li><code>VELOCITY</code> sets how much a hit's velocity changes its volume. At <code>0%</code> every hit plays at the same volume.</li>
+<li><code>CHOKE</code> puts the part in group <code>A</code>, <code>B</code> or <code>C</code>. At <code>OFF</code> the part is in no group.</li>
+<li><code>QUANTIZE</code> at <code>ON</code> moves both layers' <code>PITCH</code> to the nearest semitone, so a tuned part plays in key.</li>
+</ul>
+<p>A kit saved before layer 2 existed opens with layer 2 set to <code>OFF</code>, so it sounds as it did.</p>
+<p><code>WAVEGUIDE</code> is the kit's resonator, and every part's <code>SEND</code> feeds it. Its left column, <code>WAVEGUIDE</code>, has <code>TYPE</code> (<code>TUBE</code> or <code>STRING</code>), <code>TUNE</code>, <code>DECAY</code> and <code>BODY</code>. Its right column, <code>RETURN</code>, has <code>LEVEL</code>, which sets how loud the waveguide is in the kit.</p>
+<p><code>KIT</code> has <code>ACCENT</code>, which sets how much louder an accented hit plays, and the kit's <code>LEVEL</code>. Only a step marked <code>ACCENT</code> plays accented. A hit you play on a key or pad is never accented, however hard you play it.</p>
+<p>The controls work the way the synth editor's do. See <a href="#working-with-the-controls">Working with the controls</a>.</p>
+<h3 id="kits">Kits</h3>
+<p>On <code>SOUND</code>, the preset row in the dock's header is <code>KIT</code>. It shows the kit you last loaded or saved on this track, or <code>no kit</code>. Click the name to open the drum kits and load one. <code>SAVE</code> stores the current sound as a kit. <code>FACTORY</code> and <code>EDITED</code> mean what they mean for a synth preset, and the <code>···</code> menu works as it does there. See <a href="#synth-presets">Synth presets</a>.</p>
+<h3 id="the-pattern-grid">The pattern grid</h3>
+<p>Select <code>PATTERN</code> to see the track's loop as steps. The grid and the loop are the same notes: a hit you play on a pad appears in the grid, and a step you add plays in the loop. Each part has a row beside its entry in the list, each cell is one step, and the steps are grouped by beat.</p>
+<ul>
+<li>A filled cell holds a hit. A brighter fill is a louder hit.</li>
+<li>An amber band along the top of a hit means the hit is accented.</li>
+<li>A cell split into narrow bars is a ratchet. The step plays once for each bar.</li>
+<li>A hit that plays between steps is drawn as a thin bar where it plays, in the nearest step's cell, and that cell has a dashed outline.</li>
+<li>While the loop plays, the column of the step it is playing is lit green and outlined.</li>
+<li>The picked part's row is tinted, and the picked step has a cyan outline.</li>
+</ul>
+<p>On an empty drum track the grid shows one bar in the song's meter, or as many bars as you choose in <code>BARS</code>. The first step you click creates a loop of that length. The meter is shown at the right end of the line under the grid, such as <code>4/4</code>.</p>
+<h3 id="changing-steps">Changing steps</h3>
+<ul>
+<li>To add a hit to a step, click the empty cell. The hit has a velocity of 100.</li>
+<li>To empty a step, click it. This removes every hit in the step, including hits between steps.</li>
+<li>To pick a step without changing it, Shift-click it.</li>
+<li>With the grid focused, <code>←</code> and <code>→</code> move between steps, and <code>↑</code> and <code>↓</code> move between parts. Moving past the last step goes back to the first. <code>Space</code> or <code>Return</code> adds a hit to the picked step or empties it.</li>
+</ul>
+<p>The notice line says what each change did, such as <code>Step 13 on SNARE is in the loop.</code></p>
+<p>Press <code>Tab</code> to move from the list and the page to the grid, then to <code>VEL</code>, <code>ACCENT</code>, <code>RATCHET</code>, <code>STEPS/BEAT</code>, <code>BARS</code>, <code>‹</code> and <code>›</code>.</p>
+<h3 id="stepsbeat-and-bars">STEPS/BEAT and bars</h3>
+<p><code>STEPS/BEAT</code> sets how many steps divide a quarter note: <code>4</code> for sixteenths, <code>3</code> for eighth-note triplets and <code>6</code> for sixteenth-note triplets. It changes how the grid reads the loop, not the loop's notes. A hit that does not fall on a step at the new setting is drawn between steps. You cannot choose a setting that does not divide the loop's bar into whole steps. Loading a pattern sets <code>STEPS/BEAT</code> to the pattern's own setting.</p>
+<p><code>BARS</code> sets the length of the loop: <code>1</code>, <code>2</code>, <code>4</code> or <code>8</code> bars of the loop's meter. The lit cell is the loop's length. A loop of another length, such as a three-bar loop you recorded, lights no cell, and the line under the grid shows its length, such as <code>BAR 1 OF 3</code>.</p>
+<ul>
+<li><strong>A longer loop repeats the bars it has from the top.</strong> From one bar to four, each new bar is a copy of bar 1. From three bars to four, bar 4 is a copy of bar 1. Each copied hit keeps its velocity, accent, ratchet and place between steps.</li>
+<li><strong>A shorter loop drops its later bars.</strong> With the drum editor focused, press <code>⌘Z</code> to bring them back as they were, and <code>⇧⌘Z</code> to drop them again. Changes you make to the bars that stay are kept.</li>
+<li><strong>On an empty track</strong>, <code>BARS</code> sets how many blank bars the grid shows. It does not create a loop.</li>
+<li><strong>On a playing track</strong>, the loop keeps playing and takes the new length at the next bar line. It plays on from where it is, so a longer loop sounds the same until you change its new bars, and a shorter loop continues from the bar it had reached. If the loop's turns do not start on a bar line, it takes the new length from its top when the loop comes round. The notice line says which. Until then, the grid shows the new length with no playing column.</li>
+<li><strong>On a stopped track</strong>, the loop takes the new length at once.</li>
+</ul>
+<p>Changing the length rewrites the whole loop as one pass, as loading a pattern does, so <code>UNDO</code> can no longer remove the passes you overdubbed. LOOM refuses to change the length while the track is recording, overdubbing or waiting on a press. You cannot choose a length whose notes do not fit in a loop.</p>
+<p>For a loop longer than one bar, the line under the grid shows which bar you are viewing, such as <code>BAR 2 OF 4</code>. <code>‹</code> and <code>›</code> show the previous and next bar. Moving the picked step into another bar with the arrow keys also shows that bar. The grid does not follow the playhead to another bar, and it shows the playing column only while you view the bar that is playing.</p>
+<h3 id="editing-while-the-loop-plays">Editing while the loop plays</h3>
+<p>You can change steps while the track plays, overdubs or is stopped. The loop keeps playing in time, and a change sounds the next time the playhead reaches that step. A hit you add just behind the playhead first plays on the next pass. The grid shows the change as soon as you make it.</p>
+<p>A step edit is not an undo step. <code>UNDO</code> and <code>REDO</code> go on removing and restoring the passes you overdubbed:</p>
+<ul>
+<li>A hit you add on the grid goes into the loop's first pass, so <code>UNDO</code> does not remove it.</li>
+<li>Choosing a new <code>RATCHET</code> writes the step's hits again, into the first pass.</li>
+<li>Changing <code>VEL</code> or <code>ACCENT</code> leaves each hit in the pass it was recorded in.</li>
+</ul>
+<p>If an edit no longer fits the loop by the time it reaches it, the notice line says so, such as <code>Step 5 on KICK did not reach instrument track 1's loop.</code>, and the grid shows the loop without the edit.</p>
+<h3 id="the-step-inspector">The step inspector</h3>
+<p>The line under the grid names the picked step, such as <code>STEP 13 · SNARE</code>. With no step picked, it reads <code>NO STEP PICKED</code>. Its controls set the picked step:</p>
+<ul>
+<li><code>VEL</code> sets the velocity of every hit in the step, from 1 to 127.</li>
+<li><code>ACCENT</code> marks every hit in the step as accented. The kit's <code>ACCENT</code> sets how much louder an accented hit plays. Press <code>ACCENT</code> again to remove the mark.</li>
+<li><code>RATCHET</code> plays the step more than once, evenly spaced inside its length. <code>×1</code> is a single hit, and <code>×2</code>, <code>×3</code> and <code>×4</code> split the step into that many hits. When the step's hits sit between steps, no <code>RATCHET</code> cell is lit, and choosing one puts the hits back on the step as an even ratchet.</li>
+</ul>
+<p>These controls are available only when the picked step holds a hit.</p>
+<h3 id="when-a-step-cannot-be-changed">When a step cannot be changed</h3>
+<p>LOOM refuses a step edit, and says why in the notice line, in these cases:</p>
+<ul>
+<li>No audio device is open.</li>
+<li>The track is recording a take, or is about to record a take over its loop.</li>
+<li>A pattern is on its way into the track while the track plays.</li>
+</ul>
+<h3 id="patterns">Patterns</h3>
+<p>On <code>PATTERN</code>, the preset row in the dock's header is <code>PATTERN</code>. It shows the pattern you last loaded or saved on this track, or <code>no pattern</code>, and it shows <code>EDITED</code> once you change a step. A song does not keep the pattern's name or the grid's <code>STEPS/BEAT</code> setting, so when you open a song the row reads <code>no pattern</code> and the grid shows four steps to the beat until you load a pattern or save one. Click the name to open the drum patterns. Factory patterns are listed first, then yours, and in each the patterns in the song's meter come before the others. Each row shows the pattern's meter and its description. <code>SAVE</code> and the <code>···</code> menu work as they do for a kit: use <code>SAVE AS…</code> to save a loaded pattern under a new name, <code>GET INFO…</code> to rename your pattern or change its description, and <code>DELETE</code> to remove it from your library. See <a href="#synth-presets">Synth presets</a>.</p>
+<p>Loading a pattern replaces the whole loop, including the passes you overdubbed. The pattern keeps its own length and meter.</p>
+<ul>
+<li>On a stopped or empty track, the pattern replaces the loop at once.</li>
+<li>On a playing track, the old loop keeps playing and the pattern starts at the track's <code>LAUNCH QUANTIZE</code>. The notice line says when, such as <code>It plays from its top at the next bar.</code> Until the pattern starts, the grid shows the new pattern with no playing column.</li>
+<li>LOOM refuses to load a pattern while the track is recording, overdubbing or waiting on a press.</li>
+</ul>
+<p><code>SAVE</code> stores the loop as a pattern at the current <code>STEPS/BEAT</code>. Each hit is saved where it sounds, including hits between steps, with its velocity and its accent, so loading the pattern plays every hit where you played it. <code>SAVE</code> asks for a name. If you type the name of one of your own patterns, LOOM asks before it replaces it. Saving never changes a factory pattern: a pattern you save under a factory name is saved as your own. A track with no loop has nothing to save, and the notice line says so.</p>
+<h3 id="the-drum-editor-in-each-window-size">The drum editor in each window size</h3>
+<ul>
+<li><strong>Small.</strong> The part list is on the left, and <code>SOUND</code> and <code>PATTERN</code> are in the dock's header. On <code>SOUND</code>, the picked entry's page shows its left column and its right column. On <code>PATTERN</code>, the grid is beside the list, and the step inspector, <code>STEPS/BEAT</code>, <code>BARS</code> and the bar controls are under the grid.</li>
+<li><strong>Medium.</strong> <code>SOUND</code> adds a column of pictures on the right. For a part, it shows the layer's pitch envelope, labelled <code>PITCH ENV</code> with the layer shown, its <code>MOD</code> and its largest pitch change in semitones. Under that is the part's hit, both layers together, labelled with the part's name, <code>HIT</code>, each layer's <code>SOURCE</code> and the length of the hit in milliseconds. At the foot of the column are the part's steps in the bar the grid shows. For <code>WAVEGUIDE</code>, the picture shows the waveguide ringing after a hit of the part you picked last. If that part sends nothing to the waveguide, the picture is flat and its label ends with that part's name and <code>SENDS NOTHING</code>. <code>KIT</code> has no picture. <code>PATTERN</code> looks as it does in a small window.</li>
+<li><strong>Large.</strong> The tabs go away and one page, headed <code>PATTERN</code>, shows everything. The grid runs across the top, and its row labels are the part list: click a label to show that part's controls below the grid. Below the grid are the part's controls in two blocks, then <code>WAVEGUIDE</code>, <code>RETURN</code>, <code>KIT</code> and the step inspector. The left block is the layer's <code>SOURCE</code>, <code>PITCH</code>, <code>LEVEL</code> and pitch modulation, with the layer switch at the right of its title. The right block has its own switch: <code>ENV</code> shows the layer's <code>EG</code>, <code>ATTACK</code> and <code>DECAY</code> with the part's <code>VELOCITY</code>, and <code>PART</code> shows <code>PAN</code>, <code>DRIVE</code>, <code>FOLD</code>, <code>BIT</code>, <code>SEND</code>, <code>CHOKE</code> and <code>QUANTIZE</code>. When there is room, each block has its picture above it. The header shows the <code>KIT</code> row and the <code>PATTERN</code> row side by side, so you can load or save either one.</li>
+</ul>
+<p>The pictures show the sound your current settings make, and they change when you move a control.</p>
+<h2 id="the-sampler-editor">The sampler editor</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/looper.sampler-editor.webp" width="1262" height="384" loading="lazy" decoding="async" alt="The sampler editor in KEYS mode in a medium window, with a two-second sample loaded and LOOP at OFF."><figcaption>The sampler editor in KEYS mode in a medium window, with a two-second sample loaded and LOOP at OFF.</figcaption></figure>
+<p>Press <code>OPEN EDITOR</code> on a sampler track's <code>INST</code> tab to open the sampler editor in the dock. The dock's header names the track, such as <code>INST 3 · SAMPLER</code>. A sampler track plays one sample. Beside the name is the <code>KEYS | SLICE</code> switch, which chooses how the keys play it: <code>KEYS</code> plays the whole sample pitched across the keyboard, and <code>SLICE</code> cuts it into slices and plays one slice on each key from <code>ROOT</code>, at the sample's own pitch. This section describes <code>KEYS</code> mode. For <code>SLICE</code>, see <a href="#the-samplers-slice-mode">The sampler's SLICE mode</a>. The header also holds the preset row, <code>SAVE</code>, the <code>···</code> button, <code>PIN</code> and <code>CLOSE</code>, which work as they do for the synth.</p>
+<h3 id="loading-a-sample">Loading a sample</h3>
+<p>Press <code>LOAD FILE…</code> and choose an audio file. The sampler plays mono and stereo files. LOOM copies the file into the song's folder, so the song does not depend on the original file. A song you have not saved yet has a folder of its own, and when you save it, the sample goes with it. A new sample plays from the start of the file to its end with <code>LOOP</code> at <code>OFF</code>, and it keeps the track's <code>STRETCH</code> setting. The notice line says <code>Loaded</code> and the file's name, or says why the file was refused.</p>
+<p>Above the waveform, the editor shows the file's name, then its length in seconds, its sample rate and <code>MONO</code> or <code>STEREO</code>. Before you load a sample, it shows <code>No sample</code>.</p>
+<p><code>SAMPLE MEMORY</code> shows how much of the sampler's memory is in use, such as <code>12.4 MB of 48.0 MB</code>. Every sampler track shares this memory. If a file does not fit, LOOM refuses it, and the notice line gives how much the file needs and how much is free.</p>
+<h3 id="the-waveform">The waveform</h3>
+<p>The waveform shows the whole file. A green line marks <code>START</code> and a red line marks <code>END</code>, and the audio outside them is dimmed because it does not play. While <code>LOOP</code> is <code>SUST</code> or <code>SUST+REL</code>, the loop is shaded between two dashed lines and labelled with its <code>LOOP</code> setting. In <code>KEYS</code> mode you move the markers with the rows under <code>PLAYBACK</code>; the waveform shows them but does not respond to clicks.</p>
+<h3 id="playback">PLAYBACK</h3>
+<ul>
+<li><code>START</code> and <code>END</code> set the part of the sample that plays, in seconds. If you move <code>START</code> or <code>END</code> past a loop marker, that marker moves with it.</li>
+<li><code>LOOP</code> chooses what happens while you hold a key:<ul>
+<li><code>OFF</code> plays the sample once, from <code>START</code> to <code>END</code>. The note stops at <code>END</code> even if you still hold the key, and it stops earlier if its release ends first.</li>
+<li><code>SUST</code> repeats the section between <code>LOOP START</code> and <code>LOOP END</code> while you hold the key. When you release the key, the rest of the sample plays under the amp release. LOOM shortens the release if it needs to, so the note ends by <code>END</code>.</li>
+<li><code>SUST+REL</code> keeps repeating the loop after you release the key, until the amp release ends the note.</li>
+</ul>
+</li>
+<li><code>LOOP START</code> and <code>LOOP END</code> set the loop. When you move one of them, it moves to a nearby point where the waveform crosses zero, so the loop joins without a step. <code>LOOP START</code> must come before <code>LOOP END</code>, and both must sit between <code>START</code> and <code>END</code>. If you set <code>LOOP</code> to <code>SUST</code> or <code>SUST+REL</code> while the loop has no length, the loop becomes the whole section from <code>START</code> to <code>END</code>.</li>
+<li><code>XFADE</code> blends the end of the loop with the audio just before <code>LOOP START</code>, so each repeat joins without a click. At 0 the loop jumps from <code>LOOP END</code> to <code>LOOP START</code> with no blend. The blend cannot be longer than the loop or than the audio between <code>START</code> and <code>LOOP START</code>, so a loop that begins at <code>START</code> is not blended.</li>
+<li><code>STRETCH</code> set to <code>ON</code> keeps the sample the same length on every key within one octave of <code>ROOT</code>. LOOM renders those keys in the background. Keys further from <code>ROOT</code> play the nearest rendered key, repitched. While the render runs, the keys play the sample repitched. See <a href="#the-keys">The keys</a>.</li>
+<li><code>ROOT</code> is the key that plays the sample at the pitch it was recorded at. It is shown as a note name, and <code>C3</code> is MIDI note 60. Click <code>−</code> or <code>+</code> to move it a semitone. With <code>ROOT</code> focused, the arrow keys move it a semitone, and <code>Page Up</code> and <code>Page Down</code> move it an octave.</li>
+<li><code>TUNE</code> raises or lowers every key, in cents.</li>
+</ul>
+<p><code>START</code>, <code>END</code>, <code>LOOP</code> and <code>STRETCH</code> are dimmed until you load a sample. <code>LOOP START</code>, <code>LOOP END</code> and <code>XFADE</code> are dimmed while <code>LOOP</code> is <code>OFF</code>. If you use a dimmed control, the notice line says what to change.</p>
+<h3 id="amp-voice">AMP · VOICE</h3>
+<ul>
+<li><code>A</code>, <code>D</code>, <code>S</code> and <code>R</code> are the amp envelope's attack, decay, sustain and release.</li>
+<li><code>FADE OUT</code> works only while <code>LOOP</code> is <code>OFF</code>. It fades each note to silence over the time you set, so the note reaches silence at <code>END</code>. While <code>LOOP</code> is <code>SUST</code> or <code>SUST+REL</code>, <code>FADE OUT</code> is dimmed.</li>
+<li><code>VEL</code> sets how much the velocity of each note changes its volume. At <code>0%</code> every note plays at full volume, whatever its velocity. At <code>100%</code> the volume follows the velocity. The default is <code>50%</code>. It is the same setting as <code>VELOCITY</code> in SLICE mode.</li>
+<li><code>LEVEL</code> is the sampler's output level.</li>
+<li><code>BEND</code> sets how far the pitch bend wheel moves the pitch, in semitones.</li>
+<li><code>VOICE</code> chooses how many sounds the sampler plays at once. It is one setting for <code>KEYS</code> and <code>SLICE</code> mode.<ul>
+<li><code>POLY</code> lets every note and slice play on to its own end or release. A song or preset saved before <code>VOICE</code> existed opens in <code>POLY</code>.</li>
+<li><code>MONO</code> plays one sound at a time. A new note or slice stops the one that is sounding, with a short fade so that the cut does not click. Use <code>MONO</code> for vocal chops, where each slice ends as the next one starts. A note from the track's loop and a note you play stop each other.</li>
+</ul>
+</li>
+</ul>
+<p>A note that reaches <code>END</code> fades out over its last few milliseconds, so the sample does not end with a click. This happens at every <code>FADE OUT</code> setting, including 0.</p>
+<h3 id="the-keys">The keys</h3>
+<p>The strip of keys shows two octaves on each side of <code>ROOT</code>. <code>ROOT</code> has a green outline, and each C is named where there is room. The line above the keys reads <code>ROOT</code>, the root's note name, and the state of <code>STRETCH</code>:</p>
+<ul>
+<li><code>STRETCH OFF</code>: every key plays the sample repitched.</li>
+<li><code>STRETCH ±1 OCT</code>: the renders are ready, and the keys that hold the sample's length are tinted.</li>
+<li><code>RENDERING</code>: the render is running. Those keys are hatched, and until the render finishes they play the sample repitched. A line over the waveform says so.</li>
+<li><code>STRETCH NOT RENDERED</code>: the render did not finish, and a line over the waveform says why. For example, if the renders do not fit in the sample memory, the line says how much they need and how much is free. Shorten the part between <code>START</code> and <code>END</code>, or set <code>STRETCH</code> to <code>OFF</code>.</li>
+</ul>
+<p>While LOOM reads a new file, the line shows <code>READING THE FILE</code>.</p>
+<h3 id="the-loop-seam-and-start-zooms">The LOOP SEAM and START zooms</h3>
+<ul>
+<li><code>LOOP SEAM</code> shows 12 ms on each side of the point where the loop jumps from <code>LOOP END</code> back to <code>LOOP START</code>. The cyan trace is what the sampler plays across the jump, including <code>XFADE</code>. The grey trace is the sample around <code>LOOP START</code>. A dashed line marks the jump. A step in the cyan trace at the dashed line is a click you will hear. To remove it, move the loop markers or raise <code>XFADE</code>. While <code>LOOP</code> is <code>OFF</code>, the zoom reads <code>LOOP SEAM · LOOP OFF</code> and shows no trace.</li>
+<li><code>START</code> shows the first 40 ms from the <code>START</code> marker. The cyan trace is what a note plays, including the amp envelope. The grey trace is the sample. Use it to trim the silence before a sound without cutting into its attack.</li>
+<li><code>AMP ENV</code> draws the amp envelope and its length in seconds. It appears only in the largest layout.</li>
+</ul>
+<h3 id="the-sampler-editor-in-each-window-size">The sampler editor in each window size</h3>
+<ul>
+<li><strong>Small.</strong> The dock's header has two tabs, <code>SAMPLE</code> and <code>KEYS</code>. <code>SAMPLE</code> shows the file's name, <code>LOAD FILE…</code>, the sample memory, the waveform, the <code>LOOP SEAM</code> zoom and the controls. <code>KEYS</code> shows the strip of keys across the dock.</li>
+<li><strong>Medium.</strong> The tabs go away. The file's name, the waveform, the <code>LOOP SEAM</code> zoom and the keys stand beside the controls.</li>
+<li><strong>Large.</strong> The waveform runs across the top with the <code>LOOP SEAM</code> and <code>START</code> zooms beside it. The keys sit under the waveform, and the controls sit under the zooms, with <code>AMP ENV</code> over <code>AMP · VOICE</code> when there is room.</li>
+</ul>
+<p>Press <code>Tab</code> to move from <code>LOAD FILE…</code> down the <code>PLAYBACK</code> column, then down the <code>AMP · VOICE</code> column.</p>
+<h3 id="sampler-presets">Sampler presets</h3>
+<p>A sampler preset saves <code>ROOT</code>, <code>TUNE</code>, <code>XFADE</code>, the amp envelope, <code>FADE OUT</code>, <code>VEL</code>, <code>LEVEL</code>, <code>BEND</code> and <code>VOICE</code>, and SLICE mode's settings: the mode, the chops, <code>PLAY</code>, <code>SENS</code> and <code>SNAP</code>. It does not save the sample, its markers, <code>LOOP</code> or <code>STRETCH</code>. Those belong to the track, and the song saves them. Loading a preset changes how the track's sample plays but not which sample it plays, and applies the chops that the preset holds. On a track with no sample, a preset sets the controls and nothing sounds. The factory preset <code>Default</code> plays the sample as it was recorded while a key is held. Sampler presets are saved in <code>~/Music/LOOM/Presets/Sampler</code>.</p>
+<h2 id="the-samplers-slice-mode">The sampler's SLICE mode</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/looper.slice-editor.webp" width="1262" height="360" loading="lazy" decoding="async" alt="The sampler editor in SLICE mode in a medium window. The sample is cut into eight slices with INTO 8, and slice 3 is selected."><figcaption>The sampler editor in SLICE mode in a medium window. The sample is cut into eight slices with INTO 8, and slice 3 is selected.</figcaption></figure>
+<p>SLICE mode cuts one sample into slices and plays each slice on its own key. Use it to play the parts of a vocal phrase, a drum loop or any other recording from a keyboard or pads.</p>
+<p>To turn it on, choose <code>SLICE</code> in the <code>KEYS | SLICE</code> switch in the dock's header. <code>KEYS</code> returns to playing the whole sample across the keys. SLICE mode uses the same sample as <code>KEYS</code> mode, and <code>LOAD FILE…</code> and <code>SAMPLE MEMORY</code> work the same way.</p>
+<p>SLICE mode shows only its own controls. <code>START</code>, <code>END</code>, the sustain loop, <code>STRETCH</code>, <code>D</code>, <code>S</code>, <code>FADE OUT</code> and <code>BEND</code> are not shown. To move <code>END</code>, switch to <code>KEYS</code>.</p>
+<p>The song and a sampler preset keep the mode, the chops, <code>PLAY</code>, <code>SENS</code> and <code>SNAP</code>. A preset does not keep the sample: it stores each chop as a position within the sample. The selected slice is not saved.</p>
+<p>When you switch a track to <code>SLICE</code> and its sample has no chops, LOOM chops it by transients at the current <code>SENS</code>. If the sample already has chops, the switch keeps them. When you load a sample with <code>LOAD FILE…</code>, LOOM removes every chop from the sample it replaces, including the chops you placed by hand. In <code>SLICE</code> mode it then chops the new sample by transients at the current <code>SENS</code>.</p>
+<h3 id="how-slices-map-to-keys">How slices map to keys</h3>
+<p>Slice 1 starts at <code>START</code> and plays on <code>ROOT</code>. Each chop starts the next slice, and each slice plays on the key one semitone above the slice before it. A slice ends where the next one starts, and the last slice ends at <code>END</code>. Each key plays its slice at the pitch it was recorded at. Keys below <code>ROOT</code> and keys above the last slice play nothing.</p>
+<p>While the sample has no chops, the whole sample from <code>START</code> to <code>END</code> is slice 1 on <code>ROOT</code>, and it plays straight away. The waveform reads <code>CLICK THE WAVEFORM TO ADD A CHOP</code>.</p>
+<p>A slice is a note. Recording, record quantize, overdubs and loops work the same way as in <code>KEYS</code> mode.</p>
+<h3 id="the-slice-map">The slice map</h3>
+<p>The <code>SLICE MAP</code> shows one cell for each key from <code>ROOT</code> up. Its title shows the root key, such as <code>SLICE MAP · ROOT C3</code>, and the slices, such as <code>8 SLICES · C3–G3 · NO REPITCH</code>.</p>
+<ul>
+<li>A cell with a slice shows the slice's number in the slice's colour and the key's name below it.</li>
+<li>The <code>ROOT</code> cell's key name is green. When the cell is wide enough, it reads <code>ROOT</code> after the key name.</li>
+<li>A key with no slice shows only its name, dimmed.</li>
+<li>White-key and black-key cells have different backgrounds, so an octave reads like a keyboard.</li>
+<li>The cell of the slice you played last is brighter and glows, and its number is white. It stays lit until you play another slice.</li>
+<li>The selected slice's cell is outlined in its colour.</li>
+</ul>
+<p>Click a cell to select its slice. The map shows 16 cells, or 24 in the largest layout. When there are more slices than cells, the last cell reads <code>+</code> and the number of slices that do not fit, such as <code>+9</code>.</p>
+<p>Slices take cyan, violet, rose and mint in turn. The colour only keeps neighbouring slices apart. The number identifies the slice.</p>
+<h3 id="adding-moving-and-deleting-chops">Adding, moving and deleting chops</h3>
+<ul>
+<li><strong>Add a chop:</strong> click the waveform where you want the new slice to start. A chop must be between <code>START</code> and <code>END</code>. The new slice is selected.</li>
+<li><strong>Move a chop:</strong> drag its handle at the foot of the waveform. A chop cannot pass the chop before or after it, so dragging never renumbers the slices. Dragging slice 1's handle moves <code>START</code>.</li>
+<li><strong>Select a slice:</strong> click its number at the top of the waveform, its marker, or its cell in the map. Pressing a number or a cell also plays the slice; see <a href="#hearing-a-slice-or-a-drum-part-from-the-editor">Hearing a slice or a drum part from the editor</a>. When the waveform or the map has the keyboard, <code>←</code> and <code>→</code> select the slice before or after. With no slice selected, <code>→</code> selects slice 1 and <code>←</code> selects the last slice.</li>
+<li><strong>Nudge a chop:</strong> with a slice selected, press <code>⌥←</code> or <code>⌥→</code> to move its marker 25 ms. On slice 1 this moves <code>START</code>.</li>
+<li><strong>Delete a chop:</strong> select the slice and press <code>Backspace</code> or <code>Delete</code>, or press <code>DELETE CHOP</code>. The slice joins the slice before it, and every later slice moves down one key. Slice 1 starts at <code>START</code> and has no chop to delete.</li>
+</ul>
+<p>While a slice is selected, the other slices turn grey and a band in the selected slice's colour marks its length. The <code>CHOP</code> bar shows the slice's number, key, start and length.</p>
+<p>Markers placed by <code>BY TRANSIENTS</code> are dashed. Markers you placed or dragged, and markers placed by <code>INTO</code>, are solid. If you move <code>START</code> or <code>END</code> past a chop, that chop turns grey and starts no slice until <code>START</code> or <code>END</code> moves back.</p>
+<p>A sample has at most 64 slices.</p>
+<h3 id="the-chop-bar">The CHOP bar</h3>
+<ul>
+<li><strong><code>+ CHOP AT PLAYHEAD</code></strong> adds a chop where the audition playhead is, while a slice you pressed is playing. Otherwise it cuts the selected slice in two at its middle, or the last slice when none is selected.</li>
+<li><strong><code>DELETE CHOP</code></strong> deletes the chop that starts the selected slice.</li>
+<li><strong><code>BY TRANSIENTS</code></strong> places a chop wherever the sample's level jumps. See <a href="#chopping-by-transients">Chopping by transients</a>.</li>
+<li><strong><code>SENS</code></strong> sets how far the level has to rise for <code>BY TRANSIENTS</code> to place a chop, from 0% to 100%. A higher <code>SENS</code> finds more transients. At the default of <code>50%</code>, LOOM finds syllables that start after a breath or a pause. To find syllables that are sung together without a break, raise <code>SENS</code> towards <code>100%</code>.</li>
+<li><strong><code>INTO</code></strong> opens a list of slice counts, from <code>INTO 2</code> to <code>INTO 32</code>. Choosing one replaces every chop, including the ones you placed, with that many equal slices from <code>START</code> to <code>END</code>. The button shows the last count you chose.</li>
+<li><strong><code>SNAP</code></strong> moves each new chop to the nearest point, within 10 ms, where the waveform crosses zero, so the slice starts without a click. This applies to chops you add, drag or nudge and to chops that <code>BY TRANSIENTS</code> and <code>INTO</code> place. <code>SNAP</code> is on by default.</li>
+</ul>
+<p>The right end of the bar shows the selected slice's details, such as <code>3 · D3 · 0.612 s → 0.300 s</code>. With no slice selected, it shows the number of slices and their keys, such as <code>8 SLICES · C3–G3</code>, or <code>1 SLICE · THE WHOLE SAMPLE ON C3</code> before you chop. It reads <code>NO SAMPLE</code> when no sample is loaded.</p>
+<h3 id="chopping-by-transients">Chopping by transients</h3>
+<p>Press <code>BY TRANSIENTS</code> to place a chop at each point where the level jumps. The bar reads <code>FINDING TRANSIENTS…</code> while LOOM reads the sample, and <code>BY TRANSIENTS</code> cannot be pressed until the reading finishes.</p>
+<p>While <code>BY TRANSIENTS</code> is lit, moving <code>SENS</code> or turning <code>SNAP</code> on or off chops the sample again at once, so you can sweep <code>SENS</code> and hear the result. Chopping again replaces only the dashed markers. Chops you added or dragged stay where they are, and a dashed marker you drag becomes solid.</p>
+<p>If <code>BY TRANSIENTS</code> places no chops, the notice line says so, for example <code>No transients found at SENS 50%. Raise SENS, or use INTO.</code></p>
+<p><code>INTO</code> turns <code>BY TRANSIENTS</code> off. A song or preset saved with dashed markers opens with <code>BY TRANSIENTS</code> lit.</p>
+<h3 id="the-marker-zoom">The marker zoom</h3>
+<p>In the medium and large layouts, the <code>MARKER ZOOM</code> shows 20 ms either side of a marker, such as <code>MARKER 3 · ±20 MS</code>. It shows the selected slice's marker. With no slice selected, it shows the marker you last added or dragged, or <code>START</code>. Use it to place a chop on the start of a sound.</p>
+<h3 id="all-slices">ALL SLICES</h3>
+<p>These controls apply to every slice:</p>
+<ul>
+<li><strong><code>PLAY</code>:</strong> <code>ONE-SHOT</code> plays a slice to its end even after you release the key. <code>GATE</code> starts the release when you release the key.</li>
+<li><strong><code>ROOT</code>:</strong> the key slice 1 plays on. It works as it does in <code>KEYS</code> mode.</li>
+<li><strong><code>ATTACK</code>:</strong> the fade-in at the start of each slice.</li>
+<li><strong><code>VOICE</code>:</strong> <code>POLY</code> or <code>MONO</code>, the same setting as in <code>KEYS</code> mode.</li>
+<li><strong><code>RELEASE</code>:</strong> the fade-out after you release the key when <code>PLAY</code> is <code>GATE</code>.</li>
+<li><strong><code>TUNE</code>:</strong> the pitch of every slice, in cents.</li>
+<li><strong><code>LEVEL</code>:</strong> the sampler's output level.</li>
+<li><strong><code>VELOCITY</code>:</strong> how much the velocity of each note changes its volume, the same setting as <code>VEL</code> in <code>KEYS</code> mode.</li>
+</ul>
+<h3 id="slice-mode-in-each-window-size">SLICE mode in each window size</h3>
+<ul>
+<li><strong>Small.</strong> The slice map sits across the top, and the <code>CHOP</code> and <code>SOUND</code> tabs in the dock's header choose what shows below it. <code>CHOP</code> shows the waveform and the <code>CHOP</code> bar. <code>SOUND</code> shows <code>ALL SLICES</code>.</li>
+<li><strong>Medium.</strong> Everything is on one page, with the <code>MARKER ZOOM</code> beside the waveform.</li>
+<li><strong>Large.</strong> The map shows 24 cells, and a <code>SLICE</code> block beside the zoom shows the selected slice's <code>SLICE</code>, <code>KEY</code>, <code>START</code> and <code>LENGTH</code>. You read this block and cannot edit it.</li>
+</ul>
+<h2 id="hearing-a-slice-or-a-drum-part-from-the-editor">Hearing a slice or a drum part from the editor</h2>
+<p>You can play a sound from the editor with the mouse, without a MIDI keyboard. The note plays on the track the dock is showing and is never recorded into the track's loop, even while the track records or overdubs.</p>
+<p><strong>The sampler in SLICE mode.</strong> Press a slice's number at the top of the waveform, or its cell in the <code>SLICE MAP</code>, to select the slice and play it. The slice plays in its <code>PLAY</code> mode: under <code>ONE-SHOT</code> it plays to its end, and under <code>GATE</code> it plays until you release the mouse button. Pressing the rest of the waveform still adds a chop where you click.</p>
+<p>While the slice plays, a white line with a glow moves across the waveform: the audition playhead. The line goes when the slice stops. Press <code>+ CHOP AT PLAYHEAD</code> while the slice plays to add a chop where the playhead is, so you can cut at the moment you hear the point you want. With SNAP on, the chop moves to the nearest zero crossing. While no slice you pressed is playing, <code>+ CHOP AT PLAYHEAD</code> cuts the selected slice in two at its middle, or the last slice when none is selected.</p>
+<p><strong>The drum editor.</strong> Press a part in the part list to hear it. The part list is also the pattern grid's row labels, so this works on the <code>PATTERN</code> tab too. The press also picks the part, as a click always does. Picking a part with the keyboard plays nothing.</p>
+<p>While an audio track that records this instrument is recording or overdubbing, the editor does not play the note, and the notice says which track is recording. A note played just before the recording starts can still ring into it.</p>
+<h2 id="playing-instrument-tracks-from-the-command-map">Playing instrument tracks from the command map</h2>
+<p>Each instrument track has its own octave in LOOM's MIDI command map, from note 72, with the same controls at the same offsets as an audio track: the ring button, overdub, undo, redo, stop, clear and play. Clear is held for one second. <a href="/loom/manual/midi-mapping/">MIDI mapping</a> has the table.</p>
+<p>These notes act only in the <code>1.x layout</code>. The <code>1.0 layout</code> has no instrument octaves.</p>
+<p>An instrument octave does nothing while its track's input is <code>NONE</code> and the track holds no loop.</p>
+<p>The command channel and the instrument inputs are separate. LOOM's commands listen only on the command channel, and no instrument track listens on it. Put the pads that drive LOOM on the command channel and the keys you play on another channel.</p>
+{% endraw %}

@@ -1,0 +1,28 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.name }}
+
+> {{ site.name }} is an independent developer of local-first apps for Mac, iPhone and iPad: speech, sound and live performance tools that run on your own device.
+
+## LOOM, a live looper for Mac
+
+LOOM is live looping software for macOS (Apple Silicon, macOS 13.3 or later). It records and overdubs audio on five loop tracks like a hardware loop pedal, and loops MIDI on four instrument tracks that play its own synth, drum machine and sampler. Its arrange view lets you draw REC, DUB and PLAY regions on a timeline, so the song presses the looper's buttons while you play over it. It has a mixer with eight insert slots per strip and built-in effects, records a performance to separate synced WAV files, is controlled from MIDI notes, and makes no network calls. Latest version: {{ releases.latest.version }}. Price: {% include "components/loom-price.njk" %}. 14-day free trial with every feature unlocked.
+
+- [LOOM](https://moonquakemedia.com/loom/): features, screenshots, demo video, download and purchase
+- [LOOM user manual](https://moonquakemedia.com/loom/manual/): the complete manual, one page per chapter
+{%- for c in loomManual.chapters %}
+- [{{ c.title }}]({{ site.url }}{{ c.url }}): {{ (loomManualSeo[c.slug].description if loomManualSeo[c.slug] else c.description) | safe }}
+{%- endfor %}
+- [LOOM versions](https://moonquakemedia.com/loom/version/): the current version and every previous build
+- [LOOM privacy policy](https://moonquakemedia.com/legal/loom-privacy/)
+
+## Other apps
+{% for app in apps %}{% if app.slug != "loom" %}
+- [{{ app.name }}]({{ site.url }}/apps/{{ app.slug }}/): {{ app.tagline | safe }}{% endif %}{% endfor %}
+
+## Blog
+
+- [Blog](https://moonquakemedia.com/blog/): guides for the apps above
+- Contact: {{ site.email }}

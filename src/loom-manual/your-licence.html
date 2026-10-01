@@ -1,0 +1,74 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/your-licence/
+manualSlug: your-licence
+---
+{% raw %}
+<p>LOOM checks your licence once, when it starts, and not again while it runs. If LOOM opened, it keeps working until you quit it. A trial that runs out tonight, a damaged licence file or a wrong date on your Mac affects only the next launch, and cannot stop you mid-set.</p>
+<p>There is no account and no activation server, and LOOM makes no network call to check a licence. See <a href="/loom/manual/privacy/">Privacy</a>.</p>
+<h2 id="the-trial">The trial</h2>
+<p>The first time you open LOOM it starts a <strong>14-day trial</strong>. Every feature is available, and nothing in a session is watermarked or limited.</p>
+<p>Each launch during the trial shows a card with the days remaining and a <code>Buy LOOM</code> button. Close the card to reach the looper.</p>
+<p>When the trial ends, LOOM does not open until you enter a licence. See <a href="#if-loom-does-not-open">If LOOM does not open</a>.</p>
+<h2 id="entering-your-licence">Entering your licence</h2>
+<p>Your licence is a block of text that begins with</p>
+<p><code>-----BEGIN LOOM LICENCE-----</code></p>
+<p>and ends with <code>-----END LOOM LICENCE-----</code>. It arrives as a file attached to an email or as text in the body of the email. You can enter it in any of three ways, and each has the same effect:</p>
+<ol>
+<li>Choose <strong>LOOM ▸ Open Licence File…</strong> and pick the file.</li>
+<li>Drag the file onto the LOOM window. Any part of the window accepts it.</li>
+<li>Choose <strong>LOOM ▸ About LOOM</strong>, paste the text into the box, and click <code>Use Pasted Licence</code>.</li>
+</ol>
+<p>If LOOM accepts the licence, it saves it and asks you to quit and reopen LOOM. The licence takes effect at the next launch, because that is when LOOM checks it.</p>
+<p>If LOOM rejects it, nothing on your Mac changes, and LOOM tells you why: the file is not a LOOM licence, its signature does not match, it is for another product, it was issued for a newer version of LOOM, or it covers an earlier version than the one you are running. A rejected licence never replaces a licence already on your Mac.</p>
+<h2 id="checking-your-licence-state">Checking your licence state</h2>
+<p><strong>LOOM ▸ About LOOM</strong> shows the version you are running, your licence state, a sentence explaining that state, and the support address. The same card has the three ways to enter a licence.</p>
+<p>The state is one of:</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Licensed</code></td>
+<td>Your licence is present and verified. LOOM opens without comment.</td>
+</tr>
+<tr>
+<td><code>Trial</code></td>
+<td>You are inside the 14 days.</td>
+</tr>
+<tr>
+<td><code>Grace</code></td>
+<td>LOOM could not check your licence and is running anyway, for up to 7 days. See below.</td>
+</tr>
+<tr>
+<td><code>Trial ended</code></td>
+<td>The trial is over. LOOM does not open until you enter a licence.</td>
+</tr>
+<tr>
+<td><code>Grace ended</code></td>
+<td>The grace period is over. LOOM does not open until you enter a licence.</td>
+</tr>
+<tr>
+<td><code>Wrong version</code></td>
+<td>Your licence covers an earlier version of LOOM than this one. LOOM does not open until you use the version it covers, or buy an upgrade.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="grace">Grace</h2>
+<p>Grace has its own clock, shorter than the trial's. The trial is 14 days from the first time you open LOOM. Grace is <strong>7 days</strong> from the first launch at which LOOM cannot check a licence you already have.</p>
+<p>If your licence file is damaged, or LOOM cannot read it, LOOM keeps working and gives you those 7 days to fix it.</p>
+<p>During the 7 days, each launch tells you what happened, how many days remain, and what to do. If you fix the problem within the 7 days, the count is cleared. If the 7 days pass, LOOM does not open, but it still tells you why.</p>
+<p>Some problems never start the count, because you cannot act on them: a Mac whose date cannot be read, a licence issued for something this version of LOOM does not use, or a fault in LOOM itself. LOOM tells you what happened and keeps working, with no deadline.</p>
+<h2 id="if-loom-does-not-open">If LOOM does not open</h2>
+<p>LOOM shows a window instead of the looper. The window explains what happened and contains <code>Open Licence File…</code>, a drop target, the paste box, <code>Buy LOOM</code>, the support address and <code>Quit LOOM</code>. <strong>About LOOM</strong>, <strong>Latest Version on the Web</strong> and <strong>Open Licence File…</strong> are still in the menu bar.</p>
+<p>Your recordings are not affected. Songs and takes are files on your own disk, and LOOM does not touch them. See <a href="/loom/manual/your-recordings/">Where your recordings live</a>.</p>
+<h2 id="moving-to-another-mac">Moving to another Mac</h2>
+<p>You have nothing to deauthorise. LOOM has no activation count, seat or server. Copy the licence file to the new Mac and open it in LOOM, or let Migration Assistant carry it across.</p>
+<h2 id="support">Support</h2>
+<p><code>support@moonquakemedia.com</code></p>
+<p>The address is also shown in <strong>About LOOM</strong>, so you can read it without a network connection.</p>
+{% endraw %}

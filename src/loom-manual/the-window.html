@@ -1,0 +1,207 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/the-window/
+manualSlug: the-window
+---
+{% raw %}
+<p>This chapter and the ones after it describe the LOOM window control by control, in the order you meet things on screen: this page, then <a href="/loom/manual/top-bar/">the top bar</a>, <a href="/loom/manual/track-strips/">the globals row and the track strips</a>, <a href="/loom/manual/the-arrange-view/">the arrange view</a>, <a href="/loom/manual/the-mixer/">the mixer</a>, <a href="/loom/manual/side-panel/">the side panel</a>, <a href="/loom/manual/bottom-rails/">the bottom rails</a> and <a href="/loom/manual/dialogs/">the dialogs</a>.</p>
+<p>Keys are not repeated here. Every key LOOM answers is listed in <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>.</p>
+<h2 id="the-shape-of-the-window">The shape of the window</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/window.looper.webp" width="1600" height="940" loading="lazy" decoding="async" alt="The window in the looper view, with no audio device open."><figcaption>The window in the looper view, with no audio device open.</figcaption></figure>
+<p>The window is called <strong>LOOM</strong>. It opens at 1600 × 940, and you can drag it between 1180 × 760 and 3600 × 2400. These sizes are the area under the title bar.</p>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>What it marks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The top bar</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The globals row, in the looper view</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A track strip</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The side panel</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The notice row</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The status rail</td>
+</tr>
+</tbody>
+</table>
+<p>From top to bottom, the window has four bands:</p>
+<table>
+<thead>
+<tr>
+<th>Band</th>
+<th>Height</th>
+<th>What is in it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top bar</td>
+<td>58 px</td>
+<td>SONG, the <code>MOVE</code> set (<code>TO TOP</code>, <code>ROLL</code>, <code>STOP</code>), TEMPO, CLICK, the beat LEDs, BAR.BEAT.TICK, FOCUS, the panel toggle, and the view switcher at the right end</td>
+</tr>
+<tr>
+<td>Body</td>
+<td>the rest</td>
+<td>One of the three views: the <strong>looper</strong>, the <strong>arrange</strong> view, or the <strong>mixer</strong></td>
+</tr>
+<tr>
+<td>Notice row</td>
+<td>40 px</td>
+<td>NOTICE across the width, and <code>LOG</code> at the right-hand end</td>
+</tr>
+<tr>
+<td>Status rail</td>
+<td>30 px</td>
+<td>DEVICE, RATE, BLOCK, ROUND TRIP, CPU, DROPOUTS, MIDI</td>
+</tr>
+</tbody>
+</table>
+<p>The top bar and both bottom bands are on screen in every view. Only the body changes, so switching views never moves the transport, the tempo, or the line that tells you what just went wrong.</p>
+<p>In the looper view the body is a globals row (2) across the top, the track strips under it (3 marks the first), and a 310 px side panel (4) down the right edge. When the side panel opens, the strips get narrower to make room for it, so the panel never covers them.</p>
+<p>The looper draws a strip for every audio track and every instrument track. In the <code>ROWS</code> layout, the default, the audio tracks fill the top row and the instrument tracks the row under it. See <a href="/loom/manual/instrument-tracks/#where-the-instrument-tracks-are">Instrument tracks</a>.</p>
+<p>At the window's minimum width the top bar runs out of room: <code>BAR.BEAT.TICK</code> truncates and <code>FOCUS</code> gets no width at all. The view switcher keeps its full width at every size.</p>
+<h2 id="the-type">The type</h2>
+<p>LOOM draws its own text in two typefaces, and the typeface tells you what kind of text you are looking at. The rule is whether the text is measured or read. A value that changes, and the label naming its control, are set in the monospaced face, so a column of them lines up and nothing shifts sideways when a number gains a digit.</p>
+<table>
+<thead>
+<tr>
+<th>Typeface</th>
+<th>What it carries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Archivo</td>
+<td>Anything you read as language: song names, device names, the notice line and the text of dialogs</td>
+</tr>
+<tr>
+<td>JetBrains Mono</td>
+<td>Anything the machine owns or names: numbers, decibels and times, the small uppercase labels that name a control — the words on buttons, on tabs, and above each setting — and a setting's uppercase value, such as <code>NEXT BAR</code></td>
+</tr>
+</tbody>
+</table>
+<figure class="shot shot-half"><img src="/assets/loom/manual/song.typefaces.webp" width="244" height="58" loading="lazy" decoding="async" alt="The SONG readout in the top bar."><figcaption>The SONG readout in the top bar.</figcaption></figure>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>What it marks</th>
+<th>Typeface</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The label, <code>SONG</code></td>
+<td>JetBrains Mono</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The song's name</td>
+<td>Archivo</td>
+</tr>
+</tbody>
+</table>
+<p>Both typefaces ship inside the application. LOOM does not use the fonts installed on your Mac, so the window looks the same on every machine and on every version of macOS. It does not fetch a font either. See <a href="/loom/manual/privacy/">Privacy</a>.</p>
+<p>This manual is set in the same two typefaces: its body text is Archivo, and <code>text like this</code> is JetBrains Mono.</p>
+<h2 id="words-this-manual-uses-precisely">Words this manual uses precisely</h2>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Press</strong></td>
+<td>You press a key, a button, or the ring.</td>
+</tr>
+<tr>
+<td><strong>Turn</strong></td>
+<td>You change a chip — the dropdown-shaped settings in the side panel.</td>
+</tr>
+<tr>
+<td><strong>Select</strong></td>
+<td>You choose a value from a list or a segmented row.</td>
+</tr>
+<tr>
+<td><strong>Strip</strong></td>
+<td>One vertical track column in the looper view.</td>
+</tr>
+<tr>
+<td><strong>Focused track</strong></td>
+<td>The track that the focused-track verbs and the <code>i</code> panel act on. Exactly one track is focused at a time.</td>
+</tr>
+<tr>
+<td><strong>The notice line</strong></td>
+<td>The one-line readout at the bottom left, where every refusal appears.</td>
+</tr>
+<tr>
+<td><strong>Dead face</strong></td>
+<td>A control that cannot act right now, drawn with a dashed border instead of a solid one. Most dead controls also change their word to say why. The looper view's five verbs — <code>ALL START</code>, <code>ALL STOP</code>, <code>ALL CLEAR</code>, and each strip's <code>■ STOP</code> and <code>CLEAR</code> — keep their word instead and put the reason on the notice line when you press them.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="two-rules-worth-knowing-before-the-rest">Two rules worth knowing before the rest</h2>
+<p>A control claims only the pixels it acts on, not the whole rectangle it was laid out in. On a track strip, a press on any pixel that is not a live control focuses that track. The ring claims a disc. The fader claims its travel well, not the empty column around it. A control wearing a dead face usually claims nothing at all, so a press aimed at it selects the track underneath.</p>
+<p>The looper view's five verbs are the exception. They keep their word when they cannot act, so you read and press them as controls. So they claim their pixels, and a press on one puts the reason on the notice line instead of selecting the track under it.</p>
+<p>Colour alone never shows whether a control can act. Every dead control changes the shape of its border, which you can see without colour, and most also change their word. A screen reader gets the change in the description. A control's name stays the same whether or not it can act.</p>
+<h2 id="the-menu-bar">The menu bar</h2>
+<p>LOOM draws three menus: <strong>File</strong>, <strong>View</strong>, then <strong>Transport</strong>. <code>File</code> holds the four song commands with a separator between <em>Open Song…</em> and <em>Save</em>, then <em>Record Setup…</em> between two more separators, then the help section: <em>User Guide</em> and <em>Report a Problem</em>. <code>View</code> holds the three views as a radio group. The view you are in has a check mark, so the menu shows the current view as well as changing it. Below a separator is <em>Show Logs</em>, which is not a view and is not ticked. <code>Transport</code> holds <em>Stop Transport</em> and <em>Stop Focused Track</em>.</p>
+<p><em>User Guide</em> (<code>⌘/</code>) opens this manual. It is a PDF that ships inside LOOM, so it opens in Preview or whichever app your Mac uses for PDFs. LOOM makes no network request to fetch it. The second separator marks it as a help item rather than a fifth song command.</p>
+<p>The two <code>Transport</code> commands exist because the top bar's <code>STOP</code> and a strip's <code>■ STOP</code> have no key of their own on screen. Without the menu, you reach them only by pressing <code>Tab</code> until you land on them, and that tells a screen reader nothing about which key to use. A menu item names its shortcut aloud.</p>
+<p>The ellipsis on <em>Open Song…</em> and <em>Save As…</em> marks the two items that ask you something before they act. <em>User Guide</em> has none, because it opens a document without asking anything.</p>
+<p>While a dialog is open, every menu item is grey and its key does nothing. The menu greys as soon as the dialog appears, and each command refuses whether or not its menu item is drawn grey.</p>
+<p><code>⌘Q</code> quits. It is macOS's own item in the application menu, not one of LOOM's. LOOM saves your song on the way out.</p>
+<p>The <strong>LOOM</strong> menu holds three items of LOOM's own, above the ones macOS puts there: <em>About LOOM</em>, <em>Latest Version on the Web</em>, and <em>Open Licence File…</em>. None of them has a keyboard shortcut, following the macOS convention for these items.</p>
+<p><em>Latest Version on the Web</em> opens a page in your web browser that states the current version of LOOM. LOOM does not check for updates itself and does not know whether a newer version exists. Compare the version on the page with the one in <em>About LOOM</em>. See <a href="/loom/manual/privacy/">Privacy</a>.</p>
+<p>The keys are in <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>.</p>
+<h2 id="playing-the-arrangement">Playing the arrangement</h2>
+<p>The arrange view has its own transport, the <strong>PERFORM buttons</strong>: <code>PERFORM FROM TOP</code>, <code>PERFORM FROM HERE</code> and <code>PERFORMANCE STOP</code>. It is the only place in LOOM where the arrangement plays itself and writes to your tracks. <code>PERFORMANCE STOP</code> releases the arrangement and leaves the song playing, so you can step out of a written performance and improvise. The PERFORM buttons sit on the arrange view's own header row, not in the top bar, because the top bar's <code>MOVE</code> set (<code>TO TOP</code>, <code>ROLL</code>, <code>STOP</code>) is the same in every view and never records. For the regions you draw, the keys that edit them, and every reason either perform door can refuse to start, see <a href="/loom/manual/the-arrange-view/">the arrange view</a>.</p>
+<h2 id="what-accessible-means-in-loom">What "accessible" means in LOOM</h2>
+<p>LOOM ships a self-test that walks the live window and fails unless the window meets a fixed standard. In this manual, the word means that standard:</p>
+<p><strong>Named.</strong> Every component carrying an accessibility handler has a non-empty name. Layout holders that a screen reader reads straight past are skipped rather than named.</p>
+<p><strong>Keyboard-reachable.</strong> Every control in LOOM that issues a command is checked by name and checked to be reachable from the keyboard, so there is no control you can operate only with a mouse.</p>
+<p><strong>Visible.</strong> The control holding the keyboard wears a focus ring: a cyan outline, 3 px thick, drawn 2 px outside the control's edge. The colour, the thickness and the 2 px gap are the same on a button, a chip, a fader, a track's ring and every control inside a dialog.</p>
+<p>The ring takes the shape of what it surrounds. A track's loop ring is round, so its focus ring is a circle; everything else is a rounded rectangle. Nothing is drawn outside an unfocused control's edge, so the keyboard's position is marked by a ring appearing, which works the same for anyone who cannot see the cyan.</p>
+<p><strong>Ordered.</strong> Focus order is set explicitly and follows reading order:</p>
+<ol>
+<li>the view switcher, then the panel toggle beside it;</li>
+<li>the globals row — ALL START, ALL STOP, ALL CLEAR, FADERS;</li>
+<li>the body of the view — in the looper each strip in turn, and within a strip: the track number, <code>i</code>, the ring, the fader, MUTE, SOLO, STOP, UNDO, REDO, CLEAR; in the mixer <code>BANK</code> and <code>SHOW</code>, then each strip in turn, left to right; in the arrange view TOOL, SNAP and VERB, then <code>PERFORM FROM TOP</code>, then <code>PERFORM FROM HERE</code>, the playhead, the song end marker, the track rows, the lanes, and the scroll strip and zoom controls under them;</li>
+<li><code>TO TOP</code>, <code>ROLL</code>, <code>STOP</code>, TEMPO, CLICK;</li>
+<li>the three panel tabs, then the open panel's controls in the order they are drawn;</li>
+<li><code>LOG</code>, at the right-hand end of the notice line — see <a href="/loom/manual/bottom-rails/#log">The bottom rails</a>;</li>
+<li><code>DROPOUTS</code>, while it is amber — see <a href="/loom/manual/bottom-rails/#dropouts-turns-amber-after-a-dropout">The bottom rails</a>;</li>
+<li>the TRACK panel's nine settings, while it is open.</li>
+</ol>
+<p>While a performance is running, <code>TO TOP</code> and <code>ROLL</code> are skipped entirely instead of being drawn dead. <code>Tab</code> steps from <code>PERFORM FROM HERE</code> straight to <code>STOP</code>, as it does around any other control that cannot act right now. <code>STOP</code> is never skipped, because it ends the performance. The two perform buttons are skipped for the same reason while one is running.</p>
+<p>When the control holding the keyboard goes dead, the keyboard is never dropped. If you press <code>PERFORM FROM HERE</code>, it retires under your finger and the keyboard moves to <code>STOP</code>, the only control left on either transport row that you can press. The same happens anywhere your own press retires a control. See <a href="/loom/manual/track-strips/#the-keyboard-and-a-control-that-retires">the track strips</a>.</p>
+<p>When the window opens, the keyboard is on the first track's ring, so you start on the control you opened LOOM to press. The first <code>Tab</code> moves down that strip rather than to the top of the list.</p>
+<p>A control that cannot act is left out of the order, which shortens the walk. On an empty session <code>ALL START</code>, <code>ALL STOP</code> and <code>ALL CLEAR</code> are unavailable, and <code>Tab</code> passes over all three.</p>
+<p>The mixer follows the same list, with its bank chooser and rack in place of item 3's strips. <code>Tab</code> reaches them in the body, before the transport and the side panel, and moves through the rack from left to right. A loop-track strip is five stops: its pan, its fader, <code>MUTE</code>, <code>SOLO</code> and its slot grid. An input strip has the same stops without <code>SOLO</code>. <a href="/loom/manual/the-mixer/">The mixer</a> gives the full order.</p>
+<p>The arrange view follows the same list, with the arrangement in place of item 3's strips. <code>Tab</code> reaches TOOL, SNAP and VERB, then <code>PERFORM FROM TOP</code>, then <code>PERFORM FROM HERE</code>, then the playhead and the song end marker, and only then the transport, the panel tabs and the side panel. That last stop is the same whichever panel mode you left open. <code>Shift-Return</code> and <code>Shift-Space</code> reach <code>PERFORM FROM TOP</code> and <code>PERFORM FROM HERE</code> from anywhere in this view without <code>Tab</code>. See <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>. For the full order, see <a href="/loom/manual/the-arrange-view/">the arrange view</a>.</p>
+<p>Disabled and hidden controls are outside the focus order, so when you switch views, the other view's controls stop taking the keyboard and leave no tab stops that reach nothing.</p>
+<p><strong>Announcements.</strong> LOOM speaks the notice line and the focused track's phase when it changes. One switch controls both: <code>ANNOUNCE</code> in the side panel's <code>ACCESSIBILITY</code> section. Turning announcements off silences only the speech. Every name, role and description stays as it was, and the notice line still shows its text. LOOM announces it when you turn the switch on, and says nothing when you turn it off.</p>
+<p>Two more things speak, and the same switch controls both. Flipping the faders between <code>MAIN</code> and <code>CUE</code> announces at high priority, and every dialog announces itself when it opens.</p>
+{% endraw %}

@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+permalink: /404.html
+eleventyExcludeFromCollections: true
+title: Page not found
+robots: noindex
+appStoreId: false
+---
+{#- GitHub Pages serves /404.html for any path that does not exist. -#}
+<main id="main-content" class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+  <p class="text-sm font-semibold tracking-widest text-gray-400 uppercase mb-4">404</p>
+  <h1 class="text-3xl font-bold text-gray-950 mb-4">That page isn’t here.</h1>
+  <p class="text-gray-500 mb-8 max-w-md">The address may have changed, or it may never have existed. These are the places people usually mean:</p>
+  <nav aria-label="Popular pages" class="flex flex-wrap gap-3 justify-center">
+    <a href="/" class="px-4 py-2 rounded-lg border border-gray-200 text-gray-950 hover:no-underline hover:border-gray-400">Moonquake Media</a>
+    <a href="/loom/" class="px-4 py-2 rounded-lg border border-gray-200 text-gray-950 hover:no-underline hover:border-gray-400">LOOM</a>
+    <a href="/loom/manual/" class="px-4 py-2 rounded-lg border border-gray-200 text-gray-950 hover:no-underline hover:border-gray-400">LOOM manual</a>
+    <a href="/blog/" class="px-4 py-2 rounded-lg border border-gray-200 text-gray-950 hover:no-underline hover:border-gray-400">Blog</a>
+  </nav>
+</main>

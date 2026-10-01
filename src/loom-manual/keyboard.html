@@ -1,0 +1,771 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/keyboard/
+manualSlug: keyboard
+---
+{% raw %}
+<p>The keys on this page are checked against the keys the shipping window responds to, in both directions, so this list is complete.</p>
+<p>LOOM's shortcuts use a bare key or <code>Shift</code> unless the table says otherwise. An arrow with <code>⌘</code>, <code>⌥</code> or <code>⌃</code> held is a system navigation gesture, so the track strips, the faders, the tempo field, the setting rows, the regions and the lanes ignore it and pass it on to the system. The two bar-ruler controls are the exception: on the playhead and on the song end marker, a <code>⌘</code>, <code>⌥</code> or <code>⌃</code> arrow does what a bare arrow does.</p>
+<h2 id="the-menu-bar">The menu bar</h2>
+<p>LOOM draws three menus: <strong>File</strong>, <strong>View</strong> and <strong>Transport</strong>, in that order.</p>
+<!-- loom-shortcut-source: menu -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Menu item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>⌘N</code></td>
+<td>New Song</td>
+</tr>
+<tr>
+<td><code>⌘O</code></td>
+<td>Open Song…</td>
+</tr>
+<tr>
+<td><code>⌘S</code></td>
+<td>Save</td>
+</tr>
+<tr>
+<td><code>⇧⌘S</code></td>
+<td>Save As…</td>
+</tr>
+<tr>
+<td><code>⌥⌘R</code></td>
+<td>Record Setup…</td>
+</tr>
+<tr>
+<td><code>⌘/</code></td>
+<td>User Guide</td>
+</tr>
+<tr>
+<td><code>⇧⌘R</code></td>
+<td>Report a Problem</td>
+</tr>
+<tr>
+<td><code>⌘1</code></td>
+<td>Looper</td>
+</tr>
+<tr>
+<td><code>⌘2</code></td>
+<td>Arrange</td>
+</tr>
+<tr>
+<td><code>⌘3</code></td>
+<td>Mixer</td>
+</tr>
+<tr>
+<td><code>⇧⌘L</code></td>
+<td>Show Logs</td>
+</tr>
+<tr>
+<td><code>⌘.</code></td>
+<td>Stop Transport</td>
+</tr>
+<tr>
+<td><code>⇧⌘.</code></td>
+<td>Stop Focused Track</td>
+</tr>
+</tbody>
+</table>
+<p><code>⌘Q</code> quits. It is the standard macOS item in the application menu rather than one of LOOM's own. LOOM saves your song when it quits.</p>
+<p>The <strong>File</strong> menu holds the four song items, <em>Record Setup…</em>, <em>User Guide</em> and <em>Report a Problem</em>, divided by three separators: one between <em>Open Song…</em> and <em>Save</em>, one between <em>Save As…</em> and <em>Record Setup…</em>, and one between <em>Record Setup…</em> and <em>User Guide</em>. <em>Record Setup…</em> has a section of its own because it configures your rig rather than the song. The last separator starts the help section, which holds this manual and the problem report.</p>
+<p><code>⌥⌘R</code> opens the Record setup sheet, where you choose what <code>RECORD</code> on the transport writes. See <a href="/loom/manual/dialogs/#record-setup">Record setup</a>.</p>
+<p><code>⌘/</code> opens this manual. The manual is a PDF that ships inside LOOM, so it opens in your default PDF application.</p>
+<p>macOS reserves <code>⌘?</code> for its own <em>Show Help menu</em> shortcut, so an application cannot use it for anything else. LOOM uses <code>⌘/</code>, which is the same key without the shift.</p>
+<p><code>⇧⌘R</code> writes a report of what LOOM did this session and opens it for you to read. LOOM does not send it anywhere. To send it, attach the file to a message yourself. See <a href="/loom/manual/reporting-a-problem/">Reporting a problem</a>.</p>
+<p>The <strong>View</strong> menu lists the three views, then a separator, then <em>Show Logs</em>. The three views form one radio group, and the current view has a check mark. <code>⌘1</code>, <code>⌘2</code> and <code>⌘3</code> switch to the same three views as the <code>VIEW</code> switcher at the right end of the top bar. <em>Show Logs</em> sits below the separator because it opens an overlay over the current view rather than a fourth view, so it never shows a check mark.</p>
+<p><code>⇧⌘L</code> opens the session log. See <a href="/loom/manual/dialogs/#session-log">Session log</a>.</p>
+<p>The <strong>Transport</strong> menu holds the two stop commands, with no separator.</p>
+<p><code>⌘.</code> presses <code>STOP</code> in the top bar. The transport stops, every track stops with it, and a running arrangement stops too.</p>
+<p><code>⇧⌘.</code> presses <code>■ STOP</code> on the track you have focused. That track stops on its own <code>STOP QUANTIZE</code> setting, and the transport keeps rolling. Press <code>←</code> or <code>→</code> first to choose the track. The <code>FOCUS</code> readout in the top bar names the track this key acts on.</p>
+<p>Each press reports on the notice line: <code>submitted</code> when LOOM accepts it, or the reason when LOOM refuses it. If there is nothing to stop, LOOM refuses and says why.</p>
+<p>Both keys work from any view and any control, because macOS sends a menu shortcut to the menu before the control that has keyboard focus sees it.</p>
+<p>Neither key starts anything. To start the transport, press <code>ROLL</code> in the top bar. To start a track, put the keyboard on its ring and press <code>Space</code>.</p>
+<p>While a dialog is open, every menu item is greyed out and the menu keys do nothing.</p>
+<h2 id="the-main-window">The main window</h2>
+<!-- loom-shortcut-source: LooperWindow -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> <code>→</code></td>
+<td>Moves to the previous or next track. In the looper this walks the audio tracks and then the instrument tracks, and in the <code>BANKS</code> layout it switches to the bank the track is in.</td>
+</tr>
+<tr>
+<td><code>↑</code> <code>↓</code></td>
+<td>In the looper's <code>ROWS</code> layout, moves between the audio row and the instrument row, to the track in the same slot. From track 5, <code>↓</code> moves to the last instrument track, because the last slot of the instrument row holds the <code>MIDI IN</code> card. In <code>BANKS</code> these keys do nothing here.</td>
+</tr>
+<tr>
+<td><code>⌘Z</code></td>
+<td>Undoes the last <strong>effect chain</strong> change while the effect drawer or a slot grid has keyboard focus, and the last <strong>drum loop length</strong> change while the drum editor has it. Otherwise, while the arrange view is showing, undoes the last <strong>arrangement</strong> edit.</td>
+</tr>
+<tr>
+<td><code>⇧⌘Z</code></td>
+<td>Redoes the last undone <strong>effect chain</strong> change while the effect drawer or a slot grid has keyboard focus, and the last undone <strong>drum loop length</strong> change while the drum editor has it. Otherwise, while the arrange view is showing, redoes the last undone <strong>arrangement</strong> edit.</td>
+</tr>
+<tr>
+<td><code>⌘-</code></td>
+<td>Zooms the arrange timeline <strong>out</strong> one step. Only while the arrange view is showing.</td>
+</tr>
+<tr>
+<td><code>⌘=</code> <code>⌘+</code> <code>⇧⌘=</code></td>
+<td>Zooms the arrange timeline <strong>in</strong> one step. Only while the arrange view is showing.</td>
+</tr>
+<tr>
+<td><code>⇧⌘G</code></td>
+<td>Writes a loop-geometry report to a file and shows the path on the notice line. The report lists every track's loop origin, length (in samples and in bars at the tempo it was recorded at), read position, turn count and layer chain, plus the length difference between each pair of tracks. For each instrument track it lists the loop's length in ticks, its passes, where its first pass began and where the loop is now. Press it when something sounds wrong. The file is plain text, saved in <code>~/Library/Application Support/LOOM/</code> with the time in its name, and you can send it on. Works from either view.</td>
+</tr>
+<tr>
+<td><code>F</code></td>
+<td>Switches the <code>FADERS</code> row to the next bus: <code>MAIN</code>, then <code>CUE</code>, <code>FX 1</code>, <code>FX 2</code>, and back to <code>MAIN</code>. Only while the mixer is showing. Every fader in the rack changes what it controls, and LOOM announces the change.</td>
+</tr>
+<tr>
+<td><code>1</code> <code>2</code> <code>3</code> <code>4</code> <code>5</code></td>
+<td>Chooses a bank: <code>LOOP TRACKS</code>, <code>INSTRUMENTS</code>, <code>INPUTS</code>, <code>MASTER</code>, <code>BUSES</code>. Only while the mixer is showing. These are the bare digits. <code>⌘1</code>–<code>⌘3</code> switch views.</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>Mutes the focused track, or unmutes it. Only while the looper is showing. The mixer responds to the same key on its own rack.</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>Solos the focused track, clearing every other track's solo. Only while the looper is showing.</td>
+</tr>
+<tr>
+<td><code>⌥S</code></td>
+<td>Solos it <strong>without</strong> clearing the others, so you can build up a set of soloed tracks. Only while the looper is showing.</td>
+</tr>
+<tr>
+<td><code>⌘0</code></td>
+<td>Fits the whole song: the largest zoom at which all of it shows, scrolled back to bar 1. Only while the arrange view is showing.</td>
+</tr>
+<tr>
+<td><code>⌘A</code></td>
+<td>Selects everything in the arrangement: every region and every automation node on every lane. Press it again to clear the selection. Only while the arrange view is showing.</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>Opens the card for adding an automation lane. If a row of the lane column has keyboard focus, the card opens with that row's track, strip or group already chosen; otherwise nothing is chosen. Either way, the card's first column lists every strip. Only while the arrange view is showing. See <a href="/loom/manual/the-arrange-view/">The arrange view</a>.</td>
+</tr>
+<tr>
+<td><code>Delete</code> <code>Backspace</code></td>
+<td>Removes the whole arrange selection, regions and automation nodes together, in one edit. It works from anywhere in the arrange view, including a track's own lane. A region or lane that has focus handles these keys first, so this row applies when nothing closer does. With nothing selected, the key does nothing here and passes on to whatever is in front of it. Only while the arrange view is showing.</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Cancels a jump that is waiting for its boundary, and otherwise clears the arrange selection. With a jump armed and something selected, the first <code>Esc</code> cancels the jump and a second one clears the selection. With neither, the key does nothing here and passes on to whatever is in front of it. Cancelling a jump works from either view; clearing the selection works only while the arrange view is showing.</td>
+</tr>
+<tr>
+<td><code>Return</code></td>
+<td><strong>Always with <code>Shift</code> held. A bare <code>Return</code> does nothing here.</strong> <code>Shift-Return</code> performs the arrangement from bar 1 (<code>PERFORM FROM TOP</code>) from anywhere in the arrange view, with no <code>Tab</code> needed first. Only while the arrange view is showing, because <code>Return</code> means other things in the other two views. The restriction applies only to the key: MIDI note 101 performs from the top in any view (see <a href="/loom/manual/midi-mapping/">MIDI mapping</a>).</td>
+</tr>
+<tr>
+<td><code>⇧⌘P</code></td>
+<td>Releases the arrangement and leaves the song playing (<code>PERFORMANCE STOP</code>). The transport keeps rolling and every loop keeps playing as it is, but LOOM stops firing the regions you wrote. Works from any view, only while a performance is running. At any other time the key does nothing here and passes on to whatever is in front of it. See <a href="/loom/manual/the-arrange-view/">The arrange view</a>.</td>
+</tr>
+<tr>
+<td><code>Space</code></td>
+<td><strong>Always with <code>Shift</code> held. A bare <code>Space</code> does nothing here.</strong> <code>Shift-Space</code> performs the arrangement from wherever the playhead is (<code>PERFORM FROM HERE</code>) from anywhere in the arrange view. Only while the arrange view is showing.</td>
+</tr>
+</tbody>
+</table>
+<p>Bare <code>Return</code> and bare <code>Space</code> are not bound here. When LOOM opens, the first track's ring has keyboard focus (see <a href="/loom/manual/the-window/">The window</a>), and a bare <code>Return</code> or <code>Space</code> on it starts a take. A window-wide binding on either key would compete with the ring for the same keystroke. <code>Shift</code> keeps them apart: <code>Shift-Return</code> and <code>Shift-Space</code> reach the window untouched, because every focused control on the way ignores a modified key.</p>
+<h2 id="the-track-fader">The track fader</h2>
+<!-- loom-shortcut-source: ui::Fader -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>↑</code> <code>↓</code></td>
+<td>Moves the level by one decibel. Hold <code>Shift</code> for a tenth of a decibel.</td>
+</tr>
+<tr>
+<td><code>Home</code></td>
+<td>Returns the fader to unity, which is the top of its travel and its home position.</td>
+</tr>
+<tr>
+<td><code>End</code></td>
+<td>Takes the fader to silence.</td>
+</tr>
+</tbody>
+</table>
+<p>The fader ignores <code>←</code> and <code>→</code>, so track navigation keeps working while a fader has focus.</p>
+<h2 id="the-pan-slider">The pan slider</h2>
+<p>The pan slider sits above the fader on a mixer strip, on loop-track strips and input strips alike. It starts at centre. On a loop track it sets the track's position in the main mix. On an input it sets where that input sits in what you hear and in what every track records from it. Both kinds of strip use the same control, with the same keys and the same readout.</p>
+<!-- loom-shortcut-source: ui::PanSlider -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> <code>→</code></td>
+<td>Moves the pan by two of the hundred either side of centre. Hold <code>Shift</code> for one.</td>
+</tr>
+<tr>
+<td><code>Home</code></td>
+<td>Hard left.</td>
+</tr>
+<tr>
+<td><code>End</code></td>
+<td>Hard right.</td>
+</tr>
+</tbody>
+</table>
+<p><code>⌥</code>-click returns it to centre.</p>
+<p>The pan slider responds to <code>←</code> and <code>→</code> because it is a horizontal control and those arrows point along it. While it has focus, those two keys move the pan instead of moving between tracks. Press <code>Tab</code> to move off it first.</p>
+<p><code>Shift</code> moves the pan by one rather than by a tenth of a step because the readout counts in whole units. A smaller step would change the value without changing the number you see.</p>
+<p>On a device whose main output is a single channel there is nowhere to pan a loop track, so its slider is drawn inactive and says so. It stays on the strip so the strip keeps the same shape on every interface; otherwise you could not tell <em>not supported</em> from <em>broken</em>.</p>
+<p>An input's pan stays active on that device. A track always records two channels, so the pan is recorded into the take even when the interface cannot play it back to you.</p>
+<h2 id="mute-and-solo-on-a-track">Mute and solo on a track</h2>
+<p>These act on the focused track.</p>
+<p>In the looper view they work wherever the keyboard is. In the mixer they work only while the <code>LOOP TRACKS</code> or <code>INSTRUMENTS</code> bank is showing, on that bank's focused strip; on the other banks they do nothing.</p>
+<!-- loom-shortcut-source: ui::MixerView -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>M</code></td>
+<td>Mutes the focused track, or unmutes it.</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>Solos the focused track, clearing every other track's solo.</td>
+</tr>
+<tr>
+<td><code>⌥S</code></td>
+<td>Solos it <strong>without</strong> clearing the others, so you can build a soloed set up.</td>
+</tr>
+</tbody>
+</table>
+<p>The looper view responds to the same three keys. They are listed under <a href="#the-main-window">The main window</a> with the rest of that view's keys.</p>
+<p><code>⌥</code>-click on a strip's <code>SOLO</code> button does the same as <code>⌥S</code>.</p>
+<p><code>⌥</code> switches to the other solo mode. It does not mean <em>exclusive</em>: in LOOM a plain solo already clears the others, the reverse of Logic's default. If you are coming from Logic, the modifier is on the key you expect but has the opposite effect on the mix.</p>
+<h2 id="the-routing-page">The ROUTING page</h2>
+<p>These keys work while keyboard focus is on the <code>MASTER</code> bank's <code>ROUTING</code> page, where you build groups. See <a href="/loom/manual/the-mixer/#groups-the-routing-page">Groups: the <code>ROUTING</code> page</a>.</p>
+<!-- loom-shortcut-source: ui::RoutingPage -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>↑</code> <code>↓</code></td>
+<td>On a group card, opens the group above or below and moves to its card.</td>
+</tr>
+<tr>
+<td><code>⇧⌘N</code></td>
+<td>Makes a new, empty group and opens it.</td>
+</tr>
+<tr>
+<td><code>Delete</code> <code>Backspace</code></td>
+<td><strong><code>⌘</code> held, always.</strong> Deletes the open group. A bare <code>Delete</code> or <code>Backspace</code> does nothing here.</td>
+</tr>
+</tbody>
+</table>
+<p><code>⌘N</code> is <em>New Song</em> on the File menu, and the menu takes it before the page can, so the page uses <code>⇧⌘N</code>. <code>Space</code> ticks the source that has keyboard focus, the same way it presses any button.</p>
+<h2 id="the-effect-slot-grid">The effect slot grid</h2>
+<p><code>Tab</code> treats the eight slots of a chain as one stop, with a cursor that moves inside it. The grid in a mixer strip and the grid in the effect drawer respond to the same keys, except <code>M</code> and <code>Esc</code>, which work only in the drawer's grid.</p>
+<!-- loom-shortcut-source: ui::EffectSlotGrid -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> <code>→</code></td>
+<td>Moves the cursor to the previous or next slot.</td>
+</tr>
+<tr>
+<td><code>↑</code> <code>↓</code></td>
+<td>Moves the cursor to the slot above or below.</td>
+</tr>
+<tr>
+<td><code>Home</code></td>
+<td>Moves the cursor to slot 1.</td>
+</tr>
+<tr>
+<td><code>End</code></td>
+<td>Moves the cursor to slot 8.</td>
+</tr>
+<tr>
+<td><code>Return</code> <code>Space</code></td>
+<td>Opens the slot under the cursor in the effect drawer.</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td><strong>In the effect drawer:</strong> picks up the effect under the cursor so you can move it. Move the cursor to where it should go and press <code>M</code> again to place it. The effects in between shift over by one. On an empty slot, the notice line says there is nothing to move.</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td><strong>In the effect drawer, with an effect picked up:</strong> puts it back where it was.</td>
+</tr>
+</tbody>
+</table>
+<p>On a track strip, <code>M</code> mutes the track. See <a href="#mute-and-solo-on-a-track">Mute and solo on a track</a>.</p>
+<h2 id="the-tempo-field">The tempo field</h2>
+<!-- loom-shortcut-source: ui::TempoField -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>↑</code> <code>→</code></td>
+<td>Raises the tempo by one beat per minute. Hold <code>Shift</code> for a tenth.</td>
+</tr>
+<tr>
+<td><code>↓</code> <code>←</code></td>
+<td>Lowers the tempo by one beat per minute. Hold <code>Shift</code> for a tenth.</td>
+</tr>
+<tr>
+<td><code>Return</code></td>
+<td>Opens the type-in editor, so you can type a tempo instead of stepping to it.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="a-setting-row">A setting row</h2>
+<!-- loom-shortcut-source: ui::SegmentedChoice -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code></td>
+<td>Selects the previous value.</td>
+</tr>
+<tr>
+<td><code>→</code></td>
+<td>Selects the next value.</td>
+</tr>
+<tr>
+<td><code>↑</code></td>
+<td>On a row wrapped onto more than one line, selects the value above. On a single-line row, the previous value.</td>
+</tr>
+<tr>
+<td><code>↓</code></td>
+<td>On a row wrapped onto more than one line, selects the value below. On a single-line row, the next value.</td>
+</tr>
+<tr>
+<td><code>Home</code></td>
+<td>Selects the first value.</td>
+</tr>
+<tr>
+<td><code>End</code></td>
+<td>Selects the last value.</td>
+</tr>
+</tbody>
+</table>
+<p>A setting row takes no modifiers. Its values are a list rather than a scale, so <code>Shift</code> has no finer step to reach.</p>
+<p>A row with more values than fit across the drawer wraps onto a second line. The row gets taller, every value stays on screen, and the keys above still reach all of them. The delay's <code>DIVISION</code> is the setting that wraps.</p>
+<p>Every key here skips a value you cannot choose right now, so the keyboard reaches exactly what a click reaches.</p>
+<h2 id="an-effect-control">An effect control</h2>
+<p>The effect drawer has two kinds of numeric control, and both respond to the same keys. Most effects show a row per setting, with the name on the left and a track you drag. The EQ shows a table of bands, and each cell is a number you drag up and down. See <a href="/loom/manual/the-mixer/#the-controls">The mixer</a>.</p>
+<!-- loom-shortcut-source: ui::EffectDrawer::ParameterRow -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> <code>↓</code></td>
+<td>Moves the setting down by a hundredth of the control's travel. Hold <code>Shift</code> for a thousandth.</td>
+</tr>
+<tr>
+<td><code>→</code> <code>↑</code></td>
+<td>Moves it up by a hundredth of the control's travel. Hold <code>Shift</code> for a thousandth.</td>
+</tr>
+<tr>
+<td><code>Home</code></td>
+<td>Takes the setting to the bottom of its range.</td>
+</tr>
+<tr>
+<td><code>End</code></td>
+<td>Takes it to the top.</td>
+</tr>
+<tr>
+<td><code>Return</code></td>
+<td>Opens the type-in, so you can type a value instead of stepping to it.</td>
+</tr>
+<tr>
+<td><code>Delete</code> <code>Backspace</code></td>
+<td>Puts the setting back to its default, the value a fresh effect opens at. A setting whose range runs from a negative value to the same positive value goes to 0.</td>
+</tr>
+</tbody>
+</table>
+<!-- loom-shortcut-source: ui::ValueField -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> <code>↓</code></td>
+<td>Moves the setting down by a hundredth of the control's travel. Hold <code>Shift</code> for a thousandth.</td>
+</tr>
+<tr>
+<td><code>→</code> <code>↑</code></td>
+<td>Moves it up by a hundredth of the control's travel. Hold <code>Shift</code> for a thousandth.</td>
+</tr>
+<tr>
+<td><code>Home</code></td>
+<td>Takes the setting to the bottom of its range.</td>
+</tr>
+<tr>
+<td><code>End</code></td>
+<td>Takes it to the top.</td>
+</tr>
+<tr>
+<td><code>Return</code></td>
+<td>Opens the type-in, so you can type a value instead of stepping to it.</td>
+</tr>
+<tr>
+<td><code>Delete</code> <code>Backspace</code></td>
+<td>Puts the setting back to its default, the value a fresh effect opens at.</td>
+</tr>
+</tbody>
+</table>
+<p>On some controls, a hundredth of the travel is not a hundredth of the range. The reverb's <code>DECAY</code>, the delay's <code>TIME</code> and the two cuts, and the EQ's six frequencies are on a ratio scale, so one press moves the same musical amount wherever you are rather than the same number of units.</p>
+<p>When you land on a control, it says which value <code>Delete</code> would put it back to, so a screen reader reads that value before you ask for it. <code>⌥</code>-click does the same thing with a mouse.</p>
+<p>A setting that is a switch or a short list is drawn as a switch or a row of cells instead, and takes the keys in <a href="#a-setting-row">A setting row</a> and <a href="#buttons">Buttons</a> below.</p>
+<h2 id="buttons">Buttons</h2>
+<!-- loom-shortcut-source: ui::TextButton -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Return</code></td>
+<td>Presses the button that has focus. A modified <code>Return</code> does not (see below). The two hold buttons work differently: see <a href="#a-hold-button">A hold button</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Every button in LOOM ignores <code>⌘Return</code>, <code>⌥Return</code> and <code>⌃Return</code>, so a modified <code>Return</code> meant for a system shortcut cannot stop a live track or change a setting by accident. The two buttons that discard material, <code>ALL CLEAR</code> and each strip's <code>CLEAR</code>, ignore them too. A bare <code>Return</code> on either of those begins a hold instead of firing it.</p>
+<h2 id="the-record-ring">The record ring</h2>
+<!-- loom-shortcut-source: ui::RingButton -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Space</code> <code>Return</code></td>
+<td>Does whatever the ring's readout says it will do next.</td>
+</tr>
+</tbody>
+</table>
+<p>A key that was already held down when focus arrived on the ring does not count as a press. Holding <code>Return</code> to clear a track moves focus to that strip's ring, so release the key and press it again to start a take. See <a href="/loom/manual/track-strips/#the-keyboard-and-a-control-that-retires">Track strips</a>.</p>
+<h2 id="a-hold-button">A hold button</h2>
+<!-- loom-shortcut-source: ui::HoldButton -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Return</code></td>
+<td>Begins the hold. The action fires when the fill completes; let go early to cancel.</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>Return</code> that was already held down when focus arrived on the button does not begin a hold. Release it and press it again.</p>
+<h2 id="a-region-on-the-arrange-timeline">A region on the arrange timeline</h2>
+<!-- loom-shortcut-source: ui::RegionComponent -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> <code>→</code></td>
+<td>Moves to the previous or next region on the same track. At the ends you land on the track's own lane.</td>
+</tr>
+<tr>
+<td><code>↑</code> <code>↓</code></td>
+<td>Moves to the region above or below at the same point in the song. If that track has no region there, you land on its lane.</td>
+</tr>
+<tr>
+<td><code>Home</code> <code>End</code></td>
+<td>Moves to the first or last region on this track.</td>
+</tr>
+<tr>
+<td><code>Return</code></td>
+<td>Creates a new region straight after this one, one grid step long, firing whatever <code>VERB</code> says.</td>
+</tr>
+<tr>
+<td><code>Delete</code> <code>Backspace</code></td>
+<td>Removes this region, or the whole selection when this region is part of one. A selection holding regions and automation nodes goes in one step.</td>
+</tr>
+<tr>
+<td><code>Page Up</code> <code>Page Down</code></td>
+<td>Moves the region's start edge one grid step earlier or later. Its end stays where it is.</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>Adds this region to the selection, or removes it if it is already in one. Automation nodes already in the selection stay in it.</td>
+</tr>
+<tr>
+<td><code>V</code></td>
+<td>Cycles what a new region will fire: <code>REC</code> to <code>DUB</code> to <code>PLAY</code> and back. The <code>VERB</code> row follows. It does not change this region.</td>
+</tr>
+<tr>
+<td><code>⇧V</code></td>
+<td>Cycles what this region fires, or every region in the selection when this one is part of it. Use this key to change a region you already have. With the mouse, use the region's own menu: right-click or <code>Control</code>-click it.</td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td>Moves this region to the track below.</td>
+</tr>
+<tr>
+<td><code>⇧T</code></td>
+<td>Moves this region to the track above.</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>Makes a copy of this region straight after it, the same length and firing the same verb.</td>
+</tr>
+</tbody>
+</table>
+<p>A copy is a new region, so nothing recorded into the original follows it. <code>D</code> is the keyboard equivalent of a <code>⌥</code>-drag.</p>
+<p><code>⇧V</code>, <code>T</code> and <code>⇧T</code> change the region you are on in place rather than replacing it. Anything you have recorded into it stays with it, the change is one step in the arrangement's undo history, and <code>⌘Z</code> undoes all of it. The region's menu (right-click it, or hold <code>Control</code> and click) changes the verb the same way, in one step. The menu lets you pick a verb instead of cycling, and ticks the one the region already has.</p>
+<p><code>T</code>, <code>⇧T</code>, <code>D</code>, the two keys that resize a region and <code>Page Up</code> <code>Page Down</code> act only on the region you are on. So does <code>⇧V</code> when that region is not part of the selection. When a larger selection is held, the notice line says what the key did, that it acted on the focused region alone, and how many things are selected, so a key never changes one region silently while you are looking at several.</p>
+<p>When you move a region to a track that is not synced to the clock, the region stops firing on the arrangement grid and fires as soon as the playhead reaches it instead. Moving it back to a synced track puts it on the grid again. LOOM says which it did on the notice row under the timeline.</p>
+<p>With <code>Shift</code> held, the same arrows edit the region you are on instead of moving between regions. <code>⇧←</code> and <code>⇧→</code> move it one grid step earlier or later, and <code>⇧↑</code> and <code>⇧↓</code> make it one grid step longer or shorter from its end. When the region is part of a selection, <code>⇧←</code> and <code>⇧→</code> move the whole selection one grid step and keep the spacing between its members, including any automation nodes in it; <code>⇧↑</code> and <code>⇧↓</code> still resize only the region you are on.</p>
+<p><code>⇧Home</code> and <code>⇧End</code> extend the selection from this region to the first or last region on the track, and move you to that end.</p>
+<p>The grid step is whatever <code>SNAP</code> says, a bar or a beat. A new region is one grid step long.</p>
+<h2 id="a-lane-on-the-arrange-timeline">A lane on the arrange timeline</h2>
+<p>A track's lane and an automation lane are the same kind of control, and most keys do the same thing on both. The table notes the keys that differ and the ones only an automation lane responds to. The row's name, and what a screen reader says when you reach it, tell you which lane you are on.</p>
+<!-- loom-shortcut-source: ui::LaneComponent -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Return</code></td>
+<td><strong>On a track's lane:</strong> creates a region after the last one on this track. This is also how you make the first region on an empty track. <strong>On a lane whose control is a switch:</strong> flips the slot at the node cursor. The node it adds does the opposite of what the lane is doing there, so one press is one change. <strong>On a lane whose control holds a level:</strong> adds a node one grid step after the cursor, at the height the line is already at, so repeated presses walk along the lane instead of rewriting one node. On a lane with no nodes yet, either kind adds the first one at the playhead. <strong>On a <code>RACK PRESET</code> or <code>PRESET</code> lane:</strong> opens the rack or preset list for a new node one grid step after the cursor, or at the playhead on an empty lane. The node is added when you pick an entry; <code>Esc</code> adds nothing.</td>
+</tr>
+<tr>
+<td><code>Backspace</code> <code>Delete</code></td>
+<td><strong>On an effect automation lane:</strong> removes the whole selection when the cursor is standing on a node that is part of it, and otherwise removes the node at the cursor alone. If the lane holds no nodes, the notice line says so, naming the bar it looked at, and nothing is removed. <strong>On a track's lane:</strong> removes the whole selection.</td>
+</tr>
+<tr>
+<td><code>←</code> <code>→</code></td>
+<td><strong>On a track's lane:</strong> move to the first and the last region on this track. <strong>On an effect automation lane:</strong> move the node cursor one node back and one node on. They stop at the ends rather than wrapping.</td>
+</tr>
+<tr>
+<td><code>Home</code> <code>End</code></td>
+<td><strong>On a track's lane:</strong> as <code>←</code> and <code>→</code> above. <strong>On an effect automation lane:</strong> take the cursor to the first and the last node.</td>
+</tr>
+<tr>
+<td><code>↑</code> <code>↓</code></td>
+<td>Moves to the lane above or below, on either kind.</td>
+</tr>
+<tr>
+<td><code>O</code></td>
+<td>The letter O, for the <code>ON</code> / <code>OFF</code> the lane's own axis is labelled with. <strong>On a lane whose control is a switch:</strong> flips the node at the cursor between the two states, which is what <code>Return</code> did before it added nodes. On a lane whose control holds a level, on a <code>RACK PRESET</code> or <code>PRESET</code> lane, and on a lane with no node at the cursor, the notice line says why the key cannot act there.</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td><strong>On an automation lane:</strong> adds the node at the cursor to the selection, or takes it out again. A region already in the selection stays in it. Walking the nodes with <code>←</code> and <code>→</code> leaves the selection alone, so you can read a lane you have selected without losing it. To select only one node, press <code>Esc</code> and then <code>S</code>.</td>
+</tr>
+<tr>
+<td><code>V</code></td>
+<td><strong>On a track's lane:</strong> cycles what a new region will fire: <code>REC</code> to <code>DUB</code> to <code>PLAY</code> and back. The <code>VERB</code> row follows. It changes no region that is already there.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td><strong>On an automation lane whose value is a number:</strong> opens a field on the node at the cursor so you can type its value instead of dragging to it. The field opens in the half of the lane the node is not in, and it starts out holding the value the node has. Type a value and press <code>Return</code> to set it, or press <code>Esc</code> to leave the node as it is. You can leave the unit off: on a level lane, <code>-24</code> and <code>-24.0 dB</code> set the same value. A pan is a side and a distance, so type <code>L 40</code>, <code>R 100</code> or <code>C</code>. A value the lane does not accept is refused and the notice line names the two values at the ends of the lane; the node keeps the value it had. On a lane whose value is a word, and on a lane where the cursor is on no node, the notice line says why the key cannot act there. <strong>On a <code>RACK PRESET</code> or <code>PRESET</code> lane:</strong> opens the rack or preset list for the node at the cursor, so you can pick a different entry. On a track's lane the key does nothing.</td>
+</tr>
+<tr>
+<td><code>N</code></td>
+<td><strong>On an automation lane:</strong> changes the node at the cursor between a ramp and a jump. A ramp slopes in from the node before it and draws round; a jump holds the previous value and steps at this node, and draws square. The notice line says which one the node is now. On a lane whose control is a switch, on a <code>RACK PRESET</code> or <code>PRESET</code> lane, and on a lane's first node, the notice line says why the key cannot act there. On a track's lane the key does nothing.</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>node cursor</strong> is the node the next key acts on, drawn as a ring around that node's marker while the lane has focus. Pressing a node with the mouse moves the cursor there, so the mouse and the keyboard always agree on which node you are on. The lane's spoken sentence says where the cursor is, what the control does from there, and how many nodes the lane holds.</p>
+<p>With <code>Shift</code> held, the arrows move the node instead of moving between nodes. <code>⇧←</code> and <code>⇧→</code> move the node at the cursor one grid step earlier or later. On a lane whose control holds a level, <code>⇧↑</code> and <code>⇧↓</code> move it up and down in value. A lane whose control is a switch has only two states, and a <code>RACK PRESET</code> or <code>PRESET</code> lane loads entries that have no order, so on those lanes the notice line says why the two keys cannot act there.</p>
+<p>When the cursor is standing on a node that is part of the selection, <code>⇧←</code> and <code>⇧→</code> move the whole selection instead, keeping the spacing and the shape between its members. The selection moves in time across every track and every lane it reaches into, and the whole of it is one edit.</p>
+<p><code>⇧↑</code> and <code>⇧↓</code> move only nodes. When the cursor is standing on a selected node, they move every selected node on every lane, each by a step of its own lane's range, and the whole of it is one edit. If the selection holds a region as well, or a node on a lane whose control is a switch, the notice line says why the gesture cannot run and nothing moves. Select only the nodes you want to move in value, or use <code>⇧←</code> and <code>⇧→</code> to move everything in time.</p>
+<p><code>⇧Home</code> and <code>⇧End</code> extend the selection along this lane, from the cursor to the lane's first or last node. Nothing already selected is removed, so you can build a selection across several lanes a run at a time.</p>
+<p>Add <code>Option</code> for a much smaller movement on both axes: <code>⌥⇧←</code> and <code>⌥⇧→</code> move the node by a fraction of the grid step, and <code>⌥⇧↑</code> and <code>⌥⇧↓</code> by the same fraction of the value step. Use the plain gesture to place a node roughly and <code>Option</code> to fine-tune it.</p>
+<p>A selection stops at the end of a lane's range rather than flattening against it, and each lane stops on its own. If the highest selected node on one lane is already at the top, <code>⇧↑</code> leaves that lane's nodes where they are and still moves the selected nodes on the other lanes; the notice line names the lane that stayed put. If every lane is already at the top, <code>⇧↑</code> does nothing at all. <code>⇧↓</code> works the same way at the bottom.</p>
+<p>If the grid step the node is moving to already holds a node, a single node steps past it to the next free one, so one press can move it two steps. A selection does not step past: it lands where you sent it, and any node it lands on that is not part of the selection is replaced. The notice line says how many were replaced. Moving a selection is one edit, so one <code>⌘Z</code> takes the whole of it back, including the nodes that were replaced.</p>
+<p><code>⌘A</code> selects everything in the arrangement, regions and nodes together; press it again to clear. To select every node on one lane, put the cursor on its first node and press <code>⇧End</code>. <code>S</code> adds or removes one node. <code>Esc</code> clears the selection.</p>
+<p>With <code>TOOL</code> set to <code>POINTER</code>, you can drag a rubber band on any lane, a track's lane or an automation lane, and it catches every region and every node it crosses. On an automation lane the band starts only once you drag: a press without movement still adds a node, as it always has.</p>
+<p>A selected node is drawn hollow: the marker keeps its shape, so you can still tell a ramp from a jump, and its middle is open. The notice line says how many nodes are selected and the span they cover, and names the regions in the same sentence when the selection holds both.</p>
+<p>Pressing a node with the mouse makes it the selection, the way pressing a region does. Hold <code>Shift</code> and the press adds that node to the selection or takes it out again, leaving the rest alone.</p>
+<h3 id="dragging-a-node-with-the-mouse">Dragging a node with the mouse</h3>
+<p>On a lane whose control holds a level, press a node and drag it. Sideways moves it in time, by whole grid steps; up and down moves it in value, and a drag can do both at once. If the node is in a selection that also holds regions, the drag moves the whole selection in time only, and up and down is ignored. An outline shows where the node will land, and the move is made when you let go. A drag is one edit, whichever axes it moved, so one <code>⌘Z</code> takes the whole drag back. Pressing a node and releasing without moving selects it and puts the cursor on it, and changes nothing.</p>
+<p>Use a drag to shape a curve roughly. At the working lane height a level lane fits its whole range into a band a few nodes tall, so a single pixel is a large change. To set a particular value, use <code>⇧↑</code> and <code>⇧↓</code>, with <code>Option</code> for the fine step.</p>
+<p>On a lane whose control is a switch, a press flips the slot at that point as it always has, and there is nothing to drag it to.</p>
+<p>To clear or remove a lane, use the controls on its row; there are no keys for them. See <a href="/loom/manual/the-arrange-view/">The arrange view</a>, under <em>Clearing and removing a lane</em>.</p>
+<p>See <a href="/loom/manual/the-arrange-view/">The arrange view</a>, under <em>What a lane does while you play</em>, for what an automation lane does while the arrangement performs, and under <em>Jumps and ramps</em> for what the two node shapes mean.</p>
+<p><a href="/loom/manual/the-arrange-view/">The arrange view</a> describes selecting several things at once, under <em>Selecting more than one thing</em>. One selection holds regions and automation nodes together, and every mouse gesture there has a key: <code>S</code> adds or removes the one you are on, <code>⇧Home</code> and <code>⇧End</code> take a run along the track or lane you are on, <code>⌘A</code> takes everything in the arrangement, and <code>Esc</code> clears.</p>
+<p><code>⌘Z</code> undoes and <code>⇧⌘Z</code> redoes. In a field you are typing a value into, they undo your typing. Otherwise, what they undo depends on where the keyboard is:</p>
+<ul>
+<li><strong>In the effect drawer or on a slot grid:</strong> the last change to an effect chain. See <a href="/loom/manual/the-mixer/#undoing-a-change-to-an-effect-chain">Undoing a change to an effect chain</a>.</li>
+<li><strong>In the drum editor, after a <code>BARS</code> change:</strong> the last change to the drum loop's length. See <em>STEPS/BEAT and bars</em> in <a href="/loom/manual/instrument-tracks/">Instrument tracks</a>. With no length change to undo, the key does what it does anywhere else.</li>
+<li><strong>Anywhere else, while the arrange view is showing:</strong> the last arrangement edit.</li>
+</ul>
+<p>Each track's own audio history is separate. It lives on that track's <strong>UNDO</strong> button and takes no key.</p>
+<h2 id="the-bar-ruler-above-the-lanes">The bar ruler above the lanes</h2>
+<p>The strip of bar numbers along the top of the arrange timeline holds two controls: the <strong>playhead</strong>, and the <strong>song end marker</strong> at the right-hand end. Both are reachable with <code>Tab</code>. In the header row, the playhead comes just after the PERFORM buttons (<code>PERFORM FROM TOP</code>, <code>PERFORM FROM HERE</code> and, while a performance is running, <code>PERFORMANCE STOP</code>), and the end marker comes just after the playhead.</p>
+<!-- loom-shortcut-source: ui::ArrangeView::PlayheadRuler -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> <code>→</code></td>
+<td>Moves the playhead one grid step earlier or later. The grid step is whatever <code>SNAP</code> says.</td>
+</tr>
+<tr>
+<td><code>Home</code></td>
+<td>Sends the playhead back to bar 1, the same as the <code>TO TOP</code> button in the top bar.</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Cancels a jump waiting for its boundary, when the keyboard is on the playhead. With nothing waiting, the key passes on to whatever is behind it.</td>
+</tr>
+</tbody>
+</table>
+<p>With <code>Shift</code> held the arrows move four grid steps instead of one.</p>
+<p>You can also click anywhere on the ruler to put the playhead there, or press and drag to scrub it along. It snaps to <code>SNAP</code> either way.</p>
+<p>With the song stopped, moving the playhead starts nothing: the transport stays stopped, no track is armed and the arrangement does not start. <code>ROLL</code> then plays from wherever you left it.</p>
+<p>With the song rolling, a click arms a jump instead of moving the playhead: a hollow marker appears at the bar you pointed at, and the playhead arrives there on the boundary <code>JUMP Q</code> names, the next bar unless you have changed it. <code>Escape</code> cancels it, and clicking that same bar again jumps at once. See <a href="/loom/manual/the-arrange-view/">The arrange view</a>.</p>
+<!-- loom-shortcut-source: ui::ArrangeView::EndMarker -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> <code>→</code></td>
+<td>Moves the song's end marker one bar earlier or later.</td>
+</tr>
+</tbody>
+</table>
+<p>With <code>Shift</code> held the arrows move it four bars, which is one phrase.</p>
+<p>The end marker has no <code>Home</code> key. It would mean bar 1, and LOOM refuses bar 1 for every song that has a region in it, so the key could only ever be refused.</p>
+<h2 id="dialogs">Dialogs</h2>
+<!-- loom-shortcut-source: ui::ModalSheet -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Esc</code></td>
+<td>Closes the dialog without doing anything.</td>
+</tr>
+<tr>
+<td><code>Tab</code></td>
+<td>Moves to the next control. <code>⇧Tab</code> moves back.</td>
+</tr>
+</tbody>
+</table>
+<!-- loom-shortcut-source: ui::OpenSongDialog -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>↑</code> <code>↓</code></td>
+<td>Moves between the songs in the list. <code>Return</code> opens the one you are on.</td>
+</tr>
+</tbody>
+</table>
+<p>The dialog swallows every other key, so the window behind it does not act on a keystroke meant for the dialog.</p>
+{% endraw %}

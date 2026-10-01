@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const ImageModule = require('@11ty/eleventy-img');
+const Image = ImageModule.default || ImageModule;
+const generateImageHTML = ImageModule.generateHTML || Image.generateHTML;
 
 module.exports = function(eleventyConfig) {
   // Date filter for year in footer
@@ -41,6 +44,23 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // FAQ structured data from a post's own "Frequently asked questions" section: every <h3> under
+  // that <h2>, with the text up to the next heading as its answer. Read from the rendered post, so
+  // the answer in the markup is the answer on the page and there is no second copy to keep.
+  eleventyConfig.addFilter("faqFromHtml", (content) => {
+    const html = content || '';
+    const start = html.search(/<h2[^>]*>\s*Frequently asked questions\s*<\/h2>/i);
+    if (start < 0) return [];
+    const rest = html.slice(start).replace(/^<h2[^>]*>.*?<\/h2>/is, '');
+    const section = rest.split(/<h2[\s>]/i)[0];
+    const strip = (s) => s.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#39;|&rsquo;/g, "'")
+      .replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
+    return section.split(/<h3[^>]*>/i).slice(1).map((chunk) => {
+      const [q, a] = chunk.split(/<\/h3>/i);
+      return { q: strip(q), a: strip(a || '') };
+    }).filter((x) => x.q && x.a);
+  });
+
   // Lucide icon shortcode
   eleventyConfig.addShortcode("icon", function(iconName, className = "") {
     const iconPath = path.join(__dirname, 'node_modules/lucide-static/icons', `${iconName}.svg`);
@@ -57,10 +77,57 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  // Responsive screenshots: `{% shot "/assets/loom/shot-eq.png", "alt", "sizes", eager %}` writes a
+  // <picture> with AVIF and WebP at several widths, the PNG as the fallback, and the intrinsic
+  // width and height so the page does not jump as images arrive. The originals stay where they
+  // are and are still served at their old URLs, because og:image and anything already shared
+  // points at them. Generated files are cached in .cache/ between builds.
+  eleventyConfig.addAsyncShortcode("shot", async function(src, alt, sizes = "(min-width: 1304px) 1240px, calc(100vw - 32px)", eager = false) {
+    const metadata = await Image(path.join(__dirname, "src", src), {
+      widths: [640, 1024, 1600, 2400],
+      formats: ["avif", "webp", "png"],
+      outputDir: path.join(__dirname, "_site", "img"),
+      urlPath: "/img/",
+      cacheOptions: { duration: "30d", directory: ".cache" },
+      sharpPngOptions: { compressionLevel: 9 },
+      sharpWebpOptions: { quality: 80 },
+      sharpAvifOptions: { quality: 55 },
+    });
+    return generateImageHTML(metadata, {
+      alt,
+      sizes,
+      loading: eager ? "eager" : "lazy",
+      decoding: "async",
+      ...(eager ? { fetchpriority: "high" } : {}),
+      style: "width:100%;height:auto;display:block;",
+    });
+  });
+
+  // Last-modified date for the sitemap: the newest commit touching the page's source or any
+  // layout it names. Falls back to the build date (no git, or a shallow CI clone).
+  const { execFileSync } = require('child_process');
+  const lastmodCache = new Map();
+  eleventyConfig.addFilter("gitLastmod", function(inputPath, layout) {
+    const files = [inputPath];
+    if (layout) files.push(path.join("src/_includes", layout));
+    const key = files.join("|");
+    if (!lastmodCache.has(key)) {
+      let iso = null;
+      try {
+        iso = execFileSync("git", ["log", "-1", "--format=%cI", "--", ...files],
+                           { encoding: "utf8" }).trim() || null;
+      } catch (e) { /* not a git checkout */ }
+      lastmodCache.set(key, iso ? new Date(iso).toISOString() : new Date().toISOString());
+    }
+    return lastmodCache.get(key);
+  });
+
   // Copy static assets
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
+  // IndexNow ownership key (see the IndexNow step in .github/workflows/deploy.yml).
+  eleventyConfig.addPassthroughCopy("src/*.txt");
   eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy(".nojekyll");
 

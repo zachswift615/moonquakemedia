@@ -1,0 +1,413 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/side-panel/
+manualSlug: side-panel
+---
+{% raw %}
+<p>The side panel runs down the right edge of the window in the looper, the arrange view and the mixer. It has three modes and shows one at a time: <code>GLOBAL</code> for the song's global settings, <code>TRACK n</code> for the focused track's settings, and <code>SONG</code> for this song's own settings. The <a href="/loom/manual/top-bar/#the-panel-toggle">panel toggle</a> in the top bar hides the panel and brings it back in the mode you left it in. In the mixer, you reach a track's settings through this panel (see <a href="/loom/manual/the-mixer/">The mixer</a>).</p>
+<p>The effect editor is not part of this panel. It is a drawer that opens inside the mixer, beside the strip you tapped, and is described under <a href="/loom/manual/the-mixer/#the-effect-rack">The effect rack</a>. It never opens as a floating window, so nothing sits on top of the mixer you are performing on.</p>
+<p>The panel is 310 px wide in every mode, so the tabs do not move under your pointer when you switch modes. 310 px is the width of the <code>GLOBAL</code> mode's settings column, and <code>GLOBAL</code> is the widest of the three modes.</p>
+<p>Below a window width of about 1400 px, the effect drawer and this panel do not both fit. Opening the drawer hides the panel. The panel toggle brings the panel back in the mode you left it in and closes the drawer. Above that width, both stay open and neither moves.</p>
+<p>If you resize the window across that width while a drawer is open, the panel hides and returns on its own. Widening past it brings the panel back in the mode you left it in. Narrowing past it hides the panel and leaves the drawer where it is, because the drawer is what you just asked for.</p>
+<p>The panel, its three tabs and the way it collapses are the same on every surface, and it always comes back in the mode you left it in.</p>
+<p>In ARRANGE, the timeline gives up width to the panel instead of being drawn underneath it. The body is divided before the arrange view lays itself out, so the ruler, the lanes and the end marker all stop at the panel's border. Collapse the panel and the timeline takes the width back. The mixer's rack is divided the same way, so opening the panel narrows every strip instead of covering the strips on the right.</p>
+<p>With the panel open, the arrange header wraps when the window is narrower than about 1310 px. <code>TOOL</code>, <code>SNAP</code> and <code>VERB</code> move to a full-width second row and the lanes shift down by 38 px, because at narrower widths those three controls would be squeezed too thin to read. The default 1600 px window is well above this width. With the panel collapsed, the header does not wrap at any width you can drag to: the smallest window LOOM allows is 1180 px wide, and the single row still holds all three controls there.</p>
+<p>The panel scrolls vertically when its contents do not fit. Tabbing to a control below the fold scrolls it into view. Nothing else scrolls the panel: not a state change, not the refresh, not moving the panel to another track, and not a drag inside the panel, because every drag in the panel belongs to a control.</p>
+<p><code>Tab</code> and <code>⇧Tab</code> move between controls. When the scroller itself has focus, <code>Page Up</code>, <code>Page Down</code>, <code>Home</code> and <code>End</code> scroll it.</p>
+<p>Every off-screen control stays reachable from the keyboard and stays in the accessibility tree. The scrolling region and both of its scrollbars are named: <code>Song settings scroller</code>, <code>Song settings scrollbar</code> and <code>Song settings horizontal scrollbar</code> on the <code>GLOBAL</code> side, with the matching <code>Track settings</code> names on the <code>TRACK</code> side.</p>
+<h2 id="the-global-track-and-song-tabs">The GLOBAL, TRACK and SONG tabs</h2>
+<p>Three buttons run across the top of the panel. <code>GLOBAL</code> shows the song's global settings. <code>TRACK n</code> shows the focused track's settings. It does the same thing as a strip's <code>i</code> button, so the two gestures cannot disagree. <code>SONG</code> shows this song's own settings, under an <code>ARRANGEMENT</code> heading.</p>
+<p>The <code>TRACK</code> tab always names the focused track. It is never disabled, because there is always a focused track. Focus another strip and the tab names that one. While an instrument track has focus, the tab reads <code>INST 1</code>, <code>INST 2</code> and so on, and shows that track's settings; see <a href="/loom/manual/instrument-tracks/#the-inst-tab">Instrument tracks</a>.</p>
+<p>The active tab has a lit face and a 3 px rule under it, so you can tell which mode you are in without relying on colour alone.</p>
+<p>The tabs are named <code>Global panel tab</code>, <code>Song panel tab</code> and <code>Track panel tab</code> in every state. The number on the face follows focus, so it could not be part of the name even if the naming rule allowed it. Each tab's description says which tab you are on and what the others would show.</p>
+<p>The third tab is <code>SONG</code> rather than <code>ARRANGE</code> because the top bar's <code>VIEW / ARRANGE</code> swaps the whole body of the window, while this tab swaps only the panel. The three tabs are three scopes: <code>GLOBAL</code> is this session and this machine, <code>TRACK</code> is one track, and <code>SONG</code> is this song. The section heading inside the panel is <code>ARRANGEMENT</code>.</p>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/song.song-panel.webp" width="301" height="168" loading="lazy" decoding="async" alt="The SONG tab on a song whose tracks hold loops. TIME SIGNATURE is drawn behind a dashed border because it is locked."><figcaption>The SONG tab on a song whose tracks hold loops. TIME SIGNATURE is drawn behind a dashed border because it is locked.</figcaption></figure>
+<p>The <code>SONG</code> tab holds <code>SONG COUNT-IN</code> and <code>TIME SIGNATURE</code>. <code>TIME SIGNATURE</code> sets how many beats a bar has and what a beat is. It is saved with the song, and the bar lines, the ring's countdown and a tempo derived from a loop all count against it. It is locked on the same terms as the tempo: while any track holds a loop, or while the transport rolls, its chip is drawn behind a dashed border and refuses a change. Clear every track and stop the transport to change it.</p>
+<p>To leave the <code>TRACK</code> panel, use the <code>GLOBAL</code> tab. To hide the panel, use the panel toggle.</p>
+<h2 id="the-global-panel">The GLOBAL panel</h2>
+<p>Everything here is the song's global default: the value a track inherits until you change it on that track. Changing a setting here does not overwrite every track. A strip you have set differently in the <code>i</code> panel keeps its own value and shows an asterisk on its <code>STOP</code> face.</p>
+<div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-settings.webp" width="301" height="492" loading="lazy" decoding="async" alt="The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections."><figcaption>The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-device.webp" width="320" height="346" loading="lazy" decoding="async" alt="The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open."><figcaption>The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open.</figcaption></figure></div>
+<h3 id="global">GLOBAL</h3>
+<table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>Values</th>
+<th>What it sets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LAUNCH QUANTIZE</code></td>
+<td><code>IMMEDIATE</code>, <code>NEXT BEAT</code>, <code>NEXT BAR</code>, <code>NEXT CYCLE</code></td>
+<td>When a launch press on a track takes effect.</td>
+</tr>
+<tr>
+<td><code>STOP QUANTIZE</code></td>
+<td><code>IMMEDIATE</code>, <code>END OF BEAT</code>, <code>END OF BAR</code>, <code>END OF LOOP</code></td>
+<td>When a track's <code>STOP</code> takes effect.</td>
+</tr>
+<tr>
+<td><code>REC ACTION</code></td>
+<td><code>PLAY</code>, <code>OVERDUB</code>, <code>STOP</code></td>
+<td>What the second ring press does: close to play, close to overdub, or close and stop.</td>
+</tr>
+<tr>
+<td><code>REC COUNT-IN</code></td>
+<td><code>OFF</code>, <code>1 BAR</code> … <code>4 BARS</code></td>
+<td>How many bars a track waits after a record press before recording starts.</td>
+</tr>
+<tr>
+<td><code>LENGTH</code></td>
+<td><code>FREE</code>, <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>, <code>32</code> bars</td>
+<td>A pre-set loop length. The recording closes by itself at the end of the last bar, with no second press.</td>
+</tr>
+</tbody>
+</table>
+<p><code>NEXT CYCLE</code> and <code>END OF LOOP</code> follow the loop you are hearing, not the one you recorded. A track that has been stopped and started again begins its loop at the moment you restarted it, so its cycle boundary moves with it. Press <code>STOP</code> with <code>END OF LOOP</code> on a track you restarted mid-song, and it stops at the end of the pass you are listening to.</p>
+<p>There are two count-ins, and they do different jobs. <code>REC COUNT-IN</code> counts forward from a record press on one track, and recording begins on the downbeat at the end of the count. <code>SONG COUNT-IN</code>, on the <code>SONG</code> tab, counts the whole transport in before bar one, in negative time. It applies only to <code>PERFORM FROM TOP</code>. It does not apply to <code>PERFORM FROM HERE</code>, which rolls from wherever the playhead already is without locating first. Each count-in's accessible description says which one it is.</p>
+<p>Plain <code>ROLL</code> never counts in, whatever either setting says.</p>
+<p>The <code>LENGTH</code> list is a subset. The engine accepts any bar count up to 512, but the chip offers only <code>FREE</code> plus six powers of two. If a song holds a count the chip cannot show, the chip displays the nearest value it can show, and nothing is written back.</p>
+<h3 id="responds-to-globals">RESPONDS TO GLOBALS</h3>
+<table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>Values</th>
+<th>What it sets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ALL START Q</code></td>
+<td><code>IMMEDIATE</code>, <code>NEXT BEAT</code>, <code>NEXT BAR</code>, <code>NEXT CYCLE</code></td>
+<td>When the <code>ALL START</code> button fires.</td>
+</tr>
+<tr>
+<td><code>ALL STOP Q</code></td>
+<td><code>IMMEDIATE</code>, <code>END OF BEAT</code>, <code>END OF BAR</code>, <code>END OF LOOP</code></td>
+<td>When the <code>ALL STOP</code> button fires.</td>
+</tr>
+<tr>
+<td><code>JUMP Q</code></td>
+<td><code>IMMEDIATE</code>, <code>NEXT BEAT</code>, <code>NEXT BAR</code></td>
+<td>When the playhead arrives at a bar you click in the arrange view while the song is rolling.</td>
+</tr>
+</tbody>
+</table>
+<p>These three have their own heading because the chips above set the song's default for a track, while these set when a gesture lands.</p>
+<p>You set where the click goes in the mixer, on the click strip in the <code>MASTER</code> bank. See <em>The mixer</em>.</p>
+<p><code>ALL START Q</code> and <code>LAUNCH QUANTIZE</code> answer different questions. <code>LAUNCH QUANTIZE</code> sets when a track acts once it is started. <code>ALL START Q</code> sets when the button fires. After that, each track still waits for its own launch quantize.</p>
+<p><code>ALL START Q</code> starts at <code>NEXT BAR</code> and <code>ALL STOP Q</code> at <code>IMMEDIATE</code>. When the transport is parked there is no grid to wait for, so both buttons fire at once whatever the chips say, and <code>ALL START</code> also starts the transport in the same gesture: everything begins together as time starts. Setting <code>ALL STOP Q</code> to <code>IMMEDIATE</code> does not by itself stop tracks immediately. Each track then resolves on its own stop quantize, which starts at <code>END OF LOOP</code>.</p>
+<p>Changing either chip writes a notice that describes what the button will do, which can differ from what you set. Set <code>ALL STOP Q</code> to <code>IMMEDIATE</code> on a song whose tracks are all at <code>END OF LOOP</code>, and the notice reads <em>"ALL STOP fires at each track's loop end"</em>, because LOOM uses the later of the two. Three other forms appear:</p>
+<table>
+<thead>
+<tr>
+<th>Notice</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ALL STOP fires at each track's loop end at the latest</code></td>
+<td>Your tracks do not all resolve at the same moment. The time given is the last of them.</td>
+</tr>
+<tr>
+<td><code>ALL STOP fires at once now and at each track's loop end once the transport rolls</code></td>
+<td>The transport is stopped. The first time is what happens if you press now. The second is what happens once the clock is running.</td>
+</tr>
+<tr>
+<td><code>ALL STOP takes no tracks</code></td>
+<td>Every track has <code>FOLLOWS ALL STOP</code> off, or the song has no tracks. The press would be refused.</td>
+</tr>
+</tbody>
+</table>
+<p><code>ALL START</code> writes the same four forms in its own words. Tracks you have excluded with <code>FOLLOWS ALL START</code> or <code>FOLLOWS ALL STOP</code> are not counted, because the button does not act on them.</p>
+<p><code>JUMP Q</code> starts at <code>NEXT BAR</code>. Of the three, it is the only one that is also a safety setting. Click a bar while the song is rolling and the playhead does not move yet: a hollow marker appears where you clicked, and the transport arrives there on the boundary this chip sets. Set it to <code>IMMEDIATE</code> and the song jumps the instant you click. That is useful when you want it, and it is why LOOM does not ship with that value. <code>Escape</code> cancels a waiting jump, and clicking the same bar again fires it at once, whatever <code>JUMP Q</code> is set to. With the transport parked, this setting does nothing: a click just places the playhead. There is no <code>NEXT CYCLE</code> value, because a cycle belongs to a track and the playhead belongs to the song.</p>
+<h3 id="audio-device">AUDIO DEVICE</h3>
+<table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>INPUT DEVICE</code></td>
+<td>Chooses the input interface. Entry 0 is <code>(system default)</code>.</td>
+</tr>
+<tr>
+<td><code>OUTPUT DEVICE</code></td>
+<td>Chooses the output interface. Entry 0 is <code>(system default)</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Both lists refresh every time you open either dropdown, so an interface you plug in after launch appears without a relaunch. Both chips refresh from the same device scan, whichever one you opened, so a device never appears on the input side while missing from the output side.</p>
+<p>If a selected device disappears, it keeps its entry. The chip still names the device the session is configured for, instead of silently falling back to <code>(system default)</code>.</p>
+<p><strong>Changing either chip destroys every recorded loop</strong>, because a new interface means a new audio engine and nothing carries audio between engines. If any track holds something, changing a chip first raises the at-risk warning (see <a href="/loom/manual/dialogs/">Dialogs</a>). If every track is empty, the change takes one click.</p>
+<p>If you cancel the warning, the chip returns to the interface the session is actually using.</p>
+<h3 id="midi">MIDI</h3>
+<table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MIDI CH</code></td>
+<td>The channel LOOM listens on for its MIDI bindings. 16 unless you change it.</td>
+</tr>
+<tr>
+<td><code>MIDI MAP</code></td>
+<td>Which note layout LOOM answers: <code>1.x layout</code>, the default, or <code>1.0 layout</code>, the layout LOOM 1.0 used. The 1.0 layout will be removed in LOOM 1.4.</td>
+</tr>
+</tbody>
+</table>
+<p>They sit here because they answer the same question as the two device chips, for the other cable: what LOOM is connected to, and whether it is listening where you are talking.</p>
+<p>Your controller must send its commands on this channel. LOOM's commands ignore every other channel, so you can drive LOOM from the same keyboard you are playing. What you play on another channel goes to the <a href="/loom/manual/instrument-tracks/">instrument tracks</a> that listen on it, and no instrument track listens on this one.</p>
+<p>The change takes effect immediately, with no relaunch: the old channel goes quiet and the new one starts answering. Unlike the device chips, changing it destroys nothing. No engine is rebuilt and no loop is at risk, so no warning appears.</p>
+<p><code>MIDI MAP</code> also takes effect immediately, with no relaunch, and destroys nothing. If you are holding a Clear pad when you switch it, LOOM cancels that hold. <a href="/loom/manual/midi-mapping/">MIDI mapping</a> prints both layouts.</p>
+<p>The channel and the layout are stored per machine, not in the song. Take a set to another rig and it uses that rig's channel and layout, since the controller there is a different one.</p>
+<p>To check the channel, watch the <code>MIDI</code> cell on the bottom rail while you press a pad (see <a href="/loom/manual/bottom-rails/">The bottom rails</a>). A message on the wrong channel shows there as received but unmatched, which is the problem this chip fixes.</p>
+<h3 id="accessibility">ACCESSIBILITY</h3>
+<p><code>ANNOUNCE</code> is a toggle and the only control in this section. It turns spoken announcements on and off. They help during setup and are worse than silence during a live set.</p>
+<p>It is named <code>Announce state changes</code>. Turning it on announces that it is on; turning it off is silent. It silences speech only: every name, role and description stays as it is, and the notice line still shows its text.</p>
+<p>The switch is not saved. It starts on at every launch, so if you turned it off last night, turn it off again tonight.</p>
+<h2 id="the-track-panel">The TRACK panel</h2>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/panel.track-top.webp" width="301" height="502" loading="lazy" decoding="async" alt="The top of the TRACK panel on track 1: its SOURCE and TIMING sections."><figcaption>The top of the TRACK panel on track 1: its SOURCE and TIMING sections.</figcaption></figure>
+<p>This is a single panel that moves between tracks, rather than one panel per strip, and its controls are editable.</p>
+<p>The panel follows the focused track however focus moved: a strip press, an arrow key, or any strip verb, since each one focuses the track first. The tab, the body and the settings the chips write always refer to the same track.</p>
+<h3 id="the-track-panel-is-the-tracks-settings">The TRACK panel is the track's settings</h3>
+<p>This panel holds the focused track's settings and nothing else. The track's effect chain and the editor for each effect are in the <strong>effect drawer</strong>, which opens inside the mixer along the right edge of the rack and is described under <a href="/loom/manual/the-mixer/#the-effect-rack">The effect rack</a>. The breadcrumb described there belongs to the drawer.</p>
+<h3 id="the-settings">The settings</h3>
+<p>There are five sections, in the order you work through them when you set up a track.</p>
+<h3 id="source">SOURCE</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Kind</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IN 1</code>, <code>IN 2</code>, …</td>
+<td>One switch per input</td>
+<td>Whether this track records that device input.</td>
+</tr>
+<tr>
+<td><code>INST 1</code>, <code>INST 2</code>, …</td>
+<td>One switch per instrument track</td>
+<td>Whether this track records that instrument track.</td>
+</tr>
+</tbody>
+</table>
+<p>There is one switch for each channel the open audio device offers, and one switch before a device is open. Above the switches, a line reads <code>INPUT 1</code>, <code>INPUTS 1, 3 AND 4</code>, or <code>NO INPUTS</code>.</p>
+<p>A track records the sum of every input you switch on. Switch on all four drum microphones and the DRUMS track records all four mixed together. That is what a single track is for on a loop pedal, and it is why this is a row of switches rather than a list you pick one from.</p>
+<p>Each input keeps its own trim, cue send and effects. Four microphones summed onto one track are still four inputs on the mixer, each with its own fader and EQ. A Boss loop station cannot do this.</p>
+<p>Inputs are summed at full level. Switching on a fifth microphone does not turn the other four down. If four hot microphones together are too loud, lower the preamp gain. The track meter shows the summed signal while you record, so you can see the level.</p>
+<p>Each track may record a different set of inputs, and two tracks may record the same input.</p>
+<p>Below the inputs, under <code>INSTRUMENTS · AFTER FX, BEFORE FADER</code>, there is one switch for each <a href="/loom/manual/instrument-tracks/">instrument track</a>, such as <code>INST 1  SYNTH · Pad</code>. Switch one on to record that instrument track on this audio track. The line above the switches then adds it, for example <code>INPUT 1 + INST 1</code>.</p>
+<p>LOOM records the instrument after its effects and before its fader and pan, and the take lines up with the loop exactly. LOOM does not apply the latency correction it uses for a device input, because an instrument does not pass through your interface. You hear the instrument from its own strip, not from this track. A muted instrument track records silence, and its switch reads <code>MUTED</code>, for example <code>INST 1  SYNTH · Pad · MUTED</code>.</p>
+<p>With no inputs switched on, the line reads <code>NO INPUTS</code> and the track records silence. This is a valid setting, not an error: the track records for its full length, closes normally and plays back silent, and nothing warns you. If a take comes back silent, check this line first.</p>
+<p>These switches decide only what the track records. Whether you <em>hear</em> an input is set on the mixer's <code>INPUTS</code> bank (see <a href="/loom/manual/the-mixer/">The mixer</a>), and the two are independent. An input you cannot hear is still recorded, and an input you can hear is audible whether or not any track records it. You never have to arm a track to hear yourself, and pressing record does not make you louder, whether one track is recording or five.</p>
+<p>When you open a song on a smaller interface, LOOM drops the inputs it cannot reach and tells you which ones. For example, record a track on inputs 1, 5 and 9 at home, then open the song on a two-input interface at a venue. The track records input 1 tonight, and the notice lists the numbers: <em>"track 2 recorded inputs 1, 5 and 9 … it drops inputs 5 and 9 and records input 1 tonight, and the song still says inputs 1, 5 and 9."</em> The song itself does not change. Plug the larger interface back in and all three inputs come back. If every input a track uses is missing, the track records silence and the notice says so.</p>
+<p>Each switch is its own tab stop. A screen reader reads each one as <code>Record input 3</code>, with its on or off state.</p>
+<h3 id="timing">TIMING</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Kind</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LAUNCH QUANTIZE</code></td>
+<td>segmented row</td>
+<td><code>IMMEDIATE</code>, <code>NEXT BEAT</code>, <code>NEXT BAR</code>, <code>NEXT CYCLE</code></td>
+</tr>
+<tr>
+<td><code>STOP QUANTIZE</code></td>
+<td>segmented row</td>
+<td><code>IMMEDIATE</code>, <code>END OF BEAT</code>, <code>END OF BAR</code>, <code>END OF LOOP</code></td>
+</tr>
+<tr>
+<td><code>ON LAUNCH</code></td>
+<td>chip</td>
+<td><code>KEEP PHASE</code>, <code>FROM THE TOP</code></td>
+</tr>
+</tbody>
+</table>
+<p>The two quantizes are segmented rows rather than dropdowns because their four values form an ordered scale (immediate, beat, bar, cycle, each coarser than the last), and a row shows that order by position. At soundcheck, you can compare five tracks with a glance along the rows.</p>
+<p><code>ON LAUNCH</code> sets <em>where</em> a track starts; <code>LAUNCH QUANTIZE</code> sets <em>when</em>. <code>FROM THE TOP</code> starts the track at its own beginning, whatever the rest of the set is doing. <code>KEEP PHASE</code> starts it at the point it would have reached if it had never stopped.</p>
+<h3 id="recording">RECORDING</h3>
+<p>The four chips read from top to bottom in the order of the recording lifecycle.</p>
+<table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>Values</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REC COUNT-IN</code></td>
+<td><code>OFF</code>, <code>1 BAR</code> … <code>4 BARS</code></td>
+<td>How many bars this track waits before recording begins.</td>
+</tr>
+<tr>
+<td><code>LENGTH</code></td>
+<td><code>FREE</code>, <code>1</code>–<code>32</code> bars</td>
+<td>This track's pre-set loop length.</td>
+</tr>
+<tr>
+<td><code>REC ACTION</code></td>
+<td><code>PLAY</code>, <code>OVERDUB</code>, <code>STOP</code></td>
+<td>What this track does when its recording ends.</td>
+</tr>
+<tr>
+<td><code>DUB MODE</code></td>
+<td><code>SUM</code>, <code>REPLACE</code></td>
+<td>What an overdub pass does to the audio already there.</td>
+</tr>
+</tbody>
+</table>
+<p><code>SUM</code> keeps every layer, as loopers always have. <code>REPLACE</code> overwrites what is under the pass. In both modes the loop and its length stay the same, so <code>UNDO</code> takes back the whole pass.</p>
+<p><code>DUB MODE</code> goes dead while an overdub pass is running on this track. The face reads <code>LOCKED: DUBBING</code> and the box still shows <code>SUM</code> or <code>REPLACE</code>. The pass keeps the mode it started with. End the pass with the track's ring, and you can change the chip again.</p>
+<h3 id="responds-to-globals_1">RESPONDS TO GLOBALS</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Kind</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FOLLOWS ALL START</code></td>
+<td>inline segmented row</td>
+<td><code>OFF</code>, <code>ON</code></td>
+</tr>
+<tr>
+<td><code>FOLLOWS ALL STOP</code></td>
+<td>inline segmented row</td>
+<td><code>OFF</code>, <code>ON</code></td>
+</tr>
+</tbody>
+</table>
+<p>These set whether the <code>ALL START</code> and <code>ALL STOP</code> buttons act on this track. <code>OFF</code> leaves the strip exactly as it is when the button is pressed, which suits a drone or a bed under the set. Neither setting affects this strip's own ring, and neither is the transport <code>STOP</code>.</p>
+<p><code>FOLLOWS ALL START = OFF</code> does not take the strip out of the transport. <code>ALL START</code> starts a stopped transport, and time then runs under every track, whether or not the button started it.</p>
+<p>Both start at <code>ON</code>, so if you never open this panel, every strip follows both buttons.</p>
+<p>They sit side by side because you compare them: a track you never want the button to <em>start</em> is often one you do want it to stop.</p>
+<h3 id="state">STATE</h3>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/song.track-panel-state.webp" width="321" height="344" loading="lazy" decoding="async" alt="The bottom of the TRACK panel on track 3, which holds a stopped loop: its RESPONDS TO GLOBALS and STATE sections."><figcaption>The bottom of the TRACK panel on track 3, which holds a stopped loop: its RESPONDS TO GLOBALS and STATE sections.</figcaption></figure>
+<p>Six readouts, none of them a tab stop.</p>
+<table>
+<thead>
+<tr>
+<th>Readout</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OVERRIDES</code></td>
+<td>Which of this track's settings differ from the song's default, as words (<code>stop, rec action</code>), or <code>none — inherits global</code>.</td>
+</tr>
+<tr>
+<td><code>SENDS</code></td>
+<td>This track's level to each bus, in the same decibels the faders show (<code>CUE -6.0 dB, FX 1 off (on faders), FX 2 off</code>), or <code>none</code>. The bus the faders currently address is marked <code>(on faders)</code>.</td>
+</tr>
+<tr>
+<td><code>STATE</code></td>
+<td>The ring's own state word: <code>PLAY</code>, <code>DUB</code>, <code>STOPPED</code>, <code>WAIT STOP</code>, …</td>
+</tr>
+<tr>
+<td><code>LOOP TURN</code></td>
+<td>The turn count and tenth, <code>2.3</code>.</td>
+</tr>
+<tr>
+<td><code>CONTENT</code></td>
+<td><code>holds a loop</code> or <code>no content</code>.</td>
+</tr>
+<tr>
+<td><code>IN BLOCK</code></td>
+<td><code>yes</code> or <code>no</code>: whether the audio thread processes this track at all.</td>
+</tr>
+</tbody>
+</table>
+<p><code>OVERRIDES</code> names the settings rather than counting them, including settings that have no chip in the panel, so a song someone else set up shows you the whole list. The strip's <code>*</code> and this line show the same fact.</p>
+<p><code>SENDS</code> is the only place where all three buses are visible at once. The faders address one bus at a time, so this line shows what a track sends to the other two without leaving the page you are working on. A send at the bottom of its range reads <code>off</code> rather than a very quiet number.</p>
+<p>Two of the settings <code>OVERRIDES</code> can name have no chip anywhere, and neither has any effect in this build: a sub-cycle divisor, which would govern a sub-cycle quantize that nothing in LOOM reaches, and a phase lock. A song that sets either one still lists it here, because an override is a fact about the track whether or not this build draws a control for it. If <code>OVERRIDES</code> names either one, there is no control to find and nothing you can hear is affected.</p>
+<p>For someone who cannot see the strip, these readouts are the only accessible view of track state.</p>
+<h2 id="how-the-panels-controls-take-keys">How the panel's controls take keys</h2>
+<p>A <strong>chip</strong> is a standard combo box: <code>Return</code> opens the list, and the arrow keys move through it.</p>
+<p>A <strong>segmented row</strong> is one tab stop, with the arrow keys moving inside it, like a chip. Its keys are listed in <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>.</p>
+<p>Every chip and row is named by its caption, and each cell of a segmented row carries its setting in its own name (<code>LAUNCH QUANTIZE: NEXT BAR</code>), so a screen reader can say <em>NEXT BAR, selected</em> instead of reading four anonymous buttons. Every setting also carries a sentence that says what it means, because a stage caption is only an abbreviation and does not define the setting.</p>
+<p>On the <code>TRACK</code> panel, these sentences name the track they describe. The names do not, because one panel moves between tracks.</p>
+<p><code>LAUNCH QUANTIZE</code> and <code>STOP QUANTIZE</code> appear on both panels: the <code>GLOBAL</code> one sets the song's default, and the <code>TRACK</code> one sets that track alone. The names of the <code>GLOBAL</code> pair end with the panel, so a screen reader says <em>launch quantize in the GLOBAL panel</em> and the two are never announced the same way. Their sentences say the same thing in full.</p>
+<p>The selected cell of a segmented row is lit and has a 3 px rule under it, so the selection does not rely on colour alone. Every cell keeps the same size and position in every state.</p>
+<h2 id="where-the-settings-start">Where the settings start</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Starts at</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LAUNCH QUANTIZE</code></td>
+<td><code>NEXT BAR</code></td>
+</tr>
+<tr>
+<td><code>STOP QUANTIZE</code></td>
+<td><code>END OF LOOP</code></td>
+</tr>
+<tr>
+<td><code>REC ACTION</code></td>
+<td><code>PLAY</code></td>
+</tr>
+<tr>
+<td><code>REC COUNT-IN</code></td>
+<td><code>OFF</code></td>
+</tr>
+<tr>
+<td><code>LENGTH</code></td>
+<td><code>FREE</code></td>
+</tr>
+<tr>
+<td><code>DUB MODE</code></td>
+<td><code>SUM</code></td>
+</tr>
+<tr>
+<td><code>ALL START Q</code></td>
+<td><code>NEXT BAR</code></td>
+</tr>
+<tr>
+<td><code>ALL STOP Q</code></td>
+<td><code>IMMEDIATE</code></td>
+</tr>
+<tr>
+<td><code>JUMP Q</code></td>
+<td><code>NEXT BAR</code></td>
+</tr>
+<tr>
+<td><code>FOLLOWS ALL START</code> and <code>FOLLOWS ALL STOP</code></td>
+<td><code>ON</code></td>
+</tr>
+<tr>
+<td><code>ON LAUNCH</code></td>
+<td><code>FROM THE TOP</code></td>
+</tr>
+</tbody>
+</table>
+{% endraw %}

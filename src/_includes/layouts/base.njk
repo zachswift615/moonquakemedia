@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}{% if title %} | {% endif %}{{ site.name }}</title>
+    {#- `seoTitle` is the whole <title>, with no site-name suffix, for pages whose search title is
+        written to fit the ~60 characters a result shows. Everything else keeps "Title | Site". #}
+    {%- set fullTitle = seoTitle or ((title + " | " if title else "") + site.name) %}
+    <title>{{ fullTitle }}</title>
     {% if description %}
     <meta name="description" content="{{ description }}">
     {% endif %}
@@ -12,17 +15,23 @@
     {% if appStoreId != false %}<meta name="apple-itunes-app" content="app-id={{ appStoreId or '6755753624' }}">{% endif %}
 
     <!-- Open Graph -->
-    <meta property="og:title" content="{{ ogTitle or title }}{% if title %} | {% endif %}{{ site.name }}">
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="{{ ogTitle or fullTitle }}">
     <meta property="og:description" content="{{ ogDescription or description or site.tagline }}">
     <meta property="og:type" content="{{ ogType or 'website' }}">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:image" content="{{ site.url }}{{ ogImage or '/images/og-default.png' }}">
+    {% if ogImageWidth %}<meta property="og:image:width" content="{{ ogImageWidth }}">
+    <meta property="og:image:height" content="{{ ogImageHeight }}">{% endif %}
+    {% if ogImageAlt %}<meta property="og:image:alt" content="{{ ogImageAlt }}">{% endif %}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ ogTitle or title }}{% if title %} | {% endif %}{{ site.name }}">
+    <meta name="twitter:title" content="{{ ogTitle or fullTitle }}">
     <meta name="twitter:description" content="{{ ogDescription or description or site.tagline }}">
     <meta name="twitter:image" content="{{ site.url }}{{ ogImage or '/images/og-default.png' }}">
+    {% if ogImageAlt %}<meta name="twitter:image:alt" content="{{ ogImageAlt }}">{% endif %}
 
     <!-- Google Search Console -->
     <meta name="google-site-verification" content="pWAcs0monFAO6yO10RzsFqi0N_AsM7VPJNnKKpAUy0s">
@@ -34,10 +43,12 @@
     {% if date and ogType == "article" %}
     <meta property="article:published_time" content="{{ date | isoDate }}">
     {% endif %}
+    {% if robots %}<meta name="robots" content="{{ robots }}">{% endif %}
+    {% if themeColor %}<meta name="theme-color" content="{{ themeColor }}">{% endif %}
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ favicon or '/images/favicon-32.png' }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ appleTouchIcon or '/images/apple-touch-icon.png' }}">
 
     {% block head %}{% endblock %}
 
@@ -46,6 +57,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">{% endif %}
     <link rel="stylesheet" href="/css/main.css">
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} Blog" href="/blog/feed.xml">
+    {% include "components/site-jsonld.njk" %}
 </head>
 <body class="{% block bodyClass %}{% endblock %}">
     <a href="#main-content" class="skip-link">Skip to main content</a>

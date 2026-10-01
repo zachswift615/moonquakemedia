@@ -1,0 +1,1146 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/the-arrange-view/
+manualSlug: the-arrange-view
+---
+{% raw %}
+<p>The arrange view is where you draw what the song does before you play it. You place <strong>regions</strong> on a track's lane. Each region carries a <strong>verb</strong> (record, overdub or play), and the verb fires on the bar where the region starts. <code>PERFORM FROM TOP</code> plays the whole thing.</p>
+<p>Open it with <code>⌘2</code>, <strong>View ▸ Arrange</strong>, or the <code>ARRANGE</code> cell of the <code>VIEW</code> switcher at the right end of the top bar. The top bar and both bottom rails stay in place, and only the body of the window changes.</p>
+<p>This page names keys where you need them. <a href="/loom/manual/keyboard/">Keyboard shortcuts</a> lists every key LOOM responds to, including the two tables for this view.</p>
+<h2 id="what-is-on-the-surface">What is on the surface</h2>
+<figure class="shot shot-full"><img src="/assets/loom/manual/song.arrange.webp" width="1278" height="856" loading="lazy" decoding="async" alt="A song's arrangement performing, with the playhead in bar 7. PERFORMANCE STOP is live, and PERFORM FROM TOP and PERFORM FROM HERE are behind dashed borders."><figcaption>A song's arrangement performing, with the playhead in bar 7. PERFORMANCE STOP is live, and PERFORM FROM TOP and PERFORM FROM HERE are behind dashed borders.</figcaption></figure>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>What it marks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The PERFORM buttons: <code>PERFORM FROM TOP</code>, <code>PERFORM FROM HERE</code> and <code>PERFORMANCE STOP</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>TOOL</code>, <code>SNAP</code> and <code>VERB</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>+ LANE</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>The bar ruler</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A track's row in the lane list</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A region</td>
+</tr>
+<tr>
+<td>7</td>
+<td>An automation lane</td>
+</tr>
+<tr>
+<td>8</td>
+<td>The <code>INPUTS &amp; BUSES</code> row</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>FIT</code>, in the scroll strip</td>
+</tr>
+</tbody>
+</table>
+<p>The vertical line crossing the lanes is the playhead.</p>
+<p>Top to bottom:</p>
+<ul>
+<li><strong>The header row.</strong> The PERFORM buttons at the left, then the <code>S</code> button that clears every solo, then <code>TOOL</code>, <code>SNAP</code> and <code>VERB</code>. They are anchored to the left edge and do not move. If the window is too narrow to hold the three setting rows beside them, they move to a full-width second row. To keep them on the first row, widen the window or collapse the side panel. <a href="/loom/manual/side-panel/">The side panel</a> gives the widths.</li>
+<li><strong>The lane list</strong>, headed <code>LANES</code>, in a 148-pixel column down the left. It has one row per track, named <code>TRACK 1</code>, <code>TRACK 2</code> and so on, then one row per instrument track, named <code>INST 1</code>, <code>INST 2</code> and so on. An instrument track's row shows its instrument and preset to the right of its name. Any automation lanes you add are nested under the track or strip they belong to. <code>+ LANE</code> sits at the right-hand end of the heading.</li>
+<li><strong>The bar ruler</strong>, level with that heading, across the rest of the width. It prints a bar number every few bars and carries the <strong>song end marker</strong> and the <strong>head of the playhead</strong>.</li>
+<li><strong>The lanes</strong>, one per track, each level with its own row. Regions are drawn in them, and an automation lane draws its line and nodes.</li>
+<li><strong>The scroll strip</strong>, twelve pixels under the last lane: the timeline scrollbar, <code>-</code>, <code>+</code>, <code>FIT</code> and <code>FOLLOW</code>. When the rows do not all fit, the strip stays at the bottom of the lane area instead of following the last row.</li>
+<li><strong>The row scrollbar</strong>, down the right-hand edge of the lanes, when there are more rows than the window can draw. It moves the track list and the lanes together; the bar ruler stays where it is.</li>
+</ul>
+<p>The PERFORM buttons are a labelled set, like the top bar's <code>MOVE</code> set. A screen reader announces <em>"Perform the arrangement - writes to tracks"</em> before it reaches any of them, so you hear the consequence before you press anything. When a performance starts, <code>PERFORM FROM TOP</code> and <code>PERFORM FROM HERE</code> go dead where they are, and at the same moment <code>PERFORMANCE STOP</code> comes live without moving. No button moves while you are reaching for it. <em>Playing the arrangement</em> below describes what each one does.</p>
+<h3 id="every-control-on-this-surface">Every control on this surface</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it is</th>
+<th>Faces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PERFORM FROM TOP</code></td>
+<td>Plays the arrangement from bar 1. Its shape is a bar with a triangle playing away from it, <code>❙▶</code>.</td>
+<td><code>PERFORM FROM TOP</code> live; <code>NO ARRANGEMENT</code> behind a dashed border when the song has no regions; the same word behind that dashed border while a performance is running.</td>
+</tr>
+<tr>
+<td><code>PERFORM FROM HERE</code></td>
+<td>Plays the arrangement from wherever the playhead is. Its shape is the mirror image: a triangle with the bar on the right, <code>▶❙</code>.</td>
+<td><code>PERFORM FROM HERE</code> live; <code>NO ARRANGEMENT</code> behind a dashed border when the song has no regions; the same word behind that dashed border while a performance is running.</td>
+</tr>
+<tr>
+<td><code>PERFORMANCE STOP</code></td>
+<td>Releases the arrangement and leaves the song playing. Its shape is a filled square, <code>■</code>.</td>
+<td><code>PERFORMANCE STOP</code> in both states: live while a performance is running, behind a dashed border at every other time.</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>Clears every solo, on loop tracks, instrument tracks and effect buses alike. The same button is in the looper view's globals row and the mixer's header.</td>
+<td>Solid amber while anything is soloed; behind a dashed border when nothing is.</td>
+</tr>
+<tr>
+<td><code>TOOL</code></td>
+<td>What a drag on an empty part of a lane does.</td>
+<td><code>POINTER</code> (the default), <code>DRAW</code>.</td>
+</tr>
+<tr>
+<td><code>SNAP</code></td>
+<td>What a gesture rounds to.</td>
+<td><code>BAR</code> (the default), <code>BEAT</code>.</td>
+</tr>
+<tr>
+<td><code>VERB</code></td>
+<td>What the <strong>next</strong> region you make will fire.</td>
+<td><code>REC</code>, <code>DUB</code>, <code>PLAY</code>.</td>
+</tr>
+<tr>
+<td>A track row</td>
+<td>One per track. Pressing it makes that track the focused track. It is drawn as a flat band across the track column, not as a button, because it names a track and does not perform an action.</td>
+<td><code>TRACK 1</code> …</td>
+</tr>
+<tr>
+<td>An instrument track row</td>
+<td>One per instrument track. Pressing it makes that track the focused track. It is drawn like a track row, in the same type, with the instrument and its preset to the right of the name. If the column is too narrow for the preset as well, the row shows the instrument alone.</td>
+<td><code>INST 1  DRUMS · Room</code></td>
+</tr>
+<tr>
+<td>An automation lane row</td>
+<td>One per automation lane you have added. A lane for a loop track's own effect, or for any control of an instrument track, is indented under that track; every other lane is indented under its strip's sub-header in the <code>INPUTS &amp; BUSES</code> group. A violet rule down its indented edge marks it as an automation lane. Pressing it focuses the lane and opens it; pressing it again closes it.</td>
+<td>Two lines. On top, the control it switches: <code>ON / OFF</code>, <code>MUTE</code>, <code>LEVEL - CUE</code>. Under it, dimmer, the part of the strip that control belongs to: <code>CHANNEL</code>, or the effect and its slot, <code>REVERB SLOT 2</code>, or, for an instrument's control, the instrument, <code>SYNTH</code>. The instrument is struck through while the track holds a different one. The row it is indented under names the track or the strip, so neither line repeats it.</td>
+</tr>
+<tr>
+<td>The <code>INPUTS &amp; BUSES</code> row</td>
+<td>One, shown only when the song has a lane on a strip that is not a loop track or an instrument track. Pressing it folds every lane inside it away, and pressing it again brings them back. It reports what is inside it at the right-hand end of its row, folded or not.</td>
+<td><code>INPUTS &amp; BUSES</code>, with a triangle before it. The triangle points down when the lanes are showing and right when they are folded.</td>
+</tr>
+<tr>
+<td>A strip sub-header</td>
+<td>One per strip that has a lane in the <code>INPUTS &amp; BUSES</code> group. A label, not a control: it names the strip its lanes sit under.</td>
+<td><code>IN 9</code>, <code>BUS 1</code>, <code>MASTER</code>.</td>
+</tr>
+<tr>
+<td>A lane row's count cell</td>
+<td>One per automation lane. Reports how many nodes the lane holds, and offers the two steps that take the lane away. Its width does not change with its face.</td>
+<td><code>3 NODES</code> on a lane you are not working on; <code>CLEAR</code> on the lane you have selected; <code>REMOVE</code> once the lane is empty.</td>
+</tr>
+<tr>
+<td><code>+ LANE</code></td>
+<td>One, in the <code>LANES</code> heading at the top of the column. Opens the card you choose a control to automate on, with nothing chosen. It does not scroll with the list, so it stays in the same place however far down you are.</td>
+<td>One face.</td>
+</tr>
+<tr>
+<td>A row's <code>+</code></td>
+<td>One on every track, group header and strip sub-header. Opens the same card with that row's track, strip or group already chosen. It appears when you point at its row or when its row has keyboard focus. Its space is reserved even while it is hidden, so the row does not shift when it appears.</td>
+<td>One face.</td>
+</tr>
+<tr>
+<td>The playhead</td>
+<td>The line through the lanes, with its head in the bar ruler. Click or drag the ruler to place it, or focus it and use the arrows.</td>
+<td>One face.</td>
+</tr>
+<tr>
+<td>The song end marker</td>
+<td>The flag in the bar ruler. Drag it, or focus it and use the arrows.</td>
+<td>One face.</td>
+</tr>
+<tr>
+<td>A lane</td>
+<td>One per row. On a track's row it is what you stand on to make the first region on an empty track. On an automation lane's row it is where you press to add a point at that bar.</td>
+<td>No face. It is the empty ground of a row, with the two ends of its range at the right-hand end.</td>
+</tr>
+<tr>
+<td>A region</td>
+<td>One per region in the song.</td>
+<td><code>REC</code>, <code>DUB</code>, <code>PLAY</code>, or the verb's own name in capitals when this build does not draw a face for it. A <code>~</code> after the word marks an advisory region.</td>
+</tr>
+<tr>
+<td>The timeline scrollbar</td>
+<td>Moves the view along the song. Shown only when the song is wider than the window.</td>
+<td>One face.</td>
+</tr>
+<tr>
+<td>The row scrollbar</td>
+<td>Moves the track list and the lanes up and down together. Shown only when there are more rows than the window can draw.</td>
+<td>One face.</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Zooms out one step.</td>
+<td>One face.</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>Zooms in one step.</td>
+<td>One face.</td>
+</tr>
+<tr>
+<td><code>FIT</code></td>
+<td>The largest zoom at which the whole song fits, scrolled back to bar 1.</td>
+<td>One face.</td>
+</tr>
+<tr>
+<td><code>FOLLOW</code></td>
+<td>Whether the view moves itself while the arrangement rolls. Starts <strong>on</strong>.</td>
+<td>Latched on or off; the name says which.</td>
+</tr>
+</tbody>
+</table>
+<p>Several of those repeat: a track row per track, an automation lane row and its count cell per lane you have added, and a lane and a region for each. Every one of them is on screen in every state. Controls change their faces in place; nothing on this surface appears or disappears with a state change.</p>
+<p><code>+ LANE</code> is always there, whether you have any automation lanes or not. A track with no lanes looks the same as it did before automation existed and takes no extra height.</p>
+<blockquote>
+<p><strong>VoiceOver:</strong> the bar ruler carries two controls, the playhead and the song end marker. Its bar numbers are painted, so a screen reader does not read them out one by one. Instead it reads the view's own sentence, which says how many tracks there are, instrument tracks included, and which bars are on screen: <em>"The song's arrangement. 9 tracks and 2 automation lanes, each nested under what it switches, in track order. One row adds an automation lane. The timeline shows bars 1 to 25 of 96."</em></p>
+</blockquote>
+<h3 id="instrument-tracks-in-the-arrangement">Instrument tracks in the arrangement</h3>
+<p>An instrument track's row takes <code>REC</code>, <code>DUB</code> and <code>PLAY</code> regions the same way a loop track's row does. A <code>PLAY</code> region on an instrument track draws a short mark for each note in the track's loop, repeated from the start of the region, so you can see that the loop holds notes. A <code>REC</code> or <code>DUB</code> region draws none. Lanes for an instrument track, including lanes for its effects, appear indented under that track's row. See <a href="/loom/manual/instrument-tracks/">Instrument tracks</a> for the tracks themselves.</p>
+<h2 id="lane-height">Lane height</h2>
+<p>An automation lane is taller than a track row, because it draws a line between two levels and a track row draws a strip of regions.</p>
+<p>A lane has two heights. It opens at the shorter one. Press the lane's row to open it to the taller one, and press the same row again to close it. Opening a lane closes any other open lane, so only one lane is tall at a time. Pressing a track row closes the open lane as well.</p>
+<p>Pressing a lane's row also moves the keyboard focus to the lane, the same as pressing the lane itself. See <a href="#the-lane-you-are-on">The lane you are on</a>.</p>
+<p>The taller height makes room for a label on every node, not only on the node you are on. It does not fit more labels side by side. See <em>Reading a node's value</em> below.</p>
+<p>Nothing moves sideways when a lane opens or closes. The track names stay in the same column at the same width, and the bars stay in the same place, so a bar you were looking at is still under the same part of the ruler. Only the height of that lane and the position of the rows below it change.</p>
+<h2 id="your-first-arrangement-from-the-keyboard">Your first arrangement, from the keyboard</h2>
+<p>You can do every step here without a mouse.</p>
+<ol>
+<li><strong>Go to the arrange view.</strong> <code>⌘2</code>.</li>
+<li><strong>Reach the surface.</strong> <code>Tab</code> enters the window in reading order: the view switcher, the panel toggle, <code>S</code>, <code>TOOL</code>, <code>SNAP</code>, <code>VERB</code>, and then <code>PERFORM FROM TOP</code>, the seventh stop in either panel mode.</li>
+<li><strong>Choose what the region will fire.</strong> <code>TOOL</code>, <code>SNAP</code> and <code>VERB</code> are setting rows: <code>←</code> and <code>→</code> move inside one. Leave <code>SNAP</code> on <code>BAR</code> for now. Set <code>VERB</code> to <code>REC</code> to record, <code>DUB</code> to overdub, or <code>PLAY</code> to start a track that already holds a loop.</li>
+<li><strong>Reach a lane.</strong> Keep pressing <code>Tab</code>: after <code>PERFORM FROM TOP</code> comes <code>PERFORM FROM HERE</code>, then <code>+ LANE</code>, then the playhead, then the song end marker, then every track row in turn, each followed by its <code>+</code>, then the lanes. An automation lane row is followed by its own count cell before the next row. While a performance is running, <code>PERFORMANCE STOP</code> sits between <code>PERFORM FROM HERE</code> and the playhead. At every other time it is dead and <code>Tab</code> passes over it. <code>↑</code> and <code>↓</code> move between lanes once you are on one. Once there are regions, each lane is followed by its own regions before the next lane. See <em>Editing regions from the keyboard</em> below.</li>
+<li><strong>Make a region.</strong> Press <code>Return</code>. A one-bar region appears after the last region on that track (at bar 1 if the track is empty) and takes the keyboard focus. LOOM says what it made: <em>"REC region on track 3 at bar 1, 1 bar."</em></li>
+<li><strong>Put it where you want it.</strong> <code>⇧←</code> and <code>⇧→</code> move it a bar at a time. <code>⇧↑</code> and <code>⇧↓</code> make it a bar longer or shorter from its end. <code>Page Up</code> and <code>Page Down</code> move its <strong>start</strong> edge and leave its end alone. Each of these announces the result.</li>
+<li><strong>Make the next one.</strong> Press <code>Return</code> again on the region you are on to put a new region straight after it. <code>V</code> cycles what a new region fires (<code>REC</code>, <code>DUB</code>, <code>PLAY</code>) and announces the new verb. The <code>VERB</code> row follows.</li>
+<li><strong>Play it.</strong> Press <code>⇧Tab</code> to go back to <code>PERFORM FROM TOP</code> and press <code>Return</code>, or press the button. You can also skip the navigation: from anywhere in this view, <code>Shift-Return</code> plays it from bar 1 and <code>Shift-Space</code> plays it from wherever the playhead is. See <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>.</li>
+</ol>
+<p><code>⌘Z</code> undoes the last arrangement edit and <code>⇧⌘Z</code> redoes it. Both work anywhere in this view.</p>
+<h2 id="the-three-verbs">The three verbs</h2>
+<p><code>VERB</code> and the <code>V</code> key choose from the same three verbs, and these are the only verbs you can place:</p>
+<table>
+<thead>
+<tr>
+<th>Face</th>
+<th>Verb</th>
+<th>What it does on its bar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REC</code></td>
+<td>Record</td>
+<td>Starts recording the track.</td>
+</tr>
+<tr>
+<td><code>DUB</code></td>
+<td>Overdub</td>
+<td>Starts an overdub pass over what the track already holds.</td>
+</tr>
+<tr>
+<td><code>PLAY</code></td>
+<td>Play</td>
+<td>Starts the track playing what it already holds.</td>
+</tr>
+</tbody>
+</table>
+<p><code>VERB</code> and the <code>V</code> key choose what the <strong>next</strong> region will fire. Neither changes a region you already have. Both set the same value: press <code>V</code> and the <code>VERB</code> row follows, and press a cell in the <code>VERB</code> row and <code>V</code> continues from there. The notice line says which verb is set.</p>
+<p>To change a region you already have, use <code>⇧V</code> or the region's own menu:</p>
+<ul>
+<li><strong><code>⇧V</code></strong> cycles the region you are standing on through the three verbs.</li>
+<li><strong>The region's menu</strong> offers the three, with the region's current verb ticked. Right-click a region to open it, or hold <code>Control</code> and click. Pick a verb and the region changes.</li>
+</ul>
+<p>Both follow the same rule as every other gesture on this surface. If you are standing inside a selection of more than one region, they change the whole selection. Otherwise they change the region you are standing on. When you open the menu inside a selection, its first line says how many regions are in it, so you know before you choose.</p>
+<p>Changing a region's verb keeps the region. It stays in the same place at the same length, and anything you recorded into it stays with it. One <code>⌘Z</code> puts the verb back.</p>
+<p>A gap means stopped. There is no stop region to draw. LOOM stops a track at the end of each of its regions, so the track is silent in the space between two regions. A track with no regions at all plays nothing for the whole song.</p>
+<p>An overdub you start by hand begins at the press. A <code>DUB</code> region, like every other region, begins at the tick the region starts on. See <em><code>SNAP</code>, and what one grid step is</em> for where a region can be placed.</p>
+<p>A <code>REC</code> region on a track that already holds a loop re-records it. There is no separate re-record verb: a <code>REC</code> region over an occupied track is how you replace what is on it. The whole old take is replaced, and the new one is <strong>the region's length</strong>. A 2-bar <code>REC</code> region over a 4-bar loop leaves you a 2-bar loop, not the 4-bar loop with its first two bars overwritten. The track then holds the new take. To leave a track silent for a stretch of the song, give it no regions there.</p>
+<blockquote>
+<p><strong>The replacement is permanent.</strong> <code>UNDO</code> cannot bring back the take a <code>REC</code> region replaced. It accepts the press, the track keeps playing the new take, and nothing changes. Opening the song again brings back the new take too.</p>
+<p><strong>Nothing is replaced until the region actually fires</strong>, through <code>PERFORM FROM TOP</code> or <code>PERFORM FROM HERE</code>. Until then the region is an arrangement edit like any other: move it, delete it, or change its verb to <code>DUB</code>, and the track keeps the take it holds. <code>⌘Z</code> reaches those edits. Once the region has fired, the replacement has happened.</p>
+<p>The new recording is an ordinary take. Overdub onto it and <code>UNDO</code> takes that layer off the way it always does. Only the take the region replaced is out of reach.</p>
+</blockquote>
+<p>A <code>DUB</code> region adds a layer you can undo. It lays a layer over what the track already holds, and <code>UNDO</code> takes that layer off just as it does a layer you played by hand.</p>
+<p><strong>Two <code>DUB</code> regions in a row make two layers.</strong> Each region is its own pass, so two back to back give you two layers and two undo steps, where one region of the same total length gives you one. The track keeps sounding across the join, and you do not hear the boundary.</p>
+<p>A region is the only thing that replaces a take in one action. Recording onto a track that already holds a loop is refused from the strip, and the notice line tells you to overdub it, play it, stop it, or <code>CLEAR</code> it and then record. <code>CLEAR</code> cannot be undone either. See <a href="/loom/manual/track-strips/"><code>UNDO</code>, <code>REDO</code> and <code>CLEAR</code></a>.</p>
+<p>Every region you make in this window fires <code>REC</code>, <code>DUB</code> or <code>PLAY</code>, but a song can reach the timeline holding a region whose verb is none of the three. That region is drawn as itself: the verb's own name in capitals, square corners, one hairline border. Either perform button names those regions when it refuses to start. You can fix such a region without losing it: press <code>⇧V</code> on it, or right-click it and pick a verb from its menu, and it takes one of the three. Its menu has nothing ticked, because its verb is none of the three.</p>
+<h2 id="no-state-on-this-surface-is-carried-by-colour-alone">No state on this surface is carried by colour alone</h2>
+<p>Every region shows what it is with a <strong>word</strong> and a <strong>shape</strong>, and the shapes stay distinct with the colour taken away:</p>
+<table>
+<thead>
+<tr>
+<th>What it is</th>
+<th>The word</th>
+<th>Corners</th>
+<th>Border</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Record</td>
+<td><code>REC</code></td>
+<td>Square</td>
+<td>Two concentric strokes</td>
+</tr>
+<tr>
+<td>Overdub</td>
+<td><code>DUB</code></td>
+<td>Rounded</td>
+<td>Dashed</td>
+</tr>
+<tr>
+<td>Play</td>
+<td><code>PLAY</code></td>
+<td>Rounded</td>
+<td>One plain stroke</td>
+</tr>
+<tr>
+<td>A verb this build does not draw</td>
+<td>The verb's own name, in capitals</td>
+<td>Square</td>
+<td>One hairline</td>
+</tr>
+<tr>
+<td>Advisory</td>
+<td><code>~</code> after the word</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>The region you are on</td>
+<td>(unchanged)</td>
+<td>Four corner brackets</td>
+<td>—</td>
+</tr>
+<tr>
+<td>A region being drawn by a drag</td>
+<td>(none yet)</td>
+<td>—</td>
+<td>Dashed, in the verb it will fire</td>
+</tr>
+</tbody>
+</table>
+<p>The rest of the surface follows the same rule:</p>
+<table>
+<thead>
+<tr>
+<th>What it is</th>
+<th>The shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The focused row: the focused track's, or the automation lane that has the keyboard focus</td>
+<td>A 3-pixel rule down the row's leading edge, at the left edge of the track column</td>
+</tr>
+<tr>
+<td>An automation lane</td>
+<td>A 3-pixel violet rule down its indented edge, one step in from the focused row's rule</td>
+</tr>
+<tr>
+<td>The lane you are on</td>
+<td>A 3-pixel rule down its leading edge, and a dashed line above and below</td>
+</tr>
+<tr>
+<td>The playhead</td>
+<td>A downward triangle in the ruler and a line through the lanes; <strong>dimmed</strong> when the transport is parked, full strength while it rolls</td>
+</tr>
+<tr>
+<td>The song end marker</td>
+<td>A flag with its bottom-left corner notched away, unlike the playhead's triangle</td>
+</tr>
+<tr>
+<td>Past the end of the song</td>
+<td>Diagonal hatching over the lanes</td>
+</tr>
+<tr>
+<td>A control that cannot act</td>
+<td>A different word and a dashed border</td>
+</tr>
+</tbody>
+</table>
+<p>Rolling and parked are also shown elsewhere: the top bar's <code>POSITION</code> field, the beat LEDs and <code>ROLL</code>. The dimmed playhead is a second signal, not the only one.</p>
+<h2 id="tool-and-what-a-drag-on-an-empty-lane-does"><code>TOOL</code>, and what a drag on an empty lane does</h2>
+<p><code>TOOL</code> decides what a press or a drag does on an empty part of a lane.</p>
+<table>
+<thead>
+<tr>
+<th><code>TOOL</code></th>
+<th>Press an empty part of a track's lane</th>
+<th>Drag across a track's lane</th>
+<th>Press an empty part of an automation lane</th>
+<th>Drag across an automation lane</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POINTER</code></td>
+<td>Clears the selection</td>
+<td>Draws a rectangle and selects every region and node it crosses</td>
+<td>Adds a node when you let go</td>
+<td>Draws a rectangle and selects every region and node it crosses</td>
+</tr>
+<tr>
+<td><code>DRAW</code></td>
+<td>Makes a region one grid step long</td>
+<td>Makes a region of the length you dragged</td>
+<td>Adds a node as you press</td>
+<td>Adds a node as you press, and the drag does nothing more</td>
+</tr>
+</tbody>
+</table>
+<p>In <code>POINTER</code> a press on an automation lane waits until you let go before it adds the node, because until then it could still become a rectangle. The node goes where you pressed, not where you let go.</p>
+<p>Everything else on this surface behaves the same in both tools: the keyboard, a press or a drag on a region or a node, <code>SNAP</code>, <code>VERB</code>, the bar ruler, the song end marker and the scroll strip.</p>
+<p><code>POINTER</code> is the default. LOOM remembers the tool for this machine, alongside your MIDI channel and latency calibration, so the next session opens in the tool you last used, whatever song you load.</p>
+<p>To make your first region in <code>POINTER</code>, press a lane and press <code>Return</code>. This works in either tool and on an empty track, and it is what the hint under the lanes suggests when a song has no regions yet.</p>
+<p>Changing <code>TOOL</code> announces the new setting: <em>"dragging an empty lane selects regions and nodes"</em> or <em>"dragging an empty lane makes a region"</em>.</p>
+<h2 id="selecting-more-than-one-thing">Selecting more than one thing</h2>
+<p>A selection is the set of things the next edit acts on. It can hold regions and automation nodes together, so one gesture can take in a region on a track and the nodes on a lane below it. Selection works the same in both tools: every key below works in <code>POINTER</code> and in <code>DRAW</code>.</p>
+<p><strong>With the mouse, in <code>POINTER</code>:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Gesture</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Drag across empty lanes</td>
+<td>Selects every region and every automation node the rectangle crosses, across as many lanes as it covers</td>
+</tr>
+<tr>
+<td>Start the drag on any lane</td>
+<td>A track's lane or an automation lane. On an automation lane the band starts once you move; a press that does not move still adds a node</td>
+</tr>
+<tr>
+<td>Hold <code>⇧</code> and drag</td>
+<td>Adds what the rectangle crosses to what is already selected</td>
+</tr>
+<tr>
+<td>Press a region</td>
+<td>Selects that region alone</td>
+</tr>
+<tr>
+<td>Press a node</td>
+<td>Selects that node alone</td>
+</tr>
+<tr>
+<td>Hold <code>⇧</code> and press a region or a node</td>
+<td>Adds it to the selection, or removes it if it is already in one</td>
+</tr>
+<tr>
+<td>Press an empty part of a track's lane</td>
+<td>Clears the selection</td>
+</tr>
+</tbody>
+</table>
+<p><strong>With the keyboard, in either tool:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>S</code></td>
+<td>Adds the region or node you are on to the selection, or removes it</td>
+</tr>
+<tr>
+<td><code>⇧Home</code> <code>⇧End</code></td>
+<td>On a region, extends the selection to the first or last region on that track. On an automation lane, extends it to the lane's first or last node. Either way you move to that end</td>
+</tr>
+<tr>
+<td><code>⌘A</code></td>
+<td>Selects everything in the arrangement, regions and nodes together; press it again to clear</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Clears the selection</td>
+</tr>
+</tbody>
+</table>
+<p>Once you have a selection, drag any selected region and the other selected regions move with it, keeping their spacing. If the selection holds nodes as well, drag any selected region or any selected node on a lane that holds a level, and the whole selection moves in time, regions and nodes together. That drag ignores up and down movement, so no node changes value. To move nodes in value, select only nodes. Outlines show where each node will land, and the move is one edit. <code>⇧←</code> and <code>⇧→</code> move the whole selection one grid step in time, across every track and every lane it reaches into. <code>Delete</code> or <code>Backspace</code> removes it, from wherever you are standing in the arrange view. Each of those is one edit, so one <code>⌘Z</code> takes the whole thing back, whether you moved two things or twenty.</p>
+<p><code>⇧↑</code> and <code>⇧↓</code> move nodes in value, on every lane the selection reaches into. They work only when every member of the selection is a node on a lane that holds a level. If the selection includes a region, or a node on a lane whose control is a switch, nothing moves and the notice line says why.</p>
+<p>A selection stops at bar 1 as a whole. Move it left past bar 1 and it slides until its earliest member reaches bar 1, then stops, keeping its spacing. The move is never refused.</p>
+<p>Some keys act on one region however much is selected: <code>T</code> and <code>⇧T</code> move a region between tracks, <code>D</code> copies one, <code>⇧↑</code> and <code>⇧↓</code> on a region resize it, and <code>Page Up</code> and <code>Page Down</code> move its start edge. <code>⇧V</code> changes one region's verb when that region is not part of the selection. If a larger selection is held, they still act on the region you are on, and the notice line says so after describing what the key did.</p>
+<p>Selected regions are drawn with a bullet before the verb, <code>• REC</code>, and a rule down their left edge, so the state does not depend on colour. Every change to the selection is reported on the notice line in one sentence: <em>"4 regions selected, track 2 bar 9 to track 3 bar 17"</em>. When the selection holds nodes as well, the sentence names both.</p>
+<p>A selection survives scrolling and zooming, including regions that scroll out of the window. It does not survive loading a different song.</p>
+<h2 id="automation-lanes">Automation lanes</h2>
+<p>An automation lane moves one control while the arrangement performs. You draw nodes on it the way you draw regions on a track, and the song changes the control for one passage and changes it back for the next without anyone touching the machine.</p>
+<p>The kind of lane follows the control:</p>
+<ul>
+<li><strong>Switch lanes</strong> hold one of two states: an effect slot's bypass, on any input, loop track, bus or the master chain, a channel's mute, and an effect control with two settings, such as the delay's <code>SYNC</code> or an EQ band's <code>ON</code>, and an instrument control with two settings.</li>
+<li><strong>Range lanes</strong> hold a value anywhere between two ends: a strip's <code>LEVEL</code> on any of its four fader axes, its <code>PAN</code>, an effect control such as the reverb's <code>WET</code> or an EQ band's <code>GAIN</code>, and an instrument control such as the synth's <code>CUTOFF</code>.</li>
+<li><strong>Step lanes</strong> move between named settings in order and never slide between them, such as the delay's <code>DIVISION</code>, the reverb's <code>SIZE</code> and the synth's <code>OCTAVE</code>. <strong>You cannot add one.</strong> The card leaves those controls out, and a song that already holds such a lane keeps it and plays it. See <em>An effect's controls</em> below.</li>
+<li><strong>Select lanes</strong> load a saved preset into one slot or a saved rack into a whole chain, or set an instrument track's input, preset or drum pattern. See <em>Preset and rack lanes</em> and <em>Input, preset and pattern lanes</em> below.</li>
+</ul>
+<p><em>Channel controls</em> and <em>An effect's controls</em> below list what every strip offers.</p>
+<p><strong>Only a performance moves a lane.</strong> A transport that is rolling without a performance fires nothing. Outside a performance every control sits where you last left it, and a lane-driven control reads the value the chain is actually holding.</p>
+<p><strong>When a performance ends, every lane-driven control stays where the lane left it.</strong> <code>STOP</code>, <code>PERFORMANCE STOP</code> and the end-of-song marker all end a performance, and none of them resets a control, because a footswitch that reset every effect you were hearing would be worse than one that left them alone. Change anything you want changed by hand, or perform again and the lanes set their opening values as the playhead reaches them. Saving after a performance saves what the lanes left.</p>
+<h3 id="muting-an-input-channel-from-the-arrangement">Muting an input channel from the arrangement</h3>
+<p>An input channel's mute takes that channel out of the main mix and out of every send, including the cue. Automating it lets the song drop a live source for one passage and bring it back for the next.</p>
+<p>A typical case: you record a drum take with a vocal mic open beside you. The mic picks up the drums, so you want it down for the take and up again before you sing. Put a lane on that input, draw a node where the take starts and another where you need to sing, and both hands stay on the sticks.</p>
+<p><strong>Muting an input changes nothing about what is recorded.</strong> The mute is the monitor switch: it decides what you and the room hear. A track recording from that input records the same samples whether the input is muted or not, so it is safe to mute a channel in the middle of a take.</p>
+<p><strong>Muting an input does not move its fader.</strong> The level you set by hand is still there when the arrangement unmutes the channel.</p>
+<h3 id="adding-a-lane">Adding a lane</h3>
+<p>There are three ways to open the card, and they all open the same one:</p>
+<ul>
+<li><strong><code>+ LANE</code></strong>, in the <code>LANES</code> heading at the top of the column. It opens the card with nothing chosen. The heading does not scroll, so this button stays in the same place however far down the list you are.</li>
+<li><strong>The <code>+</code> on a row</strong>, on any track, group header or strip sub-header. It opens the card with that row's track, strip or group already chosen, so you start on the middle column. The <code>+</code> appears when you point at its row or when the row has keyboard focus. Its space is reserved even while it is hidden, so nothing else on the row moves when it appears.</li>
+<li><strong><code>L</code></strong>, which does what the <code>+</code> on the focused row does, or what <code>+ LANE</code> does when no row has focus.</li>
+</ul>
+<p>Choosing a row does not hide anything. A card opened from a track still lists every other strip in its first column, so you can change your mind without starting again.</p>
+<p>The card has three columns. Read left to right, they give the address of the control you are automating: which strip, which part of that strip, and which control.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>What it holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>STRIP</code></td>
+<td>The strips of your mixer, under their bank headings and in the mixer's own order: loop tracks, instruments, inputs, the output strips, then the buses. The number at the right of each row is how many controls you can reach under that strip.</td>
+</tr>
+<tr>
+<td><code>MIXER</code></td>
+<td>The parts of the strip you chose. <code>CHANNEL</code> is the strip itself, and <code>RACK</code> is its whole effect chain. The rest are its insert slots, each marked with its number, such as <code>SLOT 2</code>, and named by the effect in it. A slot with no effect in it is not listed.</td>
+</tr>
+<tr>
+<td><code>PARAMETER</code></td>
+<td>The controls that part of the strip offers. A control that writes one of a strip's fader axes names the axis, as in <code>LEVEL - CUE</code>. Under <code>RACK</code> it offers <code>RACK PRESET</code>, which loads a whole saved rack; under a slot it offers <code>PRESET</code>, which loads a saved preset into that slot, above the slot's own controls. Press <code>ADD</code> to give the arrangement a lane for one.</td>
+</tr>
+</tbody>
+</table>
+<p>Choosing a strip fills the middle column and leaves the left one as it was. Choosing a part of the strip fills the right column and changes nothing else.</p>
+<p>Effects live inside the mixer, because an insert slot belongs to a strip. You reach a slot's control the same way you reach a fader: pick the strip first.</p>
+<h4 id="which-inputs-the-list-offers">Which inputs the list offers</h4>
+<p>The <code>SHOW</code> row above the strip column reads <code>ASSIGNED</code> or <code>ALL</code>, and it is the same setting the mixer's input rack uses. <code>ASSIGNED</code> offers the inputs that some track records; <code>ALL</code> offers every input your device has. Loop tracks, instrument tracks, buses and the output strips appear either way. The card opens on whichever the mixer is set to, and you can change it here without changing the mixer.</p>
+<p>The list holds a row for each input your interface actually offers, not for every input LOOM can address.</p>
+<h4 id="slots-with-no-effect-in-them">Slots with no effect in them</h4>
+<p>A lane on an empty slot switches nothing and changes no sound, so empty slots are left out until you ask for them. The heading over the card gives both counts: how many places are shown and how many there are in total.</p>
+<h4 id="channel-controls">Channel controls</h4>
+<p>Besides the effect slots, the list offers a strip's own controls.</p>
+<table>
+<thead>
+<tr>
+<th>Strip</th>
+<th>What you can automate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loop track</td>
+<td><code>LEVEL - MAIN</code>, <code>LEVEL - CUE</code>, <code>LEVEL - FX 1</code>, <code>LEVEL - FX 2</code>, <code>PAN</code>, <code>MUTE</code></td>
+</tr>
+<tr>
+<td>Instrument track</td>
+<td><code>INPUT</code>, <code>PRESET</code>, <code>PATTERN</code> on a drum track, the instrument's own controls, and after them <code>LEVEL - MAIN</code>, <code>LEVEL - CUE</code>, <code>LEVEL - FX 1</code>, <code>LEVEL - FX 2</code>, <code>PAN</code>, <code>MUTE</code>. See <a href="#instrument-track-controls">Instrument track controls</a>.</td>
+</tr>
+<tr>
+<td>Input</td>
+<td><code>LEVEL - MAIN</code>, <code>LEVEL - CUE</code>, <code>LEVEL - FX 1</code>, <code>LEVEL - FX 2</code>, <code>PAN</code>, <code>MUTE</code></td>
+</tr>
+<tr>
+<td>Bus, including the cue</td>
+<td><code>LEVEL - MAIN</code>, <code>MUTE</code></td>
+</tr>
+<tr>
+<td>Master</td>
+<td><code>LEVEL - MAIN</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>A strip's levels are separate controls.</strong> The mixer's <code>FADERS</code> row points a strip's fader at <code>MAIN</code>, <code>CUE</code>, <code>FX 1</code> or <code>FX 2</code>, and those are independent values. The <code>PARAMETER</code> column names the axis on the row you press, so you can tell the send from the fader before you add the lane, and the lane names the one it writes, such as <code>TRACK 2 &gt; LEVEL - CUE</code>. It writes that axis whatever the <code>FADERS</code> row shows while the song plays. Automating a track's cue send leaves its level in the house alone.</p>
+<p><strong><code>SOLO</code> is deliberately not automatable.</strong> Solo is a monitoring convenience, not a mix decision, and a solo fired by the arrangement in the middle of a set sounds like a fault: it is one control, and it spans every track and bus at once. Use <code>MUTE</code> on the strips you want down.</p>
+<p>The cue's <code>OUTPUT</code> is not automatable either. It chooses which pair of sockets the cue leaves by, which is a property of tonight's rig rather than of the song.</p>
+<p>An input's <code>PAN</code> is the one control in this list that changes what you record. A LOOM track always records two channels, and an input's pan is applied before the recorder, so a lane that moves it during a recording pass is heard in the take as well as in the room. Every other control here reaches the room and leaves your takes alone.</p>
+<p><code>Show empty slots</code> sits beside the search field, and <code>Tab</code> reaches it from there. Switch it on and every slot of the strip you are on appears, greyed, with the reason: put an effect in that slot so the lane has something to switch. Use it when you want the lane in place before you add the effect. It is a view option, not part of the song. It is not saved, and the next time you open the card the empty slots are left out again.</p>
+<h4 id="instrument-track-controls">Instrument track controls</h4>
+<p>Each instrument track is a strip under <code>INSTRUMENTS</code>, named <code>INST 1</code>, <code>INST 2</code> and so on, as in the mixer. Its <code>CHANNEL</code> offers <code>INPUT</code> and <code>PRESET</code>, and on a drum track <code>PATTERN</code>. Every control of the instrument the track holds is listed there too, by its full name, such as <code>AFTERTOUCH TO CUTOFF</code>, except a control with more than two settings, such as the synth's octave. A control of a different instrument is not listed. After them come the strip's levels, <code>PAN</code> and <code>MUTE</code>, as on a loop track. The track's effect slots and <code>RACK</code> are listed as on any other strip.</p>
+<p>If you change a track's instrument, a lane you already drew for the old one stays in the arrangement, is drawn unavailable, and writes nothing until that instrument is back.</p>
+<p>Instrument tracks exist only while an audio device is open, so the card lists none without one.</p>
+<h4 id="an-effects-controls">An effect's controls</h4>
+<p>Every control of an effect you have put in a slot can be automated, except a control with more than two settings, such as the delay's <code>DIVISION</code>. The card does not list those. Open the card on the strip the effect is on, choose the slot from the middle column, and the right-hand column lists that effect's controls by the names the effect editor shows: <code>WET</code>, <code>DECAY</code>, <code>FEEDBACK</code>, <code>LOW MID GAIN</code>.</p>
+<p>The slot is part of the lane. A reverb in <code>SLOT 2</code> and a reverb in <code>SLOT 3</code> each offer their own <code>WET</code>, and a lane on one leaves the other alone. You can automate both at once.</p>
+<p><strong>A lane belongs to the effect it was drawn on.</strong> If you take that effect out of the slot, or put a different one in, the lane stays in the arrangement, is drawn unavailable, and writes nothing while the slot holds something else. Put the effect back and the lane plays again from the next node, with nothing to reset. Nothing is deleted, so a rack you swap out for one song and back for the next keeps its automation.</p>
+<p><strong>A control the effect refuses still refuses.</strong> An effect's controls have limits, and a lane that asks for a value outside them is refused, just as the value would be if you typed it by hand. The notice line names the refusal once per performance. LOOM never substitutes a value you did not ask for.</p>
+<p><strong>A song that already has a lane on one of those controls keeps it.</strong> The lane plays, and the card lists its control as <code>HAS LANE</code>. A lane on a delay's <code>DIVISION</code> moves the delay's time. While <code>SYNC</code> is on, the delay's time is worked out from the division and the song's tempo, so a lane that steps from <code>1/4</code> to <code>1/8</code> shortens the delay. The change is not instant: the delay slides to its new time, the same sound you hear when you press a division by hand.</p>
+<p>If a division is longer than the delay line can hold at the current tempo, the delay keeps the time it was already playing, the notice line says so once for that performance, and the node stays where it is. Bring the tempo back and it plays again.</p>
+<h4 id="searching">Searching</h4>
+<p>Type in the search field to narrow all three columns at once. The text matches what you see on screen, so typing <code>IN 3</code>, <code>SLOT 2</code>, <code>ON / OFF</code>, <code>LEVEL</code>, <code>PAN</code> or <code>MUTE</code> all work. A strip with nothing left in it after the search drops out of the left column.</p>
+<h4 id="controls-you-already-automate">Controls you already automate</h4>
+<p>A control the arrangement already has a lane for reads <code>HAS LANE</code> where the others read <code>ADD</code>. The row is dimmer, and pressing it does nothing: you already have the lane. Find it in the track list to draw nodes on it or to remove it. If the lane is folded away inside <code>INPUTS &amp; BUSES</code>, press that row to show it.</p>
+<p>The row stays in the list, and you can still reach it with <code>Tab</code>. It reads out the control and says that it already has a lane, so you learn the state without going to look.</p>
+<h4 id="where-the-lane-appears">Where the lane appears</h4>
+<p>Press <code>ADD</code> to add the lane. Lanes for a loop track's own effects, and every lane on an instrument track, appear indented under that track.</p>
+<p>Every other lane appears in the <code>INPUTS &amp; BUSES</code> group below the <code>+</code>, under a sub-header naming the strip it is on. See <a href="#folding-the-input-and-bus-lanes-away">Folding the input and bus lanes away</a>.</p>
+<p>The new lane takes the keyboard focus. Its row lights as the focused row and scrolls into view, so the next key you press acts on the lane: <code>Return</code> adds its first node at the playhead.</p>
+<p>If you add an input, bus or master lane while the <code>INPUTS &amp; BUSES</code> group is folded, the group opens so that you can see the new lane. Adding a lane on a loop track or an instrument track leaves the group as it is.</p>
+<h4 id="the-lane-you-are-on">The lane you are on</h4>
+<p>The keyboard focus moves to a lane when you add it, press it, press its row in the track list, move onto it with <code>↑</code> or <code>↓</code>, or reach it with <code>Tab</code>. Each way lights the lane's row as the focused row. The focus stays on the lane until you choose a track or move the keyboard to another lane or a region.</p>
+<h3 id="folding-the-input-and-bus-lanes-away">Folding the input and bus lanes away</h3>
+<p>An input, bus or master lane has no track to sit under, so LOOM gives it one: the <code>INPUTS &amp; BUSES</code> row. Every lane on a strip that is not a loop track or an instrument track appears below that row, under a sub-header naming its strip.</p>
+<p>The row appears only when the song has such a lane, and it reports what is inside it at the right-hand end of its own row: how many strips, and how many lanes across them. The report is the same whether the lanes are showing or folded away, so you can tell what you have put away.</p>
+<p><strong>Press the row to fold every lane inside it away. Press it again to bring them back.</strong> Use it when you want the arrangement on screen without the lanes you are not editing: one press puts them all away, however many there are.</p>
+<p><strong>Folded lanes still perform.</strong> Folding changes what you see and nothing else. Every node on a folded lane still fires while the arrangement plays.</p>
+<p>A folded lane is also out of the keyboard order, so <code>Tab</code> goes from the <code>INPUTS &amp; BUSES</code> row to whatever follows the group. The row itself stays reachable and reads out the state and the count.</p>
+<p>The fold lasts for the session. Opening a song does not fold or unfold anything, and saving a song does not record it.</p>
+<h3 id="drawing-nodes">Drawing nodes</h3>
+<p>Press a lane at a bar to add a node there. A new node snaps to <code>SNAP</code>, the same as a region, and the press works in either <code>TOOL</code>.</p>
+<p><strong>On a switch lane, the height you press at does not matter.</strong> The node takes the opposite of what the lane is doing at that moment, so one press is one change and you do not have to choose between on and off.</p>
+<p><strong>On a range lane, the height you press at is the value.</strong> The bottom of the row is the bottom of that control's range and the top is the top, so pressing near the top of a <code>LEVEL</code> lane draws a node near unity and pressing near the bottom draws one near silence. The two ends at the lane's right-hand end tell you what you are pressing between.</p>
+<p><strong>A node you draw on a range lane is a ramp.</strong> The lane slopes into it from the node before it, so two presses on a <code>LEVEL</code> lane give you a fade rather than a step. Press <code>N</code> on a node to make it a jump instead. On a switch lane every node is a jump, because there is nothing between the two states to slide through. <em>Jumps and ramps</em> below covers both.</p>
+<p><strong>Pressing a node you can see acts on that node</strong>, whatever <code>SNAP</code> is set to. Snap decides where a new node lands, not which existing node you are pointing at. So two nodes a beat apart stay separately reachable after you set <code>SNAP</code> to <code>BAR</code>. On a switch lane the press flips that node. On a range lane the press takes hold of the node: see <em>Dragging a node</em> below.</p>
+<h3 id="dragging-a-node">Dragging a node</h3>
+<p>On a range lane, press a node and drag it. Sideways moves it in time by whole grid steps, keeping whatever offset from the grid it already had. Up and down moves it in value. A drag can do both at once: the node lands at the new time and the new value together. An outline shows where the node will land, and the move is made when you let go.</p>
+<p>A drag is one edit, whichever axes it moved. Press <code>⌘Z</code> once to take the whole drag back, in both time and value together.</p>
+<p>Pressing a node and releasing it without moving changes nothing. It puts the node cursor on that node, which is what the keyboard then acts on.</p>
+<p>Dragging keeps a node's shape: a node you made a jump is still a jump afterwards.</p>
+<p><strong>A drag is for shaping a curve roughly.</strong> At the working lane height a <code>LEVEL</code> lane fits its whole 60 dB into a band a few nodes tall, so one pixel is a large change. Open the lane for more room, and use <code>⇧↑</code> and <code>⇧↓</code> (hold <code>Option</code> for the fine step) when you want a particular value.</p>
+<p>If you drag a single node onto a grid position that already holds one, it carries on to the next free one, the same as the keyboard nudge; the outline shows you where it is actually going. A selection dragged onto other nodes replaces them, and the notice line says how many.</p>
+<p>A drag moves the selected nodes on the lane you pressed. If the selection also holds regions, the drag moves the whole selection in time instead, regions and nodes on every lane, and up and down movement is ignored.</p>
+<p>On a switch lane there is nothing to drag a node to, and a press flips it.</p>
+<h3 id="telling-a-lane-from-the-playhead">Telling a lane from the playhead</h3>
+<p>An automation lane draws its line and its nodes in violet, the colour LOOM uses for effects and for commands. The playhead draws in cyan and crosses every row at once, so a lane and the playhead never wear the same colour.</p>
+<p>Colour is not the only difference. A lane's line runs left to right along its own row and carries nodes. The playhead runs top to bottom through every row and has a head in the bar ruler. The direction tells them apart whatever your screen does to the two colours.</p>
+<h3 id="jumps-and-ramps">Jumps and ramps</h3>
+<p>A point's <strong>shape</strong> says how the lane gets to it.</p>
+<table>
+<thead>
+<tr>
+<th>Shape</th>
+<th>What the stretch before the point does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Square</td>
+<td>The value jumps at the point.</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>The value ramps in from the point before it.</td>
+</tr>
+</tbody>
+</table>
+<p>The shape describes the stretch arriving at the point, so you can read a curve without selecting anything: a round point is the far end of a ramp, and everything up to it slopes.</p>
+<p><strong><code>N</code> changes the node at the cursor from one to the other.</strong> Move the cursor to the node with <code>←</code> and <code>→</code>, or press the node with the mouse, then press <code>N</code>. The notice line says which of the two the node is now, along with its reading and its bar, so you can work without looking at the marker.</p>
+<p>A switch cannot ramp. There is nothing between bypassed and on to be halfway through, so every point on a bypass lane or a mute lane is a square. If you ask for a ramp there, the notice line says so instead of quietly drawing a square.</p>
+<p>The first point on any lane is a square, because there is no point before it to ramp from.</p>
+<p>So <code>N</code> on the first node of a lane does nothing, and the notice line says why. Draw a node before it and it is no longer first, and you can then set its shape.</p>
+<h3 id="the-node-cursor">The node cursor</h3>
+<p>A lane holds one cursor: the node the next key will act on. It is drawn as an outline around that node's marker while the lane has the keyboard focus, and the outline takes the marker's own shape: square around a jump, round around a ramp. So you can still read what the node does while you are on it.</p>
+<p>When you <code>Tab</code> to the lane, the cursor goes to its first node. <code>←</code> and <code>→</code> move it from node to node; <code>Home</code> and <code>End</code> take the first and the last. Pressing a node with the mouse moves the cursor there too, so the mouse and the keyboard always agree about which node you are on.</p>
+<p><code>Return</code> adds a node at the cursor. On a switch lane it switches the control there, as a press does. On a range lane the keyboard gives a bar but no height, so the node takes the value the lane is already drawn at. To choose the value, press the lane at the height you want instead. The node is a ramp, the same as a node you press. <code>N</code> makes it a jump. <code>Backspace</code> removes the node at the cursor. If the lane holds no nodes at all, <code>Return</code> adds the first one at the playhead, and <code>Backspace</code> says in the notice line that there was nothing to remove, naming the bar it looked at.</p>
+<p>The lane's spoken sentence includes the cursor: where it is, what the control does from there, and how many nodes the lane holds. It uses the lane's own words: a lane on an effect slot says the slot is on or off, and a lane on a channel's mute says the channel is muted or unmuted. A lane that holds no nodes yet says what its control is doing anyway: a switch lane says the word, and a range lane says the reading, <code>-6.0 dB</code>.</p>
+<h3 id="selecting-and-moving-nodes">Selecting and moving nodes</h3>
+<p><code>⇧←</code> and <code>⇧→</code> move the node at the cursor one grid step earlier or later. On a range lane, <code>⇧↑</code> and <code>⇧↓</code> move it up and down in value. Hold <code>Option</code> as well and all four move by a much smaller step, which is how you place an exact value on a lane whose whole range is a few nodes tall.</p>
+<p>On a switch lane there are only two states, so <code>⇧↑</code> and <code>⇧↓</code> have nothing to move between and the notice line says so.</p>
+<p>A node on a <code>RACK PRESET</code> or <code>PRESET</code> lane is selected, moved and removed the same way: <code>S</code>, a press on its square marker, <code>⇧</code> and a press, the rubber band, <code>⇧←</code> and <code>⇧→</code>, and <code>Delete</code> all work on it, and it can be in one selection with regions and other nodes. It has no value, so <code>⇧↑</code> and <code>⇧↓</code> move nothing and the notice line says so. Dragging its square marker moves it in time. <code>E</code> opens the list for the node at the cursor so you can pick a different entry.</p>
+<p>To work on more than one at a time, <code>⌘A</code> selects everything in the arrangement, regions and nodes together, and a second press clears. To take every node on one lane, put the cursor on its first node and press <code>⇧End</code>. <code>S</code> adds the node at the cursor to the selection or takes it out again, which is the same key a region uses; to select only one node, press <code>Esc</code> and then <code>S</code>. Pressing a node with the mouse also makes it the selection, and <code>⇧</code> and a press adds it or takes it out. <code>Esc</code> clears the selection from anywhere in the view.</p>
+<p>A rubber band selects nodes as well, and it selects regions on any track lane it crosses at the same time, so one drag can take in both. Set <code>TOOL</code> to <code>POINTER</code> and start it on any lane, a track's or an automation lane. On an automation lane the band starts once you move the pointer; a press that does not move still adds a node.</p>
+<p>A selected node is drawn hollow: its marker keeps the shape that tells you whether the node is a ramp or a jump, and its middle is open. The selected state does not depend on colour, and the selection survives scrolling and zooming, including nodes that scroll out of the window.</p>
+<p>With the node cursor on a selected node, <code>⇧←</code> and <code>⇧→</code> move the whole selection together, keeping the spacing between its members, and <code>Backspace</code> or <code>Delete</code> removes all of it. <code>⇧↑</code> and <code>⇧↓</code> move every selected node on every lane, keeping the shape between them on each lane. Each of those is one edit, so one <code>⌘Z</code> takes the whole thing back.</p>
+<p>A selection moved in value stops at the end of each lane's range, and each lane stops on its own. If the highest selected node on a lane is already at the top, <code>⇧↑</code> leaves that lane where it is and moves the selected nodes on the other lanes, and the notice line names the lane that stayed put. The shape you drew on a lane is never flattened against an end.</p>
+<h4 id="what-happens-when-a-node-lands-on-another">What happens when a node lands on another</h4>
+<p>A single node steps past. If the grid position it is moving to already holds a node, it carries on to the next free one and the node that was there is left alone. So one press can move it two steps. This is deliberate: a press that silently did nothing would seem broken.</p>
+<p>A selection does not step past. It lands where you sent it, and any node it lands on that is not part of the selection is replaced. This keeps the shape of what you are moving: if one member stepped past and the rest did not, the curve would change shape. The notice line says how many nodes were replaced, because a selection moved to the right can replace nodes beyond the edge of the window, where you would not see them go.</p>
+<p>A node selection stops at bar 1 as a whole, the way a region selection does. Move it left past bar 1 and it slides until its earliest node reaches bar 1, keeping its spacing. The move is never refused.</p>
+<p>A single node stops at bar 1 too. If moving it left would take it past bar 1, including by stepping over a node in its way, it stays where it is instead of landing on top of anything.</p>
+<h3 id="the-line-and-its-axis">The line and its axis</h3>
+<p>On a switch lane (a bypass, a mute, or a control inside an effect that has two settings), the line has two levels, with a marker at each point. The lane's right-hand end shows which of the two settings is drawn high.</p>
+<p>On a range lane the line has a full travel instead: the bottom of the row is the bottom of that control's range and the top is the top, and a point sits wherever its value falls between them. A level runs from silence to unity; a pan runs hard left to hard right. Switch and range lanes read the same way: a switch lane is a travel that uses only its two ends.</p>
+<p>The ends come from the control the lane holds, and are shown at the lane's right-hand end.</p>
+<p>A switch lane names its two states in words. A lane on an effect slot reads <code>ON</code> over <code>OFF</code>, a lane on a channel's mute reads <code>OPEN</code> over <code>MUTED</code>, and a lane on a control inside an effect reads that control's own settings: an EQ band's lane reads <code>ON</code> over <code>OFF</code>, and so does a delay's <code>PING PONG</code> lane.</p>
+<p>A range lane gives you the two ends as values instead, in the same units the mixer and the effect editors use: a <code>LEVEL</code> lane reads <code>0.0 dB</code> over <code>-60.0 dB</code>, and a <code>PAN</code> lane reads <code>R 100</code> over <code>L 100</code>. The numbers tell you how much of the travel a node has used.</p>
+<figure class="shot shot-full"><img src="/assets/loom/manual/song.arrange-automation.webp" width="1246" height="92" loading="lazy" decoding="async" alt="A PAN lane during a performance. Before its first node the line is dashed and reads AS SET, and the right-hand end reads R 100 over L 100."><figcaption>A PAN lane during a performance. Before its first node the line is dashed and reads AS SET, and the right-hand end reads R 100 over L 100.</figcaption></figure>
+<p><strong>The line goes down to the quiet state.</strong> A slot that is switched off and a muted channel are both drawn at the bottom of the lane. A mute lane therefore runs downward to mute, which is the way round you want it when a level lane is on the row above: down is less sound on both.</p>
+<p><strong>A control inside an effect is drawn in its own order, and the words at the right-hand end tell you which way.</strong> The setting named at the top of the lane is the one drawn at the top: an EQ band that is on sits beside <code>ON</code>, and a node that switches it off drops to <code>OFF</code>. A control with more than two settings, in a song that already carries a lane on one, spreads its settings over the same travel in the order the effect editor offers them, the first at the bottom and the last at the top.</p>
+<p><strong>Before the first node the line is dashed and reads <code>AS SET</code>.</strong> The song asks for nothing in that stretch, so the value you set by hand applies there, and the lane draws it at that height. The dashes set that stretch apart from the part the arrangement drives, which begins at the first node. If you move that control by hand with the arrange view open (switch the slot, mute the channel, pull the fader down), the dashed line moves with it. Nothing is written to the song: no node is made, and the arrangement still switches nothing before its first node.</p>
+<p>If there is no room for the words between the left edge and the first node, the dashes are drawn without them so that they do not cover a node's value.</p>
+<p>On a switch lane the first press you make on that stretch does the opposite of what the control is doing, so it always changes something you can hear. Press the mute lane of a channel you have already muted and you get a node that opens it.</p>
+<p>A lane you have added and not drawn on yet is dashed end to end, at that same height, because nothing on it is authored.</p>
+<p>Each node is one edit, so one <code>⌘Z</code> takes it back.</p>
+<h3 id="reading-a-nodes-value">Reading a node's value</h3>
+<p>Nodes carry their values on the lane. A label is a small plate beside the node, and it reads what the control is set to there: <code>-12.0 dB</code> on a level, <code>L 40</code> on a pan, <code>MUTED</code> on a mute lane, and the setting's own name on a control inside an effect: <code>ON</code>, <code>OFF</code>, <code>1/8D</code>.</p>
+<p>The node the cursor is on states its bar as well as its value, as in <code>BAR 16.4 - -10.0 dB</code>, and its plate is drawn in the same colour as the ring around the node, so you can see at a glance which node you are about to act on.</p>
+<p><strong>A lane shows the cursor's node while it has the focus, and every node it can fit while it is open.</strong> At the shorter height only the node you are on is labelled, which keeps a list of lanes quiet. Open the lane and every node is offered a label.</p>
+<p><strong>Labels are left out rather than drawn on top of each other.</strong> A label is placed only if it clears the one before it, and the cursor's node is placed first and always keeps its label. Where a run of two or more nodes goes unlabelled, the lane draws a count instead, such as <code>x4</code>, so you can see that the values exist and are hidden, not missing.</p>
+<p><strong>Zoom makes room for labels; height does not.</strong> A label is about sixty pixels wide, and at the default zoom a beat is under twenty, so five nodes a beat apart have room for one label whichever height the lane is at. Opening the lane offers every node a label; it does not make the lane any wider. Zoom in with <code>+</code> or <code>⌘=</code> and the nodes move apart, and the labels come back one at a time.</p>
+<h3 id="typing-a-nodes-value">Typing a node's value</h3>
+<p>Press <code>E</code> on an automation lane whose value is a number, and LOOM opens a field on the node the cursor is on. The field holds the value the node has, selected, so the first character you type replaces it. Press <code>Return</code> to set the value, or <code>Esc</code> to leave the node as it is. Clicking away from the field sets the value as well.</p>
+<p>The field opens in the half of the lane the node is not in, so it never covers the node you are editing. It covers other nodes for as long as it is open. Which side it opens on tells you which half of the lane your node is in.</p>
+<p><strong>Type the value the way the lane prints it, and leave the unit off if you like.</strong> On a level lane, <code>-24</code> and <code>-24.0 dB</code> both set the same value. On a pan lane the value is a side and a distance, so type <code>L 40</code>, <code>R 100</code> or <code>C</code>; the side is part of the value rather than a unit, so a distance on its own is refused.</p>
+<p><strong>A value the lane does not accept is refused rather than rounded into range.</strong> The notice line names the values at the two ends of the lane, and the node keeps the value it had. Typing is how you name a value exactly, so LOOM tells you when it cannot take the one you named instead of setting a different one.</p>
+<p>Typing a value does not move the node in time, and it does not change whether the node ramps or jumps. Use <code>⇧←</code> and <code>⇧→</code> to move it, and <code>N</code> to change its shape.</p>
+<p>On a lane whose value is a word, there is nothing between the two states to type, and the notice line says so. On a lane where the cursor is on no node, the notice line says that too.</p>
+<h3 id="preset-and-rack-lanes">Preset and rack lanes</h3>
+<p>A preset lane loads a saved preset into one slot. A rack lane loads a saved rack into a whole chain. Both let the song change a sound between passages without you reaching for the drawer.</p>
+<p>Add one the way you add any other lane. In the card's middle column, pick <code>RACK</code> for the whole chain and the right column offers <code>RACK PRESET</code>; pick a slot and the right column offers <code>PRESET</code> above that slot's own controls.</p>
+<h4 id="a-change-is-a-node-not-a-stretch">A change is a node, not a stretch</h4>
+<p>A preset or rack change is a node, drawn at the bar you put it on. The band that follows it carries the name of the preset in force, so a lane reads as a row of named passages.</p>
+<p><strong>The band is not a length.</strong> The preset holds until the next change on that lane, or until the end of the song. There is no handle to drag on its right-hand edge. To change where a preset stops, move the change that follows it.</p>
+<p>A node on one of these lanes takes the same keys and gestures as any other node: select it, move it in time, and delete it, along with everything else in the selection, in one edit. See <a href="/loom/manual/keyboard/">Keyboard</a> for the keys.</p>
+<h4 id="choosing-what-a-node-loads">Choosing what a node loads</h4>
+<p>Press a band's name to open the browser for that change. Click an empty part of the lane to add a change there, which opens the browser for the new one. Either way the browser lists your saved entries and LOOM's factory ones, and marks the entry the node already holds.</p>
+<h4 id="a-lane-holds-values-not-a-reference">A lane holds values, not a reference</h4>
+<p>When you pick an entry for a node, the node takes a copy of that entry's settings. <strong>Editing that preset in your library afterwards does not change your song.</strong> A song you performed last month sounds the way it sounded, whatever you have done to your library since.</p>
+<p>To take a preset's new settings into a song, open the node and pick the entry again.</p>
+<h4 id="what-happens-when-several-lanes-address-one-chain">What happens when several lanes address one chain</h4>
+<p>A chain can carry a rack lane, preset lanes on its slots, and parameter lanes on its controls, all at once. They apply in that order: the rack first, then the presets, then the individual parameters. So a lane on the reverb's <code>WET</code> keeps sweeping across a preset change rather than being reset by it.</p>
+<h4 id="when-a-lane-cannot-do-what-it-says">When a lane cannot do what it says</h4>
+<p>A lane whose effect you have removed, or replaced with an effect of another kind, does nothing. Its row shows the effect it was drawn for struck through, and the lane stays in the song so that putting that effect back starts it working again.</p>
+<p>A rack or preset change that replaces the kind of effect in a slot is heard as a short dip. See <a href="/loom/manual/the-mixer/">The mixer</a>, <em>Replacing an effect while the chain is running</em>, for why, and for where to place the change.</p>
+<p>A lane for an instrument's control is named with the instrument editor's short name for it, such as <code>AT CUTOFF</code>, with the instrument under it. The instrument is struck through while the track holds a different instrument, because the lane does nothing then. A <code>PATTERN</code> lane names <code>DRUMS</code> the same way.</p>
+<h3 id="input-preset-and-pattern-lanes">Input, preset and pattern lanes</h3>
+<p>An instrument track can have an <code>INPUT</code> lane, a <code>PRESET</code> lane and, on a drum track, a <code>PATTERN</code> lane. To add one, press the <code>+</code> on the track's row, choose <code>CHANNEL</code> in the middle column, choose the lane in the right-hand column, and press <code>ADD</code>. A new lane has no nodes. Click an empty part of the lane to place one, which opens the list for the new node. Press a band's name to change the node it starts with, as on a preset lane.</p>
+<p><strong>The input list.</strong> Pressing an <code>INPUT</code> lane opens the input list for a node at that bar. Under <code>SOURCE</code>, choose <code>NONE</code>, <code>ANY DEVICE</code>, or a connected MIDI device. If the track names a device that this rig does not have, that device is listed struck through. Under <code>CHANNEL</code>, choose <code>ALL</code> or a channel from 1 to 16. The command channel is greyed and cannot be chosen, and the <code>CHANNEL</code> heading names it, as in <code>CH 16 · LOOP COMMANDS</code>. <code>NONE</code> listens on no channel, so the channel cells are greyed while it is chosen. <code>WRITES</code>, beside <code>PICK</code>, shows what the node will say. Press <code>PICK</code> to write the node. Choosing a source or a channel writes nothing until you do. <code>Escape</code>, <code>Close</code> or a click outside the list leaves the lane as it was.</p>
+<p>Each node holds from its bar until the next node on the lane, and the lane draws its words across that span, such as <code>ANY · CH 1</code> or <code>NONE</code>. A <code>NONE</code> node hands the keyboard off, so another track's <code>INPUT</code> lane can take it at the same bar. See <a href="/loom/manual/instrument-tracks/#one-input-one-track-at-a-time">One input, one track at a time</a>.</p>
+<p><strong>Presets and patterns.</strong> Pressing a <code>PRESET</code> lane opens the presets of the instrument the track holds. On a drum track these are its kits. The <code>SYNTH</code>, <code>DRUMS</code> and <code>SAMPLER</code> cells at the top list another instrument's presets instead. Picking one of those puts that instrument on the track from the node on. Pressing a <code>PATTERN</code> lane opens the drum patterns. Both lists work as they do for a rack or preset lane: the node's own entry reads <code>AT THIS NODE</code>, and an entry another node on the lane uses names that node's bar. <code>⌘Z</code> takes back a pick.</p>
+<h3 id="clearing-and-removing-a-lane">Clearing and removing a lane</h3>
+<p>Each automation lane row carries a count cell at its right-hand end. It shows one of three faces and keeps the same size in all three, so the row never shifts under your hand.</p>
+<table>
+<thead>
+<tr>
+<th>Face</th>
+<th>When you see it</th>
+<th>What pressing it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>3 NODES</code></td>
+<td>The lane holds nodes and you are not working on it.</td>
+<td>Nothing. It is a readout of how much the lane holds.</td>
+</tr>
+<tr>
+<td><code>CLEAR</code></td>
+<td>The lane holds nodes and you have selected it.</td>
+<td>Takes every node off the lane in one step. The lane stays.</td>
+</tr>
+<tr>
+<td><code>REMOVE</code></td>
+<td>The lane holds no nodes.</td>
+<td>Takes the lane out of the arrangement.</td>
+</tr>
+</tbody>
+</table>
+<p>Select a lane by pressing its row, the same press that opens it to the taller height. That gives you the lane at full height before you are offered a control that empties it.</p>
+<p><code>Tab</code> reaches the count cell in all three faces. It sits directly after the lane's own row and reads out its face. On the readout face, pressing it does nothing: it is a label you can land on, not a control that refuses you. So the number of stops in the list stays the same whatever your lanes hold, and drawing a node on a lane never removes a stop from under your hand.</p>
+<p><strong>Taking a lane away is two steps.</strong> Clear it, then remove it. A lane that still holds nodes never offers <code>REMOVE</code>, so there is no single press that empties a lane and deletes it.</p>
+<p><code>CLEAR</code> is one edit however many nodes the lane holds, so one <code>⌘Z</code> brings all of them back. The notice line says how many went and that undo returns them.</p>
+<p>Removing a lane leaves its control exactly as it is. The arrangement stops switching it, and the sound does not change at the moment you press.</p>
+<h3 id="what-a-lane-does-while-you-play">What a lane does while you play</h3>
+<p>Automation runs only while the <strong>arrangement</strong> performs. <code>ROLL</code> on its own does not move your effects, levels or mutes. Pressing play on the looper does not play the song.</p>
+<p>Between two nodes the lane leaves its control alone. Reach over and switch an effect, or a channel's mute, by hand in the middle of a passage and it stays switched until the lane's next node, which takes it back. The song takes over only at the nodes you drew.</p>
+<p>Stopping in the middle of an arrangement leaves everything where the song left it. Nothing snaps back, so what you hear after you stop is what you heard before you did.</p>
+<p>A lane whose slot you later empty is kept and drawn unavailable, with the reason on its row. It starts working again when you put an effect back. A lane on an input the current device does not have says so once while the song performs, and the rest of the arrangement keeps playing.</p>
+<h3 id="how-exact-the-timing-is">How exact the timing is</h3>
+<p>A node lands within about 50 milliseconds of the bar you drew it on. LOOM applies automation on the same timer that redraws the window, which is fast enough for a switch to land on the beat, though not sample-exact. For switching an effect on and off, that is all there is to it.</p>
+<p>A ramp is applied on that same timer, so the lane's value is updated about every 33 milliseconds rather than sample by sample. What you hear between two updates depends on what the lane controls:</p>
+<ul>
+<li><strong>An effect control that changes smoothly</strong>, such as a wet or dry level, a feedback amount or an EQ band's gain, moves in a straight line from one update to the next. A ramp is heard as a continuous sweep.</li>
+<li><strong>A level or a pan</strong> on a track, an input, a bus or the master is smoothed as each update arrives, the same way it is when you move a fader by hand. A ramp of a bar or longer is heard as a fade.</li>
+</ul>
+<p>A ramp drawn across a fraction of a beat is better done as a jump: press <code>N</code> on the node at its far end.</p>
+<p>Effects on an input record into your loops. A lane that switches an input effect off for a passage is heard in what you record during that passage, not only in what you monitor.</p>
+<h2 id="snap-and-what-one-grid-step-is"><code>SNAP</code>, and what one grid step is</h2>
+<p><code>SNAP</code> decides what a gesture rounds to. It also sets how long a new region is and how far one keyboard step moves.</p>
+<table>
+<thead>
+<tr>
+<th><code>SNAP</code></th>
+<th>A gesture rounds to</th>
+<th>A new region is</th>
+<th>One keyboard step is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BAR</code></td>
+<td>The nearest bar</td>
+<td>A bar</td>
+<td>A bar</td>
+</tr>
+<tr>
+<td><code>BEAT</code></td>
+<td>The nearest beat</td>
+<td>A beat</td>
+<td>A beat</td>
+</tr>
+</tbody>
+</table>
+<p>A beat is a beat of the meter you are in. In 6/8 there are six to the bar, not four.</p>
+<p>A region keeps the position you gave it, and both perform buttons play it there. With <code>SNAP</code> on <code>BEAT</code> a region starts on a beat and the arrangement fires it on that beat.</p>
+<p>Changing <code>SNAP</code> announces the new setting: <em>"gestures snap to the bar"</em> or <em>"gestures snap to the beat"</em>.</p>
+<h2 id="making-and-editing-regions-with-the-mouse">Making and editing regions with the mouse</h2>
+<p>Apart from the buttons in the header row and the scroll strip, this table lists every mouse gesture on this surface, plus one thing a held drag does on its own. Rows that name a tool depend on <code>TOOL</code>. The rest behave the same in either tool.</p>
+<table>
+<thead>
+<tr>
+<th>Gesture</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Press a track row</td>
+<td>That track becomes the focused track.</td>
+</tr>
+<tr>
+<td>Press a region</td>
+<td>The region takes the keyboard, its track becomes the focused track, and it becomes the selection.</td>
+</tr>
+<tr>
+<td>Hold <code>⇧</code> and press a region</td>
+<td>Adds it to the selection, or removes it if it is already in one.</td>
+</tr>
+<tr>
+<td>Right-click a region, or hold <code>Control</code> and press one</td>
+<td>Opens the region's menu, which offers the three verbs with the region's current verb ticked. Pressing a region you have not selected makes it the selection first; pressing one inside a selection leaves the selection as it is, and the menu's first line says how many regions your choice will change. <code>Esc</code> or a click away closes it and changes nothing.</td>
+</tr>
+<tr>
+<td>Press a node</td>
+<td>The node becomes the selection, and the node cursor moves there.</td>
+</tr>
+<tr>
+<td>Hold <code>⇧</code> and press a node</td>
+<td>Adds it to the selection, or removes it if it is already in one.</td>
+</tr>
+<tr>
+<td>Press an empty part of a track's lane, in <code>DRAW</code></td>
+<td>A region <strong>one grid step</strong> long is created there — a bar at <code>BAR</code>, a beat at <code>BEAT</code>.</td>
+</tr>
+<tr>
+<td>Press an empty part of a track's lane, in <code>POINTER</code></td>
+<td>Clears the selection.</td>
+</tr>
+<tr>
+<td>Press an empty part of an automation lane, in <code>DRAW</code></td>
+<td>Adds a node there as you press.</td>
+</tr>
+<tr>
+<td>Press an empty part of an automation lane, in <code>POINTER</code></td>
+<td>Adds a node there when you let go without moving.</td>
+</tr>
+<tr>
+<td>Drag across a lane, in <code>DRAW</code></td>
+<td>A region of the length you dragged. A dashed outline shows exactly what will be made while the button is down.</td>
+</tr>
+<tr>
+<td>Drag across empty lanes, in <code>POINTER</code></td>
+<td>Selects every region and every node the rectangle crosses. A dashed rectangle shows what it is catching while the button is down. The drag can start on any lane.</td>
+</tr>
+<tr>
+<td>Hold <code>⇧</code> and drag across empty lanes, in <code>POINTER</code></td>
+<td>Adds what the rectangle crosses to what is already selected.</td>
+</tr>
+<tr>
+<td>Drag a region's body</td>
+<td>Moves it along the timeline, and to another track if you drag it onto one. A selection moves with it, along its own tracks. A selection that also holds nodes moves with it in time only.</td>
+</tr>
+<tr>
+<td>Hold <code>⌥</code> and drag a region</td>
+<td>Makes a <strong>copy</strong> where you let go. The original stays where it was.</td>
+</tr>
+<tr>
+<td>Drag a region's left edge</td>
+<td>Moves its <strong>start</strong>, leaving its end where it is.</td>
+</tr>
+<tr>
+<td>Drag a region's right edge</td>
+<td>Makes it longer or shorter from the end.</td>
+</tr>
+<tr>
+<td>Press the bar ruler</td>
+<td>Puts the playhead there, snapped to <code>SNAP</code>. Nothing starts.</td>
+</tr>
+<tr>
+<td>Drag along the bar ruler</td>
+<td>Scrubs the playhead along, snapping as it goes.</td>
+</tr>
+<tr>
+<td>Drag the song end marker</td>
+<td>Sets where the song ends.</td>
+</tr>
+<tr>
+<td>Drag the scrollbar</td>
+<td>Moves the view along the song.</td>
+</tr>
+<tr>
+<td>Turn the wheel, or swipe two fingers</td>
+<td>Scrolls the view. A sideways swipe moves along the song. An up-or-down wheel or swipe moves the rows when there are more rows than fit, and moves along the song when they all fit. A swipe moves the rows as far as your fingers move; a wheel notch moves one row.</td>
+</tr>
+<tr>
+<td>Drag the row scrollbar</td>
+<td>Moves the rows up and down, following the drag.</td>
+</tr>
+<tr>
+<td>Hold <code>⌘</code> and turn the wheel</td>
+<td>Zooms one step, about the point under the pointer.</td>
+</tr>
+<tr>
+<td>Pinch</td>
+<td>Zooms one step, about the point under the pointer.</td>
+</tr>
+<tr>
+<td><em>(Hold a drag past the left or right edge)</em></td>
+<td>The view scrolls under it, faster the further past the edge you hold. One pixel past is a crawl for placing an edge exactly. <strong>Dragging past the end of the song is how you make the song longer.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The edges are the outer 6 pixels. A region narrower than 18 pixels has no edge zones at all: the whole rectangle moves, so a press meant to move it never trims it instead. Over an edge the pointer becomes a left-right resize cursor.</p>
+<p>A drag is one edit. Nothing is written until you let go, so the rectangle under your hand is a preview and one <code>⌘Z</code> takes the whole gesture back. If the region you drag lands on top of its neighbours, the region you dragged wins and its neighbours yield, within the same edit. That holds for a selection too: dragging twenty regions is one edit and one <code>⌘Z</code>, and regions <strong>inside</strong> the selection never yield to each other. Only regions outside it give way.</p>
+<p>A drag can move a region to another track, and it stays the same region. Drag it onto another lane and it lands there, keeping everything recorded into it, in one edit that one <code>⌘Z</code> takes back. Regions already on that lane yield to it exactly as they do on its own track.</p>
+<p>A ⌥-drag makes a copy, and a copy is a new region. Nothing you have recorded into the original follows it: the recording belongs to the region it was played into. The copy fires the same verb and is the same length.</p>
+<p>A selection does not cross tracks. Drag a selection of two or more and it moves along the tracks its regions are already on. To move one region to another track, drag it on its own, or use <code>T</code> and <code>⇧T</code>.</p>
+<p>A drag never makes a region shorter than one beat. A beat is also the smallest grid step <code>SNAP</code> offers, so a drag is already a whole number of beats or bars before that floor is reached.</p>
+<h2 id="editing-regions-from-the-keyboard">Editing regions from the keyboard</h2>
+<p>Every gesture above has a keyboard route. The zoom and scroll keys are in <em>Moving the view</em> below; the rest are here.</p>
+<p><strong>Where you stand.</strong> <code>Tab</code> reaches every lane and every region, in reading order: lane 1, then lane 1's regions in time order, then lane 2, and so on. Once you are on the surface, the arrow keys move around it without leaving.</p>
+<p><strong>Moving around.</strong> <code>←</code> and <code>→</code> move to the previous and next region on the same track, and at the ends they put you on the track's own lane. <code>↑</code> and <code>↓</code> move to the region above or below at the same point in the song, or to that track's lane if it has no region there. <code>Home</code> and <code>End</code> go to the first and last region on the track.</p>
+<p><strong>Editing.</strong> <code>⇧←</code> and <code>⇧→</code> move the region one grid step. <code>⇧↑</code> and <code>⇧↓</code> make it one grid step longer or shorter from its end. <code>Page Up</code> and <code>Page Down</code> move its start edge and leave its end alone. <code>Delete</code> or <code>Backspace</code> removes it. <code>Return</code> makes a new region straight after it, and <code>D</code> makes a <strong>copy</strong> of it straight after it.</p>
+<p><strong>Changing what a region is.</strong> <code>⇧V</code> cycles what the region you are on fires (<code>REC</code> to <code>DUB</code> to <code>PLAY</code> and back), and with a selection of two or more it changes all of them in one edit. <code>T</code> moves the region to the track below and <code>⇧T</code> to the track above. All three keep the region, so anything recorded into it stays with it and one <code>⌘Z</code> puts the change back.</p>
+<p><strong>Selecting.</strong> <code>S</code> adds the region or node you are on to the selection or removes it, <code>⇧Home</code> and <code>⇧End</code> extend the selection along the track or the lane you are on, <code>⌘A</code> takes everything in the arrangement and <code>Esc</code> clears. Standing inside the selection, <code>⇧←</code>, <code>⇧→</code>, <code>Delete</code> and <code>Backspace</code> act on all of it in one edit. See <em>Selecting more than one thing</em> above.</p>
+<p><strong>On a lane.</strong> <code>Return</code> creates a region after the last one on that track. <code>←</code> and <code>Home</code> go to the first region on the track, <code>→</code> and <code>End</code> to the last, and <code>↑</code> and <code>↓</code> to the lane above or below.</p>
+<p><strong>Anywhere on the surface.</strong> <code>V</code> cycles what a <strong>new</strong> region will fire and says the new verb out loud; the <code>VERB</code> row follows it. It leaves the regions you already have alone. <code>V</code> and <code>⇧V</code> are the same letter because <code>⇧</code> means <em>"apply it to what is selected"</em> everywhere on this surface, and <code>⇧V</code> is the keyboard's route to changing a region you already have.</p>
+<p>A region never shortens to nothing: one grid step is the shortest a keyboard resize makes it, and shortening a one-step region does nothing. A region never moves before bar 1, and moving the start edge stops one grid step short of the end.</p>
+<p>The full tables are in <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>, under <em>A region on the arrange timeline</em> and <em>A lane on the arrange timeline</em>.</p>
+<blockquote>
+<p><strong>VoiceOver:</strong> every lane is a focus stop, so a track with no regions on it is still somewhere you can stand. <code>Return</code> on a lane creates a region there, and on an empty track that region starts at bar 1. The lane's description says how many regions the track holds and where they are, up to six of them by name, and it names the keys you can use there.</p>
+<p>Every region's name carries what its colour carries: <em>"Record region, track 3, bar 5, 1 bar."</em> Its description adds what it will do and, for an advisory region, why its boundary is advisory.</p>
+<p>The view follows the focus. Moving onto a region that is off screen scrolls the view to it. The region announces itself, and the scroll is not announced separately. The same applies down the list: moving onto a track row, a count cell or a lane that is below the bottom of the window brings that row into view.</p>
+</blockquote>
+<h2 id="moving-the-view-zoom-scroll-and-follow">Moving the view: zoom, scroll and <code>FOLLOW</code></h2>
+<p>Zoom has eleven steps, from 8 pixels per bar to 224, starting at 56.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-</code>, or <code>⌘-</code></td>
+<td>Out one step</td>
+</tr>
+<tr>
+<td><code>+</code>, or <code>⌘=</code>, <code>⌘+</code>, <code>⇧⌘=</code></td>
+<td>In one step</td>
+</tr>
+<tr>
+<td><code>FIT</code>, or <code>⌘0</code></td>
+<td>The largest step at which the whole song fits, scrolled back to bar 1</td>
+</tr>
+</tbody>
+</table>
+<p>A zoom says the new range: <em>"zoomed in - showing bars 5 to 30."</em></p>
+<p>Each zoom holds one point still. A <code>⌘</code>-wheel or a pinch holds the point under the pointer. A key or a button has no pointer on the timeline, so it holds the region you are on, or else the playhead if it is on screen, or else the leftmost bar you can see. That point stays at exactly the same pixel.</p>
+<p>Scroll with the wheel, a two-finger swipe, or the scrollbar. The scrollbar appears only when the song is wider than the window. Focus it with <code>Tab</code> and its own keys work: <code>←</code> and <code>↑</code> move back a bar, <code>→</code> and <code>↓</code> move forward a bar, <code>Page Up</code> and <code>Page Down</code> move a screen, and <code>Home</code> and <code>End</code> go to the two ends. Its description says where you are in bars rather than in pixels: <em>"showing bars 23 to 47 of 96."</em></p>
+<h3 id="scrolling-the-rows">Scrolling the rows</h3>
+<p>Once you add enough automation lanes, the rows outgrow the window and a second scrollbar appears down the right-hand edge of the lanes. Drag it, or turn the wheel, or swipe two fingers up or down over the lanes. The track list and the lanes move together, so a name always stays level with its lane. The bar ruler does not move, and neither does the scroll strip.</p>
+<p>A two-finger swipe moves the rows as far as your fingers move, so the list follows the gesture and a row can sit half-drawn at the top or bottom of the window. A wheel notch moves one row, because a notch is a click rather than a distance.</p>
+<p>Dragging the scrollbar moves the rows the same way the swipe does. Its keys always land on a row boundary: <code>↑</code> and <code>↓</code> move one row, <code>Page Up</code> and <code>Page Down</code> move a screenful, and <code>Home</code> and <code>End</code> go to the two ends.</p>
+<p>Focus the row scrollbar with <code>Tab</code> to use those keys. Its description says which rows you are on: <em>"showing rows 1 to 6 of 14."</em> The count is the rows drawn in full, so it does not change while a part-drawn row slides through the edge of the window.</p>
+<p>You do not have to scroll to reach a row. Move the keyboard focus to a row, a lane or a region and LOOM brings it into view for you, and pressing an automation lane's name to open it brings the lane back into view if opening it pushed it off the bottom. Everything in the list stays reachable from the keyboard whether or not it is drawn.</p>
+<p><strong>A region you can already see does not move the view.</strong> If any part of the region you land on is on screen, the view stays exactly where you put it. This matters on a region longer than the window: zoomed in on its right end, selecting it or grabbing its right edge leaves you where you were instead of jumping back to where the region starts. A region with none of it on screen is still brought in, from whichever end is nearer.</p>
+<p>When not everything fits, the view's own description says what is on screen: <em>"The row list is showing rows 1 to 6 of 14."</em></p>
+<p><code>FOLLOW</code> starts <strong>on</strong>. While the arrangement rolls it flips a page rather than sliding: the picture stays still and the playhead crosses it, and when the playhead reaches the right-hand edge the view jumps to the next screenful, which starts an eighth of a window before the playhead.</p>
+<p>Scrolling while it rolls turns <code>FOLLOW</code> off, and says so once: <em>"FOLLOW off - the view stays where you put it."</em> Pressing <code>PERFORM FROM TOP</code> or <code>PERFORM FROM HERE</code> turns it back on. Pressing <code>ROLL</code> does not.</p>
+<h2 id="where-the-song-ends">Where the song ends</h2>
+<p>Every song is 96 bars long until you say otherwise. The end is the <strong>flag in the bar ruler</strong>, with a line down the lanes and hatching past it.</p>
+<p>Drag it, or focus it with <code>Tab</code> and use the arrow keys: <code>←</code> and <code>→</code> move it a bar, hold <code>⇧</code> for four. Its position is announced when you land on it and again when it moves: <em>"The song ends at bar 64."</em></p>
+<p>The end marker does not get in your way. Draw or drag a region past the end and the end moves out of the way in the same edit as the region, so one <code>⌘Z</code> takes both back. The end only ever moves outward on its own, so a marker you dragged out yourself stays where you put it when you later place a region before it.</p>
+<p>The end cannot move before the end of your last region, and the refusal starts with what to do: <em>"Move or shorten track 3's last region, the Record running to bar 40. The arrangement cannot end at bar 32 while a region runs past it. Nothing was changed."</em></p>
+<h2 id="playing-the-arrangement-the-perform-buttons">Playing the arrangement — the PERFORM buttons</h2>
+<p><code>PERFORM FROM TOP</code>, <code>PERFORM FROM HERE</code> and <code>PERFORMANCE STOP</code> are at the left end of the header row, grouped under one spoken sentence: <em>"Perform the arrangement - writes to tracks"</em>. The first two are the only place in LOOM where the arrangement plays itself and writes to your tracks, and the third is how you get back out. The <code>MOVE</code> set in the top bar never writes to a track: see <a href="/loom/manual/top-bar/">The top bar</a>.</p>
+<p>Both fire each region's command on the region's own tick, to the sample. A <code>REC</code> region on bar 5 starts recording on bar 5; a <code>DUB</code> region on beat 3 of bar 7 starts an overdub pass on beat 3 of bar 7; a <code>PLAY</code> region on bar 9 starts that track on bar 9. A region fires where you drew it, not on the nearest bar line. You do not press anything else.</p>
+<p><code>PERFORM FROM TOP</code> starts at bar 1, always. <code>PERFORM FROM HERE</code> starts wherever the playhead is: place it first (see <em>The playhead, and getting back to the start</em> below), then press this one to hear what the arrangement says should be sounding from that instant on. It is refused while the transport is already rolling, because there is nothing to start "from" until you halt and place the playhead again.</p>
+<p>Neither is the same as <code>ROLL</code>. <code>ROLL</code> in the top bar starts the transport from wherever it is and fires nothing, which is still the way to audition a loop with no arrangement driving it. Both perform buttons start the arrangement itself.</p>
+<p><code>PERFORM FROM TOP</code> is also on a MIDI note, and <code>PERFORM FROM HERE</code> is not. Note 101 performs from bar 1 exactly as this button does, from any view. See <a href="/loom/manual/midi-mapping/">MIDI mapping</a>. There is no pad for <code>PERFORM FROM HERE</code>, because that button means <em>"from where I put the playhead"</em> and placing the playhead is a gesture with no pad either.</p>
+<p>With no arrangement in the song both perform buttons go dead and say <code>NO ARRANGEMENT</code> behind a dashed border. Draw a region on a lane and they come back. <code>PERFORMANCE STOP</code> keeps its own word in every state. It is live only while a performance is running.</p>
+<p>Either one plays the song once, to the end marker, and stops there. Neither loops and neither wraps. You can seek while a performance runs: click a bar in the ruler and the song arrives there on the next bar line, with the arrangement following you (see <em>Jumping while it plays</em> below). What you cannot do is change where the <em>next</em> performance starts from without pressing <code>STOP</code> first. Both perform buttons read the playhead at the moment you press them.</p>
+<h3 id="while-a-performance-is-running">While a performance is running</h3>
+<p>Both perform buttons stay where they are and go dead. Nothing appears, disappears or moves. They change state in place, as a DAW's transport buttons do. A second press cannot re-trigger a performance, because a dead button ignores every press, whether from the mouse, the keyboard or a screen reader.</p>
+<p><code>PERFORMANCE STOP</code> comes live in the same place it occupies when it is dead. It is the third control in the group and the only one that does anything while a performance runs. See <em>Leaving a performance and keeping the song</em> below.</p>
+<p><code>STOP</code> in the top bar ends the song. There is only one stop of that kind. It is in the <code>MOVE</code> set, and it stops whatever is running: a plain rolling transport, a performance, or both. LOOM does not draw a second transport stop over the arrange view.</p>
+<p>If the keyboard was on <code>PERFORM FROM TOP</code> or <code>PERFORM FROM HERE</code> when you pressed it, it moves to that <code>STOP</code>. Those two go dead when a performance starts, so LOOM moves the focus to a live control instead of leaving it nowhere. To reach <code>PERFORMANCE STOP</code> from there, press <code>⇧⌘P</code>, which works from any control and any view.</p>
+<p><code>TO TOP</code> and <code>ROLL</code> go dead for as long as a performance runs. This is the only time either is disabled. Normally they respond to every press, even one the engine will refuse. During a performance, LOOM disables the two seek controls so that a stray press cannot move the playhead under your hands. <code>STOP</code> beside them is unaffected.</p>
+<h2 id="leaving-a-performance-and-keeping-the-song">Leaving a performance and keeping the song</h2>
+<p><code>PERFORMANCE STOP</code> releases the arrangement and leaves everything else running. The transport keeps rolling, every loop keeps playing exactly as it is, and LOOM stops firing the regions you wrote. From that press on, you are driving the song by hand.</p>
+<p>Use it when a performance gives you an idea. You started the song from bar 1, four loops are playing, and you want to overdub something the arrangement does not contain. Press <code>PERFORMANCE STOP</code> and the song carries on while you work the looper by hand.</p>
+<p>It is the third of the PERFORM buttons, beside <code>PERFORM FROM TOP</code> and <code>PERFORM FROM HERE</code>, and <code>⇧⌘P</code> presses it from any view. It is live only while a performance is running. At every other time it is drawn in the same place behind a dashed border and does nothing.</p>
+<p>To get back into the arrangement afterwards, press <code>STOP</code> and then <code>PERFORM FROM HERE</code>. See <em>Picking the arrangement back up</em> below.</p>
+<h3 id="what-it-changes-and-what-it-leaves-alone">What it changes, and what it leaves alone</h3>
+<p>Nothing you can hear changes at the press. A track that was playing keeps playing. A track that was stopped stays stopped. A take that was recording goes on recording. The arrangement stops sending commands to your tracks, but it does not undo any it has already sent.</p>
+<p>The transport does not stop, pause or move. The playhead carries on from the sample it was on.</p>
+<p>Your track settings are restored. While an arrangement performs, LOOM holds three of each track's settings so a region can decide them: <code>LENGTH</code>, <code>COUNT-IN</code> and what a take does when it closes. Releasing the arrangement hands those three back to the values you set. Nothing else about the song is rewritten, and settings you changed during the performance stand.</p>
+<p>Regions stop firing from that instant. A region the playhead is standing inside does not fire its end when you leave it, so the track it started keeps playing.</p>
+<p>Once the arrangement is released, the song end marker stops nothing. Stopping the song at the end marker is part of performing the arrangement, and you have just released it. Press <code>STOP</code> in the top bar when you want the song to end.</p>
+<p><code>FOLLOW</code> is untouched. The view goes on doing whatever it was doing.</p>
+<h3 id="picking-the-arrangement-back-up">Picking the arrangement back up</h3>
+<p>Press <code>STOP</code> in the top bar, then <code>PERFORM FROM HERE</code>. The arrangement re-arms from wherever the playhead was left, and the regions from that point on fire as written.</p>
+<p><code>PERFORM FROM HERE</code> will not arm while the transport is rolling, and a released performance leaves it rolling. Press it without halting first and LOOM refuses, with a line telling you to press <code>STOP</code>. The playhead stays where it is across the halt, so <code>PERFORM FROM HERE</code> after it resumes from the bar you improvised up to and not from bar 1.</p>
+<p><code>PERFORM FROM TOP</code> also works, and it does what it always does: it halts the transport, returns to bar 1 and starts the whole song again.</p>
+<p>If the keyboard was on <code>PERFORMANCE STOP</code> when you pressed it, it moves to <code>STOP</code> in the top bar, because the control under your finger has just gone dead. That is also the first step back in: press it, then <code>PERFORM FROM HERE</code>.</p>
+<h2 id="a-new-song-empties-the-arrangement">A new song empties the arrangement</h2>
+<p><code>⌘N</code> clears the arrangement with everything else it clears. The regions go, the end marker returns to 96 bars, and the undo history goes with them. A new song has no arrangement, so both perform buttons read <code>NO ARRANGEMENT</code> until you draw a region.</p>
+<p>Pressing it during a performance ends the performance. The arrangement is released in the same gesture: <code>PERFORM FROM TOP</code> and <code>PERFORM FROM HERE</code> come back live in the new song, and <code>PERFORMANCE STOP</code> goes back to being dead. <code>⌘N</code> does not stop the transport. Press <code>STOP</code> in the top bar when you want it to stop.</p>
+<p>What you saved is untouched. A new song clears what is loaded, not what is on disk. Open the song again and its arrangement comes back as you left it at your last <code>⌘S</code>.</p>
+<h2 id="the-playhead-and-getting-back-to-the-start">The playhead, and getting back to the start</h2>
+<p>The playhead is the vertical line that shows where the transport is. It runs down through the lanes and has a small triangle at the top, in the bar ruler. It is dimmer while the transport is stopped and full strength while it rolls, so a parked line still shows where the next <code>ROLL</code> will start from.</p>
+<p>The playhead is not always on screen. It is not drawn before a tempo map is published, and with <code>FOLLOW</code> off you can scroll the view away from it. LOOM then draws nothing, rather than pinning the line to an edge it is not at. With <code>FOLLOW</code> on the view keeps up on its own.</p>
+<p>The playhead is also a control. Click the bar ruler to put it there, or press and drag to scrub it along; it snaps to whatever <code>SNAP</code> says. A press on the song end marker's flag goes to the flag, so aim beside it. You can also reach the playhead from the keyboard with <code>Tab</code>: the arrows move it a grid step, <code>Shift</code> makes that four, and <code>Home</code> sends it to bar 1.</p>
+<p><code>TO TOP</code>, in the top bar's <code>MOVE</code> group, sends the playhead back to the start and does nothing else. The transport stays stopped, no track is armed and the arrangement is not started. It is in that group because the two rows mean different things: <code>MOVE</code> never records, and the perform row writes to your tracks. You need it because <code>PERFORM FROM TOP</code> does not just return to bar 1: it launches the song.</p>
+<p>Moving the playhead starts nothing. Afterwards, <code>ROLL</code> plays the transport from wherever you left it and fires no regions, which is how you audition a loop over the middle of a song without launching the arrangement. <code>PERFORM FROM HERE</code> is the other thing you can do from a placed playhead: it arms the arrangement and plays it from that instant on, exactly as <code>PERFORM FROM TOP</code> does from bar 1. This is the one way to hear the arrangement from the middle of the song.</p>
+<p><code>TO TOP</code> and <code>PERFORM FROM HERE</code> do not work while the transport is rolling, and LOOM tells you so. Halt first. <code>TO TOP</code> would otherwise yank a rolling performance back to bar 1 with no warning, and <code>PERFORM FROM HERE</code> has nothing to start <em>from</em> until you have halted and placed the playhead again.</p>
+<p>Clicking a bar while the song is rolling is the exception. See <em>Jumping while it plays</em>.</p>
+<h2 id="jumping-while-it-plays">Jumping while it plays</h2>
+<p>Click a bar while the song is rolling and the playhead does not move. A <strong>hollow marker</strong> appears in the ruler at the bar you clicked. It is an outline where the playhead's head is solid, in a different colour, and it pulses slowly. The transport arrives there on the next bar line, not mid-phrase. The music you are already hearing plays out the bar and the song continues from where you pointed.</p>
+<p><code>JUMP Q</code> in the side panel decides which boundary. <code>NEXT BAR</code> is the default. <code>NEXT BEAT</code> is finer, and <code>IMMEDIATE</code> jumps the instant you click. See <a href="/loom/manual/side-panel/">The side panel</a>. It is saved with the song.</p>
+<p>Two ways out of a jump you have armed:</p>
+<ul>
+<li><code>Escape</code> cancels it, from anywhere in the window and not only from the arrange view: <em>"JUMP cancelled. The playhead stays where it is."</em></li>
+<li>Click the same bar again and it fires at once, without waiting for the boundary. This matches the rest of LOOM, where pressing a function twice skips its quantize.</li>
+</ul>
+<p>Clicking a <em>different</em> bar moves the marker instead of queueing a second jump. The last bar you pointed at is the one you get.</p>
+<p>Everything a jump does is announced as well as drawn, because a screen reader cannot see a pulsing outline. Arming, arriving, cancelling and every reason a jump did not happen each get one sentence on the notice line:</p>
+<table>
+<thead>
+<tr>
+<th>What happened</th>
+<th>What LOOM says</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>You clicked a bar while rolling</td>
+<td><em>"JUMP armed for bar 17 on the next bar. Escape cancels; click that bar again to jump now."</em></td>
+</tr>
+<tr>
+<td>The boundary arrived</td>
+<td><em>"JUMPED to bar 17."</em></td>
+</tr>
+<tr>
+<td>You pressed <code>Escape</code></td>
+<td><em>"JUMP cancelled. The playhead stays where it is."</em></td>
+</tr>
+<tr>
+<td>You pressed <code>STOP</code> before the boundary</td>
+<td><em>"JUMP dropped: the transport stopped before the boundary arrived. The playhead is where STOP left it."</em></td>
+</tr>
+<tr>
+<td>There is no tempo grid</td>
+<td><em>"JUMP refused: this session has published no tempo grid, so there is no bar line to wait for. Nothing moved."</em></td>
+</tr>
+</tbody>
+</table>
+<p>A jump works during a performance too. <code>PERFORM FROM TOP</code> and <code>PERFORM FROM HERE</code> go dead while one runs, and <code>TO TOP</code> and <code>ROLL</code> with them, but the ruler does not: nothing moves until a boundary you can see coming, and <code>Escape</code> takes it back. The arrangement follows you to the new position and fires the regions that live there.</p>
+<p>When the song is stopped, none of this applies. A click just places the playhead, immediately, and <code>JUMP Q</code> does nothing: there is no bar line to wait for on a grid that is not moving.</p>
+<h3 id="what-it-will-not-do-and-why-you-find-out-immediately">What it will not do, and why you find out immediately</h3>
+<p>Both perform buttons are all or nothing. If any one region in the song cannot be played correctly, nothing starts. LOOM does not play seven of your eight regions and leave the eighth out quietly. <code>ROLL</code> still works, and rolls the transport without the arrangement.</p>
+<p>There are nine reasons either button can refuse, in two groups. <code>PERFORM FROM HERE</code> has a tenth of its own: pressed while the transport is already rolling, it refuses, because there is no placed position to start from until you halt and place the playhead again.</p>
+<p>Six stop the press outright, and each gives you one sentence:</p>
+<table>
+<thead>
+<tr>
+<th>Why it refuses</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No audio device is open</strong></td>
+<td>There is no musical grid to place an arrangement on. Start the session first.</td>
+</tr>
+<tr>
+<td><strong>This session has published no tempo map</strong></td>
+<td>Same reason, one step later: there is no grid to fire an arrangement against.</td>
+</tr>
+<tr>
+<td><strong>The published grid has no bar in it</strong></td>
+<td>Start the audio device first.</td>
+</tr>
+<tr>
+<td><strong>The arrangement crosses a tempo or meter change</strong></td>
+<td>This pass reads one grid and computes every region's bar from the map at the top of the timeline. Keep the arrangement inside one tempo segment.</td>
+</tr>
+<tr>
+<td><strong>A region names a track this session does not have</strong></td>
+<td>You would hear three regions and then silence.</td>
+</tr>
+<tr>
+<td><strong>A region is on a track that is out of the array for this session</strong></td>
+<td>Same.</td>
+</tr>
+</tbody>
+</table>
+<p>Three are about the regions themselves, and those are reported <strong>together</strong>, one line per region, so a song with three bad regions tells you about all three in one press:</p>
+<table>
+<thead>
+<tr>
+<th>Why it refuses</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A region starts or ends on <strong>neither a bar line nor a beat line</strong></td>
+<td>A region is played at its own tick, and the tick it is played at is the one it is drawn on. A boundary on neither grid is one you cannot have drawn with <code>SNAP</code>, so it came from a song file or the command line, and playing it would put the region somewhere nobody put it. Snap it to a bar or a beat.</td>
+</tr>
+<tr>
+<td>An <strong>advisory region on a track that is not synced</strong></td>
+<td>An unsynced track is addressed in samples and has no ticks at all, and an arrangement plays a region at a tick. Sync the track, or remove the region.</td>
+</tr>
+<tr>
+<td>A region naming a <strong>verb this pass does not fire</strong></td>
+<td>It fires <code>Play</code>, <code>Record</code> and <code>Overdub</code>, and makes the stop at a region's end itself. Delete the region, or press <code>⇧V</code> on it to give it one of the three.</td>
+</tr>
+</tbody>
+</table>
+<p>The reason appears on <a href="/loom/manual/bottom-rails/#the-notice-line">the notice line</a> at the bottom of the window, with a red rule down its left edge, and it is read out loud as well if <code>ANNOUNCE</code> is on. Nothing in the arrange view moves when a press is refused: the track list stays where it is.</p>
+<blockquote>
+<p><strong>VoiceOver:</strong> a refusal longer than the notice line's two lines is cut with an ellipsis on screen. The description carries the whole of it, and so does what LOOM speaks. What you hear is complete even when what is drawn is not.</p>
+</blockquote>
+<h3 id="what-the-arrangement-does-that-is-not-on-screen">What the arrangement does that is not on screen</h3>
+<p>These are not shown on screen, so you would otherwise find them out by playing:</p>
+<ul>
+<li>every region fires on its own tick, to the sample, whatever you drew it on;</li>
+<li>each pass starts where you told it to and never anywhere else: <code>PERFORM FROM TOP</code> at bar 1, <code>PERFORM FROM HERE</code> at the playhead. <code>STOP</code> leaves the transport where it is and <code>ROLL</code> picks up from there without the arrangement. To seek <em>during</em> a pass, click the ruler; the song jumps on the <code>JUMP Q</code> boundary and takes the arrangement with it;</li>
+<li>edits take effect on the next roll. The arrangement that is playing is the one that was in the song when you pressed the button.</li>
+</ul>
+<p>A track whose own settings will fight its region gets a <code>WARNING:</code> line on the notice line as well. It is not a refusal and the song still plays; the arrangement drives the track for as long as it rolls, and you get your settings back at the end.</p>
+<p>The notice stays until another message replaces it.</p>
+<h3 id="how-much-automation-a-song-can-carry">How much automation a song can carry</h3>
+<p>Regions fire on their own tick, to the sample, whatever else the window is doing. Automation values are written on the same pass that draws the screen, so how much is on screen sets how closely they follow their nodes.</p>
+<p>Measured on an M1 MacBook Pro, with the arrange view showing:</p>
+<ul>
+<li><strong>An ordinary song</strong> (eight lanes, a node a bar) writes each value in well under a millisecond, and the screen redraws about thirty times a second. Values follow their nodes within about 50 ms.</li>
+<li><strong>A deliberately extreme song</strong> (sixty-four lanes carrying twenty-four thousand nodes, with the whole song on screen at the most zoomed-out setting) still writes each value in about a millisecond. Drawing that many nodes takes longer, so a value can land up to about 90 ms after its node, which at 120 bpm is under a sixteenth note.</li>
+</ul>
+<p>So automation keeps up in normal use, and stays close even at the extreme. If you do write automation that dense and want it as tight as possible, zoom in or work in the mixer while you play: the time goes into drawing the nodes, not playing them. Your loops are unaffected either way, because every region fires on its own tick whatever the screen is doing.</p>
+<h3 id="the-count-in">The count-in</h3>
+<p>There is a count-in before an arrangement: <code>SONG COUNT-IN</code>, on the side panel's <code>SONG</code> tab, default off. Set it and <code>PERFORM FROM TOP</code> locates to negative time and plays forward through zero, so a region recording at bar 1 gets its lead. <code>PERFORM FROM HERE</code> does not count in. It rolls from wherever the playhead already is rather than locating anywhere first, so a count-in before bar 1 does not apply to a start in the middle of the song.</p>
+<p>With the count-in off, which is the default, a region recording at bar 1 loses the first few milliseconds to latency, because there is no time before bar 1 to start early in. The notice line says so when that is the case, and leads with the remedy: set a count-in.</p>
+<h3 id="when-it-reaches-the-end">When it reaches the end</h3>
+<p>Every track stops on the end marker's bar and keeps its loop, the transport stops, and your track settings are yours again. <code>ROLL</code> then picks up from where it stopped rather than starting the song over.</p>
+{% endraw %}

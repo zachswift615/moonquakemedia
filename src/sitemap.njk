@@ -2,14 +2,23 @@
 permalink: /sitemap.xml
 eleventyExcludeFromCollections: true
 ---
+{#- `lastmod` is the date the page's content last changed, never the build date: a sitemap whose
+    every lastmod is "today" teaches Google to ignore the field. Blog posts use their own date
+    (or `updated`); every other page uses the newest commit touching its source or its layout,
+    which is why deploy.yml checks out full history. -#}
 <?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {% for page in collections.all %}
-  {% if not page.data.eleventyExcludeFromCollections %}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  {%- for page in collections.all %}
+  {%- if not page.data.eleventyExcludeFromCollections and not page.data.robots %}
   <url>
     <loc>{{ site.url }}{{ page.url }}</loc>
-    <lastmod>{{ page.date | isoDate }}</lastmod>
+    <lastmod>{% if "/blog/" in page.url and page.url != "/blog/" %}{{ (page.data.updated or page.date) | isoDate }}{% else %}{{ page.inputPath | gitLastmod(page.data.layout) }}{% endif %}</lastmod>
+    {%- if page.url == "/loom/" %}
+    {%- for shot in ["shot-looper", "shot-arrange", "shot-synth", "shot-drums", "shot-sampler", "shot-looper-banks", "shot-eq", "shot-delay", "shot-racks", "shot-amp", "shot-chorus", "shot-record-setup"] %}
+    <image:image><image:loc>{{ site.url }}/assets/loom/{{ shot }}.png</image:loc></image:image>
+    {%- endfor %}
+    {%- endif %}
   </url>
-  {% endif %}
-  {% endfor %}
+  {%- endif %}
+  {%- endfor %}
 </urlset>

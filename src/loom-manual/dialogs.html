@@ -1,0 +1,293 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/dialogs/
+manualSlug: dialogs
+---
+{% raw %}
+<p>LOOM has five dialogs: <strong>Save song</strong>, <strong>Replace a saved song</strong>, the <strong>at-risk warning</strong> (which appears before three different gestures), <strong>Open song</strong> and the <strong>session log</strong>. They all work the same way.</p>
+<p>Keys are in <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>.</p>
+<h2 id="how-every-dialog-behaves">How every dialog behaves</h2>
+<p>Nothing stops while a dialog is open. The loops keep playing, the clock keeps running, and the audio engine is untouched. The destructive dialogs say so in a banner across the top:</p>
+<blockquote>
+<p>Still playing. Nothing stops until you choose - the clock keeps running behind this dialog.</p>
+</blockquote>
+<p>When every track the dialog lists is stopped, the banner is grey and reads:</p>
+<blockquote>
+<p>Every track is stopped. Nothing changes until you choose.</p>
+</blockquote>
+<p>The dialog takes every key except <code>Esc</code> and <code>Tab</code>, so the window behind it does not act on keys meant for the dialog. For example, <code>←</code> and <code>→</code> do not move the focused track while you type a song name. <code>Tab</code> cycles inside the dialog and never reaches the window behind.</p>
+<p>Clicking outside a dialog does nothing: it does not cancel and it does not beep. To leave a dialog, press <code>Escape</code> or choose <code>Cancel</code>.</p>
+<p>In every LOOM dialog, the keyboard starts on the safe option, never on the destructive one.</p>
+<p>While a dialog is open, the menu bar is greyed out and none of its shortcuts work.</p>
+<p>Every dialog has a stable name that does not change with its state. It also has a description that says the whole card in one sentence, because the card's headings and paragraphs are painted text. A screen reader speaks that sentence when the dialog appears.</p>
+<h2 id="save-song">Save song</h2>
+<p>Opens when you press <code>⌘S</code> on an unnamed song, whenever you press <code>⇧⌘S</code>, and when a save is refused.</p>
+<figure class="shot shot-half"><img src="/assets/loom/manual/song.save-dialog.webp" width="560" height="331" loading="lazy" decoding="async" alt="Save song, opened with Save As on a song that already has a name. The name field holds that name."><figcaption>Save song, opened with Save As on a song that already has a name. The name field holds that name.</figcaption></figure>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The name field</td>
+<td>The name the song is saved under. It is stored in the file exactly as you type it, spaces and all. The file's name on disk is made filename-safe separately.</td>
+</tr>
+<tr>
+<td><code>SAVES WITH THE SONG</code></td>
+<td>A summary of what the file will contain.</td>
+</tr>
+<tr>
+<td>The disclaimer</td>
+<td>What is saved, and what comes back when you open the song again. Its text is quoted below.</td>
+</tr>
+<tr>
+<td><code>CANCEL</code></td>
+<td>Closes the dialog and writes nothing.</td>
+</tr>
+<tr>
+<td><code>SAVE SONG</code></td>
+<td>Writes the song.</td>
+</tr>
+</tbody>
+</table>
+<p>Type a name, then press <code>Return</code> to save or <code>Escape</code> to cancel. <code>Tab</code> moves from the field to cancel to save, so when you are in a hurry, one <code>Tab</code> from the field reaches cancel. The keyboard starts in the name field with the existing name selected, so on a named song <code>⇧⌘S</code> and then <code>Return</code> saves it again under the same name.</p>
+<p>If a save is refused, the reason appears under the field, beside the thing you would change, rather than only on the notice line behind the dialog. The dialog itself refuses an empty name: <em>A song needs a name. Type one and press Return.</em> After a refusal the caret is back in the name field, so you can type straight away even if you clicked <code>SAVE SONG</code> with the mouse.</p>
+<p>The disclaimer says:</p>
+<blockquote>
+<p>Opening this song again puts your loops back on their tracks, along with the arrangement and the settings. Every recorded pass is a WAV file inside this song's folder. Each track comes back holding the one take it had, so UNDO on a reopened song has nothing behind it.</p>
+</blockquote>
+<p>When you open a saved song, LOOM reads each track's recording from the song's <code>takes/</code> folder and puts it back on that track bit for bit. You get the same 32-bit float samples you played, not a re-render of them. A track you had cleared comes back empty, because the song says that track holds nothing.</p>
+<p>On a song you have just opened, <code>UNDO</code> has nothing to go back to. Each track comes back holding only the take it held when you saved, not the generation behind it, so <code>UNDO</code> on a loaded track does nothing. Anything you record after opening can be undone as usual.</p>
+<p>If a recording will not load, only its own track is affected. A take recorded at a sample rate other than the one this session runs at, or with a channel count a LOOM track cannot hold, is left out rather than played at the wrong speed. That track opens empty and the rest of the song opens.</p>
+<p>The dialog's accessible name is <code>Save song</code>. The field is named <code>Song name</code>, <code>CANCEL</code> is named <code>Cancel saving this song</code>, and <code>SAVE SONG</code> is named <code>Save song</code>.</p>
+<p>LOOM writes recorded audio into the song's folder as you perform, so there is no bounce step and nothing to switch on. A pass you are still playing reaches the folder when it closes. See <a href="/loom/manual/your-recordings/">Where your recordings live</a>.</p>
+<p>Saving under a new name gives you two complete songs. LOOM copies the recorded audio into the new song's folder and leaves the song you saved from as it was, so you can open either one and play it. See <a href="/loom/manual/your-recordings/#saving-a-copy-of-a-song">Saving a copy of a song</a>.</p>
+<h2 id="replace-a-saved-song">Replace a saved song</h2>
+<p>Opens when the name you typed matches a song that is already saved. It is the standard macOS replace question, asked once, over the save dialog.</p>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Cancel - type a different name</code></td>
+<td>Closes this question and puts the save dialog back with the name you typed still in it, so you can change it.</td>
+</tr>
+<tr>
+<td><code>Replace and delete what is saved there</code></td>
+<td>Deletes everything in the saved song's folder, including the arrangement, the settings and any recorded takes, and writes this song there instead.</td>
+</tr>
+</tbody>
+</table>
+<p><code>Escape</code> cancels. <code>Tab</code> moves from cancel to replace. The keyboard starts on cancel.</p>
+<p>As everywhere in LOOM, the red button is last and never has the keyboard when the dialog opens.</p>
+<p>Replacing deletes the whole folder, recursively, and the recorded takes with it. Only the document's previous copy survives: a few kilobytes with no audio in it. Nothing stops playing.</p>
+<p>The dialog's accessible name is <code>Replace a saved song</code>. The song's name appears in the drawn headline but not in any accessible name. The two buttons are named <code>Cancel replacing, and go back to the name</code> and <code>Replace the saved song</code>.</p>
+<h2 id="the-at-risk-warning">The at-risk warning</h2>
+<p>The same card appears before <strong>New Song</strong>, before a <strong>device change</strong>, and before <strong>opening another song</strong>, but only when something is actually at risk.</p>
+<p>The heading counts the tracks at risk: <code>4 tracks still hold audio</code>, or <code>1 track still holds audio</code> for one.</p>
+<figure class="shot shot-half"><img src="/assets/loom/manual/song.at-risk.webp" width="620" height="493" loading="lazy" decoding="async" alt="The at-risk warning raised by New Song over a song whose five tracks are playing."><figcaption>The at-risk warning raised by New Song over a song whose five tracks are playing.</figcaption></figure>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Banner</td>
+<td><em>Still playing. Nothing stops until you choose - the clock keeps running behind this dialog.</em> when a listed track is playing, recording or waiting to. <em>Every track is stopped. Nothing changes until you choose.</em> when every listed track is stopped.</td>
+</tr>
+<tr>
+<td>Body</td>
+<td>What this gesture does and what survives it.</td>
+</tr>
+<tr>
+<td><code>AT RISK</code> list</td>
+<td>One row per track: its number, its state word in a coloured chip, and the same countdown the ring is drawing at that moment.</td>
+</tr>
+<tr>
+<td>Three buttons</td>
+<td>Safe, neutral, destructive.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>Position</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Save "…" first, then …</em></td>
+<td>First, coloured, has the keyboard</td>
+<td>Saves, then performs the gesture. On an unnamed song it opens the save dialog first. If you cancel the naming, the whole gesture is cancelled and nothing is cleared.</td>
+</tr>
+<tr>
+<td><em>Keep playing - cancel</em></td>
+<td>Middle, neutral</td>
+<td>Changes nothing. <code>Escape</code> does the same. When every track at risk is stopped, it reads <em>Cancel</em>.</td>
+</tr>
+<tr>
+<td><em>Discard and …</em></td>
+<td>Last, red</td>
+<td>Performs the gesture and loses the loops.</td>
+</tr>
+</tbody>
+</table>
+<p><code>Tab</code> moves from the primary button to cancel to the destructive button.</p>
+<p>If nothing is at risk, LOOM does not ask. With five empty tracks, a device change takes one click, and <code>⌘N</code> and <code>⌘O</code> act immediately.</p>
+<p>What each gesture says:</p>
+<ul>
+<li><strong>New song.</strong> Starting a new song stops every loop, clears them, and resets the mixer to how a new song starts: the faders, pans, mutes, solos, sends, input strips, buses, the master, the click and every effect chain. The tempo returns to 120 bpm and the meter to 4/4. If the transport is rolling when you press it, LOOM keeps the tempo and meter you are playing at and says so on the notice line; to reset them, stop the transport and press again. Your interface is kept: the devices, the sample rate, which inputs each track records from and which outputs carry the mix. Those belong to your rig, not to the song. The input strips return to their starting state, with input 1 open and every other input muted. The arrangement is emptied and any running performance ends. See <a href="/loom/manual/the-arrange-view/#a-new-song-empties-the-arrangement">A new song empties the arrangement</a> and <a href="/loom/manual/the-mixer/#what-a-new-song-resets">What a new song resets</a>.</li>
+<li><strong>Device change.</strong> Changing the interface builds a new audio engine, and the recorded loops do not survive it. The rig does: LOOM captures and restores the tempo, the click and where it goes, both count-ins, the quantize points, the track count, which strip has focus, every track's input routing, and the mixer's input levels and mutes. If you cancel, the chip goes back to the device it named before, and the cancel button names that device.</li>
+<li><strong>Open song.</strong> Opening a named song clears every loop first, because LOOM holds one song at a time. This is the only one of these cards that names the song being opened. The song list comes first and choosing a row changes nothing, so LOOM can ask <em>which song</em> before it asks <em>whether</em>.</li>
+</ul>
+<p>LOOM writes the song at <code>⌘S</code> and when you quit, and at no other time, so anything recorded or changed since the last save is not in that file. The card says so and tells you how to get back to it: <em>Saving keeps the file, and Command O opens it again.</em></p>
+<p>On a song you have not named, the card says where the audio already is. LOOM records into a folder of its own in your LOOM songs folder, under a name that starts with <code>Untitled</code>, so your takes are files on your disk before you save anything. The card says how much of that is still there: the take each track holds and the one <code>UNDO</code> goes back to. Saving and quitting delete the passes behind those two. A pass you are still playing is not on disk, and the gesture loses it. On an unnamed song, what the card puts at risk is the arrangement and the track settings, which LOOM writes at <code>⌘S</code> and when you quit. Naming the song moves the takes into the named folder rather than copying them. See <a href="/loom/manual/your-recordings/">Where your recordings live</a>.</p>
+<p>The card's accessible name is <code>Start a new song</code>, <code>Change audio device</code> or <code>Open another song</code>. The names stay the same whatever is at risk and contain no count. The count and the whole at-risk list reach a screen reader through the description, because the rows are painted text. Each button has its own name and its own sentence saying what it does and what survives it.</p>
+<p>The red button acts on a single press. There is no hold on it, because the dialog is already the safeguard.</p>
+<h2 id="open-song">Open song</h2>
+<p>Opens when you press <code>⌘O</code>. It lists your saved songs, drawn in the window rather than in a native Open panel.</p>
+<p>The list is in the window because a mapped footswitch press can reach it and cannot reach a native panel. The list also shows each name as you typed it: the filename on disk is sanitised, and the name itself is stored inside the file.</p>
+<p>The dialog has a counted heading (<code>4 songs in your LOOM songs folder</code>, singular for one song, and <code>No songs saved yet</code> for none), then one button per song, then <code>Cancel</code>.</p>
+<figure class="shot shot-half"><img src="/assets/loom/manual/song.open-dialog.webp" width="560" height="198" loading="lazy" decoding="async" alt="Open song with one song in the songs folder."><figcaption>Open song with one song in the songs folder.</figcaption></figure>
+<p><code>↑</code> and <code>↓</code> move between the songs, and <code>Return</code> opens the one you are on. <code>Tab</code> and <code>⇧Tab</code> move the same way and also reach the cancel button at the end. <code>Esc</code> closes the list and changes nothing.</p>
+<p>The arrows move the keyboard focus in the same order as <code>Tab</code>, and the focused row is the selection: <code>Return</code> opens the row with the visible focus ring. The keyboard starts on the first row.</p>
+<p>The card grows with the number of songs up to eight rows, and after that the list scrolls. Moving the focus scrolls it, so you can tab through forty songs without doing anything else.</p>
+<p>A song that cannot be read is still listed, in its usual place, and you can still press it. It is drawn dimmer. Pressing it tells you what is wrong with the file and changes nothing.</p>
+<p>The dialog's accessible name is <code>Open song</code>. Each row is a button named <code>Open song &lt;name&gt;</code>, so you can reach the whole list with <code>Tab</code> and each row reads as what it is. The mark for an unreadable song is drawn beside the name but is not part of it; it is in the description instead. The dialog's description gives the count, how to move, that nothing stops playing until you choose, and how many songs in the list could not be read. <code>Cancel</code> is named <code>Close the song list</code>.</p>
+<p>Choosing a row changes nothing on its own. If any track holds something, the at-risk warning opens over the list and names the song you picked. Otherwise the song opens straight away.</p>
+<h2 id="session-log">Session log</h2>
+<p>Opens from <strong>View ▸ Show Logs</strong>, with <code>⇧⌘L</code>, or with the <code>LOG</code> control at the right-hand end of the notice line. See <a href="/loom/manual/bottom-rails/#log">The bottom rails</a>. All three open the same overlay.</p>
+<p>LOOM records every message it puts on the notice line at the bottom of the window. This overlay shows that record for the current session, newest first, with the time each message appeared.</p>
+<p>Use it when a message went past before you could read it, or when you want to check what LOOM said about something earlier in the set.</p>
+<figure class="shot shot-full"><img src="/assets/loom/manual/dialog.session-log.webp" width="900" height="560" loading="lazy" decoding="async" alt="The session log after the steps in Your first loop, newest first. The date and times are examples."><figcaption>The session log after the steps in Your first loop, newest first. The date and times are examples.</figcaption></figure>
+<p>The overlay has a counted heading (<code>42 messages this session, newest first</code>, singular for one message, and <code>Nothing recorded this session yet</code> for none), then the log, then <code>Close</code>.</p>
+<p>Each line reads <code>time | kind | message</code>. The kind is <code>notice</code> for a message from the notice line and <code>session</code> for a message about the log itself, such as the line LOOM writes when it starts.</p>
+<p>A message that repeats appears once. LOOM records a line when the notice line changes, so the log shows what you saw, in the order you saw it.</p>
+<p>The log is a snapshot. It is filled when you open it and does not update while it is open, so a message that arrives afterwards is not in the list. To see everything up to now, close the log and open it again. Nothing is lost: LOOM keeps writing the record behind the overlay.</p>
+<p>Moving through the log:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>↑</code> <code>↓</code></td>
+<td>Moves one line.</td>
+</tr>
+<tr>
+<td><code>Page Up</code> <code>Page Down</code></td>
+<td>Moves one screen.</td>
+</tr>
+<tr>
+<td><code>⌘↑</code> <code>⌘↓</code></td>
+<td>Goes to the newest message, or the oldest.</td>
+</tr>
+<tr>
+<td><code>⌘A</code></td>
+<td>Selects the whole log.</td>
+</tr>
+<tr>
+<td><code>⌘C</code></td>
+<td>Copies what is selected.</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Closes the log.</td>
+</tr>
+</tbody>
+</table>
+<p>Hold <code>Shift</code> with any of the movement keys to select as you go.</p>
+<p>Drag across the log to select part of it, and double-click to select a word. <code>⌘C</code> copies the selection; <code>⌘A</code> then <code>⌘C</code> copies the whole log. Right-click for the same commands in a menu. To quote a line in an email without sending the whole report, copy it from here.</p>
+<p>The log cannot be edited. Typing, pasting and deleting do nothing.</p>
+<p>Nothing is sent. Reading the log makes no network connection, and neither does copying from it. See <a href="/loom/manual/privacy/">Privacy</a>. To send the record to the person who makes LOOM, use <a href="/loom/manual/reporting-a-problem/">Report a problem</a>, which writes it to a file you attach yourself.</p>
+<p>The log covers the session you are in. The previous session is kept as a file and is included in a problem report; see <a href="/loom/manual/reporting-a-problem/">Reporting a problem</a>. If LOOM stopped unexpectedly last time, the first thing in this log says so.</p>
+<p>The dialog and the log inside it are both named <code>Session log</code>. The description says how many messages there are, what they are, which keys move through them, and that nothing is sent. <code>Close</code> is named <code>Close the session log</code>.</p>
+<h2 id="record-setup">Record setup</h2>
+<p>Opens from <strong>File ▸ Record Setup…</strong> or with <code>⌥⌘R</code>.</p>
+<figure class="shot shot-full"><img src="/assets/loom/manual/dialog.record-setup.webp" width="1100" height="720" loading="lazy" decoding="async" alt="Record setup with every stream ticked. The folder path and the free space are examples."><figcaption>Record setup with every stream ticked. The folder path and the free space are examples.</figcaption></figure>
+<p>This sheet chooses which streams <code>RECORD</code> on the transport writes, and shows what they cost on disk. It has no record button of its own. What you tick takes effect the next time you press <code>RECORD</code>. See <a href="/loom/manual/top-bar/#record">RECORD</a>.</p>
+<p><strong>What you tick belongs to this rig, not to the song.</strong> LOOM keeps your ticks on this Mac, so they are the same in every song you open. Ticks are kept by track position: a tick on <code>TRACK 7</code> waits for a song that has a seventh track, and a song with fewer tracks records nothing for it. The sheet lists such ticks under the track list. Every song has every instrument track, so a tick on an <code>INST</code> row always records.</p>
+<p><strong>The streams.</strong> Each row is one stereo WAV file, and its file name is on the right of the row.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What the file holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LOOP TRACK OUTPUTS</code></td>
+<td>One loop track after its own insert effects, its fader and its pan. What it sends to an FX bus is in that bus's file, not in the track's.</td>
+</tr>
+<tr>
+<td><code>INSTRUMENT TRACK OUTPUTS</code></td>
+<td>One instrument track after its own insert effects, its fader and its pan, taken at the same point as a loop track's file. <code>Instrument 1.wav</code> is <code>INST 1</code>.</td>
+</tr>
+<tr>
+<td><code>FX BUS OUTPUTS</code></td>
+<td>One bus after its effects and its mute and solo, before its return level. The first row is the CUE bus.</td>
+</tr>
+<tr>
+<td><code>MAIN MIX</code></td>
+<td>The main mix after the master fader. The click is not in it.</td>
+</tr>
+<tr>
+<td><code>GROUPS</code></td>
+<td>One file per group, <code>Group 1.wav</code> for group 1. A group sums its sources into one stereo file.</td>
+</tr>
+</tbody>
+</table>
+<p><code>TICK EVERYTHING</code> ticks every row. To tick or untick a row, press it, or move to it and press <code>Space</code>.</p>
+<p><strong>Groups.</strong> Each group on this rig is one row: its number, <code>LIVE</code> or <code>PLAYBACK</code>, the sources it holds, and its file name. <code>RECORD</code> writes a group's file only when its row is ticked. A group whose sources are all missing from this interface and this song reads <code>NOTHING HERE TO RECORD</code>. Its tick is kept, but it writes no file until you are on a rig and in a song that have its sources. With no groups on the rig, the section says so.</p>
+<p>You cannot make or change groups in this sheet. The <code>MIXER › MASTER › ROUTING</code> button under the group rows closes the sheet and opens the page where you can. See <a href="/loom/manual/the-mixer/#groups-the-routing-page">Groups: the <code>ROUTING</code> page</a>.</p>
+<p><strong>The folder line</strong> shows where the next recording goes: a new folder in <code>~/Music/LOOM/Recordings</code>, named for the song and today's date. Every file is 32-bit float WAV at your interface's sample rate. LOOM does not offer another format.</p>
+<p><strong>The device line</strong> at the top right names your interface, its inputs and outputs, and the sample rate the cost is worked out at.</p>
+<p><strong>What this will cost.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Figure</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MB/s</code> and <code>GB /HOUR</code></td>
+<td>How fast the ticked streams fill the disk. Amber above 4.4 MB/s.</td>
+</tr>
+<tr>
+<td><em>Files per recording</em></td>
+<td>How many files one recording makes.</td>
+</tr>
+<tr>
+<td><em>Free on this disk</em></td>
+<td>The free space on the disk that holds your recordings folder.</td>
+</tr>
+<tr>
+<td><em>Room at this rate</em></td>
+<td>How many hours of recording the free space holds. Amber under two hours.</td>
+</tr>
+</tbody>
+</table>
+<p>When the disk is nearly full, the recording stops, every file is closed cleanly, and the notice line says so.</p>
+<p><strong>Last recording</strong> names the last recording made in this session: its folder, its number of files, its length and its gaps. <code>REVEAL IN FINDER</code> opens its folder.</p>
+<p><strong>The footer</strong> says how many files the next recording writes, and reminds you that a song change stops a recording.</p>
+<p><code>Close</code> or <code>Esc</code> closes the sheet. Your ticks are already kept.</p>
+{% endraw %}

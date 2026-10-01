@@ -1,0 +1,24 @@
+{#- Who publishes this site, on every page. Page-level structured data (a product, an article, a
+    breadcrumb) refers back to these by @id rather than restating them. -#}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ site.url }}/#organization",
+      "name": "{{ site.name }}",
+      "url": "{{ site.url }}/",
+      "logo": "{{ site.url }}/images/moonquake-logo.png",
+      "email": "{{ site.email }}"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "name": "{{ site.name }}",
+      "url": "{{ site.url }}/",
+      "publisher": { "@id": "{{ site.url }}/#organization" }
+    }
+  ]
+}
+</script>
