@@ -21,7 +21,7 @@ That is what the arrange view in [LOOM](/loom/) is for. The full reference is th
 
 ## Can a looper play an arrangement by itself?
 
-A hardware looper needs an external sequencer sending it MIDI to do this. LOOM's arrange view drives the same looper engine you play by hand. A region on the timeline fires the same command a press on the track's ring would fire. So a song you build by hand at rehearsal translates directly into an arrangement, and anything you know about the looper still holds.
+A hardware looper needs an external sequencer sending it MIDI to do this. LOOM's arrange view drives the same looper engine you play by hand. A region on the timeline fires the same command a press on the track's ring would fire. So a song you build by hand at rehearsal translates directly into an arrangement, and anything you know about the looper still holds. A good way to work is to sketch the loops by hand in the looper view first, then pin down the button presses and effect changes in the arrange view.
 
 ## The three verbs: REC, DUB and PLAY
 
@@ -35,13 +35,13 @@ Each track gets a lane, instrument tracks included. You draw regions on a lane, 
 
 {% blogshot "/images/blog/arrange-live-looping-song-in-advance/arrange.png", "LOOM's arrange view: REC, DUB and PLAY regions on five audio tracks and three instrument tracks, with automation lanes for a pan and an FX 1 level, preset lanes holding Trap n Clap and Zach Dusty Poly, and a rack lane", "Regions on the track lanes, with automation, preset and rack lanes under them." %}
 
-There is no stop region. A gap means stopped: LOOM stops a track at the end of each of its regions, so the track is silent in the space between two of them. A track with no regions plays nothing for the whole song.
+There is no stop region. A stretch of lane with no region on it means stopped: LOOM stops a track at the end of each of its regions, so the track is silent in the space between two of them. A track with no regions plays nothing for the whole song.
 
 Regions fire on their own tick, to the sample. A `DUB` region on beat 3 of bar 7 starts its overdub on beat 3 of bar 7, and you press nothing.
 
 ### What a REC region does to an existing loop
 
-A `REC` region on a track that already holds a loop re-records it, and the new take is the region's length. A 2-bar `REC` region over a 4-bar loop leaves you a 2-bar loop. That replacement is permanent once the region fires: `UNDO` cannot bring back the take it replaced. Until the region fires, it is an ordinary edit you can move, delete or change to `DUB`.
+A `REC` region on a track that already holds a loop re-records it, and the new take is the region's length. A 2-bar `REC` region over a 4-bar loop leaves you a 2-bar loop. That replacement is permanent once the region fires, and on purpose: it lets the arrangement set each track's loop length. `UNDO` cannot bring back the take it replaced. Until the region fires, it is an ordinary edit you can move, delete or change to `DUB`.
 
 A `DUB` region adds a layer you can undo, the same as an overdub played by hand. Two `DUB` regions back to back make two layers and two undo steps.
 

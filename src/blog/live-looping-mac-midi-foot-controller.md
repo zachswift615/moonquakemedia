@@ -53,7 +53,7 @@ So the audio tracks land here:
 
 Notes 60 to 71 are reserved and do nothing. The instrument tracks (LOOM's own synth, drum machine and sampler) take the next octaves: 72 to 78, 84 to 90, 96 to 102 and 108 to 114. The global commands sit at 120 to 125.
 
-### Why one footswitch per track is enough
+### One footswitch per track gets you a long way
 
 The `+0` note is not a dedicated record button. It does what the ring button on that track's strip does, which depends on the track's state:
 
@@ -94,17 +94,21 @@ If your controller can only transmit on one channel, do it the other way round: 
 
 ## Planning a pedalboard layout
 
-You do not need a switch for every command. Here is one way to plan a small board:
+You do not need a switch for every command. If you have room for three switches per track, these are the three to map:
 
-- **Ring buttons first.** One switch on `+0` for each track you loop live: note 0 for track 1, 12 for track 2, and so on.
-- **Undo for the track you use most.** `+2` and `+3` act on the track the note names, not the track that has focus, so a pedal can undo track 3 while you are looking at track 5.
-- **One way to end a section, one way to end the song.** LOOM has three different stops, and they are easy to confuse:
-  - A track's own Stop (`+4`) stops that one track.
-  - ALL STOP (note 121) stops every track but leaves the transport running and the click sounding.
-  - TRANSPORT STOP (note 124) stops the transport and every track with it.
+- **The ring button** (`+0`): record, close the loop, overdub and play, all from one switch.
+- **Stop** (`+4`): stops that one track.
+- **Clear** (`+5`): erases the track, after a one-second hold.
 
-  If you stomp 121 expecting silence, you get silent tracks over a click that is still going. Use 121 to drop out for a section and 124 to end the song.
-- **A way to start.** ALL START (note 120) starts every included track and starts the transport if it is stopped. TRANSPORT START (note 123) starts the clock and click without starting any tracks, which gives you an empty bar to count in over.
+After those, add **undo** (`+2`) for the tracks you overdub most. `+2` and `+3` act on the track the note names, not the track that has focus, so a pedal can undo track 3 while you are looking at track 5.
+
+Keep room for the global commands as well. In a live looping set these are the ones I reach for all the time:
+
+- **ALL START** (note 120) starts every included track, and starts the transport if it is stopped.
+- **ALL STOP** (note 121) stops every track but leaves the transport running and the click sounding.
+- **ALL CLEAR** (note 122) erases every track, after a one-second hold.
+
+LOOM has one more stop, and it is easy to confuse with ALL STOP. TRANSPORT STOP (note 124) stops the transport and every track with it. If you stomp 121 expecting silence, you get silent tracks over a click that is still going. Use 121 to drop out for a section and 124 to end the song. Its partner, TRANSPORT START (note 123), starts the clock and click without starting any tracks, which gives you an empty bar to count in over.
 
 If you draw arrangements in LOOM's arrange view, note 125 is worth a switch too. It plays the arrangement from bar 1, from any view. More on that in [arranging a live looping song in advance](/blog/arrange-live-looping-song-in-advance/).
 
@@ -134,7 +138,7 @@ Use it like this:
 
 The manual walks through an Arturia MiniLab: in MIDI Control Center, set pads 1 to 7 to send notes 0 to 6 (`C-2` upward in Arturia's naming) on channel 16, and leave the keys on channel 1 for a synth. Press pad 1 and you want the readout to show `16 · N0 · 100 ✓`. If it shows `N12`, you are an octave out. The same steps apply to a foot controller; only the editor changes.
 
-## What LOOM's MIDI control does not do
+## What LOOM's MIDI control does not do yet
 
 It is better to know these before you plan a rig:
 
@@ -142,6 +146,8 @@ It is better to know these before you plan a rig:
 - CC messages do not control the mixer or effects.
 - There is no MIDI clock, MTC or MMC in or out, and no MIDI output.
 - There is no per-device choice for commands. LOOM answers every source on the command channel.
+
+More MIDI control is on the roadmap, possibly a full MIDI mapping system, and feedback from people using LOOM will decide what comes first. The note map starts small on purpose. Much of LOOM's appeal is that the arrange view frees you from running the looper, by hand or by foot, at all. So the first release covers what you need to run the loop tracks yourself, with more to come in future releases.
 
 If your controller is programmed for LOOM 1.0's layout, switch `MIDI MAP` in the side panel to `1.0 layout`. It will be removed in LOOM 1.4.
 
@@ -163,7 +169,7 @@ Not for LOOM's commands. The commands respond to note messages only, so your con
 
 ### Does LOOM have MIDI learn?
 
-No. The note map is fixed. MIDI learn and reassignable notes are on the roadmap but not built.
+Not yet. The note map is fixed for now. A fuller MIDI mapping system is on the roadmap, and feedback from people using LOOM will set its priority.
 
 ### Do I need to restart LOOM after plugging in a controller?
 
