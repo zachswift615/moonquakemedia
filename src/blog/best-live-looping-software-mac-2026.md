@@ -7,7 +7,10 @@ tags:
   - mac
   - loom
 excerpt: "There are a handful of real options for live looping on a Mac in 2026, and they are built for different people. Here is what each one does well, what it costs, and where it falls short."
-ogImage: /assets/loom/shot-looper.png
+ogImage: /images/og-blog-best-looping-software.png
+ogImageWidth: 1200
+ogImageHeight: 630
+ogImageAlt: "Best Live Looping Software for Mac in 2026, beside the LOOM window"
 ---
 
 I build a live looper for the Mac, [LOOM](/loom/), so read this with that in mind. I have tried to be fair to the other options, and every price and feature below comes from the product's own page, checked in October 2026. Where another tool is the better choice for you, I say so.

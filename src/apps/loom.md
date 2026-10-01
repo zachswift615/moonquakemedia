@@ -18,10 +18,15 @@ seoTitle: "LOOM: Live Looper for Mac with Synth, Drums and Arranger"
 tagline: A loop station that plays itself
 # Kept under ~155 characters, which is what a search result shows before it cuts.
 description: "LOOM is a live looper for Mac with a synth, drum machine and sampler, and an arrange view that plays the looper for you. Free 14-day trial. Works offline."
-ogImage: /assets/loom/shot-looper.png
-ogImageWidth: 3456
-ogImageHeight: 2234
-ogImageAlt: "LOOM's looper window: five audio tracks and four instrument tracks, each with a ring showing its state"
+# The link-preview card, designed at 1200 x 630 (docs/marketing/claude-design-seo-assets-prompt.md
+# in the LOOM repository). shot-looper.png was the card before it and stays where it is: platforms
+# cache an og:image by URL, and the structured data still lists it as a screenshot.
+ogImage: /images/og-loom.png
+ogImageWidth: 1200
+ogImageHeight: 630
+ogImageAlt: "LOOM, a live looper for Mac: a loop station that plays itself, beside its track rings showing PLAY, DUB and REC"
+faviconSvg: /assets/loom/loom-favicon.svg
+favicon16: /assets/loom/favicon-16.png
 favicon: /assets/loom/favicon-32.png
 appleTouchIcon: /assets/loom/apple-touch-icon.png
 themeColor: "#0B0C0E"

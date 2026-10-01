@@ -5,11 +5,15 @@
 module.exports = {
   appStoreId: false,
   selfHostedFonts: true,
+  faviconSvg: '/assets/loom/loom-favicon.svg',
+  favicon16: '/assets/loom/favicon-16.png',
   favicon: '/assets/loom/favicon-32.png',
   appleTouchIcon: '/assets/loom/apple-touch-icon.png',
   themeColor: '#0B0C0E',
-  ogImage: '/assets/loom/shot-looper.png',
-  ogImageAlt: 'LOOM, a live looper for Mac, with five audio tracks and four instrument tracks',
+  ogImage: '/images/og-loom-manual.png',
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageAlt: 'LOOM User Manual, for the live looper for Mac',
   eleventyComputed: {
     chapter: (data) =>
       data.manualSlug && data.loomManual.chapters.find((c) => c.slug === data.manualSlug),

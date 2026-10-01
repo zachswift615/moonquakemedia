@@ -7,7 +7,10 @@ tags:
   - midi
   - loom
 excerpt: "A software looper only feels like a pedal once your feet can run it. Here is how to set up a MIDI foot controller or pad controller to drive LOOM on a Mac, note by note."
-ogImage: /assets/loom/shot-looper.png
+ogImage: /images/og-blog-midi-foot-controller.png
+ogImageWidth: 1200
+ogImageHeight: 630
+ogImageAlt: "Live Looping on a Mac with a MIDI Foot Controller, beside LOOM's MIDI IN list of connected controllers"
 ---
 
 A looper on a laptop screen is fine for rehearsal. On stage your hands are on a guitar or a keyboard, and the only thing free is your feet. A software looper starts to feel like a pedal once a footswitch can record, overdub, undo and stop a track without you looking at the screen.

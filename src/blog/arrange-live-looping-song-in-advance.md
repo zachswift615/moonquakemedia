@@ -7,7 +7,10 @@ tags:
   - arranging
   - loom
 excerpt: "Live looping usually means pressing every button yourself, in time, every night. Here is how to draw the song's record, overdub and play moves on a timeline in advance, so the song presses the buttons and you play the parts."
-ogImage: /assets/loom/shot-looper.png
+ogImage: /images/og-blog-arrange-in-advance.png
+ogImageWidth: 1200
+ogImageHeight: 630
+ogImageAlt: "Arrange a Looping Song in Advance, beside LOOM's arrange view with REC, DUB and PLAY regions"
 ---
 
 Live looping with a pedal is immediate. It is also a lot of footwork. A song with four tracks, a few overdubs and a breakdown can mean a dozen precisely timed presses, and one late stomp shifts the whole loop.

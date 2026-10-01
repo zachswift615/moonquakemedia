@@ -7,7 +7,10 @@ tags:
   - recording
   - loom
 excerpt: "A stereo board mix of a looping set is hard to fix later. Here is how to record each loop track, instrument and live input to its own synced WAV file so you can mix the set properly afterwards."
-ogImage: /assets/loom/shot-looper.png
+ogImage: /images/og-blog-record-stems.png
+ogImageWidth: 1200
+ogImageHeight: 630
+ogImageAlt: "Record a Looping Set as Separate Stems, beside LOOM's Record setup sheet"
 ---
 
 The usual way to record a looping set is to take a stereo feed off the main outputs. It works, and it captures exactly what the room heard. The trouble starts afterwards. The guitar loop was too loud, the vocal was buried, the reverb was wrong for the video, and none of it can be pulled apart because it is all in one file.

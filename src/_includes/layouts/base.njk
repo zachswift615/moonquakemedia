@@ -47,7 +47,9 @@
     {% if themeColor %}<meta name="theme-color" content="{{ themeColor }}">{% endif %}
 
     <!-- Favicon -->
+    {% if faviconSvg %}<link rel="icon" type="image/svg+xml" href="{{ faviconSvg }}">{% endif %}
     <link rel="icon" type="image/png" sizes="32x32" href="{{ favicon or '/images/favicon-32.png' }}">
+    {% if favicon16 %}<link rel="icon" type="image/png" sizes="16x16" href="{{ favicon16 }}">{% endif %}
     <link rel="apple-touch-icon" sizes="180x180" href="{{ appleTouchIcon or '/images/apple-touch-icon.png' }}">
 
     {% block head %}{% endblock %}
