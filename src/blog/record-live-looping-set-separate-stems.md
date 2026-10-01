@@ -122,7 +122,7 @@ Drag the WAV files into any DAW and place them all at zero. They start at the sa
 
 ## Back up before and after
 
-Copy `~/Music/LOOM` before a show. It holds your songs, their takes and your performance recordings. `CLEAR`, `ALL CLEAR` and replacing a saved song all delete audio without asking twice, so a copy taken before the gig protects the takes, and a copy taken after protects the recording.
+Copy `~/Music/LOOM` before a show. It holds your songs, their takes and your performance recordings. `CLEAR` and `ALL CLEAR` cannot be undone, so a copy taken before the gig protects the takes, and a copy taken after protects the recording.
 
 If you want the song itself to play the same way every night, so that the stems from two shows line up section for section, see [arranging a live looping song in advance](/blog/arrange-live-looping-song-in-advance/). And if you are running the looper from your feet while you record, the [MIDI foot controller guide](/blog/live-looping-mac-midi-foot-controller/) covers that setup.
 
