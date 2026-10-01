@@ -69,14 +69,14 @@ A loop track's file holds what that track plays back. It does not hold your live
 
 Groups are built on the mixer's routing page: open the mixer, choose `MASTER` in the `BANK` row, then `ROUTING` in the `PAGE` row. Record Setup has a button that takes you straight there. Press `+ NEW GROUP` and tick its sources.
 
-<!-- SHOT WANTED: the mixer ROUTING page with a LIVE group and a PLAYBACK group, ideally one track row reading DRY · FX 1 MISSING with ADD FX 1 beside it. -->
-
 A group is one of two kinds, decided by the first source you tick:
 
 - **LIVE** groups hold device inputs only. A group with just your vocal mic in it records your vocal on its own.
 - **PLAYBACK** groups hold loop tracks, instrument tracks and effects buses.
 
 The two kinds cannot share a file. LOOM lines up live inputs with the loops you played along to, and that shifts an input's file by a different amount from a track's. One file can only have one starting point, so live and playback sources go in separate groups.
+
+{% blogshot "/images/blog/record-live-looping-set-separate-stems/group-cards.png", "Three group cards on the ROUTING page: Group 1 PLAYBACK holding T1 and T2, Group 2 LIVE holding IN 2, and Group 3 EMPTY with no sources yet", "Each card says what kind of group it is and what it holds." %}
 
 For a typical singer with a looper, that means one `LIVE` group per mic or instrument input you want isolated, plus the loop track files.
 
@@ -85,6 +85,8 @@ For a typical singer with a looper, that means one `LIVE` group per mic or instr
 Reverb and delay sends do not appear in a track's own file. If you send a track to `FX 1` for reverb, the reverb comes back on the `FX 1` bus, so `Track 1.wav` is dry. Either record the FX buses as their own files, or put the bus in the same `PLAYBACK` group as the track.
 
 The routing page warns you about this. When you tick a track whose send bus is not in the group, the track's row turns purple and reads `DRY · FX 1 MISSING`, with an `ADD FX 1` button beside it. When every bus the track sends to is in the group, the row reads `WITH FX 1` in green.
+
+{% blogshot "/images/blog/record-live-looping-set-separate-stems/dry-track.png", "A purple Track 1 row tagged DRY · FX 1 + FX 2 MISSING, reading: The effects Track 1 sends to FX 1 and FX 2 return on those buses. Without them, Group 1.wav carries a dry Track 1. ADD FX 2 and ADD FX 1 buttons sit beside it", "Track 1 sends to two buses, so the row offers to add both." %}
 
 ## Step 3: press RECORD and play
 
