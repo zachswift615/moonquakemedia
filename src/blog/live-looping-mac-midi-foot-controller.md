@@ -1,6 +1,6 @@
 ---
 title: "How to Live Loop on a Mac with a MIDI Foot Controller or Pad Controller"
-date: 2026-10-02
+date: 2026-10-01T11:00:00-05:00
 description: "Set up a MIDI foot controller or pad controller to run a live looper on your Mac: which notes to send, which channel, and how to check it works."
 tags:
   - how-to

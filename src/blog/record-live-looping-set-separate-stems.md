@@ -1,6 +1,6 @@
 ---
 title: "How to Record a Live Looping Set as Separate Tracks (Stems) for Mixing Later"
-date: 2026-10-03
+date: 2026-10-01T12:00:00-05:00
 description: "Record every loop track, instrument, effects bus and live input from a looping set as synced WAV stems you can mix in any DAW afterwards."
 tags:
   - how-to

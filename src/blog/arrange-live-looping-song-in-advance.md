@@ -1,6 +1,6 @@
 ---
 title: "Arranging a Live Looping Song in Advance: Let the Song Press the Buttons"
-date: 2026-10-04
+date: 2026-10-01T13:00:00-05:00
 description: "Draw record, overdub and play regions on a timeline, add automation for effects and presets, and let a live looping song run itself while you play."
 tags:
   - how-to

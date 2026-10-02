@@ -1,6 +1,6 @@
 ---
 title: "Best Live Looping Software for Mac in 2026"
-date: 2026-10-01
+date: 2026-10-01T10:00:00-05:00
 description: "An honest look at live looping software for Mac in 2026: LOOM, Ableton Live, Logic Pro, MainStage, SooperLooper, Möbius and Loopy Pro, with prices."
 tags:
   - looping
