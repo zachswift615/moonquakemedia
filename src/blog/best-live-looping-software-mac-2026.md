@@ -104,7 +104,7 @@ The arrangement drives the same engine as the looper, so a region does exactly w
 
 ### Instruments and effects built for the stage
 
-Everything you can put in a LOOM chain is LOOM's own: the synth, drum machine and sampler, and the parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, cab and guitar amp. That is a deliberate choice for live use. A third-party plug-in runs inside the app that hosts it, so a plug-in that crashes takes the whole app down with it, mid-song, and one that grabs memory or CPU at the wrong moment causes a dropout.
+Everything you can put in a LOOM chain is LOOM's own: the synth, drum machine and sampler, and the parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner. That is a deliberate choice for live use. A third-party plug-in runs inside the app that hosts it, so a plug-in that crashes takes the whole app down with it, mid-song, and one that grabs memory or CPU at the wrong moment causes a dropout.
 
 Because LOOM owns all of the code that makes sound, it decides exactly how much memory and processing each part uses. Its audio code never allocates memory, waits on a lock or touches the disk while it plays, and LOOM's tests run under a real-time sanitizer that flags any code that does. If your sound depends on one particular plug-in, a plug-in host such as MainStage or Gig Performer is the better home for it.
 

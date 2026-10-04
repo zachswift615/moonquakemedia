@@ -31,7 +31,7 @@ module.exports = [
   },
   {
     q: 'Can I use my own plug-ins in LOOM?',
-    a: 'No. For stability, LOOM hosts no third-party plug-ins. It has its own synth, drum machine and sampler, and its own effects: parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, cab and guitar amp.',
+    a: 'No. For stability, LOOM hosts no third-party plug-ins. It has its own synth, drum machine and sampler, and its own effects: parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner.',
   },
   {
     q: 'Can I record a live looping set as separate tracks?',

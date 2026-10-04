@@ -14,7 +14,7 @@ eleventyExcludeFromCollections: true
     <loc>{{ site.url }}{{ page.url }}</loc>
     <lastmod>{% if "/blog/" in page.url and page.url != "/blog/" %}{{ (page.data.updated or page.date) | isoDate }}{% else %}{{ page.inputPath | gitLastmod(page.data.layout) }}{% endif %}</lastmod>
     {%- if page.url == "/loom/" %}
-    {%- for shot in ["shot-looper", "shot-arrange", "shot-synth", "shot-drums", "shot-sampler", "shot-looper-banks", "shot-eq", "shot-delay", "shot-racks", "shot-amp", "shot-chorus", "shot-record-setup"] %}
+    {%- for shot in ["shot-looper", "shot-arrange", "shot-synth", "shot-drums", "shot-sampler", "shot-looper-banks", "shot-eq", "shot-delay", "shot-racks", "shot-amp", "shot-chorus", "shot-tuner", "shot-tuner-needle", "shot-tuner-strings", "shot-record-setup"] %}
     <image:image><image:loc>{{ site.url }}/assets/loom/{{ shot }}.png</image:loc></image:image>
     {%- endfor %}
     {%- endif %}
