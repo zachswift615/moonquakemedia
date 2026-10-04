@@ -435,6 +435,14 @@ manualSlug: instrument-tracks
 <td><code>Random Pairs</code></td>
 <td>Two held notes at random on every quarter note, slightly strummed</td>
 </tr>
+<tr>
+<td><code>2 Note Strum</code></td>
+<td>Two held notes on every sixteenth note, strummed</td>
+</tr>
+<tr>
+<td><code>Poly Arp Side Chain</code></td>
+<td>The whole held chord on every sixteenth note, with a pumping filter</td>
+</tr>
 </tbody>
 </table>
 <p><code>SAVE</code> opens the save sheet, where you name the preset and give it a description. With one of your own presets loaded, the sheet opens with its name and description filled in. If you keep the name, LOOM asks before it replaces the saved preset. While a factory preset is loaded, <code>SAVE</code> is unavailable.</p>
@@ -666,6 +674,37 @@ manualSlug: instrument-tracks
 <p>Press <code>Tab</code> to move from <code>LOAD FILE…</code> down the <code>PLAYBACK</code> column, then down the <code>AMP · VOICE</code> column.</p>
 <h3 id="sampler-presets">Sampler presets</h3>
 <p>A sampler preset saves <code>ROOT</code>, <code>TUNE</code>, <code>XFADE</code>, the amp envelope, <code>FADE OUT</code>, <code>VEL</code>, <code>LEVEL</code>, <code>BEND</code> and <code>VOICE</code>, and SLICE mode's settings: the mode, the chops, <code>PLAY</code>, <code>SENS</code> and <code>SNAP</code>. When the track has a sample, the preset also saves the sample, its <code>START</code>, <code>END</code>, <code>LOOP START</code> and <code>LOOP END</code> markers, <code>LOOP</code> and <code>STRETCH</code>. Sampler presets are saved in <code>~/Music/LOOM/Presets/Sampler</code>.</p>
+<p>The presets that ship with LOOM are listed under <code>FACTORY</code>. Each one except <code>Default</code> brings its own sample.</p>
+<table>
+<thead>
+<tr>
+<th>Factory preset</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Default</code></td>
+<td>No sample. It plays the track's own sample</td>
+</tr>
+<tr>
+<td><code>Acoustic Drums on C3</code></td>
+<td>Acoustic drum hits in SLICE mode, one on each key from C3 to F#3</td>
+</tr>
+<tr>
+<td><code>High Voice</code></td>
+<td>A sung high note with a sustain loop, so it holds while you hold the key</td>
+</tr>
+<tr>
+<td><code>Strat Chop</code></td>
+<td>A Strat riff in SLICE mode, one slice on each key</td>
+</tr>
+<tr>
+<td><code>Strat Note</code></td>
+<td>One Strat note, played across the keys</td>
+</tr>
+</tbody>
+</table>
 <h4 id="loading-a-sampler-preset">Loading a sampler preset</h4>
 <p>When you load a preset that has a sample, LOOM copies the sample into the song's own folder and loads it on the track with the preset's markers, <code>LOOP</code> and <code>STRETCH</code>. The notice reads, for example, <code>Loaded the preset "Choir" and its sample "choir-ahh.wav" on instrument track 3.</code> The song keeps its own copy, so the song still opens and plays if you later delete or rename the preset. If the song already holds the same sample, LOOM does not copy it again.</p>
 <p>When you load a preset that has no sample, the track keeps the sample it has, and the preset changes how that sample plays. The notice ends with <code>This preset has no sample, so the track keeps its own.</code> On a track with no sample, such a preset sets the controls and nothing sounds. The factory preset <code>Default</code> has no sample. It plays the track's sample as it was recorded while a key is held.</p>
