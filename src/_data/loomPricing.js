@@ -9,7 +9,7 @@
 // ⭐ "THE FIRST BUILD AFTER" IS WHY deploy.yml HAS A DAILY SCHEDULE. A static site only changes
 // when it is built, so without one the page would advertise the launch price until somebody
 // happened to push.
-const launch = { price: '99.00', ends: '2026-10-31' };
+const launch = { price: '99.00', ends: '2026-12-31' };
 const list = { price: '149.99' };
 
 module.exports = function loomPricing() {
