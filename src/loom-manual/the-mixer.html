@@ -831,6 +831,14 @@ manualSlug: the-mixer
 <td><code>DRY</code></td>
 <td>how much of the original signal goes through the slot. It opens at 100%</td>
 </tr>
+<tr>
+<td><code>MOD DEPTH</code></td>
+<td>how far the repeats drift in pitch — 0 ms to 5 ms. It opens at 0 ms, which is off</td>
+</tr>
+<tr>
+<td><code>MOD RATE</code></td>
+<td>how fast they drift — 0.1 Hz to 5 Hz, opening at 0.8 Hz</td>
+</tr>
 </tbody>
 </table>
 <p>The two cuts are on the feedback path, so each repeat is filtered again. A little goes a long way: after four repeats a high cut has been applied four times.</p>
@@ -844,6 +852,13 @@ manualSlug: the-mixer
 <p>It works in every slot: an input strip's, a loop track's, a bus's and the master's. All four chains run in stereo, so a delay in any of them has two sides to alternate between.</p>
 <p>On an input slot the bounce is printed into the take. An input chain runs before the recorder, so what you hear while you play is what the track plays back. Put the delay on the loop track instead if you want to change it later, because a track chain shapes playback and leaves the recording alone.</p>
 <p>A hard-panned strip loses the repeats on the far side, on an input and on a loop track alike. See <a href="#pan">Pan</a>: the balance takes one channel away, and the repeats that were on it go too.</p>
+<h4 id="making-the-repeats-drift">Making the repeats drift</h4>
+<p><code>MOD DEPTH</code> and <code>MOD RATE</code> make the delay sound like a tape or bucket-brigade delay: the repeats drift in pitch instead of coming back exactly as you played them. <code>MOD DEPTH</code> sets how far the delay time swings either side of <code>TIME</code>, and <code>MOD RATE</code> sets how fast it swings.</p>
+<p>The drift is inside the feedback path, so each repeat drifts again on its way round. The first repeat wavers a little, and each later one is smeared further than the one before it.</p>
+<p>The swing is a triangle. The pitch sits a fixed amount sharp while the delay time shortens and a fixed amount flat while it lengthens, rather than gathering at the turns. The two sides swing a quarter of a cycle apart, so on a stereo path the repeats spread across the field.</p>
+<p>At <code>MOD DEPTH</code> 0 ms the delay is exactly the delay without these controls. A delay in a song, preset or rack saved before <code>MOD DEPTH</code> existed opens at 0 ms, so it sounds the way it was saved.</p>
+<p>A song saved before <code>MOD RATE</code> existed has no rate stored for it. The control then shows 0 Hz, and the delay drifts at the 0.8 Hz it opens at if you turn <code>MOD DEPTH</code> up. Move <code>MOD RATE</code> to set a rate of your own.</p>
+<p>At fast rates the deepest settings are limited. Above about 2 Hz, the delay swings less than <code>MOD DEPTH</code> shows, so that a high <code>FEEDBACK</code> cannot build up into a runaway: at 5 Hz the swing stops at about 2 ms. The control still reads the depth you set.</p>
 <h4 id="setting-the-delay-time-in-beats">Setting the delay time in beats</h4>
 <p><code>SYNC</code> decides where <code>TIME</code> comes from. On <code>FREE</code>, which is where a new delay opens, you set <code>TIME</code> yourself and nothing else moves it. On <code>SYNC</code>, you choose a <code>DIVISION</code> and LOOM works the milliseconds out from the song's tempo.</p>
 <p>While <code>SYNC</code> is on, <code>TIME</code> is a readout. It shows the length of the division you are on, and it dims: you cannot drag it, type into it or reset it, and the drawer tells you to turn <code>SYNC</code> off if you try. Turn <code>SYNC</code> off and <code>TIME</code> becomes a control again, starting from the number it was showing, so what you hear does not jump when you take the delay off the grid.</p>
@@ -857,7 +872,7 @@ manualSlug: the-mixer
 <p>A song can hold a <code>TIME</code> longer than your interface can play, for example a song saved at 48 kHz with <code>TIME</code> at 2000 ms and opened at 96 kHz. When the song opens on that interface, including when you switch to the interface with the song open, LOOM sets <code>TIME</code> to the longest time the interface can play. The notice row says so, with the old time, the new time and the sample rate. The delay was already playing that shorter time, so what you hear does not change, and every control on the delay works as usual. The song saves the shorter time from then on.</p>
 <p>If that delay is on <code>SYNC</code> and its division is too long at the song's tempo as well, the notice also names the division and the tempo. The delay keeps the division.</p>
 <h3 id="the-reverb">The reverb</h3>
-<p>Five controls, under two headings. <code>DECAY</code>, <code>DAMPING</code> and <code>SIZE</code> describe the room; <code>WET</code> and <code>DRY</code> decide how much of it you hear.</p>
+<p><code>DECAY</code>, <code>DAMPING</code> and <code>SIZE</code> describe the room; <code>WET</code> and <code>DRY</code> decide how much of it you hear; <code>MOD DEPTH</code> and <code>MOD RATE</code> make the tail move.</p>
 <table>
 <thead>
 <tr>
@@ -886,12 +901,22 @@ manualSlug: the-mixer
 <td><code>DRY</code></td>
 <td>how much of the original signal goes through the slot. It opens at 100%</td>
 </tr>
+<tr>
+<td><code>MOD DEPTH</code></td>
+<td>how much the tail moves — 0% to 100%. It opens at 0%, which is off</td>
+</tr>
+<tr>
+<td><code>MOD RATE</code></td>
+<td>how fast it moves — 0.1 Hz to 3 Hz, opening at 0.6 Hz</td>
+</tr>
 </tbody>
 </table>
+<p><code>MOD DEPTH</code> thickens the tail and takes away the metallic ring a reverb can have on long decays. It swings the delay lines inside the room slightly, each by a different amount at any moment, so the echoes that make up the tail stop landing on the same pitches every time round. At 100% each line swings up to 1.5 ms either side of its length. The two sides move a quarter of a cycle apart.</p>
+<p>At <code>MOD DEPTH</code> 0% the reverb is exactly the reverb without these controls, and a reverb in a song, preset or rack saved before <code>MOD DEPTH</code> existed opens at 0%. As with the delay, such a song shows <code>MOD RATE</code> at 0 Hz, and the reverb moves at the 0.6 Hz it opens at if you turn <code>MOD DEPTH</code> up.</p>
 <p><code>SIZE</code> has three settings and nothing between them. A room's size is the length of the delay lines inside it, and those lengths are fixed when the effect is created, so a continuous knob would have nothing to land on between the three. That is why the control is three cells.</p>
 <p>The reverb's <code>DECAY</code> is not on an even scale. It runs from 0.2 s to 12 s, and about half its travel is spent under 1.5 s, where most of the useful settings are.</p>
 <p>The delay's <code>TIME</code>, <code>LOW CUT</code> and <code>HIGH CUT</code> are tapered the same way. Musical delay times are ratios, and the two cuts are frequencies; on an even scale a 250 ms delay would sit in the first tenth of the control.</p>
-<p>The chorus's <code>RATE</code> and <code>DEPTH</code> are tapered too, for the same reason: on an even scale everything between a slow swell and a gentle warble would sit in the first quarter of the rate control.</p>
+<p>The chorus's <code>RATE</code> and <code>DEPTH</code> are tapered too, for the same reason: on an even scale everything between a slow swell and a gentle warble would sit in the first quarter of the rate control. The delay's and the reverb's <code>MOD RATE</code> are tapered the same way. Their <code>MOD DEPTH</code> controls are even, because they start at zero, which a ratio scale cannot reach.</p>
 <p>The gate's <code>ATTACK</code>, <code>HOLD</code> and <code>RELEASE</code> are the same. On an even scale a 1 ms attack would sit in the first hundredth of the control, and every setting you would actually use would be crowded there. The gate's <code>THRESHOLD</code> and <code>RANGE</code> stay even, because decibels are already a ratio scale.</p>
 <p>The EQ's six frequencies are on the same kind of scale. Pitch is logarithmic, so an even control would spend its first twentieth on everything below 1 kHz and the rest on the top four octaves. Here equal movement is equal musical interval: the middle of the travel is about 630 Hz, and one press of an arrow key moves about the same fraction of a semitone wherever you are. Gain and <code>Q</code> stay even, because decibels are already a ratio scale and <code>Q</code> is not one.</p>
 <h3 id="the-eqs-six-bands">The EQ's six bands</h3>
@@ -939,7 +964,7 @@ manualSlug: the-mixer
 <p>The compressor also draws a gain-reduction meter, in a narrow strip at the right of its transfer curve, marked <code>GR</code>. It shows how much the compressor is taking off right now, as a bar that grows downward and a reading in decibels below it. It reads <code>0.0</code> when the compressor is not compressing, and it goes to zero rather than freezing the moment you bypass the slot or the chain. It falls at the same rate as the level meters on the strips, so two meters on one screen never tell you different things about how fast something moved.</p>
 <figure class="shot shot-half"><img src="/assets/loom/manual/song.compressor.webp" width="540" height="683" loading="lazy" decoding="async" alt="A compressor in slot 6 of track 3's chain while the track plays. The transfer curve bends at the threshold, away from the dashed 1:1 line, and the GR meter reads -10.9."><figcaption>A compressor in slot 6 of track 3's chain while the track plays. The transfer curve bends at the threshold, away from the dashed 1:1 line, and the GR meter reads -10.9.</figcaption></figure>
 <p>There are no input or output meters in the drawer. Gain reduction is a number the compressor works out anyway in order to do its job, so showing it costs nothing. An input or output level would be a measurement of the signal itself, which nothing in LOOM's engine reports.</p>
-<p>The effects offered are a parametric EQ, a compressor, a noise gate, a delay, a reverb, a chorus, an octave, a cab and an amp.</p>
+<p>The effects offered are a parametric EQ, a compressor, a noise gate, a delay, a reverb, a chorus, an octave, a cab, an amp, a tuner, a transparent drive, a harmony and a gain stage.</p>
 <h3 id="the-noise-gate">The noise gate</h3>
 <figure class="shot shot-half"><img src="/assets/loom/manual/effect.gate.webp" width="548" height="505" loading="lazy" decoding="async" alt="The noise gate at its default settings."><figcaption>The noise gate at its default settings.</figcaption></figure>
 <p>The gate turns the signal down when you stop playing, so the hiss, the amp buzz and the room stop with you. Put it first on an input.</p>
@@ -1268,6 +1293,372 @@ manualSlug: the-mixer
 <h4 id="where-the-models-come-from">Where the models come from</h4>
 <p>The models are studied from three kinds of amplifier: <code>CLEAN</code> from an American clean combo, <code>CRUNCH</code> from a British crunch head and <code>HIGH GAIN</code> from a modern high-gain head. They are not measurements of any particular product. The <code>4x12 CLOSED</code> voicing is fitted to measurements of a closed-back cabinet with four 12-inch speakers.</p>
 <p>LOOM is not affiliated with or endorsed by any amplifier or speaker manufacturer. Any product names that describe these kinds of amplifier are trademarks of their respective owners.</p>
+<h3 id="the-tuner">The tuner</h3>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.tuner.webp" width="548" height="789" loading="lazy" decoding="async" alt="The tuner's strobe, reading an A two cents sharp."><figcaption>The tuner's strobe, reading an A two cents sharp.</figcaption></figure>
+<p>The tuner shows how far the note you play is from the nearest note, while its drawer is open. Put it on the input you plug your instrument into, open it, and play a string.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DISPLAY</code></td>
+<td>how the reading is drawn: <code>STROBE</code> or <code>NEEDLE</code>. It opens on <code>STROBE</code></td>
+</tr>
+<tr>
+<td><code>REFERENCE</code></td>
+<td>the frequency of the A above middle C, from 430.0 Hz to 450.0 Hz in tenths of a hertz. It opens at 440.0 Hz</td>
+</tr>
+<tr>
+<td><code>MUTE</code></td>
+<td>silences the chain from this slot on while the tuner is on: <code>OFF</code> or <code>ON</code>. It opens at <code>OFF</code></td>
+</tr>
+<tr>
+<td><code>STRINGS</code></td>
+<td><code>AUTO</code> shows every string when you strum and one note when you play one. <code>OFF</code> shows one note only. It opens at <code>AUTO</code></td>
+</tr>
+<tr>
+<td><code>TUNING</code></td>
+<td>the tuning the strings are read against when you strum. It opens on <code>STANDARD</code></td>
+</tr>
+<tr>
+<td><code>TRANSPOSE</code></td>
+<td>moves every string of <code>TUNING</code> by whole semitones, from -5 to +7. It opens at 0</td>
+</tr>
+</tbody>
+</table>
+<p>You can add the tuner to a track chain, an input chain or the master chain. A bus has no tuner: the tuner listens to a signal the bus chains do not provide.</p>
+<p>The tuner adds no delay to your signal, and with <code>MUTE</code> off it does not change your signal at all.</p>
+<h4 id="what-the-tuner-listens-to">What the tuner listens to</h4>
+<p>The tuner listens to the signal going into the chain it is on, wherever it sits in that chain. A tuner after a drive in the same chain still hears your instrument clean, which is what it needs to tune by.</p>
+<p>On a pair of inputs linked as one stereo input, the tuner listens to the left input.</p>
+<p>The tuner listens only while its drawer is open and its slot is not bypassed. Bypass the slot to stop it, the same way you step off a tuner pedal: a bypassed tuner does not listen and does not mute.</p>
+<h4 id="mute-and-recording"><code>MUTE</code> and recording</h4>
+<p>With <code>MUTE</code> on, the chain passes no sound from the tuner's slot onwards, so the audience does not hear you tune. Turning <code>MUTE</code> on or off fades over about 10 ms, so it does not click.</p>
+<p>An input chain is recorded with its effects. If you record on an input while its tuner is muted, the recording is silent for as long as <code>MUTE</code> is on.</p>
+<h4 id="reading-the-strobe">Reading the strobe</h4>
+<p>The strobe draws three bands of light and dark stripes. When the note is in tune, the stripes stand still. When it is sharp they move to the right, and when it is flat they move to the left. The further out of tune the note is, the faster they move.</p>
+<p>The top band moves at the rate the note beats against its correct pitch. The middle band moves twice as fast and the bottom band four times as fast, so a small error shows in the bottom band first. Tune until the bottom band stands still.</p>
+<p>The stripes move only as the measured note moves. They are not an animation of a number.</p>
+<p>Beside the strobe, the tuner shows the note name, its octave, and the offset in cents to a tenth of a cent. While the tuner has heard less than a tenth of a second of the note, it shows <code>SETTLING</code> instead of a number, and the stripes are grey.</p>
+<h4 id="reading-the-needle">Reading the needle</h4>
+<p>With <code>DISPLAY</code> on <code>NEEDLE</code>, the tuner shows the note name, its offset in cents, and a needle on a scale from 50 cents flat to 50 cents sharp. The band in the middle of the scale is one cent either side of the note. The needle reads the same measurement the strobe does.</p>
+<h4 id="tuning-every-string-at-once">Tuning every string at once</h4>
+<p>With <code>STRINGS</code> on <code>AUTO</code>, strum all your open strings and the tuner shows each string of <code>TUNING</code> in its own column: the string's name, a needle above or below its centre line, and its offset to the whole cent. Play a single note and the tuner goes back to showing one note. This switch is the only thing the tuner decides for you; it never changes <code>TUNING</code>.</p>
+<table>
+<thead>
+<tr>
+<th><code>TUNING</code></th>
+<th>Strings, lowest first</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>STANDARD</code></td>
+<td>E A D G B E</td>
+</tr>
+<tr>
+<td><code>DROP D</code></td>
+<td>D A D G B E</td>
+</tr>
+<tr>
+<td><code>DADGAD</code></td>
+<td>D A D G A D</td>
+</tr>
+<tr>
+<td><code>OPEN G</code></td>
+<td>D G D G B D</td>
+</tr>
+<tr>
+<td><code>OPEN D</code></td>
+<td>D A D F# A D</td>
+</tr>
+<tr>
+<td><code>7-STRING</code></td>
+<td>B E A D G B E</td>
+</tr>
+<tr>
+<td><code>BASS 4</code></td>
+<td>E A D G</td>
+</tr>
+<tr>
+<td><code>BASS 5</code></td>
+<td>B E A D G</td>
+</tr>
+<tr>
+<td><code>UKULELE</code></td>
+<td>G C E A, with the high G</td>
+</tr>
+<tr>
+<td><code>BANJO</code></td>
+<td>G D G B D, with the short high G</td>
+</tr>
+</tbody>
+</table>
+<p>Use <code>TRANSPOSE</code> for a tuning that is a whole number of semitones away from one of these, such as a guitar tuned a half step down (<code>STANDARD</code> with <code>TRANSPOSE</code> at -1) or a capo.</p>
+<p><code>TUNING</code> has no automation lane yet. To change it at a point in a song, use a preset or a rack node.</p>
+<p>A twelve-string guitar and a mandolin have strings in pairs that the tuner cannot tell apart in a strum. Tune them one string at a time with <code>STRINGS</code> on <code>OFF</code>.</p>
+<p>If you strum in a different tuning from the one <code>TUNING</code> names, the tuner reads each string against the wrong note. A low string tuned down to D, read against <code>STANDARD</code>, shows as 200 cents flat of E. Set <code>TUNING</code> to the tuning you are playing in.</p>
+<h4 id="how-accurate-the-tuner-is">How accurate the tuner is</h4>
+<p>The tuner measures your note against your audio interface's clock, so it can be no more accurate than that clock. 0.1 cent is a difference of about 58 parts per million. A typical interface's clock is accurate to about 50 parts per million, which puts the tuner within about 0.1 cent of true pitch. A low-cost USB interface can be 0.3 to 0.9 cents off. Against its own clock and with a clean signal, the tuner reads a single note to within a few hundredths of a cent once it has heard about half a second of it. A noisy signal takes longer to settle, and a low bass string longest: allow two seconds on a five-string bass's low B.</p>
+<p>When you strum, the tuner reads each string to within about 1 cent. The B and high E strings are the hardest to read, because the low strings' overtones fall close to their notes.</p>
+<p>A plucked string starts slightly sharp and settles flat over the first second or more, and the strobe shows this. Pluck the string, let the first moment pass, and tune to where the stripes settle.</p>
+<h3 id="the-transparent-drive">The transparent drive</h3>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.transparent.webp" width="548" height="573" loading="lazy" decoding="async" alt="The transparent drive at its default settings."><figcaption>The transparent drive at its default settings.</figcaption></figure>
+<p>The transparent drive is an overdrive pedal that adds grit without taking away your guitar's own tone. Use it as a drive you leave on, as a clean boost, or in front of another drive or the amp to push it harder.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GAIN</code></td>
+<td>how hard the pedal is driven, from 0% to 100%. It opens at 40%</td>
+</tr>
+<tr>
+<td><code>CLIP</code></td>
+<td>how the pedal clips: <code>LIGHT</code>, <code>MEDIUM</code> or <code>FULL</code>. It opens on <code>LIGHT</code></td>
+</tr>
+<tr>
+<td><code>BASS</code></td>
+<td>how much bass goes into the drive, from 0% to 100%. It opens at 70%</td>
+</tr>
+<tr>
+<td><code>TREBLE</code></td>
+<td>how much treble comes out of the drive, from 0% to 100%. It opens at 70%</td>
+</tr>
+<tr>
+<td><code>VOICE</code></td>
+<td><code>GUITAR</code> or <code>BASS</code>: what the drive is set up for. It opens on <code>GUITAR</code></td>
+</tr>
+<tr>
+<td><code>WET</code></td>
+<td>how loud the pedal is, from 0% to 400%. It opens at 100%</td>
+</tr>
+<tr>
+<td><code>DRY</code></td>
+<td>how loud your signal is without the pedal, beside it. It opens at 0%</td>
+</tr>
+</tbody>
+</table>
+<p>A new transparent drive is heard as soon as you add it, because it opens with <code>WET</code> at 100% and <code>DRY</code> at 0%.</p>
+<p>The transparent drive adds no delay to your signal.</p>
+<h4 id="gain-changes-how-much-the-pedal-distorts-not-how-loud-it-is"><code>GAIN</code> changes how much the pedal distorts, not how loud it is</h4>
+<p>The pedal holds its level as you turn <code>GAIN</code> and as you change <code>CLIP</code>: at <code>WET</code> 100%, it is matched to the loudness of your guitar played straight in. Use <code>WET</code> to set how loud the pedal is.</p>
+<p>At the bottom of <code>GAIN</code>'s range the pedal is nearly clean. As you turn it up, more of your playing distorts. At any setting, a note picked lightly distorts less than a note dug in, so you can clean the sound up by playing softly or by turning down your guitar's volume.</p>
+<h4 id="clip-chooses-how-soon-the-pedal-clips"><code>CLIP</code> chooses how soon the pedal clips</h4>
+<p><code>CLIP</code> chooses the diodes that clip the signal. Each setting clips sooner and compresses more than the one before it.</p>
+<ul>
+<li><code>LIGHT</code> clips latest and compresses least. It keeps the most of your playing's dynamics.</li>
+<li><code>MEDIUM</code> clips one side of the waveform sooner than the other, which adds even harmonics to the sound.</li>
+<li><code>FULL</code> clips soonest and compresses most.</li>
+</ul>
+<p>At high <code>GAIN</code> the three settings sound closer together, because all three are clipping hard.</p>
+<p>When you change <code>CLIP</code> while you play, the pedal fades from one setting to the other over about 10 ms, so the change does not click and the level stays where it was.</p>
+<h4 id="bass-and-treble-shape-the-drive-not-the-output"><code>BASS</code> and <code>TREBLE</code> shape the drive, not the output</h4>
+<p><code>BASS</code> sets how much low end reaches the part of the pedal that distorts. At 100% nothing is cut. Turn it down to keep low notes and chords from turning muddy as you add <code>GAIN</code>. <code>BASS</code> does not cut the low end of the clean part of the sound.</p>
+<p><code>TREBLE</code> sets how much top end comes out after the distortion. At 100% the pedal is at its brightest. Turn it down to smooth out fizz at high <code>GAIN</code>.</p>
+<p>A useful way to set the pedal is to start with <code>BASS</code> and <code>TREBLE</code> at 100% for clean and light settings, and to turn both down as you turn <code>GAIN</code> up.</p>
+<p>On the original pedal, these two controls are cut controls that remove bass and treble as you turn them clockwise. In LOOM, turning them up gives you more bass and more treble, like every other control.</p>
+<h4 id="voice-sets-the-pedal-up-for-a-bass"><code>VOICE</code> sets the pedal up for a bass</h4>
+<p>With <code>VOICE</code> on <code>BASS</code>, the pedal splits your signal at about 150 Hz. The part below that frequency skips the drive and is added back clean, and only the part above it is distorted. Your low end stays tight and as loud as it was, and the drive adds grit on top.</p>
+<p>With <code>VOICE</code> on <code>GUITAR</code>, the whole signal goes through the drive.</p>
+<p>When you change <code>VOICE</code> while you play, the pedal fades from one setting to the other over about 10 ms, so the change does not click.</p>
+<h4 id="wet-and-dry_1"><code>WET</code> and <code>DRY</code></h4>
+<p><code>WET</code> is the pedal's output level. It goes above 100% so that you can use the pedal as a boost: 200% is about 6 dB louder than your guitar played straight in, and 400% is about 12 dB louder. With <code>GAIN</code> at 0% and <code>BASS</code> and <code>TREBLE</code> at 100%, the pedal is a clean boost.</p>
+<p><code>DRY</code> adds your signal without the pedal beside it.</p>
+<h4 id="where-the-transparent-drive-comes-from">Where the transparent drive comes from</h4>
+<p>The transparent drive is studied from the Paul Cochrane Timmy overdrive and the MXR Timmy, including the three clipping settings of the MXR version. It is not a measurement of either pedal.</p>
+<p>LOOM is not affiliated with or endorsed by Paul Cochrane, Dunlop Manufacturing or MXR. Timmy and MXR are trademarks of their respective owners, used here only to identify the pedals whose sound was studied.</p>
+<h3 id="the-harmony">The harmony</h3>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.harmony.webp" width="548" height="691" loading="lazy" decoding="async" alt="The harmony at its default settings."><figcaption>The harmony at its default settings.</figcaption></figure>
+<p>The harmony adds one or two voices to what you sing or play, a third, a fifth or another interval away, in the key and scale of the song. The interval follows the scale note by note, the way a backing singer's would: in C major, a third above C is E, and a third above D is F. The voices are your own voice or guitar re-pitched, so they keep your vowel and your tone.</p>
+<p>Sing or play one note at a time. Your own signal passes through unchanged and on time. The voices are a little late, which is described below.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KEY</code></td>
+<td>the key of the song, from <code>C</code> to <code>B</code>. It opens on <code>C</code></td>
+</tr>
+<tr>
+<td><code>SCALE</code></td>
+<td>the scale the voices move in. It opens on <code>MAJOR</code></td>
+</tr>
+<tr>
+<td><code>VOICE 1</code></td>
+<td>voice 1's interval, from <code>-OCT</code> to <code>+OCT</code>. It opens on <code>+3RD</code></td>
+</tr>
+<tr>
+<td><code>LEVEL 1</code></td>
+<td>how loud voice 1 is, from 0% to 100%. It opens at 70%</td>
+</tr>
+<tr>
+<td><code>VOICE 2</code></td>
+<td>voice 2's interval. It opens on <code>+5TH</code></td>
+</tr>
+<tr>
+<td><code>LEVEL 2</code></td>
+<td>how loud voice 2 is, from 0% to 100%. It opens at 0%, so voice 2 is off</td>
+</tr>
+<tr>
+<td><code>DRY</code></td>
+<td>how loud your own signal is, from 0% to 100%. It opens at 100%</td>
+</tr>
+<tr>
+<td><code>DOUBLE</code></td>
+<td>how loud each voice's double is, from 0% to 100%. It opens at 0%</td>
+</tr>
+<tr>
+<td><code>SPREAD</code></td>
+<td>how far apart the voices sit in the stereo field, from 0% to 100%. It opens at 0%</td>
+</tr>
+<tr>
+<td><code>SAFE</code></td>
+<td><code>OFF</code> or <code>ON</code>: keep the voices on the notes of the key's pentatonic scale. It opens on <code>OFF</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>KEY</code>, <code>SCALE</code> and the two <code>VOICE</code> controls are steppers. Click <code>-</code> or <code>+</code>, or select the control and use the arrow keys, to move one setting at a time.</p>
+<p>A new harmony is heard as soon as you add it: voice 1 a third above you, under your own signal. With <code>LEVEL 1</code> and <code>LEVEL 2</code> both at 0% there is no harmony, and with <code>DRY</code> at 0% you hear only the voices. With all three at 0% the slot is silent.</p>
+<h4 id="key-and-scale"><code>KEY</code> and <code>SCALE</code></h4>
+<p>Set <code>KEY</code> to the key of the song and <code>SCALE</code> to its scale. <code>KEY</code> names the first note of the scale: <code>A</code> with <code>MINOR</code> is A minor. A minor has the same notes as C major, so the voices are the same in either; set the one you would name the song in.</p>
+<table>
+<thead>
+<tr>
+<th><code>SCALE</code></th>
+<th>Notes above <code>KEY</code>, in semitones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAJOR</code></td>
+<td>0 2 4 5 7 9 11</td>
+</tr>
+<tr>
+<td><code>MINOR</code></td>
+<td>0 2 3 5 7 8 10</td>
+</tr>
+<tr>
+<td><code>HARM MINOR</code></td>
+<td>0 2 3 5 7 8 11</td>
+</tr>
+<tr>
+<td><code>MEL MINOR</code></td>
+<td>0 2 3 5 7 9 11</td>
+</tr>
+<tr>
+<td><code>DORIAN</code></td>
+<td>0 2 3 5 7 9 10</td>
+</tr>
+<tr>
+<td><code>PHRYGIAN</code></td>
+<td>0 1 3 5 7 8 10</td>
+</tr>
+<tr>
+<td><code>LYDIAN</code></td>
+<td>0 2 4 6 7 9 11</td>
+</tr>
+<tr>
+<td><code>MIXOLYDIAN</code></td>
+<td>0 2 4 5 7 9 10</td>
+</tr>
+<tr>
+<td><code>LOCRIAN</code></td>
+<td>0 1 3 5 6 8 10</td>
+</tr>
+<tr>
+<td><code>MAJ PENTA</code></td>
+<td>0 2 4 7 9</td>
+</tr>
+<tr>
+<td><code>MIN PENTA</code></td>
+<td>0 3 5 7 10</td>
+</tr>
+<tr>
+<td><code>BLUES</code></td>
+<td>0 3 5 6 7 10</td>
+</tr>
+</tbody>
+</table>
+<p>You can automate <code>KEY</code>, so a key change at a bridge can follow the song. <code>SCALE</code> has no automation lane yet; set it with the control, a preset or a rack.</p>
+<h4 id="voice-1-and-voice-2-count-steps-of-the-scale"><code>VOICE 1</code> and <code>VOICE 2</code> count steps of the scale</h4>
+<p>The intervals count notes of the scale, not semitones. <code>+3RD</code> is two scale notes up and <code>+5TH</code> is four, so the size of the interval changes with the note: a third above C in C major is four semitones, and a third above D is three. <code>-OCT</code> and <code>+OCT</code> are always exactly an octave.</p>
+<p>In the pentatonic and blues scales the names still count scale notes, so the intervals are wider than their names. In <code>MAJ PENTA</code> and <code>MIN PENTA</code>, <code>+3RD</code> is two notes up the five-note scale, which is usually a fourth.</p>
+<p>If you sing a note that is not in the scale, each voice keeps the interval of the last scale note you sang. When you bend or slide up to the next note, the voices follow once you reach it. Vibrato, bends and scoops carry into the voices, because each voice moves your actual pitch by a fixed interval.</p>
+<h4 id="safe-keeps-the-voices-on-safe-notes"><code>SAFE</code> keeps the voices on safe notes</h4>
+<p>With <code>SAFE</code> on, a voice that would land on a note the key's pentatonic scale does not have moves up to the next pentatonic note. Only the voices move; your own note is never changed. The pentatonic follows the scale's third: <code>MAJOR</code>, <code>LYDIAN</code> and <code>MIXOLYDIAN</code> use the major pentatonic of <code>KEY</code>, and <code>MINOR</code>, <code>HARM MINOR</code>, <code>MEL MINOR</code>, <code>DORIAN</code>, <code>PHRYGIAN</code> and <code>LOCRIAN</code> use the minor pentatonic of <code>KEY</code>.</p>
+<ul>
+<li>In C major, a third above D is F. With <code>SAFE</code> on it becomes G. A third above G is B, which becomes C.</li>
+<li>In A minor, a voice that would land on B or F moves up to C or G.</li>
+<li>A voice below you moves up too, which brings it closer to your note.</li>
+<li><code>SAFE</code> does nothing in <code>MAJ PENTA</code>, <code>MIN PENTA</code> and <code>BLUES</code>, whose notes are all safe already, and it does not move <code>UNISON</code>, <code>-OCT</code> or <code>+OCT</code>.</li>
+</ul>
+<h4 id="double"><code>DOUBLE</code></h4>
+<p><code>DOUBLE</code> adds a second copy of each voice, ten cents sharp and about 12 ms later, so each voice sounds like two singers. At 0% the double is off.</p>
+<h4 id="spread"><code>SPREAD</code></h4>
+<p><code>SPREAD</code> moves voice 1 to the left and voice 2 to the right. With only voice 1 on, it moves voice 1 to the left and its double to the right. On a mono chain <code>SPREAD</code> does nothing.</p>
+<h4 id="the-voices-are-a-little-late">The voices are a little late</h4>
+<p>Your own signal passes through with no delay. The voices are late by about two cycles of the note you are singing or playing: about 15 ms on a low male voice, 8 ms on a female voice, 20 ms on a low guitar string and 7 ms on a high one. When you change notes, the voices reach the new interval about 20 ms to 65 ms after you do.</p>
+<p>If you record through a harmony on an input chain, the voices are recorded with this delay.</p>
+<h4 id="consonants-breaths-and-chords">Consonants, breaths and chords</h4>
+<p>The voices are made only from sung or played notes. During breaths, consonants such as <code>s</code> and <code>t</code>, a pick scrape or silence, the voices fade out over 10 ms and come back when the next note starts.</p>
+<p>When you play a chord, the voices fade out or follow a note the chord's notes have in common. For harmonies on a guitar, play single notes.</p>
+<h4 id="notes-the-harmony-follows">Notes the harmony follows</h4>
+<p>The harmony follows notes from about 70 Hz, a little below a guitar's low E, to 1,000 Hz, the top of a soprano's range. Notes outside that range get no voices.</p>
+<h3 id="the-gain">The gain</h3>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.gain.webp" width="548" height="455" loading="lazy" decoding="async" alt="The gain stage at its default settings."><figcaption>The gain stage at its default settings.</figcaption></figure>
+<p>The gain stage changes the level of a signal and nothing else. Use it to turn down a source that is too loud for the effects after it, to lift a quiet one, to flip the polarity of one side or both, or to hear a stereo signal in mono. It adds no distortion and no colour.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GAIN</code></td>
+<td>the level, from <code>-inf dB</code> to +24.0 dB. It opens at 0.0 dB, which leaves the level unchanged</td>
+</tr>
+<tr>
+<td><code>INVERT L</code></td>
+<td>flips the polarity of the left side. <code>OFF</code> or <code>ON</code>, opening at <code>OFF</code></td>
+</tr>
+<tr>
+<td><code>INVERT R</code></td>
+<td>flips the polarity of the right side. <code>OFF</code> or <code>ON</code>, opening at <code>OFF</code></td>
+</tr>
+<tr>
+<td><code>MONO</code></td>
+<td>puts the same signal on both sides: half the left plus half the right. <code>OFF</code> or <code>ON</code>, opening at <code>OFF</code></td>
+</tr>
+</tbody>
+</table>
+<p>A new gain stage changes nothing until you move a control.</p>
+<p>The gain stage adds no delay to your signal.</p>
+<h4 id="gain-at-the-bottom-of-its-travel-is-silence"><code>GAIN</code> at the bottom of its travel is silence</h4>
+<p>The bottom of <code>GAIN</code>'s travel reads <code>-inf dB</code> and passes no signal at all. Every other setting is the level its reading says.</p>
+<h4 id="the-order-is-invert-then-mono-then-gain">The order is <code>INVERT</code>, then <code>MONO</code>, then <code>GAIN</code></h4>
+<p>The inverts act first, then the sum, then the level. Because the inverts come before the sum, you can use the gain stage to check how a stereo signal survives a mono PA:</p>
+<ul>
+<li>With <code>MONO</code> on, a sound panned to the centre comes through at the level it went in. A sound panned hard to one side comes through on both sides 6 dB quieter, because the other side contributed nothing to the sum.</li>
+<li>With <code>INVERT L</code> and <code>MONO</code> both on, a sound panned to the centre cancels and you hear silence. What remains is the part of the signal that differs between the two sides, which is the part a mono sum loses.</li>
+</ul>
+<p>On a chain with only one channel, <code>INVERT R</code> and <code>MONO</code> have nothing to act on and do nothing.</p>
+<h4 id="every-change-is-smooth">Every change is smooth</h4>
+<p>When you move <code>GAIN</code>, flip a polarity or switch <code>MONO</code> while a signal is playing, the gain stage moves to the new setting over about 10 ms, so the change does not click. A polarity flip passes through silence for a moment on the way. All four controls can be automated.</p>
 <h3 id="track-chains-and-input-chains-are-not-the-same">Track chains and input chains are not the same</h3>
 <p>A track chain is playback-side. It shapes what the recorded loop plays back as, it stays editable forever, and taking an effect out puts the take back the way it was.</p>
 <p>An input chain is pre-record. It is printed into the take and cannot be undone afterwards, so what you record through it is what you have. The drawer says so on the input bank, where the decision is being made. <code>⌘Z</code> on an input chain changes the chain for what you record next, not a take you already recorded.</p>

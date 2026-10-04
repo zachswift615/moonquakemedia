@@ -26,7 +26,7 @@ manualSlug: instrument-tracks
 <li>The strip's <code>MUTE</code>, its <code>PAN</code> and its level on each fader axis can be automated from the arrange view, as an audio strip's can. See <a href="/loom/manual/the-arrange-view/#channel-controls">Channel controls</a>.</li>
 </ul>
 <h3 id="the-midi-in-card">The MIDI IN card</h3>
-<p>The card lists each MIDI device that is plugged in. Under each device's name it shows which instrument tracks hear that device now, such as <code>→ INST 1</code>, and the channel they listen on, such as <code>CH 1</code>. A device that a track names but that is not plugged in is listed struck through, marked <code>missing</code>. The top right of the card reads <code>ONE AT A TIME</code>; see <a href="#one-input-one-track-at-a-time">One input, one track at a time</a>. The bottom line names LOOM's command channel, such as <code>CH 16 · LOOP COMMANDS</code>.</p>
+<p>The card lists each MIDI device that is plugged in. Under each device's name it shows which instrument tracks hear that device now, such as <code>→ INST 1</code>, and the channel they listen on, such as <code>CH 1</code>. A device that a track names but that is not plugged in is listed struck through, marked <code>missing</code>. The top right of the card reads <code>ONE AT A TIME</code> or <code>ALL TOGETHER</code>, the song's <code>SHARED MIDI INPUT</code> setting; see <a href="#one-input-one-track-at-a-time">One input, one track at a time</a>. The bottom line names LOOM's command channel, such as <code>CH 16 · LOOP COMMANDS</code>.</p>
 <p>The card is a readout. To change what a track listens to, use the <code>INST</code> tab.</p>
 <h2 id="the-inst-tab">The INST tab</h2>
 <p>While an instrument track has focus, the side panel's middle tab reads <code>INST 1</code>, <code>INST 2</code> and so on, and shows that track's settings. Open it with the strip's <code>i</code> button or the tab itself.</p>
@@ -132,6 +132,9 @@ manualSlug: instrument-tracks
 <p>In a new song every instrument track listens to the same input, so LOOM has to decide which track hears your keyboard. When instrument tracks listen to inputs that overlap, only one of them hears the input at a time. Tracks whose inputs do not overlap are not affected: pads on channel 10 can play one track while a keyboard on channel 1 plays another.</p>
 <p>The track that holds a shared input is the one you most recently focused, or most recently pressed record or overdub on. Pressing record on a track from a MIDI controller claims its input even though it does not move the focus. Focusing an audio track leaves every input where it is, so you can move to an audio track and keep playing the instrument that holds your keyboard.</p>
 <p>If you press record on an instrument track while another track on the same input is recording or overdubbing, the input moves to the new track at the press. The other track closes its take as if you had pressed its ring, and loops. A note you are holding when the input moves ends on the track that started it.</p>
+<p>In the arrange view, a <code>REC</code> or <code>DUB</code> region on an instrument track claims its input about 40 milliseconds before the region starts, so a downbeat you play slightly early reaches the new track, the same as at an <code>INPUT</code> lane's switch. It does not close another track's take, because each region's take ends where its own region ends. If two regions on the same input overlap, the one that started later hears the input until another region starts, a <code>MIDI IN</code> node hands the input on, or you focus a different instrument track. A track with an <code>INPUT</code> lane that has a node follows its lane during a performance instead, and takes no part in this; see <a href="/loom/manual/the-arrange-view/#input-preset-and-pattern-lanes">Input, preset and pattern lanes</a>.</p>
+<p>To have every track on a shared input hear it at once, set <code>SHARED MIDI INPUT</code> on the <a href="/loom/manual/side-panel/#the-global-track-and-song-tabs"><code>SONG</code> tab</a> to <code>ALL TOGETHER</code>. One keyboard then plays all of those instruments layered, and a record press hands nothing over. The setting is saved with the song. It starts at <code>ONE AT A TIME</code>.</p>
+<p>A <code>MIDI IN</code> lane in the arrange view hands a shared channel to the track each of its nodes names, at the same instant a <code>REC</code> region claims its input, without recording and without changing any track's input setting. At a bar where a <code>MIDI IN</code> node and a <code>REC</code> or <code>DUB</code> region both start, the node's track takes the input. A region that starts later, inside the node's span, takes the input when it starts. See <a href="/loom/manual/the-arrange-view/#midi-in-lanes">MIDI IN lanes</a>.</p>
 <p>The header of each instrument strip and the <code>MIDI IN</code> card show which track holds each input.</p>
 <h2 id="recording-on-an-instrument-track">Recording on an instrument track</h2>
 <p>The ring works the way it does on an audio track. Press it on an empty track to record, press it again to close the loop, and press it on a playing track to overdub. If the transport is stopped, the first press starts it. See <a href="/loom/manual/track-strips/#the-ring">The ring</a>.</p>
@@ -288,7 +291,7 @@ manualSlug: instrument-tracks
 <li>The <code>LFO 1</code> and <code>LFO 2</code> displays draw two cycles of each LFO, so you can compare their shapes. Each label names its LFO's rate.</li>
 <li>The <code>FILTER ENV</code> and <code>AMP ENV</code> displays draw the envelopes for one held note, released at the same moment.</li>
 <li>The <code>FILTER</code> display draws the filter's response.</li>
-<li>The <code>ARP</code> display previews the arpeggiator's steps for a three-note chord: their order, the octaves, the rate over two beats, and each step's gate as the length of its bar.</li>
+<li>The <code>ARP</code> display previews the arpeggiator's steps for a three-note chord: their order, the octaves, the rate over two beats, and each step's gate as the length of its bar. When a step plays more than one note, the display draws a bar for each note, and <code>STRUM</code> moves each bar to the point in the step where its note starts.</li>
 </ul>
 <h3 id="working-with-the-controls">Working with the controls</h3>
 <p>The sliders and the rows of cells work the way an effect's controls do. See <a href="/loom/manual/the-mixer/#the-controls">The controls</a> in the mixer chapter.</p>
@@ -373,7 +376,25 @@ manualSlug: instrument-tracks
 <li><code>OCTAVES</code> sets how many octaves the arpeggio spans, from <code>1</code> to <code>4</code>.</li>
 <li><code>GATE</code> sets how long each step sounds, as a share of the step.</li>
 </ul>
+<p>The second column, <code>STEP</code>, sets what each step plays:</p>
+<ul>
+<li><code>NOTES</code> sets how many of the held notes each step plays: <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code> or <code>ALL</code>. At <code>1</code>, each step plays one note.</li>
+<li><code>STRUM</code> spreads the notes of a step apart in time, from <code>0 %</code>, where they start together, to <code>100 %</code>, where they are spread evenly across the step.</li>
+</ul>
+<p>On the full-screen page, <code>NOTES</code> and <code>STRUM</code> sit under the other arpeggiator controls, in the <code>ARP</code> block.</p>
 <p>While the transport rolls, every arpeggiator step starts on a grid step of <code>RATE</code>. A chord you press between grid steps waits for the next one, and a chord you press and release before then still sounds that step once.</p>
+<h4 id="playing-more-than-one-note-a-step">Playing more than one note a step</h4>
+<p><code>MODE</code> still chooses the order. With <code>OCTAVES</code> above <code>1</code>, each octave adds a copy of the held notes above the first, and <code>NOTES</code> counts every copy.</p>
+<ul>
+<li><strong><code>UP</code>, <code>DOWN</code>, <code>UP DOWN</code> and <code>AS PLAYED</code></strong> play a window of <code>NOTES</code> notes that moves by one note on each step. With C, E and G held, <code>UP</code> and <code>NOTES</code> at <code>2</code> play C and E, then E and G, then G and C, and start again. At the top of the range, the window continues from the bottom, and <code>DOWN</code> continues from the top at the bottom.</li>
+<li><strong><code>RANDOM</code></strong> picks <code>NOTES</code> different notes on every step.</li>
+<li><strong>When <code>NOTES</code> is at least the number of notes in the range</strong>, every step plays all of them. <code>ALL</code> always does this, so the held chord repeats on every step.</li>
+</ul>
+<p>A step plays only as many notes as the synth has voices for: eight, or four with <code>UNISON</code> at <code>2</code>, or two with <code>UNISON</code> at <code>4</code>. When <code>NOTES</code> asks for more, the step keeps the first notes in <code>MODE</code>'s order and leaves out the rest. A step never takes a voice from another note of the same step.</p>
+<p><code>STRUM</code> starts the notes in <code>MODE</code>'s direction: upward for <code>UP</code> and <code>AS PLAYED</code>, downward for <code>DOWN</code>, upward or downward with the direction <code>UP DOWN</code> is moving, and in the order <code>RANDOM</code> picked them. Each note's <code>GATE</code> counts from the moment that note starts, and every note of a step ends when the next step starts.</p>
+<p>A step with more than one note does not glide: each note starts at its own pitch. A step with one note glides as it does with <code>NOTES</code> at <code>1</code>.</p>
+<p><code>NOTES</code> acts only when <code>MODE</code> in the <code>VOICE</code> section is <code>POLY</code>. In <code>MONO</code> and <code>LEGATO</code> the synth plays one note at a time, so each step plays one note. The <code>NOTES</code> row is dimmed in those modes and says why. It keeps its setting, which applies again when you return to <code>POLY</code>.</p>
+<p><code>RANDOM</code> picks different notes on every pass. A part you record into an audio loop plays back the same way each time. A part on an instrument track's loop runs through the arpeggiator again on every pass, so its random notes differ from pass to pass.</p>
 <h2 id="synth-presets">Synth presets</h2>
 <p>The preset row in the dock's header shows the preset you last loaded or saved on this track, or <code>no preset loaded</code>. The words beside the name are the ones the effect presets use: <code>FACTORY</code> for a preset that ships with LOOM, and <code>EDITED</code> once a control has moved since you loaded or saved it. See <a href="/loom/manual/the-mixer/#racks-and-presets">Racks and presets</a>.</p>
 <p>A song keeps the name of the preset each track was last loaded from or saved as. When you open the song, or when LOOM starts with it, the row shows that name again. It shows <code>EDITED</code> if the track's settings differ from the preset as it is saved now, which happens when you changed a control before saving the song or saved the preset again since. The row reads <code>no preset loaded</code> when the song names no preset, when the preset has been deleted, and after you start a new song or choose a different instrument for the track. This applies to the synth, the drum machine's kits and the sampler.</p>
@@ -405,6 +426,14 @@ manualSlug: instrument-tracks
 <tr>
 <td><code>Arp</code></td>
 <td>Held notes play upward in sixteenths over two octaves</td>
+</tr>
+<tr>
+<td><code>Chord Stabs</code></td>
+<td>The held chord repeats on every eighth note, short and together</td>
+</tr>
+<tr>
+<td><code>Random Pairs</code></td>
+<td>Two held notes at random on every quarter note, slightly strummed</td>
 </tr>
 </tbody>
 </table>
@@ -636,13 +665,25 @@ manualSlug: instrument-tracks
 </ul>
 <p>Press <code>Tab</code> to move from <code>LOAD FILE…</code> down the <code>PLAYBACK</code> column, then down the <code>AMP · VOICE</code> column.</p>
 <h3 id="sampler-presets">Sampler presets</h3>
-<p>A sampler preset saves <code>ROOT</code>, <code>TUNE</code>, <code>XFADE</code>, the amp envelope, <code>FADE OUT</code>, <code>VEL</code>, <code>LEVEL</code>, <code>BEND</code> and <code>VOICE</code>, and SLICE mode's settings: the mode, the chops, <code>PLAY</code>, <code>SENS</code> and <code>SNAP</code>. It does not save the sample, its markers, <code>LOOP</code> or <code>STRETCH</code>. Those belong to the track, and the song saves them. Loading a preset changes how the track's sample plays but not which sample it plays, and applies the chops that the preset holds. On a track with no sample, a preset sets the controls and nothing sounds. The factory preset <code>Default</code> plays the sample as it was recorded while a key is held. Sampler presets are saved in <code>~/Music/LOOM/Presets/Sampler</code>.</p>
+<p>A sampler preset saves <code>ROOT</code>, <code>TUNE</code>, <code>XFADE</code>, the amp envelope, <code>FADE OUT</code>, <code>VEL</code>, <code>LEVEL</code>, <code>BEND</code> and <code>VOICE</code>, and SLICE mode's settings: the mode, the chops, <code>PLAY</code>, <code>SENS</code> and <code>SNAP</code>. When the track has a sample, the preset also saves the sample, its <code>START</code>, <code>END</code>, <code>LOOP START</code> and <code>LOOP END</code> markers, <code>LOOP</code> and <code>STRETCH</code>. Sampler presets are saved in <code>~/Music/LOOM/Presets/Sampler</code>.</p>
+<h4 id="loading-a-sampler-preset">Loading a sampler preset</h4>
+<p>When you load a preset that has a sample, LOOM copies the sample into the song's own folder and loads it on the track with the preset's markers, <code>LOOP</code> and <code>STRETCH</code>. The notice reads, for example, <code>Loaded the preset "Choir" and its sample "choir-ahh.wav" on instrument track 3.</code> The song keeps its own copy, so the song still opens and plays if you later delete or rename the preset. If the song already holds the same sample, LOOM does not copy it again.</p>
+<p>When you load a preset that has no sample, the track keeps the sample it has, and the preset changes how that sample plays. The notice ends with <code>This preset has no sample, so the track keeps its own.</code> On a track with no sample, such a preset sets the controls and nothing sounds. The factory preset <code>Default</code> has no sample. It plays the track's sample as it was recorded while a key is held.</p>
+<p>If a preset's sample file is missing from the preset's folder, LOOM still loads the preset's settings, and the notice names the missing sample. The track keeps the sample it has.</p>
+<h4 id="presets-saved-by-an-earlier-version-of-loom">Presets saved by an earlier version of LOOM</h4>
+<p>A sampler preset saved before LOOM could save samples has no sample. It loads as described above: the track keeps its own sample.</p>
+<p>To add a sample to such a preset, load it on a track that has the sample you want, then press <code>SAVE</code> and keep the same name. LOOM replaces the old preset with one that holds the sample, and the preset list still shows one entry with that name.</p>
+<h4 id="sharing-a-sampler-preset">Sharing a sampler preset</h4>
+<p>A sampler preset that has a sample is a folder named after the preset, such as <code>Choir.loompreset</code>. The folder holds the preset's settings and a copy of the sample. To find it, choose <code>REVEAL IN FINDER</code> from the preset row's <code>···</code> menu.</p>
+<p>To give a preset to another player, send them the whole <code>.loompreset</code> folder. They copy it into <code>~/Music/LOOM/Presets/Sampler</code> on their computer, and the preset appears in their <code>SAMPLER PRESETS</code> list with its sample. Renaming the preset with <code>GET INFO…</code>, <code>DELETE</code> and <code>REVEAL IN FINDER</code> act on the whole folder.</p>
+<p>A preset saved from a track with no sample is a single file, as before.</p>
+<p>An earlier version of LOOM cannot read a sampler preset folder. It lists the preset as one it cannot read, and it does not save over the folder or delete it.</p>
 <h2 id="the-samplers-slice-mode">The sampler's SLICE mode</h2>
 <figure class="shot shot-full"><img src="/assets/loom/manual/looper.slice-editor.webp" width="1262" height="360" loading="lazy" decoding="async" alt="The sampler editor in SLICE mode in a medium window. The sample is cut into eight slices with INTO 8, and slice 3 is selected."><figcaption>The sampler editor in SLICE mode in a medium window. The sample is cut into eight slices with INTO 8, and slice 3 is selected.</figcaption></figure>
 <p>SLICE mode cuts one sample into slices and plays each slice on its own key. Use it to play the parts of a vocal phrase, a drum loop or any other recording from a keyboard or pads.</p>
 <p>To turn it on, choose <code>SLICE</code> in the <code>KEYS | SLICE</code> switch in the dock's header. <code>KEYS</code> returns to playing the whole sample across the keys. SLICE mode uses the same sample as <code>KEYS</code> mode, and <code>LOAD FILE…</code> and <code>SAMPLE MEMORY</code> work the same way.</p>
 <p>SLICE mode shows only its own controls. <code>START</code>, <code>END</code>, the sustain loop, <code>STRETCH</code>, <code>D</code>, <code>S</code>, <code>FADE OUT</code> and <code>BEND</code> are not shown. To move <code>END</code>, switch to <code>KEYS</code>.</p>
-<p>The song and a sampler preset keep the mode, the chops, <code>PLAY</code>, <code>SENS</code> and <code>SNAP</code>. A preset does not keep the sample: it stores each chop as a position within the sample. The selected slice is not saved.</p>
+<p>The song and a sampler preset keep the mode, the chops, <code>PLAY</code>, <code>SENS</code> and <code>SNAP</code>. A preset stores each chop as a position within the sample, so a preset with no sample cuts the track's own sample at the same positions. The selected slice is not saved.</p>
 <p>When you switch a track to <code>SLICE</code> and its sample has no chops, LOOM chops it by transients at the current <code>SENS</code>. If the sample already has chops, the switch keeps them. When you load a sample with <code>LOAD FILE…</code>, LOOM removes every chop from the sample it replaces, including the chops you placed by hand. In <code>SLICE</code> mode it then chops the new sample by transients at the current <code>SENS</code>.</p>
 <h3 id="how-slices-map-to-keys">How slices map to keys</h3>
 <p>Slice 1 starts at <code>START</code> and plays on <code>ROOT</code>. Each chop starts the next slice, and each slice plays on the key one semitone above the slice before it. A slice ends where the next one starts, and the last slice ends at <code>END</code>. Each key plays its slice at the pitch it was recorded at. Keys below <code>ROOT</code> and keys above the last slice play nothing.</p>
