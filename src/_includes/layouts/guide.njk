@@ -1,15 +1,10 @@
 ---
-layout: layouts/base.njk
-bodyClass: bg-gray-100
-footerStyle: bordered
+layout: layouts/moonquake.njk
 ---
-
-{% set footerLinks = [
-    { url: "/apps/" + slug + "/", text: title },
-    { url: "/legal/" + slug + "-privacy/", text: "Privacy Policy" },
-    { url: "mailto:" + site.email, text: "Support" }
-] %}
-
+{#- A user guide under /guides/<slug>/. Brand chrome from layouts/moonquake.njk, reading styles from
+    components/moonquake-prose.njk. The guide's own pieces (sections, callout boxes, button labels,
+    screenshots, the version and download menus) are styled in src/css/main.css, since
+    assets/guide-export.js reads the same class names to build the .docx, PDF and EPUB. -#}
 {# ── Version data lookup ── #}
 {% set versions = guideVersions[slug] if guideVersions and guideVersions[slug] else [] %}
 {% set currentStatus = null %}
@@ -19,16 +14,39 @@ footerStyle: bordered
   {% if v.status == "latest" %}{% set latestVersionSlug = v.version %}{% endif %}
 {% endfor %}
 
-<header class="gradient-hero text-white py-10 text-center shadow-md">
-    <h1 class="text-3xl md:text-4xl font-bold mb-2"><span class="{% if brandFont %}font-brand{% endif %}">{{ title }}</span> User Guide</h1>
-    <p class="text-lg opacity-90">{{ subtitle | default("Your Complete Guide") }}</p>
+<style>
+{% include "components/moonquake-prose.njk" %}
+  .mq-guide-head { padding: 64px 0 40px; }
+  .mq-guide-head h1 { margin: 18px 0 0; font-size: clamp(36px, 6vw, 56px); font-weight: 500; letter-spacing: -0.04em; line-height: 1.04; }
+  .mq-guide-head h1 .font-brand { letter-spacing: -0.02em; }
+  .mq-guide-head p { margin: 14px 0 0; font-size: 18px; color: var(--mq-mist); }
+  .mq-guide-body { max-width: 760px; padding: 48px 0 96px; }
+  .mq-guide-notices { max-width: 760px; padding-top: 32px; display: grid; gap: 12px; }
+  .guide-notice { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px;
+    border: 1px solid var(--mq-edge); border-radius: 4px; background: rgba(42, 44, 51, 0.35); }
+  .guide-notice-icon { width: 20px; height: 20px; flex: none; margin-top: 2px; color: var(--mq-mist); stroke-width: 1.75; }
+  .guide-notice h2 { margin: 0; font-size: 16px; font-weight: 500; }
+  .guide-notice p { margin: 4px 0 0; font-size: 15px; color: var(--mq-mist); }
+  .guide-notice a { color: var(--mq-regolith); text-decoration: underline; text-decoration-color: var(--mq-edge); text-underline-offset: 3px; }
+  .guide-notice-alert { border-left: 2px solid var(--mq-signal); }
+  .guide-notice-alert .guide-notice-icon { color: var(--mq-signal); }
+  .guide-notice-meta { font-family: var(--mq-mono); font-size: 12px !important; color: var(--mq-dust) !important; }
+  @media (max-width: 639px) { .mq-guide-head { padding: 48px 0 32px; } }
+</style>
+
+<header class="mq-guide-head">
+    <div class="mq-wrap">
+        <div class="mq-label">User guide</div>
+        <h1><span class="{% if brandFont %}font-brand{% endif %}">{{ title }}</span> User Guide</h1>
+        <p>{{ subtitle | default("Your Complete Guide") }}</p>
+    </div>
 </header>
 
-{# ── Row 1: Back link, version selector, download ── #}
+{# ── Back link, version selector, download ── #}
 <nav class="guide-toolbar" aria-label="Guide tools">
-    <div class="guide-toolbar-row">
+    <div class="mq-wrap guide-toolbar-row">
         <div class="flex items-center gap-3 min-w-0">
-            <a href="/apps/{{ slug }}/" class="text-primary-500 font-semibold hover:underline whitespace-nowrap">&larr; <span class="hidden sm:inline">Back to </span>{{ title }}</a>
+            <a href="/apps/{{ slug }}/" class="guide-back mq-label whitespace-nowrap">&larr; <span class="hidden sm:inline">Back to </span>{{ title }}</a>
             {% if versions | length > 0 %}
             <div class="relative" id="version-selector">
                 <button id="version-btn"
@@ -92,63 +110,61 @@ footerStyle: bordered
 </nav>
 
 {# ── Version status banners ── #}
+{% if currentStatus == "beta" or currentStatus == "legacy" or iapNotice %}
+<div class="mq-wrap">
+<div class="mq-guide-notices">
 {% if currentStatus == "beta" %}
-<div class="bg-purple-50 border-2 border-purple-300 rounded-xl p-5 mx-auto my-8 max-w-4xl shadow-lg">
-    <div class="flex items-start gap-4">
-        <span class="text-3xl text-purple-500">{% icon "flask-conical", "w-8 h-8" %}</span>
-        <div>
-            <h3 class="text-purple-800 text-xl font-semibold mb-1">Beta Documentation</h3>
-            <p class="text-purple-700 mb-0">You're viewing the guide for a pre-release version. Content may change before the final release.
-                {% if latestVersionSlug %}<a href="/guides/{{ slug }}/{{ latestVersionSlug }}/" class="text-purple-800 font-semibold underline">View the current stable guide &rarr;</a>{% endif %}
-            </p>
-        </div>
+<div class="guide-notice" role="note">
+    {% icon "flask-conical", "guide-notice-icon" %}
+    <div>
+        <h2>Beta documentation</h2>
+        <p>You're viewing the guide for a pre-release version. Content may change before the final release.
+            {% if latestVersionSlug %}<a href="/guides/{{ slug }}/{{ latestVersionSlug }}/">View the current stable guide &rarr;</a>{% endif %}
+        </p>
     </div>
 </div>
 {% endif %}
-
 {% if currentStatus == "legacy" %}
-<div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mx-auto my-8 max-w-4xl shadow-lg">
-    <div class="flex items-start gap-4">
-        <span class="text-3xl text-amber-500">{% icon "archive", "w-8 h-8" %}</span>
-        <div>
-            <h3 class="text-amber-800 text-xl font-semibold mb-1">Archived Documentation</h3>
-            <p class="text-amber-700 mb-0">This guide is for an older version and may not reflect the current app.
-                {% if latestVersionSlug %}<a href="/guides/{{ slug }}/{{ latestVersionSlug }}/" class="text-amber-800 font-semibold underline">View the current guide &rarr;</a>{% endif %}
-            </p>
-        </div>
+<div class="guide-notice" role="note">
+    {% icon "archive", "guide-notice-icon" %}
+    <div>
+        <h2>Archived documentation</h2>
+        <p>This guide is for an older version and may not reflect the current app.
+            {% if latestVersionSlug %}<a href="/guides/{{ slug }}/{{ latestVersionSlug }}/">View the current guide &rarr;</a>{% endif %}
+        </p>
     </div>
 </div>
 {% endif %}
-
 {% if iapNotice %}
-<div class="bg-yellow-100 border-2 border-yellow-400 rounded-xl p-5 mx-auto my-8 max-w-4xl shadow-lg">
-    <div class="flex items-start gap-4">
-        <span class="text-3xl text-yellow-600">{% icon "alert-triangle", "w-8 h-8" %}</span>
-        <div>
-            <h3 class="text-yellow-800 text-xl font-semibold mb-2">{{ iapNotice.title }}</h3>
-            <p class="text-yellow-800 mb-2">{{ iapNotice.message }}</p>
-            <p class="text-yellow-700 text-sm italic">{{ iapNotice.updated }}</p>
-        </div>
+<div class="guide-notice guide-notice-alert" role="note">
+    {% icon "alert-triangle", "guide-notice-icon" %}
+    <div>
+        <h2>{{ iapNotice.title }}</h2>
+        <p>{{ iapNotice.message }}</p>
+        <p class="guide-notice-meta">{{ iapNotice.updated }}</p>
     </div>
 </div>
 {% endif %}
+</div>
+</div>
+{% endif %}
 
-<main id="main-content" class="max-w-4xl mx-auto px-5 py-10"{% if guideVersion %} data-guide-version="{{ guideVersion }}"{% endif %}
+<div class="mq-wrap">
+<main id="main-content" class="mq-prose mq-guide-body"{% if guideVersion %} data-guide-version="{{ guideVersion }}"{% endif %}>
     {% if toc and toc.length %}
-    <div class="content-section">
-        <h2 class="!border-0 !pb-0">Table of Contents</h2>
-        <ul class="list-none mt-5">
+    <div class="content-section guide-toc">
+        <h2>Table of Contents</h2>
+        <ol>
             {% for section in toc %}
-            <li class="my-2">
-                <a href="#{{ section.id }}" class="text-gray-800 text-lg hover:text-primary-500">{{ loop.index }}. {{ section.title }}</a>
-            </li>
+            <li><a href="#{{ section.id }}">{{ section.title }}</a></li>
             {% endfor %}
-        </ul>
+        </ol>
     </div>
     {% endif %}
 
     {{ content | safe }}
 </main>
+</div>
 
 <script defer src="https://cdn.jsdelivr.net/npm/docx@9/build/index.umd.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/jspdf@latest/dist/jspdf.umd.min.js"></script>

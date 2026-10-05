@@ -1,41 +1,76 @@
 ---
 title: Apps for Creators
 description: "Moonquake Media builds local-first apps for Mac, iPhone and iPad, including LOOM, a live looper for Mac, and Listen2, an offline audiobook narrator."
-layout: layouts/base.njk
-footerStyle: light
-showContact: true
+layout: layouts/moonquake.njk
+ogImage: /images/og-moonquake.png
+ogImageWidth: 1200
+ogImageHeight: 630
+ogImageAlt: "The moonquake mark, a crescent moon whose shadow edge is a seismic trace, beside the lowercase moonquake wordmark on a near-black ground"
 ---
+{#- The landing page. Nav, footer, fonts and colour tokens come from layouts/moonquake.njk. Each
+    product keeps its own icon and type on its card. -#}
+<style>
+  /* Hero */
+  .mq-hero { padding: 96px 0 80px; }
+  .mq-hero h1 {
+    margin: 24px 0 0; max-width: 820px;
+    font-size: clamp(44px, 8vw, 80px); font-weight: 500; letter-spacing: -0.04em; line-height: 1.02;
+    text-wrap: balance;
+  }
+  .mq-lede { margin: 24px 0 0; max-width: 560px; font-size: 18px; color: var(--mq-mist); text-wrap: pretty; }
 
-<div class="gradient-hero min-h-screen flex flex-col p-5">
-    <nav class="flex justify-between items-center max-w-5xl w-full mx-auto" aria-label="Main navigation">
-        <a href="/" class="flex items-center gap-2 no-underline hover:no-underline" aria-current="page">
-            <img src="/images/moonquake-logo.png" alt="" class="w-7 h-7" aria-hidden="true">
-            <span class="text-white font-bold text-lg">{{ site.name }}</span>
-        </a>
-        <div class="flex gap-6 items-center">
-            <a href="/blog/" class="text-white/90 hover:text-white text-sm font-medium no-underline hover:no-underline transition-colors">Blog</a>
-            <a href="mailto:{{ site.email }}" class="text-white/90 hover:text-white text-sm font-medium no-underline hover:no-underline transition-colors">Support</a>
-        </div>
-    </nav>
-    <main id="main-content" class="flex-1 flex items-center justify-center">
-    <div class="max-w-5xl text-center">
-        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">{{ site.name }}</h1>
-        <p class="text-lg md:text-xl text-white/90 mb-12">{{ site.tagline }}</p>
+  /* Apps */
+  .mq-apps { padding: 0 0 96px; }
+  .mq-apps-head { display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--mq-basalt); }
+  .mq-grid { display: grid; grid-template-columns: 1fr; gap: 12px; list-style: none; margin: 0; padding: 0; }
+  @media (min-width: 640px) { .mq-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .mq-grid { grid-template-columns: repeat(3, 1fr); } }
+  .mq-card {
+    display: flex; flex-direction: column; gap: 14px; height: 100%; box-sizing: border-box;
+    padding: 24px; border: 1px solid var(--mq-basalt); border-radius: 4px;
+    color: var(--mq-regolith); transition: background-color .15s, border-color .15s;
+  }
+  .mq-card:hover { background: var(--mq-basalt); border-color: var(--mq-edge); text-decoration: none; }
+  .mq-card img { width: 64px; height: 64px; border-radius: 22%; display: block; }
+  .mq-card h2 { margin: 6px 0 0; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+  .mq-card p { margin: 0; flex: 1; font-size: 15px; color: var(--mq-mist); }
+  .mq-card .mq-label { font-size: 12px; }
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-5" role="list" aria-label="Our apps">
-            {% for app in apps %}
-            {# `url` overrides the /apps/<slug>/ default. LOOM needs it: its page is at
-               /loom/, not /apps/loom/, so without this its tile would 404. #}
-            <a href="{{ app.url or ("/apps/" + app.slug + "/") }}" class="app-card text-center" role="listitem">
-                <div class="mb-5">
-                    <img src="{{ app.icon }}" alt="" class="app-icon mx-auto" aria-hidden="true">
-                </div>
-                <h2 class="text-2xl font-bold text-gray-800 mb-2 {% if app.brandFont %}font-brand{% endif %}">{{ app.name }}</h2>
-                <p class="text-gray-600 text-base mb-5">{{ app.tagline }}</p>
-                <span class="badge badge-{{ app.status }}">{{ app.statusText }}</span>
-            </a>
-            {% endfor %}
-        </div>
+  @media (max-width: 639px) {
+    .mq-hero { padding: 64px 0 56px; }
+  }
+</style>
+
+<main id="main-content">
+  <section class="mq-hero">
+    <div class="mq-wrap">
+      <div class="mq-label">{{ site.name }}</div>
+      <h1>Tools for sound, speech and stage.</h1>
+      <p class="mq-lede">{{ site.tagline }}, for Mac, iPhone and iPad.</p>
     </div>
-    </main>
-</div>
+  </section>
+
+  <section class="mq-apps" id="apps" aria-labelledby="apps-heading">
+    <div class="mq-wrap">
+      <div class="mq-apps-head">
+        <span class="mq-label" id="apps-heading">Apps</span>
+        <span class="mq-label">{{ apps | length }}</span>
+      </div>
+      <ul class="mq-grid">
+        {% for app in apps %}
+        <li>
+          {# `url` overrides the /apps/<slug>/ default. LOOM needs it: its page is at
+             /loom/, not /apps/loom/, so without this its tile would 404. #}
+          <a href="{{ app.url or ("/apps/" + app.slug + "/") }}" class="mq-card">
+            <img src="{{ app.icon }}" alt="" width="64" height="64" loading="lazy">
+            <h2{% if app.brandFont %} class="font-brand"{% endif %}>{{ app.name }}</h2>
+            <p>{{ app.tagline }}</p>
+            <span class="mq-label">{{ app.statusText }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+</main>

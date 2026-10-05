@@ -1,0 +1,102 @@
+---
+layout: layouts/base.njk
+selfHostedFonts: true
+ownFooter: true
+themeColor: "#121317"
+---
+{#- The pages that wear the Moonquake brand itself: the landing page and the blog. Colours, type and
+    mark follow the brand kit (v0.1): Night ground, Regolith text and mark, Basalt surfaces and
+    dividers, Dust metadata. Signal is the single accent, at most once per screen, and is unused
+    until a page has one thing that earns it.
+
+    This layout carries the shared chrome (fonts, tokens, nav, footer). Each page adds its own
+    <style> for what is particular to it. `navLinks` adds links before Blog and Support. -#}
+{%- from "components/moonquake-mark.njk" import mark -%}
+<style>
+{% include "components/moonquake-fonts.njk" %}
+  :root {
+    --mq-night: #121317;
+    --mq-regolith: #F2F0EA;
+    --mq-basalt: #2A2C33;
+    --mq-edge: #3A3D44;
+    --mq-dust: #8D9099;
+    --mq-mist: #B5B7BE;
+    --mq-signal: #EE6A3C;
+    --mq-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    color-scheme: dark;
+  }
+  body {
+    margin: 0;
+    background: var(--mq-night);
+    color: var(--mq-regolith);
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  .skip-link { background: var(--mq-regolith); color: var(--mq-night); border-radius: 0 0 4px 4px; }
+  :focus-visible { outline: 2px solid var(--mq-regolith); outline-offset: 3px; }
+
+  .mq-wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .mq-mark { display: block; flex: none; }
+  .mq-label {
+    font-family: var(--mq-mono);
+    font-size: 13px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mq-dust);
+  }
+
+  /* Nav */
+  .mq-nav { border-bottom: 1px solid var(--mq-basalt); }
+  .mq-nav .mq-wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .mq-brand { display: flex; align-items: center; gap: 10px; color: var(--mq-regolith); }
+  .mq-brand:hover { color: var(--mq-regolith); text-decoration: none; }
+  .mq-wordmark { font-size: 20px; font-weight: 500; letter-spacing: -0.04em; line-height: 1; }
+  /* The kit's lockup centres the mark on the wordmark's lowercase x-height, not on its text box:
+     in Geist at line-height 1 that box centres 0.08em higher, so drop the mark by that much. */
+  .mq-brand .mq-mark { position: relative; top: 1.6px; }
+  .mq-links { display: flex; gap: 28px; }
+  .mq-links a { color: var(--mq-mist); font-size: 15px; transition: color .15s; }
+  .mq-links a:hover, .mq-links a[aria-current] { color: var(--mq-regolith); text-decoration: none; }
+
+  /* Footer */
+  .mq-foot { border-top: 1px solid var(--mq-basalt); padding: 28px 0 40px; }
+  .mq-foot .mq-wrap { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+  .mq-foot-brand { display: flex; align-items: center; gap: 10px; }
+  .mq-foot .mq-label { font-size: 12px; }
+  .mq-foot a.mq-label:hover { color: var(--mq-regolith); text-decoration: none; }
+
+  @media (max-width: 639px) {
+    .mq-wrap { padding: 0 16px; }
+    .mq-links { gap: 20px; }
+  }
+  @media (max-width: 519px) {
+    .mq-links .mq-link-extra { display: none; }
+  }
+</style>
+
+<nav class="mq-nav" aria-label="Main navigation">
+  <div class="mq-wrap">
+    <a href="/" class="mq-brand" {% if page.url == "/" %}aria-current="page" {% endif %}aria-label="{{ site.name }} home">
+      {{ mark(23) }}
+      <span class="mq-wordmark" aria-hidden="true">moonquake</span>
+    </a>
+    <div class="mq-links">
+      {%- for link in navLinks or [] %}
+      <a href="{{ link.url }}" class="mq-link-extra">{{ link.text }}</a>
+      {%- endfor %}
+      <a href="/blog/"{% if page.url == "/blog/" %} aria-current="page"{% endif %}>Blog</a>
+      <a href="mailto:{{ site.email }}">Support</a>
+    </div>
+  </div>
+</nav>
+
+{{ content | safe }}
+
+<footer class="mq-foot" aria-label="Site footer">
+  <div class="mq-wrap">
+    <div class="mq-foot-brand">
+      {{ mark(16) }}
+      <span class="mq-label">&copy; {{ site.year }} {{ site.name }}</span>
+    </div>
+    <a href="mailto:{{ site.email }}" class="mq-label">Contact support</a>
+  </div>
+</footer>

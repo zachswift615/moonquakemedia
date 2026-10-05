@@ -1,44 +1,54 @@
 ---
-layout: layouts/base.njk
+layout: layouts/moonquake.njk
 ogType: article
 rss: true
+navLinks:
+  - { text: LOOM, url: /loom/ }
+  - { text: Listen2, url: /apps/listen2/ }
 ---
-<div class="min-h-screen bg-white">
-  <!-- Navigation -->
-  <nav class="border-b border-gray-100 bg-white" aria-label="Main navigation">
-    <div class="max-w-2xl mx-auto px-6 py-5 flex justify-between items-center">
-      <a href="/" class="text-base font-semibold text-gray-950 no-underline tracking-tight hover:text-gray-600 hover:no-underline transition-colors">{{ site.name }}</a>
-      <div class="flex gap-6 items-center">
-        <a href="/loom/" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">LOOM</a>
-        <a href="/apps/listen2/" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Listen2</a>
-        <a href="/blog/" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Blog</a>
-        <a href="mailto:{{ site.email }}" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Support</a>
-      </div>
-    </div>
-  </nav>
+<style>
+  .mq-article { padding: 80px 0 96px; }
+  .mq-article-col { max-width: 680px; }
+  .mq-article-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; font-size: 12px; }
+  .mq-article h1 {
+    margin: 18px 0 0; font-size: clamp(32px, 5.2vw, 48px); font-weight: 500;
+    letter-spacing: -0.035em; line-height: 1.08; text-wrap: balance;
+  }
 
-  <!-- Article -->
-  <main id="main-content">
-    <article class="max-w-2xl mx-auto px-6 pt-16 pb-20">
-      <header class="mb-12">
-        <div class="flex items-center gap-3 mb-4">
-          <time datetime="{{ date | isoDate }}" class="text-xs text-gray-500 font-medium tracking-wide uppercase">{{ date | readableDate }}</time>
-          <span class="text-gray-300" aria-hidden="true">&middot;</span>
-          <span class="text-xs text-gray-500">{{ content | readingTime }}</span>
+{% include "components/moonquake-prose.njk" %}
+  .mq-article .mq-prose { margin-top: 48px; }
+
+  .mq-article-foot { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--mq-basalt); }
+  .mq-article-foot a { font-size: 12px; }
+  .mq-article-foot a:hover { color: var(--mq-regolith); text-decoration: none; }
+
+  @media (max-width: 639px) {
+    .mq-article { padding: 56px 0 72px; }
+  }
+</style>
+
+<main id="main-content" class="mq-article">
+  <div class="mq-wrap">
+    <article class="mq-article-col">
+      <header>
+        <div class="mq-article-meta mq-label">
+          <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+          <span aria-hidden="true">&middot;</span>
+          <span>{{ content | readingTime }}</span>
         </div>
-        <h1 class="text-2xl md:text-3xl font-bold text-gray-950 leading-tight tracking-tight">{{ title }}</h1>
+        <h1>{{ title }}</h1>
       </header>
 
-      <div class="prose prose-gray max-w-none prose-headings:text-gray-950 prose-headings:tracking-tight prose-headings:font-semibold prose-p:text-gray-500 prose-p:leading-relaxed prose-li:text-gray-500 prose-a:text-gray-950 prose-a:underline prose-a:underline-offset-2 prose-a:decoration-gray-300 hover:prose-a:decoration-gray-950 prose-img:rounded-xl prose-strong:text-gray-700 prose-blockquote:text-gray-400 prose-blockquote:border-gray-200 prose-code:before:content-none prose-code:after:content-none prose-code:font-medium prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:py-0.5 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:font-normal">
+      <div class="mq-prose">
         {{ content | safe }}
       </div>
 
-      <footer class="mt-20 pt-8 border-t border-gray-100">
-        <a href="/blog/" class="text-sm text-gray-500 font-medium no-underline hover:text-gray-950 hover:no-underline transition-colors">&larr; All posts</a>
+      <footer class="mq-article-foot">
+        <a href="/blog/" class="mq-label">&larr; All posts</a>
       </footer>
     </article>
-  </main>
-</div>
+  </div>
+</main>
 {%- set faq = content | faqFromHtml %}
 <script type="application/ld+json">
 {

@@ -9,23 +9,6 @@
     "url": "/loom/"
   },
   {
-    "slug": "gigshed",
-    "name": "GigShed",
-    "tagline": "Woodshed any song — stems, key & tempo, and chord charts, all on device",
-    "icon": "/images/GigShedAppIcon.png",
-    "status": "available",
-    "statusText": "Available Now",
-    "brandFont": true
-  },
-  {
-    "slug": "gigscroll",
-    "name": "GigScroll",
-    "tagline": "The essential lyrics teleprompter for live performers",
-    "icon": "/images/GigScrollAppIconOfficial.png",
-    "status": "available",
-    "statusText": "Available Now"
-  },
-  {
     "slug": "listen2",
     "name": "Listen2",
     "tagline": "Your personal audiobook narrator with natural voices",
@@ -40,6 +23,23 @@
     "icon": "/images/Speak2AppIcon.png",
     "status": "available",
     "statusText": "Available Now"
+  },
+  {
+    "slug": "gigscroll",
+    "name": "GigScroll",
+    "tagline": "The essential lyrics teleprompter for live performers",
+    "icon": "/images/GigScrollAppIconOfficial.png",
+    "status": "available",
+    "statusText": "Available Now"
+  },
+  {
+    "slug": "gigshed",
+    "name": "GigShed",
+    "tagline": "Woodshed any song — stems, key & tempo, and chord charts, all on device",
+    "icon": "/images/GigShedAppIcon.png",
+    "status": "available",
+    "statusText": "Available Now",
+    "brandFont": true
   },
   {
     "slug": "quietus",

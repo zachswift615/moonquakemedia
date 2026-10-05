@@ -128,7 +128,7 @@ module.exports = function(eleventyConfig) {
       sizes: `(min-width: 720px) ${shown}px, min(${shown}px, calc(100vw - 48px))`,
       loading: "lazy",
       decoding: "async",
-      style: `width:100%;max-width:${shown}px;height:auto;display:block;margin:0 auto;border-radius:10px;border:1px solid #e5e7eb;`,
+      style: `width:100%;max-width:${shown}px;height:auto;display:block;margin:0 auto;border-radius:4px;border:1px solid #2A2C33;`,
     }).replace(/\n\s*/g, "");
     const cap = caption ? `<figcaption style="text-align:center;">${caption}</figcaption>` : "";
     // A full window shrunk into the column is too small to read, so it opens at full size.

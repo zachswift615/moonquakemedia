@@ -1,0 +1,35 @@
+{#- Long-form reading styles on Night, for anything inside .mq-prose: blog posts, user guides and
+    legal pages. Included INSIDE a <style> block on a page using layouts/moonquake.njk. -#}
+  .mq-prose { font-size: 17px; line-height: 1.65; color: #DAD8D2; }
+  .mq-prose > :first-child { margin-top: 0; }
+  .mq-prose p, .mq-prose ul, .mq-prose ol, .mq-prose table, .mq-prose pre, .mq-prose blockquote { margin: 0 0 1.25em; }
+  .mq-prose h2, .mq-prose h3, .mq-prose h4 { color: var(--mq-regolith); font-weight: 500; }
+  .mq-prose h2 { margin: 2.2em 0 0.7em; font-size: 28px; letter-spacing: -0.03em; line-height: 1.15; }
+  .mq-prose h3 { margin: 1.8em 0 0.6em; font-size: 21px; letter-spacing: -0.02em; line-height: 1.25; }
+  .mq-prose h4 { margin: 1.6em 0 0.5em; font-size: 17px; letter-spacing: -0.01em; }
+  .mq-prose a { color: var(--mq-regolith); text-decoration: underline; text-decoration-color: var(--mq-edge); text-underline-offset: 3px; transition: text-decoration-color .15s; }
+  .mq-prose a:hover { text-decoration-color: var(--mq-regolith); }
+  .mq-prose strong { color: var(--mq-regolith); font-weight: 600; }
+  .mq-prose ul, .mq-prose ol { padding-left: 1.4em; }
+  .mq-prose ul { list-style: disc; }
+  .mq-prose ol { list-style: decimal; }
+  .mq-prose li { margin: 0.4em 0; padding-left: 0.2em; }
+  .mq-prose li::marker { color: var(--mq-dust); }
+  .mq-prose ol > li::marker { font-family: var(--mq-mono); font-size: 0.85em; }
+  .mq-prose hr { border: 0; border-top: 1px solid var(--mq-basalt); margin: 3em 0; }
+  .mq-prose blockquote { margin-left: 0; padding-left: 20px; border-left: 2px solid var(--mq-edge); color: var(--mq-mist); }
+  .mq-prose blockquote p:last-child { margin-bottom: 0; }
+  .mq-prose code { font-family: var(--mq-mono); font-size: 0.86em; padding: 0.15em 0.4em; border-radius: 4px; background: var(--mq-basalt); color: var(--mq-regolith); }
+  .mq-prose pre { overflow-x: auto; padding: 16px 18px; border: 1px solid var(--mq-basalt); border-radius: 4px; font-size: 14px; line-height: 1.55; }
+  .mq-prose pre code { padding: 0; background: none; font-size: inherit; }
+  .mq-prose table { display: block; overflow-x: auto; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+  .mq-prose th { text-align: left; vertical-align: bottom; padding: 0 16px 10px 0; border-bottom: 1px solid var(--mq-edge);
+    font-family: var(--mq-mono); font-size: 12px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mq-dust); }
+  .mq-prose td { vertical-align: top; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--mq-basalt); }
+  .mq-prose figure { margin: 2em 0; }
+  .mq-prose figcaption { margin-top: 10px; font-size: 14px; color: var(--mq-dust); }
+  .mq-prose img { max-width: 100%; height: auto; }
+  @media (max-width: 639px) {
+    .mq-prose { font-size: 16px; }
+    .mq-prose h2 { font-size: 24px; }
+  }

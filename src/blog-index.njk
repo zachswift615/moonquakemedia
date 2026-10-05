@@ -1,81 +1,95 @@
 ---
 title: Blog
 description: "Guides from Moonquake Media: live looping on a Mac with LOOM, text-to-speech, dictation, and apps for performing musicians."
-layout: layouts/base.njk
+layout: layouts/moonquake.njk
 permalink: /blog/
 rss: true
+navLinks:
+  - { text: LOOM, url: /loom/ }
+  - { text: Listen2, url: /apps/listen2/ }
 ---
-<div class="min-h-screen bg-white">
-  <!-- Navigation -->
-  <nav class="border-b border-gray-100 bg-white" aria-label="Main navigation">
-    <div class="max-w-2xl mx-auto px-6 py-5 flex justify-between items-center">
-      <a href="/" class="text-base font-semibold text-gray-950 no-underline tracking-tight hover:text-gray-600 hover:no-underline transition-colors">{{ site.name }}</a>
-      <div class="flex gap-6 items-center">
-        <a href="/loom/" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">LOOM</a>
-        <a href="/apps/listen2/" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Listen2</a>
-        <a href="/blog/" class="text-sm text-gray-950 font-medium no-underline hover:no-underline" aria-current="page">Blog</a>
-        <a href="mailto:{{ site.email }}" class="text-sm text-gray-500 no-underline hover:text-gray-950 hover:no-underline transition-colors">Support</a>
+{%- set blogApps = [
+  { slug: "loom", name: "LOOM" },
+  { slug: "listen2", name: "Listen2" },
+  { slug: "gigscroll", name: "GigScroll" },
+  { slug: "speak2", name: "Speak2" }
+] -%}
+<style>
+  .mq-blog { padding: 80px 0 96px; }
+  .mq-blog-col { max-width: 720px; }
+  .mq-blog h1 { margin: 20px 0 0; font-size: clamp(40px, 7vw, 64px); font-weight: 500; letter-spacing: -0.04em; line-height: 1.02; }
+  .mq-blog-lede { margin: 18px 0 0; font-size: 18px; color: var(--mq-mist); }
+
+  .mq-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 40px 0 8px; }
+  .mq-filter {
+    font-family: var(--mq-mono); font-size: 13px; line-height: 1;
+    padding: 9px 14px; border-radius: 999px; cursor: pointer;
+    background: transparent; color: var(--mq-mist); border: 1px solid var(--mq-edge);
+    transition: color .15s, border-color .15s, background-color .15s;
+  }
+  .mq-filter:hover { color: var(--mq-regolith); border-color: var(--mq-dust); }
+  .mq-filter[aria-pressed="true"] { background: var(--mq-regolith); border-color: var(--mq-regolith); color: var(--mq-night); }
+
+  .mq-posts { list-style: none; margin: 0; padding: 0; }
+  .mq-post { padding: 32px 0; border-bottom: 1px solid var(--mq-basalt); }
+  .mq-post-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; font-size: 12px; }
+  .mq-post h2 { margin: 12px 0 0; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.25; }
+  .mq-post h2 a { color: var(--mq-regolith); transition: color .15s; }
+  .mq-post h2 a:hover { color: var(--mq-mist); text-decoration: none; }
+  .mq-post p { margin: 10px 0 0; font-size: 15px; line-height: 1.6; color: var(--mq-mist); }
+
+  @media (max-width: 639px) {
+    .mq-blog { padding: 56px 0 72px; }
+  }
+</style>
+
+<main id="main-content" class="mq-blog">
+  <div class="mq-wrap">
+    <div class="mq-blog-col">
+      <div class="mq-label">{{ site.name }}</div>
+      <h1>Blog</h1>
+      <p class="mq-blog-lede">Tips and guides for getting more from our apps.</p>
+
+      <div class="mq-filters" role="group" aria-label="Filter by app">
+        <button type="button" class="mq-filter" data-filter="all" aria-pressed="true">All</button>
+        {%- for app in blogApps %}
+        <button type="button" class="mq-filter" data-filter="{{ app.slug }}" aria-pressed="false">{{ app.name }}</button>
+        {%- endfor %}
       </div>
+
+      <ul class="mq-posts" id="blog-posts">
+        {% for post in collections.blog %}
+        {#- A post belongs to the first app in blogApps that its tags name. (A `set` inside a
+            loop stays in the loop in Nunjucks, so this is one expression.) #}
+        {%- set tags = post.data.tags or [] %}
+        {%- set postApp = blogApps[0] if blogApps[0].slug in tags else (blogApps[1] if blogApps[1].slug in tags else (blogApps[2] if blogApps[2].slug in tags else (blogApps[3] if blogApps[3].slug in tags else null))) %}
+        <li class="mq-post blog-post" data-app="{{ postApp.slug if postApp }}">
+          <div class="mq-post-meta mq-label">
+            <time datetime="{{ post.data.date | isoDate }}">{{ post.data.date | readableDate }}</time>
+            <span aria-hidden="true">&middot;</span>
+            <span>{{ post.content | readingTime }}</span>
+            {%- if postApp %}
+            <span aria-hidden="true">&middot;</span>
+            <span>{{ postApp.name }}</span>
+            {%- endif %}
+          </div>
+          <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+          <p>{{ post.data.excerpt or (post.content | excerpt) }}</p>
+        </li>
+        {% endfor %}
+      </ul>
     </div>
-  </nav>
+  </div>
 
-  <main id="main-content" class="max-w-2xl mx-auto px-6 pt-16 pb-20">
-    <header class="mb-14">
-      <h1 class="text-3xl font-bold text-gray-950 tracking-tight mb-3">Blog</h1>
-      <p class="text-gray-500 text-base">Tips and guides for getting more from our apps.</p>
-    </header>
-
-    <div class="flex flex-wrap gap-2 mb-12" role="group" aria-label="Filter by app">
-      <button data-filter="all" class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium bg-gray-950 text-white border border-gray-950 transition-all" aria-pressed="true">All</button>
-      <button data-filter="loom" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">LOOM</button>
-      <button data-filter="listen2" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">Listen2</button>
-      <button data-filter="gigscroll" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">GigScroll</button>
-      <button data-filter="speak2" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium border border-gray-200 text-gray-500 hover:border-gray-950 hover:text-gray-950 transition-all" aria-pressed="false">Speak2</button>
-    </div>
-
-    <div id="blog-posts" class="divide-y divide-gray-100">
-      {% for post in collections.blog %}
-      <article class="group blog-post py-8 first:pt-0" data-app="{% if 'loom' in post.data.tags %}loom{% elif 'listen2' in post.data.tags %}listen2{% elif 'gigscroll' in post.data.tags %}gigscroll{% elif 'speak2' in post.data.tags %}speak2{% endif %}">
-        <div class="flex items-center gap-3 mb-3">
-          <time datetime="{{ post.data.date | isoDate }}" class="text-xs text-gray-500 font-medium tracking-wide uppercase">{{ post.data.date | readableDate }}</time>
-          <span class="text-gray-300" aria-hidden="true">&middot;</span>
-          <span class="text-xs text-gray-500">{{ post.content | readingTime }}</span>
-          <span class="text-gray-200" aria-hidden="true">&middot;</span>
-          {% if 'loom' in post.data.tags %}
-          <span class="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded">LOOM</span>
-          {% elif 'listen2' in post.data.tags %}
-          <span class="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded">Listen2</span>
-          {% elif 'gigscroll' in post.data.tags %}
-          <span class="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded">GigScroll</span>
-          {% elif 'speak2' in post.data.tags %}
-          <span class="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-0.5 rounded">Speak2</span>
-          {% endif %}
-        </div>
-        <h2 class="text-lg md:text-xl font-semibold mb-2 tracking-tight">
-          <a href="{{ post.url }}" class="text-gray-950 no-underline hover:no-underline group-hover:text-gray-500 transition-colors">{{ post.data.title }}</a>
-        </h2>
-        <p class="text-gray-500 text-sm leading-relaxed">{{ post.data.excerpt or (post.content | excerpt) }}</p>
-      </article>
-      {% endfor %}
-    </div>
-
-    <script>
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const filter = btn.dataset.filter;
-          document.querySelectorAll('.filter-btn').forEach(b => {
-            b.classList.remove('active', 'bg-gray-950', 'text-white', 'border-gray-950');
-            b.classList.add('text-gray-500', 'border-gray-200');
-            b.setAttribute('aria-pressed', 'false');
-          });
-          btn.classList.add('active', 'bg-gray-950', 'text-white', 'border-gray-950');
-          btn.classList.remove('text-gray-500', 'border-gray-200');
-          btn.setAttribute('aria-pressed', 'true');
-          document.querySelectorAll('.blog-post').forEach(post => {
-            post.style.display = (filter === 'all' || post.dataset.app === filter) ? '' : 'none';
-          });
+  <script>
+    document.querySelectorAll('.mq-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.mq-filter').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+        document.querySelectorAll('.blog-post').forEach(post => {
+          post.hidden = !(filter === 'all' || post.dataset.app === filter);
         });
       });
-    </script>
-  </main>
-</div>
+    });
+  </script>
+</main>

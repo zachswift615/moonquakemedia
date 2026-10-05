@@ -1,0 +1,5 @@
+{#- The Moonquake mark ("Terminator"), drawn in currentColor. Import with
+    {% from "components/moonquake-mark.njk" import mark %} and call {{ mark(size) }}. -#}
+{%- macro mark(size) -%}
+<svg class="mq-mark" width="{{ size }}" height="{{ size }}" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path transform="translate(8 0) rotate(-20 50 50)" d="M65.02 8.63 A44 44 0 1 0 65.02 91.37 L58.19 88.21 L51.60 86.19 L49.19 77.80 L39.40 75.61 L43.87 65.96 L27.12 63.20 L42.18 53.71 L23.21 45.12 L46.16 43.29 L33.78 30.92 L44.29 29.85 L43.21 18.40 L52.95 17.22 L58.19 11.79 L65.02 8.63 Z" fill="currentColor"/></svg>
+{%- endmacro -%}

@@ -1,108 +1,160 @@
 ---
-layout: layouts/base.njk
-footerStyle: bordered
+layout: layouts/moonquake.njk
 ---
+{#- An app's page under /apps/<slug>/. The page wears the Moonquake brand (layouts/moonquake.njk);
+    the product keeps its own identity in its icon, its screenshots and, where it has one, its
+    wordmark font (`brandFont`). Per the brand kit it sits above an endorsement line,
+    "by [mark] moonquake". -#}
+{%- from "components/moonquake-mark.njk" import mark -%}
+<style>
+  .mq-app { padding: 72px 0 96px; }
 
-<div class="gradient-hero min-h-screen flex items-center justify-center p-5">
-    <main id="main-content" class="max-w-3xl w-full bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center">
-        <nav aria-label="Breadcrumb">
-            <a href="/" class="inline-block mb-5 text-primary-500 font-medium hover:underline">&larr; Back to {{ site.name }}</a>
-        </nav>
+  /* Hero */
+  .mq-app-hero { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
+  .mq-app-icon { width: 120px; height: 120px; border-radius: 22%; display: block; }
+  .mq-app-hero h1 { margin: 0; font-size: clamp(40px, 7vw, 64px); font-weight: 500; letter-spacing: -0.04em; line-height: 1; }
+  .mq-app-hero h1.font-brand { letter-spacing: -0.02em; }
+  .mq-endorse { display: flex; align-items: center; gap: 6px; margin-top: 12px; font-size: 14px; color: var(--mq-mist); }
+  .mq-endorse b { font-weight: 500; letter-spacing: -0.02em; color: var(--mq-regolith); }
+  .mq-app-lede { margin: 32px 0 0; max-width: 640px; font-size: 20px; line-height: 1.45; color: var(--mq-mist); text-wrap: pretty; }
 
-        <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-5 {% if brandFont %}font-brand{% endif %}">{{ title }}</h1>
-        <p class="text-lg md:text-xl text-gray-600 mb-10">{{ tagline }}</p>
+  .mq-app-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 32px; }
+  .mq-app-actions .mq-store img { height: 48px; display: block; }
+  .mq-btn {
+    display: inline-flex; align-items: center; padding: 12px 20px; border-radius: 999px;
+    font-size: 15px; font-weight: 500; line-height: 1.2; transition: background-color .15s, border-color .15s, color .15s;
+  }
+  .mq-btn:hover { text-decoration: none; }
+  .mq-btn-primary { background: var(--mq-signal); color: var(--mq-night); }
+  .mq-btn-primary:hover { color: var(--mq-night); background: #F27C52; }
+  .mq-btn-ghost { border: 1px solid var(--mq-edge); color: var(--mq-regolith); }
+  .mq-btn-ghost:hover { border-color: var(--mq-dust); color: var(--mq-regolith); }
+  .mq-app-price { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+  .mq-app-price strong { font-family: var(--mq-mono); font-size: 15px; font-weight: 500; color: var(--mq-regolith); }
+  .mq-app-price span { font-size: 14px; color: var(--mq-dust); }
 
-        <div class="bg-gray-50 rounded-2xl p-8 my-10">
-            <div class="mb-5">
-                <img src="{{ appIcon }}" alt="{{ title }} App Icon" class="app-icon mx-auto">
-            </div>
+  /* Sections */
+  .mq-app-section { margin-top: 88px; }
+  .mq-app-section-head { display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 16px; margin-bottom: 24px; border-bottom: 1px solid var(--mq-basalt); }
 
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3 {% if brandFont %}font-brand{% endif %}">
-                {{ title }}
-                {% if status == "available" %}
-                <span class="badge badge-available ml-2 align-middle text-base">Now Available!</span>
-                {% elif status == "beta" %}
-                <span class="badge badge-beta ml-2 align-middle text-base">Public Beta</span>
-                {% else %}
-                <span class="badge badge-coming ml-2 align-middle text-base">Coming Soon</span>
-                {% endif %}
-            </h2>
+  .mq-shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (min-width: 768px) { .mq-shots { grid-template-columns: repeat(4, 1fr); } }
 
-            <p class="text-gray-600 text-lg mb-6">{{ tagline }}</p>
+  .mq-features { display: grid; grid-template-columns: 1fr; gap: 12px; list-style: none; margin: 0; padding: 0; }
+  @media (min-width: 640px) { .mq-features { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .mq-features { grid-template-columns: repeat(3, 1fr); } }
+  .mq-feature { height: 100%; box-sizing: border-box; padding: 24px; border: 1px solid var(--mq-basalt); border-radius: 4px; }
+  .mq-feature .lucide-icon { width: 24px; height: 24px; color: var(--mq-regolith); stroke-width: 1.75; }
+  .mq-feature h3 { margin: 18px 0 0; font-size: 18px; font-weight: 500; letter-spacing: -0.015em; }
+  .mq-feature p { margin: 8px 0 0; font-size: 15px; color: var(--mq-mist); }
 
-            {% if screenshots and screenshots.length %}
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-8">
-                {% for screenshot in screenshots %}
-                <img src="{{ screenshot.src }}" alt="{{ screenshot.alt }}" class="screenshot">
-                {% endfor %}
-            </div>
-            {% endif %}
+  .mq-steps { display: grid; grid-template-columns: 1fr; gap: 24px; list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  @media (min-width: 640px) { .mq-steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .mq-steps { grid-template-columns: repeat(4, 1fr); } }
+  .mq-step { counter-increment: step; padding-top: 16px; border-top: 1px solid var(--mq-edge); }
+  .mq-step::before { content: counter(step, decimal-leading-zero); font-family: var(--mq-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--mq-dust); }
+  .mq-step h3 { margin: 12px 0 0; font-size: 18px; font-weight: 500; letter-spacing: -0.015em; }
+  .mq-step p { margin: 6px 0 0; font-size: 15px; color: var(--mq-mist); }
 
-            {% if features and features.length %}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8 text-left">
-                {% for feature in features %}
-                <div class="feature">
-                    <div class="feature-icon text-2xl mb-2">{% icon feature.icon, "w-8 h-8" %}</div>
-                    <h3>{{ feature.title }}</h3>
-                    <p>{{ feature.description }}</p>
-                </div>
-                {% endfor %}
-            </div>
-            {% endif %}
+  .mq-app-links { margin-top: 88px; padding-top: 24px; border-top: 1px solid var(--mq-basalt);
+    display: flex; flex-wrap: wrap; gap: 12px 28px; }
+  .mq-app-links a { font-size: 12px; }
+  .mq-app-links a:hover { color: var(--mq-regolith); text-decoration: none; }
 
-            {% if status == "available" and appStoreUrl %}
-            <a href="{{ appStoreUrl }}" target="_blank" rel="noopener noreferrer" class="inline-block my-4">
-                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="h-12 hover:scale-105 transition-transform">
-            </a>
-            {% elif status == "available" and downloadUrl %}
-            <a href="{{ downloadUrl }}" target="_blank" rel="noopener noreferrer" class="cta-button my-4">Download</a>
-            {% elif status == "beta" and testFlightUrl %}
-            <a href="{{ testFlightUrl }}" target="_blank" rel="noopener noreferrer" class="cta-button my-4">Join the Beta on TestFlight</a>
-            {% elif status == "coming" %}
-            <div class="bg-gray-100 rounded-lg p-5 my-6">
-                <p class="text-gray-500">Coming soon</p>
-            </div>
-            {% endif %}
+  @media (max-width: 639px) {
+    .mq-app { padding: 48px 0 72px; }
+    .mq-app-hero { grid-template-columns: 1fr; gap: 20px; }
+    .mq-app-icon { width: 88px; height: 88px; }
+    .mq-app-lede { font-size: 18px; margin-top: 24px; }
+    .mq-app-section { margin-top: 64px; }
+  }
+</style>
 
-            {% if price %}
-            <div class="my-6">
-                <span class="inline-block gradient-hero text-white px-6 py-3 rounded-full text-xl font-semibold shadow-lg">{{ price }}</span>
-                {% if priceNote %}
-                <p class="text-gray-500 text-sm mt-3">{{ priceNote }}</p>
-                {% endif %}
-            </div>
-            {% endif %}
-
-            {% if howItWorks and howItWorks.length %}
-            <div class="bg-white rounded-2xl p-6 my-8">
-                <h2 class="text-primary-500 text-xl font-bold mb-6">How It Works</h2>
-                <div class="flex justify-center gap-5 flex-wrap">
-                    {% for step in howItWorks %}
-                    <div class="flex-1 min-w-[150px] max-w-[200px] text-center">
-                        <div class="w-12 h-12 gradient-hero text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">{{ loop.index }}</div>
-                        <h4 class="text-gray-800 font-semibold mb-2">{{ step.title }}</h4>
-                        <p class="text-gray-600 text-sm">{{ step.description }}</p>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endif %}
-
-            <a href="/guides/{{ slug }}/" class="cta-button">View Complete User Guide</a>
+<main id="main-content" class="mq-app">
+  <div class="mq-wrap">
+    <header>
+      <div class="mq-app-hero">
+        <img src="{{ appIcon }}" alt="" class="mq-app-icon" width="120" height="120">
+        <div>
+          <h1{% if brandFont %} class="font-brand"{% endif %}>{{ title }}</h1>
+          <div class="mq-endorse"><span>by</span>{{ mark(14) }}<b>moonquake</b></div>
         </div>
+      </div>
+      <p class="mq-app-lede">{{ tagline }}</p>
 
-        <footer class="mt-6">
-            <p class="mb-3">
-                <a href="/guides/{{ slug }}/" class="mx-2 text-primary-500 hover:underline">User Guide</a>
-                <span aria-hidden="true">|</span>
-                <a href="/legal/{{ slug }}-privacy/" class="mx-2 text-primary-500 hover:underline">Privacy Policy</a>
-                <span aria-hidden="true">|</span>
-                <a href="/legal/{{ slug }}-terms/" class="mx-2 text-primary-500 hover:underline">Terms of Use</a>
-            </p>
-            <p class="text-gray-600">Questions or feedback? <a href="mailto:{{ site.email }}" class="text-primary-500 font-semibold">{{ site.email }}</a></p>
-        </footer>
-    </main>
-</div>
+      <div class="mq-app-actions">
+        {% if status == "available" and appStoreUrl %}
+        <a href="{{ appStoreUrl }}" target="_blank" rel="noopener noreferrer" class="mq-store">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download {{ title }} on the App Store" width="144" height="48">
+        </a>
+        {% elif status == "available" and downloadUrl %}
+        <a href="{{ downloadUrl }}" target="_blank" rel="noopener noreferrer" class="mq-btn mq-btn-primary">Download {{ title }}</a>
+        {% elif status == "beta" and testFlightUrl %}
+        <a href="{{ testFlightUrl }}" target="_blank" rel="noopener noreferrer" class="mq-btn mq-btn-primary">Join the beta on TestFlight</a>
+        {% endif %}
+        <a href="/guides/{{ slug }}/" class="mq-btn mq-btn-ghost">Read the user guide</a>
+      </div>
+
+      {% if price or status != "available" %}
+      <div class="mq-app-price">
+        {% if price %}<strong>{{ price }}</strong>{% endif %}
+        {% if priceNote %}<span>{{ priceNote }}</span>{% endif %}
+        {% if status == "beta" %}<span class="mq-label">Public beta</span>{% elif status == "coming" %}<span class="mq-label">Coming soon</span>{% endif %}
+      </div>
+      {% endif %}
+    </header>
+
+    {% if screenshots and screenshots.length %}
+    <section class="mq-app-section" aria-labelledby="shots-heading">
+      <div class="mq-app-section-head"><h2 class="mq-label" id="shots-heading">Screenshots</h2></div>
+      <div class="mq-shots">
+        {% for screenshot in screenshots %}
+        <img src="{{ screenshot.src }}" alt="{{ screenshot.alt }}" class="screenshot" loading="lazy">
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if features and features.length %}
+    <section class="mq-app-section" aria-labelledby="features-heading">
+      <div class="mq-app-section-head">
+        <h2 class="mq-label" id="features-heading">Features</h2>
+        <span class="mq-label">{{ features | length }}</span>
+      </div>
+      <ul class="mq-features">
+        {% for feature in features %}
+        <li class="mq-feature">
+          {% icon feature.icon %}
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% if howItWorks and howItWorks.length %}
+    <section class="mq-app-section" aria-labelledby="how-heading">
+      <div class="mq-app-section-head"><h2 class="mq-label" id="how-heading">How it works</h2></div>
+      <ol class="mq-steps">
+        {% for step in howItWorks %}
+        <li class="mq-step">
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+
+    <nav class="mq-app-links" aria-label="{{ title }} links">
+      <a href="/guides/{{ slug }}/" class="mq-label">User guide</a>
+      <a href="/legal/{{ slug }}-privacy/" class="mq-label">Privacy policy</a>
+      <a href="/legal/{{ slug }}-terms/" class="mq-label">Terms of use</a>
+    </nav>
+  </div>
+</main>
 
 {% if screenshots and screenshots.length %}
 {% include "components/lightbox.njk" %}

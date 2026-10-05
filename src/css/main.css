@@ -73,26 +73,6 @@
     @apply bg-coming;
   }
 
-  /* Cards */
-  .app-card {
-    @apply bg-white rounded-2xl p-8 shadow-xl transition-all duration-300 cursor-pointer block no-underline text-inherit;
-  }
-
-  .app-card:hover,
-  .app-card:focus-visible {
-    @apply -translate-y-2 shadow-2xl no-underline;
-  }
-
-  .app-card:focus-visible {
-    @apply outline-2 outline-offset-4 outline-white;
-    outline-style: solid;
-  }
-
-  /* App icons */
-  .app-icon {
-    @apply w-28 h-28 md:w-32 md:h-32 rounded-[22%] shadow-lg;
-  }
-
   /* CTA Buttons */
   .cta-button {
     @apply inline-block gradient-hero text-white px-6 py-3 md:px-8 md:py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg no-underline;
@@ -102,68 +82,82 @@
     @apply -translate-y-0.5 shadow-xl no-underline;
   }
 
-  /* Content boxes */
-  .feature-box {
-    @apply bg-gray-50 border-l-4 border-primary-500 p-5 my-5 rounded-r-lg;
+  /* ── User guides ──────────────────────────────────────────────────────
+     The guides wear the Moonquake brand (layouts/guide.njk on layouts/moonquake.njk), so these
+     use its --mq-* tokens. assets/guide-export.js reads these class names too. */
+
+  /* Sections: one per chapter, divided by a rule rather than carded */
+  .content-section {
+    padding-top: 56px;
+    margin-top: 56px;
+    border-top: 1px solid var(--mq-basalt);
+  }
+
+  .content-section:first-child {
+    padding-top: 0;
+    margin-top: 0;
+    border-top: 0;
+  }
+
+  .content-section > h2:first-child,
+  .content-section > :first-child {
+    margin-top: 0;
+  }
+
+  /* Callout boxes */
+  .feature-box,
+  .tip-box,
+  .warning-box,
+  .highlight-box {
+    margin: 1.5em 0;
+    padding: 18px 20px;
+    border: 1px solid var(--mq-basalt);
+    border-left: 2px solid var(--mq-mist);
+    border-radius: 4px;
+    background: rgba(42, 44, 51, 0.35);
   }
 
   .tip-box {
-    @apply bg-yellow-50 border-l-4 border-yellow-400 p-5 my-5 rounded-r-lg;
+    border-left-color: var(--mq-dust);
   }
 
+  /* A warning is the one callout that earns the accent */
   .warning-box {
-    @apply bg-red-50 border-l-4 border-red-400 p-5 my-5 rounded-r-lg;
+    border-left-color: var(--mq-signal);
   }
 
-  .highlight-box {
-    @apply bg-gray-100 border-l-4 border-primary-500 p-5 my-5 rounded-r-lg;
+  .mq-prose .feature-box h4,
+  .mq-prose .tip-box h4,
+  .mq-prose .warning-box h4 {
+    margin: 0 0 6px;
+    font-size: 16px;
   }
 
-  /* Button labels */
+  .mq-prose .feature-box > :last-child,
+  .mq-prose .tip-box > :last-child,
+  .mq-prose .warning-box > :last-child,
+  .mq-prose .highlight-box > :last-child {
+    margin-bottom: 0;
+  }
+
+  .mq-prose .feature-box p,
+  .mq-prose .tip-box p,
+  .mq-prose .warning-box p,
+  .mq-prose .highlight-box p {
+    font-size: 16px;
+  }
+
+  /* An on-screen control or value, named in the text */
   .button-label {
-    @apply bg-primary-500 text-white px-2.5 py-1 rounded font-bold text-sm;
-  }
-
-  /* Section styling */
-  .content-section {
-    @apply bg-white rounded-xl p-8 md:p-10 mb-8 shadow-md;
-  }
-
-  .content-section h2 {
-    @apply text-primary-500 text-2xl md:text-3xl mb-5 pb-3 border-b-2 border-primary-500;
-  }
-
-  .content-section h3 {
-    @apply text-primary-600 text-xl md:text-2xl mt-8 mb-4;
-  }
-
-  .content-section h4 {
-    @apply text-gray-600 text-lg mt-5 mb-3;
-  }
-
-  .content-section p {
-    @apply mb-4 text-base leading-relaxed;
-  }
-
-  .content-section ul, .content-section ol {
-    @apply my-4 ml-8;
-  }
-
-  .content-section li {
-    @apply my-2 leading-relaxed;
-  }
-
-  /* Feature grid */
-  .feature {
-    @apply p-4 bg-white rounded-lg;
-  }
-
-  .feature h3 {
-    @apply text-lg mb-1 text-primary-500;
-  }
-
-  .feature p {
-    @apply text-sm text-gray-600;
+    font-family: var(--mq-mono);
+    font-size: 0.8em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 0.15em 0.5em;
+    border: 1px solid var(--mq-edge);
+    border-radius: 4px;
+    color: var(--mq-regolith);
+    white-space: nowrap;
   }
 
   /* Lucide icons */
@@ -171,49 +165,121 @@
     @apply inline-block;
   }
 
-  .feature-icon .lucide-icon {
-    @apply text-primary-500;
-  }
-
   .inline-icon {
-    @apply w-5 h-5 align-text-bottom mr-1;
+    @apply w-5 h-5 mr-1;
+    vertical-align: -0.2em;
+    stroke-width: 1.75;
   }
 
   .inline-icon-sm {
-    @apply w-4 h-4 align-text-bottom;
+    @apply w-4 h-4;
+    vertical-align: -0.15em;
   }
 
+  .feature-box .inline-icon,
   .tip-box .inline-icon {
-    @apply text-yellow-600;
+    color: var(--mq-mist);
   }
 
   .warning-box .inline-icon {
-    @apply text-red-500;
+    color: var(--mq-signal);
   }
 
-  .feature-box .inline-icon {
-    @apply text-primary-500;
+  /* Table of contents (prefixed to win over the .mq-prose list styles) */
+  .mq-prose .guide-toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: toc;
+    columns: 2 260px;
+    column-gap: 32px;
   }
 
-  /* Guide download dropdown */
-  .guide-download-btn {
-    @apply bg-primary-500 text-white px-4 py-2 rounded-lg font-semibold text-sm cursor-pointer whitespace-nowrap border-none;
+  .mq-prose .guide-toc li {
+    counter-increment: toc;
+    break-inside: avoid;
+    margin: 0;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--mq-basalt);
   }
 
-  .guide-download-btn:hover {
-    @apply bg-primary-600;
+  .mq-prose .guide-toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    display: inline-block;
+    width: 2.4em;
+    font-family: var(--mq-mono);
+    font-size: 12px;
+    color: var(--mq-dust);
   }
 
-  .guide-download-btn:focus-visible {
-    @apply outline-2 outline-offset-2 outline-white ring-2 ring-primary-500;
+  .mq-prose .guide-toc a {
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .mq-prose .guide-toc a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--mq-edge);
+  }
+
+  /* Toolbar: back link, version menu, download menu */
+  .guide-toolbar {
+    position: relative;
+    z-index: 20;
+    border-top: 1px solid var(--mq-basalt);
+    border-bottom: 1px solid var(--mq-basalt);
+  }
+
+  .guide-toolbar-row {
+    @apply flex items-center justify-between gap-3;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .guide-back {
+    font-size: 12px;
+  }
+
+  .guide-back:hover {
+    color: var(--mq-regolith);
+    text-decoration: none;
+  }
+
+  .guide-download-btn,
+  .version-selector-btn {
+    @apply flex items-center gap-2 cursor-pointer whitespace-nowrap;
+    font-family: var(--mq-mono);
+    font-size: 13px;
+    line-height: 1;
+    padding: 9px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--mq-edge);
+    background: transparent;
+    color: var(--mq-regolith);
+    transition: border-color .15s, background-color .15s;
+  }
+
+  .guide-download-btn:hover,
+  .version-selector-btn:hover {
+    border-color: var(--mq-dust);
   }
 
   .guide-download-btn:disabled {
     @apply opacity-60 cursor-wait;
   }
 
+  .guide-download-menu,
+  .version-menu {
+    @apply absolute mt-2 z-50;
+    background: #1A1B20;
+    border: 1px solid var(--mq-edge);
+    border-radius: 4px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    padding: 4px 0;
+  }
+
   .guide-download-menu {
-    @apply absolute right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 z-50;
+    right: 0;
     min-width: 260px;
   }
 
@@ -223,42 +289,37 @@
 
   .guide-download-menu button:hover,
   .guide-download-menu button:focus {
-    @apply bg-gray-50;
+    background: var(--mq-basalt);
   }
 
   .guide-download-menu button:focus-visible {
-    @apply outline-2 outline-offset-[-2px] outline-primary-500;
-  }
-
-  .guide-download-menu button:first-child {
-    @apply rounded-t-lg;
-  }
-
-  .guide-download-menu button:last-child {
-    @apply rounded-b-lg;
+    outline-offset: -2px;
   }
 
   .guide-download-format {
-    @apply block font-semibold text-gray-800 text-sm;
+    @apply block text-sm;
+    font-weight: 500;
+    color: var(--mq-regolith);
   }
 
   .guide-download-desc {
-    @apply block text-gray-500 text-xs;
+    @apply block text-xs;
+    color: var(--mq-dust);
     margin-top: 2px;
   }
 
-  /* Screenshots grid */
+  /* App screenshots on an app page; the lightbox opens them */
   .screenshot {
-    @apply w-full h-auto rounded-2xl shadow-lg transition-transform duration-300 cursor-pointer;
+    @apply w-full h-auto cursor-pointer;
+    border-radius: 16px;
+    border: 1px solid var(--mq-basalt);
+    transition: transform .2s, border-color .2s;
   }
 
   .screenshot:hover,
   .screenshot:focus-visible {
-    @apply scale-105;
-  }
-
-  .screenshot:focus-visible {
-    @apply outline-2 outline-offset-4 outline-white ring-2 ring-primary-500;
+    transform: translateY(-2px);
+    border-color: var(--mq-edge);
   }
 }
 
@@ -829,51 +890,27 @@
   @apply bg-primary-500;
 }
 
-/* Guide toolbar (two-row nav) */
-.guide-toolbar {
-  @apply bg-white shadow-sm;
-}
-
-.guide-toolbar-row {
-  @apply flex items-center justify-between py-3 px-4 gap-3;
-}
-
-/* Version selector */
-.version-selector-btn {
-  @apply flex items-center gap-1.5 bg-gray-100 text-gray-700 px-2.5 py-1.5 rounded-lg text-sm font-semibold cursor-pointer border border-gray-200;
-  transition: background-color 0.15s, border-color 0.15s;
-}
-
-.version-selector-btn:hover {
-  @apply bg-gray-200 border-gray-300;
-}
-
-.version-selector-btn:focus-visible {
-  @apply outline-2 outline-offset-2 outline-primary-500;
-  outline-style: solid;
-}
-
+/* Guide version selector */
 .version-badge {
-  @apply text-xs font-bold px-1.5 py-0.5 rounded;
+  font-family: var(--mq-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--mq-edge);
+  color: var(--mq-mist);
 }
 
 .version-badge-latest {
-  @apply bg-green-100 text-green-800;
-}
-
-.version-badge-beta {
-  @apply bg-purple-100 text-purple-800;
-}
-
-.version-badge-legacy {
-  @apply bg-amber-100 text-amber-800;
+  border-color: var(--mq-mist);
+  color: var(--mq-regolith);
 }
 
 .version-menu {
-  @apply absolute left-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 z-50 py-1;
-  min-width: 200px;
+  left: 0;
+  min-width: 220px;
   list-style: none;
-  padding-left: 0;
 }
 
 .version-menu li {
@@ -881,26 +918,28 @@
 }
 
 .version-menu-item {
-  @apply flex items-center gap-2 w-full px-4 py-2.5 text-sm text-gray-700 no-underline;
+  @apply flex items-center justify-between gap-3 w-full px-4 py-2.5 text-sm no-underline;
+  color: var(--mq-mist);
   transition: background-color 0.1s;
 }
 
 .version-menu-item:hover,
 .version-menu-item:focus {
-  @apply bg-gray-50 no-underline;
+  background: var(--mq-basalt);
+  color: var(--mq-regolith);
+  text-decoration: none;
 }
 
 .version-menu-item:focus-visible {
-  @apply bg-gray-50 outline-2 outline-offset-[-2px] outline-primary-500 no-underline;
-  outline-style: solid;
+  outline-offset: -2px;
 }
 
 .version-menu-item-active {
-  @apply bg-primary-500/5 text-primary-500 font-semibold;
+  color: var(--mq-regolith);
 }
 
 .version-menu-label {
-  @apply font-medium;
+  font-family: var(--mq-mono);
 }
 
 /* Screen-reader only utility */
@@ -921,28 +960,29 @@
   letter-spacing: -0.01em;
 }
 
-/* ── Inline guide screenshots (GigShed) ── */
+/* ── Inline guide screenshots ── */
 .guide-figure {
   @apply my-8 flex flex-col items-center;
 }
 
-.guide-figure.guide-figure-wide {
-  /* full-width UI captures (e.g. iPad, wide sheets) */
-}
-
-.guide-screenshot {
-  @apply rounded-2xl shadow-xl border border-gray-200 bg-black;
+.mq-prose .guide-screenshot {
+  border-radius: 16px;
+  border: 1px solid var(--mq-basalt);
+  background: #000;
   max-width: 300px;
   width: 100%;
   height: auto;
 }
 
-.guide-figure-wide .guide-screenshot {
+.mq-prose .guide-figure-wide .guide-screenshot {
   max-width: 640px;
 }
 
-.guide-figcaption {
-  @apply mt-3 text-sm text-gray-500 text-center max-w-md;
+.mq-prose .guide-figcaption {
+  @apply text-center max-w-md;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--mq-dust);
 }
 
 /* Two screenshots side by side on wider viewports */
@@ -950,6 +990,6 @@
   @apply my-8 flex flex-col sm:flex-row items-center justify-center gap-6;
 }
 
-.guide-figure-row .guide-screenshot {
+.mq-prose .guide-figure-row .guide-screenshot {
   max-width: 260px;
 }
