@@ -43,6 +43,13 @@ navLinks:
         {{ content | safe }}
       </div>
 
+      {%- if "loom" in (tags or []) %}
+      <div style="margin-top:56px;">
+        {%- set signupSource = "blog" %}
+        {% include "components/loom-signup.njk" %}
+      </div>
+      {%- endif %}
+
       <footer class="mq-article-foot">
         <a href="/blog/" class="mq-label">&larr; All posts</a>
       </footer>

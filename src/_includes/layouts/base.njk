@@ -71,6 +71,36 @@
   gtag('js', new Date());
 
   gtag('config', 'G-7BTNSTLZL4');
+
+  // Call-to-action clicks, matched by where the link goes rather than by marking each button, so a
+  // CTA added to any page later (including a link in a blog post's Markdown) is counted without
+  // anyone remembering to tag it. `link_location` is the nearest section id, or "page".
+  (function () {
+    var rules = [
+      [/\.dmg(\?|#|$)/i, 'trial_download'],
+      [/^\/loom\/buy\/?$|buy\.polar\.sh/i, 'buy_click'],
+      [/\/redeem(\?|#|$)/i, 'claim_licence_click'],
+      [/youtube\.com\/watch|youtu\.be\//i, 'video_click'],
+      [/\/LOOM-keyboard-shortcuts-[a-z]+\.pdf$/i, 'shortcuts_pdf_click']
+    ];
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var url = new URL(a.href, location.href);
+      var target = url.host === location.host ? url.pathname : url.href;
+      for (var i = 0; i < rules.length; i++) {
+        if (rules[i][0].test(target)) {
+          var section = a.closest('[id]');
+          gtag('event', rules[i][1], {
+            link_url: url.href,
+            link_text: (a.textContent || '').trim().slice(0, 100),
+            link_location: section ? section.id : 'page'
+          });
+          return;
+        }
+      }
+    }, true);
+  })();
 </script>
 <body class="{% block bodyClass %}{% endblock %}">
     <a href="#main-content" class="skip-link">Skip to main content</a>

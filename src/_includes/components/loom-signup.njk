@@ -1,0 +1,38 @@
+{#- The LOOM email list signup. Posts to Buttondown (newsletter username `loom`); the person lands
+    on Buttondown's own confirmation page. Pass `signupSource` before including it, so subscribers
+    are tagged by where they joined, and the GA event says the same thing.
+    The PDFs it promises are src/assets/loom/LOOM-keyboard-shortcuts-{light,dark}.pdf, linked from
+    the welcome email rather than from here. -#}
+{%- set _src = signupSource or "site" %}
+<div class="loom-signup">
+  <div class="loom-signup-copy">
+    <div class="loom-signup-label">FREE · 4-PAGE PDF</div>
+    <h2 class="loom-signup-title">Get the LOOM keyboard shortcuts.</h2>
+    <p class="loom-signup-body">Every key LOOM answers to, in a light version for printing and a dark one for your screen. You also get new tutorials and release notes by email, about twice a month. Unsubscribe any time.</p>
+  </div>
+  <form class="loom-signup-form" action="https://buttondown.com/api/emails/embed-subscribe/loom" method="post"
+        onsubmit="if (window.gtag) gtag('event', 'newsletter_signup', { signup_source: '{{ _src }}' });">
+    <label for="loom-signup-email-{{ _src }}" class="loom-signup-sr">Email address</label>
+    <input type="email" name="email" id="loom-signup-email-{{ _src }}" required placeholder="you@example.com" autocomplete="email">
+    <input type="hidden" name="embed" value="1">
+    <input type="hidden" name="tag" value="{{ _src }}">
+    <button type="submit">SEND ME THE PDF</button>
+  </form>
+</div>
+<style>
+  .loom-signup { border: 1px solid #2C3038; border-radius: 12px; background: #0F1114; padding: 30px 28px;
+    display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 28px; align-items: center; }
+  .loom-signup-copy { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .loom-signup-label { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.18em; color: #35D07F; }
+  .loom-signup-title { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: #E8EAED; }
+  .loom-signup-body { margin: 0; font-size: 15px; line-height: 1.55; color: #8A9099; text-wrap: pretty; }
+  .loom-signup-form { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .loom-signup-form input[type=email] { width: 100%; box-sizing: border-box; padding: 13px 14px; border-radius: 8px;
+    border: 1px solid #2C3038; background: #171A1F; color: #E8EAED; font-size: 15px; }
+  .loom-signup-form input[type=email]:focus-visible { outline: 2px solid #35D07F; outline-offset: 1px; }
+  .loom-signup-form button { padding: 14px 0; border: 0; border-radius: 8px; background: #35D07F; color: #08090B; cursor: pointer;
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.09em; }
+  .loom-signup-form button:focus-visible { outline: 2px solid #E8EAED; outline-offset: 2px; }
+  .loom-signup-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  @media (max-width: 700px) { .loom-signup { grid-template-columns: minmax(0, 1fr); padding: 24px 20px; } }
+</style>
