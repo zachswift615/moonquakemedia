@@ -1,0 +1,223 @@
+---
+# /loom/shortcuts/ — where a new subscriber to the LOOM email list lands.
+#
+# Buttondown's free plan sends its own generic welcome email and does not let it be edited, so the
+# list's promise (the keyboard shortcuts PDF) is kept here instead: Buttondown's Settings →
+# Subscribing → "After confirming" redirects every confirmed subscriber to this page. If the list
+# moves to a paid plan with a custom welcome email, this page can stay as that email's link.
+#
+# The PDFs and their cover images live in /assets/loom/. The covers are page 1 of each PDF,
+# rendered with pdftoppm at 110 dpi; re-render them when the PDFs change.
+#
+# noindex: it is a thank-you page, not something a search should land on cold.
+layout: layouts/base.njk
+permalink: /loom/shortcuts/
+eleventyExcludeFromCollections: true
+title: "Your LOOM keyboard shortcuts"
+seoTitle: "Your LOOM Keyboard Shortcuts"
+description: "The LOOM keyboard shortcuts PDF, in a light version for printing and a dark one for your screen."
+robots: "noindex, follow"
+ownFooter: true
+faviconSvg: /assets/loom/loom-favicon.svg
+favicon16: /assets/loom/favicon-16.png
+favicon: /assets/loom/favicon-32.png
+---
+<style>
+  {% include "components/loom-fonts.njk" %}
+
+  html, body { margin: 0; padding: 0; background: #0B0C0E; }
+  body { font-family: Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif; color: #E8EAED; -webkit-font-smoothing: antialiased; }
+  a { color: #4CC9F0; text-decoration: none; }
+  a:hover { color: #8AD9F5; text-decoration: underline; }
+  *:focus-visible { outline: 2px solid #7FDBFF; outline-offset: 2px; }
+  img { max-width: 100%; display: block; }
+
+  .sc-wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+  .sc-mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+  .sc-label { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11.5px; letter-spacing: 0.18em; color: #8A9099; }
+
+  .sc-bar { position: sticky; top: 0; z-index: 10; background: rgba(11,12,14,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #23262C; }
+  .sc-bar .sc-wrap { display: flex; align-items: center; gap: 14px; padding-top: 14px; padding-bottom: 14px; }
+  .sc-bar img { width: 30px; height: 30px; border-radius: 7px; }
+  .sc-bar .sc-name { font-size: 19px; font-weight: 700; letter-spacing: 0.02em; color: #E8EAED; }
+  .sc-bar .sc-back { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.13em; color: #C7CDD4; }
+
+  .sc-hero { padding: 88px 0 0; display: flex; flex-direction: column; gap: 22px; }
+  .sc-eyebrow { display: flex; align-items: center; gap: 12px; }
+  .sc-dot { width: 7px; height: 7px; border-radius: 2px; background: #35D07F; flex: none; }
+  .sc-hero h1 { margin: 0; font-size: clamp(40px, 6vw, 72px); font-weight: 700; letter-spacing: -0.035em; line-height: 1; max-width: 14ch; text-wrap: balance; }
+  .sc-hero p { margin: 0; font-size: clamp(17px, 1.8vw, 20px); line-height: 1.55; color: #C7CDD4; max-width: 56ch; text-wrap: pretty; }
+
+  .sc-pdfs { padding: 56px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px; }
+  .sc-pdf { border: 1px solid #2C3038; border-radius: 12px; background: #0F1114; padding: 24px; display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 22px; align-items: center; }
+  .sc-pdf.sc-feature { background: linear-gradient(180deg, #12201A, #0F1114); }
+  .sc-cover { border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.45); border: 1px solid #2C3038; aspect-ratio: 612 / 792; width: 100%; height: auto; }
+  .sc-pdf-body { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .sc-pdf h2 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+  .sc-pdf p { margin: 0; font-size: 15px; line-height: 1.5; color: #8A9099; }
+  .sc-btn { display: inline-block; margin-top: 6px; padding: 13px 20px; border-radius: 8px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 700; letter-spacing: 0.09em; }
+  .sc-btn:hover { text-decoration: none; }
+  .sc-btn-green { background: #35D07F; color: #08090B; }
+  .sc-btn-green:hover { color: #08090B; background: #4BDB8E; }
+  .sc-btn-ghost { background: #171A1F; border: 1px solid #2C3038; color: #E8EAED; }
+  .sc-btn-ghost:hover { color: #E8EAED; border-color: #3A3F48; }
+
+  .sc-section { padding: 96px 0 0; display: flex; flex-direction: column; gap: 26px; }
+  .sc-section h2.sc-h { margin: 0; font-size: clamp(28px, 3.4vw, 40px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+
+  .sc-keys { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 960px) { .sc-keys { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .sc-keys { grid-template-columns: minmax(0, 1fr); } }
+  .sc-key { border: 1px solid #23262C; border-radius: 10px; background: #0F1114; padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+  .sc-caps { display: flex; gap: 6px; align-items: center; min-height: 40px; }
+  .sc-cap { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding: 0 12px; box-sizing: border-box;
+    border-radius: 7px; background: linear-gradient(180deg, #23272E, #1A1D22); border: 1px solid #343944; border-bottom-width: 3px;
+    font-family: 'JetBrains Mono', -apple-system, monospace; font-size: 15px; font-weight: 600; color: #E8EAED; }
+  .sc-cap.sc-sym { font-family: -apple-system, "Helvetica Neue", sans-serif; font-size: 17px; }
+  .sc-key-what { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+  .sc-key-why { font-size: 14.5px; line-height: 1.5; color: #8A9099; margin-top: -8px; }
+
+  .sc-next { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px; }
+  .sc-card { border: 1px solid #2C3038; border-radius: 12px; background: #0F1114; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .sc-card h3 { margin: 0; font-size: 21px; font-weight: 600; letter-spacing: -0.02em; }
+  .sc-card p { margin: 0; font-size: 15px; line-height: 1.55; color: #8A9099; text-wrap: pretty; }
+  .sc-card .sc-spacer { flex: 1; min-height: 4px; }
+  .sc-video { position: relative; display: block; border-radius: 8px; overflow: hidden; border: 1px solid #23262C; aspect-ratio: 16 / 9; }
+  .sc-video img { width: 100%; height: 100%; object-fit: cover; }
+  .sc-play { position: absolute; left: 14px; bottom: 14px; width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(11,12,14,0.78); border: 1px solid rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; }
+  .sc-play::after { content: ""; margin-left: 4px; border-left: 15px solid #E8EAED; border-top: 9px solid transparent; border-bottom: 9px solid transparent; }
+  .sc-video:hover .sc-play { background: #35D07F; }
+  .sc-video:hover .sc-play::after { border-left-color: #08090B; }
+
+  .sc-note { padding: 96px 0 0; }
+  .sc-note-inner { border-left: 3px solid #35D07F; padding: 6px 0 6px 24px; max-width: 62ch; display: flex; flex-direction: column; gap: 12px; }
+  .sc-note p { margin: 0; font-size: 18px; line-height: 1.6; color: #C7CDD4; }
+  .sc-note .sc-sig { font-size: 15px; color: #8A9099; }
+
+  .sc-foot { padding: 96px 0 0; }
+  .sc-foot .sc-row { border-top: 1px solid #23262C; padding: 30px 0 56px; display: flex; flex-wrap: wrap; gap: 22px; align-items: center; }
+  .sc-foot img { width: 26px; height: 26px; border-radius: 6px; }
+  .sc-foot a { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.12em; }
+  .sc-foot .sc-fill { flex: 1; min-width: 20px; }
+
+  @media (max-width: 600px) {
+    .sc-wrap { padding: 0 16px; }
+    .sc-hero { padding-top: 56px; }
+    .sc-pdf { grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 18px; }
+    .sc-section, .sc-note, .sc-foot { padding-top: 72px; }
+  }
+</style>
+
+<div class="sc-bar">
+  <div class="sc-wrap">
+    <img src="/assets/loom/loom-icon-64.png" alt="" width="30" height="30">
+    <div class="sc-name">LOOM</div>
+    <a class="sc-back" href="/loom/">LOOM HOME</a>
+  </div>
+</div>
+
+<main id="main-content" class="sc-wrap">
+
+  <div class="sc-hero">
+    <div class="sc-eyebrow"><div class="sc-dot"></div><div class="sc-label">YOU’RE ON THE LIST</div></div>
+    <h1>Here are your keyboard shortcuts.</h1>
+    <p>Every key LOOM answers to, on four pages. Print the light one and keep it by your rig, or keep the dark one open on a second screen. Thanks for signing up.</p>
+  </div>
+
+  <div class="sc-pdfs">
+    <div class="sc-pdf sc-feature">
+      <a href="/assets/loom/LOOM-keyboard-shortcuts-light.pdf"><img class="sc-cover" src="/assets/loom/shortcuts-cover-light.webp" alt="Page 1 of the light version of the LOOM keyboard shortcuts" width="935" height="1210" loading="eager"></a>
+      <div class="sc-pdf-body">
+        <div class="sc-label" style="color:#35D07F;">LIGHT · FOR PRINTING</div>
+        <h2>Print it</h2>
+        <p>White pages, US Letter. Four pages, readable from a music stand.</p>
+        <a class="sc-btn sc-btn-green" href="/assets/loom/LOOM-keyboard-shortcuts-light.pdf">DOWNLOAD PDF</a>
+      </div>
+    </div>
+    <div class="sc-pdf">
+      <a href="/assets/loom/LOOM-keyboard-shortcuts-dark.pdf"><img class="sc-cover" src="/assets/loom/shortcuts-cover-dark.webp" alt="Page 1 of the dark version of the LOOM keyboard shortcuts" width="935" height="1210" loading="eager"></a>
+      <div class="sc-pdf-body">
+        <div class="sc-label" style="color:#4CC9F0;">DARK · FOR YOUR SCREEN</div>
+        <h2>Keep it open</h2>
+        <p>The same four pages in LOOM’s own colours, easy on the eyes on a dark stage.</p>
+        <a class="sc-btn sc-btn-ghost" href="/assets/loom/LOOM-keyboard-shortcuts-dark.pdf">DOWNLOAD PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sc-section">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="sc-label">IF YOU LEARN ONLY FOUR</div>
+      <h2 class="sc-h">Start with these.</h2>
+    </div>
+    <div class="sc-keys">
+      <div class="sc-key">
+        <div class="sc-caps"><span class="sc-cap">Space</span></div>
+        <div class="sc-key-what">Do what the ring says</div>
+        <div class="sc-key-why">Record, close the loop, overdub. The centre of the focused ring shows what the next press will do.</div>
+      </div>
+      <div class="sc-key">
+        <div class="sc-caps"><span class="sc-cap sc-sym">⇧</span><span class="sc-cap">Return</span></div>
+        <div class="sc-key-what">Perform from the top</div>
+        <div class="sc-key-why">Plays the arrangement from bar 1, and the song presses the looper’s buttons for you.</div>
+      </div>
+      <div class="sc-key">
+        <div class="sc-caps"><span class="sc-cap sc-sym">⌘</span><span class="sc-cap">.</span></div>
+        <div class="sc-key-what">Stop everything</div>
+        <div class="sc-key-why">Stops the transport and every track at once.</div>
+      </div>
+      <div class="sc-key">
+        <div class="sc-caps"><span class="sc-cap sc-sym">⌘</span><span class="sc-cap">/</span></div>
+        <div class="sc-key-what">Open the User Guide</div>
+        <div class="sc-key-why">The full manual, as a PDF on your Mac. It opens with no internet.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sc-section">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="sc-label">WHAT TO DO NEXT</div>
+      <h2 class="sc-h">Try it, then watch it.</h2>
+    </div>
+    <div class="sc-next">
+      <div class="sc-card">
+        <div class="sc-label" style="color:#35D07F;">FREE FOR 14 DAYS</div>
+        <h3>Haven’t tried LOOM yet?</h3>
+        <p>The trial has every feature unlocked, with no watermark, no account and no card. When it ends, a licence is a one-time purchase.</p>
+        <div class="sc-label" style="letter-spacing:0.06em;color:#6B7078;">{{ releases.latest.version }} · {{ releases.latest.dmgSize }} · APPLE SILICON · MACOS 13.3+</div>
+        <div class="sc-spacer"></div>
+        <a class="sc-btn sc-btn-green" href="{{ releases.latestDmgUrl }}">DOWNLOAD FOR MACOS</a>
+      </div>
+      <div class="sc-card">
+        <div class="sc-label" style="color:#4CC9F0;">THE FULL OVERVIEW</div>
+        <h3>See everything LOOM does</h3>
+        <a class="sc-video" href="https://www.youtube.com/watch?v=se70SNu-5nA" aria-label="Watch the LOOM full overview on YouTube">
+          <img src="/assets/loom/overview-poster.jpg" alt="" loading="lazy">
+          <span class="sc-play"></span>
+        </a>
+        <p>It’s long, but the chapters let you jump straight to the part you care about.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sc-note">
+    <div class="sc-note-inner">
+      <p>I’m Zach. I’m a musician in Nashville, and I built LOOM myself. Every email on this list comes from me, and if you reply to one, it comes straight back to me.</p>
+      <div class="sc-sig sc-mono">ZACH SWIFT · MOONQUAKE MEDIA</div>
+    </div>
+  </div>
+
+  <div class="sc-foot">
+    <div class="sc-row">
+      <img src="/assets/loom/loom-icon-64.png" alt="" width="26" height="26">
+      <div class="sc-label" style="font-size:11.5px;letter-spacing:0.12em;">LOOM · <a href="/" style="color:#8A9099;">MOONQUAKE MEDIA</a></div>
+      <div class="sc-fill"></div>
+      <a href="/loom/manual/">MANUAL</a>
+      <a href="/loom/version">VERSIONS</a>
+      <a href="/blog/">BLOG</a>
+      <a href="mailto:support@moonquakemedia.com">SUPPORT</a>
+    </div>
+  </div>
+
+</main>
