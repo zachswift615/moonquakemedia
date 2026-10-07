@@ -145,6 +145,38 @@ layout: layouts/base.njk
       <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">WATCH THE DEMO</div>
     </div>
 
+    <!-- FULL OVERVIEW VIDEO, the same click-to-load poster as the demo above, below it: the demo
+         is two minutes and the overview is thirty, and a visitor who has never heard of LOOM is
+         likelier to press play on the short one. The poster is the video's own thumbnail
+         (assets/loom/overview-poster.jpg). Its VideoObject sits beside the demo's in the
+         structured data below; change both together. -->
+    <div style="padding:40px 0 0;">
+      <div id="loom-overview" style="position:relative;border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);aspect-ratio:16/9;">
+        <a href="https://www.youtube.com/watch?v=se70SNu-5nA" id="loom-overview-play" aria-label="Play the LOOM full overview video" style="position:absolute;inset:0;display:block;">
+          {% shot "/assets/loom/overview-poster.jpg", "", "(min-width: 1304px) 1240px, calc(100vw - 32px)" %}
+          <span aria-hidden="true" style="position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:rgba(11,12,14,0.78);border:1px solid rgba(232,234,237,0.35);display:flex;align-items:center;justify-content:center;"><span style="display:block;width:0;height:0;border-style:solid;border-width:15px 0 15px 25px;border-color:transparent transparent transparent #E8EAED;margin-left:6px;"></span></span>
+        </a>
+      </div>
+      <script>
+        (function () {
+          var link = document.getElementById('loom-overview-play');
+          link.addEventListener('click', function (event) {
+            event.preventDefault();
+            var frame = document.createElement('iframe');
+            frame.src = 'https://www.youtube-nocookie.com/embed/se70SNu-5nA?rel=0&autoplay=1';
+            frame.title = 'LOOM full overview video';
+            frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            frame.referrerPolicy = 'strict-origin-when-cross-origin';
+            frame.allowFullscreen = true;
+            frame.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;display:block;';
+            link.replaceWith(frame);
+            frame.focus();
+          });
+        })();
+      </script>
+      <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">WATCH THE FULL OVERVIEW · 31 MIN</div>
+    </div>
+
     <div style="padding:64px 0 0;">
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
         <!-- SCREENSHOTS: captured 2026-09-19, off ~/Desktop/loom-screenshots-2026-09-19.
@@ -859,6 +891,18 @@ layout: layouts/base.njk
       "duration": "PT1M55S",
       "contentUrl": "https://www.youtube.com/watch?v=sngb7h791C4",
       "embedUrl": "https://www.youtube-nocookie.com/embed/sngb7h791C4",
+      "publisher": { "@id": "{{ site.url }}/#organization" }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "{{ site.url }}/loom/#overview",
+      "name": "LOOM 1.3 for Mac: A Live Looper That Plays Itself (Full Overview)",
+      "description": "A 31-minute overview of LOOM, a live looper for Apple Silicon Macs: the looper view, the built-in drum machine, synth and sampler, the arrange view that runs the looper for you, the mixer and effects, and recording a performance as synced stems.",
+      "thumbnailUrl": "{{ site.url }}/assets/loom/overview-poster.jpg",
+      "uploadDate": "2026-10-07",
+      "duration": "PT31M16S",
+      "contentUrl": "https://www.youtube.com/watch?v=se70SNu-5nA",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/se70SNu-5nA",
       "publisher": { "@id": "{{ site.url }}/#organization" }
     },
     {
