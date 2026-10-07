@@ -1,14 +1,14 @@
 {#- The LOOM email list signup. Posts to Buttondown (newsletter username `loom`); the person lands
     on Buttondown's own confirmation page. Pass `signupSource` before including it, so subscribers
     are tagged by where they joined, and the GA event says the same thing.
-    The PDFs it promises are src/assets/loom/LOOM-keyboard-shortcuts-{light,dark}.pdf, linked from
-    the welcome email rather than from here. -#}
+    The PDF it promises is delivered by Buttondown's redirects, set in its Settings → Subscribing:
+    "After subscribing" goes to /loom/check-your-inbox/, "After confirming" to /loom/shortcuts/. -#}
 {%- set _src = signupSource or "site" %}
 <div class="loom-signup">
   <div class="loom-signup-copy">
     <div class="loom-signup-label">FREE · 4-PAGE PDF</div>
     <h2 class="loom-signup-title">Get the LOOM keyboard shortcuts.</h2>
-    <p class="loom-signup-body">Every key LOOM answers to, in a light version for printing and a dark one for your screen. You also get new tutorials and release notes by email, about twice a month. Unsubscribe any time.</p>
+    <p class="loom-signup-body">Every key LOOM answers to, in a light version for printing and a dark one for your screen. You’ll also get an email when there’s a new tutorial or release. Unsubscribe any time.</p>
   </div>
   <form class="loom-signup-form" action="https://buttondown.com/api/emails/embed-subscribe/loom" method="post"
         onsubmit="if (window.gtag) gtag('event', 'newsletter_signup', { signup_source: '{{ _src }}' });">
@@ -17,6 +17,7 @@
     <input type="hidden" name="embed" value="1">
     <input type="hidden" name="tag" value="{{ _src }}">
     <button type="submit">SEND ME THE PDF</button>
+    <div class="loom-signup-fine">We’ll email you a link to confirm. Your PDF opens when you click it.</div>
   </form>
 </div>
 <style>
@@ -33,6 +34,7 @@
   .loom-signup-form button { padding: 14px 0; border: 0; border-radius: 8px; background: #35D07F; color: #08090B; cursor: pointer;
     font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.09em; }
   .loom-signup-form button:focus-visible { outline: 2px solid #E8EAED; outline-offset: 2px; }
+  .loom-signup-fine { font-size: 13px; line-height: 1.45; color: #6B7078; text-align: center; text-wrap: balance; }
   .loom-signup-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   @media (max-width: 700px) { .loom-signup { grid-template-columns: minmax(0, 1fr); padding: 24px 20px; } }
 </style>

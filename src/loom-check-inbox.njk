@@ -1,0 +1,138 @@
+---
+# /loom/check-your-inbox/ — where someone lands right after submitting the LOOM email signup form.
+#
+# Buttondown's Settings → Subscribing → "After subscribing" redirects here. Without it they landed
+# on an empty Buttondown archive that said nothing about the confirmation step, which is the one
+# thing they still have to do. Confirming sends them on to /loom/shortcuts/ ("After confirming").
+layout: layouts/base.njk
+permalink: /loom/check-your-inbox/
+eleventyExcludeFromCollections: true
+title: "Check your inbox"
+seoTitle: "Check Your Inbox | LOOM"
+description: "One more step: confirm your email address to get the LOOM keyboard shortcuts."
+robots: "noindex, follow"
+ownFooter: true
+faviconSvg: /assets/loom/loom-favicon.svg
+favicon16: /assets/loom/favicon-16.png
+favicon: /assets/loom/favicon-32.png
+---
+<style>
+  {% include "components/loom-fonts.njk" %}
+
+  html, body { margin: 0; padding: 0; background: #0B0C0E; }
+  body { font-family: Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif; color: #E8EAED; -webkit-font-smoothing: antialiased; }
+  a { color: #4CC9F0; text-decoration: none; }
+  a:hover { color: #8AD9F5; text-decoration: underline; }
+  *:focus-visible { outline: 2px solid #7FDBFF; outline-offset: 2px; }
+
+  .ci-wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+  .ci-label { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11.5px; letter-spacing: 0.18em; color: #8A9099; }
+
+  .ci-bar { border-bottom: 1px solid #23262C; }
+  .ci-bar .ci-wrap { display: flex; align-items: center; gap: 14px; padding-top: 14px; padding-bottom: 14px; }
+  .ci-bar img { width: 30px; height: 30px; border-radius: 7px; display: block; }
+  .ci-bar .ci-name { font-size: 19px; font-weight: 700; letter-spacing: 0.02em; }
+  .ci-bar .ci-back { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.13em; color: #C7CDD4; }
+
+  .ci-main { padding: 104px 0 0; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+  .ci-copy { display: flex; flex-direction: column; gap: 22px; }
+  .ci-eyebrow { display: flex; align-items: center; gap: 12px; }
+  .ci-dot { width: 7px; height: 7px; border-radius: 2px; background: #F2A93B; flex: none; animation: ci-blink 1.6s ease-in-out infinite; }
+  @keyframes ci-blink { 50% { opacity: 0.25; } }
+  @media (prefers-reduced-motion: reduce) { .ci-dot { animation: none; } }
+  .ci-copy h1 { margin: 0; font-size: clamp(42px, 6vw, 76px); font-weight: 700; letter-spacing: -0.035em; line-height: 1; text-wrap: balance; }
+  .ci-copy p { margin: 0; font-size: clamp(17px, 1.8vw, 20px); line-height: 1.55; color: #C7CDD4; max-width: 48ch; text-wrap: pretty; }
+
+  .ci-steps { border: 1px solid #2C3038; border-radius: 12px; background: #0F1114; padding: 8px 26px; }
+  .ci-step { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; padding: 20px 0; border-bottom: 1px solid #1A1D22; }
+  .ci-step:last-child { border-bottom: 0; }
+  .ci-num { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; background: #171A1F; border: 1px solid #2C3038; color: #8A9099; }
+  .ci-step.ci-done .ci-num { background: #35D07F; border-color: #35D07F; color: #08090B; }
+  .ci-step.ci-now .ci-num { border-color: #F2A93B; color: #F2A93B; }
+  .ci-step-t { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+  .ci-step-d { margin-top: 4px; font-size: 14.5px; line-height: 1.5; color: #8A9099; }
+
+  .ci-help { padding: 72px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px; }
+  .ci-tip { border-top: 1px solid #23262C; padding-top: 18px; display: flex; flex-direction: column; gap: 8px; }
+  .ci-tip-t { font-size: 16px; font-weight: 600; }
+  .ci-tip-d { font-size: 14.5px; line-height: 1.55; color: #8A9099; }
+
+  .ci-foot { padding: 112px 0 0; }
+  .ci-foot .ci-row { border-top: 1px solid #23262C; padding: 30px 0 56px; display: flex; flex-wrap: wrap; gap: 22px; align-items: center; }
+  .ci-foot img { width: 26px; height: 26px; border-radius: 6px; display: block; }
+  .ci-foot a { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.12em; }
+  .ci-foot .ci-fill { flex: 1; min-width: 20px; }
+
+  @media (max-width: 820px) {
+    .ci-main { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-top: 64px; }
+  }
+  @media (max-width: 600px) {
+    .ci-wrap { padding: 0 16px; }
+    .ci-steps { padding: 4px 18px; }
+    .ci-help { padding-top: 56px; }
+    .ci-foot { padding-top: 80px; }
+  }
+</style>
+
+<div class="ci-bar">
+  <div class="ci-wrap">
+    <img src="/assets/loom/loom-icon-64.png" alt="" width="30" height="30">
+    <div class="ci-name">LOOM</div>
+    <a class="ci-back" href="/loom/">LOOM HOME</a>
+  </div>
+</div>
+
+<main id="main-content" class="ci-wrap">
+
+  <div class="ci-main">
+    <div class="ci-copy">
+      <div class="ci-eyebrow"><div class="ci-dot"></div><div class="ci-label">ONE MORE STEP</div></div>
+      <h1>Check your inbox.</h1>
+      <p>We’ve sent you an email with a link to confirm your address. Click it, and your keyboard shortcuts open right away.</p>
+    </div>
+
+    <div class="ci-steps" aria-label="Your progress">
+      <div class="ci-step ci-done">
+        <div class="ci-num" aria-hidden="true">✓</div>
+        <div><div class="ci-step-t">Sign up</div><div class="ci-step-d">Done. Thanks.</div></div>
+      </div>
+      <div class="ci-step ci-now">
+        <div class="ci-num" aria-hidden="true">2</div>
+        <div><div class="ci-step-t">Click the link in the email</div><div class="ci-step-d">It confirms your address, so nobody can sign you up without asking you.</div></div>
+      </div>
+      <div class="ci-step">
+        <div class="ci-num" aria-hidden="true">3</div>
+        <div><div class="ci-step-t">Get your shortcuts</div><div class="ci-step-d">Four pages, in a light version for printing and a dark one for your screen.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ci-help">
+    <div class="ci-tip">
+      <div class="ci-tip-t">Not there yet?</div>
+      <div class="ci-tip-d">Give it a minute, then check your spam folder, and the Promotions tab if you use Gmail.</div>
+    </div>
+    <div class="ci-tip">
+      <div class="ci-tip-t">Who it’s from</div>
+      <div class="ci-tip-d">The LOOM list runs on Buttondown, so the confirmation email is sent through Buttondown.</div>
+    </div>
+    <div class="ci-tip">
+      <div class="ci-tip-t">Typed the wrong address?</div>
+      <div class="ci-tip-d"><a href="/loom/#get">Sign up again</a> with the right one. The first sign-up does nothing until it is confirmed.</div>
+    </div>
+  </div>
+
+  <div class="ci-foot">
+    <div class="ci-row">
+      <img src="/assets/loom/loom-icon-64.png" alt="" width="26" height="26">
+      <div class="ci-label" style="font-size:11.5px;letter-spacing:0.12em;">LOOM · <a href="/" style="color:#8A9099;">MOONQUAKE</a></div>
+      <div class="ci-fill"></div>
+      <a href="/loom/manual/">MANUAL</a>
+      <a href="/loom/version">VERSIONS</a>
+      <a href="/blog/">BLOG</a>
+      <a href="mailto:support@moonquakemedia.com">SUPPORT</a>
+    </div>
+  </div>
+
+</main>
