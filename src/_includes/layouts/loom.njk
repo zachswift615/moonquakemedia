@@ -111,12 +111,42 @@ layout: layouts/base.njk
       </div>
     </div>
 
-    <!-- FULL OVERVIEW VIDEO, the same click-to-load poster as the demo above, below it: the demo
-         is two minutes and the overview is thirty, and a visitor who has never heard of LOOM is
-         likelier to press play on the short one. The poster is the video's own thumbnail
-         (assets/loom/overview-poster.jpg). Its VideoObject sits beside the demo's in the
-         structured data below; change both together. -->
+    <!-- WHAT'S NEW IN 1.4, FIRST: one minute of the new pictures with no talking, so it is the
+         cheapest play button on the page. The same click-to-load poster as the two below it; the
+         poster is the video's own YouTube thumbnail (assets/loom/v14-poster.jpg). Its VideoObject
+         sits beside the others in the structured data at the foot of the page; change both
+         together. -->
     <div style="padding:40px 0 0;">
+      <div id="loom-whatsnew" style="position:relative;border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);aspect-ratio:16/9;">
+        <a href="https://www.youtube.com/watch?v=W-xQaFIQMEI" id="loom-whatsnew-play" aria-label="Play Every Effect, Live: what's new in LOOM 1.4" style="position:absolute;inset:0;display:block;">
+          {% shot "/assets/loom/v14-poster.jpg", "", "(min-width: 1304px) 1240px, calc(100vw - 32px)", true %}
+          <span aria-hidden="true" style="position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:rgba(11,12,14,0.78);border:1px solid rgba(232,234,237,0.35);display:flex;align-items:center;justify-content:center;"><span style="display:block;width:0;height:0;border-style:solid;border-width:15px 0 15px 25px;border-color:transparent transparent transparent #E8EAED;margin-left:6px;"></span></span>
+        </a>
+      </div>
+      <script>
+        (function () {
+          var link = document.getElementById('loom-whatsnew-play');
+          link.addEventListener('click', function (event) {
+            event.preventDefault();
+            var frame = document.createElement('iframe');
+            frame.src = 'https://www.youtube-nocookie.com/embed/W-xQaFIQMEI?rel=0&autoplay=1';
+            frame.title = 'Every Effect, Live: what is new in LOOM 1.4';
+            frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            frame.referrerPolicy = 'strict-origin-when-cross-origin';
+            frame.allowFullscreen = true;
+            frame.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;display:block;';
+            link.replaceWith(frame);
+            frame.focus();
+          });
+        })();
+      </script>
+      <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">WHAT'S NEW IN 1.4 · 1 MIN</div>
+    </div>
+
+    <!-- FULL OVERVIEW VIDEO, the same click-to-load poster. The poster is the video's own
+         thumbnail (assets/loom/overview-poster.jpg). Its VideoObject sits beside the others in the
+         structured data below; change both together. -->
+    <div style="padding:64px 0 0;">
       <div id="loom-overview" style="position:relative;border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);aspect-ratio:16/9;">
         <a href="https://www.youtube.com/watch?v=se70SNu-5nA" id="loom-overview-play" aria-label="Play the LOOM full overview video" style="position:absolute;inset:0;display:block;">
           {% shot "/assets/loom/overview-poster.jpg", "", "(min-width: 1304px) 1240px, calc(100vw - 32px)" %}
@@ -153,7 +183,7 @@ layout: layouts/base.njk
     <div style="padding:64px 0 0;">
       <div id="loom-demo" style="position:relative;border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);aspect-ratio:16/9;">
         <a href="https://www.youtube.com/watch?v=sngb7h791C4" id="loom-demo-play" aria-label="Play the LOOM demo video" style="position:absolute;inset:0;display:block;">
-          {% shot "/assets/loom/demo-poster.jpg", "", "(min-width: 1304px) 1240px, calc(100vw - 32px)", true %}
+          {% shot "/assets/loom/demo-poster.jpg", "", "(min-width: 1304px) 1240px, calc(100vw - 32px)" %}
           <span aria-hidden="true" style="position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:rgba(11,12,14,0.78);border:1px solid rgba(232,234,237,0.35);display:flex;align-items:center;justify-content:center;"><span style="display:block;width:0;height:0;border-style:solid;border-width:15px 0 15px 25px;border-color:transparent transparent transparent #E8EAED;margin-left:6px;"></span></span>
         </a>
       </div>
@@ -265,9 +295,9 @@ layout: layouts/base.njk
       </div>
       <div>
         <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
-          {% shot "/assets/loom/shot-synth.png", "The synth editor docked under a row of all nine track rings, with every section on one page: two oscillators, the filter and its envelope, the amp envelope, two LFOs, VOICE in POLY with UNISON at 2, DETUNE and SPREAD, and the arpeggiator with its grid of rates, NOTES at 2 and STRUM at 46%" %}
+          {% loop "synth", 1800, 794, "The synth editor at full screen playing the Random Pairs preset. Dots ride the amp and filter envelopes, a cursor sweeps LFO 2 as it moves the cutoff, the arpeggiator lights the steps it plays, four of the eight voice lights are on, and each picture reads out the value in use" %}
         </div>
-        <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">SYNTH · EVERY CONTROL ON ONE PAGE AT FULL SCREEN</div>
+        <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">SYNTH · EVERY CONTROL ON ONE PAGE, EVERY PICTURE LIVE</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:24px;">
         <div>
@@ -395,12 +425,23 @@ layout: layouts/base.njk
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">One switch flips between the banks: loop tracks, instruments, inputs, master and buses. Every strip has eight insert slots, instruments included, every chain runs in stereo, and the mixer state and FX chains save with the song.</p>
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">For effects you get a parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner. Save a single effect as a preset or a whole chain as a rack, and the arrangement can load either one while you play.</p>
       </div>
-      <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
-        {% shot "/assets/loom/shot-eq.png", "LOOM’s mixer with the effect drawer open on a parametric EQ: the response curve over a live spectrum, six bands from a high pass to a low pass, a cut at 300 Hz and a lift above 3 kHz, in a chain loaded from the Vocal Air rack" %}
+      <div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px;align-items:start;">
+          <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
+            {% loop "eq", 1086, 750, "The parametric EQ's response curve over a live spectrum of the signal, with the high pass and low pass sweeping as the Sweeping Filters preset's automation moves them" %}
+          </div>
+          <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
+            {% loop "compressor", 1098, 760, "The compressor's transfer curve beside the last four seconds of gain reduction, hanging from the top, and the level going in and coming out below it, measured from the signal while the threshold moves" %}
+          </div>
+          <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
+            {% loop "gate", 1098, 750, "The noise gate's transfer curve beside the last two seconds of level in and level out, with a green strip under them that shows the gate opening and closing" %}
+          </div>
+        </div>
+        <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">EQ · COMPRESSOR · NOISE GATE · READ FROM YOUR SIGNAL AS YOU PLAY</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px;">
         <div style="border:1px solid #23262C;border-radius:10px;overflow:hidden;background:#101216;">
-          {% shot "/assets/loom/shot-delay.png", "The effect drawer open on a delay, third in a chain after a parametric EQ and a compressor, with thirteen beat divisions from 1⁄1 down to 1⁄16T and 1⁄8 selected", "(min-width: 1304px) 610px, (min-width: 700px) calc(50vw - 44px), calc(100vw - 32px)" %}
+          {% loop "delay", 1098, 1020, "The delay drawing its echoes on a time axis, bouncing between left and right in PING PONG, with the spacing changing as the delay time is turned" %}
         </div>
         <div style="display:flex;flex-direction:column;gap:20px;justify-content:center;">
           
@@ -408,7 +449,7 @@ layout: layouts/base.njk
               <div style="width:6px;height:6px;border-radius:2px;background:#A78BFA;flex:none;margin-top:8px;"></div>
               <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
                 <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">See what your effects are doing</h3>
-                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The EQ draws its six-band response curve over a live spectrum, and the compressor shows its transfer curve next to a gain-reduction meter.</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Every effect draws a picture of what it does, and the picture changes as you move a control. The EQ draws its curve over a live spectrum, and the compressor, gate, gain stage, octave, harmony, reverb and chorus also show readings taken from your signal while you play.</div>
               </div>
             </div>
           
@@ -484,12 +525,18 @@ layout: layouts/base.njk
         {% shot "/assets/loom/shot-racks.png", "LOOM’s rack browser over the mixer, listing the factory racks Vocal Air, Guitar Ambient, Drum Glue, Acoustic Stage, G2B, Bass DI, Pad Wash, Octave Lead and Wide Clean, each with chips naming the effects in it, above the user’s own saved racks" %}
       </div>
       <div style="padding:4px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">RACK BROWSER · FACTORY AND USER PRESETS · LOADING ONE SWAPS THE WHOLE FX CHAIN</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:24px;padding-top:24px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr));gap:24px;padding-top:24px;align-items:start;">
         <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
-          {% shot "/assets/loom/shot-amp.png", "The effect drawer open on the guitar amp: CLEAN, CRUNCH and HIGH GAIN models, gain and tight controls, bass, mid, treble and presence, and a closed 4x12 cab, second in a chain after a noise gate", "(min-width: 1304px) 610px, (min-width: 700px) calc(50vw - 44px), calc(100vw - 32px)" %}
+          {% loop "amp", 1086, 1146, "The guitar amp's drive curve and tone stack response, redrawn as the gain and tone knobs move, above its CLEAN, CRUNCH and HIGH GAIN models and a closed 4x12 cab" %}
         </div>
         <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
-          {% shot "/assets/loom/shot-chorus.png", "The effect drawer open on the chorus: rate, depth, sine or triangle shape, one to four voices, and four stereo modes (offset, split, opposed and mono), third in a chain after an amp", "(min-width: 1304px) 610px, (min-width: 700px) calc(50vw - 44px), calc(100vw - 32px)" %}
+          {% loop "overdrive", 1098, 750, "The transparent overdrive's clipping curve and the wave it shapes, the orange output over the dashed input, changing as automation moves the gain" %}
+        </div>
+        <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
+          {% loop "chorus", 1074, 1000, "The chorus scope with three voices sweeping over time and a dot where each voice is right now, on a triangle shape with OPPOSED stereo" %}
+        </div>
+        <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;">
+          {% loop "harmony", 1090, 1010, "The harmony's keyboard in G major, with the held note in white and two voices lit in blue and green on the notes they sing, joined to it by arcs marked +3RD and +5TH" %}
         </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:28px;padding-top:8px;">
@@ -822,6 +869,29 @@ layout: layouts/base.njk
   </main>
 </div>
 
+<!-- THE LOOPS ({% raw %}{% loop %}{% endraw %} in .eleventy.js) play while they are on screen and pause when they are
+     not, so a reader scrolling past nine of them decodes one or two at a time. A reader who asks
+     for reduced motion keeps the posters, and so does a browser without IntersectionObserver. -->
+<script>
+  (function () {
+    var loops = document.querySelectorAll('video.loom-loop');
+    if (!loops.length || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var video = entry.target;
+        if (entry.isIntersecting) {
+          var playing = video.play();
+          if (playing && playing.catch) playing.catch(function () {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.25 });
+    loops.forEach(function (video) { seen.observe(video); });
+  })();
+</script>
+
 <!-- STRUCTURED DATA. The product, its demo video, the breadcrumb and the FAQ, for search engines
      and AI answer engines. Every value comes from the same data the page draws: the version and
      download from `releases`, the price from `loomPricing`, the FAQ from `loomFaq`. The web
@@ -853,10 +923,10 @@ layout: layouts/base.njk
       "screenshot": [
         "{{ site.url }}/assets/loom/shot-looper.png",
         "{{ site.url }}/assets/loom/shot-arrange.png",
-        "{{ site.url }}/assets/loom/shot-synth.png",
+        "{{ site.url }}/assets/loom/loops/loop-synth.jpg",
         "{{ site.url }}/assets/loom/shot-drums.png",
         "{{ site.url }}/assets/loom/shot-sampler.png",
-        "{{ site.url }}/assets/loom/shot-eq.png",
+        "{{ site.url }}/assets/loom/loops/loop-eq.jpg",
         "{{ site.url }}/assets/loom/shot-tuner.png",
         "{{ site.url }}/assets/loom/shot-record-setup.png"
       ],
@@ -884,6 +954,18 @@ layout: layouts/base.njk
       "publisher": { "@id": "{{ site.url }}/#organization" },
       "author": { "@id": "{{ site.url }}/#organization" },
       "subjectOf": { "@id": "{{ site.url }}/loom/#demo" }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "{{ site.url }}/loom/#whatsnew",
+      "name": "Every Effect, Live",
+      "description": "A one-minute look at what is new in LOOM 1.4: the synth at full screen with pictures that follow what it plays, and an effect drawer where every effect shows what it is doing to your sound.",
+      "thumbnailUrl": "{{ site.url }}/assets/loom/v14-poster.jpg",
+      "uploadDate": "2026-10-14",
+      "duration": "PT1M4S",
+      "contentUrl": "https://www.youtube.com/watch?v=W-xQaFIQMEI",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/W-xQaFIQMEI",
+      "publisher": { "@id": "{{ site.url }}/#organization" }
     },
     {
       "@type": "VideoObject",

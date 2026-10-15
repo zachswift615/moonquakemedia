@@ -103,6 +103,16 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // A short silent loop of LOOM's screen: `{% loop "compressor", 1098, 760, "alt" %}` serves
+  // assets/loom/loops/loop-<name>.mp4 with loop-<name>.jpg (its first frame) as the poster. The
+  // width and height are the clip's own, so the page does not jump. It has no autoplay attribute:
+  // the script at the foot of layouts/loom.njk plays a loop while it is on screen and pauses it
+  // when it is not, and leaves it on the poster for a reader who asks for reduced motion.
+  eleventyConfig.addShortcode("loop", function(name, width, height, alt) {
+    const base = `/assets/loom/loops/loop-${name}`;
+    return `<video class="loom-loop" muted loop playsinline preload="none" poster="${base}.jpg" width="${width}" height="${height}" role="img" aria-label="${alt.replace(/"/g, "&quot;")}" style="width:100%;height:auto;display:block;"><source src="${base}.mp4" type="video/mp4"></video>`;
+  });
+
   // A captioned screenshot in a blog post: `{% blogshot "/images/blog/<post>/x.png", "alt", "caption" %}`.
   // One-off pictures, not kept in sync with the product the way the web manual's are. LOOM draws at
   // two pixels per point, so each picture is shown no wider than half its pixel width: a cropped
