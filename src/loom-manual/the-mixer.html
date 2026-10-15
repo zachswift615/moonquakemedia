@@ -584,7 +584,18 @@ manualSlug: the-mixer
 </tbody>
 </table>
 <p>The master's header carries no number, because there is one master chain and nothing to number.</p>
-<p>A filled slot opens the effect's controls. An empty slot offers the effects you can add. The breadcrumb button in the header (<code>TRACK 3 · CHAIN</code> on a track, <code>CUE · CHAIN</code> on the cue bus) goes back from an effect to the chain; <code>CLOSE</code> shuts the drawer and gives the width back to the mixer.</p>
+<p>In the drawer, each slot shows its number, a small picture of the effect and a short name of up to seven characters, such as <code>PARA EQ</code>, <code>COMP</code> or <code>TRANSP</code>. The header and the screen reader use the full name. An empty slot reads <code>+ ADD</code>.</p>
+<p>Click a filled slot's name to show that effect's controls. Click an empty slot to choose an effect for it. The breadcrumb button in the header (<code>TRACK 3 · CHAIN</code> on a track, <code>CUE · CHAIN</code> on the cue bus) goes back from an effect to the chain; <code>CLOSE</code> shuts the drawer and gives the width back to the mixer.</p>
+<h4 id="choosing-or-replacing-an-effect">Choosing or replacing an effect</h4>
+<p>The open slot has a second button at its right end, a small downward arrow. Press it to open the chooser in place of the effect's controls. An empty slot opens the chooser as soon as you click it.</p>
+<p>The chooser lists every effect in five groups: <code>UTILITY</code>, <code>DYNAMICS</code>, <code>DRIVE &amp; TONE</code>, <code>PITCH &amp; MOD</code> and <code>SPACE</code>. Each row shows the effect's name and a line saying what it does. The effect already in the slot is marked <code>CURRENT</code>.</p>
+<figure class="shot shot-half"><img src="/assets/loom/manual/song.effect-chooser.webp" width="540" height="818" loading="lazy" decoding="async" alt="The chooser open over a compressor in slot 6 of track 3's chain. The back button reads BACK TO COMPRESSOR, the search field is empty, and the COMPRESSOR row is highlighted, marked CURRENT and has the keyboard focus ring."><figcaption>The chooser open over a compressor in slot 6 of track 3's chain. The back button reads BACK TO COMPRESSOR, the search field is empty, and the COMPRESSOR row is highlighted, marked CURRENT and has the keyboard focus ring.</figcaption></figure>
+<p>Type in the search field at the top to narrow the list by name or by what the effect does; <code>echo</code> finds the delay. <code>↑</code> and <code>↓</code> move the highlight and <code>Return</code> chooses the highlighted effect. You can also click a row.</p>
+<p>Each effect you can choose is also a <code>Tab</code> stop, after the search field, in the order the list draws them. Press <code>Return</code> or <code>Space</code> on an effect to choose it. The highlight follows the keyboard, so the effect with the focus ring is the one the search field's <code>Return</code> would choose.</p>
+<p>Choosing an effect for a filled slot replaces the effect in that slot. The new effect takes the same place in the chain and opens at its starting settings, and the other slots do not change. The notice line says what changed, for example <code>Slot 6: tuner replaced with chorus.</code> Press <code>⌘Z</code> to put the previous effect back with all of its settings, and <code>⇧⌘Z</code> to replace it again.</p>
+<p>On a chain that is playing, a replace fades the old effect out and the new one in, as loading a rack does, so you hear a short dip rather than a click. See <a href="#replacing-an-effect-while-the-chain-is-running">Replacing an effect while the chain is running</a>.</p>
+<p>To close the chooser without changing anything, press <code>Esc</code>, press the back button at the top of the chooser (<code>‹ BACK TO TUNER</code>), press the arrow button again, or choose the effect marked <code>CURRENT</code>. The keyboard goes back to the arrow button. From an empty slot the back button reads <code>CANCEL</code> and takes you back to the effect you were looking at, for example <code>CANCEL · TUNER</code>, and the keyboard goes back to the empty slot.</p>
+<p>An effect the chain cannot take right now is dimmed, with the reason in place of its description, and you cannot choose it. For example, <code>Memory full: remove a delay-sized effect first</code> means the effect memory has no room for an effect of that size. Remove one from a chain you are not using, and the effect becomes available.</p>
 <p>Adding an effect reserves its memory at that moment, so a full pool is a refusal at soundcheck rather than an effect that stops working mid-song. A refusal is written to the notice line and nothing changes.</p>
 <p>Most effects open at settings that change nothing you can hear: a compressor at 1:1, a reverb with its <code>WET</code> at zero and its <code>DRY</code> at 100%, a noise gate with its <code>RANGE</code> at 0 dB. Turn it up from there.</p>
 <p><code>BYPASS SLOT</code> and <code>REMOVE</code> sit at the foot of the drawer. <code>BYPASS SLOT</code> does the same as ⌥-clicking the tile. <code>REMOVE</code> empties the slot and gives its memory back.</p>
@@ -718,10 +729,25 @@ manualSlug: the-mixer
 <p>If the name is already one of your own entries, LOOM asks before replacing it. Replacing changes that one file and nothing else: nothing stops playing, and no recorded audio is involved.</p>
 <p>Racks are saved in <code>~/Music/LOOM/Racks</code>, and presets in <code>~/Music/LOOM/Presets</code>, in a folder for each effect.</p>
 <h3 id="the-controls">The controls</h3>
-<p>Every effect except the EQ draws one row per control, under a heading for each group of related controls. The compressor's rows sit under <code>DETECTOR</code>, <code>ENVELOPE</code> and <code>OUTPUT</code>; the gate's under the same three; the delay's under <code>TIME</code>, <code>MIX</code> and <code>TONE</code>; the reverb's under <code>ROOM</code> and <code>MIX</code>; the chorus's under <code>MOTION</code> and <code>MIX</code>. A screen reader reads the heading with the control, so a row announces as <code>THRESHOLD, in DETECTOR</code>.</p>
+<p>Every effect except the EQ and the tuner groups its controls into modules. A module is a title with a rule under it and the controls below. Modules that fit side by side share a row, and each control's name sits above it. Knobs sit at the left of their module in a row, and a module wraps onto a second line when its controls do not fit across it. <code>MIX</code>, the <code>WET</code> and <code>DRY</code> knobs, is always the last module of the last row, so it is in the same place in every effect.</p>
+<p>The modules are:</p>
+<ul>
+<li>the compressor's and the gate's <code>DETECTOR</code>, <code>ENVELOPE</code> and <code>OUTPUT</code>;</li>
+<li>the delay's <code>TIME</code>, <code>ECHOES</code>, <code>TONE</code>, <code>MOD</code> and <code>MIX</code>;</li>
+<li>the reverb's <code>ROOM</code>, <code>MOD</code> and <code>MIX</code>;</li>
+<li>the chorus's <code>MOTION</code>, <code>CHARACTER</code>, <code>STEREO</code> and <code>MIX</code>;</li>
+<li>the amp's <code>AMP</code>, <code>CABINET</code>, <code>PREAMP · TONE STACK</code> and <code>MIX</code>;</li>
+<li>the cab's <code>CABINET</code>, <code>FILTER</code> and <code>MIX</code>;</li>
+<li>the gain stage's <code>LEVEL</code> and <code>POLARITY · STEREO</code>;</li>
+<li>the octave's <code>TRACKING</code>, <code>INPUT</code> and <code>MIX</code>;</li>
+<li>the harmony's <code>KEY · SCALE</code>, <code>VOICE 1</code>, <code>VOICE 2</code> and <code>MIX</code>;</li>
+<li>the transparent drive's <code>DRIVE</code>, <code>SHAPE</code> and <code>MIX</code>.</li>
+</ul>
+<p>A screen reader reads the module with the control, so a knob announces as <code>THRESHOLD, in DETECTOR</code>.</p>
 <div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/effect.delay.webp" width="548" height="700" loading="lazy" decoding="async" alt="The delay, with SYNC on."><figcaption>The delay, with SYNC on.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/effect.reverb.webp" width="548" height="620" loading="lazy" decoding="async" alt="The reverb."><figcaption>The reverb.</figcaption></figure></div>
-<p>Each row carries the control's name, its value in its own unit, and the control itself. Most controls are a track you can drag. <code>←</code> and <code>→</code> move a track by a hundredth of its travel, <code>Shift</code> with them by a thousandth, and <code>Home</code> and <code>End</code> go to the ends. Dragging and the arrows stay inside the control's range, so neither can ask for a value the effect would refuse.</p>
-<p>Some settings are not a range, and those rows carry a different control:</p>
+<p>The gain stage, the transparent drive, the amp, the cab, the delay, the reverb, the chorus, the octave and the harmony each open with a picture above their controls. The compressor, the gate, the EQ and the tuner have their own pictures, described on their pages. The picture takes the height the controls leave free, between 200 and 340 pixels, so the drawer has no empty space under the controls. A picture is drawn from the effect's own settings, so it changes as you move a control. It does not measure your playing unless its page says so. Each page describes what its picture shows and what it leaves out.</p>
+<p>Each row carries the control's name, its value in its own unit, and the control itself. A control that runs through a range is a knob you can turn, except the tuner's <code>REFERENCE</code>, which is a track you can drag. <code>←</code> and <code>→</code> move either by a hundredth of its travel, <code>Shift</code> with them by a thousandth, and <code>Home</code> and <code>End</code> go to the ends. Dragging and the arrows stay inside the control's range, so neither can ask for a value the effect would refuse.</p>
+<p>Some settings are not a plain range, and those carry a different control:</p>
 <table>
 <thead>
 <tr>
@@ -733,7 +759,7 @@ manualSlug: the-mixer
 <tbody>
 <tr>
 <td>Two states</td>
-<td>A switch reading its current state</td>
+<td>A chip: the setting's name and a light</td>
 <td>The delay's <code>PING PONG</code></td>
 </tr>
 <tr>
@@ -741,12 +767,50 @@ manualSlug: the-mixer
 <td>A row of cells, one lit</td>
 <td>The reverb's <code>SIZE</code>, the chorus's <code>VOICES</code></td>
 </tr>
+<tr>
+<td>Six or more choices</td>
+<td>A grid of cells, one lit</td>
+<td>The delay's <code>DIVISION</code>, the harmony's <code>SCALE</code></td>
+</tr>
+<tr>
+<td>A choice between pictures</td>
+<td>Two tiles, one lit</td>
+<td>The cab's <code>CABINET</code></td>
+</tr>
+<tr>
+<td>A range</td>
+<td>A knob</td>
+<td>The amp's <code>GAIN</code>, <code>BASS</code>, <code>MID</code> and <code>TREBLE</code>, the compressor's <code>THRESHOLD</code>, <code>RATIO</code> and <code>KNEE</code></td>
+</tr>
+<tr>
+<td>A range that runs both sides of zero</td>
+<td>A knob whose arc fills from twelve o'clock</td>
+<td>The gain stage's <code>GAIN</code>, the amp's <code>PRESENCE</code></td>
+</tr>
+<tr>
+<td><code>WET</code> and <code>DRY</code></td>
+<td>Two knobs under <code>MIX</code></td>
+<td>Every effect that has both</td>
+</tr>
+<tr>
+<td>The twelve notes</td>
+<td>A row of twelve cells</td>
+<td>The harmony's <code>KEY</code></td>
+</tr>
+<tr>
+<td>An interval above or below a note</td>
+<td>A ladder of cells</td>
+<td>The harmony's <code>VOICE 1</code> and <code>VOICE 2</code></td>
+</tr>
 </tbody>
 </table>
-<p>Both take one <code>Tab</code> stop, like a track. On a switch, <code>Return</code> changes it. On a row of cells, <code>←</code> and <code>→</code> move the selection and <code>Home</code> and <code>End</code> go to the ends. You cannot type a value into these settings, because they have no numbers.</p>
-<p>A row with more cells than fit across the drawer wraps onto a second line rather than shrinking its cells. Every cell stays on screen and stays where it is; the row is taller. On a wrapped row, <code>↑</code> and <code>↓</code> move to the cell above and the cell below, and <code>←</code> and <code>→</code> still step one cell at a time through the whole set. The delay's <code>DIVISION</code> is the setting that wraps.</p>
-<p>A switch that is off has a dashed outline as well as reading <code>OFF</code>, so its state does not depend on colour alone. Nothing else on the row is disabled by it.</p>
-<p>A row of cells can also have cells you cannot choose right now. Those are dimmed and have a dashed outline. They stay where they are, so nothing else moves, and <code>←</code> and <code>→</code> step over them. The notice row says why. The delay's <code>DIVISION</code> is the setting that does this.</p>
+<p>A chip, a row of cells, a row of notes and a ladder each take one <code>Tab</code> stop, like a knob. On a chip, <code>Return</code> changes it. On a row of cells, a row of notes or a ladder, <code>←</code> and <code>→</code> move the selection and <code>Home</code> and <code>End</code> go to the ends. The selection does not wrap round: <code>←</code> on the first cell stays on the first cell. You cannot type a value into these settings, because they have no numbers.</p>
+<p>A grid folds into even columns rather than shrinking its cells: the delay's fourteen divisions sit seven to a line, and the harmony's twelve scales four to a line. Every cell stays on screen and stays where it is. On a grid, <code>↑</code> and <code>↓</code> move to the cell above and the cell below, and <code>←</code> and <code>→</code> still step one cell at a time through the whole set.</p>
+<p>Chips that follow one another under the same heading share one line, so the gain stage's three polarity switches take one row rather than three. A chip shows its state with a light and with its lettering: a filled light and bold lettering when the setting is on, an outline light and plain lettering when it is off, so its state does not depend on colour alone. Nothing else on the row is disabled by a chip being off.</p>
+<p>A knob that runs both sides of zero draws a short mark at twelve o'clock and fills its arc from that mark to the pointer. A boost fills clockwise from the mark and a cut anticlockwise, so you can tell which you have set without reading the number. The synth draws the same fill on a track for its controls that run both sides of zero.</p>
+<p>A knob has a dial, its name and its value. Drag it up to turn it up and down to turn it down; it takes 200 pixels of travel to cover its whole range, and <code>Shift</code> slows that to a tenth. <code>←</code> and <code>→</code> move it by a hundredth of its travel, <code>Home</code> and <code>End</code> go to the ends, <code>Return</code> or a click on its value types a number, and a double-click puts it back to its default. A knob that cannot act in the current state has a dashed ring round the dial as well as dimmed lettering.</p>
+<p>The harmony's <code>KEY</code> is twelve cells, one for each note from C up to B, with the black-key notes written the way a musician writes them: C sharp, E flat, F sharp, A flat and B flat. A voice's ladder has fifteen cells: the seven intervals below the note on the left, a mark for the note itself in the middle (<code>UNISON</code>), and the seven above on the right. Each ladder cell shows the note it would make, counted from the key's root. A screen reader announces a cell with its group, the interval and the note, for example <code>Voice 1: plus third, E4</code>.</p>
+<p>A row of cells can also have cells you cannot choose right now. Those are dimmed and have a dashed outline. They stay where they are, so nothing else moves, and <code>←</code> and <code>→</code> step over them. The notice row says why. The delay's <code>DIVISION</code> is the setting that does this: a division too long for the longest delay time is dimmed.</p>
 <p>The EQ is laid out differently. See <a href="#the-eqs-six-bands">The EQ's six bands</a>.</p>
 <p>The controls scroll when there are more of them than fit, which happens mostly at a short window. Arrowing or tabbing onto a control that is off the bottom scrolls it into view.</p>
 <p>⌥-click a control to put it back to its default, the setting a fresh effect opens at. It is per control, so resetting the reverb's <code>WET</code> leaves its <code>DECAY</code> where you had it. A control whose range runs from a negative value to the same positive value, such as the amp's <code>PRESENCE</code> or a synth's <code>ENV AMT</code>, goes back to 0 instead.</p>
@@ -758,8 +822,9 @@ manualSlug: the-mixer
 <p>A number outside the control's range is refused by name rather than rounded into range. The notice line says what to type and which control refused, and the control does not move.</p>
 <h3 id="dry-and-wet-are-two-separate-levels">Dry and wet are two separate levels</h3>
 <p>The delay, the reverb and the chorus each have a <code>DRY</code> control and a <code>WET</code> control, and they do not move each other. <code>DRY</code> sets how much of the original signal goes through the slot. <code>WET</code> sets how loud the effect's own output is. Both run from 0% to 100%, and you can have both at 100% at once.</p>
+<p>The two are knobs side by side under <code>MIX</code>, with <code>WET</code> on the left and <code>DRY</code> on the right. Each has its own name and value, and each works like any other knob in the drawer.</p>
 <p>Turning <code>WET</code> up adds the repeats or the room beside what you are already hearing. It does not make the original signal quieter; for that, turn <code>DRY</code> down.</p>
-<p>A fresh delay or reverb opens with <code>DRY</code> at 100% and <code>WET</code> at 0%, which is the signal you had, unchanged. Turn <code>WET</code> up to hear the effect.</p>
+<p>A fresh delay or reverb opens with <code>DRY</code> at 100% and <code>WET</code> at 50%, so you hear the effect as soon as you add it. Turn <code>WET</code> down for less of it or up for more.</p>
 <p>Common settings:</p>
 <table>
 <thead>
@@ -786,6 +851,7 @@ manualSlug: the-mixer
 <p>Both at 0% is silence through that slot. Nothing stops you setting it. If you want the slot out of the way, use <code>BYPASS SLOT</code> instead: that also stops the effect running, which <code>DRY</code> 0% and <code>WET</code> 0% does not.</p>
 <p>The compressor and the EQ have no dry and wet controls. They shape the signal rather than adding something beside it, so there is nothing to blend.</p>
 <h3 id="the-delay">The delay</h3>
+<p>Above the controls, each echo is a bar on a time axis that runs to two seconds, or further when one echo does not fit in two. The bars are spaced by the delay time, which on <code>SYNC</code> is the length of the division at the tempo, and a bar's height is its level, so <code>FEEDBACK</code> shows as how many echoes you will hear before they fade out. A grey bar at zero is your original signal. With <code>PING PONG</code> on, the echoes alternate above the line and below it, left side then right side. A dashed line joins the tops of the bars. Under the bars, a strip shows the band the <code>LOW CUT</code> and <code>HIGH CUT</code> controls leave, from 20 Hz to 20k Hz. The picture does not show the effect of <code>MOD DEPTH</code>.</p>
 <p>The controls set how far back the echo reads, how much of it comes back, what the repeats sound like, whether they bounce between your speakers, and whether the time is a number of milliseconds or a division of the beat:</p>
 <table>
 <thead>
@@ -797,7 +863,7 @@ manualSlug: the-mixer
 <tbody>
 <tr>
 <td><code>TIME</code></td>
-<td>how far back the echo reads — 1 ms to about 2.7 seconds at 48 kHz. The longest time depends on your sample rate; see below. On <code>SYNC</code> it reads the length of the division and you cannot set it</td>
+<td>how far back the echo reads — 1 ms to about 2.7 seconds at 48 kHz. The longest time depends on your sample rate; see below. It is a knob, drawn only while <code>SYNC</code> is <code>FREE</code>. On <code>SYNC</code> the <code>DIVISION</code> grid takes its place</td>
 </tr>
 <tr>
 <td><code>SYNC</code></td>
@@ -805,7 +871,7 @@ manualSlug: the-mixer
 </tr>
 <tr>
 <td><code>DIVISION</code></td>
-<td>which division of the beat the delay follows while <code>SYNC</code> is on. It is a row of cells, <code>1/1</code> down to <code>1/16T</code>, wrapped onto two lines, and it opens on <code>1/8</code></td>
+<td>which division of the beat the delay follows while <code>SYNC</code> is on. It is a grid of cells, <code>1/1</code> down to <code>1/16T</code>, seven to a line, and it opens on <code>1/8</code>. It is drawn only while <code>SYNC</code> is on</td>
 </tr>
 <tr>
 <td><code>FEEDBACK</code></td>
@@ -813,7 +879,7 @@ manualSlug: the-mixer
 </tr>
 <tr>
 <td><code>WET</code></td>
-<td>how loud the repeats are. It opens at zero</td>
+<td>how loud the repeats are. It opens at 50%</td>
 </tr>
 <tr>
 <td><code>LOW CUT</code></td>
@@ -825,7 +891,7 @@ manualSlug: the-mixer
 </tr>
 <tr>
 <td><code>PING PONG</code></td>
-<td>whether the repeats alternate left and right instead of sitting in the middle. It is a switch rather than a track. It is <strong>on</strong> when you put a delay in a slot, except where the source is already stereo: a stereo-linked input pair, a drum machine, and a sampler holding a stereo sample. There it starts <strong>off</strong></td>
+<td>whether the repeats alternate left and right instead of sitting in the middle. It is a chip rather than a knob. It is <strong>on</strong> when you put a delay in a slot, except where the source is already stereo: a stereo-linked input pair, a drum machine, and a sampler holding a stereo sample. There it starts <strong>off</strong></td>
 </tr>
 <tr>
 <td><code>DRY</code></td>
@@ -872,6 +938,8 @@ manualSlug: the-mixer
 <p>A song can hold a <code>TIME</code> longer than your interface can play, for example a song saved at 48 kHz with <code>TIME</code> at 2000 ms and opened at 96 kHz. When the song opens on that interface, including when you switch to the interface with the song open, LOOM sets <code>TIME</code> to the longest time the interface can play. The notice row says so, with the old time, the new time and the sample rate. The delay was already playing that shorter time, so what you hear does not change, and every control on the delay works as usual. The song saves the shorter time from then on.</p>
 <p>If that delay is on <code>SYNC</code> and its division is too long at the song's tempo as well, the notice also names the division and the tempo. The delay keeps the division.</p>
 <h3 id="the-reverb">The reverb</h3>
+<p>Above the controls, the picture shows the level of the reverb falling against time. The solid line is the tail, reaching -60 dB at <code>DECAY</code>, which is also where the dashed vertical line and the <code>RT60</code> label sit. The dashed line below it is the tail for the top end, measured at about 4k Hz; it falls faster the higher <code>DAMPING</code> is, and the readout above the picture gives both times. The white marks at the left are the first echoes: one for each of the reverb's eight delay lines, spread further apart as <code>SIZE</code> grows. The lines show the decay the controls set.</p>
+<p>While the room is sounding, the area under the tail glows: the louder the room reaches the output, the brighter the glow, from none at -48 dBFS to full at 0 dBFS, and <code>ROOM</code> at the top right gives that level in decibels. The level is of the room alone, after <code>WET</code>, and not of the dry signal: at <code>WET</code> 0% nothing glows however loud you play. Silence, a bypassed slot, or no audio device shows no glow and no <code>ROOM</code> level.</p>
 <p><code>DECAY</code>, <code>DAMPING</code> and <code>SIZE</code> describe the room; <code>WET</code> and <code>DRY</code> decide how much of it you hear; <code>MOD DEPTH</code> and <code>MOD RATE</code> make the tail move.</p>
 <table>
 <thead>
@@ -891,11 +959,11 @@ manualSlug: the-mixer
 </tr>
 <tr>
 <td><code>SIZE</code></td>
-<td>which of three rooms the reverb is: <code>SMALL</code>, <code>MEDIUM</code> or <code>LARGE</code>. It is a row of three cells, not a track</td>
+<td>which of three rooms the reverb is: <code>SMALL</code>, <code>MEDIUM</code> or <code>LARGE</code>. It is a row of three cells, not a knob</td>
 </tr>
 <tr>
 <td><code>WET</code></td>
-<td>how loud the room is. It opens at zero</td>
+<td>how loud the room is. At 100%, a medium room with a 2-second <code>DECAY</code> comes out at about the level of a sustained sound you play into it; a shorter <code>DECAY</code> is quieter and a longer one louder. It opens at 50%. When you open a song, an effect preset or a rack saved with an earlier version of LOOM, LOOM sets each reverb's <code>WET</code> to half the value it was saved with, including any <code>WET</code> automation, so that it sounds as it did. If you open a song saved with this version in an earlier version of LOOM, its reverbs are about 6 dB quieter</td>
 </tr>
 <tr>
 <td><code>DRY</code></td>
@@ -958,15 +1026,16 @@ manualSlug: the-mixer
 <p><code>ON</code> switches the band out. Switching a band off takes it out of the filter completely rather than flattening or turning it down: it stops running, and what comes out of that band is bit for bit what went in. It fades out over about ten milliseconds rather than switching instantly, so doing it mid-song does not click.</p>
 <p>A band that is off has a dashed outline and its button reads <code>OFF</code>, so its state does not depend on colour alone. Its controls stay live, so you can set a band up before you switch it in.</p>
 <p>The high pass and the low pass arrive switched off, the way Logic's Channel EQ ships them. The other four arrive on and flat. Those two are the only bands with no <code>GAIN</code> control: every other band at 0 dB is already doing nothing, and a flat bell is skipped entirely, but a high pass at 20 Hz still takes a little off the bottom octave. So a new EQ passes the sound through untouched until you switch a filter on or move a gain.</p>
-<p>The compressor and the EQ also draw a curve above the controls: the compressor's transfer curve with a dashed 1:1 line behind it, and the EQ's magnitude response. Both are computed from the settings themselves, so they are right the instant you move something.</p>
+<p>The compressor and the EQ also draw a picture above the controls: the compressor's transfer curve with a dashed 1:1 line and a dashed line at the threshold, and the EQ's magnitude response. Both are computed from the settings themselves, so they are right the instant you move something.</p>
 <p>The EQ's plot carries a scale on both axes, so you can read a value off the curve rather than only its shape. Across the bottom it runs from <code>20 Hz</code> on the left to <code>20.0k Hz</code> on the right, logarithmically, with marks at <code>100</code>, <code>1k</code> and <code>10k</code>: each octave takes the same width, the way it does on the <code>FREQ</code> cells. Up the right-hand edge it runs in decibels of gain, marked at the top and bottom of the range the bands can reach and halfway to each. The brightest of those rules is <code>0</code>, so a curve lying along it is an EQ that is doing nothing at that frequency.</p>
-<p>The grey shape behind the curve is the signal after the EQ, so you can see the effect the curve is having on it. It is taken at the end of the chain, so any effect in a later slot is in it too. It has no scale of its own and is not meant to be read as a number. The curve is what the EQ is set to do, and the grey shape is the result.</p>
-<p>The compressor also draws a gain-reduction meter, in a narrow strip at the right of its transfer curve, marked <code>GR</code>. It shows how much the compressor is taking off right now, as a bar that grows downward and a reading in decibels below it. It reads <code>0.0</code> when the compressor is not compressing, and it goes to zero rather than freezing the moment you bypass the slot or the chain. It falls at the same rate as the level meters on the strips, so two meters on one screen never tell you different things about how fast something moved.</p>
-<figure class="shot shot-half"><img src="/assets/loom/manual/song.compressor.webp" width="540" height="683" loading="lazy" decoding="async" alt="A compressor in slot 6 of track 3's chain while the track plays. The transfer curve bends at the threshold, away from the dashed 1:1 line, and the GR meter reads -10.9."><figcaption>A compressor in slot 6 of track 3's chain while the track plays. The transfer curve bends at the threshold, away from the dashed 1:1 line, and the GR meter reads -10.9.</figcaption></figure>
-<p>There are no input or output meters in the drawer. Gain reduction is a number the compressor works out anyway in order to do its job, so showing it costs nothing. An input or output level would be a measurement of the signal itself, which nothing in LOOM's engine reports.</p>
+<p>The grey shape behind the curve is the signal after the EQ, so you can see the effect the curve is having on it. It is taken at the end of the chain, so any effect in a later slot is in it too. It has no scale of its own and is not meant to be read as a number. The curve is what the EQ is set to do, and the grey shape is the result. The grey shape is drawn for an EQ on any chain: a track, an input, an instrument track, a bus or the master.</p>
+<p>The compressor also shows how much it is taking off right now. A bar at the right of the picture, marked <code>GR</code>, grows downward with the gain reduction, and the reading at the top right of the picture gives the threshold and the gain reduction in decibels. Beside the transfer curve, the last four seconds of gain reduction are drawn as a line hanging from the top, so you see the compressor work on each hit and not only its shape. The reading is <code>0.0</code> when the compressor is not compressing, and it goes to zero rather than freezing the moment you bypass the slot or the chain. It falls at the same rate as the level meters on the strips, so two meters on one screen never tell you different things about how fast something moved.</p>
+<figure class="shot shot-half"><img src="/assets/loom/manual/song.compressor.webp" width="540" height="596" loading="lazy" decoding="async" alt="A compressor in slot 6 of track 3's chain while the track plays. The transfer curve bends at the threshold, away from the dashed 1:1 line, and the GR bar and the reading above the picture show the gain reduction."><figcaption>A compressor in slot 6 of track 3's chain while the track plays. The transfer curve bends at the threshold, away from the dashed 1:1 line, and the GR bar and the reading above the picture show the gain reduction.</figcaption></figure>
+<p>Under the gain reduction, the lower part of the picture shows the last four seconds of the level going into the compressor and the level coming out of it, on the same scale as the transfer curve, with the threshold as a dashed line. The grey line is the level in and the white line is the level out, so you can see how far each hit goes over the threshold and how much of it the compressor takes off. Both lines are measured from your signal at the compressor's input and output. They fall at the same rate as the gain reduction and the level meters. The lines move from right to left at a steady rate, and they keep that rate while you turn a control.</p>
+<p>When there is no signal to measure, the lines are not drawn: a bypassed slot, a bypassed chain, silence, and a window with no audio device all leave that part of the picture empty and say <code>NO SIGNAL</code>. A level below -60 dBFS is not drawn either.</p>
 <p>The effects offered are a parametric EQ, a compressor, a noise gate, a delay, a reverb, a chorus, an octave, a cab, an amp, a tuner, a transparent drive, a harmony and a gain stage.</p>
 <h3 id="the-noise-gate">The noise gate</h3>
-<figure class="shot shot-half"><img src="/assets/loom/manual/effect.gate.webp" width="548" height="505" loading="lazy" decoding="async" alt="The noise gate at its default settings."><figcaption>The noise gate at its default settings.</figcaption></figure>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.gate.webp" width="548" height="670" loading="lazy" decoding="async" alt="The noise gate at its default settings."><figcaption>The noise gate at its default settings.</figcaption></figure>
 <p>The gate turns the signal down when you stop playing, so the hiss, the amp buzz and the room stop with you. Put it first on an input.</p>
 <p>Five controls, under three headings. <code>THRESHOLD</code> decides when the gate is open; <code>ATTACK</code>, <code>HOLD</code> and <code>RELEASE</code> decide how it moves; <code>RANGE</code> decides how far down it goes.</p>
 <table>
@@ -1003,13 +1072,15 @@ manualSlug: the-mixer
 <p>The gate never mutes completely. -90 dB is below the noise floor of any interface, so it is silence in every practical sense, but a gate that slammed to nothing would turn a decaying note into an edit and a room mic into a stutter. <code>RANGE</code> is the control that decides how much of that you want.</p>
 <p>There is no lookahead, because nothing in LOOM delays your signal. A short <code>ATTACK</code> is what protects the front of a note instead.</p>
 <p>The gate reads both sides of a stereo signal together and applies one gain to both, so a note panned hard to one side opens the whole gate rather than half of it.</p>
-<p>The gate draws a curve above its controls: the level going in against the level coming out, with a dashed diagonal behind it. The step is at the threshold and the floor below it is the range. The curve is what the gate settles at. <code>ATTACK</code>, <code>HOLD</code> and <code>RELEASE</code> set how long it takes to get there, so they are not in it.</p>
-<p>There is no open-and-closed light. You can hear a gate working: the sound stops.</p>
+<p>The gate draws two pictures above its controls. On the left is the level going in against the level coming out, with a dashed diagonal behind it and a dashed line at the threshold. The step is at the threshold and the floor below it is the range. That curve is what the gate settles at. On the right are the last two seconds of the gate at work, measured from your signal. The upper lane shows the level going in as a grey line and the level coming out as a blue line, from -60 dBFS at the bottom to 0 dBFS at the top, with the threshold as a dashed line. The green strip under it shows the gate itself: at the top of the strip the gate is open, and at the bottom it is closed as far as <code>RANGE</code> takes it. The lane moves from right to left at a steady rate, and it keeps that rate while you turn a control.</p>
+<p>When the gate is running and you stop playing, the strip falls to the bottom and the level lines stop: the gate is closed, and there is no signal to draw. When there is nothing to measure at all, because the slot or the chain is bypassed or there is no audio device, the strip and the lines are not drawn and the strip says <code>GATE: NO READING</code>.</p>
 <h3 id="the-chorus">The chorus</h3>
-<figure class="shot shot-half"><img src="/assets/loom/manual/effect.chorus.webp" width="548" height="591" loading="lazy" decoding="async" alt="The chorus at its default settings."><figcaption>The chorus at its default settings.</figcaption></figure>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.chorus.webp" width="548" height="911" loading="lazy" decoding="async" alt="The chorus at its default settings."><figcaption>The chorus at its default settings.</figcaption></figure>
+<p>Above the controls, each line is one voice's delay over time: it swings above and below the centre by <code>DEPTH</code>, completes a cycle at <code>RATE</code>, follows <code>SHAPE</code>, and each voice is a fraction of a cycle away from the one before. The picture shows two cycles.</p>
+<p>While the chorus is running, the picture moves: the right edge is now, marked <code>NOW</code>, and a white dot on each line shows where that voice is at this moment, measured from the chorus itself. The lines to the left of the dots are the oscillator's shape traced back from that moment at the current <code>RATE</code>; they are not a recording, so after a <code>RATE</code> change they show the new rate all the way back. Without a reading (a bypassed slot or no audio device) the picture stands still, has no dots, and the time axis reads <code>1 CYCLE, FROM THE SETTINGS</code>. On the right, a half circle from <code>L</code> to <code>R</code> shows where the original signal (grey) and the copies (blue) sit for the current <code>STEREO</code> setting. In <code>SPLIT</code> the original leans left and the copies lean right. In <code>OFFSET</code> each side has its own set of copies. In <code>OPPOSED</code> the right side's copies are drawn as a hollow dot with a minus sign, because their polarity is flipped. In <code>MONO</code> there is one dot in the centre.</p>
 <p>The chorus thickens a sound and spreads it across the stereo field. It runs delayed copies of the signal whose delay drifts up and down, so each copy is slightly out of tune with the original in a way that keeps changing. One copy is the sound of a chorus pedal; four is an ensemble.</p>
-<p>A new chorus arrives sounding. It opens as a Roland Jazz Chorus-style split: the original signal on the left, one drifting copy on the right, at full level. A chorus with its copies turned down is a slot that changes nothing. The cab and the amp also open sounding; every other effect opens at settings you cannot hear.</p>
-<p>Eight controls, under two headings. <code>RATE</code>, <code>DEPTH</code>, <code>SHAPE</code> and <code>VOICES</code> decide the movement; <code>STEREO</code>, <code>WIDTH</code>, <code>DRY</code> and <code>WET</code> decide what reaches the mix.</p>
+<p>A new chorus arrives sounding. It opens as a Roland Jazz Chorus-style split: the original signal on the left, one drifting copy on the right, at full level. A chorus with its copies turned down is a slot that changes nothing. The delay, the reverb, the cab and the amp also open sounding. Each effect's page says what it opens at.</p>
+<p>Eight controls, in four modules. <code>RATE</code>, <code>DEPTH</code> and <code>WIDTH</code> are knobs under <code>MOTION</code>. <code>SHAPE</code> and <code>VOICES</code> are rows of cells under <code>CHARACTER</code>. <code>STEREO</code> is a row of cells under its own heading, beside <code>MIX</code>, which holds the <code>WET</code> and <code>DRY</code> knobs.</p>
 <table>
 <thead>
 <tr>
@@ -1102,13 +1173,13 @@ manualSlug: the-mixer
 <li>On a stereo-linked input pair it opens at <strong>0%</strong>. The two sides are already the instrument's own two sides, and moving them against each other smears an image you set up at the keyboard. The same goes for a drum machine, and for a sampler holding a stereo sample.</li>
 </ul>
 <p>This is the same rule the delay's <code>PING PONG</code> follows, for the same reason. You can change it either way afterwards; the setting only decides what a new chorus opens at.</p>
-<p>There is no graph. A chorus's movement is where the drift is at each instant rather than a fixed shape, so a still picture could not show you anything the sound does not.</p>
 <h3 id="the-octave">The octave</h3>
-<figure class="shot shot-half"><img src="/assets/loom/manual/effect.octave.webp" width="548" height="489" loading="lazy" decoding="async" alt="The octave at its default settings."><figcaption>The octave at its default settings.</figcaption></figure>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.octave.webp" width="548" height="781" loading="lazy" decoding="async" alt="The octave at its default settings."><figcaption>The octave at its default settings.</figcaption></figure>
+<p>Above the controls, the top wave is an example of the signal you play and the wave below it is the octave: a flat-topped wave at half the frequency, which is what this kind of octave makes. <code>WET</code> sets how tall the lower wave is. On <code>FOLLOW</code> its height varies along its length, because the octave follows how hard you play; on <code>FIXED</code> it stays level. Both waves are examples and do not come from your signal. A strip along the bottom shows the notes the <code>TRACKING</code> setting follows, from the low <code>E</code> of a bass guitar up to about the frequency the setting filters at. While you play a single note, the right end of the strip names the note the octave is following, such as <code>HEARD A2 · 110 Hz</code>, and a white mark shows where it sits on the strip. The octave measures the time between the cycles it divides, and it names a note only when three cycles in a row agree. A chord, a note that has not settled yet, silence, a bypassed slot, or no audio device shows <code>NO STEADY NOTE</code> instead. A slide is followed as it moves.</p>
 <p>The octave adds a note one octave below what you play. It is built the way an analog octave pedal is built: it counts the cycles of your signal and puts out a wave at half that rate. It does not work out which note you are playing, so it adds no delay to your signal at all.</p>
 <p><strong>Play one note at a time.</strong> A chord gives the effect two notes to count at once and the result is neither note's octave. That is how this kind of octave works rather than a limitation LOOM adds, and it is what makes it instant. Fast runs and the very end of a fading note can stumble for a moment, which is part of the sound.</p>
 <p>The common use is to play a bass part on a guitar. Turn <code>WET</code> up, bring <code>DRY</code> down, and the guitar becomes the bass.</p>
-<p>Five controls, under two headings. <code>WET</code> and <code>DRY</code> decide what you hear; <code>DYNAMICS</code>, <code>SENSITIVITY</code> and <code>TRACKING</code> decide how the octave follows your playing.</p>
+<p>Five controls, in three modules. <code>WET</code> and <code>DRY</code> are knobs under <code>MIX</code> and decide what you hear. <code>TRACKING</code> and <code>DYNAMICS</code> are rows of cells under <code>TRACKING</code>, and <code>SENSITIVITY</code> is a knob under <code>INPUT</code>; they decide how the octave follows your playing.</p>
 <table>
 <thead>
 <tr>
@@ -1164,7 +1235,8 @@ manualSlug: the-mixer
 <p>The octave reads both sides of a stereo signal together and puts the same octave on both, so it sits in the centre rather than spreading. There is only one octave being generated, which is why it survives a mono PA.</p>
 <p>There is no <code>TONE</code> control, and the octave is always the same waveform. The filtering that shapes it is fixed, chosen so the result is a round sub rather than a buzz. <code>TRACKING</code> changes the filtering in front of the divider, which affects how reliably the effect follows you, not what it sounds like.</p>
 <h3 id="the-cab">The cab</h3>
-<figure class="shot shot-half"><img src="/assets/loom/manual/effect.cab.webp" width="548" height="489" loading="lazy" decoding="async" alt="The cab at its default settings."><figcaption>The cab at its default settings.</figcaption></figure>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.cab.webp" width="548" height="883" loading="lazy" decoding="async" alt="The cab at its default settings."><figcaption>The cab at its default settings.</figcaption></figure>
+<p>Above the controls, the picture is the cab's frequency response: how much louder or quieter it makes each frequency, from 20 Hz to 20k Hz, with a dashed line at 0 dB. The <code>LOW CUT</code> and <code>HIGH CUT</code> handles stand on the two cut frequencies and dim what they remove. Drag a handle to move the cut. It sets the same value as the knob below it, so the knob moves with it, and the handle stops at the knob's own limits and does not pass the other handle. The knobs remain the way to set a cut from the keyboard or with a screen reader.</p>
 <p>The cab is a speaker cabinet. A drive pedal played straight into an interface sounds harsh and thin, because a real one always reaches the audience through a speaker. Put the cab after a drive, or after anything else you want to sound as if it came out of an amplifier, and it shapes the sound the way a miked cabinet does.</p>
 <table>
 <thead>
@@ -1176,7 +1248,7 @@ manualSlug: the-mixer
 <tbody>
 <tr>
 <td><code>CAB</code></td>
-<td>the voicing. It is a row of cells, <code>NONE</code> and <code>4x12 CLOSED</code>, and it opens on <code>4x12 CLOSED</code></td>
+<td>the voicing. It is two picture tiles under <code>CABINET</code>, <code>NONE</code> and <code>4x12 CLOSED</code>, each with a line about its sound, and it opens on <code>4x12 CLOSED</code></td>
 </tr>
 <tr>
 <td><code>LOW CUT</code></td>
@@ -1210,7 +1282,8 @@ manualSlug: the-mixer
 <p>Each one cuts at 12 dB per octave past the frequency you set. At the end of its travel, where a new cab opens, each one is off rather than set to a very low or very high frequency.</p>
 <p>They work on every voicing, <code>NONE</code> included. With <code>NONE</code>, they are a quick way to take rumble or fizz off a direct sound.</p>
 <h3 id="the-amp">The amp</h3>
-<figure class="shot shot-half"><img src="/assets/loom/manual/effect.amp.webp" width="548" height="675" loading="lazy" decoding="async" alt="The amp at its default settings."><figcaption>The amp at its default settings.</figcaption></figure>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.amp.webp" width="548" height="849" loading="lazy" decoding="async" alt="The amp at its default settings."><figcaption>The amp at its default settings.</figcaption></figure>
+<p>Above the controls, the left graph is the preamp's clipping curve: the bright line is the chosen <code>MODEL</code> at the current <code>GAIN</code>, and the two faint lines are the other models at the same <code>GAIN</code>. The graph covers inputs up to a quarter of full scale either side of zero, where a guitar plays, so the curve's bend is visible. The right graph is the tone stack: what <code>BASS</code>, <code>MID</code>, <code>TREBLE</code> and <code>PRESENCE</code> do together to each frequency, up to 15 dB either way. It does not include the cab, which has its own picture.</p>
 <p>The amp is a guitar amplifier and its speaker cabinet in one slot: a preamp that distorts, a tone stack, a power amp, and the cab's voicings. Plug a guitar straight into your interface, add an amp, and you hear it the way it sounds through a miked amplifier.</p>
 <table>
 <thead>
@@ -1262,6 +1335,7 @@ manualSlug: the-mixer
 </tr>
 </tbody>
 </table>
+<p>The amp's six controls, <code>GAIN</code>, <code>TIGHT</code>, <code>BASS</code>, <code>MID</code>, <code>TREBLE</code> and <code>PRESENCE</code>, are knobs on one line under <code>PREAMP · TONE STACK</code>. <code>MODEL</code> is a row of cells under <code>AMP</code>, <code>CAB</code> is a row of cells under <code>CABINET</code> beside it, and the <code>WET</code> and <code>DRY</code> knobs sit under <code>MIX</code>.</p>
 <p>A new amp is heard as soon as you add it, because it opens with <code>WET</code> at 100% and <code>DRY</code> at 0%.</p>
 <p>The amp adds no delay to your signal.</p>
 <h4 id="gain-changes-how-much-the-amp-distorts-not-how-loud-it-is"><code>GAIN</code> changes how much the amp distorts, not how loud it is</h4>
@@ -1330,7 +1404,7 @@ manualSlug: the-mixer
 </tr>
 </tbody>
 </table>
-<p>You can add the tuner to a track chain, an input chain or the master chain. A bus has no tuner: the tuner listens to a signal the bus chains do not provide.</p>
+<p>You can add the tuner to any chain: a track, an input, a bus or the master. On a bus it listens to what is sent to that bus.</p>
 <p>The tuner adds no delay to your signal, and with <code>MUTE</code> off it does not change your signal at all.</p>
 <h4 id="what-the-tuner-listens-to">What the tuner listens to</h4>
 <p>The tuner listens to the signal going into the chain it is on, wherever it sits in that chain. A tuner after a drive in the same chain still hears your instrument clean, which is what it needs to tune by.</p>
@@ -1407,7 +1481,8 @@ manualSlug: the-mixer
 <p>When you strum, the tuner reads each string to within about 1 cent. The B and high E strings are the hardest to read, because the low strings' overtones fall close to their notes.</p>
 <p>A plucked string starts slightly sharp and settles flat over the first second or more, and the strobe shows this. Pluck the string, let the first moment pass, and tune to where the stripes settle.</p>
 <h3 id="the-transparent-drive">The transparent drive</h3>
-<figure class="shot shot-half"><img src="/assets/loom/manual/effect.transparent.webp" width="548" height="573" loading="lazy" decoding="async" alt="The transparent drive at its default settings."><figcaption>The transparent drive at its default settings.</figcaption></figure>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.transparent.webp" width="548" height="674" loading="lazy" decoding="async" alt="The transparent drive at its default settings."><figcaption>The transparent drive at its default settings.</figcaption></figure>
+<p>Above the controls, the left graph is the pedal's clipping curve for the chosen <code>CLIP</code> at the current <code>GAIN</code>, drawn with a dashed line for no change. The right graph runs a sine wave through that curve: the dashed wave is what goes in and the amber wave is what comes out, so <code>GAIN</code> shows as rounded peaks. The picture covers the clipping stage only. <code>BASS</code>, <code>TREBLE</code> and <code>VOICE</code> change the sound by frequency, and a curve has no frequency, so they are not in it. The input wave is drawn at 80% of full scale. <code>MEDIUM</code> is lopsided on purpose, because it clips one side of the wave sooner than the other.</p>
 <p>The transparent drive is an overdrive pedal that adds grit without taking away your guitar's own tone. Use it as a drive you leave on, as a clean boost, or in front of another drive or the amp to push it harder.</p>
 <table>
 <thead>
@@ -1447,6 +1522,7 @@ manualSlug: the-mixer
 </tr>
 </tbody>
 </table>
+<p><code>GAIN</code>, <code>BASS</code> and <code>TREBLE</code> are amber knobs under <code>DRIVE</code>; amber marks the stage that distorts. <code>CLIP</code> and <code>VOICE</code> are rows of cells under <code>SHAPE</code>. <code>WET</code> and <code>DRY</code> are knobs under <code>MIX</code>.</p>
 <p>A new transparent drive is heard as soon as you add it, because it opens with <code>WET</code> at 100% and <code>DRY</code> at 0%.</p>
 <p>The transparent drive adds no delay to your signal.</p>
 <h4 id="gain-changes-how-much-the-pedal-distorts-not-how-loud-it-is"><code>GAIN</code> changes how much the pedal distorts, not how loud it is</h4>
@@ -1477,7 +1553,9 @@ manualSlug: the-mixer
 <p>The transparent drive is studied from the Paul Cochrane Timmy overdrive and the MXR Timmy, including the three clipping settings of the MXR version. It is not a measurement of either pedal.</p>
 <p>LOOM is not affiliated with or endorsed by Paul Cochrane, Dunlop Manufacturing or MXR. Timmy and MXR are trademarks of their respective owners, used here only to identify the pedals whose sound was studied.</p>
 <h3 id="the-harmony">The harmony</h3>
-<figure class="shot shot-half"><img src="/assets/loom/manual/effect.harmony.webp" width="548" height="691" loading="lazy" decoding="async" alt="The harmony at its default settings."><figcaption>The harmony at its default settings.</figcaption></figure>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.harmony.webp" width="548" height="1255" loading="lazy" decoding="async" alt="The harmony at its default settings."><figcaption>The harmony at its default settings.</figcaption></figure>
+<p>Above the controls, a keyboard shows two octaves. A dot on a key means the note is in the chosen <code>KEY</code> and <code>SCALE</code>. While you sing or play a note the harmony is voicing, the white key is that note, the legend says <code>HELD NOTE</code>, and each voice is lit on the note it is singing above or below it, blue for voice 1 and green for voice 2, with an arc from the held note to the voice labelled with its interval and level. The ladders' second lines name the notes on that held note. A voice with its level at 0% is not drawn.</p>
+<p>When the harmony is not voicing (between notes, on breath or a chord it cannot follow, when both voices are at 0%, when the slot is bypassed, or with no audio device), the keyboard shows the root of the key instead, with the legend <code>ROOT, FROM THE SETTINGS</code>: the notes the voices would sing if you sang the root. It does not keep the last note you sang.</p>
 <p>The harmony adds one or two voices to what you sing or play, a third, a fifth or another interval away, in the key and scale of the song. The interval follows the scale note by note, the way a backing singer's would: in C major, a third above C is E, and a third above D is F. The voices are your own voice or guitar re-pitched, so they keep your vowel and your tone.</p>
 <p>Sing or play one note at a time. Your own signal passes through unchanged and on time. The voices are a little late, which is described below.</p>
 <table>
@@ -1530,7 +1608,7 @@ manualSlug: the-mixer
 </tr>
 </tbody>
 </table>
-<p><code>KEY</code>, <code>SCALE</code> and the two <code>VOICE</code> controls are steppers. Click <code>-</code> or <code>+</code>, or select the control and use the arrow keys, to move one setting at a time.</p>
+<p><code>KEY</code> is a row of twelve notes and each <code>VOICE</code> is a ladder of fifteen intervals. Click a cell, or select the row and use <code>←</code> and <code>→</code>, to choose one. <code>KEY</code>, <code>SCALE</code> and the <code>SAFE</code> chip sit together under <code>KEY · SCALE</code>. <code>SCALE</code> is a grid of twelve cells, four to a line: click a cell, or select the grid and use the arrow keys. Each voice's <code>LEVEL</code> is a knob beside its ladder. <code>DRY</code>, <code>DOUBLE</code> and <code>SPREAD</code> are knobs under <code>MIX</code>.</p>
 <p>A new harmony is heard as soon as you add it: voice 1 a third above you, under your own signal. With <code>LEVEL 1</code> and <code>LEVEL 2</code> both at 0% there is no harmony, and with <code>DRY</code> at 0% you hear only the voices. With all three at 0% the slot is silent.</p>
 <h4 id="key-and-scale"><code>KEY</code> and <code>SCALE</code></h4>
 <p>Set <code>KEY</code> to the key of the song and <code>SCALE</code> to its scale. <code>KEY</code> names the first note of the scale: <code>A</code> with <code>MINOR</code> is A minor. A minor has the same notes as C major, so the voices are the same in either; set the one you would name the song in.</p>
@@ -1618,7 +1696,9 @@ manualSlug: the-mixer
 <h4 id="notes-the-harmony-follows">Notes the harmony follows</h4>
 <p>The harmony follows notes from about 70 Hz, a little below a guitar's low E, to 1,000 Hz, the top of a soprano's range. Notes outside that range get no voices.</p>
 <h3 id="the-gain">The gain</h3>
-<figure class="shot shot-half"><img src="/assets/loom/manual/effect.gain.webp" width="548" height="455" loading="lazy" decoding="async" alt="The gain stage at its default settings."><figcaption>The gain stage at its default settings.</figcaption></figure>
+<figure class="shot shot-half"><img src="/assets/loom/manual/effect.gain.webp" width="548" height="751" loading="lazy" decoding="async" alt="The gain stage at its default settings."><figcaption>The gain stage at its default settings.</figcaption></figure>
+<p>Above the controls, the two waves are the left and right sides. A side whose polarity is inverted is drawn upside down, with a <code>Ø</code> mark beside its letter, and <code>MONO</code> draws both sides the same. The meter on the right shows how the two sides relate, from -1 (opposite) through 0 to +1 (identical). When the two sides are opposite, the meter turns amber and says <code>OUT OF PHASE</code>: played through a mono speaker they would cancel. While a stereo signal passes through the gain stage, the meter measures it at the stage's output and the line beneath the warning ends <code>measured at the output</code>. The mark is solid.</p>
+<p>When there is nothing to measure, the meter shows what your <code>INVERT</code> and <code>MONO</code> settings would do to a signal that is the same on both sides, draws the mark as an outline, and ends the line beneath the warning <code>from the switches, not measured</code>. That happens when the slot is bypassed, when there is no signal or no audio device, and on a mono chain, which has no second side to compare.</p>
 <p>The gain stage changes the level of a signal and nothing else. Use it to turn down a source that is too loud for the effects after it, to lift a quiet one, to flip the polarity of one side or both, or to hear a stereo signal in mono. It adds no distortion and no colour.</p>
 <table>
 <thead>
@@ -1669,6 +1749,7 @@ manualSlug: the-mixer
 <p>Each of these is one change:</p>
 <ul>
 <li>Adding an effect to a slot, including the settings it opens with.</li>
+<li>Replacing the effect in a slot from the chooser. <code>⌘Z</code> puts the previous effect back with its settings.</li>
 <li>Removing an effect.</li>
 <li>Moving an effect to another slot, however far the others slide over.</li>
 <li>Turning bypass on or off for a slot.</li>
@@ -1704,7 +1785,9 @@ manualSlug: the-mixer
 <p>An effects bus strip is three stops on its own <code>FADERS</code> page. A bus cannot send to itself, so its fader is not drawn there and there is nothing to tab onto. Its own level is on the <code>MAIN</code> page.</p>
 <p>On the loop tracks, <code>←</code> and <code>→</code> move between strips as they move between tracks everywhere else, and the focus ring goes with the focused track, so <code>→</code> <code>→</code> <code>↑</code> raises the level of the strip you just arrived on.</p>
 <p>On the inputs, <code>←</code> and <code>→</code> still move the focused track, which this bank is not drawing, so <code>Tab</code> is how you move from one input strip to the next.</p>
-<p>The slot grid is one tab stop with a cursor inside it, not eight. Arrows move the cursor between the eight tiles, <code>Home</code> and <code>End</code> go to the ends, and <code>Return</code> or <code>Space</code> opens the tile under it in the drawer. Bypass has no key of its own here. The drawer's <code>BYPASS SLOT</code> button is one stop away and does the same thing.</p>
+<p>A strip's slot grid is one tab stop with a cursor inside it, not eight. Arrows move the cursor between the eight tiles, <code>Home</code> and <code>End</code> go to the ends, and <code>Return</code> or <code>Space</code> opens the tile under it in the drawer. Bypass has no key of its own here. The drawer's <code>BYPASS SLOT</code> button does the same thing.</p>
+<p>In the drawer, each of the eight slots is a tab stop of its own, in slot order, and the arrow keys move the keyboard from slot to slot. The open slot's arrow button is the tab stop right after its slot. <code>Return</code>, <code>Space</code> or <code>⌥↓</code> on it opens the chooser with the keyboard in the search field.</p>
+<p>The drawer's tab order runs down it as it is drawn: the breadcrumb, <code>CLOSE</code>, the rack bar, the eight slots, then the chooser (its back button, its search field and each effect you can choose) or the open effect's preset bar and controls, then <code>BYPASS SLOT</code> and <code>REMOVE</code>. <code>⇧Tab</code> goes through the same stops in reverse.</p>
 <p>Arrowing or tabbing onto a strip that is off the edge scrolls it into view.</p>
 <p>Tab order on this surface is the view switcher, the panel toggle, <code>FADERS</code>, <code>BANK</code>, then <code>SHOW</code> on the <code>INPUTS</code> bank or <code>PAGE</code> on the <code>MASTER</code> bank, then the rack: every strip in turn, left to right, and within a strip its <code>PAN</code>, its fader, <code>MUTE</code>, <code>SOLO</code> on the loop tracks and the instrument tracks, then its slot grid. Last in the rack is the master strip, where it is drawn, with its fader, its <code>OUTPUT</code> picker and its slot grid. After that comes the effect drawer if it is open, and only then the top bar's <code>ROLL</code>, <code>STOP</code>, <code>TEMPO</code> and <code>CLICK</code>, then the side panel's tabs and whatever it is showing.</p>
 <p>On the <code>MASTER</code> bank the rack is the click strip, then the cue strip, then the master. The click's three stops are its fader, its <code>MAIN</code> send and its <code>CUE</code> send.</p>
@@ -1721,7 +1804,7 @@ manualSlug: the-mixer
 <p>Groups are not saved with the song. They belong to this Mac, like the ticks in <a href="/loom/manual/dialogs/#record-setup">Record setup</a>, so they are the same in every song you open.</p>
 <h2 id="what-a-new-song-resets">What a new song resets</h2>
 <p>A new song (<code>⌘N</code>) gives you the mixer a new song starts with. Every control on this page goes back to its starting value: the track faders, pans, mutes, solos and their <code>FX 1</code> and <code>FX 2</code> sends; the input strips, including their mutes; the bus levels, mutes, solos and bus-to-bus sends; the master fader; the click; and every effect chain, track, input, bus and master, with its slots and its bypasses.</p>
-<p>Your interface is not touched. LOOM keeps the input and output devices, the sample rate, the buffer size, which inputs each track records from, which output channels carry the main mix and each bus, the MIDI command channel, the latency calibration and the track count. What you hear belongs to the song; which socket it leaves by belongs to the box.</p>
+<p>Your interface is not touched. LOOM keeps the input and output devices, the sample rate, the block size, which inputs each track records from, which output channels carry the main mix and each bus, the MIDI command channel, the latency calibration and the track count. What you hear belongs to the song; which socket it leaves by belongs to the box.</p>
 <p>The input strips come back the way they start: input 1 open, every other input muted. That is the same state LOOM launches in. An interface with every channel live can put a whole stage into the monitors and the mains before you have touched a fader. If you were playing through input 3, unmute it again in the <code>INPUTS</code> bank.</p>
 <p>Nothing that reaches the disk is affected. A new song clears what is loaded and not what is saved. The song you were working on keeps everything you wrote into it at your last <code>⌘S</code>, and opening it again brings its mixer back exactly as you left it.</p>
 <h2 id="the-rest-of-the-window-while-you-are-here">The rest of the window while you are here</h2>
@@ -1735,7 +1818,7 @@ manualSlug: the-mixer
 <p>Each input strip is <code>Mixer input strip 2</code>, and reads down the same way: <em>"Input 3, strip 2 of 4, level 0.0 dB, audible, pan centre. Recorded by TRK 1,3. You hear it because it is unmuted, not because a track is on it. Press MUTE to stop hearing this input through LOOM. Muting remembers the level. The pan and the effects on this input are recorded into the take. The fader and the sends are monitor levels and change nothing that is recorded."</em> A muted strip says <em>"Muted is the normal setting if you monitor through your interface. Press MUTE to hear this input through LOOM."</em> instead, and ends with the same sentence about what is permanent.</p>
 <p>Each bus strip is <code>Mixer bus strip 2</code>, and reads down the same way: <em>"Bus strip FX 1. It taps POST-fader and post-mute, so pulling a strip down or muting it takes that strip out of this bus too. Its level is 0.0 dB. It goes to the main mix. It has no OUTPUT picker: an effects bus returns into the main mix and into the cue rather than leaving by an output of its own, and the FADERS row is where you set how much of each. It has a MUTE and a SOLO. It carries eight insert slots."</em> The <code>CUE</code> strip differs in both of those clauses: it names its <code>OUTPUT</code> picker, and it ends <em>"It has a MUTE. It has no SOLO because it is solo-safe: no solo anywhere takes your headphone feed out of the mix, and soloing it would silence the room rather than isolate anything."</em> On a send page it says its fader is not drawn there, that it has no send, and to put the <code>FADERS</code> row on <code>MAIN</code> for its own level. When the cue is following rather than fixed, the destination clause reads <em>"It goes to outputs 3-4, following the main mix: move the main mix and this moves with it."</em> A bus another strip's solo has silenced adds <em>"It is silent right now because something else is soloed."</em></p>
 <p>The click strip is <code>Mixer click strip</code>, and reads: <em>"The click strip. The metronome's own level and where it goes. Its fader is the click's level, which scales the beat and the accent together so the downbeat stays louder than the beats. Level -6.0 dB. It is sent to the main mix and not to the cue send. There is no mute on this strip: the CLICK button in the top bar turns the click on and off."</em> With both sends off it says the click <em>"is sent nowhere, so it runs and flashes and nothing comes out"</em>, and names that as a setting rather than a fault. On a device with no cue bus it adds how many output channels the device has and that the cue send cannot be switched on tonight.</p>
-<p>Each slot grid reads its whole chain in one pass, for example <code>Track 3 effect slots, eight of them in signal order. Slot 1, noise gate. Slot 2, parametric eq, bypassed. The cursor is on slot 1, noise gate.</code>, and then says what the arrows and <code>Return</code> do. The grid is one control, so the eight tiles are in this sentence rather than being eight stops.</p>
+<p>Each slot grid reads its whole chain in one pass, for example <code>Track 3 effect slots, eight of them in signal order. Slot 1, noise gate. Slot 2, parametric eq, bypassed. The cursor is on slot 1, noise gate.</code>, and then says what the arrows and <code>Return</code> do. A strip's grid is one control, so the eight tiles are in this sentence rather than being eight stops. In the drawer each slot is also its own stop, named <code>Effect slot 1</code> to <code>Effect slot 8</code>, and says what is in it and whether the drawer has it open.</p>
 <p>Each parameter row is a slider with a settable value, named for the control it is (<code>TRACK 3 slot 2 THRESHOLD</code>), and it speaks its value in the unit it is printed in, <code>-15.0 dB</code> rather than <code>-15</code>. Its sentence names its range, says that <code>Return</code> types a value in and that one outside the range is refused rather than rounded, and says what ⌥-click restores it to.</p>
 <p>A row that is a switch or a row of cells says so, and says what its states are called rather than what number is behind them. The chorus's <code>VOICES</code> announces as <code>TRACK 3 slot 2 VOICES, in MOTION</code> and reads <code>TWO</code>, and its sentence names the four settings and says that <code>←</code> and <code>→</code> move between them. It is one stop, not four, so tabbing past a setting with four states costs the same as tabbing past a knob.</p>
 <p>The parameter area is a named scrolling region, <code>Effect parameters</code>, so a screen reader can say what it is about to read down before it starts on a long column.</p>

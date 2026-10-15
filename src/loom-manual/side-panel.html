@@ -26,7 +26,7 @@ manualSlug: side-panel
 <p>To leave the <code>TRACK</code> panel, use the <code>GLOBAL</code> tab. To hide the panel, use the panel toggle.</p>
 <h2 id="the-global-panel">The GLOBAL panel</h2>
 <p>Everything here is the song's global default: the value a track inherits until you change it on that track. Changing a setting here does not overwrite every track. A strip you have set differently in the <code>i</code> panel keeps its own value and shows an asterisk on its <code>STOP</code> face.</p>
-<div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-settings.webp" width="301" height="492" loading="lazy" decoding="async" alt="The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections."><figcaption>The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-device.webp" width="320" height="346" loading="lazy" decoding="async" alt="The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open."><figcaption>The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open.</figcaption></figure></div>
+<div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-settings.webp" width="301" height="492" loading="lazy" decoding="async" alt="The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections."><figcaption>The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-device.webp" width="320" height="400" loading="lazy" decoding="async" alt="The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open."><figcaption>The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open.</figcaption></figure></div>
 <h3 id="global">GLOBAL</h3>
 <table>
 <thead>
@@ -141,12 +141,24 @@ manualSlug: side-panel
 <td><code>OUTPUT DEVICE</code></td>
 <td>Chooses the output interface. Entry 0 is <code>(system default)</code>.</td>
 </tr>
+<tr>
+<td><code>BLOCK SIZE</code></td>
+<td>Chooses how many frames of audio LOOM processes at a time. 128 unless you change it. See <a href="#the-block-size-chip">The BLOCK SIZE chip</a>.</td>
+</tr>
 </tbody>
 </table>
 <p>Both lists refresh every time you open either dropdown, so an interface you plug in after launch appears without a relaunch. Both chips refresh from the same device scan, whichever one you opened, so a device never appears on the input side while missing from the output side.</p>
 <p>If a selected device disappears, it keeps its entry. The chip still names the device the session is configured for, instead of silently falling back to <code>(system default)</code>.</p>
 <p><strong>Changing either chip destroys every recorded loop</strong>, because a new interface means a new audio engine and nothing carries audio between engines. If any track holds something, changing a chip first raises the at-risk warning (see <a href="/loom/manual/dialogs/">Dialogs</a>). If every track is empty, the change takes one click.</p>
 <p>If you cancel the warning, the chip returns to the interface the session is actually using.</p>
+<h4 id="the-block-size-chip">The BLOCK SIZE chip</h4>
+<p><code>BLOCK SIZE</code> sets the block size LOOM asks your audio device for, in frames. Other audio applications may call it the buffer size. A smaller block lowers the latency and gives LOOM less time to process each block. A larger block adds latency and is safer under a heavy song.</p>
+<p>The list offers 32, 64, 96, 128, 192, 256, 512 and 1024 frames, and keeps only the sizes the open audio device accepts. When no device is open, it offers all of them, and the device's answer applies when it opens.</p>
+<p>A Mac audio device usually accepts powers of two, so 96 and 192 do not appear.</p>
+<p>Use 64 frames or larger. Smaller sizes are marked <code>(not recommended)</code>. You can choose one, but it leaves LOOM less time for each block and makes dropouts more likely. See <code>CPU</code> in <a href="/loom/manual/bottom-rails/#cpu">The bottom rails</a>.</p>
+<p>The chip shows the block size the device granted, which is also what the <code>BLOCK</code> readout on the bottom rail shows. If the device does not grant the size you chose, the chip shows the size it did grant.</p>
+<p><strong>Changing the block size destroys every recorded loop</strong>, because LOOM restarts the audio engine to open the device at the new size, exactly as for a device change. If any track holds something, LOOM first raises the at-risk warning (see <a href="/loom/manual/dialogs/">Dialogs</a>). If every track is empty, the change takes one click. If you cancel the warning, the chip returns to the size the session is using.</p>
+<p>LOOM remembers the block size per machine, not in the song, and asks the device for it at the next launch.</p>
 <h3 id="midi">MIDI</h3>
 <table>
 <thead>

@@ -171,9 +171,10 @@ manualSlug: top-bar
 </ul>
 <p>One step of the drag, the steppers or the arrow keys is one beat per minute. Hold <code>Shift</code> on any of the three and a step is a tenth of a beat per minute instead.</p>
 <p>Stepping and typing are different operations. The tempo is held in thousandths of a beat per minute. Stepping is relative, so a song sitting at 137.4 becomes 137.4 plus one step and is not snapped to a whole number. Typing is absolute and rounds to the tenth that the field draws.</p>
-<p><strong>When it is locked.</strong> This field refuses a tempo you type, drag or step unless every track is empty and the transport is stopped. Having no audio device open does not lock it. When the field is locked, its frame goes from solid to dashed, the number and the steppers dim, and nothing moves by a pixel. Click the locked field, and the notice line says why it is locked.</p>
+<p><strong>When it is locked.</strong> This field refuses a tempo you type, drag or step unless every audio track is empty and the transport is stopped. Having no audio device open does not lock it.</p>
+<p>A loop on an instrument track does not lock it. An instrument loop is recorded in beats, so it follows the tempo: stop the transport, change the tempo, and the loop plays the same bars at the new tempo. When the field is locked, its frame goes from solid to dashed, the number and the steppers dim, and nothing moves by a pixel. Click the locked field, and the notice line says why it is locked.</p>
 <p>The lock only stops you changing the tempo by hand. The number can still change by itself: <a href="#the-first-free-loop-sets-the-tempo">The first free loop sets the tempo</a> is the one thing that changes it while the transport rolls.</p>
-<p>The reasons below form a chain, and you have to clear all of them. Finishing a take leaves a track holding a loop, and clearing every track with the transport still rolling leaves the transport rolling. To type a tempo, you need both: every track empty and the transport stopped. To have LOOM derive one, the transport can be rolling, but every other track must be empty. You play the first free loop.</p>
+<p>The reasons below form a chain, and you have to clear all of them. Finishing a take leaves a track holding a loop, and clearing every track with the transport still rolling leaves the transport rolling. To type a tempo, you need both: every audio track empty and the transport stopped. To have LOOM derive one, the transport can be rolling, but every other track must be empty. You play the first free loop.</p>
 <table>
 <thead>
 <tr>
@@ -183,8 +184,8 @@ manualSlug: top-bar
 </thead>
 <tbody>
 <tr>
-<td>A track holds a recorded loop</td>
-<td>A tempo typed under one moves every bar-quantized press against it. Clear every track <strong>and</strong> halt the transport.</td>
+<td>An audio track holds a recorded loop</td>
+<td>A tempo typed under one moves every bar-quantized press against it. Clear every audio track <strong>and</strong> halt the transport.</td>
 </tr>
 <tr>
 <td>A track is recording or waiting to</td>
@@ -211,9 +212,9 @@ manualSlug: top-bar
 <p><strong>With no audio device open the tempo still works.</strong> The field shows the tempo the session will start at. If you type a tempo before you plug in an interface, LOOM builds its first tempo map from that value when the device opens. This state is not locked, and it is when the setting matters most, because the tempo has to be set before the first loop.</p>
 <p>The box is sized to the widest value it could ever draw, so it never changes width.</p>
 <h3 id="the-first-free-loop-sets-the-tempo">The first free loop sets the tempo</h3>
-<p><strong>What it does.</strong> Record the first loop of a song on a <strong>free-length</strong> track whose launch and stop quantize are both <strong>immediate</strong>. When you close it, LOOM reads the tempo off that loop and makes it the song's, so the grid fits what you played instead of your playing having to fit the grid. A hardware looper works the same way when its first loop becomes the clock.</p>
+<p><strong>What it does.</strong> Record the first loop of a song on a <strong>free-length</strong> audio or instrument track whose launch and stop quantize are both <strong>immediate</strong>. When you close it, LOOM reads the tempo off that loop and makes it the song's, so the grid fits what you played instead of your playing having to fit the grid. A hardware looper works the same way when its first loop becomes the clock.</p>
 <p>Your loop starts on a bar line, but usually not bar 1. The grid runs through the whole session instead of starting at your loop, so the bars that went by before you pressed record are counted: if two bars' worth of time passed first, your loop begins at bar 3, beat 1. The bar number is how many whole derived bars fit before your loop, plus one. The ruler shows the audible time before your loop, and this keeps every bar number in the arrange view positive. What matters musically is that your loop starts on a bar line, on beat 1, and is a whole number of bars long, so everything you overdub against it lands where you expect, whatever <code>BAR.BEAT.TICK</code> calls the first bar.</p>
-<p>It happens while the transport rolls, and you press nothing extra. Closing a loop leaves the transport rolling, which is the state this works in. Do not halt the transport to make it fire: halting closes the take and derives nothing. Nothing new sounds at the moment it lands. No loop is touched, and the click picks up the new grid with no stutter and no doubled beat at the seam. In the same frame the TEMPO field shows the new number, and the notice line at the bottom of the window says what was derived.</p>
+<p>It happens while the transport rolls, and you press nothing extra. Closing a loop leaves the transport rolling, which is the state this works in. Do not halt the transport to make it fire: halting closes the take and derives nothing. Nothing new sounds at the moment it lands, and the click picks up the new grid with no stutter and no doubled beat at the seam. An audio loop is not touched. An instrument loop is retimed to the new tempo in the same moment, so every note stays where you played it and the loop keeps the length you played. A note you are holding as the tempo changes is not cut. In the same frame the TEMPO field shows the new number, and the notice line at the bottom of the window says what was derived.</p>
 <blockquote>
 <p><strong>VoiceOver:</strong> the tempo moves on a control you cannot tab to. Recording a loop leaves the field locked, so the notice line is where LOOM tells you the new tempo and the bar count it read.</p>
 </blockquote>
@@ -223,13 +224,14 @@ manualSlug: top-bar
 <p><strong>What has to be true for it to fire.</strong></p>
 <ul>
 <li>The track's length is <strong>free</strong> and both quantize settings are <strong>immediate</strong>. A track that quantizes to a bar line already has a grid. A free, immediate one does not, so that is when deriving one is useful.</li>
-<li><strong>Every other track is empty.</strong> That is what makes it the first loop. A second free loop does not re-derive, because the first one is still there.</li>
+<li><strong>Every other track, audio or instrument, is empty.</strong> That is what makes it the first loop. A second free loop does not re-derive, because the first one is still there.</li>
 <li>The loop is closed plainly: the ring press that ends the recording is <code>PLAY</code> or <code>RECORD</code>. Ending the recording into an overdub, a multiply or a mute derives nothing.</li>
 <li>No arrangement is armed.</li>
 <li>The setting <em>first free immediate loop sets song tempo</em> is on. It is on by default and there is no control for it in the window. It is a preference rather than a song setting, so it is restored at launch whatever song you open.</li>
 </ul>
 <p><strong>It comes back when you clear.</strong> Clear every track and the next free loop you close derives the tempo again. LOOM does not remember whether this song has ever derived one. Only what is in the tracks right now counts.</p>
 <p><strong>When it cannot.</strong> If no whole bar count fits your phrase, or the tempo it would land on is outside the range the field accepts, nothing is changed and nothing is snapped. The notice line says which of the two happened.</p>
+<p>On an instrument track, the loop is retimed a moment after you close it. If you overdub, undo or clear in that moment, the tempo goes back to what it was, and the notice line says that the loop changed before it could be retimed.</p>
 <h2 id="click-and-the-beat-leds">CLICK and the beat LEDs</h2>
 <p><strong>What CLICK does.</strong> Turns the click's audio on and off. It is saved with the song, so a song you open comes back with the setting it was saved with. It is in the top bar because you reach for it mid-set. It is named <code>Click audible</code>, and the notice line reports <code>click audible</code> or <code>click silent</code>.</p>
 <p>The beat LEDs are inside the button, to the right of the word, and pressing anywhere on the button toggles the click. The word is dim when the click is silent and bright when it is audible. The LEDs carry the colour that shows the click will be heard.</p>

@@ -140,6 +140,7 @@ manualSlug: instrument-tracks
 <p>The ring works the way it does on an audio track. Press it on an empty track to record, press it again to close the loop, and press it on a playing track to overdub. If the transport is stopped, the first press starts it. See <a href="/loom/manual/track-strips/#the-ring">The ring</a>.</p>
 <p>When a take launches, stops and closes is set by the track's <code>LAUNCH QUANTIZE</code>, <code>STOP QUANTIZE</code>, <code>REC COUNT-IN</code>, <code>LENGTH</code> and <code>REC ACTION</code> on the <code>INST</code> tab. Until you change them, they follow the <code>GLOBAL</code> panel. See <a href="#timing-recording-and-responds-to-globals">TIMING, RECORDING and RESPONDS TO GLOBALS</a>.</p>
 <p>LOOM refuses to record on a track whose input is <code>NONE</code>, and the notice line says why. Choose an input on the <code>INST</code> tab first.</p>
+<p>The first loop of a song can set its tempo, as on an audio track. Record it with <code>LENGTH</code> set to free and both quantize settings set to immediate, and closing it sets the song's tempo from the length you played. The loop is retimed to the new tempo, so it plays as you played it. See <a href="/loom/manual/top-bar/#the-first-free-loop-sets-the-tempo">The first free loop sets the tempo</a>.</p>
 <p>What LOOM does at the edges of a take:</p>
 <ul>
 <li><strong>A note played just early.</strong> A note you play up to about 40 milliseconds before the take starts is recorded on the take's first beat.</li>
@@ -232,11 +233,40 @@ manualSlug: instrument-tracks
 <p>With <code>MODE</code> at <code>MONO</code> or <code>LEGATO</code>, the synth plays one note at a time, and the last key you press wins. A note you play takes over from a note the loop is playing. When you release it, the synth returns to the last key you are still holding.</p>
 <p>With <code>VOICE</code> at <code>MONO</code>, the sampler plays one sound at a time: each new note or slice stops the one that is sounding. See <a href="#amp-voice">AMP · VOICE</a>.</p>
 <h2 id="the-synth-editor">The synth editor</h2>
-<figure class="shot shot-full"><img src="/assets/loom/manual/looper.synth-editor.webp" width="1262" height="354" loading="lazy" decoding="async" alt="The synth editor in the dock, showing the OSCs section."><figcaption>The synth editor in the dock, showing the OSCs section.</figcaption></figure>
+<figure class="shot shot-full"><img src="/assets/loom/manual/looper.synth-editor.webp" width="1262" height="404" loading="lazy" decoding="async" alt="The synth editor in the dock, showing the OSCs section."><figcaption>The synth editor in the dock, showing the OSCs section.</figcaption></figure>
 <p>The synth editor opens in the editor dock when you press <code>OPEN EDITOR</code> on a synth track's <code>INST</code> tab.</p>
 <h3 id="sections">Sections</h3>
-<p>The editor's layout depends on the size of the window. In a smaller window it shows one section at a time. In a wider window it also shows that section's displays in a column on the right. When the window is large enough, such as full screen on a 16-inch MacBook Pro with the side panel open, the editor shows every section on one page in four columns, with a display above every block of controls except <code>VOICE</code>. The page has no section list, and the track strips above the dock fold to a row of rings to make room for it. A window that fills the screen without being full screen is not tall enough for every display, so it shows one section at a time with its displays in the column on the right.</p>
-<p>The list on the left of the editor names the synth's sections: <code>OSCs</code>, <code>FILTER</code>, <code>AMP</code>, <code>LFOs</code>, <code>VOICE</code> and <code>ARP</code>. Click a section to show its page. Each page has a left column and a right column. A row in the left column sits level with the same row in the right column, so a control that only one column has leaves a space in the other.</p>
+<p>The editor's layout depends on the size of the window. In a smaller window it shows one section at a time. In a wider window it also shows that section's displays in a column on the right. When the window is large enough, such as full screen on a 16-inch MacBook Pro, the editor shows every control on one page in four columns that follow the signal from left to right:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Modules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sources</td>
+<td><code>OSC 1</code>, <code>OSC 2</code> and <code>SUB · NOISE</code></td>
+</tr>
+<tr>
+<td>Filter</td>
+<td><code>FILTER</code>, and <code>FILTER ENV</code> under it</td>
+</tr>
+<tr>
+<td>Amp and voice</td>
+<td><code>AMP ENV</code>, and <code>VOICE</code> under it. This column is one knob wider than the others.</td>
+</tr>
+<tr>
+<td>Modulation</td>
+<td><code>LFO</code>, and <code>ARP</code> under it</td>
+</tr>
+</tbody>
+</table>
+<p><code>OSC 1</code>, <code>FILTER</code>, <code>FILTER ENV</code>, <code>AMP ENV</code>, <code>LFO</code> and <code>ARP</code> each have a display above their controls. The full-screen page has no section list. When the window has height to spare, the displays grow taller, up to a limit, and no rows are added.
+A window that fills the screen without being full screen is not tall enough for every display, so it shows one section at a time with its displays in the column on the right.</p>
+<p>In every layout each block of controls has a header: its name on the left and, on the right, an optional note, a toggle and tabs, in that order. The header is the same height whichever of these it has. A control that runs through a range is a knob with its name and value under it, packed to the left of its block. A set of choices has its name above it and shares a line with whatever fits beside it.</p>
+<p>The list on the left of the editor names the synth's sections: <code>OSCs</code>, <code>FILTER</code>, <code>AMP</code>, <code>LFOs</code>, <code>VOICE</code> and <code>ARP</code>. Click a section to show its page. Each page has a left column and a right column, and each column packs its own controls from the top.</p>
 <p>Each section button shows a short summary of its settings and a light:</p>
 <ul>
 <li>A filled green light means the section is in the signal path.</li>
@@ -255,7 +285,7 @@ manualSlug: instrument-tracks
 <tr>
 <td><code>OSCs</code></td>
 <td>The number of oscillators with a <code>LEVEL</code> above 0, followed by <code>+ SUB</code> and <code>+ NOISE</code> when those levels are above 0.</td>
-<td>Off when every level on the page is 0.</td>
+<td>Amber while an LFO moves the oscillators with the mod wheel at rest: its <code>DEST</code> is <code>PITCH 1+2</code>, <code>PITCH 2</code> or <code>MORPH</code>. Off when every level on the page is 0.</td>
 </tr>
 <tr>
 <td><code>FILTER</code></td>
@@ -287,38 +317,61 @@ manualSlug: instrument-tracks
 <p>The editor reads the lights from the track's settings. It cannot see the mod wheel's position, so the <code>LFOs</code> light assumes the wheel is at rest.</p>
 <p>Each display draws the settings you are editing in cyan. The oscillators, the LFOs and the two envelopes each come in a pair. When only one display of a pair is on screen, it also draws the other set of the pair in grey behind its own, and its label names the grey set. When both displays of a pair are on screen, each draws only its own set.</p>
 <ul>
-<li>The <code>OSC 1</code> and <code>OSC 2</code> displays draw the oscillators over the same time.</li>
+<li>The <code>OSC 1</code> and <code>OSC 2</code> displays draw the oscillators over the same time: two cycles of the lower oscillator, and as many cycles of the higher one as fit in that time, so you can see the interval between them. When the higher oscillator has too many cycles to draw as a line, the display draws it as a band that fills the range its wave covers.</li>
 <li>The <code>LFO 1</code> and <code>LFO 2</code> displays draw two cycles of each LFO, so you can compare their shapes. Each label names its LFO's rate.</li>
 <li>The <code>FILTER ENV</code> and <code>AMP ENV</code> displays draw the envelopes for one held note, released at the same moment.</li>
-<li>The <code>FILTER</code> display draws the filter's response.</li>
+<li>The <code>FILTER</code> display draws the filter's response. Dashed grey curves behind it show where your settings can move the cutoff: the response at the top of the filter envelope's sweep, and the response for MIDI note 72, an octave above note 60, moved by <code>KEY TRK</code>. At note 60, <code>KEY TRK</code> does not move the cutoff. The words <code>ENV, KEY +1 OCT: SETTINGS</code> name them when the display has room.</li>
 <li>The <code>ARP</code> display previews the arpeggiator's steps for a three-note chord: their order, the octaves, the rate over two beats, and each step's gate as the length of its bar. When a step plays more than one note, the display draws a bar for each note, and <code>STRUM</code> moves each bar to the point in the step where its note starts.</li>
 </ul>
+<h4 id="what-the-synth-is-doing-now">What the synth is doing now</h4>
+<p>While the synth plays, the displays also show what it is doing. They follow the newest note you hold, and after you let it go they follow it until it is silent or you play another note. A light after each display's label says what the display shows: a filled green light while the playing synth moves something on it, and a hollow ring while the display shows only your settings. The light is the same as a header toggle's. The live parts are green.</p>
+<p>While its light is green, a display also shows a value that no knob shows, in green at the right of its label, or in its bottom right corner when the label leaves no room. When the display shows only your settings, that place is empty.</p>
+<ul>
+<li><code>OSC 1</code> and <code>OSC 2</code> draw each oscillator at the shape it is playing, which an LFO set to <code>MORPH</code> moves, and the label names that shape. They draw OSC 2 at the interval it is playing over OSC 1, so <code>TO OSC 2</code> and an LFO set to <code>PITCH 2</code> change the number of OSC 2's cycles. The display draws the same span of the waves whatever the note's pitch, so the bend and an LFO set to <code>PITCH 1+2</code>, which move both oscillators alike, do not change the picture. The value names the note you played and how far OSC 1 sounds from it in semitones, then OSC 2's interval over OSC 1, such as <code>A2 +1.25 ST · OSC 2 +7.0</code>. The bend, glide, an LFO set to <code>PITCH 1+2</code> and OSC 1's <code>OCTAVE</code> and <code>FINE</code> all count in that distance. When nothing moves OSC 1 off the note, the value names the note alone, such as <code>A2 · OSC 2 +7.0</code>.</li>
+<li><code>FILTER</code> draws the response at the cutoff the filter is using. Your settings' response is drawn in grey behind it. The label names your settings' cutoff, and the value names the cutoff the filter is using, such as <code>CUTOFF 1.20 kHz</code>.</li>
+<li><code>FILTER ENV</code> and <code>AMP ENV</code> place a dot on the drawn shape, in the part the envelope is in. Attack, decay and release are times, so the dot moves through its part at that part's rate. While the note is held at its sustain, and during the <code>LOOP</code> fall, the dot stays where the sustain begins. The value names the part and the envelope's level, such as <code>DECAY 62%</code>. The part is <code>ATTACK</code>, <code>DECAY</code>, <code>SUSTAIN</code>, <code>RELEASE</code> or <code>LOOP</code>. If you let go of a note before it reaches its sustain, the dot moves to the start of the drawn release and follows it for the release time; the value shows the level the note is actually at.</li>
+<li><code>LFO 1</code> and <code>LFO 2</code> draw a line at the point of the LFO's cycle and a dot at its value. The line crosses both drawn cycles in turn, then starts again at the left. When an LFO is too fast for the display to follow, faster than about 10 Hz, the line and the dot are not drawn and the value stays. The value names the LFO's <code>DEST</code> and how much the LFO is moving it for the note the display follows, after <code>DEPTH</code> and the mod wheel:</li>
+<li><code>PITCH 1+2</code> and <code>PITCH 2</code> in semitones, such as <code>→ PITCH 1+2 +0.42 ST</code>.</li>
+<li><code>CUTOFF</code> in octaves, such as <code>→ CUTOFF -0.31 OCT</code>.</li>
+<li><code>MORPH</code> in steps of the <code>SHAPE</code> knob, such as <code>→ MORPH +0.25</code>.</li>
+<li><code>AMP</code> as the share of the note's level that the LFO leaves, such as <code>→ AMP 72%</code>.</li>
+</ul>
+<p>While <code>WHEEL</code> is set to <code>LFO 1</code>, the <code>LFO 1</code> value also names the mod wheel's position, such as <code>→ CUTOFF -0.31 OCT · WHL 64%</code>. With <code>WHL DEPTH</code> at 100% and the wheel all the way down, LFO 1 moves nothing, and the value reads <code>+0.00</code> or, on <code>AMP</code>, <code>100%</code>. The notes you play and the notes the track's loop plays each have their own mod wheel, so the value for a note the loop plays names the loop's wheel, not yours.</p>
+<p>When no note is sounding, nothing reaches the destination, and the value names the <code>DEST</code> alone, such as <code>→ CUTOFF</code>. While the synth is silent the LFOs stop where they are, and the line stays still until the next note.
+- <code>ARP</code> draws the step that is playing as a filled bar. The value names that step, counted from the first step of the chord, such as <code>STEP 3</code>. The display counts the chord's steps from its first, across the two beats it draws.
+- The <code>VOICE</code> header on the full-screen page shows a light for each of the synth's voices: a filled green dot for a voice you are holding, a green ring around a smaller dot for a voice that is releasing, and a grey ring for a free voice.</p>
+<p>When the synth is not running, as in a song with no audio device, the displays show only your settings and the <code>VOICE</code> header shows no lights.</p>
 <h3 id="working-with-the-controls">Working with the controls</h3>
-<p>The sliders and the rows of cells work the way an effect's controls do. See <a href="/loom/manual/the-mixer/#the-controls">The controls</a> in the mixer chapter.</p>
-<p>Press <code>Tab</code> to move through the section list, then down the left column, then down the right column. On the full-screen page, <code>Tab</code> moves through the <code>OSCs</code> and <code>LFOs</code> switches first, then through the blocks in the order of the section list.</p>
+<p>The knobs and the rows of cells work the way an effect's controls do. See <a href="/loom/manual/the-mixer/#the-controls">The controls</a> in the mixer chapter. The synth editor adds three controls:</p>
+<ul>
+<li>A <strong>stepped knob</strong> chooses from a set of named settings, such as an LFO's <code>SHAPE</code> or the arpeggiator's <code>RATE</code>. It has a small mark outside its arc for each setting, and its value is the name of the setting it is on. Dragging it moves from setting to setting. The arrow keys move one setting, <code>Page Up</code> and <code>Page Down</code> move four, and <code>Home</code> and <code>End</code> go to the first and the last. Double-click it, ⌥-click it or press <code>Delete</code> to return it to its default. A screen reader announces the setting and its place, such as "1/16, 14 of 16".</li>
+<li>A <strong>header toggle</strong> turns on a setting that changes what the whole block does, such as <code>ARP</code> or <code>LOOP</code>. It sits in the block's header with a light that is green while the setting is on. A screen reader names it by its block and its label, such as "OSC 2 SYNC".</li>
+<li><strong>Header tabs</strong> choose between settings that change what the whole block is, such as the filter type, or between two sets of the same controls, such as <code>LFO 1</code> and <code>LFO 2</code>. Exactly one tab is lit.</li>
+</ul>
+<p>Press <code>Tab</code> to move through the section list, then down the left column, then down the right column. On the full-screen page, <code>Tab</code> moves through the <code>LFO</code> module's tabs first, then through the blocks in the order of the section list.</p>
 <h3 id="oscs">OSCs</h3>
 <p>The left column is <code>OSC 1 · SUB</code> and the right column is <code>OSC 2 · NOISE</code>.</p>
 <ul>
-<li><code>OCTAVE</code> moves the oscillator in whole octaves, from <code>-2</code> to <code>+2</code>.</li>
+<li><code>OCTAVE</code> moves the oscillator in whole octaves, from <code>-2</code> to <code>+2</code>. It is a stepped knob.</li>
 <li><code>PITCH</code> (OSC 2 only) raises OSC 2 by up to a fifth, from 0 to +7 semitones. It moves smoothly between semitones, so you can sweep it while you play. It adds to <code>OCTAVE</code> and <code>FINE</code>.</li>
 <li><code>FINE</code> tunes the oscillator in cents.</li>
 <li><code>SHAPE</code> morphs the oscillator's waveform.</li>
-<li><code>SYNC</code> (OSC 2 only) restarts OSC 2 each time OSC 1 starts a cycle.</li>
+<li><code>SYNC</code> (OSC 2 only) restarts OSC 2 each time OSC 1 starts a cycle. It is the toggle in the <code>OSC 2 · NOISE</code> header.</li>
 <li><code>LEVEL</code> sets how loud the oscillator is in the mix.</li>
 <li><code>SUB</code> sets the level of the sub-oscillator, and <code>NOISE</code> the level of the noise source.</li>
 </ul>
-<p>On the full-screen page, OSC 1 and OSC 2 share one block. The <code>OSC 1 | OSC 2</code> switch at the right of the block's title chooses which oscillator's controls you see. Both oscillators always sound, and the switch changes only the view. OSC 1 has no <code>PITCH</code> or <code>SYNC</code>, so those rows are empty while OSC 1 shows, and the controls below them stay in place when you switch. The editor remembers each track's choice while LOOM is open. Presets and songs do not store it.</p>
+<p>On the full-screen page, the first column shows <code>OSC 1</code> and <code>OSC 2</code> as two modules, one above the other, each ending in its <code>LEVEL</code>, and <code>SUB · NOISE</code> under them. <code>SYNC</code> is the toggle in the <code>OSC 2</code> header. The <code>OSC 1</code> display draws OSC 1 in cyan and OSC 2 in grey behind it. The <code>SUB · NOISE</code> header notes that the sub-oscillator follows OSC 1.</p>
 <h3 id="filter">FILTER</h3>
 <p>The left column is <code>FILTER</code> and the right column is <code>FILTER ENV</code>, the filter's envelope.</p>
 <ul>
-<li><code>TYPE</code> chooses the filter: <code>LP 12</code>, <code>LP 24</code>, <code>HP</code> or <code>BP</code>.</li>
+<li><code>TYPE</code> chooses the filter: <code>LP 12</code>, <code>LP 24</code>, <code>HP</code> or <code>BP</code>. It is the tabs in the <code>FILTER</code> header.</li>
 <li><code>CUTOFF</code>, <code>RES</code> and <code>DRIVE</code> set the cutoff frequency, the resonance and the drive.</li>
 <li><code>KEY TRK</code> sets how far the cutoff follows the notes you play.</li>
 <li><code>ENV AMT</code> sets how far the filter envelope moves the cutoff. Negative values move it down.</li>
 <li><code>ATTACK</code>, <code>DECAY</code>, <code>SUSTAIN</code> and <code>RELEASE</code> shape the filter envelope, and <code>CURVE</code> bends all of its segments.</li>
 <li><code>VELOCITY</code> sets how much the velocity of each note scales the envelope.</li>
 <li>
-<p><code>LOOP</code> repeats the filter envelope while you hold a key:</p>
+<p><code>LOOP</code>, the toggle in the <code>FILTER ENV</code> header, repeats the filter envelope while you hold a key:</p>
 <ol>
 <li>The envelope rises through the attack and falls through the decay to the sustain level.</li>
 <li>Instead of holding at the sustain level, it falls to 0 at the release time.</li>
@@ -340,19 +393,19 @@ manualSlug: instrument-tracks
 <h3 id="lfos">LFOs</h3>
 <p>The left column is <code>LFO 1</code> and the right column is <code>LFO 2</code>. They have the same controls.</p>
 <ul>
-<li><code>SHAPE</code> chooses the waveform: <code>TRIANGLE</code>, <code>SAW</code>, <code>SQUARE</code> or <code>S&amp;H</code>.</li>
-<li><code>SYNC</code> chooses whether the LFO runs at its own rate (<code>FREE</code>) or follows the tempo (<code>SYNC</code>).</li>
-<li><code>RATE</code> sets the speed. With <code>SYNC</code> at <code>FREE</code>, it is a slider in hertz. With <code>SYNC</code> at <code>SYNC</code>, it is a set of cells, one for each note value from <code>4/1</code> down to <code>1/32</code>, where <code>D</code> means dotted and <code>T</code> means triplet. The cells wrap onto several lines; <code>↑</code> and <code>↓</code> move to the cell above and below.</li>
-<li><code>DEST</code> chooses what the LFO moves. <code>PITCH 1+2</code> moves both oscillators. <code>PITCH 2</code> moves OSC 2 alone, which sweeps the sync timbre when OSC 2's <code>SYNC</code> is on. <code>CUTOFF</code>, <code>MORPH</code> and <code>AMP</code> move the cutoff, the oscillator shape and the volume.</li>
+<li><code>SHAPE</code> chooses the waveform: <code>TRIANGLE</code>, <code>SAW</code>, <code>SQUARE</code> or <code>S&amp;H</code>. It is a stepped knob.</li>
+<li><code>SYNC</code> chooses whether the LFO runs at its own rate or follows the tempo. It is the toggle in the LFO's header: off, the LFO runs free; on, it follows the tempo.</li>
+<li><code>RATE</code> sets the speed. With <code>SYNC</code> off, it is a knob in hertz. With <code>SYNC</code> on, it is a stepped knob with one setting for each note value from <code>4/1</code> down to <code>1/32</code>, where <code>D</code> means dotted and <code>T</code> means triplet.</li>
+<li><code>DEST</code> chooses what the LFO moves. It is a stepped knob. <code>PITCH 1+2</code> moves both oscillators. <code>PITCH 2</code> moves OSC 2 alone, which sweeps the sync timbre when OSC 2's <code>SYNC</code> is on. <code>CUTOFF</code>, <code>MORPH</code> and <code>AMP</code> move the cutoff, the oscillator shape and the volume.</li>
 <li><code>DEPTH</code> sets how far the LFO moves its destination.</li>
 </ul>
-<p>On the full-screen page, LFO 1 and LFO 2 share one block, with an <code>LFO 1 | LFO 2</code> switch at the right of its title. It works the way the <code>OSC 1 | OSC 2</code> switch does: both LFOs always run, and the switch changes only which one's controls you see.</p>
+<p>On the full-screen page, LFO 1 and LFO 2 share the <code>LFO</code> module at the top of the last column. The <code>LFO 1 | LFO 2</code> tabs in its header choose which LFO's controls and display you see, and <code>SYNC</code> beside them is the shown LFO's. Both LFOs always run, and the tabs change only the view. The editor remembers each track's choice while LOOM is open. Presets and songs do not store it.</p>
 <h3 id="voice">VOICE</h3>
 <p>The left column is <code>VOICE</code>:</p>
 <ul>
 <li><code>MODE</code> chooses <code>POLY</code>, <code>MONO</code> or <code>LEGATO</code>. <code>POLY</code> plays chords. <code>MONO</code> plays one note at a time and restarts the envelopes on each note. <code>LEGATO</code> plays one note at a time and restarts the envelopes only when no other key is held.</li>
 <li><code>GLIDE</code> sets how long a note takes to slide to the next pitch.</li>
-<li><code>GLIDE LEG</code> chooses when <code>GLIDE</code> acts. It is a different setting from <code>MODE</code>'s <code>LEGATO</code>. With it <code>ON</code>, a note you play glides only while you still hold another key, and a note you play after every key is up starts at its own pitch. The loop's notes follow the same rule among themselves: a loop note glides only while another loop note is held. With the arpeggiator on, the first step of a new chord starts at its own pitch and the steps after it glide.</li>
+<li><code>GLIDE LEG</code>, the toggle in the <code>VOICE</code> header, chooses when <code>GLIDE</code> acts. It is a different setting from <code>MODE</code>'s <code>LEGATO</code>. With it <code>ON</code>, a note you play glides only while you still hold another key, and a note you play after every key is up starts at its own pitch. The loop's notes follow the same rule among themselves: a loop note glides only while another loop note is held. With the arpeggiator on, the first step of a new chord starts at its own pitch and the steps after it glide.</li>
 <li><code>BEND</code> sets the pitch bend range, in semitones.</li>
 <li><code>WHEEL</code> chooses what the mod wheel does. <code>LFO 1</code> scales LFO 1's depth, <code>CUT</code> opens the cutoff and <code>OFF</code> does nothing.</li>
 <li><code>WHL DEPTH</code> sets how far the mod wheel reaches at the destination <code>WHEEL</code> chooses.</li>
@@ -366,22 +419,22 @@ manualSlug: instrument-tracks
 </ul>
 <p>The synth has eight voices, and each stacked voice uses one of them. With <code>UNISON</code> at <code>2</code> the synth plays four notes at a time, and at <code>4</code> it plays two. When you play more notes than that, the oldest note stops to make room, as it does when you play more than eight notes with <code>UNISON</code> off. Each stacked voice starts its oscillators at a different point in their cycle, so the voices do not add up to one louder wave. The synth lowers the level of a stack so that turning <code>UNISON</code> on keeps the sound at about the same volume.</p>
 <p><code>UNISON</code> works in every <code>MODE</code>, with <code>GLIDE</code> and with the arpeggiator. In <code>MONO</code> and <code>LEGATO</code>, the whole stack moves to each new note and glides together. A note that is already sounding keeps its stack when you change <code>UNISON</code>; the change applies from the next note.</p>
-<p>On the full-screen page, <code>UNISON</code>, <code>DETUNE</code> and <code>SPREAD</code> sit under the other voice controls, in the <code>VOICE</code> block.</p>
+<p>On the full-screen page, the <code>VOICE</code> module draws <code>MODE</code> and <code>UNISON</code> on one line, <code>WHEEL</code> under them, and then the knobs: <code>GLIDE</code>, <code>BEND</code>, <code>WHL DEPTH</code>, <code>AT CUTOFF</code>, <code>DETUNE</code> and <code>SPREAD</code>.</p>
 <h3 id="arp">ARP</h3>
 <p>The <code>ARP</code> section has the arpeggiator's controls:</p>
 <ul>
-<li><code>ARP</code> turns the arpeggiator on and off.</li>
+<li><code>ARP</code>, the toggle in the <code>ARP</code> header, turns the arpeggiator on and off.</li>
 <li><code>MODE</code> chooses the order of the notes: <code>UP</code>, <code>DOWN</code>, <code>UP DOWN</code>, <code>RANDOM</code> or <code>AS PLAYED</code>.</li>
-<li><code>RATE</code> chooses the note value of each step, from the same set as an LFO's <code>RATE</code>.</li>
-<li><code>OCTAVES</code> sets how many octaves the arpeggio spans, from <code>1</code> to <code>4</code>.</li>
+<li><code>RATE</code> chooses the note value of each step, from the same set as an LFO's <code>RATE</code>. It is a stepped knob.</li>
+<li><code>OCTAVES</code> sets how many octaves the arpeggio spans, from <code>1</code> to <code>4</code>. It is a stepped knob.</li>
 <li><code>GATE</code> sets how long each step sounds, as a share of the step.</li>
 </ul>
 <p>The second column, <code>STEP</code>, sets what each step plays:</p>
 <ul>
-<li><code>NOTES</code> sets how many of the held notes each step plays: <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code> or <code>ALL</code>. At <code>1</code>, each step plays one note.</li>
+<li><code>NOTES</code> sets how many of the held notes each step plays: <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code> or <code>ALL</code>. At <code>1</code>, each step plays one note. It is a stepped knob.</li>
 <li><code>STRUM</code> spreads the notes of a step apart in time, from <code>0 %</code>, where they start together, to <code>100 %</code>, where they are spread evenly across the step.</li>
 </ul>
-<p>On the full-screen page, <code>NOTES</code> and <code>STRUM</code> sit under the other arpeggiator controls, in the <code>ARP</code> block.</p>
+<p>On the full-screen page, the <code>ARP</code> module draws <code>MODE</code>, then <code>RATE</code>, <code>OCTAVES</code>, <code>NOTES</code>, <code>GATE</code> and <code>STRUM</code> as one line of knobs.</p>
 <p>While the transport rolls, every arpeggiator step starts on a grid step of <code>RATE</code>. A chord you press between grid steps waits for the next one, and a chord you press and release before then still sounds that step once.</p>
 <h4 id="playing-more-than-one-note-a-step">Playing more than one note a step</h4>
 <p><code>MODE</code> still chooses the order. With <code>OCTAVES</code> above <code>1</code>, each octave adds a copy of the held notes above the first, and <code>NOTES</code> counts every copy.</p>
@@ -393,7 +446,7 @@ manualSlug: instrument-tracks
 <p>A step plays only as many notes as the synth has voices for: eight, or four with <code>UNISON</code> at <code>2</code>, or two with <code>UNISON</code> at <code>4</code>. When <code>NOTES</code> asks for more, the step keeps the first notes in <code>MODE</code>'s order and leaves out the rest. A step never takes a voice from another note of the same step.</p>
 <p><code>STRUM</code> starts the notes in <code>MODE</code>'s direction: upward for <code>UP</code> and <code>AS PLAYED</code>, downward for <code>DOWN</code>, upward or downward with the direction <code>UP DOWN</code> is moving, and in the order <code>RANDOM</code> picked them. Each note's <code>GATE</code> counts from the moment that note starts, and every note of a step ends when the next step starts.</p>
 <p>A step with more than one note does not glide: each note starts at its own pitch. A step with one note glides as it does with <code>NOTES</code> at <code>1</code>.</p>
-<p><code>NOTES</code> acts only when <code>MODE</code> in the <code>VOICE</code> section is <code>POLY</code>. In <code>MONO</code> and <code>LEGATO</code> the synth plays one note at a time, so each step plays one note. The <code>NOTES</code> row is dimmed in those modes and says why. It keeps its setting, which applies again when you return to <code>POLY</code>.</p>
+<p><code>NOTES</code> acts only when <code>MODE</code> in the <code>VOICE</code> section is <code>POLY</code>. In <code>MONO</code> and <code>LEGATO</code> the synth plays one note at a time, so each step plays one note. The <code>NOTES</code> knob is dimmed in those modes and says why. It keeps its setting, which applies again when you return to <code>POLY</code>.</p>
 <p><code>RANDOM</code> picks different notes on every pass. A part you record into an audio loop plays back the same way each time. A part on an instrument track's loop runs through the arpeggiator again on every pass, so its random notes differ from pass to pass.</p>
 <h2 id="synth-presets">Synth presets</h2>
 <p>The preset row in the dock's header shows the preset you last loaded or saved on this track, or <code>no preset loaded</code>. The words beside the name are the ones the effect presets use: <code>FACTORY</code> for a preset that ships with LOOM, and <code>EDITED</code> once a control has moved since you loaded or saved it. See <a href="/loom/manual/the-mixer/#racks-and-presets">Racks and presets</a>.</p>
@@ -608,7 +661,7 @@ manualSlug: instrument-tracks
 <ul>
 <li><strong>Small.</strong> The part list is on the left, and <code>SOUND</code> and <code>PATTERN</code> are in the dock's header. On <code>SOUND</code>, the picked entry's page shows its left column and its right column. On <code>PATTERN</code>, the grid is beside the list, and the step inspector, <code>STEPS/BEAT</code>, <code>BARS</code> and the bar controls are under the grid.</li>
 <li><strong>Medium.</strong> <code>SOUND</code> adds a column of pictures on the right. For a part, it shows the layer's pitch envelope, labelled <code>PITCH ENV</code> with the layer shown, its <code>MOD</code> and its largest pitch change in semitones. Under that is the part's hit, both layers together, labelled with the part's name, <code>HIT</code>, each layer's <code>SOURCE</code> and the length of the hit in milliseconds. At the foot of the column are the part's steps in the bar the grid shows. For <code>WAVEGUIDE</code>, the picture shows the waveguide ringing after a hit of the part you picked last. If that part sends nothing to the waveguide, the picture is flat and its label ends with that part's name and <code>SENDS NOTHING</code>. <code>KIT</code> has no picture. <code>PATTERN</code> looks as it does in a small window.</li>
-<li><strong>Large.</strong> The tabs go away and one page, headed <code>PATTERN</code>, shows everything. The grid runs across the top, and its row labels are the part list: click a label to show that part's controls below the grid. Below the grid are the part's controls in two blocks, then <code>WAVEGUIDE</code>, <code>RETURN</code>, <code>KIT</code> and the step inspector. The left block is the layer's <code>SOURCE</code>, <code>PITCH</code>, <code>LEVEL</code> and pitch modulation, with the layer switch at the right of its title. The right block has its own switch: <code>ENV</code> shows the layer's <code>EG</code>, <code>ATTACK</code> and <code>DECAY</code> with the part's <code>VELOCITY</code>, and <code>PART</code> shows <code>PAN</code>, <code>DRIVE</code>, <code>FOLD</code>, <code>BIT</code>, <code>SEND</code>, <code>CHOKE</code> and <code>QUANTIZE</code>. When there is room, each block has its picture above it. The header shows the <code>KIT</code> row and the <code>PATTERN</code> row side by side, so you can load or save either one.</li>
+<li><strong>Large.</strong> The tabs go away and one page, headed <code>PATTERN</code>, shows everything. The grid runs across the top, and its row labels are the part list: click a label to show that part's controls below the grid. Below the grid are the part's controls in two blocks, then <code>WAVEGUIDE</code>, <code>RETURN</code>, <code>KIT</code> and the step inspector. The left block is the layer's <code>SOURCE</code>, <code>PITCH</code>, <code>LEVEL</code> and pitch modulation, with the layer switch at the right of its title. The right block has its own switch: <code>ENV</code> shows the layer's <code>EG</code>, <code>ATTACK</code> and <code>DECAY</code> with the part's <code>VELOCITY</code>, and <code>PART</code> shows <code>PAN</code>, <code>DRIVE</code>, <code>FOLD</code>, <code>BIT</code>, <code>SEND</code>, <code>CHOKE</code> and <code>QUANTIZE</code>. When there is room, each block has its picture above it. The header shows the <code>KIT</code> row and the <code>PATTERN</code> row side by side, so you can load or save either one. When the window is tall enough for this page only with smaller track strips, the strips above the dock show only their header, ring, <code>STOP</code> and <code>CLEAR</code>.</li>
 </ul>
 <p>The pictures show the sound your current settings make, and they change when you move a control.</p>
 <h2 id="the-sampler-editor">The sampler editor</h2>

@@ -296,7 +296,8 @@ manualSlug: keyboard
 </table>
 <p><code>⌘N</code> is <em>New Song</em> on the File menu, and the menu takes it before the page can, so the page uses <code>⇧⌘N</code>. <code>Space</code> ticks the source that has keyboard focus, the same way it presses any button.</p>
 <h2 id="the-effect-slot-grid">The effect slot grid</h2>
-<p><code>Tab</code> treats the eight slots of a chain as one stop, with a cursor that moves inside it. The grid in a mixer strip and the grid in the effect drawer respond to the same keys, except <code>M</code> and <code>Esc</code>, which work only in the drawer's grid.</p>
+<p>In a mixer strip, <code>Tab</code> treats the eight slots of a chain as one stop, with a cursor that moves inside it. In the effect drawer, each slot is a <code>Tab</code> stop of its own, in slot order, and the open slot's arrow button is the stop after its slot. The arrow keys move the cursor in both places; in the drawer, the keyboard moves with the cursor. <code>M</code> and <code>Esc</code> work only in the drawer's grid.</p>
+<p>After <code>Return</code> opens a filled slot, the keyboard stays on that slot, so <code>Tab</code> and the arrow keys go on to the other slots. After <code>Return</code> opens an empty slot, the keyboard goes to the chooser's search field.</p>
 <!-- loom-shortcut-source: ui::EffectSlotGrid -->
 
 <table>
@@ -338,6 +339,78 @@ manualSlug: keyboard
 </tbody>
 </table>
 <p>On a track strip, <code>M</code> mutes the track. See <a href="#mute-and-solo-on-a-track">Mute and solo on a track</a>.</p>
+<h2 id="the-effect-chooser">The effect chooser</h2>
+<p>In the effect drawer, the open slot's arrow button is the next stop after that slot. It opens the chooser, which lists the effects you can put in the slot. See <a href="/loom/manual/the-mixer/#choosing-or-replacing-an-effect">Choosing or replacing an effect</a>.</p>
+<!-- loom-shortcut-source: ui::EffectSlotGrid::Chevron -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Return</code> <code>Space</code></td>
+<td>Opens the chooser and puts the keyboard in its search field.</td>
+</tr>
+<tr>
+<td><code>↓</code></td>
+<td><strong>With <code>⌥</code> held:</strong> opens the chooser, as <code>Return</code> does.</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td><strong>With the chooser open:</strong> closes it without changing anything.</td>
+</tr>
+</tbody>
+</table>
+<p>The chooser's search field narrows the list as you type, by name or by what the effect does. After the search field, <code>Tab</code> moves through the effects in the list, one stop each, in the order they are drawn. A dimmed effect is not a stop. Its reason is still drawn on its row and read by a screen reader.</p>
+<!-- loom-shortcut-source: ui::EffectChooser -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>↑</code> <code>↓</code></td>
+<td>Moves the highlight to the previous or next effect you can choose. A dimmed effect is skipped.</td>
+</tr>
+<tr>
+<td><code>Return</code></td>
+<td>Chooses the highlighted effect. Choosing the effect marked <code>CURRENT</code> changes nothing.</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Closes the chooser without changing anything, from the search field or from an effect in the list. The keyboard goes back to the arrow button. From an empty slot, the drawer goes back to the effect you were looking at and the keyboard goes back to the empty slot.</td>
+</tr>
+</tbody>
+</table>
+<p>With the keyboard on an effect in the list:</p>
+<!-- loom-shortcut-source: ui::EffectChooser::Row -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Return</code> <code>Space</code></td>
+<td>Chooses that effect.</td>
+</tr>
+<tr>
+<td><code>↑</code> <code>↓</code></td>
+<td>Moves the keyboard to the effect above or below. <code>↑</code> on the first effect goes back to the search field.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="the-tempo-field">The tempo field</h2>
 <!-- loom-shortcut-source: ui::TempoField -->
 
@@ -432,6 +505,10 @@ manualSlug: keyboard
 <td>Takes it to the top.</td>
 </tr>
 <tr>
+<td><code>Page Up</code> <code>Page Down</code></td>
+<td>On a stepped knob, moves four settings up or down.</td>
+</tr>
+<tr>
 <td><code>Return</code></td>
 <td>Opens the type-in, so you can type a value instead of stepping to it.</td>
 </tr>
@@ -441,6 +518,7 @@ manualSlug: keyboard
 </tr>
 </tbody>
 </table>
+<p>The synth editor's stepped knobs, such as an LFO's <code>SHAPE</code>, choose from named settings: on one, the arrow keys move one setting, and <code>Home</code> and <code>End</code> go to the first and the last. Other controls ignore <code>Page Up</code> and <code>Page Down</code>. See <a href="/loom/manual/instrument-tracks/#working-with-the-controls">Working with the controls</a>.</p>
 <!-- loom-shortcut-source: ui::ValueField -->
 
 <table>
