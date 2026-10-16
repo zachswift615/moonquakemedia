@@ -1,0 +1,204 @@
+---
+# /loom/touchosc/ : the TouchOSC layout for LOOM, and how to connect an iPad to it.
+#
+# The layout file is a copy of tools/touchosc/LOOM.tosc in the LOOM repo, where its generator lives.
+# Regenerate it there and copy it here; do not edit the copy. The setup steps match the "Using an iPad
+# as a controller with TouchOSC" section of the LOOM manual's MIDI mapping page.
+layout: layouts/base.njk
+permalink: /loom/touchosc/
+title: "LOOM TouchOSC layout for iPad"
+seoTitle: "LOOM TouchOSC Layout: Control the LOOM Looper from an iPad"
+description: "A free TouchOSC layout that turns an iPad into a pad controller for LOOM, with setup steps for TouchOSC Bridge on the Mac."
+ownFooter: true
+faviconSvg: /assets/loom/loom-favicon.svg
+favicon16: /assets/loom/favicon-16.png
+favicon: /assets/loom/favicon-32.png
+---
+<style>
+  {% include "components/loom-fonts.njk" %}
+
+  html, body { margin: 0; padding: 0; background: #0B0C0E; }
+  body { font-family: Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif; color: #E8EAED; -webkit-font-smoothing: antialiased; }
+  a { color: #4CC9F0; text-decoration: none; }
+  a:hover { color: #8AD9F5; text-decoration: underline; }
+  *:focus-visible { outline: 2px solid #7FDBFF; outline-offset: 2px; }
+  img { max-width: 100%; display: block; }
+
+  .sc-wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+  .sc-mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+  .sc-label { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11.5px; letter-spacing: 0.18em; color: #8A9099; }
+
+  .sc-bar { position: sticky; top: 0; z-index: 10; background: rgba(11,12,14,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #23262C; }
+  .sc-bar .sc-wrap { display: flex; align-items: center; gap: 14px; padding-top: 14px; padding-bottom: 14px; }
+  .sc-bar img { width: 30px; height: 30px; border-radius: 7px; }
+  .sc-bar .sc-name { font-size: 19px; font-weight: 700; letter-spacing: 0.02em; color: #E8EAED; }
+  .sc-bar .sc-back { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.13em; color: #C7CDD4; }
+
+  .sc-hero { padding: 88px 0 0; display: flex; flex-direction: column; gap: 22px; }
+  .sc-eyebrow { display: flex; align-items: center; gap: 12px; }
+  .sc-dot { width: 7px; height: 7px; border-radius: 2px; background: #35D07F; flex: none; }
+  .sc-hero h1 { margin: 0; font-size: clamp(40px, 6vw, 72px); font-weight: 700; letter-spacing: -0.035em; line-height: 1; max-width: 14ch; text-wrap: balance; }
+  .sc-hero p { margin: 0; font-size: clamp(17px, 1.8vw, 20px); line-height: 1.55; color: #C7CDD4; max-width: 56ch; text-wrap: pretty; }
+
+  .sc-pdfs { padding: 56px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px; }
+  .sc-pdf { border: 1px solid #2C3038; border-radius: 12px; background: #0F1114; padding: 24px; display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 22px; align-items: center; }
+  .sc-pdf.sc-feature { background: linear-gradient(180deg, #12201A, #0F1114); }
+  .sc-cover { border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.45); border: 1px solid #2C3038; aspect-ratio: 612 / 792; width: 100%; height: auto; }
+  .sc-pdf-body { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .sc-pdf h2 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+  .sc-pdf p { margin: 0; font-size: 15px; line-height: 1.5; color: #8A9099; }
+  .sc-btn { display: inline-block; margin-top: 6px; padding: 13px 20px; border-radius: 8px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 700; letter-spacing: 0.09em; }
+  .sc-btn:hover { text-decoration: none; }
+  .sc-btn-green { background: #35D07F; color: #08090B; }
+  .sc-btn-green:hover { color: #08090B; background: #4BDB8E; }
+  .sc-btn-ghost { background: #171A1F; border: 1px solid #2C3038; color: #E8EAED; }
+  .sc-btn-ghost:hover { color: #E8EAED; border-color: #3A3F48; }
+
+  .sc-section { padding: 96px 0 0; display: flex; flex-direction: column; gap: 26px; }
+  .sc-section h2.sc-h { margin: 0; font-size: clamp(28px, 3.4vw, 40px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+
+  .sc-keys { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 960px) { .sc-keys { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .sc-keys { grid-template-columns: minmax(0, 1fr); } }
+  .sc-key { border: 1px solid #23262C; border-radius: 10px; background: #0F1114; padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+  .sc-caps { display: flex; gap: 6px; align-items: center; min-height: 40px; }
+  .sc-cap { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding: 0 12px; box-sizing: border-box;
+    border-radius: 7px; background: linear-gradient(180deg, #23272E, #1A1D22); border: 1px solid #343944; border-bottom-width: 3px;
+    font-family: 'JetBrains Mono', -apple-system, monospace; font-size: 15px; font-weight: 600; color: #E8EAED; }
+  .sc-cap.sc-sym { font-family: -apple-system, "Helvetica Neue", sans-serif; font-size: 17px; }
+  .sc-key-what { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+  .sc-key-why { font-size: 14.5px; line-height: 1.5; color: #8A9099; margin-top: -8px; }
+
+  .sc-next { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px; }
+  .sc-card { border: 1px solid #2C3038; border-radius: 12px; background: #0F1114; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .sc-card h3 { margin: 0; font-size: 21px; font-weight: 600; letter-spacing: -0.02em; }
+  .sc-card p { margin: 0; font-size: 15px; line-height: 1.55; color: #8A9099; text-wrap: pretty; }
+  .sc-card .sc-spacer { flex: 1; min-height: 4px; }
+  .sc-video { position: relative; display: block; border-radius: 8px; overflow: hidden; border: 1px solid #23262C; aspect-ratio: 16 / 9; }
+  .sc-video img { width: 100%; height: 100%; object-fit: cover; }
+  .sc-play { position: absolute; left: 14px; bottom: 14px; width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(11,12,14,0.78); border: 1px solid rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; }
+  .sc-play::after { content: ""; margin-left: 4px; border-left: 15px solid #E8EAED; border-top: 9px solid transparent; border-bottom: 9px solid transparent; }
+  .sc-video:hover .sc-play { background: #35D07F; }
+  .sc-video:hover .sc-play::after { border-left-color: #08090B; }
+
+  .sc-note { padding: 96px 0 0; }
+  .sc-note-inner { border-left: 3px solid #35D07F; padding: 6px 0 6px 24px; max-width: 62ch; display: flex; flex-direction: column; gap: 12px; }
+  .sc-note p { margin: 0; font-size: 18px; line-height: 1.6; color: #C7CDD4; }
+  .sc-note .sc-sig { font-size: 15px; color: #8A9099; }
+
+  .sc-foot { padding: 96px 0 0; }
+  .sc-foot .sc-row { border-top: 1px solid #23262C; padding: 30px 0 56px; display: flex; flex-wrap: wrap; gap: 22px; align-items: center; }
+  .sc-foot img { width: 26px; height: 26px; border-radius: 6px; }
+  .sc-foot a { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.12em; }
+  .sc-foot .sc-fill { flex: 1; min-width: 20px; }
+
+  @media (max-width: 600px) {
+    .sc-wrap { padding: 0 16px; }
+    .sc-hero { padding-top: 56px; }
+    .sc-pdf { grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 18px; }
+    .sc-section, .sc-note, .sc-foot { padding-top: 72px; }
+  }
+
+  .sc-shot { border-radius: 12px; border: 1px solid #2C3038; box-shadow: 0 20px 60px rgba(0,0,0,0.5); width: 100%; height: auto; aspect-ratio: 4 / 3; }
+  .sc-steps { list-style: none; counter-reset: step; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
+  .sc-steps li { counter-increment: step; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; align-items: start;
+    border: 1px solid #23262C; border-radius: 10px; background: #0F1114; padding: 20px 22px; font-size: 16px; line-height: 1.55; color: #C7CDD4; }
+  .sc-steps li::before { content: counter(step); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px;
+    background: #171A1F; border: 1px solid #343944; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #35D07F; }
+  .sc-steps strong, .sc-list strong { color: #E8EAED; font-weight: 600; }
+  .sc-code { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 0.92em; background: #171A1F; border: 1px solid #2C3038; border-radius: 5px; padding: 1px 6px; color: #E8EAED; white-space: nowrap; }
+  .sc-list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 1.55; color: #C7CDD4; max-width: 760px; }
+  .sc-callout { border-left: 3px solid #4CC9F0; padding: 4px 0 4px 20px; max-width: 70ch; font-size: 16px; line-height: 1.6; color: #C7CDD4; }
+</style>
+
+<div class="sc-bar">
+  <div class="sc-wrap">
+    <img src="/assets/loom/loom-icon-64.png" alt="" width="30" height="30">
+    <div class="sc-name">LOOM</div>
+    <a class="sc-back" href="/loom/">LOOM HOME</a>
+  </div>
+</div>
+
+<main id="main-content" class="sc-wrap">
+  <div class="sc-hero">
+    <div class="sc-eyebrow"><div class="sc-dot"></div><div class="sc-label">TOUCHOSC LAYOUT · FREE</div></div>
+    <h1>Play LOOM from your iPad.</h1>
+    <p>This TouchOSC layout gives every LOOM track its own pads on an iPad: record, play, stop, undo, redo and clear, laid out like LOOM's looper view, with a tile of global controls beside them.</p>
+  </div>
+
+  <div class="sc-section" style="padding-top:56px;">
+    <img class="sc-shot" src="/assets/loom/touchosc-ipad.webp" alt="The LOOM layout in TouchOSC on an iPad: five audio track tiles on the top row, four instrument track tiles and a GLOBAL tile on the bottom row" width="1600" height="1200" loading="eager">
+  </div>
+
+  <div class="sc-pdfs">
+    <div class="sc-card" style="background:linear-gradient(180deg, #12201A, #0F1114);">
+      <div class="sc-label" style="color:#35D07F;">THE LAYOUT</div>
+      <h3>LOOM.tosc</h3>
+      <p>Open it in TouchOSC on your iPad. It works with LOOM's default MIDI settings: channel 16 and the 1.x layout.</p>
+      <div class="sc-spacer"></div>
+      <a class="sc-btn sc-btn-green" href="/assets/loom/LOOM.tosc" download>DOWNLOAD LOOM.TOSC</a>
+    </div>
+    <div class="sc-card">
+      <div class="sc-label" style="color:#4CC9F0;">WHAT ELSE YOU NEED</div>
+      <h3>Two apps from hexler</h3>
+      <p><strong style="color:#E8EAED;">TouchOSC</strong> on the iPad, a paid app. <strong style="color:#E8EAED;">TouchOSC Bridge</strong> on the Mac running LOOM, which is free and carries MIDI between them over your network. Keep both devices on the same network.</p>
+      <div class="sc-spacer"></div>
+      <a class="sc-btn sc-btn-ghost" href="https://hexler.net/touchosc#resources">GET TOUCHOSC BRIDGE</a>
+    </div>
+  </div>
+
+  <div class="sc-section">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="sc-label">SETUP</div>
+      <h2 class="sc-h">Connect it in six steps.</h2>
+    </div>
+    <ol class="sc-steps">
+      <li><div>On the Mac, open <strong>TouchOSC Bridge</strong>. LOOM picks it up as a MIDI source on its own, with no setting to change. If LOOM is already open, its notice row says a MIDI device was connected.</div></li>
+      <li><div>Send <span class="sc-code">LOOM.tosc</span> to the iPad, with AirDrop for example, and open it in TouchOSC.</div></li>
+      <li><div>In TouchOSC, open the connections settings (the chain-link icon). Under <strong>Bridge</strong>, turn on connection 1 and set its host to your Mac.</div></li>
+      <li><div>Under <strong>MIDI</strong>, turn on connection 1 and set its send port to <span class="sc-code">&lt;Bridge 1&gt;</span>. This is the step people miss: the Bridge connection sends nothing until a MIDI connection uses it.</div></li>
+      <li><div>Leave the editor so TouchOSC is in play mode.</div></li>
+      <li><div>Tap track 1's <strong>REC / PLAY / DUB</strong> pad and watch the <span class="sc-code">MIDI</span> readout on LOOM's bottom rail. It should read <span class="sc-code">16 · N0 · 127 ✓</span>, and track 1 starts recording.</div></li>
+    </ol>
+  </div>
+
+  <div class="sc-section">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="sc-label">THE PADS</div>
+      <h2 class="sc-h">What each pad does.</h2>
+    </div>
+    <ul class="sc-list">
+      <li><strong>REC / PLAY / DUB</strong> does what the track's ring does: records an empty track, closes the loop, overdubs a playing track, and plays a stopped one.</li>
+      <li><strong>PLAY</strong> and <strong>STOP</strong> play and stop that track on its own quantize setting.</li>
+      <li><strong>UNDO</strong> and <strong>REDO</strong> take the last layer off the track and put it back.</li>
+      <li><strong>CLEAR</strong> clears the track when you hold it for one second. A short tap does nothing, so a stray touch cannot lose a take.</li>
+      <li>The <strong>GLOBAL</strong> tile has ALL START, ALL STOP, TRANSPORT START, TRANSPORT STOP, PERFORM FROM TOP, and ALL CLEAR (also a one-second hold).</li>
+    </ul>
+    <p class="sc-callout">The pads follow LOOM's built-in MIDI layout, which the <a href="/loom/manual/">LOOM manual</a> lists in full on its MIDI mapping page. A hardware pad controller set to the same notes does the same things.</p>
+  </div>
+
+  <div class="sc-section">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="sc-label">IF NOTHING HAPPENS</div>
+      <h2 class="sc-h">Read the MIDI readout.</h2>
+    </div>
+    <ul class="sc-list">
+      <li><strong>It still shows a dash.</strong> No MIDI is reaching LOOM. Check that MIDI connection 1's send port is <span class="sc-code">&lt;Bridge 1&gt;</span>, that the Bridge connection is on with your Mac as its host, and that TouchOSC Bridge is running on the Mac.</li>
+      <li><strong>The line ends in a dot instead of a tick.</strong> LOOM hears the iPad but the note is not one of its commands. In LOOM's side panel, set MIDI CH to 16 and MIDI MAP to 1.x layout.</li>
+    </ul>
+    <p class="sc-callout">LOOM for Windows is on its way. TouchOSC Bridge runs on Windows too, and this page will cover it when LOOM for Windows ships.</p>
+  </div>
+
+  <div class="sc-foot">
+    <div class="sc-row">
+      <img src="/assets/loom/loom-icon-64.png" alt="" width="26" height="26">
+      <div class="sc-label" style="font-size:11.5px;letter-spacing:0.12em;">LOOM · <a href="/" style="color:#8A9099;">MOONQUAKE</a></div>
+      <div class="sc-fill"></div>
+      <a href="/loom/manual/">MANUAL</a>
+      <a href="/loom/version">VERSIONS</a>
+      <a href="/blog/">BLOG</a>
+      <a href="mailto:support@moonquakemedia.com">SUPPORT</a>
+    </div>
+  </div>
+</main>

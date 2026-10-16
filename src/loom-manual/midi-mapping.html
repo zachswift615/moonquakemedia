@@ -463,6 +463,40 @@ manualSlug: midi-mapping
 </ul>
 <p><strong>5. Play.</strong> Pad 1 records track 1. Pad 1 again closes the loop. Pad 2 overdubs. Pads 3 and 4 undo and redo that overdub. Pad 6, held for a second, clears track 1. Your keys on channel 1 never reach LOOM's commands. They play whichever instrument track holds channel 1, or your external synth if no instrument track listens there.</p>
 <hr />
+<h2 id="using-an-ipad-as-a-controller-with-touchosc">Using an iPad as a controller with TouchOSC</h2>
+<p>TouchOSC is an app from hexler that turns an iPad screen into a MIDI control surface. LOOM provides a TouchOSC layout that sends the notes on this page, so the iPad works as a pad controller for every track.</p>
+<p>The layout has a tile for each audio track and each instrument track, laid out like the looper view's rows, and a <code>GLOBAL</code> tile:</p>
+<ul>
+<li><strong><code>REC / PLAY / DUB</code></strong> is the ring button, <code>+0</code>.</li>
+<li><strong><code>PLAY</code></strong> and <strong><code>STOP</code></strong> are <code>+6</code> and <code>+4</code>.</li>
+<li><strong><code>UNDO</code></strong> and <strong><code>REDO</code></strong> are <code>+2</code> and <code>+3</code>.</li>
+<li><strong><code>CLEAR (hold 1s)</code></strong> is <code>+5</code>. Hold it for a second, as you would any clear.</li>
+<li>The <strong><code>GLOBAL</code></strong> tile has <code>ALL START</code>, <code>ALL STOP</code>, <code>TRANSPORT START</code>, <code>TRANSPORT STOP</code>, <code>PERFORM FROM TOP</code> and <code>ALL CLEAR</code>.</li>
+</ul>
+<p>The layout has no overdub pad. The ring button overdubs a playing track.</p>
+<h3 id="what-you-need">What you need</h3>
+<ul>
+<li>TouchOSC on the iPad.</li>
+<li><strong>TouchOSC Bridge</strong> on the Mac running LOOM. It is free from hexler, at <code>hexler.net/touchosc</code>, under Resources. Bridge passes MIDI between TouchOSC and the Mac over your network.</li>
+<li>The layout file, <code>LOOM.tosc</code>, from <code>moonquakemedia.com/loom/touchosc</code>.</li>
+<li>The iPad and the Mac on the same network.</li>
+</ul>
+<h3 id="setting-it-up">Setting it up</h3>
+<ol>
+<li>On the Mac, open TouchOSC Bridge. It appears to the Mac as a MIDI source named <code>TouchOSC Bridge</code>, and LOOM listens to it with no setting, as it does every source. If LOOM is already open, the notice row says a MIDI device was connected.</li>
+<li>Send <code>LOOM.tosc</code> to the iPad, with AirDrop for example, and open it in TouchOSC.</li>
+<li>In TouchOSC, open the connections settings (the chain-link icon). Under <strong>Bridge</strong>, turn on connection 1 and set its host to your Mac.</li>
+<li>Under <strong>MIDI</strong>, turn on connection 1 and set its send port to <strong><code>&lt;Bridge 1&gt;</code></strong>. This is the step that is easiest to miss: the Bridge connection alone sends nothing until a MIDI connection uses it.</li>
+<li>Leave the editor, so that TouchOSC is in play mode.</li>
+<li>Tap track 1's <code>REC / PLAY / DUB</code> pad and watch the <code>MIDI</code> readout on the bottom rail. It reads <code>16 · N0 · 127 ✓</code>.</li>
+</ol>
+<p>The layout sends on channel 16 in the 1.x layout, which are LOOM's defaults. If you changed <code>MIDI CH</code> or <code>MIDI MAP</code>, set them back, or change the channel of the layout's messages in TouchOSC.</p>
+<h3 id="if-the-readout-does-not-change">If the readout does not change</h3>
+<ul>
+<li><strong>Still <code>—</code>:</strong> no MIDI is reaching LOOM. Check that MIDI connection 1's send port is <code>&lt;Bridge 1&gt;</code>, that the Bridge connection is turned on with your Mac as its host, and that TouchOSC Bridge is running on the Mac.</li>
+<li><strong>A line that ends in <code>·</code>:</strong> LOOM hears the iPad but does not act on the note. Check that <code>MIDI CH</code> is 16 and <code>MIDI MAP</code> is <code>1.x layout</code>.</li>
+</ul>
+<p>The pads do not show what a track is doing. LOOM sends no MIDI, so the iPad cannot know.</p>
 <h2 id="what-loom-listens-to">What LOOM listens to</h2>
 <p>LOOM listens to every MIDI source macOS reports and keeps them connected for the session. Its commands have no device list and no enable switch, so you cannot choose which source drives them, but the <code>MIDI</code> readout shows you what is arriving. An instrument track can listen to one device; see <a href="/loom/manual/instrument-tracks/#midi-input">Instrument tracks</a>.</p>
 <p>A Mac with no MIDI interface is not a problem: LOOM opens the audio device and runs as usual.</p>
