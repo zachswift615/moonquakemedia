@@ -26,7 +26,7 @@ manualSlug: side-panel
 <p>To leave the <code>TRACK</code> panel, use the <code>GLOBAL</code> tab. To hide the panel, use the panel toggle.</p>
 <h2 id="the-global-panel">The GLOBAL panel</h2>
 <p>Everything here is the song's global default: the value a track inherits until you change it on that track. Changing a setting here does not overwrite every track. A strip you have set differently in the <code>i</code> panel keeps its own value and shows an asterisk on its <code>STOP</code> face.</p>
-<div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-settings.webp" width="301" height="492" loading="lazy" decoding="async" alt="The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections."><figcaption>The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-device.webp" width="320" height="400" loading="lazy" decoding="async" alt="The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open."><figcaption>The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open.</figcaption></figure></div>
+<div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-settings.webp" width="301" height="492" loading="lazy" decoding="async" alt="The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections."><figcaption>The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-device.webp" width="320" height="454" loading="lazy" decoding="async" alt="The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open."><figcaption>The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open.</figcaption></figure></div>
 <h3 id="global">GLOBAL</h3>
 <table>
 <thead>
@@ -176,13 +176,18 @@ manualSlug: side-panel
 <td><code>MIDI MAP</code></td>
 <td>Which note layout LOOM answers: <code>1.x layout</code>, the default, or <code>1.0 layout</code>, the layout LOOM 1.0 used. The 1.0 layout will be removed in LOOM 1.4.</td>
 </tr>
+<tr>
+<td><code>MIDI OUT</code></td>
+<td>Where LOOM sends each track's state, so that a controller or a TouchOSC layout can show it: <code>NONE</code>, the default, or one of this machine's MIDI outputs.</td>
+</tr>
 </tbody>
 </table>
 <p>They sit here because they answer the same question as the two device chips, for the other cable: what LOOM is connected to, and whether it is listening where you are talking.</p>
 <p>Your controller must send its commands on this channel. LOOM's commands ignore every other channel, so you can drive LOOM from the same keyboard you are playing. What you play on another channel goes to the <a href="/loom/manual/instrument-tracks/">instrument tracks</a> that listen on it, and no instrument track listens on this one.</p>
 <p>The change takes effect immediately, with no relaunch: the old channel goes quiet and the new one starts answering. Unlike the device chips, changing it destroys nothing. No engine is rebuilt and no loop is at risk, so no warning appears.</p>
 <p><code>MIDI MAP</code> also takes effect immediately, with no relaunch, and destroys nothing. If you are holding a Clear pad when you switch it, LOOM cancels that hold. <a href="/loom/manual/midi-mapping/">MIDI mapping</a> prints both layouts.</p>
-<p>The channel and the layout are stored per machine, not in the song. Take a set to another rig and it uses that rig's channel and layout, since the controller there is a different one.</p>
+<p><code>MIDI OUT</code> takes effect immediately too. LOOM sends on the <code>MIDI CH</code> channel, on the notes the <code>MIDI MAP</code> layout gives each command. An output LOOM cannot open is shown with <code>(not connected)</code> after its name, and LOOM starts sending to it when it opens. <a href="/loom/manual/midi-mapping/#midi-feedback">MIDI feedback</a> lists what LOOM sends.</p>
+<p>The channel, the layout and the output are stored per machine, not in the song. Take a set to another rig and it uses that rig's channel, layout and output, since the controller there is a different one.</p>
 <p>To check the channel, watch the <code>MIDI</code> cell on the bottom rail while you press a pad (see <a href="/loom/manual/bottom-rails/">The bottom rails</a>). A message on the wrong channel shows there as received but unmatched, which is the problem this chip fixes.</p>
 <h3 id="accessibility">ACCESSIBILITY</h3>
 <p><code>ANNOUNCE</code> is a toggle and the only control in this section. It turns spoken announcements on and off. They help during setup and are worse than silence during a live set.</p>
