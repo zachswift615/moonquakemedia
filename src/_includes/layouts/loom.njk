@@ -559,6 +559,46 @@ layout: layouts/base.njk
       </div>
     </div>
 
+    <div id="midi-mapping" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIDI MAPPING</div>
+        <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Pick a control. Wiggle a knob. Done.</h2>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Choose a control in LOOM, then move a knob, fader, pad or key on your hardware. LOOM shows what it heard and suggests how to use it, and from then on that knob drives that control: the synth’s cutoff, a delay’s feedback, a track’s level, or nearly any other control in LOOM.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Your mappings belong to your rig and work in every song. Any one of them can be kept for a single song instead, and that song’s mapping wins.</p>
+      </div>
+      <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.6);">
+        {% shot "/assets/loom/shot-midi-mapping.png", "LOOM’s MIDI Mapping window: a table of mappings with each one’s source, type, target and state, and a monitor of incoming MIDI beside it" %}
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px;align-items:start;">
+        <div style="border:1px solid #23262C;border-radius:10px;overflow:hidden;background:#101216;">
+          {% shot "/assets/loom/shot-midi-learn.png", "Learning a mapping: LOOM shows the control change it heard and how it moved, proposes CONTROLLER, and warns that the control change already drives another control before you confirm", "(min-width: 1304px) 610px, calc(100vw - 32px)" %}
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;justify-content:center;">
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:6px;height:6px;border-radius:2px;background:#A78BFA;flex:none;margin-top:8px;"></div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
+                <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">It tells you before it changes anything</h3>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">If that knob already drives something, LOOM names it before you confirm, and undo puts it back. A monitor beside your mappings shows every message as it arrives and what it did.</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:6px;height:6px;border-radius:2px;background:#4CC9F0;flex:none;margin-top:8px;"></div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
+                <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">No jumps when a knob is out of place</h3>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">When a knob isn’t where LOOM’s control is, the control waits until the knob reaches it, and the screen shows where your knob is. Prefer it to jump, or to catch up gradually? Pick that instead.</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:6px;height:6px;border-radius:2px;background:#35D07F;flex:none;margin-top:8px;"></div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
+                <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Faders and pads that follow LOOM</h3>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Choose a MIDI output and LOOM sends back each track’s state and every mapped value, so lit pads and motorised or on-screen faders stay where LOOM is. Levels, sends, mutes and the click work with no setup at all. Try it on an iPad with the free <a href="/loom/touchosc/">TouchOSC layout</a>.</div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
     <div id="record" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#FF4438;">PERFORMANCE RECORDING</div>
@@ -701,7 +741,7 @@ layout: layouts/base.njk
           <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIDI</div>
           <h3 style="margin:0;font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;">Play it and run it from MIDI.</h3>
           <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Play the synth, drum machine and sampler from any MIDI keyboard or pad controller, and drive every track and the transport from MIDI notes on a channel of their own, 16 by default. Each track, audio or instrument, gets its own octave with the same seven commands in the same order. A MIDI monitor on the bottom bar shows the last message received, in every view, so you can check that LOOM is seeing your controller.</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">The command map is fixed for now. There’s no MIDI learn and no way to reassign notes yet, but it’s on the roadmap. Commands answer notes only: CC doesn’t control the mixer or effects, and there’s no MIDI clock, MTC or MMC in or out, and no MIDI output. Clear pads are held for a second, so a stray foot can’t wipe a loop. If your controller is set up for LOOM 1.0, switch MIDI MAP to the 1.0 layout.</p>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Levels, sends, mutes and the click answer control changes on the same channel, with no setup, and <a href="#midi-mapping">MIDI mapping</a> puts anything else wherever you want it. Choose a MIDI output and LOOM sends each track’s state back to your controller. There’s no MIDI clock, MTC or MMC in or out yet. Clear pads are held for a second, so a stray foot can’t wipe a loop. If your controller is set up for LOOM 1.0, switch MIDI MAP to the 1.0 layout.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:2px;background:#23262C;border:1px solid #23262C;border-radius:8px;overflow:hidden;">
           

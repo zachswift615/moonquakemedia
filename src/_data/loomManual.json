@@ -1,6 +1,6 @@
 {
-  "version": "1.4.1",
-  "sourceCommit": "0c974e3f",
+  "version": "1.5.0",
+  "sourceCommit": "788e060e",
   "chapters": [
     {
       "order": 1,
@@ -21,7 +21,7 @@
       "slug": "midi-mapping",
       "url": "/loom/manual/midi-mapping/",
       "title": "MIDI mapping",
-      "description": "LOOM responds to a fixed, built-in set of notes that covers every track and the global controls. There is no mapping editor and no MIDI learn, so you..."
+      "description": "LOOM responds to a fixed, built-in set of notes that covers every track and the global controls, and to a fixed set of controller numbers that move the..."
     },
     {
       "order": 4,

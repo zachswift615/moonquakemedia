@@ -8,7 +8,7 @@ layout: layouts/base.njk
 permalink: /loom/touchosc/
 title: "LOOM TouchOSC layout for iPad"
 seoTitle: "LOOM TouchOSC Layout: Control the LOOM Looper from an iPad"
-description: "A free TouchOSC layout that turns an iPad into a pad controller for LOOM, with setup steps for TouchOSC Bridge on the Mac."
+description: "A free TouchOSC layout that turns an iPad into a pad controller and mixer for LOOM, with setup steps for TouchOSC Bridge on the Mac."
 ownFooter: true
 faviconSvg: /assets/loom/loom-favicon.svg
 favicon16: /assets/loom/favicon-16.png
@@ -110,6 +110,10 @@ favicon: /assets/loom/favicon-32.png
   .sc-code { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 0.92em; background: #171A1F; border: 1px solid #2C3038; border-radius: 5px; padding: 1px 6px; color: #E8EAED; white-space: nowrap; }
   .sc-list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 1.55; color: #C7CDD4; max-width: 760px; }
   .sc-callout { border-left: 3px solid #4CC9F0; padding: 4px 0 4px 20px; max-width: 70ch; font-size: 16px; line-height: 1.6; color: #C7CDD4; }
+  .sc-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 20px; }
+  .sc-shots figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .sc-shots figcaption { font-size: 14px; color: #8A9099; }
+  .sc-inline-shot { border-radius: 10px; border: 1px solid #2C3038; max-width: 420px; width: 100%; height: auto; margin-top: 12px; }
 </style>
 
 <div class="sc-bar">
@@ -124,11 +128,20 @@ favicon: /assets/loom/favicon-32.png
   <div class="sc-hero">
     <div class="sc-eyebrow"><div class="sc-dot"></div><div class="sc-label">TOUCHOSC LAYOUT · FREE</div></div>
     <h1>Play LOOM from your iPad.</h1>
-    <p>This TouchOSC layout gives every LOOM track its own pads on an iPad: record, play, stop, undo, redo and clear, laid out like LOOM's looper view, with a tile of global controls beside them.</p>
+    <p>This TouchOSC layout puts LOOM on an iPad in two pages. PADS gives every track its own pads, and each one shows what its track is doing in LOOM's colours. MIXER gives every track its level, its sends and a mute, plus the master and the click.</p>
   </div>
 
   <div class="sc-section" style="padding-top:56px;">
-    <img class="sc-shot" src="/assets/loom/touchosc-ipad.webp" alt="The LOOM layout in TouchOSC on an iPad: five audio track tiles on the top row, four instrument track tiles and a GLOBAL tile on the bottom row" width="1600" height="1200" loading="eager">
+    <div class="sc-shots">
+      <figure>
+        <img class="sc-shot" src="/assets/loom/touchosc-pads.webp" alt="The PADS page in TouchOSC: track pads reading OVERDUB, RECORDING, PLAYING and STOPPED in LOOM's colours, with STOP, UNDO, REDO and CLEAR under each, and a GLOBAL tile" width="1600" height="1200" loading="eager">
+        <figcaption>PADS. Each track's big pad shows its state as LOOM does.</figcaption>
+      </figure>
+      <figure>
+        <img class="sc-shot" src="/assets/loom/touchosc-mixer.webp" alt="The MIXER page in TouchOSC: a strip per track with CUE, FX 1 and FX 2 send faders, a level fader and MUTE, and a MASTER strip with the click level, the master level and CLICK" width="1600" height="1200" loading="lazy">
+        <figcaption>MIXER. Levels, sends, mutes, the master and the click.</figcaption>
+      </figure>
+    </div>
   </div>
 
   <div class="sc-pdfs">
@@ -151,31 +164,45 @@ favicon: /assets/loom/favicon-32.png
   <div class="sc-section">
     <div style="display:flex;flex-direction:column;gap:14px;">
       <div class="sc-label">SETUP</div>
-      <h2 class="sc-h">Connect it in six steps.</h2>
+      <h2 class="sc-h">Connect it in seven steps.</h2>
     </div>
     <ol class="sc-steps">
       <li><div>On the Mac, open <strong>TouchOSC Bridge</strong>. LOOM picks it up as a MIDI source on its own, with no setting to change. If LOOM is already open, its notice row says a MIDI device was connected.</div></li>
       <li><div>Send <span class="sc-code">LOOM.tosc</span> to the iPad, with AirDrop for example, and open it in TouchOSC.</div></li>
       <li><div>In TouchOSC, open the connections settings (the chain-link icon). Under <strong>Bridge</strong>, turn on connection 1 and set its host to your Mac.</div></li>
-      <li><div>Under <strong>MIDI</strong>, turn on connection 1 and set its send port to <span class="sc-code">&lt;Bridge 1&gt;</span>. This is the step people miss: the Bridge connection sends nothing until a MIDI connection uses it.</div></li>
+      <li><div>Under <strong>MIDI</strong>, turn on connection 1 and set both its send port and its receive port to <span class="sc-code">&lt;Bridge 1&gt;</span>. The Bridge connection carries nothing until a MIDI connection uses it, and the receive port is what lets LOOM light the pads.</div></li>
       <li><div>Leave the editor so TouchOSC is in play mode.</div></li>
       <li><div>Tap track 1's <strong>REC / PLAY / DUB</strong> pad and watch the <span class="sc-code">MIDI</span> readout on LOOM's bottom rail. It should read <span class="sc-code">16 · N0 · 127 ✓</span>, and track 1 starts recording.</div></li>
+      <li><div>In LOOM's side panel, under <strong>MIDI</strong>, set <strong>MIDI OUT</strong> to <span class="sc-code">TouchOSC Bridge</span>. The pads now show each track's state.<br><img class="sc-inline-shot" src="/assets/loom/touchosc-midi-out.webp" alt="LOOM's side panel MIDI section: MIDI CH 16, MIDI MAP 1.x layout, MIDI OUT set to TouchOSC Bridge" width="616" height="380" loading="lazy"></div></li>
     </ol>
   </div>
 
   <div class="sc-section">
     <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="sc-label">THE PADS</div>
+      <div class="sc-label">PADS</div>
       <h2 class="sc-h">What each pad does.</h2>
     </div>
     <ul class="sc-list">
-      <li><strong>REC / PLAY / DUB</strong> does what the track's ring does: records an empty track, closes the loop, overdubs a playing track, and plays a stopped one.</li>
-      <li><strong>PLAY</strong> and <strong>STOP</strong> play and stop that track on its own quantize setting.</li>
-      <li><strong>UNDO</strong> and <strong>REDO</strong> take the last layer off the track and put it back.</li>
-      <li><strong>CLEAR</strong> clears the track when you hold it for one second. A short tap does nothing, so a stray touch cannot lose a take.</li>
+      <li><strong>REC / PLAY / DUB</strong> does what the track's ring does: it records an empty track, closes the loop, overdubs a playing track and plays a stopped one. It reads RECORDING, PLAYING, OVERDUB or STOPPED in LOOM's colours, and a waiting state such as <span class="sc-code">PLAY...</span> while the track waits for the bar.</li>
+      <li><strong>STOP</strong> stops that track on its own quantize setting.</li>
+      <li><strong>UNDO</strong> and <strong>REDO</strong> take the last layer off the track and put it back. They light when there is something to undo or redo.</li>
+      <li><strong>CLEAR</strong> clears the track when you hold it for one second. It fills as you hold, and a short tap does nothing, so a stray touch cannot lose a take.</li>
       <li>The <strong>GLOBAL</strong> tile has ALL START, ALL STOP, TRANSPORT START, TRANSPORT STOP, PERFORM FROM TOP, and ALL CLEAR (also a one-second hold).</li>
     </ul>
-    <p class="sc-callout">The pads follow LOOM's built-in MIDI layout, which the <a href="/loom/manual/">LOOM manual</a> lists in full on its MIDI mapping page. A hardware pad controller set to the same notes does the same things.</p>
+  </div>
+
+  <div class="sc-section">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="sc-label">MIXER</div>
+      <h2 class="sc-h">Faders that need no setup.</h2>
+    </div>
+    <ul class="sc-list">
+      <li>Each track has <strong>CUE</strong>, <strong>FX 1</strong> and <strong>FX 2</strong> send faders, a level fader and <strong>MUTE</strong>. The <strong>MASTER</strong> strip has the click level, the master level and <strong>CLICK</strong> on and off.</li>
+      <li>They send the controller numbers LOOM answers to by default, so there is nothing to map.</li>
+      <li>A fader at the top is at unity. When you open the layout, the levels, CUE, the master and the click level start at unity, and FX 1 and FX 2 start at the bottom.</li>
+      <li>If a fader is not where LOOM's control is, moving it does nothing until it reaches LOOM's value. Then the control follows it. That keeps a level from jumping.</li>
+    </ul>
+    <p class="sc-callout">The pads and faders follow LOOM's built-in MIDI layout, which the <a href="/loom/manual/">LOOM manual</a> lists in full on its MIDI mapping page. A hardware controller set to the same notes and controller numbers does the same things.</p>
   </div>
 
   <div class="sc-section">
@@ -185,7 +212,8 @@ favicon: /assets/loom/favicon-32.png
     </div>
     <ul class="sc-list">
       <li><strong>It still shows a dash.</strong> No MIDI is reaching LOOM. Check that MIDI connection 1's send port is <span class="sc-code">&lt;Bridge 1&gt;</span>, that the Bridge connection is on with your Mac as its host, and that TouchOSC Bridge is running on the Mac.</li>
-      <li><strong>The line ends in a dot instead of a tick.</strong> LOOM hears the iPad but the note is not one of its commands. In LOOM's side panel, set MIDI CH to 16 and MIDI MAP to 1.x layout.</li>
+      <li><strong>The line ends in a dot instead of a tick.</strong> LOOM hears the iPad but the message is not one of its commands. In LOOM's side panel, set MIDI CH to 16 and MIDI MAP to 1.x layout.</li>
+      <li><strong>The pads work but never change colour.</strong> Set MIDI OUT to TouchOSC Bridge in LOOM, and set MIDI connection 1's receive port to <span class="sc-code">&lt;Bridge 1&gt;</span> in TouchOSC.</li>
     </ul>
     <p class="sc-callout">LOOM for Windows is on its way. TouchOSC Bridge runs on Windows too, and this page will cover it when LOOM for Windows ships.</p>
   </div>

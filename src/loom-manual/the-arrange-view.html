@@ -134,7 +134,7 @@ manualSlug: the-arrange-view
 <tr>
 <td>A strip sub-header</td>
 <td>One per strip that has a lane in the <code>INPUTS &amp; BUSES</code> group. A label, not a control: it names the strip its lanes sit under.</td>
-<td><code>IN 9</code>, <code>BUS 1</code>, <code>MASTER</code>.</td>
+<td><code>IN 9</code>, <code>BUS 1</code>, <code>MASTER</code>, <code>CLICK</code>.</td>
 </tr>
 <tr>
 <td>A lane row's count cell</td>
@@ -485,8 +485,8 @@ manualSlug: the-arrange-view
 <p>An automation lane moves one control while the arrangement performs. You draw nodes on it the way you draw regions on a track, and the song changes the control for one passage and changes it back for the next without anyone touching the machine.</p>
 <p>The kind of lane follows the control:</p>
 <ul>
-<li><strong>Switch lanes</strong> hold one of two states: an effect slot's bypass, on any input, loop track, bus or the master chain, a channel's mute, and an effect control with two settings, such as the delay's <code>SYNC</code> or an EQ band's <code>ON</code>, and an instrument control with two settings.</li>
-<li><strong>Range lanes</strong> hold a value anywhere between two ends: a strip's <code>LEVEL</code> on any of its four fader axes, its <code>PAN</code>, an effect control such as the reverb's <code>WET</code> or an EQ band's <code>GAIN</code>, and an instrument control such as the synth's <code>CUTOFF</code>.</li>
+<li><strong>Switch lanes</strong> hold one of two states: an effect slot's bypass, on any input, loop track, bus or the master chain, a channel's mute, the click's <code>ON / OFF</code>, an effect control with two settings, such as the delay's <code>SYNC</code> or an EQ band's <code>ON</code>, and an instrument control with two settings.</li>
+<li><strong>Range lanes</strong> hold a value anywhere between two ends: a strip's <code>LEVEL</code> on any of its four fader axes, its <code>PAN</code>, the click's <code>LEVEL</code>, an effect control such as the reverb's <code>WET</code> or an EQ band's <code>GAIN</code>, and an instrument control such as the synth's <code>CUTOFF</code>.</li>
 <li><strong>Step lanes</strong> move between named settings in order and never slide between them, such as the delay's <code>DIVISION</code>, the reverb's <code>SIZE</code> and the synth's <code>OCTAVE</code>. <strong>You cannot add one.</strong> The card leaves those controls out, and a song that already holds such a lane keeps it and plays it. See <em>An effect's controls</em> below.</li>
 <li><strong>Select lanes</strong> load a saved preset into one slot or a saved rack into a whole chain, set an instrument track's input, preset or drum pattern, or hand a shared MIDI channel from one instrument track to another. See <em>Preset and rack lanes</em>, <em>Input, preset and pattern lanes</em> and <em>MIDI IN lanes</em> below.</li>
 </ul>
@@ -517,7 +517,7 @@ manualSlug: the-arrange-view
 <tbody>
 <tr>
 <td><code>STRIP</code></td>
-<td>The strips of your mixer, under their bank headings and in the mixer's own order: loop tracks, instruments, inputs, the output strips, then the buses. After them, the <code>SONG</code> bank holds <code>MIDI IN</code> when the song has a shared MIDI channel. The number at the right of each row is how many controls you can reach under that strip.</td>
+<td>The strips of your mixer, under their bank headings, with the banks in the mixer's own order: loop tracks, instruments, inputs, the output strips, then the buses. Under <code>MASTER</code> the list shows the master strip first and <code>CLICK</code> after it, although the mixer puts the click strip at the left of its <code>MASTER</code> page. After the buses, the <code>SONG</code> bank holds <code>MIDI IN</code> when the song has a shared MIDI channel. The number at the right of each row is how many controls you can reach under that strip.</td>
 </tr>
 <tr>
 <td><code>MIXER</code></td>
@@ -566,8 +566,13 @@ manualSlug: the-arrange-view
 <td>Master</td>
 <td><code>LEVEL - MAIN</code></td>
 </tr>
+<tr>
+<td>Click</td>
+<td><code>ON / OFF</code>, <code>LEVEL</code></td>
+</tr>
 </tbody>
 </table>
+<p><strong>The click is a strip of its own.</strong> It is listed as <code>CLICK</code> under the <code>MASTER</code> bank, as the click strip is on the mixer's <code>MASTER</code> page. There is one click, so its strip carries no number. Its <code>ON / OFF</code> lane switches the click on and off, and its <code>LEVEL</code> lane moves the click strip's fader. The click's settings belong to the song, so a performance that turns the click off and then saves the song saves it off.</p>
 <p><strong>A strip's levels are separate controls.</strong> The mixer's <code>FADERS</code> row points a strip's fader at <code>MAIN</code>, <code>CUE</code>, <code>FX 1</code> or <code>FX 2</code>, and those are independent values. The <code>PARAMETER</code> column names the axis on the row you press, so you can tell the send from the fader before you add the lane, and the lane names the one it writes, such as <code>TRACK 2 &gt; LEVEL - CUE</code>. It writes that axis whatever the <code>FADERS</code> row shows while the song plays. Automating a track's cue send leaves its level in the house alone.</p>
 <p><strong><code>SOLO</code> is deliberately not automatable.</strong> Solo is a monitoring convenience, not a mix decision, and a solo fired by the arrangement in the middle of a set sounds like a fault: it is one control, and it spans every track and bus at once. Use <code>MUTE</code> on the strips you want down.</p>
 <p>The cue's <code>OUTPUT</code> is not automatable either. It chooses which pair of sockets the cue leaves by, which is a property of tonight's rig rather than of the song.</p>
@@ -593,11 +598,11 @@ manualSlug: the-arrange-view
 <p>Press <code>ADD</code> to add the lane. Lanes for a loop track's own effects, and every lane on an instrument track, appear indented under that track. A <code>MIDI IN</code> lane belongs to the song rather than to a track, so it appears at the top of the list, above every track.</p>
 <p>Every other lane appears in the <code>INPUTS &amp; BUSES</code> group below the <code>+</code>, under a sub-header naming the strip it is on. See <a href="#folding-the-input-and-bus-lanes-away">Folding the input and bus lanes away</a>.</p>
 <p>The new lane takes the keyboard focus. Its row lights as the focused row and scrolls into view, so the next key you press acts on the lane: <code>Return</code> adds its first node at the playhead.</p>
-<p>If you add an input, bus or master lane while the <code>INPUTS &amp; BUSES</code> group is folded, the group opens so that you can see the new lane. Adding a lane on a loop track or an instrument track leaves the group as it is.</p>
+<p>If you add an input, bus, master or click lane while the <code>INPUTS &amp; BUSES</code> group is folded, the group opens so that you can see the new lane. Adding a lane on a loop track or an instrument track leaves the group as it is.</p>
 <h4 id="the-lane-you-are-on">The lane you are on</h4>
 <p>The keyboard focus moves to a lane when you add it, press it, press its row in the track list, move onto it with <code>↑</code> or <code>↓</code>, or reach it with <code>Tab</code>. Each way lights the lane's row as the focused row. The focus stays on the lane until you choose a track or move the keyboard to another lane or a region.</p>
 <h3 id="folding-the-input-and-bus-lanes-away">Folding the input and bus lanes away</h3>
-<p>An input, bus or master lane has no track to sit under, so LOOM gives it one: the <code>INPUTS &amp; BUSES</code> row. Every lane on a strip that is not a loop track or an instrument track appears below that row, under a sub-header naming its strip.</p>
+<p>An input, bus, master or click lane has no track to sit under, so LOOM gives it one: the <code>INPUTS &amp; BUSES</code> row. Every lane on a strip that is not a loop track or an instrument track appears below that row, under a sub-header naming its strip.</p>
 <p>The row appears only when the song has such a lane, and it reports what is inside it at the right-hand end of its own row: how many strips, and how many lanes across them. The report is the same whether the lanes are showing or folded away, so you can tell what you have put away.</p>
 <p><strong>Press the row to fold every lane inside it away. Press it again to bring them back.</strong> Use it when you want the arrangement on screen without the lanes you are not editing: one press puts them all away, however many there are.</p>
 <p><strong>Folded lanes still perform.</strong> Folding changes what you see and nothing else. Every node on a folded lane still fires while the arrangement plays.</p>
@@ -669,7 +674,7 @@ manualSlug: the-arrange-view
 <p>On a switch lane (a bypass, a mute, or a control inside an effect that has two settings), the line has two levels, with a marker at each point. The lane's right-hand end shows which of the two settings is drawn high.</p>
 <p>On a range lane the line has a full travel instead: the bottom of the row is the bottom of that control's range and the top is the top, and a point sits wherever its value falls between them. A level runs from silence to unity; a pan runs hard left to hard right. Switch and range lanes read the same way: a switch lane is a travel that uses only its two ends.</p>
 <p>The ends come from the control the lane holds, and are shown at the lane's right-hand end.</p>
-<p>A switch lane names its two states in words. A lane on an effect slot reads <code>ON</code> over <code>OFF</code>, a lane on a channel's mute reads <code>OPEN</code> over <code>MUTED</code>, and a lane on a control inside an effect reads that control's own settings: an EQ band's lane reads <code>ON</code> over <code>OFF</code>, and so does a delay's <code>PING PONG</code> lane.</p>
+<p>A switch lane names its two states in words. A lane on an effect slot or on the click's <code>ON / OFF</code> reads <code>ON</code> over <code>OFF</code>, a lane on a channel's mute reads <code>OPEN</code> over <code>MUTED</code>, and a lane on a control inside an effect reads that control's own settings: an EQ band's lane reads <code>ON</code> over <code>OFF</code>, and so does a delay's <code>PING PONG</code> lane.</p>
 <p>A range lane gives you the two ends as values instead, in the same units the mixer and the effect editors use: a <code>LEVEL</code> lane reads <code>0.0 dB</code> over <code>-60.0 dB</code>, and a <code>PAN</code> lane reads <code>R 100</code> over <code>L 100</code>. The numbers tell you how much of the travel a node has used.</p>
 <figure class="shot shot-full"><img src="/assets/loom/manual/song.arrange-automation.webp" width="1246" height="92" loading="lazy" decoding="async" alt="A PAN lane during a performance. Before its first node the line is dashed and reads AS SET, and the right-hand end reads R 100 over L 100."><figcaption>A PAN lane during a performance. Before its first node the line is dashed and reads AS SET, and the right-hand end reads R 100 over L 100.</figcaption></figure>
 <p><strong>The line goes down to the quiet state.</strong> A slot that is switched off and a muted channel are both drawn at the bottom of the lane. A mute lane therefore runs downward to mute, which is the way round you want it when a level lane is on the row above: down is less sound on both.</p>

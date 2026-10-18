@@ -63,6 +63,10 @@ manualSlug: keyboard
 <td>Show Logs</td>
 </tr>
 <tr>
+<td><code>⇧⌘M</code></td>
+<td>MIDI Mapping</td>
+</tr>
+<tr>
 <td><code>⌘.</code></td>
 <td>Stop Transport</td>
 </tr>
@@ -78,8 +82,9 @@ manualSlug: keyboard
 <p><code>⌘/</code> opens this manual. The manual is a PDF that ships inside LOOM, so it opens in your default PDF application.</p>
 <p>macOS reserves <code>⌘?</code> for its own <em>Show Help menu</em> shortcut, so an application cannot use it for anything else. LOOM uses <code>⌘/</code>, which is the same key without the shift.</p>
 <p><code>⇧⌘R</code> writes a report of what LOOM did this session and opens it for you to read. LOOM does not send it anywhere. To send it, attach the file to a message yourself. See <a href="/loom/manual/reporting-a-problem/">Reporting a problem</a>.</p>
-<p>The <strong>View</strong> menu lists the three views, then a separator, then <em>Show Logs</em>. The three views form one radio group, and the current view has a check mark. <code>⌘1</code>, <code>⌘2</code> and <code>⌘3</code> switch to the same three views as the <code>VIEW</code> switcher at the right end of the top bar. <em>Show Logs</em> sits below the separator because it opens an overlay over the current view rather than a fourth view, so it never shows a check mark.</p>
+<p>The <strong>View</strong> menu lists the three views, then a separator, then <em>Show Logs</em> and <em>MIDI Mapping</em>. The three views form one radio group, and the current view has a check mark. <code>⌘1</code>, <code>⌘2</code> and <code>⌘3</code> switch to the same three views as the <code>VIEW</code> switcher at the right end of the top bar. <em>Show Logs</em> and <em>MIDI Mapping</em> sit below the separator because each opens something beside the current view rather than a fourth view, so neither shows a check mark.</p>
 <p><code>⇧⌘L</code> opens the session log. See <a href="/loom/manual/dialogs/#session-log">Session log</a>.</p>
+<p><code>⇧⌘M</code> opens the MIDI Mapping window, or brings it to the front if it is already open. It is a separate window. See <a href="/loom/manual/midi-mapping/#the-midi-mapping-window">The MIDI Mapping window</a>.</p>
 <p>The <strong>Transport</strong> menu holds the two stop commands, with no separator.</p>
 <p><code>⌘.</code> presses <code>STOP</code> in the top bar. The transport stops, every track stops with it, and a running arrangement stops too.</p>
 <p><code>⇧⌘.</code> presses <code>■ STOP</code> on the track you have focused. That track stops on its own <code>STOP QUANTIZE</code> setting, and the transport keeps rolling. Press <code>←</code> or <code>→</code> first to choose the track. The <code>FOCUS</code> readout in the top bar names the track this key acts on.</p>
@@ -808,6 +813,33 @@ manualSlug: keyboard
 </table>
 <p>With <code>Shift</code> held the arrows move it four bars, which is one phrase.</p>
 <p>The end marker has no <code>Home</code> key. It would mean bar 1, and LOOM refuses bar 1 for every song that has a region in it, so the key could only ever be refused.</p>
+<h2 id="the-midi-mapping-window">The MIDI Mapping window</h2>
+<p>These keys work while the MIDI Mapping window has keyboard focus. See <a href="/loom/manual/midi-mapping/#the-midi-mapping-window">The MIDI Mapping window</a>.</p>
+<!-- loom-shortcut-source: ui::MidiMappingPane -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>⌘Z</code></td>
+<td>Undoes the last change to the mapping table: an added row, a replaced row, a deleted row or an edited row.</td>
+</tr>
+<tr>
+<td><code>⇧⌘Z</code></td>
+<td>Redoes the change you last undid.</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>While a mapping is being added or changed, cancels it and adds nothing. A row you were changing stays as it was.</td>
+</tr>
+</tbody>
+</table>
+<p>These keys change the mapping table only. They do not undo anything in your song. While a mapping is being added or changed, <code>⌘Z</code> and <code>⇧⌘Z</code> do nothing.</p>
 <h2 id="dialogs">Dialogs</h2>
 <!-- loom-shortcut-source: ui::ModalSheet -->
 
