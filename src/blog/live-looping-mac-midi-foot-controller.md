@@ -1,7 +1,8 @@
 ---
 title: "How to Live Loop on a Mac with a MIDI Foot Controller or Pad Controller"
 date: 2026-10-01T11:00:00-05:00
-description: "Set up a MIDI foot controller or pad controller to run a live looper on your Mac: which notes to send, which channel, and how to check it works."
+updated: 2026-10-18T10:00:00-05:00
+description: "Set up a MIDI foot controller or pad controller to run a live looper on your Mac: which notes to send, which channel, how to map a switch that sends CC, and how to check it works."
 tags:
   - how-to
   - midi
@@ -15,11 +16,16 @@ ogImageAlt: "Live Looping on a Mac with a MIDI Foot Controller, beside LOOM's MI
 
 A looper on a laptop screen is fine for rehearsal. On stage your hands are on a guitar or a keyboard, and the only thing free is your feet. A software looper starts to feel like a pedal once a footswitch can record, overdub, undo and stop a track without you looking at the screen.
 
-This guide shows how to set that up with [LOOM](/loom/), the live looper I build for macOS. LOOM answers a fixed set of MIDI notes, so the setup is mostly a matter of programming your controller to send the right note numbers on the right channel. The full reference is the [MIDI mapping chapter of the manual](/loom/manual/midi-mapping/). This post is the practical version.
+This guide shows how to set that up with [LOOM](/loom/), the live looper I build for macOS. There are two ways to do it, and you can use both on one board:
+
+- **Program your controller to LOOM's built-in layout.** LOOM answers a fixed set of MIDI notes, so you set each switch to the note number LOOM expects. Most of this post covers that, because it needs no setup in LOOM at all.
+- **Map your switches in LOOM.** Since LOOM 1.5, you can choose a command in LOOM's MIDI Mapping window and press the switch you want to use for it. This is the way to go when your controller's switches are hard to reprogram, or only send control changes. See *Map a switch that sends control changes*, below, and the [MIDI mapping tutorial](/blog/midi-learn-map-controller-looper-mac/) for the full walkthrough.
+
+The full reference is the [MIDI mapping chapter of the manual](/loom/manual/midi-mapping/). This post is the practical version.
 
 ## Can you use a MIDI foot controller with looper software?
 
-Yes, as long as the controller can send MIDI note messages. LOOM's commands respond to notes only. Control changes, program changes, pitch bend, aftertouch and MIDI clock are all ignored by the commands. Before you buy or reprogram anything, check that each switch or pad can be set to send a note number of your choosing.
+Yes. A controller that sends MIDI notes works with LOOM's built-in layout as it is. A controller whose switches send control changes (CC) works too, once you map each switch to a command in the MIDI Mapping window. Program changes, pitch bend, aftertouch and MIDI clock do not run LOOM's commands.
 
 LOOM listens to every MIDI source macOS reports, so there is no device list to configure. You can plug a controller in while LOOM is running, and the notice row confirms it.
 
@@ -27,7 +33,7 @@ LOOM listens to every MIDI source macOS reports, so there is no device list to c
 
 ## How LOOM's MIDI note map works
 
-Every track gets its own octave of notes, and every octave has the same commands in the same order. There is no MIDI learn and no mapping editor yet, so you set your controller to the notes LOOM expects rather than the other way round.
+Every track gets its own octave of notes, and every octave has the same commands in the same order. This built-in layout is always on, underneath any mappings of your own, so a controller set to these notes works on any Mac running LOOM with no setup.
 
 Track *n* starts at raw note `(n − 1) × 12`. The commands sit at offsets from there:
 
@@ -132,24 +138,50 @@ Use it like this:
 - **Ends in `·`?** Read the channel and the note. Wrong channel means the switch is not on the command channel. Wrong note usually means you are an octave out.
 - **Ends in `✓`?** It worked. Still check it is the note you meant, because an octave error often lands on another track's cluster, which also ends in `✓`.
 
+The readout shows one message at a time. For a list of every message and what LOOM did with each one, open **View › MIDI Mapping** (`⇧⌘M`). Its monitor shows every message LOOM receives, newest first, marked `BUILT-IN` when the built-in layout acted on it, `UNBOUND` when nothing listens to it, or `REFUSED` with the reason when something matched but could not act.
+
 {% blogshot "/images/blog/live-looping-mac-midi-foot-controller/midi-readout.png", "The MIDI readout on LOOM's bottom rail reading 1 · N36 · 37 followed by a dot", "Note 36 on channel 1 at velocity 37. It ends in a dot because channel 1 is not the command channel, which is how a note played into an instrument track reads.", 412 %}
 
 ## A worked example with a pad controller
 
 The manual walks through an Arturia MiniLab: in MIDI Control Center, set pads 1 to 7 to send notes 0 to 6 (`C-2` upward in Arturia's naming) on channel 16, and leave the keys on channel 1 for a synth. Press pad 1 and you want the readout to show `16 · N0 · 100 ✓`. If it shows `N12`, you are an octave out. The same steps apply to a foot controller; only the editor changes.
 
-## What LOOM's MIDI control does not do yet
+## Map a switch that sends control changes
+
+Some foot controllers send a control change from each switch and cannot send notes. Others make you dig through menus to change a note number. In both cases, leave the controller as it is and map the switches in LOOM instead:
+
+1. Open **View › MIDI Mapping**, or press `⇧⌘M`.
+2. Press `+ ADD MAPPING`.
+3. In the chooser, scroll to the `MAPPING ONLY` group at the end of the first column and choose `COMMANDS`. Then choose the track, and the command, such as `RING` for the ring button.
+4. LOOM starts listening. Press the footswitch.
+5. LOOM shows what it heard and proposes a type. For a footswitch that springs back, that is `BUTTON`. Press `USE`.
+
+{% blogshot "/images/blog/live-looping-mac-midi-foot-controller/map-commands.png", "The Map a control chooser with MAPPING ONLY › COMMANDS chosen, TRACK 3 selected, and its RING, OVERDUB, UNDO, REDO, STOP, CLEAR and PLAY commands listed, each with a LISTEN button", "The built-in layout's commands, ready to map to a switch of your own.", 470 %}
+
+Repeat for each switch. Every command in the built-in layout is there, for every audio track and instrument track, plus the six global commands. The mapping works in every song on this Mac, and the built-in layout keeps working on every message you did not map.
+
+`MAPPING ONLY` has two more groups that suit a pedalboard. `FOCUS` steps the focused track forward and back, and `FOCUSED TRACK` runs the ring, play, stop, undo, redo and clear on whichever track has the focus. With those, a board of six or so switches can run every track: two to choose the track, and the rest to work it. The [MIDI mapping tutorial](/blog/midi-learn-map-controller-looper-mac/) walks through the whole window.
+
+## Light your pads with MIDI OUT
+
+If your controller has lit pads or switches, LOOM can light them for you. Open the side panel and set `MIDI OUT`, under `MIDI`, to your controller. LOOM then sends each track's state back on the notes of the built-in layout, so a pad can show whether its track is recording, playing or stopped. It sends the state of your own mappings too, on their own messages.
+
+How a pad shows a velocity depends on the controller. The manual's [MIDI feedback section](/loom/manual/midi-mapping/#midi-feedback) lists the velocity LOOM sends for each state. For a ready-made example, the free [TouchOSC layout for iPad](/blog/ipad-midi-controller-live-looping-touchosc/) colours its pads with it.
+
+## Expression pedals and faders
+
+The built-in layout also answers control changes on the command channel, for the mixer: CC 20 to 29 for track levels, 40 to 49, 50 to 59 and 70 to 79 for the CUE, FX 1 and FX 2 sends, 80 to 89 for the mutes, and 102 to 104 for the click and the master level. An expression pedal set to CC 20 on channel 16 rides track 1's level with no setup in LOOM.
+
+To put a pedal on anything else, such as a filter cutoff or a delay's feedback, map it in the MIDI Mapping window as a `CONTROLLER`. In LOOM's default `PICKUP` mode, when the pedal is not where LOOM's control is, the control waits until the pedal reaches it rather than jumping. The tutorial covers that too.
+
+## What LOOM's MIDI control does not do
 
 It is better to know these before you plan a rig:
 
-- There is no MIDI learn and no way to reassign notes yet.
-- CC messages do not control the mixer or effects.
-- There is no MIDI clock, MTC or MMC in or out, and no MIDI output.
-- There is no per-device choice for commands. LOOM answers every source on the command channel.
+- There is no MIDI clock, MTC or MMC, in or out.
+- LOOM cannot learn pitch bend. Mappings take notes and control changes.
 
-More MIDI control is on the roadmap, possibly a full MIDI mapping system, and feedback from people using LOOM will decide what comes first. The note map starts small on purpose. Much of LOOM's appeal is that the arrange view frees you from running the looper, by hand or by foot, at all. So the first release covers what you need to run the loop tracks yourself, with more to come in future releases.
-
-If your controller is programmed for LOOM 1.0's layout, switch `MIDI MAP` in the side panel to `1.0 layout`. It will be removed in LOOM 1.4.
+If your controller is programmed for LOOM 1.0's layout, switch `MIDI MAP` in the side panel to `1.0 layout`. LOOM still offers it, but it is going away, so reprogram your controller for the 1.x layout when you can.
 
 Once your feet are running the looper, the next thing to sort out is capturing the set. See [how to record a live looping set as separate tracks](/blog/record-live-looping-set-separate-stems/).
 
@@ -165,11 +197,15 @@ Channel 16 by default. You can change it to any channel from 1 to 16 with `MIDI 
 
 ### Can I use CC messages from my foot controller?
 
-Not for LOOM's commands. The commands respond to note messages only, so your controller needs to send notes.
+Yes. Map each switch to a command in the MIDI Mapping window (**View › MIDI Mapping**), under `MAPPING ONLY › COMMANDS`. The built-in layout also answers control changes for track levels, sends, mutes, the click and the master level, with no mapping.
 
 ### Does LOOM have MIDI learn?
 
-Not yet. The note map is fixed for now. A fuller MIDI mapping system is on the roadmap, and feedback from people using LOOM will set its priority.
+Yes, since LOOM 1.5. In the MIDI Mapping window, choose a control in LOOM, then press or move the control on your hardware. LOOM shows what it heard and proposes how to use it. See the [MIDI mapping tutorial](/blog/midi-learn-map-controller-looper-mac/).
+
+### Can LOOM light the pads on my controller?
+
+Yes. Set `MIDI OUT` in the side panel to your controller, and LOOM sends each track's state on the notes of the built-in layout.
 
 ### Do I need to restart LOOM after plugging in a controller?
 
