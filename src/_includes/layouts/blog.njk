@@ -34,7 +34,9 @@ navLinks:
         <div class="mq-article-meta mq-label">
           <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
           <span aria-hidden="true">&middot;</span>
-          <span>{{ content | readingTime }}</span>
+          {% if updated %}<span>Updated <time datetime="{{ updated | isoDate }}">{{ updated | readableDate }}</time></span>
+          <span aria-hidden="true">&middot;</span>
+          {% endif %}<span>{{ content | readingTime }}</span>
         </div>
         <h1>{{ title }}</h1>
       </header>
