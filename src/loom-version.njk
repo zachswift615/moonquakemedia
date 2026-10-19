@@ -97,6 +97,22 @@ permalink: /loom/version/index.html
   .d{font-size:14px;color:#6B7078;flex:1}
   a.dl{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#35D07F}
   a.dl:hover{color:#48DC90}
+  /* The release notes: hand-written Markdown per release, rendered by releases.js. They sit inside
+     the page's own `ul`/`li` rules, which are a download list, so every rule here is scoped. */
+  .notes{display:flex;flex-direction:column;gap:14px}
+  .notes h2{margin:6px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;
+    letter-spacing:0.16em;text-transform:uppercase;color:#8A9099}
+  .notes p{color:#C7CDD4}
+  .notes ul{list-style:disc;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+  .notes li{display:list-item;padding:0;border:0;line-height:1.6;color:#C7CDD4;font-size:15px}
+  .notes li::marker{color:#4A5058}
+  .notes code{font-family:'JetBrains Mono',monospace;font-size:0.88em;color:#E8EAED;
+    background:#15181C;border-radius:4px;padding:1px 5px}
+  details.rn{flex-basis:100%}
+  details.rn summary{cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:12px;
+    letter-spacing:0.06em;color:#8A9099;width:max-content}
+  details.rn summary:hover{color:#E8EAED}
+  details.rn .notes{padding:12px 0 4px}
   a.back{color:#8A9099;font-size:14px}
   a.back:hover{color:#E8EAED}
 </style>
@@ -120,6 +136,13 @@ permalink: /loom/version/index.html
     <a class="btn" href="{{ releases.latestDmgUrl }}">DOWNLOAD LATEST &middot; {{ releases.latest.version }}</a>
     <span class="meta">{{ releases.latest.dmgSize }} &middot; macOS 13.3+<br>Apple silicon &middot; 14-day trial, every feature</span>
   </div>
+
+  {% if releases.latest.notesHtml %}
+  <div>
+    <h2>What's new in {{ releases.latest.version }}</h2>
+    <div class="notes">{{ releases.latest.notesHtml | safe }}</div>
+  </div>
+  {% endif %}
 
   <hr class="rule">
 
@@ -146,6 +169,12 @@ permalink: /loom/version/index.html
         <span class="v">{{ r.version }}</span>
         <span class="d">{{ r.publishedOn }}</span>
         <a class="dl" href="{{ r.dmgUrl }}">DOWNLOAD{% if r.dmgSize %} &middot; {{ r.dmgSize }}{% endif %}</a>
+        {% if r.notesHtml %}
+        <details class="rn">
+          <summary>Release notes</summary>
+          <div class="notes">{{ r.notesHtml | safe }}</div>
+        </details>
+        {% endif %}
       </li>
       {% endfor %}
     </ul>

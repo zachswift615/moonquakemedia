@@ -13,6 +13,18 @@
 // build, so the previous version number stays up and correct while the failure is visible in
 // Actions. Degrading gracefully would replace a loud failure with a quiet wrong answer.
 const REPO = 'zachswift615/loom-releases';
+const markdown = require('markdown-it')();
+
+// The release notes are the top of the release's description, written by hand for each release
+// (docs/release-notes/ in the LOOM repository). LOOM's make-dmg.sh appends the same install and
+// SHA-256 block to every release, starting with this line, and that block is not shown here: the
+// page already has its own download button. A release without notes yields an empty string.
+function releaseNotes(body, version) {
+  const text = String(body || '').replace(/\r\n/g, '\n');
+  const footer = text.indexOf(`**LOOM ${version}** for macOS`);
+  const notes = (footer === -1 ? text : text.slice(0, footer)).replace(/\n-{3,}\s*$/, '').trim();
+  return notes ? markdown.render(notes) : '';
+}
 
 function megabytes(bytes) {
   return typeof bytes === 'number' ? `${(bytes / 1e6).toFixed(1)} MB` : null;
@@ -66,6 +78,7 @@ module.exports = async function releases() {
           ? dmg.browser_download_url
           : `https://github.com/${REPO}/releases/download/${r.tag_name}/LOOM.dmg`,
         dmgSize: megabytes(dmg && dmg.size),
+        notesHtml: releaseNotes(r.body, String(r.tag_name).replace(/^v/, '')),
       };
     });
 
