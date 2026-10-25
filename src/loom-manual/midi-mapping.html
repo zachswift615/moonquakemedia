@@ -442,8 +442,13 @@ manualSlug: midi-mapping
 <p>After LOOM hears a message, the card shows:</p>
 <ul>
 <li><strong>The message</strong>, such as <code>CH 1 · CC 7</code>, and how it moved, such as <code>MOVED 0 → 127 · 41 VALUES</code> or <code>NOTE ON, THEN OFF · VELOCITY 96</code>.</li>
-<li><strong><code>TYPE</code></strong>, with the type LOOM proposes and why. A control change that sent any value other than 0 and 127 is proposed as <code>CONTROLLER</code>. For a note, or a control change that sent only 0 and 127, LOOM watches for half a second after the first message to see whether the button goes back. Released in that time, it is proposed as <code>BUTTON</code>, for example <code>RELEASED IN 80 MS · A MOMENTARY BUTTON</code>. A release that arrives too soon after the press to measure reads <code>RELEASED AT ONCE · A MOMENTARY BUTTON</code>. Still on, it is proposed as <code>SWITCH</code>, for example <code>IT STAYED AT 127 · A LATCHING BUTTON</code>, which is what a latching button or pedal sends. Until LOOM decides, the line reads <code>DECIDING · WAITING FOR THE RELEASE</code>, no type is selected, and <code>USE</code> is unavailable. Choosing a type yourself ends the wait, and your choice stays selected after LOOM decides. Press and release a button the way you normally would. Choose <code>RELATIVE</code> for an endless encoder.</li>
-<li><strong><code>KEEP IN</code></strong>: <code>RIG</code> keeps the mapping for every song on this rig, and is the default. <code>THIS SONG</code> saves it with the song you have open, where it wins over a rig mapping on the same message.</li>
+<li>
+<p><strong><code>TYPE</code></strong>, with the type LOOM proposes and why. A control change that sent any value other than 0 and 127 is proposed as <code>CONTROLLER</code>, unless it looks like an endless encoder, as described below. For a note, or a control change that sent only 0 and 127, LOOM watches for half a second after the first message to see whether the button goes back. Released in that time, it is proposed as <code>BUTTON</code>, for example <code>RELEASED IN 80 MS · A MOMENTARY BUTTON</code>. A release that arrives too soon after the press to measure reads <code>RELEASED AT ONCE · A MOMENTARY BUTTON</code>. Still on, it is proposed as <code>SWITCH</code>, for example <code>IT STAYED AT 127 · A LATCHING BUTTON</code>, which is what a latching button or pedal sends. Until LOOM decides, the line reads <code>DECIDING · WAITING FOR THE RELEASE</code>, no type is selected, and <code>USE</code> is unavailable. Choosing a type yourself ends the wait, and your choice stays selected after LOOM decides. Press and release a button the way you normally would.</p>
+<p>An endless encoder sends steps rather than a position, in one of two ways. Choose <code>RELATIVE</code> for an encoder that sends 1 to 63 for steps up and 65 to 127 for steps down. Choose <code>RELATIVE 64</code> for an encoder that sends values above 64 for steps up and below 64 for steps down, which many controllers do, Arturia's included. An encoder that keeps sending values close to 64, and 64 itself, is proposed as <code>RELATIVE 64</code>, for example <code>IT SENT STEPS AROUND 64 · AN ENDLESS ENCODER</code>. If a knob jumps to one end of its range on every turn, or seems to fight you, it is probably an encoder mapped with the wrong type.</p>
+</li>
+<li>
+<p><strong><code>KEEP IN</code></strong>: <code>RIG</code> keeps the mapping for every song on this rig, and is the default. <code>THIS SONG</code> saves it with the song you have open, where it wins over a rig mapping on the same message.</p>
+</li>
 <li><strong><code>REPLACES</code></strong>, when one of your mappings in the same scope already uses that message. The box names the mapping that <code>USE</code> removes. <code>⌘Z</code> puts it back.</li>
 <li><strong><code>OVERRIDES</code></strong>, when the message is one of LOOM's built-in notes or controller numbers. The box names the built-in command. The built-in layout keeps working on every other message, and deleting the mapping gives this message back to it.</li>
 </ul>
@@ -452,7 +457,13 @@ manualSlug: midi-mapping
 <h4 id="cancelling">Cancelling</h4>
 <p>Any of these closes the card and adds nothing: <code>CANCEL</code>, <code>Esc</code>, clicking anywhere in the window outside the card, closing the window, and 15 seconds with no message. While the card is open, <code>⌘Z</code> and <code>⇧⌘Z</code> do not change the table.</p>
 <h3 id="changing-a-mapping">Changing a mapping</h3>
-<p>Press <code>EDIT</code> on a row. The same chooser and card open, and <code>USE</code> replaces that row with the new one. You can change the control, the message, the type and the scope. If you cancel, the row stays exactly as it was. <code>⌘Z</code> undoes an edit.</p>
+<p>Press <code>EDIT</code> on a row. The card opens on the mapping as it is saved, with its message, type, scope and control, and reads <code>SAVED MAPPING</code>. Change what you need and press <code>USE</code> to replace the row:</p>
+<ul>
+<li>To use a different control, press <code>CHANGE</code> beside the control's name.</li>
+<li>To use a different message, press <code>LISTEN AGAIN</code> and move or press the new hardware control.</li>
+<li>To change the type or the scope, choose it on the card.</li>
+</ul>
+<p>If you cancel, the row stays exactly as it was. <code>⌘Z</code> undoes an edit.</p>
 <h3 id="the-table">The table</h3>
 <p>The table has one row per mapping, sorted by channel and then by message. A song's row sits directly above the rig row on the same message.</p>
 <table>
@@ -469,7 +480,7 @@ manualSlug: midi-mapping
 </tr>
 <tr>
 <td><code>TYPE</code></td>
-<td>How LOOM reads the message: <code>BUTTON</code>, <code>SWITCH</code>, <code>CONTROLLER</code> or <code>RELATIVE</code>.</td>
+<td>How LOOM reads the message: <code>BUTTON</code>, <code>SWITCH</code>, <code>CONTROLLER</code>, <code>RELATIVE</code> or <code>RELATIVE 64</code>.</td>
 </tr>
 <tr>
 <td><code>TARGET</code></td>
@@ -876,7 +887,7 @@ manualSlug: midi-mapping
 <li>A Button or Switch mapping sends 127 while the target is on and 0 while it is off. A control with a range, such as a level, is on at the top of its range.</li>
 <li>A mapping to one of the commands on this page, such as a track's Play, sends the velocity that command's note sends.</li>
 <li>A FOCUSED TRACK mapping sends the focused track's state, and sends it again when the focus moves to another track.</li>
-<li>A Relative mapping, a NEXT TRACK or PREVIOUS TRACK mapping, a NEXT PRESET or PREVIOUS PRESET mapping, and a mapping whose target is not in this song have no state to show. On a note, they send 0. On a controller number, they send nothing.</li>
+<li>A <code>RELATIVE</code> or <code>RELATIVE 64</code> mapping, a NEXT TRACK or PREVIOUS TRACK mapping, a NEXT PRESET or PREVIOUS PRESET mapping, and a mapping whose target is not in this song have no state to show. On a note, they send 0. On a controller number, they send nothing.</li>
 </ul>
 <p>A mapping on one of the default controller numbers replaces that number, so LOOM sends the mapping's state on it rather than the default control's.</p>
 <p>A fader in a TouchOSC layout, or a motorised fader, therefore moves to LOOM's value when you choose the output and when you open a song, and it follows when automation or the mouse moves the control. Pickup still applies to a control LOOM sends values for. See <a href="#when-a-fader-does-not-move-straight-away">When a fader does not move straight away</a>.</p>

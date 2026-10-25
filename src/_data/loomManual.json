@@ -1,6 +1,6 @@
 {
-  "version": "1.5.1",
-  "sourceCommit": "144c34d3",
+  "version": "1.5.2",
+  "sourceCommit": "b4a4f4cb",
   "chapters": [
     {
       "order": 1,
@@ -105,7 +105,7 @@
       "slug": "your-licence",
       "url": "/loom/manual/your-licence/",
       "title": "Your licence",
-      "description": "LOOM checks your licence once, when it starts, and not again while it runs. If LOOM opened, it keeps working until you quit it. A trial that runs out..."
+      "description": "LOOM checks your licence when it starts and when you enter a new licence. It does not check again while it runs. If LOOM opened, it keeps working until..."
     },
     {
       "order": 16,
