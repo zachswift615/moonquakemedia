@@ -92,6 +92,14 @@ manualSlug: track-strips
 <p>A small <code>i</code> at the right of the strip header. It opens the side panel's <code>TRACK</code> mode on this track and focuses the track, and it lights while its panel is open.</p>
 <p>Pressing it again while its panel is open switches the panel back to <code>GLOBAL</code>, the panel's other mode, rather than closing it. To collapse the panel, use the <a href="/loom/manual/top-bar/#the-panel-toggle">panel toggle</a>.</p>
 <p>Its accessible name is <code>Track 3 info</code>. Its description says it opens the info panel for that track, where you choose its input.</p>
+<h3 id="render">RENDER</h3>
+<p>On a track set to <code>STRETCH</code>, the strip header shows a <code>RENDER</code> chip to the left of the <code>i</code>. It is the same control as <code>RENDER</code> in the side panel, and the two always show the same state. See <a href="/loom/manual/side-panel/#render">RENDER</a> for what it does. The small strips beside the open editor dock have no room for it; use the side panel.</p>
+<ul>
+<li>A cyan frame means there is something to render. A dashed grey frame means the track is already at the song's tempo.</li>
+<li>While the track renders, the chip fills and shows the percent, a thin cyan ring runs inside the strip's ring, and the ring's caption reads <code>RENDERING 40%</code> instead of the next press. <code>UNDO</code>, <code>REDO</code> and <code>CLEAR</code> get a cyan dashed frame: they are refused until the render lands, and pressing one says why on the notice line.</li>
+<li>A cyan dashed <code>QUEUED</code> chip means the track is waiting in a <code>RENDER ALL</code> run.</li>
+<li>A lock means the arrangement is playing.</li>
+</ul>
 <h3 id="the-ring">The ring</h3>
 <figure class="shot shot-beside"><img src="/assets/loom/manual/session.track-strip-playing.webp" width="260" height="387" loading="lazy" decoding="async" alt="Track 1 playing a loop. The ring reads -0.2, two beats before the loop point, and the next press will overdub."><figcaption>Track 1 playing a loop. The ring reads -0.2, two beats before the loop point, and the next press will overdub.</figcaption></figure>
 <p>The big round button with the light ring around it, at the top of the strip under the header. It is the control you look at while playing.</p>
@@ -193,7 +201,7 @@ manualSlug: track-strips
 </tr>
 </tbody>
 </table>
-<figure class="shot shot-full"><img src="/assets/loom/manual/song.rings.webp" width="1224" height="208" loading="lazy" decoding="async" alt="Five rings from one moment, left to right: DUB with its two concentric sweeps, WAIT PLAY with the wedge at twelve o'clock, STOPPED, PLAY, and REC counting up in seconds."><figcaption>Five rings from one moment, left to right: DUB with its two concentric sweeps, WAIT PLAY with the wedge at twelve o'clock, STOPPED, PLAY, and REC counting up in seconds.</figcaption></figure>
+<figure class="shot shot-full"><img src="/assets/loom/manual/song.rings.webp" width="1220" height="209" loading="lazy" decoding="async" alt="Five rings from one moment, left to right: DUB with its two concentric sweeps, WAIT PLAY with the wedge at twelve o'clock, STOPPED, PLAY, and REC counting up in seconds."><figcaption>Five rings from one moment, left to right: DUB with its two concentric sweeps, WAIT PLAY with the wedge at twelve o'clock, STOPPED, PLAY, and REC counting up in seconds.</figcaption></figure>
 <p><code>WAIT TOP</code> is a playing loop that waits to start again from its top.</p>
 <p>A track waiting to play from a stop has not started its loop yet, so its sweep has no length and only the wedge marks it, as on the second ring above.</p>
 <figure class="shot shot-beside"><img src="/assets/loom/manual/session.ring-wait-dub.webp" width="206" height="206" loading="lazy" decoding="async" alt="A ring that reads WAIT DUB, with the wedge at twelve o'clock, — for the count, and → OVERDUB below."><figcaption>A ring that reads WAIT DUB, with the wedge at twelve o'clock, — for the count, and → OVERDUB below.</figcaption></figure>

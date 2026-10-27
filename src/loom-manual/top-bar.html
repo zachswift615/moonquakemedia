@@ -54,7 +54,7 @@ manualSlug: top-bar
 </tbody>
 </table>
 <p>The sections below follow the same order.</p>
-<figure class="shot shot-full"><img src="/assets/loom/manual/song.top-bar-rolling.webp" width="782" height="50" loading="lazy" decoding="async" alt="The middle of the top bar while a song plays: ROLL lit green, a recording running at REC 00:02, the tempo locked behind a dashed frame because the tracks hold loops, the third beat LED filled, and BAR.BEAT.TICK at 3.3.90."><figcaption>The middle of the top bar while a song plays: ROLL lit green, a recording running at REC 00:02, the tempo locked behind a dashed frame because the tracks hold loops, the third beat LED filled, and BAR.BEAT.TICK at 3.3.90.</figcaption></figure>
+<figure class="shot shot-full"><img src="/assets/loom/manual/song.top-bar-rolling.webp" width="892" height="50" loading="lazy" decoding="async" alt="The middle of the top bar while a song plays: ROLL lit green, a recording running at REC 00:02, the tempo locked behind a dashed frame because track 5 is still recording, the third beat LED filled, and BAR.BEAT.TICK at 3.3.90."><figcaption>The middle of the top bar while a song plays: ROLL lit green, a recording running at REC 00:02, the tempo locked behind a dashed frame because track 5 is still recording, the third beat LED filled, and BAR.BEAT.TICK at 3.3.90.</figcaption></figure>
 <h2 id="song">SONG</h2>
 <p><strong>What it is.</strong> A readout of which song you are in, drawn centred inside a filled well.</p>
 <p><strong>What it does.</strong> Nothing. It only shows the name. To change the name, use <em>Save As…</em> and its dialog.</p>
@@ -171,10 +171,8 @@ manualSlug: top-bar
 </ul>
 <p>One step of the drag, the steppers or the arrow keys is one beat per minute. Hold <code>Shift</code> on any of the three and a step is a tenth of a beat per minute instead.</p>
 <p>Stepping and typing are different operations. The tempo is held in thousandths of a beat per minute. Stepping is relative, so a song sitting at 137.4 becomes 137.4 plus one step and is not snapped to a whole number. Typing is absolute and rounds to the tenth that the field draws.</p>
-<p><strong>When it is locked.</strong> This field refuses a tempo you type, drag or step unless every audio track is empty and the transport is stopped. Having no audio device open does not lock it.</p>
-<p>A loop on an instrument track does not lock it. An instrument loop is recorded in beats, so it follows the tempo: stop the transport, change the tempo, and the loop plays the same bars at the new tempo. When the field is locked, its frame goes from solid to dashed, the number and the steppers dim, and nothing moves by a pixel. Click the locked field, and the notice line says why it is locked.</p>
-<p>The lock only stops you changing the tempo by hand. The number can still change by itself: <a href="#the-first-free-loop-sets-the-tempo">The first free loop sets the tempo</a> is the one thing that changes it while the transport rolls.</p>
-<p>The reasons below form a chain, and you have to clear all of them. Finishing a take leaves a track holding a loop, and clearing every track with the transport still rolling leaves the transport rolling. To type a tempo, you need both: every audio track empty and the transport stopped. To have LOOM derive one, the transport can be rolling, but every other track must be empty. You play the first free loop.</p>
+<p><strong>When it is locked.</strong> This field refuses a tempo you type, drag or step while a track is armed, counting in, recording, overdubbing or waiting on a command, and while a track is rendering or waiting in a <code>RENDER ALL</code> run (see <a href="#render-all">RENDER ALL</a>). The transport rolling does not lock it, tracks holding loops do not lock it, and having no audio device open does not lock it.</p>
+<p>When the field is locked, its frame goes from solid to dashed, the number and the steppers dim, and nothing moves by a pixel. Click the locked field, and the notice line says why it is locked.</p>
 <table>
 <thead>
 <tr>
@@ -184,16 +182,8 @@ manualSlug: top-bar
 </thead>
 <tbody>
 <tr>
-<td>An audio track holds a recorded loop</td>
-<td>A tempo typed under one moves every bar-quantized press against it. Clear every audio track <strong>and</strong> halt the transport.</td>
-</tr>
-<tr>
 <td>A track is recording or waiting to</td>
-<td>Finish or stop the take. If it lands a loop, the field stays locked because a track holds a loop.</td>
-</tr>
-<tr>
-<td>The transport is rolling</td>
-<td>Press <code>STOP</code>, or close your first free loop, which sets the tempo without stopping.</td>
+<td>Finish or stop the take.</td>
 </tr>
 <tr>
 <td>The engine's state could not be read</td>
@@ -201,10 +191,12 @@ manualSlug: top-bar
 </tr>
 </tbody>
 </table>
+<p><strong>Changing the tempo while the transport rolls.</strong> The change lands on the next beat, not at the instant you let go, so the beat you are in finishes at the old tempo. A change made very close to a beat lands on the beat after it. A change made during a count-in lands on the first beat of the song.</p>
+<p>The bars stay where they were. A change on beat 3 does not make beat 3 a downbeat: the click, the bar lines that quantized presses land on, and <code>BAR.BEAT.TICK</code> all go on counting the same bars at the new tempo. A press that is already waiting for a bar line fires on that bar line at the new tempo. A loop on an instrument track is recorded in beats, so it plays the same bars at the new tempo.</p>
 <p>If you are dragging when the lock arrives, the drag is cancelled rather than left tracking your finger over a box that has gone dead.</p>
 <p><strong>What a screen reader gets.</strong> The control is named <code>Project tempo</code> and has the role of a slider with a real, settable value. A screen reader can read the number and set it, and is told the range and that one step is one beat per minute. When the field is locked, the value reports itself as read-only and the reason is added to the end of its description. The name stays <code>Project tempo</code> in both states.</p>
 <p>When the field locks, LOOM says why on the notice line. A locked field leaves the tab order, because <code>Tab</code> should not stop on a control that cannot act, so the reason goes where the keyboard already goes. The notice line shows, word for word, the sentence the field holds.</p>
-<p>LOOM says it once, as the lock arrives, and does not repeat it. It also says nothing when one reason replaces another: when you finish a take, the reason changes from recording to holding a loop without a word. The reason is a long sentence, and hearing it again in the middle of playing is worse than not hearing it. To see the current reason again, click the locked field.</p>
+<p>LOOM says it once, as the lock arrives, and does not repeat it. It also says nothing when one reason replaces another. The reason is a long sentence, and hearing it again in the middle of playing is worse than not hearing it. To see the current reason again, click the locked field.</p>
 <blockquote>
 <p><strong>VoiceOver:</strong> the notice line is spoken as the lock arrives. VoiceOver navigation also reaches the locked field itself, reports it unavailable, and reads the reason at the end of its description. Use this to find out why the field will not move after the announcement has passed.</p>
 </blockquote>
@@ -216,7 +208,7 @@ manualSlug: top-bar
 <p>Your loop starts on a bar line, but usually not bar 1. The grid runs through the whole session instead of starting at your loop, so the bars that went by before you pressed record are counted: if two bars' worth of time passed first, your loop begins at bar 3, beat 1. The bar number is how many whole derived bars fit before your loop, plus one. The ruler shows the audible time before your loop, and this keeps every bar number in the arrange view positive. What matters musically is that your loop starts on a bar line, on beat 1, and is a whole number of bars long, so everything you overdub against it lands where you expect, whatever <code>BAR.BEAT.TICK</code> calls the first bar.</p>
 <p>It happens while the transport rolls, and you press nothing extra. Closing a loop leaves the transport rolling, which is the state this works in. Do not halt the transport to make it fire: halting closes the take and derives nothing. Nothing new sounds at the moment it lands, and the click picks up the new grid with no stutter and no doubled beat at the seam. An audio loop is not touched. An instrument loop is retimed to the new tempo in the same moment, so every note stays where you played it and the loop keeps the length you played. A note you are holding as the tempo changes is not cut. In the same frame the TEMPO field shows the new number, and the notice line at the bottom of the window says what was derived.</p>
 <blockquote>
-<p><strong>VoiceOver:</strong> the tempo moves on a control you cannot tab to. Recording a loop leaves the field locked, so the notice line is where LOOM tells you the new tempo and the bar count it read.</p>
+<p><strong>VoiceOver:</strong> the tempo changes without a press of yours, so the notice line is where LOOM tells you the new tempo and the bar count it read.</p>
 </blockquote>
 <p><strong>What the notice says.</strong> It names the bar count first, <em>"assuming 4 bars of 4/4"</em>, because that is the assumption LOOM made and the only part of the sentence you might disagree with.</p>
 <p><strong>What it does not say.</strong> LOOM reads a phrase as 1, 2, 4, 8 or 16 bars. A loop that is really 3, 5 or 6 bars long is read as one of those, and its tempo is out by that ratio. This applies to every derivation, so the notice line leaves it out. Otherwise the line would repeat the same sentence on every loop, and you would have to re-read it to find the two numbers that had changed. See <a href="/loom/manual/bottom-rails/#what-the-line-does-and-does-not-say">What the line does and does not say</a>.</p>
@@ -233,6 +225,12 @@ manualSlug: top-bar
 <p><strong>It comes back when you clear.</strong> Clear every track and the next free loop you close derives the tempo again. LOOM does not remember whether this song has ever derived one. Only what is in the tracks right now counts.</p>
 <p><strong>When it cannot.</strong> If no whole bar count fits your phrase, or the tempo it would land on is outside the range the field accepts, nothing is changed and nothing is snapped. The notice line says which of the two happened.</p>
 <p>On an instrument track, the loop is retimed a moment after you close it. If you overdub, undo or clear in that moment, the tempo goes back to what it was, and the notice line says that the loop changed before it could be retimed.</p>
+<h2 id="render-all">RENDER ALL</h2>
+<p><code>RENDER ALL</code> sits just to the right of the tempo field. It renders every track that is set to <code>STRETCH</code> and plays at a tempo other than the one its loop was recorded at, at the song's tempo, one track at a time. For what a render does to a track, including what <code>UNDO</code> does afterwards, see <a href="/loom/manual/side-panel/#render">RENDER</a>.</p>
+<p>The count on the button is the number of tracks that would be rendered. When there are none, the button has a dashed grey frame, and pressing it says <code>render all · no stretched track is off tempo</code>. Tracks set to <code>PITCH</code> are not rendered: rendering them gains nothing.</p>
+<p>While a run is going, the button reads which track of the run is rendering and that track's progress, for example <code>2/3 · 40%</code>, and its fill shows the whole run. Each track's <code>RENDER</code> chip shows its own state: the track rendering now fills, and the tracks waiting read <code>QUEUED</code>. The tempo field is locked until the last track lands, and each track's own lock lifts when its render lands. A track that stops qualifying while it waits, for example because you set it to <code>OFF</code>, drops out of the run.</p>
+<p>While the arrangement is playing, the button shows a lock and does nothing.</p>
+<p>When the window is too narrow for the whole top bar, <code>RENDER ALL</code> is the first control to go. The same button is always in the side panel's <code>GLOBAL</code> tab, under <code>TEMPO</code>.</p>
 <h2 id="click-and-the-beat-leds">CLICK and the beat LEDs</h2>
 <p><strong>What CLICK does.</strong> Turns the click's audio on and off. It is saved with the song, so a song you open comes back with the setting it was saved with. It is in the top bar because you reach for it mid-set. It is named <code>Click audible</code>, and the notice line reports <code>click audible</code> or <code>click silent</code>.</p>
 <p>The beat LEDs are inside the button, to the right of the word, and pressing anywhere on the button toggles the click. The word is dim when the click is silent and bright when it is audible. The LEDs carry the colour that shows the click will be heard.</p>
