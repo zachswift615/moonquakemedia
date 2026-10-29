@@ -2,20 +2,25 @@
 # /loom/shortcuts/ — where a new subscriber to the LOOM email list lands.
 #
 # Buttondown's free plan sends its own generic welcome email and does not let it be edited, so the
-# list's promise (the keyboard shortcuts PDF) is kept here instead: Buttondown's Settings →
+# list's promise (the keyboard shortcuts PDF and the MIDI controller layout PDFs) is kept here instead: Buttondown's Settings →
 # Subscribing → "After confirming" redirects every confirmed subscriber to this page. If the list
 # moves to a paid plan with a custom welcome email, this page can stay as that email's link.
 #
 # The PDFs and their cover images live in /assets/loom/. The covers are page 1 of each PDF,
 # rendered with pdftoppm at 110 dpi; re-render them when the PDFs change.
 #
+# The MIDI controller layout PDFs and their covers live in /assets/loom/midi-layouts/. They are
+# built in the LOOM repo (docs/marketing/midi-layouts/<controller>/out/); each cover is that
+# folder's 01-cover.png as an 800 px WebP (cwebp -q 80 -resize 800 0). Copy both again when a
+# sheet changes.
+#
 # noindex: it is a thank-you page, not something a search should land on cold.
 layout: layouts/base.njk
 permalink: /loom/shortcuts/
 eleventyExcludeFromCollections: true
-title: "Your LOOM keyboard shortcuts"
-seoTitle: "Your LOOM Keyboard Shortcuts"
-description: "The LOOM keyboard shortcuts PDF, in a light version for printing and a dark one for your screen."
+title: "Your LOOM downloads"
+seoTitle: "Your LOOM Downloads"
+description: "Your LOOM downloads: the keyboard shortcuts PDF, in a light version for printing and a dark one for your screen, and MIDI controller layouts for four controllers."
 robots: "noindex, follow"
 ownFooter: true
 faviconSvg: /assets/loom/loom-favicon.svg
@@ -52,6 +57,13 @@ favicon: /assets/loom/favicon-32.png
   .sc-pdf { border: 1px solid #2C3038; border-radius: 12px; background: #0F1114; padding: 24px; display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 22px; align-items: center; }
   .sc-pdf.sc-feature { background: linear-gradient(180deg, #12201A, #0F1114); }
   .sc-cover { border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.45); border: 1px solid #2C3038; aspect-ratio: 612 / 792; width: 100%; height: auto; }
+  .sc-cover-wide { border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.45); border: 1px solid #2C3038; aspect-ratio: 8 / 5; width: 100%; height: auto; }
+  .sc-layouts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  @media (max-width: 760px) { .sc-layouts { grid-template-columns: minmax(0, 1fr); } }
+  .sc-layout { border: 1px solid #2C3038; border-radius: 12px; background: #0F1114; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+  .sc-layout h3 { margin: 0; font-size: 21px; font-weight: 600; letter-spacing: -0.02em; }
+  .sc-layout p { margin: 0; font-size: 15px; line-height: 1.5; color: #8A9099; text-wrap: pretty; }
+  .sc-layout .sc-spacer { flex: 1; min-height: 2px; }
   .sc-pdf-body { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
   .sc-pdf h2 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
   .sc-pdf p { margin: 0; font-size: 15px; line-height: 1.5; color: #8A9099; }
@@ -121,8 +133,8 @@ favicon: /assets/loom/favicon-32.png
 
   <div class="sc-hero">
     <div class="sc-eyebrow"><div class="sc-dot"></div><div class="sc-label">YOU’RE ON THE LIST</div></div>
-    <h1>Here are your keyboard shortcuts.</h1>
-    <p>Every key LOOM answers to, on four pages. Print the light one and keep it by your rig, or keep the dark one open on a second screen. Thanks for signing up.</p>
+    <h1>Here are your LOOM downloads.</h1>
+    <p>The keyboard shortcuts, with every key LOOM answers to, and mapping sheets for four MIDI controllers. Print the light shortcuts and keep them by your rig, or keep the dark ones open on a second screen. Thanks for signing up.</p>
   </div>
 
   <div class="sc-pdfs">
@@ -142,6 +154,44 @@ favicon: /assets/loom/favicon-32.png
         <h2>Keep it open</h2>
         <p>The same four pages in LOOM’s own colours, easy on the eyes on a dark stage.</p>
         <a class="sc-btn sc-btn-ghost" href="/assets/loom/LOOM-keyboard-shortcuts-dark.pdf">DOWNLOAD PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sc-section" id="midi-layouts">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="sc-label">MIDI CONTROLLER LAYOUTS</div>
+      <h2 class="sc-h">Map your controller.</h2>
+      <p style="margin:0;font-size:17px;line-height:1.55;color:#C7CDD4;max-width:60ch;">Each sheet shows every control on the panel labelled with what it does in LOOM, and lists the settings that make it work. Set your controller up from the sheet, then learn the controls in LOOM’s MIDI Mapping window.</p>
+    </div>
+    <div class="sc-layouts">
+      <div class="sc-layout">
+        <a href="/assets/loom/midi-layouts/loom-keylab-mk2-layouts.pdf"><img class="sc-cover-wide" src="/assets/loom/midi-layouts/keylab-mk2-cover.webp" alt="Page 1 of the LOOM layouts for the Arturia KeyLab mkII" width="800" height="500" loading="lazy"></a>
+        <h3>Arturia KeyLab mkII</h3>
+        <p>Two layouts. One gives every track its own controls, and one follows the focus, with knobs 1 to 8 on the focused track's macros. A setup page lists the settings in Arturia's software and in LOOM.</p>
+        <div class="sc-spacer"></div>
+        <a class="sc-btn sc-btn-ghost" href="/assets/loom/midi-layouts/loom-keylab-mk2-layouts.pdf">DOWNLOAD PDF</a>
+      </div>
+      <div class="sc-layout">
+        <a href="/assets/loom/midi-layouts/loom-launchkey-mk4-layouts.pdf"><img class="sc-cover-wide" src="/assets/loom/midi-layouts/launchkey-mk4-cover.webp" alt="Page 1 of the LOOM layouts for the Novation Launchkey MK4" width="800" height="500" loading="lazy"></a>
+        <h3>Novation Launchkey MK4 (49/61 and 25/37)</h3>
+        <p>One layout for the 49 and 61, with a fader for each track's level, and one for the 25 and 37, which have no faders. The knobs play the focused track's macros, and Play and Stop are learned as MIDI Start and Stop.</p>
+        <div class="sc-spacer"></div>
+        <a class="sc-btn sc-btn-ghost" href="/assets/loom/midi-layouts/loom-launchkey-mk4-layouts.pdf">DOWNLOAD PDF</a>
+      </div>
+      <div class="sc-layout">
+        <a href="/assets/loom/midi-layouts/loom-nanokontrol2-layout.pdf"><img class="sc-cover-wide" src="/assets/loom/midi-layouts/nanokontrol2-cover.webp" alt="Page 1 of the LOOM layouts for the Korg nanoKONTROL2" width="800" height="500" loading="lazy"></a>
+        <h3>Korg nanoKONTROL2</h3>
+        <p>Eight strips, each working one track: the slider sets its level, S stops it, M mutes it and R is its ring button. The knobs play the focused track's macros.</p>
+        <div class="sc-spacer"></div>
+        <a class="sc-btn sc-btn-ghost" href="/assets/loom/midi-layouts/loom-nanokontrol2-layout.pdf">DOWNLOAD PDF</a>
+      </div>
+      <div class="sc-layout">
+        <a href="/assets/loom/midi-layouts/loom-mc6-pro-layout.pdf"><img class="sc-cover-wide" src="/assets/loom/midi-layouts/mc6-pro-cover.webp" alt="Page 1 of the LOOM layouts for the Morningstar MC6 Pro" width="800" height="500" loading="lazy"></a>
+        <h3>Morningstar MC6 Pro</h3>
+        <p>Two pages of footswitches: one works the focused track, and one runs the song. An expression pedal plays MACRO 1 of whichever track has the focus.</p>
+        <div class="sc-spacer"></div>
+        <a class="sc-btn sc-btn-ghost" href="/assets/loom/midi-layouts/loom-mc6-pro-layout.pdf">DOWNLOAD PDF</a>
       </div>
     </div>
   </div>

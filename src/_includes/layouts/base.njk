@@ -81,7 +81,8 @@
       [/^\/loom\/buy\/?$|buy\.polar\.sh/i, 'buy_click'],
       [/\/redeem(\?|#|$)/i, 'claim_licence_click'],
       [/youtube\.com\/watch|youtu\.be\//i, 'video_click'],
-      [/\/LOOM-keyboard-shortcuts-[a-z]+\.pdf$/i, 'shortcuts_pdf_click']
+      [/\/LOOM-keyboard-shortcuts-[a-z]+\.pdf$/i, 'shortcuts_pdf_click'],
+      [/\/midi-layouts\/[^\/]+\.pdf$/i, 'midi_layout_pdf_click']
     ];
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[href]');
