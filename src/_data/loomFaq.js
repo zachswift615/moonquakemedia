@@ -26,7 +26,7 @@ module.exports = [
   },
   {
     q: 'Can I use a MIDI foot controller or pad controller with LOOM?',
-    a: 'Yes. LOOM answers a fixed set of MIDI notes on channel 16 by default. Each track gets its own octave with the same seven commands, and a range of notes runs the transport and the arrangement. There is no MIDI learn yet.',
+    a: 'Yes. LOOM answers a fixed set of MIDI notes on channel 16 by default. Each track gets its own octave with the same seven commands, and a range of notes runs the transport and the arrangement. To use any other knob, fader, pad or footswitch, learn it in the MIDI Mapping window: choose a control in LOOM, then move or press the control on your hardware.',
     link: { href: '/loom/manual/midi-mapping/', text: 'The MIDI note map' },
   },
   {
