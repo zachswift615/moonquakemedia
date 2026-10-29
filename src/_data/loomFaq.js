@@ -26,12 +26,12 @@ module.exports = [
   },
   {
     q: 'Can I use a MIDI foot controller or pad controller with LOOM?',
-    a: 'Yes. LOOM answers a fixed set of MIDI notes on channel 16 by default. Each track gets its own octave with the same seven commands, and a range of notes runs the transport and the arrangement. To use any other knob, fader, pad or footswitch, learn it in the MIDI Mapping window: choose a control in LOOM, then move or press the control on your hardware.',
-    link: { href: '/loom/manual/midi-mapping/', text: 'The MIDI note map' },
+    a: 'Yes. LOOM has a full MIDI mapping system for nearly every parameter. LOOM answers a fixed set of MIDI notes on channel 16 by default. Those can be used, overwritten or both. Custom mappings will overwrite the default mappings and if you remove them, the default mappings come back.',
+    link: { href: '/loom/manual/midi-mapping/', text: 'MIDI mapping' },
   },
   {
     q: 'Can I use my own plug-ins in LOOM?',
-    a: 'No. For stability, LOOM hosts no third-party plug-ins. It has its own synth, drum machine and sampler, and its own effects: parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner.',
+    a: 'No. For stability, LOOM hosts no third-party plug-ins. It has its own synth, drum machine and sampler, and its own effects: parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner. It is not out of the quesiton that LOOM might some day ship with 3rd party plug-in support, but it is not currently on the roadmap.',
   },
   {
     q: 'Can I record a live looping set as separate tracks?',

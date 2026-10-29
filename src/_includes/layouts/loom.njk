@@ -275,48 +275,6 @@ layout: layouts/base.njk
       
     </div>
 
-    <div id="tempo" style="scroll-margin-top:88px;padding:112px 0 0;display:flex;flex-direction:column;gap:32px;">
-      <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#FFB020;">TEMPO</div>
-        <h2 style="margin:0;font-size:clamp(30px,3.4vw,42px);font-weight:700;letter-spacing:-0.025em;line-height:1.08;text-wrap:balance;">Change the tempo while your loops play.</h2>
-        <p style="margin:0;font-size:18px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Your loops follow the song’s tempo. Type, drag or step the tempo while the song plays, and the change lands on the next beat. The bar lines stay where they are, so a press waiting for the next bar still lands on the downbeat you hear. The tempo is locked only while a track is armed, counts in, records, overdubs or waits on a command, and while a render runs.</p>
-        <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Each audio track chooses how it follows with <span style="font-family:'JetBrains Mono',monospace;font-size:14.5px;color:#C7CDD4;">FOLLOW TEMPO</span>, in the side panel. Instrument tracks loop notes, so they play the same bars at the new tempo.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:28px;">
-        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #FFB020;padding-top:16px;">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FFB020;">STRETCH</div>
-          <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Keeps the pitch</h3>
-          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The loop plays at the new tempo in its own key. A new track starts here, and so does every track in a song from an earlier version.</div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #4CC9F0;padding-top:16px;">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4CC9F0;">PITCH</div>
-          <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Works like tape</h3>
-          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Speed and pitch move together. Slow the song down and the loop drops in pitch.</div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #939BA5;padding-top:16px;">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#939BA5;">OFF</div>
-          <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Stays as recorded</h3>
-          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The loop plays at the tempo it was recorded at, and no longer lines up with the bar lines after a change.</div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #FF4438;padding-top:16px;">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">RENDER AND RENDER ALL</div>
-          <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">A clean copy at the new tempo</h3>
-          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">RENDER makes a high-quality stretch of one track and swaps it in mid-loop with no gap. RENDER ALL, beside the tempo, renders every stretched track that is off its recorded tempo. UNDO brings back the original recording.</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="padding:128px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:start;">
-      <div style="display:flex;flex-direction:column;gap:20px;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#8A9099;">WHY LOOM</div>
-        <h2 style="margin:0;font-size:clamp(30px,3.4vw,42px);font-weight:700;letter-spacing:-0.025em;line-height:1.08;text-wrap:balance;">The last app that did this isn’t around anymore.</h2>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:18px;">
-        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">There used to be a live-looping-first application where an arrangement could play a looper for you. But it was discontinued years ago. Everything else makes you pick the immediacy of a loop pedal, the structure of a timeline, or trying to force a DAW to behave like a looper.</p>
-        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">LOOM gives you both and keeps the hardware-looper experience a first-class citizen. Press a ring button and it records. Draw the same command on a lane and it fires exactly where you drew it.</p>
-      </div>
-    </div>
-
     <div id="instruments" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#E04AC1;">INSTRUMENTS</div>
@@ -437,15 +395,34 @@ layout: layouts/base.njk
       </div>
     </div>
 
-    <div style="padding:120px 0 0;">
-      <div style="border:1px solid #3A2320;border-radius:14px;background:linear-gradient(180deg,#15100F,#0F1114);padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:22px;">
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:3px;height:19px;background:#FF4438;flex:none;border-radius:1px;"></div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#FF6A5E;">ALL OR NOTHING</div>
+    <div id="tempo" style="scroll-margin-top:88px;padding:112px 0 0;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#FFB020;">TEMPO</div>
+        <h2 style="margin:0;font-size:clamp(30px,3.4vw,42px);font-weight:700;letter-spacing:-0.025em;line-height:1.08;text-wrap:balance;">Change the tempo while your loops play.</h2>
+        <p style="margin:0;font-size:18px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Your loops follow the song’s tempo. Type, drag or step the tempo while the song plays, and the change lands on the next beat. The bar lines stay where they are, so a press waiting for the next bar still lands on the downbeat you hear. The tempo is locked only while a track is armed, counts in, records, overdubs or waits on a command, and while a render runs.</p>
+        <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Each audio track chooses how it follows with <span style="font-family:'JetBrains Mono',monospace;font-size:14.5px;color:#C7CDD4;">FOLLOW TEMPO</span>, in the side panel. Instrument tracks loop notes, so they play the same bars at the new tempo.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:28px;">
+        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #FFB020;padding-top:16px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FFB020;">STRETCH</div>
+          <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Keeps the pitch</h3>
+          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The loop plays at the new tempo in its own key. A new track starts here, and so does every track in a song from an earlier version.</div>
         </div>
-        <h2 style="margin:0;font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-0.03em;line-height:1.06;max-width:24ch;text-wrap:balance;">If something’s wrong, you’ll know before you start.</h2>
-        <p style="margin:0;font-size:18px;line-height:1.6;color:#C7CDD4;max-width:66ch;text-wrap:pretty;">If any region in the arrangement can’t play correctly, nothing starts. The notice row lists each problem on its own line, in plain English, starting with what to fix. And the log shows you every notice message in the session.</p>
-        <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;max-width:66ch;text-wrap:pretty;">Better to find out up front than halfway through the song.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #4CC9F0;padding-top:16px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4CC9F0;">PITCH</div>
+          <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Works like tape</h3>
+          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Speed and pitch move together. Slow the song down and the loop drops in pitch.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #939BA5;padding-top:16px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#939BA5;">OFF</div>
+          <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Stays as recorded</h3>
+          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The loop plays at the tempo it was recorded at, and no longer lines up with the bar lines after a change.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #FF4438;padding-top:16px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FF4438;">RENDER AND RENDER ALL</div>
+          <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">A clean copy at the new tempo</h3>
+          <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">RENDER makes a high-quality stretch of one track and swaps it in mid-loop with no gap. RENDER ALL, beside the tempo, renders every stretched track that is off its recorded tempo. UNDO brings back the original recording.</div>
+        </div>
       </div>
     </div>
 
@@ -790,69 +767,6 @@ layout: layouts/base.njk
       </div>
     </div>
 
-    <div style="padding:120px 0 0;">
-      <div style="border:1px solid #23262C;border-radius:14px;background:#0F1114;padding:clamp(30px,3.6vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:40px;align-items:start;">
-        <div style="display:flex;flex-direction:column;gap:16px;">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIDI</div>
-          <h3 style="margin:0;font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;">Play it and run it from MIDI.</h3>
-          <p style="margin:0;font-size:16.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Play the synth, drum machine and sampler from any MIDI keyboard or pad controller, and drive every track and the transport from MIDI notes on a channel of their own, 16 by default. Each track, audio or instrument, gets its own octave with the same seven commands in the same order. A MIDI monitor on the bottom bar shows the last message received, in every view, so you can check that LOOM is seeing your controller.</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Levels, sends, mutes and the click answer control changes on the same channel, with no setup, and <a href="#midi-mapping">MIDI mapping</a> puts anything else wherever you want it. Choose a MIDI output and LOOM sends each track’s state back to your controller. LOOM sends MIDI clock to the outputs you choose in CLOCK OUT, so drum machines and sequencers follow its tempo. It doesn’t follow incoming clock, and there’s no MTC or MMC. Clear pads are held for a second, so a stray foot can’t wipe a loop. If your controller is set up for LOOM 1.0, switch MIDI MAP to the 1.0 layout.</p>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:2px;background:#23262C;border:1px solid #23262C;border-radius:8px;overflow:hidden;">
-          
-            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 1</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">0 – 6</div>
-            </div>
-          
-            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 2</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">12 – 18</div>
-            </div>
-          
-            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 3</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">24 – 30</div>
-            </div>
-          
-            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 4</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">36 – 42</div>
-            </div>
-          
-            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">TRACK 5</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#C7CDD4;flex:none;">48 – 54</div>
-            </div>
-          
-            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">INST 1</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#E04AC1;flex:none;">72 – 78</div>
-            </div>
-          
-            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">INST 2</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#E04AC1;flex:none;">84 – 90</div>
-            </div>
-          
-            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">INST 3</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#E04AC1;flex:none;">96 – 102</div>
-            </div>
-          
-            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">INST 4</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#E04AC1;flex:none;">108 – 114</div>
-            </div>
-          
-            <div style="background:#121418;padding:12px 16px;display:flex;align-items:center;gap:14px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#C7CDD4;flex:1;min-width:0;">GLOBALS</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#4CC9F0;flex:none;">120 – 125</div>
-            </div>
-          
-        </div>
-      </div>
-    </div>
 
     <!-- FAQ. The questions and answers are src/_data/loomFaq.js, which also feeds the FAQPage
          structured data at the foot of this file, so the visible answer and the one search
