@@ -113,11 +113,11 @@ manualSlug: keyboard
 </tr>
 <tr>
 <td><code>⌘Z</code></td>
-<td>Undoes the last <strong>effect chain</strong> change while the effect drawer or a slot grid has keyboard focus, and the last <strong>drum loop length</strong> change while the drum editor has it. Otherwise, while the arrange view is showing, undoes the last <strong>arrangement</strong> edit.</td>
+<td>Undoes the last <strong>effect chain</strong> change while the effect drawer or a slot grid has keyboard focus, the last <strong>macro</strong> change while the side panel's <code>MACROS</code> block has it, and the last <strong>drum loop length</strong> change while the drum editor has it. Otherwise, while the arrange view is showing, undoes the last <strong>arrangement</strong> edit.</td>
 </tr>
 <tr>
 <td><code>⇧⌘Z</code></td>
-<td>Redoes the last undone <strong>effect chain</strong> change while the effect drawer or a slot grid has keyboard focus, and the last undone <strong>drum loop length</strong> change while the drum editor has it. Otherwise, while the arrange view is showing, redoes the last undone <strong>arrangement</strong> edit.</td>
+<td>Redoes the last undone <strong>effect chain</strong> change while the effect drawer or a slot grid has keyboard focus, the last undone <strong>macro</strong> change while the side panel's <code>MACROS</code> block has it, and the last undone <strong>drum loop length</strong> change while the drum editor has it. Otherwise, while the arrange view is showing, redoes the last undone <strong>arrangement</strong> edit.</td>
 </tr>
 <tr>
 <td><code>⌘-</code></td>
@@ -416,6 +416,84 @@ manualSlug: keyboard
 </tr>
 </tbody>
 </table>
+<h2 id="the-side-panel-tabs">The side panel tabs</h2>
+<p>The <code>GLOBAL</code>, <code>TRACK</code> and <code>SONG</code> tabs are one <code>Tab</code> stop: the tab you are on. The arrow keys switch tabs, and the keyboard moves to the tab you switch to. See <a href="/loom/manual/side-panel/#the-global-track-and-song-tabs">The GLOBAL, TRACK and SONG tabs</a>.</p>
+<!-- loom-shortcut-source: LooperWindow::PanelTab -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> <code>→</code></td>
+<td>Shows the panel of the tab to the left or right. At the first or last tab, nothing changes.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-macros-block">The MACROS block</h2>
+<p><code>Tab</code> reaches the arrow beside the <code>MACROS</code> heading, and then the macros. The macros are one <code>Tab</code> stop: <code>Tab</code> lands on the macro you were on last, and the next <code>Tab</code> leaves the block. See <a href="/loom/manual/side-panel/#using-the-keyboard-in-the-macros-block">Using the keyboard in the MACROS block</a>.</p>
+<!-- loom-shortcut-source: ui::MacrosBlock::Chevron -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Return</code> <code>Space</code></td>
+<td>Opens or collapses the block.</td>
+</tr>
+</tbody>
+</table>
+<p>With the keyboard on a macro:</p>
+<!-- loom-shortcut-source: ui::MacrosBlock::TileButton -->
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>←</code> <code>→</code></td>
+<td>Moves to the previous or next macro, <code>MACRO 1</code> to <code>MACRO 8</code>.</td>
+</tr>
+<tr>
+<td><code>↑</code> <code>↓</code></td>
+<td>With the block open, moves to the macro above or below. With the block collapsed, the macros are one row, and these keys do nothing.</td>
+</tr>
+<tr>
+<td><code>Home</code></td>
+<td>Moves to <code>MACRO 1</code>.</td>
+</tr>
+<tr>
+<td><code>End</code></td>
+<td>Moves to <code>MACRO 8</code>.</td>
+</tr>
+<tr>
+<td><code>Return</code> <code>Space</code></td>
+<td>Opens the control chooser for the macro: to assign an empty macro, or to replace the control of an assigned one. <code>Esc</code> closes the chooser, and the keyboard goes back to the macro.</td>
+</tr>
+<tr>
+<td><code>Delete</code> <code>Backspace</code></td>
+<td>Clears the macro. On an empty macro, the notice line says it is already empty.</td>
+</tr>
+<tr>
+<td><code>F10</code></td>
+<td><strong>With <code>Shift</code> held:</strong> opens the macro's menu, the menu a right-click opens.</td>
+</tr>
+</tbody>
+</table>
+<p><code>⌘Z</code> and <code>⇧⌘Z</code> in the block undo and redo macro changes; see <a href="#the-main-window">The main window</a>.</p>
 <h2 id="the-tempo-field">The tempo field</h2>
 <!-- loom-shortcut-source: ui::TempoField -->
 
@@ -740,7 +818,7 @@ manualSlug: keyboard
 </tbody>
 </table>
 <p>The <strong>node cursor</strong> is the node the next key acts on, drawn as a ring around that node's marker while the lane has focus. Pressing a node with the mouse moves the cursor there, so the mouse and the keyboard always agree on which node you are on. The lane's spoken sentence says where the cursor is, what the control does from there, and how many nodes the lane holds.</p>
-<p>With <code>Shift</code> held, the arrows move the node instead of moving between nodes. <code>⇧←</code> and <code>⇧→</code> move the node at the cursor one grid step earlier or later. On a lane whose control holds a level, <code>⇧↑</code> and <code>⇧↓</code> move it up and down in value. A lane whose control is a switch has only two states, and a <code>RACK PRESET</code> or <code>PRESET</code> lane loads entries that have no order, so on those lanes the notice line says why the two keys cannot act there.</p>
+<p>With <code>Shift</code> held, the arrows move the node instead of moving between nodes. <code>⇧←</code> and <code>⇧→</code> move the node at the cursor one grid step earlier or later. On a lane whose control holds a level, <code>⇧↑</code> and <code>⇧↓</code> move it up and down in value. On a setting lane, such as a delay's <code>DIVISION</code>, they change the node to the next or the previous setting, and at the last or the first setting the notice line says there is no later or earlier one. A lane whose control is a switch has only two states, and a <code>RACK PRESET</code> or <code>PRESET</code> lane loads entries that have no order, so on those lanes the notice line says why the two keys cannot act there.</p>
 <p>When the cursor is standing on a node that is part of the selection, <code>⇧←</code> and <code>⇧→</code> move the whole selection instead, keeping the spacing and the shape between its members. The selection moves in time across every track and every lane it reaches into, and the whole of it is one edit.</p>
 <p><code>⇧↑</code> and <code>⇧↓</code> move only nodes. When the cursor is standing on a selected node, they move every selected node on every lane, each by a step of its own lane's range, and the whole of it is one edit. If the selection holds a region as well, or a node on a lane whose control is a switch, the notice line says why the gesture cannot run and nothing moves. Select only the nodes you want to move in value, or use <code>⇧←</code> and <code>⇧→</code> to move everything in time.</p>
 <p><code>⇧Home</code> and <code>⇧End</code> extend the selection along this lane, from the cursor to the lane's first or last node. Nothing already selected is removed, so you can build a selection across several lanes a run at a time.</p>
@@ -761,6 +839,7 @@ manualSlug: keyboard
 <p><code>⌘Z</code> undoes and <code>⇧⌘Z</code> redoes. In a field you are typing a value into, they undo your typing. Otherwise, what they undo depends on where the keyboard is:</p>
 <ul>
 <li><strong>In the effect drawer or on a slot grid:</strong> the last change to an effect chain. See <a href="/loom/manual/the-mixer/#undoing-a-change-to-an-effect-chain">Undoing a change to an effect chain</a>.</li>
+<li><strong>In the side panel's <code>MACROS</code> block:</strong> the last assign, replace or clear of a macro. See <a href="/loom/manual/side-panel/#the-macros-block">The MACROS block</a>.</li>
 <li><strong>In the drum editor, after a <code>BARS</code> change:</strong> the last change to the drum loop's length. See <em>STEPS/BEAT and bars</em> in <a href="/loom/manual/instrument-tracks/">Instrument tracks</a>. With no length change to undo, the key does what it does anywhere else.</li>
 <li><strong>Anywhere else, while the arrange view is showing:</strong> the last arrangement edit.</li>
 </ul>

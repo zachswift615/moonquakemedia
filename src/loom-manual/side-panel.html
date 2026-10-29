@@ -16,17 +16,100 @@ manualSlug: side-panel
 <p><code>Tab</code> and <code>⇧Tab</code> move between controls. When the scroller itself has focus, <code>Page Up</code>, <code>Page Down</code>, <code>Home</code> and <code>End</code> scroll it.</p>
 <p>Every off-screen control stays reachable from the keyboard and stays in the accessibility tree. The scrolling region and both of its scrollbars are named: <code>Song settings scroller</code>, <code>Song settings scrollbar</code> and <code>Song settings horizontal scrollbar</code> on the <code>GLOBAL</code> side, with the matching <code>Track settings</code> names on the <code>TRACK</code> side.</p>
 <h2 id="the-global-track-and-song-tabs">The GLOBAL, TRACK and SONG tabs</h2>
-<p>Three buttons run across the top of the panel. <code>GLOBAL</code> shows the song's global settings. <code>TRACK n</code> shows the focused track's settings. It does the same thing as a strip's <code>i</code> button, so the two gestures cannot disagree. <code>SONG</code> shows this song's own settings, under the <code>ARRANGEMENT</code> and <code>MIDI</code> headings.</p>
+<p>Three tabs run across the top edge of the panel, each in a fixed third of its width. <code>GLOBAL</code> shows the song's global settings. <code>TRACK n</code> shows the focused track's settings. It does the same thing as a strip's <code>i</code> button, so the two gestures cannot disagree. <code>SONG</code> shows this song's own settings, under the <code>ARRANGEMENT</code> and <code>MIDI</code> headings.</p>
 <p>The <code>TRACK</code> tab always names the focused track. It is never disabled, because there is always a focused track. Focus another strip and the tab names that one. While an instrument track has focus, the tab reads <code>INST 1</code>, <code>INST 2</code> and so on, and shows that track's settings; see <a href="/loom/manual/instrument-tracks/#the-inst-tab">Instrument tracks</a>.</p>
-<p>The active tab has a lit face and a 3 px rule under it, so you can tell which mode you are in without relying on colour alone.</p>
-<p>The tabs are named <code>Global panel tab</code>, <code>Song panel tab</code> and <code>Track panel tab</code> in every state. The number on the face follows focus, so it could not be part of the name even if the naming rule allowed it. Each tab's description says which tab you are on and what the others would show.</p>
+<p>The active tab has white text and a 2 px cyan line under it; the other two have grey text and no line. The line tells you which mode you are in without relying on colour alone. The tabs have no box around them, so they read as part of the panel. The <code>VIEW</code> switch in the top bar keeps its box, because it changes the whole window rather than the panel.</p>
+<p>When the focus moves between a loop track and an instrument track, <code>TRACK n</code> and <code>INST n</code> change in place, so nothing moves under your pointer.</p>
+<p>The tabs are named <code>Global panel tab</code>, <code>Song panel tab</code> and <code>Track panel tab</code> in every state. The number on the face follows focus, so it could not be part of the name even if the naming rule allowed it. Each tab's description says which tab you are on, what the others would show, and that the arrow keys move between the tabs.</p>
+<p>The tabs are one <code>Tab</code> stop: <code>Tab</code> lands on the tab you are on. Press <code>←</code> or <code>→</code> to show the panel of the tab to the left or right, and the keyboard moves to that tab. At the first or last tab, the key does nothing. See <a href="/loom/manual/keyboard/#the-side-panel-tabs">The side panel tabs</a>.</p>
 <p>The third tab is <code>SONG</code> rather than <code>ARRANGE</code> because the top bar's <code>VIEW / ARRANGE</code> swaps the whole body of the window, while this tab swaps only the panel. The three tabs are three scopes: <code>GLOBAL</code> is this session and this machine, <code>TRACK</code> is one track, and <code>SONG</code> is this song. The section headings inside the panel are <code>ARRANGEMENT</code> and <code>MIDI</code>.</p>
-<figure class="shot shot-beside"><img src="/assets/loom/manual/song.song-panel.webp" width="301" height="168" loading="lazy" decoding="async" alt="The SONG tab on a song whose tracks hold loops. TIME SIGNATURE is drawn behind a dashed border because it is locked."><figcaption>The SONG tab on a song whose tracks hold loops. TIME SIGNATURE is drawn behind a dashed border because it is locked.</figcaption></figure>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/song.song-panel.webp" width="309" height="172" loading="lazy" decoding="async" alt="The SONG tab on a song whose tracks hold loops. TIME SIGNATURE is drawn behind a dashed border because it is locked."><figcaption>The SONG tab on a song whose tracks hold loops. TIME SIGNATURE is drawn behind a dashed border because it is locked.</figcaption></figure>
 <p>The <code>SONG</code> tab holds <code>SONG COUNT-IN</code> and <code>TIME SIGNATURE</code> under <code>ARRANGEMENT</code>, and <code>SHARED MIDI INPUT</code> under <code>MIDI</code>. <code>SHARED MIDI INPUT</code> decides what happens when instrument tracks listen to inputs that overlap: <code>ONE AT A TIME</code> gives the input to one track, and <code>ALL TOGETHER</code> gives it to every one of them. See <a href="/loom/manual/instrument-tracks/#one-input-one-track-at-a-time">One input, one track at a time</a>. <code>TIME SIGNATURE</code> sets how many beats a bar has and what a beat is. It is saved with the song, and the bar lines, the ring's countdown and a tempo derived from a loop all count against it. It is locked on the same terms as the tempo: while any track holds a loop, or while the transport rolls, its chip is drawn behind a dashed border and refuses a change. Clear every track and stop the transport to change it.</p>
 <p>To leave the <code>TRACK</code> panel, use the <code>GLOBAL</code> tab. To hide the panel, use the panel toggle.</p>
+<h2 id="the-macros-block">The MACROS block</h2>
+<p>The <code>TRACK n</code> and <code>INST n</code> tabs start with a <code>MACROS</code> block. It shows the track's eight macros, <code>MACRO 1</code> to <code>MACRO 8</code>. A macro points at one control of the track's instrument, one control of the effect in one of its slots, or one slot's <code>ON / OFF</code>, and a knob or button mapped to the macro moves that control. For the mapping targets, see <a href="/loom/manual/midi-mapping/#macros">Macros</a>.</p>
+<p>The block stays at the top of the tab. The rest of the tab scrolls under it.</p>
+<h3 id="open-and-collapsed">Open and collapsed</h3>
+<p>Press the arrow at the left of the <code>MACROS</code> heading to open or collapse the block. The block starts collapsed. LOOM keeps your choice for every track and saves it on this computer, so the panel stays the same height when you move the focus to another track.</p>
+<ul>
+<li><strong>Collapsed</strong>, the block shows one row of eight cells, one per macro, with the number and the macro's state. The line under the cells names the macro that moved last, for example <code>LAST · 3 FEEDBACK · DELAY · 42%</code>. When no macro on the track is assigned, the line reads, for example, <code>NONE ON INST 2 · OPEN TO ASSIGN</code>.</li>
+<li><strong>Open</strong>, the block shows eight tiles in two columns, in the order of a row of eight hardware knobs: <code>MACRO 1</code> and <code>MACRO 2</code> across the top, then the next row. Each tile shows the macro's number, the control's value, the control's name and where it is, for example <code>SLOT 2 · DELAY</code>, and a bar for the value. A control with settings shows the setting's name, for example <code>1/8D</code>, and its bar has one part per setting. A slot's <code>ON / OFF</code> shows <code>ON</code> or <code>OFF</code>, and its bar has two parts. Under the tiles, a row shows the track's <code>LEVEL</code> and <code>PAN</code>, which you map as their own targets.</li>
+</ul>
+<p>The heading shows how many macros are assigned, for example <code>6/8 · 2 EMPTY</code>.</p>
+<h3 id="what-each-state-looks-like">What each state looks like</h3>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Tile</th>
+<th>Collapsed cell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assigned</td>
+<td>A solid outline, the control's name, where it is, and the value bar.</td>
+<td>A solid outline and a bar.</td>
+</tr>
+<tr>
+<td><code>EMPTY</code></td>
+<td>A dashed outline, a dashed number box, <code>EMPTY</code> and <code>tap to assign</code>. No bar.</td>
+<td>A dashed outline and no bar.</td>
+</tr>
+<tr>
+<td><code>UNAVAILABLE</code></td>
+<td>The <code>UNAVAILABLE</code> tag, with the control's name and place struck through and the bar dashed.</td>
+<td>The number struck through and the bar dashed.</td>
+</tr>
+<tr>
+<td><code>WAITING</code></td>
+<td>An amber dashed outline and the <code>WAITING</code> tag. The bar shows your hardware's position as a hollow square and LOOM's value as a cyan line.</td>
+<td>An amber dashed outline and the hollow square.</td>
+</tr>
+<tr>
+<td><code>ASSIGNING</code></td>
+<td>A cyan outline and the <code>ASSIGNING</code> tag, while you choose its control.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>A macro is unavailable when the effect it was set on has been removed from its slot or replaced by a different kind of effect, or when the track plays a different instrument. It does nothing until that effect or instrument is back. A macro on a slot's <code>ON / OFF</code> belongs to the slot, not to the effect: it switches whatever effect the slot holds, and it is unavailable only while the slot is empty. A macro waits when a mapping on it is waiting to pick up its control; see <a href="/loom/manual/midi-mapping/#when-a-fader-does-not-move-straight-away">When a fader does not move straight away</a>.</p>
+<h3 id="assigning-a-macro">Assigning a macro</h3>
+<ol>
+<li>Open the block, or press an empty tile and LOOM opens it for you.</li>
+<li>Press an <code>EMPTY</code> tile. To change an assigned macro, press its tile, or Control-click or right-click it, and choose <code>REPLACE</code>.</li>
+<li>The control chooser opens, titled for the macro, for example <code>MACRO 7 · CHOOSE A CONTROL</code>. It lists the track's instrument and, for each filled slot, the slot's <code>ON / OFF</code> and the controls of its effect. Type in the search field to narrow the list. A control that is already on a macro shows that macro's number.</li>
+<li>Choose a control. If it was on another macro, it moves to this one and the other macro is left empty. Press <code>Escape</code> to close the chooser without assigning anything.</li>
+</ol>
+<p>To empty a macro, press its tile, or Control-click or right-click it, and choose <code>CLEAR</code>.</p>
+<p>With the keyboard in the block, <code>⌘Z</code> undoes the last assign, replace or clear, and <code>⇧⌘Z</code> redoes it. Macros have their own undo history, separate from the arrangement's and the effect chain's.</p>
+<h3 id="using-the-keyboard-in-the-macros-block">Using the keyboard in the MACROS block</h3>
+<p><code>Tab</code> reaches the arrow beside the <code>MACROS</code> heading, then the macros. Press <code>Return</code> or <code>Space</code> on the arrow to open or collapse the block.</p>
+<p>The macros are one <code>Tab</code> stop. <code>Tab</code> lands on the macro you were on last, and the next <code>Tab</code> leaves the block. The arrow keys move between the macros in the order of the hardware knobs. With the block open, <code>←</code> and <code>→</code> move along the tiles in order, and <code>↑</code> and <code>↓</code> move to the tile above or below. With the block collapsed, <code>←</code> and <code>→</code> move along the row of cells. <code>Home</code> and <code>End</code> move to <code>MACRO 1</code> and <code>MACRO 8</code>.</p>
+<p>With the keyboard on a macro:</p>
+<ul>
+<li>Press <code>Return</code> or <code>Space</code> to open the control chooser. On an <code>EMPTY</code> macro it assigns the macro; on an assigned macro it replaces the control.</li>
+<li>Press <code>Esc</code> in the chooser to close it without assigning anything. The keyboard goes back to the macro. It also goes back to the macro after you choose a control.</li>
+<li>Press <code>Delete</code> or <code>Backspace</code> to clear the macro.</li>
+<li>Press <code>⇧F10</code> to open the macro's menu, the same menu a right-click opens.</li>
+</ul>
+<p>The notice line says what each assign, replace and clear did, and says so when there is nothing to clear.</p>
+<p>A screen reader reads each macro the way its tile reads: its number, its control, its slot and its value. For example, <code>Macro 3, delay feedback, slot 2, 42 percent</code>. An empty macro reads <code>Macro 7, empty</code>, and an unavailable one says why, for example <code>Macro 5, unavailable, reverb wet, slot 4 is now a chorus</code>. A macro that is waiting to pick up also reads where the hardware is, and the macro being assigned reads <code>assigning</code>. Each macro then says which keys work on it. The <code>LEVEL</code> and <code>PAN</code> row reads as text, for example <code>Level 0.0 dB, pan C</code>.</p>
+<p>Below a window width of about 1400 px, the effect drawer hides the panel, and with it the block. The numbers on the controls and on the slot tiles still show which controls are macros, and your mapped knobs still work. To assign a macro, close the drawer. If you try while it is open, the notice line says <code>Close the drawer to assign macros.</code></p>
+<h3 id="the-macro-number-on-a-control">The macro number on a control</h3>
+<p>A control that a macro points at carries the macro's number in a small box. The box adds nothing to the layout and moves nothing.</p>
+<ul>
+<li><strong>On a knob</strong>, the box sits over the bottom of the knob, below its centre and above its name.</li>
+<li><strong>On a row of choices, a two-state button or an EQ band's value</strong>, the box sits on the control's top-right corner.</li>
+<li><strong>On a horizontal slider</strong>, the box sits at the right of the slider's name, just before the slider.</li>
+<li><strong>On a switch in a module's heading</strong>, such as <code>OSC 2</code>'s <code>SYNC</code> in the synth editor, the box sits in the heading, just left of the switch.</li>
+<li><strong>On <code>BYPASS SLOT</code></strong> in the effect drawer, the box sits on the button's top-right corner, for a macro on the slot's <code>ON / OFF</code>.</li>
+<li><strong>On a slot tile</strong> in the effect drawer, the numbers of the macros on that slot, on its effect's controls and on its <code>ON / OFF</code>, sit right of the effect's name: in one row when they fit there, and otherwise in two. When there are more than the two rows hold, the last place shows <code>+</code> after the numbers that fit. A tile with no room after its name for a number and the <code>+</code> shows neither. The slot's accessible description names every one.</li>
+</ul>
+<p>Hold the pointer over a knob to see which macro it is, for example <code>MACRO 1 on INST 1</code>. Automation and pickup keep their own marks: a macro does not change them.</p>
 <h2 id="the-global-panel">The GLOBAL panel</h2>
 <p>Everything here is the song's global default: the value a track inherits until you change it on that track. Changing a setting here does not overwrite every track. A strip you have set differently in the <code>i</code> panel keeps its own value and shows an asterisk on its <code>STOP</code> face.</p>
-<div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-settings.webp" width="301" height="598" loading="lazy" decoding="async" alt="The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections."><figcaption>The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-device.webp" width="320" height="466" loading="lazy" decoding="async" alt="The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open."><figcaption>The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open.</figcaption></figure></div>
+<div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-settings.webp" width="309" height="602" loading="lazy" decoding="async" alt="The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections."><figcaption>The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-device.webp" width="320" height="466" loading="lazy" decoding="async" alt="The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open."><figcaption>The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open.</figcaption></figure></div>
 <h3 id="global">GLOBAL</h3>
 <table>
 <thead>
@@ -210,7 +293,7 @@ manualSlug: side-panel
 <p>It is named <code>Announce state changes</code>. Turning it on announces that it is on; turning it off is silent. It silences speech only: every name, role and description stays as it is, and the notice line still shows its text.</p>
 <p>The switch is not saved. It starts on at every launch, so if you turned it off last night, turn it off again tonight.</p>
 <h2 id="the-track-panel">The TRACK panel</h2>
-<figure class="shot shot-beside"><img src="/assets/loom/manual/panel.track-top.webp" width="301" height="578" loading="lazy" decoding="async" alt="The top of the TRACK panel on track 1: its SOURCE and TIMING sections."><figcaption>The top of the TRACK panel on track 1: its SOURCE and TIMING sections.</figcaption></figure>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/panel.track-top.webp" width="309" height="688" loading="lazy" decoding="async" alt="The top of the TRACK panel on track 1: its SOURCE and TIMING sections."><figcaption>The top of the TRACK panel on track 1: its SOURCE and TIMING sections.</figcaption></figure>
 <p>This is a single panel that moves between tracks, rather than one panel per strip, and its controls are editable.</p>
 <p>The panel follows the focused track however focus moved: a strip press, an arrow key, or any strip verb, since each one focuses the track first. The tab, the body and the settings the chips write always refer to the same track.</p>
 <h3 id="the-track-panel-is-the-tracks-settings">The TRACK panel is the track's settings</h3>
@@ -304,6 +387,7 @@ manualSlug: side-panel
 <p>Use it when you want the cleanest sound at the new tempo. A render sounds cleaner than the live stretch whether the loop is sped up or slowed down: the live stretch can soften or double drums and vocals, and the render avoids that.</p>
 <p>To overdub over a clean stretch, render the track first with <code>RENDER</code>. An overdub on a stretched track that has not been rendered keeps the lo-fi stretch for good. See <a href="#timing">Overdubbing a track that follows the tempo</a> above.</p>
 <p>The button reads <code>RENDER AT 120.0</code>, with the song's tempo. Press it and the render starts, with no confirmation. When it is finished, the rendered loop takes over in the middle of the loop, at the point the track has reached, with no gap. The track then plays at the song's tempo, so the line above reads <code>PLAYING AS RECORDED</code> and <code>RENDER</code> has a dashed grey frame until the tempo changes again.</p>
+<p>You can render a track that is stopped, including a track in a song you have just opened that has not played yet. The render replaces the loop, and the track plays it the next time you start it.</p>
 <p><strong>A render keeps the track's original.</strong> The original is the loop as it was before the track's first render. LOOM keeps it in the song's folder, and it is still there after you save, quit and open the song again. The button's tooltip says <code>RENDER AT 120.0 · UNDO BRINGS BACK THE ORIGINAL</code>, and the line under the button says <code>UNDO brings back the original.</code> When the render lands, the notice line says, for example, <code>track 2 · rendered at 120.0 · undo brings back the original</code>.</p>
 <ul>
 <li><strong><code>UNDO</code></strong> after a render brings back the original, at the tempo it was recorded at. LOOM loads it from the song's folder, which takes a moment for a long loop. While it loads, another <code>UNDO</code> or <code>REDO</code> on that track is refused, and the notice line says, for example, <code>track 2 · undo refused · its original recording is still loading</code>.</li>
@@ -316,7 +400,7 @@ manualSlug: side-panel
 <p><strong>While the track renders</strong>, the button fills from left to right and reads <code>RENDERING · 40%</code>, and the line above it reads <code>FOLLOW LOCKED UNTIL DONE</code>. On this track, overdub, record, <code>UNDO</code>, <code>REDO</code>, <code>CLEAR</code>, replace and <code>FOLLOW TEMPO</code> are refused, and each refused press says why on the notice line, for example <code>track 1 · undo refused · rendering, 40%</code>. Play, stop, mute, solo, the fader and the effects still work: the render is made from the loop as it was when you pressed the button, so stopping the track does not affect it. The tempo is locked until the render lands. See <a href="#tempo">TEMPO</a>.</p>
 <p><strong><code>RENDER</code> waits or refuses when:</strong></p>
 <ul>
-<li><strong>The track is already at the song's tempo.</strong> The button has a dashed grey frame. Pressing it says, for example, <code>track 2 · already at 120.0</code>.</li>
+<li><strong>The track is already at the song's tempo.</strong> The button has a dashed grey frame. Pressing it says, for example, <code>track 2 · already at 120.0</code>. LOOM compares the two tempos exactly, not to the tenth it shows. If the song is a fraction of a BPM off the tempo the loop was recorded at, for example after you type back the tempo the first free loop set (see <a href="/loom/manual/top-bar/#the-first-free-loop-sets-the-tempo">The first free loop sets the tempo</a>), <code>RENDER</code> stays available and the line above it reads, for example, <code>RECORDED 96.2 · PLAYING LO-FI AT 96.2</code>. A render then makes no difference you can hear.</li>
 <li><strong>A <code>RENDER ALL</code> run is going.</strong> The track waits its turn. The button reads <code>QUEUED · 2 OF 3</code> and the line under it reads <code>WAITING IN RENDER ALL</code>. A waiting track is not locked: you can still overdub or undo it until its turn.</li>
 <li><strong>The arrangement is playing.</strong> The button shows a lock and the line under it reads <code>NOT WHILE THE ARRANGEMENT PLAYS</code>. Rendering is a looper-view feature, and starting the arrangement is refused while a render runs.</li>
 <li><strong>LOOM cannot render the loop.</strong> For example, the rendered loop would be longer than the longest loop a track can hold. The notice line says why, and the track goes on playing the live stretch.</li>
@@ -383,7 +467,7 @@ manualSlug: side-panel
 <p>Both start at <code>ON</code>, so if you never open this panel, every strip follows both buttons.</p>
 <p>They sit side by side because you compare them: a track you never want the button to <em>start</em> is often one you do want it to stop.</p>
 <h3 id="state">STATE</h3>
-<figure class="shot shot-beside"><img src="/assets/loom/manual/song.track-panel-state.webp" width="321" height="228" loading="lazy" decoding="async" alt="The bottom of the TRACK panel on track 3, which holds a stopped loop: its RESPONDS TO GLOBALS and STATE sections."><figcaption>The bottom of the TRACK panel on track 3, which holds a stopped loop: its RESPONDS TO GLOBALS and STATE sections.</figcaption></figure>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/song.track-panel-state.webp" width="321" height="122" loading="lazy" decoding="async" alt="The bottom of the TRACK panel on track 3, which holds a stopped loop: its RESPONDS TO GLOBALS and STATE sections."><figcaption>The bottom of the TRACK panel on track 3, which holds a stopped loop: its RESPONDS TO GLOBALS and STATE sections.</figcaption></figure>
 <p>Six readouts, none of them a tab stop.</p>
 <table>
 <thead>

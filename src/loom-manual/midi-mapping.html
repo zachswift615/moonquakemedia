@@ -388,17 +388,19 @@ manualSlug: midi-mapping
 <p>A number for a track your song does not have does nothing, and so does the reserved number in each block.</p>
 <h3 id="when-a-fader-does-not-move-straight-away">When a fader does not move straight away</h3>
 <p>If you move a knob or fader that is not at the same position as LOOM's control, the control does not move until the hardware reaches the control's current value, to within one and a half MIDI steps, or passes it. After that, the control follows the hardware. This is called pickup, and it stops a control jumping to wherever the hardware happens to be when you first touch it. To take over a control, move the hardware past LOOM's value. A controller that receives LOOM's values through <a href="#midi-feedback">MIDI feedback</a> already sits at the control's value, so your first move in either direction takes over.</p>
-<p>This applies to the controller numbers above and to every <code>CONTROLLER</code> mapping of your own. <code>TAKEOVER</code>, in the <code>MIDI</code> section of the side panel's <code>GLOBAL</code> tab, chooses how a control meets the hardware: <code>PICKUP</code>, the default, works as described here, <code>JUMP</code> sets the control to the hardware's position on the first message, and <code>SCALE</code> moves the control toward the hardware so that both reach the end of the range together. See <a href="/loom/manual/side-panel/#midi">The side panel</a>. Only <code>PICKUP</code> makes a control wait.</p>
+<p>A control with settings, such as the delay's <code>DIVISION</code> or the amp's <code>MODEL</code>, waits too. Its knob's travel is divided into one part per setting, and the control does not change setting until your hardware is in the part that selects the setting LOOM holds now, or passes it. After that, it follows the hardware from setting to setting. This stops the first touch of a knob from switching an amp model in the middle of a song. A control with two settings, such as <code>MUTE</code> or <code>PING PONG</code>, follows the hardware straight away: 64 and above is on, and below 64 is off. A knob with settings shows the same marker as any other knob while it waits.</p>
+<p>This applies to the controller numbers above and to every <code>CONTROLLER</code> mapping of your own. <code>TAKEOVER</code>, in the <code>MIDI</code> section of the side panel's <code>GLOBAL</code> tab, chooses how a control meets the hardware: <code>PICKUP</code>, the default, works as described here, <code>JUMP</code> sets the control to the hardware's position on the first message, and <code>SCALE</code> moves the control toward the hardware so that both reach the end of the range together. Under <code>JUMP</code> and <code>SCALE</code>, a control with settings moves to the setting the hardware's position selects. See <a href="/loom/manual/side-panel/#midi">The side panel</a>. Only <code>PICKUP</code> makes a control wait.</p>
 <p>While a control waits, LOOM shows where your hardware is:</p>
 <ul>
 <li><strong>On a knob</strong>, a hollow ring sits on the knob's own arc at the hardware's position. The arc between the ring and the knob's pointer is dashed. A dashed arc that runs back from the pointer means the hardware is below LOOM's value; a dashed arc that runs on past the pointer means it is above. The knob itself does not move.</li>
 <li><strong>On a fader</strong>, a dashed outline of the handle sits in the fader's track at the hardware's level, with a dashed line in the track to the real handle. The real handle does not move.</li>
-<li><strong>The notice row</strong> at the bottom of the window says it in words. With one control waiting, it names the control, the direction to move the hardware, and LOOM's value, for example <code>Waiting to pick up: TRACK 1 &gt; SLOT 1 &gt; THRESHOLD. Turn the hardware up to -15.0 dB.</code> With two or more, it gives the count: <code>Waiting to pick up: 3 controls. Open MIDI Mapping to see them.</code></li>
+<li><strong>The notice row</strong> at the bottom of the window says it in words, after an amber dashed <code>WAITING</code> tag. With one control waiting, it names the control, the direction to move the hardware, and LOOM's value, for example <code>Waiting to pick up: TRACK 1 &gt; SLOT 1 &gt; THRESHOLD. Turn the hardware up to -15.0 dB.</code> With two or more, it gives the count: <code>Waiting to pick up: 3 controls. Open MIDI Mapping to see them.</code></li>
 <li><strong>A screen reader</strong> hears it too: while a knob or fader waits, its name ends with <code>waiting to pick up: hardware at</code> and the hardware's value.</li>
 </ul>
 <p>Nothing is drawn around the control and nothing on screen moves or changes size, so the layout is the same whether a control waits or not. When the hardware reaches LOOM's value, the ring, the dashed outline and the words go away, and the control follows the hardware. If another notice appears while a control waits, it replaces the pickup sentence until the waiting changes.</p>
 <p>The knobs in the effect drawer and the instrument editors show the marker, and so do the faders of the tracks, the instrument tracks and the master, in the mixer and on the looper's strips. A control drawn as a horizontal slider, and the input, bus and click faders, do not show it. The <code>STATE</code> column of the <a href="#the-table">MIDI Mapping window</a> shows each of your own mappings that waits, including one whose control has no marker or is not on screen.</p>
-<p>A <code>FOCUSED TRACK</code> mapping of <code>LEVEL</code> or <code>PAN</code> waits on the track that has the focus: a level's marker is on that track's fader, and the notice row names that track. When you move the focus, the marker and the sentence move to the newly focused track straight away, and LOOM compares your hardware's position with that track's value. If they already agree, the control follows the hardware from your first move. A <code>FOCUSED TRACK</code> mapping of <code>MUTE</code> never waits.</p>
+<p>A <code>FOCUSED TRACK</code> mapping of a <code>LEVEL</code> or <code>PAN</code> waits on the track that has the focus: a level's marker is on that track's fader, and the notice row names that track. When you move the focus, the marker and the sentence move to the newly focused track straight away, and LOOM compares your hardware's position with that track's value. If they already agree, the control follows the hardware from your first move. A <code>FOCUSED TRACK</code> mapping of <code>MUTE</code>, <code>SOLO</code> or a slot's <code>ON / OFF</code> never waits.</p>
+<p>A macro mapping waits on the control its macro points at, in the same way, and the macro's tile in the side panel shows <code>WAITING</code>. When you move the focus, or when the macro is pointed at another control, LOOM compares your hardware's position with the new control's value. With one macro waiting, the notice row names the track, the macro, the control and both positions, for example <code>TRACK 2 · MACRO 1 · AMP DRIVE · hardware 62%, LOOM 30%</code>. With more than one waiting on a track, it gives the count: <code>Waiting to pick up: 2 macros on track 2.</code> See <a href="#macros">Macros</a>.</p>
 <h2 id="the-midi-mapping-window">The MIDI Mapping window</h2>
 <p>The MIDI Mapping window lists the mappings you have and shows every MIDI message LOOM receives. A mapping sends one message from your hardware to one control in LOOM. It works on top of the notes and controller numbers above, which keep working underneath.</p>
 <p>To open the window, choose <strong>View ▸ MIDI Mapping</strong> or press <code>⇧⌘M</code>. It opens as a separate window beside LOOM's main window. Pressing <code>⇧⌘M</code> again brings it to the front. Closing the window hides it, and it opens again where you left it.</p>
@@ -406,9 +408,9 @@ manualSlug: midi-mapping
 <p>You choose the control in LOOM first, then touch the control on your hardware.</p>
 <ol>
 <li>Press <code>+ ADD MAPPING</code> at the top of the window. When the table is empty, the same button is also under the explanation in the middle of the window.</li>
-<li>The <strong>Map a control</strong> chooser opens. It has the same three columns as the chooser the arrange view uses for automation lanes: a strip, then a section of that strip, then the control. Type in the search field to narrow all three columns. A control that a mapping already drives shows its source on a second line, for example <code>MAPPED · CH 1 · CC 7</code>. You can still choose it.</li>
+<li>The <strong>Map a control</strong> chooser opens. It has the same three columns as the chooser the arrange view uses for automation lanes: a strip, then a section of that strip, then the control. Type in the search field to narrow all three columns. A control that a mapping already drives shows its source on a second line, for example <code>MAPPED · CH 1 · CC 7</code>. You can still choose it. Each loop track's and instrument track's strip ends with a <code>MACROS</code> section; see <a href="#macros">Macros</a>. The chooser also offers the instrument controls that the automation lane chooser leaves out because changing them cuts into a sounding note, such as the synth's <code>FILTER TYPE</code>: a mapping changes them as the editor does. The controls that step through numbers with no names, such as <code>BEND RANGE</code>, are not offered.</li>
 <li>Choose a control. The chooser closes and a card opens at the top of the table, reading <code>LISTENING</code>.</li>
-<li>Move or press one control on your hardware. LOOM takes the first note or control change that arrives, from any device and on any channel. If nothing arrives in 15 seconds, LOOM stops listening and adds nothing. The card counts the seconds down.</li>
+<li>Move or press one control on your hardware. LOOM takes the first note, control change, or MIDI Start, Continue or Stop that arrives, from any device and on any channel. If nothing arrives in 15 seconds, LOOM stops listening and adds nothing. The card counts the seconds down.</li>
 <li>The card shows what LOOM heard and proposes a type. Check it, then press <code>USE</code>.</li>
 </ol>
 <p>The end of the chooser's first column has a <code>MAPPING ONLY</code> group. These targets are not automation destinations, so the arrange view's chooser does not offer them:</p>
@@ -422,7 +424,7 @@ manualSlug: midi-mapping
 <tbody>
 <tr>
 <td><code>COMMANDS</code></td>
-<td>The built-in layout's commands. <code>GLOBAL</code> holds <code>ALL START</code>, <code>ALL STOP</code>, <code>ALL CLEAR</code>, <code>TRANSPORT START</code>, <code>TRANSPORT STOP</code> and <code>PERFORM FROM TOP</code>. Each audio track and each instrument track holds its <code>RING</code>, <code>OVERDUB</code>, <code>UNDO</code>, <code>REDO</code>, <code>STOP</code>, <code>CLEAR</code> and <code>PLAY</code>. A footswitch that can only send a control change can use these to record.</td>
+<td><code>GLOBAL</code> holds the built-in layout's <code>ALL START</code>, <code>ALL STOP</code>, <code>ALL CLEAR</code>, <code>TRANSPORT START</code>, <code>TRANSPORT STOP</code> and <code>PERFORM FROM TOP</code>, and <code>TO TOP</code>, <code>PERFORM FROM HERE</code>, <code>RECORD</code>, <code>TEMPO UP</code>, <code>TEMPO DOWN</code>, <code>TEMPO</code>, <code>RENDER ALL</code> and <code>CLEAR ALL SOLOS</code>. Each audio track holds its <code>RING</code>, <code>OVERDUB</code>, <code>UNDO</code>, <code>REDO</code>, <code>STOP</code>, <code>CLEAR</code>, <code>PLAY</code>, <code>SOLO</code> and <code>RENDER</code>. Each instrument track holds the same commands except <code>RENDER</code>. A footswitch that can only send a control change can use these to record. See <a href="#commands-you-can-only-map">Commands you can only map</a>.</td>
 </tr>
 <tr>
 <td><code>FOCUS</code></td>
@@ -430,7 +432,7 @@ manualSlug: midi-mapping
 </tr>
 <tr>
 <td><code>FOCUSED TRACK</code></td>
-<td><code>RING</code>, <code>PLAY</code>, <code>STOP</code>, <code>UNDO</code>, <code>REDO</code>, <code>CLEAR</code>, <code>LEVEL</code>, <code>PAN</code> and <code>MUTE</code>, acting on whichever track has the focus when the message arrives.</td>
+<td>Controls that act on whichever track has the focus when the message arrives. <code>FOLLOWS FOCUS</code> holds <code>RING</code>, <code>OVERDUB</code>, <code>PLAY</code>, <code>STOP</code>, <code>UNDO</code>, <code>REDO</code>, <code>CLEAR</code>, <code>RENDER</code>, <code>LEVEL</code>, <code>LEVEL - CUE</code>, <code>LEVEL - FX 1</code>, <code>LEVEL - FX 2</code>, <code>PAN</code>, <code>MUTE</code> and <code>SOLO</code>. <code>MACROS</code> holds <code>MACRO 1</code> to <code>MACRO 8</code> of the focused track. Each row's second line says what that macro points at on the track focused now, for example <code>now DELAY FEEDBACK on TRACK 2</code> or <code>now empty on TRACK 2</code>. <code>RACK</code> holds <code>NEXT PRESET</code> and <code>PREVIOUS PRESET</code> for the focused track's chain. Each <code>SLOT</code> section holds <code>ON / OFF</code>, <code>NEXT PRESET</code> and <code>PREVIOUS PRESET</code> for that slot of the focused track's chain.</td>
 </tr>
 <tr>
 <td><code>PRESETS</code></td>
@@ -438,22 +440,132 @@ manualSlug: midi-mapping
 </tr>
 </tbody>
 </table>
+<h4 id="commands-you-can-only-map">Commands you can only map</h4>
+<p>These commands have no built-in note or controller number. Each one acts through the same control you use on screen, and is refused for the same reasons. When LOOM refuses a command, the monitor line and the notice row say why.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Type</th>
+<th>What it does</th>
+<th>What MIDI feedback sends</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TEMPO UP</code>, <code>TEMPO DOWN</code></td>
+<td><code>BUTTON</code></td>
+<td>Changes the tempo by one BPM per press, as the tempo field's <code>+</code> and <code>−</code> do.</td>
+<td>nothing</td>
+</tr>
+<tr>
+<td><code>TEMPO</code></td>
+<td><code>CONTROLLER</code>, <code>RELATIVE</code> or <code>RELATIVE 64</code></td>
+<td>Changes the tempo by one BPM per step of an endless encoder, or per value a knob or fader moves.</td>
+<td>nothing</td>
+</tr>
+<tr>
+<td><code>RENDER ALL</code></td>
+<td><code>BUTTON</code></td>
+<td>Presses <code>RENDER ALL</code>.</td>
+<td>127 while a render run is going</td>
+</tr>
+<tr>
+<td><code>CLEAR ALL SOLOS</code></td>
+<td><code>BUTTON</code></td>
+<td>Clears every solo, as the <code>S</code> button does.</td>
+<td>127 while anything is soloed</td>
+</tr>
+<tr>
+<td><code>RECORD</code></td>
+<td><code>BUTTON</code></td>
+<td>Starts the performance recording, or stops it while it records. It records what <strong>File ▸ Record Setup</strong> ticks, as the <code>RECORD</code> button does.</td>
+<td>127 while recording</td>
+</tr>
+<tr>
+<td><code>TO TOP</code></td>
+<td><code>BUTTON</code></td>
+<td>Returns the playhead to the start.</td>
+<td>nothing</td>
+</tr>
+<tr>
+<td><code>PERFORM FROM HERE</code></td>
+<td><code>BUTTON</code></td>
+<td>Performs the arrangement from the playhead.</td>
+<td>as <code>PERFORM FROM TOP</code></td>
+</tr>
+<tr>
+<td>A track's <code>SOLO</code></td>
+<td><code>BUTTON</code> or <code>SWITCH</code></td>
+<td>A <code>BUTTON</code> press turns the track's solo on or off. A <code>SWITCH</code> solos the track while it is on. The solo mode in the side panel decides whether other solos are cleared.</td>
+<td>127 while the track is soloed</td>
+</tr>
+<tr>
+<td>An audio track's <code>RENDER</code></td>
+<td><code>BUTTON</code></td>
+<td>Presses that track's <code>RENDER</code>.</td>
+<td>127 while the track renders or waits in a run</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>CONTROLLER</code> mapping on <code>TEMPO</code> changes the tempo by how far the knob or fader moves, not by where it is. The first message after you map it, open a song or change any mapping only tells LOOM where the control is, and the tempo does not change. After that, each value the control moves up raises the tempo by one BPM, and each value it moves down lowers it by one BPM. If the control jumps several values between two messages, for example from 40 to 47, the tempo changes by that many BPM, here seven. A control sends 128 positions, 0 to 127, so one sweep from one end to the other changes the tempo by up to 127 BPM. The range starts from where you first touched the control: the tempo can rise by one BPM for each position above that point, and fall by one BPM for each position below it. For example, if you first touch a knob at 40, you can lower the tempo by up to 40 BPM and raise it by up to 87 BPM. At either end of its travel, 0 or 127, the tempo stops changing, and the notice row says that the control is at the end of its travel. It says so once each time the control arrives at an end; move the control away from the end, and the notice row says it again the next time the control arrives there. If the tempo is locked when the control arrives at an end, the notice row gives the lock's reason instead. An endless encoder set to send positions, which some controllers call absolute mode, behaves the same way and stops at the same ends. For unlimited range, set the encoder to relative on the controller and map <code>TEMPO</code> as <code>RELATIVE</code> or <code>RELATIVE 64</code>. When you learn <code>TEMPO</code>, the card proposes the type that matches what the control sent: <code>CONTROLLER</code> for a knob or fader, <code>RELATIVE 64</code> for an encoder that sends values around 64. <code>TEMPO</code> cannot be mapped as a <code>BUTTON</code> or a <code>SWITCH</code>. To use buttons, map <code>TEMPO UP</code> and <code>TEMPO DOWN</code>.</p>
+<p>A mapped tempo change is refused while the tempo field is locked: while a track records, overdubs, counts in or waits on a command, or while a render runs. A tempo change made while the transport rolls takes effect on the next beat. When you turn an encoder quickly, every step counts: if you turn it ten steps before the next beat, the tempo changes once, by ten BPM, on that beat.</p>
+<p>The <code>FOCUSED TRACK</code> controls act on the track that has the focus when the message arrives:</p>
+<ul>
+<li><code>LEVEL - CUE</code>, <code>LEVEL - FX 1</code> and <code>LEVEL - FX 2</code> set the focused track's sends, and wait to pick up as <code>LEVEL</code> does.</li>
+<li><code>RENDER</code> presses the focused audio track's <code>RENDER</code>. On an instrument track it does nothing, and the monitor says why.</li>
+<li>A slot's <code>ON / OFF</code> switches that slot of the focused track's chain on or off. MIDI feedback sends 127 while the slot is on. On an empty slot it does nothing, and the monitor and the notice row say the slot is empty.</li>
+<li>A slot's or the rack's <code>NEXT PRESET</code> and <code>PREVIOUS PRESET</code> step the focused track's chain, as the <code>PRESETS</code> targets step a fixed chain.</li>
+<li><code>MACRO 1</code> to <code>MACRO 8</code> play the focused track's macros. See <a href="#macros">Macros</a>.</li>
+</ul>
+<h4 id="macros">Macros</h4>
+<p>Every loop track and every instrument track has its own macros, <code>MACRO 1</code> to <code>MACRO 8</code>. Inputs, buses and the master have none; map their controls directly. You assign a macro in the side panel; see <a href="/loom/manual/side-panel/#the-macros-block">The MACROS block</a>. A macro points at one control on its own track: a control of the track's instrument, a control of the effect in one of its slots, or a slot's <code>ON / OFF</code>. A macro has no value of its own. Its value is the value of the control it points at, so the effect editor, automation and pickup all show the real control. Macros are saved with the song. A new song, and a song saved before LOOM had macros, opens with every macro empty.</p>
+<p>You can map a macro in two ways:</p>
+<ul>
+<li><code>FOCUSED TRACK › MACRO 1</code> to <code>MACRO 8</code> play the macros of whichever track has the focus. Map a row of knobs to them once, and they play the track you focus. When you move the focus, each knob reaches the control that the new track's macro points at.</li>
+<li><code>TRACK n › MACRO 1</code> to <code>MACRO 8</code> and <code>INST n › MACRO 1</code> to <code>MACRO 8</code> play one track's macros, whichever track has the focus. In the chooser they are in the <code>MACROS</code> section at the end of that track's strip. Each row's second line says what the macro holds, for example <code>holds SYNTH CUTOFF</code> or <code>empty</code>. A macro whose effect has gone reads, for example, <code>REVERB WET · unavailable</code>, struck through.</li>
+</ul>
+<p>Either kind follows the macro. If you point the macro at another control, the mapping moves that control from then on. A <code>CONTROLLER</code> mapping waits to pick up the new control, as described in <a href="#when-a-fader-does-not-move-straight-away">When a fader does not move straight away</a>, and <a href="#midi-feedback">MIDI feedback</a> sends the new control's position.</p>
+<p>When a macro moves its control, the notice row names the track, the macro, the control and its value, for example <code>TRACK 2 · MACRO 3 · DELAY FEEDBACK · 42%</code>. A control with settings shows the setting, for example <code>TRACK 2 · MACRO 5 · DELAY DIVISION · 1/8D</code>. The monitor shows <code>→ TRACK 2 &gt; MACRO 3 · DELAY FEEDBACK 42%</code>.</p>
+<p>A macro belongs to the effect it was set on. If you empty that slot, or put a different effect in it, the macro is unavailable and does nothing. A macro on an instrument's control is unavailable while the track plays a different instrument. LOOM keeps the macro, and it works again when you put the same kind of effect or instrument back.</p>
+<p>A macro on a slot's <code>ON / OFF</code> belongs to the slot instead. It switches whatever effect the slot holds, so one macro per track can switch, for example, each track's delay on and off. A <code>BUTTON</code> press switches the slot on or off, as <code>FOCUSED TRACK › SLOT n ON / OFF</code> does. A <code>CONTROLLER</code> follows the hardware straight away: 64 and above is on, and below 64 is off. MIDI feedback sends 127 while the slot is on. On an empty slot the macro is unavailable and does nothing.</p>
+<p>An empty or unavailable macro does nothing, and says why:</p>
+<ul>
+<li><strong>Empty</strong>: the monitor shows <code>MACRO 7 is empty on track 2</code>. The first message, and the first after the focus moves or the macro changes, also puts <code>MACRO 7 is empty on track 2. Assign it in the TRACK 2 tab.</code> on the notice row, after an amber <code>REFUSED</code> tag. Later messages appear on the monitor only.</li>
+<li><strong>Unavailable</strong>: the monitor shows, for example, <code>INST 1 · MACRO 5 · REVERB WET is unavailable. Slot 4 is now a chorus.</code>, and the first message, and the first after the focus moves or the macro changes, puts the same sentence on the notice row after the <code>REFUSED</code> tag.</li>
+<li><strong>On an empty slot</strong>, for a macro on the slot's <code>ON / OFF</code>: the monitor shows, for example, <code>TRACK 2 · MACRO 3 · slot 2 is empty, so there is nothing to switch on or off</code>, and the notice row says the same on the same messages as for an unavailable macro.</li>
+</ul>
+<p>When you move the focus with <code>FOCUSED TRACK</code> macros mapped, the notice row says where they are now, and how many wait to pick up there, for example <code>track 2 focused · macros now on track 2 · 2 waiting to pick up</code>.</p>
 <h4 id="what-the-card-shows">What the card shows</h4>
 <p>After LOOM hears a message, the card shows:</p>
 <ul>
-<li><strong>The message</strong>, such as <code>CH 1 · CC 7</code>, and how it moved, such as <code>MOVED 0 → 127 · 41 VALUES</code> or <code>NOTE ON, THEN OFF · VELOCITY 96</code>.</li>
+<li><strong>The message</strong>, such as <code>CH 1 · CC 7</code>, and how it moved, such as <code>MOVED 0 → 127 · 41 VALUES</code> or <code>NOTE ON, THEN OFF · VELOCITY 96</code>. A MIDI Start, Continue or Stop shows its name and the device it came from, such as <code>START · Launchkey MK4 49 MIDI</code>, and reads <code>MIDI START · A TRANSPORT MESSAGE</code>.</li>
 <li>
 <p><strong><code>TYPE</code></strong>, with the type LOOM proposes and why. A control change that sent any value other than 0 and 127 is proposed as <code>CONTROLLER</code>, unless it looks like an endless encoder, as described below. For a note, or a control change that sent only 0 and 127, LOOM watches for half a second after the first message to see whether the button goes back. Released in that time, it is proposed as <code>BUTTON</code>, for example <code>RELEASED IN 80 MS · A MOMENTARY BUTTON</code>. A release that arrives too soon after the press to measure reads <code>RELEASED AT ONCE · A MOMENTARY BUTTON</code>. Still on, it is proposed as <code>SWITCH</code>, for example <code>IT STAYED AT 127 · A LATCHING BUTTON</code>, which is what a latching button or pedal sends. Until LOOM decides, the line reads <code>DECIDING · WAITING FOR THE RELEASE</code>, no type is selected, and <code>USE</code> is unavailable. Choosing a type yourself ends the wait, and your choice stays selected after LOOM decides. Press and release a button the way you normally would.</p>
 <p>An endless encoder sends steps rather than a position, in one of two ways. Choose <code>RELATIVE</code> for an encoder that sends 1 to 63 for steps up and 65 to 127 for steps down. Choose <code>RELATIVE 64</code> for an encoder that sends values above 64 for steps up and below 64 for steps down, which many controllers do, Arturia's included. An encoder that keeps sending values close to 64, and 64 itself, is proposed as <code>RELATIVE 64</code>, for example <code>IT SENT STEPS AROUND 64 · AN ENDLESS ENCODER</code>. If a knob jumps to one end of its range on every turn, or seems to fight you, it is probably an encoder mapped with the wrong type.</p>
+<p>A <code>RELATIVE</code> or <code>RELATIVE 64</code> mapping refuses a message that claims more than 16 steps, and the control it moves does not change. An endless encoder sends one step at a time, or a few when you turn it quickly. A knob set to send positions, which some controllers call absolute mode, sends values that read as many steps at once. The monitor line and the notice row then say <code>this knob sends positions, not steps: set it to relative on the controller, or map it as CONTROLLER</code>. The mapping keeps refusing that control's messages until it sends the same value twice in a row, which an encoder does as you turn it, or until you change a mapping.</p>
 </li>
 <li>
 <p><strong><code>KEEP IN</code></strong>: <code>RIG</code> keeps the mapping for every song on this rig, and is the default. <code>THIS SONG</code> saves it with the song you have open, where it wins over a rig mapping on the same message.</p>
 </li>
 <li><strong><code>REPLACES</code></strong>, when one of your mappings in the same scope already uses that message. The box names the mapping that <code>USE</code> removes. <code>⌘Z</code> puts it back.</li>
 <li><strong><code>OVERRIDES</code></strong>, when the message is one of LOOM's built-in notes or controller numbers. The box names the built-in command. The built-in layout keeps working on every other message, and deleting the mapping gives this message back to it.</li>
+<li><strong><code>REFUSED</code></strong>, when you press <code>USE</code> and LOOM cannot add the mapping, for example a <code>BUTTON</code> on <code>TEMPO</code>. The box gives the reason, the card stays open, and the notice row shows the same reason after an amber <code>REFUSED</code> tag. Change the type, the scope or the control and press <code>USE</code> again. A refusal stays on the notice row for at least 1.2 seconds: a sentence from the card or from a mapped control that arrives sooner waits, then appears.</li>
 </ul>
 <p><code>LISTEN AGAIN</code> forgets what LOOM heard and listens for a new message. <code>CHANGE</code>, beside the control's name, opens the chooser again so you can pick a different control, and keeps what LOOM heard.</p>
-<p>While LOOM listens, the message you send still does what it does without the card: a built-in note still rings its track, and a mapped control still moves. Only notes and control changes can be learned. LOOM does not listen for pitch bend.</p>
+<p>While LOOM listens, the message you send still does what it does without the card: a built-in note still rings its track, and a mapped control still moves. LOOM learns notes, control changes, and MIDI Start, Continue and Stop. It does not learn pitch bend, MIDI clock, Song Position or Active Sensing.</p>
+<h4 id="transport-buttons-that-send-midi-start-and-stop">Transport buttons that send MIDI Start and Stop</h4>
+<p>Some controllers send a MIDI Start, Continue or Stop message from their transport buttons instead of a note or a control change. The Novation Launchkey MK4's manual, for example, says its Play and Stop buttons send them. You learn these the same way as any other button: choose the control, press the button, and press <code>USE</code>.</p>
+<p>These messages have no channel, so a mapping on one answers only the device it was learned from. The same message from another device does nothing. The card always proposes <code>BUTTON</code>, with the reason <code>NO CHANNEL AND NO RELEASE · A BUTTON</code>, and each message is one press.</p>
+<p>A MIDI Start, Continue or Stop has no release, so <code>USE</code> refuses:</p>
+<ul>
+<li>any type other than <code>BUTTON</code>.</li>
+<li>a control you hold to confirm, such as <code>CLEAR</code>. The card says, for example, <code>A MIDI STOP has no release, so it cannot hold track 1 · clear to confirm it. Map that to a pad or a key.</code></li>
+<li>a message LOOM cannot tell the device of. This is rare: it happens only when LOOM has run out of device identities in one session.</li>
+<li><code>TEMPO</code>, which takes steps. Map <code>TEMPO UP</code> and <code>TEMPO DOWN</code> instead.</li>
+</ul>
+<p>These mappings send no <a href="#midi-feedback">MIDI feedback</a>: a Start or Stop cannot light anything on the controller. Their row in the table names the device and says <code>sends no feedback</code>, for example <code>Launchkey MK4 49 MIDI · sends no feedback</code>.</p>
+<p>A MIDI Start or Stop that nothing maps does nothing. LOOM does not follow another device's transport or clock.</p>
 <h4 id="cancelling">Cancelling</h4>
 <p>Any of these closes the card and adds nothing: <code>CANCEL</code>, <code>Esc</code>, clicking anywhere in the window outside the card, closing the window, and 15 seconds with no message. While the card is open, <code>⌘Z</code> and <code>⇧⌘Z</code> do not change the table.</p>
 <h3 id="changing-a-mapping">Changing a mapping</h3>
@@ -476,7 +588,7 @@ manualSlug: midi-mapping
 <tbody>
 <tr>
 <td><code>SOURCE</code></td>
-<td>The message: its channel, then <code>CC</code> and the controller number, <code>N</code> and the note number, or <code>PB</code> for pitch bend. For example, <code>CH 1 · CC 74</code>.</td>
+<td>The message: its channel, then <code>CC</code> and the controller number, <code>N</code> and the note number, or <code>PB</code> for pitch bend. For example, <code>CH 1 · CC 74</code>. A MIDI Start, Continue or Stop has no channel, and shows <code>START</code>, <code>CONTINUE</code> or <code>STOP</code>; the <code>STATE</code> column names the device it answers. These rows sort after the others.</td>
 </tr>
 <tr>
 <td><code>TYPE</code></td>
@@ -484,7 +596,7 @@ manualSlug: midi-mapping
 </tr>
 <tr>
 <td><code>TARGET</code></td>
-<td>The control the mapping moves, named as the automation lane chooser names it, or the command it runs, such as <code>NEXT TRACK</code>. A long name continues on a second line.</td>
+<td>The control the mapping moves, named as the automation lane chooser names it, or the command it runs, such as <code>NEXT TRACK</code>. A long name continues on a second line. A macro mapping has two lines: the mapping, for example <code>FOCUSED › MACRO 3</code> or <code>INST 1 › MACRO 5</code>, and in grey what it reaches now, for example <code>now TRACK 2 · DELAY FEEDBACK</code> or <code>holds REVERB WET</code>. <code>FOCUSED</code> is short for <code>FOCUSED TRACK</code> in this column only.</td>
 </tr>
 <tr>
 <td><code>SCOPE</code></td>
@@ -508,11 +620,19 @@ manualSlug: midi-mapping
 <tbody>
 <tr>
 <td><code>WAITING</code></td>
-<td>A <code>CONTROLLER</code> mapping whose hardware has not yet reached LOOM's value, so the control is not moving. The row shows both positions, for example <code>HW 16% · LOOM 60%</code>, and a small marker: the hollow mark is the hardware and the bar is LOOM's value. Move the hardware past LOOM's value to take over the control. See <a href="#when-a-fader-does-not-move-straight-away">When a fader does not move straight away</a>.</td>
+<td>A <code>CONTROLLER</code> mapping whose hardware has not yet reached LOOM's value, or, for a control with settings, the part of its travel that selects LOOM's setting, so the control is not moving. The row shows both positions, for example <code>HW 16% · LOOM 60%</code>, and a small marker: the hollow mark is the hardware and the bar is LOOM's value. Move the hardware past LOOM's value to take over the control. See <a href="#when-a-fader-does-not-move-straight-away">When a fader does not move straight away</a>.</td>
 </tr>
 <tr>
 <td><code>INERT</code></td>
-<td>The control is not in the song you have open. The row says what is missing, for example <code>slot 2 is empty</code>, <code>slot 2 holds a different effect</code> or <code>TRACK 8 is not in this song</code>. LOOM keeps the row, it does nothing, and it works again as soon as the control exists.</td>
+<td>The control is not in the song you have open. The row says what is missing, for example <code>slot 2 is empty</code>, <code>slot 2 holds a different effect</code> or <code>TRACK 8 is not in this song</code>. LOOM keeps the row, it does nothing, and it works again as soon as the control exists. A MIDI Start, Continue or Stop mapping is also inert while its device is not connected, for example <code>Launchkey MK4 49 MIDI is not connected</code>, and works again when you connect it. See also <a href="#midi-clock">MIDI clock</a>.</td>
+</tr>
+<tr>
+<td><code>EMPTY</code></td>
+<td>A macro mapping whose macro is empty. The row reads, for example, <code>does nothing on track 2</code>. Assign the macro in the side panel and the mapping works.</td>
+</tr>
+<tr>
+<td><code>UNAVAILABLE</code></td>
+<td>A macro mapping whose macro is unavailable. The row says why, for example <code>slot 4 is now a chorus</code>, and the second line of its target is struck through.</td>
 </tr>
 <tr>
 <td><code>SHADOWED</code></td>
@@ -534,7 +654,7 @@ manualSlug: midi-mapping
 <p>Press <code>×</code> at the end of a row to delete the mapping. LOOM does not ask you to confirm.</p>
 <p>While the MIDI Mapping window has keyboard focus, <code>⌘Z</code> undoes the last change to the table and <code>⇧⌘Z</code> redoes it. Undo covers adding a row, replacing a row, deleting a row and editing a row. When a new mapping replaces one on the same message, <code>⌘Z</code> puts the replaced mapping back. These keys change the mapping table only. They do not undo anything in your song, and the song's own undo does not change the table.</p>
 <h3 id="the-monitor">The monitor</h3>
-<p>The right-hand side of the window lists every MIDI message LOOM receives, newest first, whether or not anything is mapped to it. Each line shows the message, the value it carried (<code>on</code> or <code>off</code> for a note), and what it did:</p>
+<p>The right-hand side of the window lists every MIDI message LOOM receives, newest first, whether or not anything is mapped to it. Each line shows the message, the value it carried (<code>on</code> or <code>off</code> for a note), and what it did. A MIDI Start, Continue or Stop shows the device that sent it, for example <code>START · Launchkey MK4 49 MIDI</code>, and no value. MIDI clock, Song Position and Active Sensing are not listed:</p>
 <ul>
 <li>An arrow and a control, such as <code>→ TRACK 1 &gt; LEVEL - MAIN -12.8 dB</code>: one of your mappings set the control to that value.</li>
 <li><code>BUILT-IN</code>: one of LOOM's built-in notes or controller numbers acted on it.</li>
@@ -886,8 +1006,9 @@ manualSlug: midi-mapping
 <li>A Controller mapping sends the target's position, from 0 to 127.</li>
 <li>A Button or Switch mapping sends 127 while the target is on and 0 while it is off. A control with a range, such as a level, is on at the top of its range.</li>
 <li>A mapping to one of the commands on this page, such as a track's Play, sends the velocity that command's note sends.</li>
+<li>A mapping to one of the <a href="#commands-you-can-only-map">commands you can only map</a> sends what that table lists.</li>
 <li>A FOCUSED TRACK mapping sends the focused track's state, and sends it again when the focus moves to another track.</li>
-<li>A <code>RELATIVE</code> or <code>RELATIVE 64</code> mapping, a NEXT TRACK or PREVIOUS TRACK mapping, a NEXT PRESET or PREVIOUS PRESET mapping, and a mapping whose target is not in this song have no state to show. On a note, they send 0. On a controller number, they send nothing.</li>
+<li>A <code>RELATIVE</code> or <code>RELATIVE 64</code> mapping, a NEXT TRACK or PREVIOUS TRACK mapping, a NEXT PRESET or PREVIOUS PRESET mapping, a slot's <code>ON / OFF</code> on an empty slot, and a mapping whose target is not in this song have no state to show. On a note, they send 0. On a controller number, they send nothing.</li>
 </ul>
 <p>A mapping on one of the default controller numbers replaces that number, so LOOM sends the mapping's state on it rather than the default control's.</p>
 <p>A fader in a TouchOSC layout, or a motorised fader, therefore moves to LOOM's value when you choose the output and when you open a song, and it follows when automation or the mouse moves the control. Pickup still applies to a control LOOM sends values for. See <a href="#when-a-fader-does-not-move-straight-away">When a fader does not move straight away</a>.</p>
@@ -914,6 +1035,92 @@ manualSlug: midi-mapping
 <li>In LOOM, set <code>MIDI OUT</code> to <code>TouchOSC Bridge</code>.</li>
 </ol>
 <p>A control in your TouchOSC layout receives its state when it is set to receive MIDI on the same channel and note as the command it sends.</p>
+<h2 id="midi-clock">MIDI clock</h2>
+<p>LOOM can send MIDI clock, so a drum machine, an arpeggiating synth, a sequencer or a hardware looper follows LOOM's tempo and starts and stops with LOOM's transport. LOOM sends clock. It does not follow a clock from other gear.</p>
+<p>LOOM sends a Start, Continue and Stop to each output it sends clock to. A device that passes on what it receives, such as a MIDI thru box or an IAC Driver bus, sends them back to LOOM. So a <a href="#transport-buttons-that-send-midi-start-and-stop">Start, Continue or Stop mapping</a> on a device with the same name as a <code>CLOCK OUT</code> output that is turned on does nothing, and its row is <code>INERT</code>: <code>CLOCK OUT sends LOOM's own START to IAC Driver Bus 1, which could send it back here. Untick it in CLOCK OUT to use this mapping.</code> LOOM matches the device by name only, so a path that leads back under a different name is not detected.</p>
+<h3 id="choosing-the-outputs">Choosing the outputs</h3>
+<p>Open the side panel's <code>GLOBAL</code> tab. Under <code>MIDI</code>, below <code>MIDI OUT</code>, <code>CLOCK OUT</code> lists every MIDI output on this Mac. Click an output to send it clock; its light turns green. The <code>CLOCK OUT</code> readout above the list names every output LOOM is sending clock to, or reads <code>OFF</code>.</p>
+<p><code>CLOCK OUT</code> is separate from <code>MIDI OUT</code>, which sends each track's state to a controller. Clock usually goes to different gear. An output you choose in both gets both.</p>
+<p>When you turn an output on, two more controls appear under it:</p>
+<ul>
+<li><code>OFFSET</code> moves that output's clock against the audio, from -50 ms to +50 ms. A positive offset sends the clock later; a negative one sends it earlier. Use it when the gear's own latency puts its sound ahead of or behind LOOM's.</li>
+<li><code>STOPPED</code> sends clock to that output while LOOM is stopped. Some gear needs a constant clock to keep its tempo; leave it off for gear that starts as soon as any clock arrives.</li>
+</ul>
+<p>LOOM can send the clock earlier than the audio only by the audio output's latency, less 2 ms. If you set a negative offset larger than that, LOOM uses the earliest it can, and the row says what it uses, for example <code>Sent at -3.4 ms, the earliest the audio output's latency allows.</code></p>
+<p>These settings are stored on this Mac, not in the song. An output you turned on that is not connected stays in the list, marked <code>(not connected)</code>, and LOOM sends it clock when you connect it.</p>
+<h3 id="what-loom-sends_1">What LOOM sends</h3>
+<ul>
+<li><strong>Timing clock</strong>, 24 per quarter note, at the song's tempo. LOOM schedules each clock for the moment its beat leaves the audio output, plus the output's <code>OFFSET</code>.</li>
+<li><strong>Start</strong> when the gear should start from the top, <strong>Continue</strong> when it should carry on from a position, and <strong>Stop</strong> when LOOM stops.</li>
+<li><strong>Song Position</strong>, in <code>SONG</code> mode, before a Continue and when the playhead moves while LOOM is stopped.</li>
+</ul>
+<p>A tempo change lands on the next beat (see <em>Changing the tempo while the transport rolls</em> under <a href="/loom/manual/side-panel/#tempo">TEMPO</a>), and the clock changes speed on that beat.</p>
+<p>MIDI clock counts quarter notes. In 6/8, or any meter whose beat is an eighth note, the tempo LOOM shows counts eighth notes, so your gear shows half of it: 6/8 at 120 shows as 60 on the gear.</p>
+<h3 id="clock-mode-and-pattern-length"><code>CLOCK MODE</code> and <code>PATTERN LENGTH</code></h3>
+<p><code>CLOCK MODE</code> and <code>PATTERN LENGTH</code> are under the list, and they apply to every output.</p>
+<ul>
+<li><strong><code>PATTERN</code></strong>, the default, is for arpeggiators, drum machines and step sequencers. LOOM never sends Song Position. Every start is a Start, and a start that is not on a pattern boundary waits for the next one, with the clock running, so the gear's pattern always begins on a LOOM bar line. A pattern boundary is a bar line every <code>PATTERN LENGTH</code> bars, counted from bar 1: <code>1 BAR</code>, the default, <code>2 BARS</code>, <code>4 BARS</code> or <code>8 BARS</code>.</li>
+<li><strong><code>SONG</code></strong> is for sequencers and DAWs that follow a song position. A start from bar 1 is a Start. A start anywhere else is Song Position, then Continue, so the gear starts at LOOM's bar. Song Position counts sixteenth notes, so a start between two sixteenths waits for the next one.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>What you do</th>
+<th><code>PATTERN</code> sends</th>
+<th><code>SONG</code> sends</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start from bar 1, with <code>ROLL</code> or <code>PERFORM FROM TOP</code></td>
+<td>Start</td>
+<td>Start</td>
+</tr>
+<tr>
+<td><code>PERFORM FROM TOP</code> with a count-in</td>
+<td>Start at bar 1, with the clock running through the count-in</td>
+<td>the same</td>
+</tr>
+<tr>
+<td>Start anywhere else, with <code>ROLL</code> or <code>PERFORM FROM HERE</code></td>
+<td>Start, on the next pattern boundary</td>
+<td>Song Position, then Continue</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>Stop</td>
+<td>Stop</td>
+</tr>
+<tr>
+<td>Move the playhead while stopped, including <code>TO TOP</code></td>
+<td>nothing</td>
+<td>Song Position</td>
+</tr>
+<tr>
+<td>Jump while playing, or the arrangement loop wraps</td>
+<td>Stop, then Start on the next pattern boundary</td>
+<td>Stop, Song Position, then Continue</td>
+</tr>
+<tr>
+<td><code>TO TOP</code> while playing</td>
+<td>Stop, then Start</td>
+<td>Stop, then Start</td>
+</tr>
+<tr>
+<td>The first free loop sets the tempo</td>
+<td>nothing else</td>
+<td>Stop, Song Position, then Continue</td>
+</tr>
+</tbody>
+</table>
+<p>LOOM sends Stop before Song Position while the gear is running because most gear reads Song Position only while it is stopped.</p>
+<p>Song Position reaches bar 1024 in 4/4. If you start beyond what it can name, <code>SONG</code> starts the gear on the next pattern boundary instead, as <code>PATTERN</code> does, and the notice row says so.</p>
+<h3 id="when-an-output-is-disconnected">When an output is disconnected</h3>
+<p>If an output you turned on disappears, LOOM stops sending it clock and the notice row says so:</p>
+<p><code>The CLOCK OUT device Drum Machine was disconnected. LOOM sends it clock again when it comes back.</code></p>
+<p>When it comes back, LOOM sends it clock straight away and the notice row says:</p>
+<p><code>The CLOCK OUT device Drum Machine was connected again, and LOOM is sending it clock.</code></p>
+<p>If LOOM is playing when it comes back, the gear is brought in the way a jump while playing brings it in.</p>
 <h2 id="what-loom-listens-to">What LOOM listens to</h2>
 <p>LOOM listens to every MIDI source macOS reports and keeps them connected for the session. Its commands have no device list and no enable switch, so you cannot choose which source drives them, but the <code>MIDI</code> readout shows you what is arriving. An instrument track can listen to one device; see <a href="/loom/manual/instrument-tracks/#midi-input">Instrument tracks</a>.</p>
 <p>A Mac with no MIDI interface is not a problem: LOOM opens the audio device and runs as usual.</p>
@@ -927,5 +1134,5 @@ manualSlug: midi-mapping
 <h2 id="if-you-do-not-want-this">If you do not want this</h2>
 <p>Move LOOM onto a channel that nothing else on your rig sends on. That is what the command channel is for. Failing that, unplug the controller or take it off the Mac running LOOM. There is no way to switch the bindings off entirely and no per-source choice: LOOM answers every source, on the command channel.</p>
 <h2 id="what-is-not-here-yet">What is not here yet</h2>
-<p>LOOM cannot learn a pitch bend: <code>LISTEN</code> hears notes and control changes only. A message you send while LOOM listens is not held back; it also does what it normally does.</p>
+<p>LOOM cannot learn a pitch bend, MIDI clock, Song Position or Active Sensing: <code>LISTEN</code> hears notes, control changes, and MIDI Start, Continue and Stop only. A message you send while LOOM listens is not held back; it also does what it normally does.</p>
 {% endraw %}
