@@ -100,7 +100,7 @@ Every other tool here has you operate the looper while you perform, with your ha
 
 {% blogshot "/images/blog/best-live-looping-software-mac-2026/arrange.png", "LOOM's arrange view: REC, DUB and PLAY regions on five audio tracks and three instrument tracks, with automation lanes for a pan and an FX 1 level, preset lanes holding Trap n Clap and Zach Dusty Poly, and a rack lane", "The arrange view. Each region fires what a press on the track's ring would." %}
 
-The arrangement drives the same engine as the looper, so a region does exactly what a press of the track's ring button would. When you want to loop by hand, LOOM also has a fixed MIDI note map for every track and the transport, so a foot controller or pad controller works too, and `PERFORMANCE STOP` hands the song back to you at any point. There are separate guides on [arranging a live looping song in advance](/blog/arrange-live-looping-song-in-advance/) and [setting up a foot controller or pad controller](/blog/live-looping-mac-midi-foot-controller/).
+The arrangement drives the same engine as the looper, so a region does exactly what a press of the track's ring button would. When you want to loop by hand, LOOM also has a built-in MIDI note map for every track and the transport, and MIDI learn for any other knob, fader, pad or footswitch, so a foot controller or pad controller works too, and `PERFORMANCE STOP` hands the song back to you at any point. There are separate guides on [arranging a live looping song in advance](/blog/arrange-live-looping-song-in-advance/) and [setting up a foot controller or pad controller](/blog/live-looping-mac-midi-foot-controller/).
 
 ### Instruments and effects built for the stage
 
@@ -114,7 +114,7 @@ The rest:
 - Performance recording to separate WAV files: one per loop track, instrument track and effects bus, plus the main mix and groups of live inputs, all starting in sync. See [how to record a looping set as stems](/blog/record-live-looping-set-separate-stems/).
 - No network code. It never connects to the internet, and the licence is checked on your Mac.
 
-**What it does not do yet:** there is no piano roll, no MIDI output and no MIDI clock in or out, and the MIDI note map is fixed, with no MIDI learn yet. It runs on Apple Silicon Macs only, with macOS 13.3 or later, and there is no iPad version.
+**What it does not do yet:** there is no piano roll and no MIDI file import or export. LOOM sends MIDI clock and lights your controller's pads, but it does not follow incoming MIDI clock or send the notes its instrument tracks play. It runs on Apple Silicon Macs only, with macOS 13.3 or later, and there is no iPad version.
 
 **Price:** a one-time licence at ${{ loomPricing.listPrice }}{% if loomPricing.onLaunch %}, with a launch price of ${{ loomPricing.price | replace(".00", "") }} until {{ loomPricing.launchEndsReadable }}, 2026{% endif %}. There is a 14-day trial with every feature unlocked.
 

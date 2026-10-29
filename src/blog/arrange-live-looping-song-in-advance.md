@@ -67,9 +67,9 @@ You can also build it from the keyboard: on a lane, `Return` makes a one-bar reg
 
 ### Set the tempo first
 
-An arrangement fires against the song's bar grid, so the grid has to exist before you perform. Type a tempo in the top bar before you record anything. The tempo field locks once a track holds a loop.
+An arrangement fires against the song's bar grid, so the grid has to exist before you perform. Type a tempo in the top bar before you record anything. The tempo field locks while a track is armed, counts in, records, overdubs or waits on a command, and while a render runs. A track that holds a loop does not lock it, so you can change the tempo later, and every track set to follow it stays in time.
 
-The arrangement also has to stay inside one tempo and meter.
+The arrangement has to stay inside one meter. A tempo change is fine: the bars stay where they were.
 
 ### Give bar 1 a count-in
 

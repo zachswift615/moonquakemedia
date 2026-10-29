@@ -178,8 +178,8 @@ To put a pedal on anything else, such as a filter cutoff or a delay's feedback, 
 
 It is better to know these before you plan a rig:
 
-- There is no MIDI clock, MTC or MMC, in or out.
-- LOOM cannot learn pitch bend. Mappings take notes and control changes.
+- LOOM does not follow incoming MIDI clock, and there is no MTC or MMC. It does send MIDI clock, with `CLOCK OUT` in the side panel, so a drum machine or sequencer can follow LOOM's tempo.
+- LOOM cannot learn pitch bend. Mappings take notes, control changes, and the MIDI Start, Continue and Stop that some controllers' transport buttons send.
 
 If your controller is programmed for LOOM 1.0's layout, switch `MIDI MAP` in the side panel to `1.0 layout`. LOOM still offers it, but it is going away, so reprogram your controller for the 1.x layout when you can.
 
