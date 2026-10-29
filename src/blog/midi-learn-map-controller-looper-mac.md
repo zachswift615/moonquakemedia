@@ -6,14 +6,14 @@ tags:
   - how-to
   - midi
   - loom
-excerpt: "Choose a control in LOOM, move a knob on your controller, and that knob drives that control. Here is the MIDI Mapping window in LOOM 1.5, step by step, with what each part of it is telling you."
+excerpt: "Choose a control in LOOM, move a knob on your controller, and that knob drives that control. Here is LOOM's MIDI Mapping window, step by step, with what each part of it is telling you."
 ogImage: /images/og-blog-midi-learn.png
 ogImageWidth: 1200
 ogImageHeight: 630
 ogImageAlt: "MIDI Learn: Map Any Knob in LOOM, beside LOOM's MIDI Mapping table"
 ---
 
-Most controllers have more knobs than a looper has uses for. Until version 1.5, [LOOM](/loom/) answered only a fixed set of notes for the loop commands. LOOM 1.5 adds a MIDI Mapping window, so you can send any knob, fader, pad or footswitch to nearly any control in LOOM. Anything the arrange view can automate can be mapped, which covers almost every control on the instruments and effects, and every fader, send, pan and mute. The exceptions are controls that choose from a list of options, such as a filter type. So can commands that automation cannot run, such as recording a track or loading the next preset.
+Most controllers have more knobs than a looper has uses for. Until version 1.5, [LOOM](/loom/) answered only a fixed set of notes for the loop commands. LOOM 1.5 added a MIDI Mapping window, so you can send any knob, fader, pad or footswitch to nearly any control in LOOM. Anything the arrange view can automate can be mapped, which covers every fader, send, pan and mute, and almost every control on the instruments and effects, including settings such as a delay's `DIVISION`. So can instrument controls the arrange view leaves out, such as the synth's `FILTER TYPE`, and commands that automation cannot run, such as recording a track, changing the tempo or loading the next preset.
 
 This post walks through the window from an empty table to a working rig. The full reference is the [MIDI mapping chapter of the manual](/loom/manual/midi-mapping/#the-midi-mapping-window). If you are setting up a pedalboard with the built-in note layout, start with [live looping on a Mac with a MIDI foot controller](/blog/live-looping-mac-midi-foot-controller/) instead.
 
@@ -46,14 +46,14 @@ The end of the first column has a group called `MAPPING ONLY`. These targets are
 
 | Group | What it offers |
 |---|---|
-| `COMMANDS` | Every command in the built-in layout: each track's ring, overdub, undo, redo, stop, clear and play, and the global ALL START, ALL STOP, ALL CLEAR, TRANSPORT START, TRANSPORT STOP and PERFORM FROM TOP. |
+| `COMMANDS` | Every command in the built-in layout: each track's ring, overdub, undo, redo, stop, clear and play, and the global `ALL START`, `ALL STOP`, `ALL CLEAR`, `TRANSPORT START`, `TRANSPORT STOP` and `PERFORM FROM TOP`. Commands with no built-in note: `GLOBAL` adds `TO TOP`, `PERFORM FROM HERE`, `RECORD`, `TEMPO UP`, `TEMPO DOWN`, `TEMPO`, `RENDER ALL` and `CLEAR ALL SOLOS`, each track adds `SOLO`, and each audio track adds `RENDER`. |
 | `FOCUS` | `NEXT TRACK` and `PREVIOUS TRACK`, the same moves as the `→` and `←` keys. |
-| `FOCUSED TRACK` | Ring, play, stop, undo, redo, clear, level, pan and mute for whichever track has the focus when the message arrives. |
+| `FOCUSED TRACK` | Controls for whichever track has the focus when the message arrives. `FOLLOWS FOCUS` holds `RING`, `OVERDUB`, `PLAY`, `STOP`, `UNDO`, `REDO`, `CLEAR`, `RENDER`, `LEVEL`, the three sends (`LEVEL - CUE`, `LEVEL - FX 1` and `LEVEL - FX 2`), `PAN`, `MUTE` and `SOLO`. `MACROS` holds `MACRO 1` to `MACRO 8`. `RACK` steps the chain's presets, and each `SLOT` switches that slot `ON / OFF` and steps its presets. |
 | `PRESETS` | `NEXT PRESET` and `PREVIOUS PRESET` for each effects rack, each effect slot and each instrument track. |
 
 {% blogshot "/images/blog/midi-learn-map-controller-looper-mac/chooser-focused-track.png", "The chooser on FOCUSED TRACK › FOLLOWS FOCUS, listing RING, PLAY, STOP, UNDO, REDO, CLEAR, LEVEL, PAN and MUTE, each with a LISTEN button", "FOCUSED TRACK: controls that act on whichever track has the focus.", 590 %}
 
-`FOCUS` and `FOCUSED TRACK` together let a small controller run a big session. Map two buttons to `NEXT TRACK` and `PREVIOUS TRACK`, map a few more to the focused track's ring, stop and undo, and map one knob to its level. The same handful of controls then works whichever track you are on.
+`FOCUS` and `FOCUSED TRACK` together let a small controller run a big session. Map two buttons to `NEXT TRACK` and `PREVIOUS TRACK`, map a few more to the focused track's ring, stop and undo, and map one knob to its level. The same handful of controls then works whichever track you are on. Map a row of buttons to the `SLOT` sections, and they switch the effects of whichever track has the focus.
 
 {% blogshot "/images/blog/midi-learn-map-controller-looper-mac/chooser-presets.png", "The chooser on PRESETS with TRACK 1 › RACK selected, offering NEXT PRESET and PREVIOUS PRESET", "Two buttons that step through a rack's saved presets.", 590 %}
 
@@ -80,7 +80,10 @@ The card now shows the message, how it moved, and what LOOM proposes.
 - **`CONTROLLER`**: a knob, fader or expression pedal. Proposed for a control change that sent values other than 0 and 127.
 - **`BUTTON`**: a momentary button or footswitch, where each press fires. Proposed when LOOM saw the button go back within half a second.
 - **`SWITCH`**: a latching button or pedal that stays down until you press it again. Proposed when the button stayed at 127.
-- **`RELATIVE`**: an endless encoder that sends "up a bit" and "down a bit" rather than a position. LOOM does not propose this one, so choose it yourself.
+- **`RELATIVE`**: an endless encoder that sends steps rather than a position, 1 to 63 for steps up and 65 to 127 for steps down.
+- **`RELATIVE 64`**: an endless encoder that sends values above 64 for steps up and below 64 for steps down, which many controllers do, Arturia's included. Proposed when a knob keeps sending values close to 64.
+
+If a knob jumps to one end of its range on every turn, or seems to fight you, it is probably an encoder mapped with the wrong type.
 
 Press and release a button the way you normally would, because LOOM watches the release to tell `BUTTON` from `SWITCH`. Until it decides, the line reads `DECIDING · WAITING FOR THE RELEASE`.
 
@@ -115,7 +118,7 @@ The `STATE` column is the one to read when something does not work:
 | `SHADOWED` | The rig mapping that a song mapping is replacing. |
 | `OVERRIDES` | The mapping uses a message from the built-in layout, and acts instead of it. |
 
-`ALL`, `RIG` and `THIS SONG` above the table choose which rows you see. `EDIT` on a row opens the same chooser and card to change it, and `×` deletes it. While the window has keyboard focus, `⌘Z` and `⇧⌘Z` undo and redo changes to the table. They do not touch your song.
+`ALL`, `RIG` and `THIS SONG` above the table choose which rows you see. `EDIT` on a row opens the card on the mapping as it is saved. Press `CHANGE` to pick a different control, `LISTEN AGAIN` to use a different message, or choose another type or scope, then press `USE`. `×` deletes a row. While the window has keyboard focus, `⌘Z` and `⇧⌘Z` undo and redo changes to the table. They do not touch your song.
 
 ## Use the monitor to find out why
 
@@ -145,6 +148,8 @@ The notice row at the bottom of the window says it in words, naming the control 
 
 {% blogshot "/images/blog/midi-learn-map-controller-looper-mac/pickup-notice.png", "The notice row reading: Waiting to pick up: 4 controls. Open MIDI Mapping to see them.", "", 560 %}
 
+A control with settings, such as the delay's `DIVISION` or the amp's `MODEL`, waits too. It does not change setting until your knob reaches the part of its travel that selects the setting LOOM holds now, so the first touch cannot switch an amp model in the middle of a song. A control with two settings, such as `MUTE`, follows the hardware straight away.
+
 In `PICKUP`, you take over a control by moving the hardware past LOOM's value. If you would rather a control jump straight to the knob, or catch up gradually, change `TAKEOVER` in the side panel's `GLOBAL` tab, under `MIDI`:
 
 {% blogshot "/images/blog/midi-learn-map-controller-looper-mac/side-panel-midi.png", "The side panel's MIDI section: MIDI CH 16, MIDI MAP 1.x layout, MIDI OUT NONE, TAKEOVER set to PICKUP with JUMP and SCALE beside it, and MAPPINGS reading 4 · 4 WAITING beside an OPEN MIDI MAPPING button", "TAKEOVER, and a count of your mappings and how many wait.", 301 %}
@@ -160,6 +165,12 @@ If your controller has motorised faders, lit pads, or an on-screen surface such 
 A controller that receives LOOM's values already sits where LOOM's controls are, so in `PICKUP` there is nothing to wait for. While you move a control, LOOM does not send that control back, so it cannot fight your finger.
 
 Do not choose an output that leads back into LOOM, such as an IAC Driver bus. LOOM listens to every MIDI source, so it would hear its own feedback as commands.
+
+## Send clock to your gear: CLOCK OUT
+
+`CLOCK OUT`, below `MIDI OUT` in the same section, sends MIDI clock to each output you turn on, so a drum machine, an arpeggiator, a sequencer or a hardware looper follows LOOM's tempo and starts and stops with its transport. Each output has an `OFFSET` and a `STOPPED` switch, and `CLOCK MODE` chooses whether your gear starts on a pattern boundary (`PATTERN`) or at LOOM's bar (`SONG`). LOOM sends clock but does not follow incoming clock. The [MIDI clock section of the manual](/loom/manual/midi-mapping/#midi-clock) has the details.
+
+LOOM sends a Start, Continue and Stop to every output it sends clock to, and a device can pass them back. So a mapping on a Start, Continue or Stop from a device that `CLOCK OUT` sends to does nothing: its row reads `INERT`, and says to untick that device in `CLOCK OUT` to use the mapping.
 
 ## A small rig, mapped in five minutes
 
@@ -188,6 +199,40 @@ Pads 1 and 2 choose a track and pads 3 to 6 work it, so six pads run all nine tr
 
 Keep them all in `RIG`, and every song you open has the same controls in the same places. When one song needs a knob for something else, map it again with `KEEP IN` set to `THIS SONG`.
 
+### Add macros
+
+If your controller has a second row of knobs, give them to macros. Every loop track and instrument track has eight, `MACRO 1` to `MACRO 8`, and each one points at a control of the track's instrument or of an effect in its chain. Assign them in the `MACROS` block at the top of the side panel's `TRACK n` and `INST n` tabs: press a macro and choose a control. Macros are saved with the song.
+
+| Hardware | Map to | Type |
+|---|---|---|
+| Knobs 9 to 16 | `FOCUSED TRACK › MACRO 1` to `MACRO 8` | `CONTROLLER`, or `RELATIVE 64` on an endless encoder |
+
+Map the row once, and it plays the macros of whichever track has the focus. Pads 1 and 2 move the focus, and the same eight knobs reach the new track's cutoff, delay feedback or reverb level. An endless encoder in relative mode never waits for pickup, so it is the better choice when the focus moves often.
+
+### Change the tempo from a knob
+
+Map `COMMANDS › GLOBAL › TEMPO` to a knob or an endless encoder. On a knob or fader, the tempo moves one BPM for each value you turn it, from where you first touch it, so it never jumps. For unlimited range, set an encoder to relative on your controller and map `TEMPO` as `RELATIVE 64` or `RELATIVE`. To use buttons instead, map `TEMPO UP` and `TEMPO DOWN`. A tempo change lands on the next beat, and every track set to follow the tempo stays in time.
+
+## Layouts for popular controllers
+
+If you have one of these controllers, you do not have to design a layout from scratch. Each sheet shows every control on the panel labelled with what it does in LOOM, and lists the settings to make on the controller and in LOOM. The full PDFs are free when you [sign up for the LOOM email list](#loom-signup).
+
+### Arturia KeyLab mkII
+
+{% blogshot "/images/blog/midi-learn-map-controller-looper-mac/layout-keylab-mk2.png", "The Follow the focus layout for the Arturia KeyLab mkII. Rewind and fast-forward choose a track and the transport row works it. Knobs 1 to 8 are FOCUSED TRACK MACRO 1 to 8 in every bank, the faders are track and instrument levels, the buttons under them switch slots 1 to 8 on and off, and the pads play sampler slices and drums, with TO TOP and PERFORM FROM HERE", "Layout 2, Follow the focus. The PDF also has a layout with one control per track." %}
+
+### Novation Launchkey MK4
+
+{% blogshot "/images/blog/midi-learn-map-controller-looper-mac/layout-launchkey-mk4.png", "The LOOM layout for the Launchkey 49 and 61 MK4. The nine faders are track and instrument levels with MUTE under each, the knobs are FOCUSED TRACK MACRO 1 to 8, the pads ring and stop each track, and Play and Stop are learned as MIDI Start and Stop for the focused track", "The 49 and 61. The PDF also has a layout for the 25 and 37, which have no faders." %}
+
+### Korg nanoKONTROL2
+
+{% blogshot "/images/blog/midi-learn-map-controller-looper-mac/layout-nanokontrol2.png", "The LOOM layout for the Korg nanoKONTROL2. Each of the eight strips works one track: the slider is its level, S stops it, M mutes it and R is its ring button. The knobs are MACRO 1 to 8 of the focused track, and the other buttons move the focus, undo, redo, record the performance, and start or stop every track", "Eight strips, one per track, with the knobs on the focused track's macros." %}
+
+### Morningstar MC6 Pro
+
+{% blogshot "/images/blog/midi-learn-map-controller-looper-mac/layout-mc6-pro.png", "The LOOM layout for the Morningstar MC6 Pro. Page 1 works the focused track: previous and next track, ring, stop, clear, and undo with redo on a hold. Page 2 runs the song: TO TOP, RECORD, ALL CLEAR, ALL START, ALL STOP and TRANSPORT STOP. An expression pedal plays FOCUSED TRACK MACRO 1", "Two pages of footswitches, and an expression pedal on the focused track's MACRO 1." %}
+
 ## Frequently asked questions
 
 ### Does LOOM have MIDI learn?
@@ -208,7 +253,7 @@ That is `PICKUP`, LOOM's default `TAKEOVER` setting. The control waits until you
 
 ### Can I map pitch bend?
 
-No. LOOM learns notes and control changes.
+No. LOOM learns notes, control changes, and MIDI Start, Continue and Stop, which some controllers send from their transport buttons.
 
 ### Does mapping a note stop the built-in layout from working?
 
