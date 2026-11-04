@@ -70,6 +70,7 @@ layout: layouts/base.njk
         <a href="#instruments" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">INSTRUMENTS</a>
         <a href="#arrange" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">ARRANGE</a>
         <a href="#mixer" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">MIXER</a>
+        <a href="#plugins" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">PLUG-INS</a>
         <a href="#record" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">RECORD</a>
         <a href="/loom/manual/" class="loom-nav-link" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.13em;color:#C7CDD4;">MANUAL</a>
         <a href="#get" style="padding:9px 20px;border-radius:6px;background:#4CC9F0;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;">GET LOOM</a>
@@ -85,7 +86,7 @@ layout: layouts/base.njk
         <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.2em;color:#8A9099;">LIVE LOOPER FOR MACOS</div>
       </div>
       <h1 style="margin:0;font-size:clamp(46px,6.4vw,88px);font-weight:700;letter-spacing:-0.035em;line-height:0.98;max-width:15ch;text-wrap:balance;">A loop station that plays itself.</h1>
-      <p style="margin:0;font-size:clamp(18px,2vw,23px);line-height:1.5;color:#C7CDD4;max-width:60ch;text-wrap:pretty;">Record and overdub on five audio tracks like you would on a hardware looper, and loop a synth, drums and a sampler on four more. Then draw the same moves on a timeline, and the song presses its own buttons while you play. It’s one engine underneath, so everything you learn looping live works the same way in the arrangement.</p>
+      <p style="margin:0;font-size:clamp(18px,2vw,23px);line-height:1.5;color:#C7CDD4;max-width:60ch;text-wrap:pretty;">Record and overdub on five audio tracks like you would on a hardware looper, and loop a synth, drums, a sampler or your own instrument plug-ins on four more. Then draw the same moves on a timeline, and the song presses its own buttons while you play. It’s one engine underneath, so everything you learn looping live works the same way in the arrangement.</p>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;">
         <!-- ⛔ LINKED STRAIGHT OUT TO GITHUB RELEASES, AND DELIBERATELY NOT THROUGH A REDIRECT
      ON THIS DOMAIN. GitHub Pages is static, so a /loom/download hop could only be a meta-refresh
@@ -279,8 +280,9 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#E04AC1;">INSTRUMENTS</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Loop a synth, drums and a sampler via MIDI</h2>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Four instrument tracks sit beside the five audio tracks. Each one plays LOOM’s own synth, drum machine or sampler from a MIDI keyboard or pad controller, with the same ring, STOP, UNDO and CLEAR as an audio track.</p>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">LOOM loops the notes, not the sound. Change the preset, the kit or any setting while the loop plays, and the loop plays on with the new sound. You never have to play the part again to hear it on a different instrument.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Four instrument tracks sit beside the five audio tracks. Each one plays LOOM’s synth, drum machine or sampler, or an Audio Unit or VST3 instrument plug-in, from a MIDI keyboard or pad controller, with the same ring, STOP, UNDO and CLEAR as an audio track.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">LOOM loops the notes, not the sound. Change the sound, the instrument or any setting while the loop plays, and the loop plays on with the new sound. You never have to play the part again to hear it on a different instrument.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">A sound is an instrument with its settings, and it can keep the track’s effects too. Every sound is in one library, whichever instrument plays it: the synth, the drum machine, the sampler or a plug-in. Press ⌥⌘O to open the library and ⌥⌘S to save the sound you are playing.</p>
       </div>
       <div>
         <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
@@ -341,7 +343,7 @@ layout: layouts/base.njk
           </div>
 
       </div>
-      <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;max-width:74ch;text-wrap:pretty;">Support for third-party Audio Unit and VST3 plug-ins is coming, and most of it is already built. There is not currently a piano roll, and no MIDI file import or export. LOOM’s MIDI output lights your controller’s pads, moves its faders and sends MIDI clock to your gear, but it does not send the notes your instrument tracks play.</p>
+      <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;max-width:74ch;text-wrap:pretty;">There is not currently a piano roll, and no MIDI file import or export. LOOM’s MIDI output lights your controller’s pads, moves its faders and sends MIDI clock to your gear, but it does not send the notes your instrument tracks play.</p>
       <div style="padding-top:16px;">
         <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
           {% shot "/assets/loom/shot-looper-banks.png", "The looper in BANKS layout: the five audio tracks at full size, their rings showing PLAY, DUB, REC, STOPPED and EMPTY, with AUDIO and INST tabs above them that switch to the four instrument tracks" %}
@@ -355,7 +357,7 @@ layout: layouts/base.njk
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#4CC9F0;">ARRANGE</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Draw the performance. Play over it.</h2>
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Each track has a lane, instrument tracks included, and you draw regions on it with three verbs: <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FF4438;">REC</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#FFB020;">DUB</span> and <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#35D07F;">PLAY</span>. Empty space means the track is stopped. This is the part a hardware looper can’t do without MIDI control from an external sequencer.</p>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Below the regions, automation lanes work the mixer and the instruments while the song plays: faders, pans, mutes, effect parameters, any instrument control, and settings such as the delay’s DIVISION or the amp’s MODEL. One node can load a whole saved rack into an FX chain, or a synth preset, drum kit or pattern onto an instrument track, and the lane shows its name, so you can read the song as a row of named sections.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Below the regions, automation lanes work the mixer and the instruments while the song plays: faders, pans, mutes, effect parameters, any instrument control, a plug-in’s controls, and settings such as the delay’s DIVISION or the amp’s MODEL. One node can load a whole saved rack into an FX chain, a sound onto an instrument track with its instrument, settings and effects, or a drum pattern, and the lane shows its name, so you can read the song as a row of named sections.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
         {% shot "/assets/loom/shot-arrange.png", "LOOM’s arrange view: thirteen regions across five track lanes, with automation lanes below for two FX 2 send levels, a main level, a pan, and two rack lanes with sections named Nasty Acoust G2B, Chorus Delay AC and Clean ACG" %}
@@ -379,7 +381,7 @@ layout: layouts/base.njk
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #A78BFA;padding-top:16px;">
             <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Automate the mixer too</h3>
-            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Any strip’s level on each of its four fader destinations, its pan and mute, each effect slot’s bypass, the effect’s controls, and every control on an instrument. A setting lane switches a control with several settings at the bar you choose, such as the delay’s DIVISION, the amp’s MODEL, the reverb’s SIZE or the synth’s OSC 1 OCTAVE. An INPUT lane changes which controller an instrument track listens to.</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Any strip’s level on each of its four fader destinations, its pan and mute, each effect slot’s bypass, the effect’s controls, and every control on an instrument, a plug-in’s included. A setting lane switches a control with several settings at the bar you choose, such as the delay’s DIVISION, the amp’s MODEL, the reverb’s SIZE or the synth’s OSC 1 OCTAVE. An INPUT lane changes which controller an instrument track listens to.</div>
           </div>
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #A78BFA;padding-top:16px;">
@@ -431,7 +433,7 @@ layout: layouts/base.njk
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIXER &amp; EFFECTS</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">A full mixer behind the loops.</h2>
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">One switch flips between the banks: loop tracks, instruments, inputs, master and buses. Every strip has eight insert slots, instruments included, every chain runs in stereo, and the mixer state and FX chains save with the song.</p>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">For effects you get a parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner. Save a single effect as a preset or a whole chain as a rack, and the arrangement can load either one while you play.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">For effects you get a parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner, and any slot can hold an Audio Unit or VST3 effect plug-in beside them. Save a single effect as a preset or a whole chain as a rack, and the arrangement can load either one while you play.</p>
       </div>
       <div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px;align-items:start;">
@@ -500,6 +502,14 @@ layout: layouts/base.njk
                 <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Set the key and scale, and the harmony adds one or two voices to what you sing or play, a third, a fifth or an octave away. The intervals follow the scale the way a backing singer’s would, and your own voice comes through on time. For a song that changes key, automate KEY in the arrange view.</div>
               </div>
             </div>
+
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:6px;height:6px;border-radius:2px;background:#35D07F;flex:none;margin-top:8px;"></div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
+                <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Key a compressor from the kick</h3>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Key the compressor or the noise gate from another signal: an input, a track, an FX bus, an instrument track, or a single drum pad, such as <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">DRUMS 1 · KICK</span>. Duck a guitar under the kick, or open a gate in time with it.</div>
+              </div>
+            </div>
           
         </div>
       </div>
@@ -520,6 +530,41 @@ layout: layouts/base.njk
         </div>
         </div>
         <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">TUNER · STROBE OR NEEDLE FOR ONE NOTE, EVERY STRING WHEN YOU STRUM</div>
+      </div>
+    </div>
+
+    <div id="plugins" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#4CC9F0;">PLUG-INS</div>
+        <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Use your Audio Unit and VST3 plug-ins.</h2>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Put an effect plug-in in any slot of a loop track, an input or an instrument track, or choose an instrument plug-in for an instrument track. LOOM draws each plug-in’s controls as its own knobs, switches and lists, so you edit, map and automate them the way you do LOOM’s effects. Right-click a control and choose <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#C7CDD4;">DRAW AS</span> to draw it another way, or press <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#C7CDD4;">OPEN WINDOW</span> for the plug-in’s own window.</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Each plug-in runs in a helper process of its own, outside LOOM. If a plug-in crashes or stops responding, an effect passes its input through unchanged, or an instrument goes quiet, while LOOM restarts the plug-in with its last settings. A plug-in that keeps crashing stops, and its drawer offers <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#C7CDD4;">RESTART</span>. <a href="/loom/manual/plugins/">Plugins in the manual</a> describes each part.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:28px;padding-top:8px;">
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Map it, draw a lane, make a macro</h3>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Right-click a plug-in’s control and choose <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">MAP…</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">ADD LANE</span> or <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">MAKE MACRO</span>. The MIDI Mapping, lane and macro choosers list plug-in controls too, with a search field for a plug-in with many controls.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Loaded before the song plays</h3>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Plug-ins load when a song opens, never in the middle of a set. The song saves each plug-in’s settings. On a computer without one of them, its slot reads <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">MISSING</span>, keeps the settings and passes the sound through.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">A memory budget and live readouts</h3>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Set a memory budget for plug-ins in <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">GLOBAL › PLUGINS</span>. A plug-in that would go over it is not loaded, and its slot reads <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">OVERLOADED</span>. Each plug-in’s drawer shows its CPU, memory and latency.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Latency you can see</h3>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">On a loop track, LOOM reads the loop early, so it plays on time through the plug-in. On an input, the slot carries a clock badge and says how much later you hear that input, and LOOM places what you record where you played it.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Presets, racks and sounds</h3>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">A plug-in’s own presets appear in its <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">PRESET</span> list, and you can save your own. A rack, a sound or an arrange <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">PRESET</span> node can hold plug-ins, mixed with LOOM’s own effects.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">It asks before it scans</h3>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">The first time you open LOOM, it asks before it looks for plug-ins, because some plug-ins show a window while they are scanned. A plug-in that fails its scan goes on a blocklist with the reason. Choose <span style="white-space:nowrap;">File ▸ Scan for Plugins…</span> to scan again.</div>
+          </div>
       </div>
     </div>
 
@@ -571,7 +616,7 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">MIDI MAPPING</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Pick a control. Wiggle a knob. Done.</h2>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Choose a control in LOOM, then move a knob, fader, pad or key on your hardware. LOOM shows what it heard and suggests how to use it, and from then on that knob drives that control: the synth’s cutoff, a delay’s feedback, a track’s level, or nearly any other control in LOOM.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Choose a control in LOOM, then move a knob, fader, pad or key on your hardware. LOOM shows what it heard and suggests how to use it, and from then on that knob drives that control: the synth’s cutoff, a delay’s feedback, a track’s level, a plug-in’s control, or nearly any other control in LOOM.</p>
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Your mappings belong to your rig and work in every song. Any one of them can be kept for a single song instead, and that song’s mapping wins.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.6);">
@@ -610,7 +655,7 @@ layout: layouts/base.njk
               <div style="width:6px;height:6px;border-radius:2px;background:#A78BFA;flex:none;margin-top:8px;"></div>
               <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
                 <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Eight macros on every track</h3>
-                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Every loop track and instrument track has eight macros. Point each one at a control of the track’s instrument or of an effect in its chain, such as the synth’s cutoff, a delay’s feedback or a reverb’s wet level. Map a row of knobs to <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">FOCUSED TRACK › MACRO 1</span> to <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">MACRO 8</span> once, and they play the macros of whichever track has the focus.</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Every loop track and instrument track has eight macros. Point each one at a control of the track’s instrument or of an effect in its chain, plug-ins included, such as the synth’s cutoff, a delay’s feedback or a reverb’s wet level. Map a row of knobs to <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">FOCUSED TRACK › MACRO 1</span> to <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">MACRO 8</span> once, and they play the macros of whichever track has the focus.</div>
               </div>
             </div>
             <div style="display:flex;gap:14px;align-items:flex-start;">
@@ -656,6 +701,11 @@ layout: layouts/base.njk
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
             <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Dropouts get logged</h3>
             <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">If the disk can’t keep up, LOOM fills the gap with silence in every file at once so they stay in sync, and writes the time and length to a Markers.txt file you can open in any text editor.</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
+            <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">An overlay for the video of your set</h3>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;"><span style="white-space:nowrap;">File ▸ Export Performance Overlay…</span> makes a transparent video of the track rings, their names and the preset changes, to lay over your camera footage. LOOM makes it from the song’s arrangement, so what you do by hand during the take is not in it.</div>
           </div>
         
       </div>
@@ -762,6 +812,18 @@ layout: layouts/base.njk
             <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4CC9F0;">THE MANUAL</div>
             <h3 style="margin:0;font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Built into the app</h3>
             <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Press ⌘/ to open it. It’s a PDF on your Mac, not a web page, so it opens even with no WiFi. You can also <a href="/loom/manual/">read it here</a> before you download.</div>
+          </div>
+
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#FFB020;">NAMES</div>
+            <h3 style="margin:0;font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Name your tracks and inputs</h3>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Double-click a strip’s name, or right-click it and choose Rename Track… from its menu. The song saves the names, and the looper, the mixer and the arrange view all show them.</div>
+          </div>
+
+          <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4CC9F0;">ARRANGE</div>
+            <h3 style="margin:0;font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Take the song over from a pad</h3>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Map <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">PERFORMANCE STOP</span> from <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">COMMANDS › GLOBAL</span> to a pad or footswitch. It releases the arrangement and keeps the transport and your loops playing, and its pad lights while an arrangement is armed.</div>
           </div>
         
       </div>
@@ -941,13 +1003,17 @@ layout: layouts/base.njk
       ],
       "featureList": [
         "Five audio loop tracks with record, overdub, replace, undo and redo",
-        "Four MIDI instrument tracks with a built-in synth, drum machine and sampler",
+        "Four MIDI instrument tracks that play a built-in synth, drum machine and sampler, or an instrument plug-in",
+        "Audio Unit and VST3 effect and instrument plug-ins, each in a helper process of its own, with their controls drawn as LOOM controls",
+        "Sounds: an instrument with its settings and effects, saved and loaded from one library",
         "Arrange view: draw REC, DUB and PLAY regions and the song plays the looper",
         "Automation of faders, pans, mutes, effect and instrument parameters, settings such as delay division and amp model, presets and racks",
         "Mixer with eight insert slots per strip, a cue mix and two effects buses",
+        "Compressor and noise gate keyed from an input, a track, a bus or a single drum pad",
         "Parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner",
         "Performance recording to separate synced WAV files",
-        "MIDI control of every track and the transport, with MIDI learn, eight macros per track and MIDI clock out",
+        "Performance overlay export: a transparent video of the loops, lanes and preset changes",
+        "MIDI control of every track and the transport, with MIDI learn, eight macros per track, plug-in controls and MIDI clock out",
         "Loops follow tempo changes: stretch, pitch like tape, or render a clean copy at the new tempo",
         "Fully offline, with no account and no activation server"
       ],

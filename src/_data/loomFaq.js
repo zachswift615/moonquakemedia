@@ -17,7 +17,7 @@ module.exports = [
   },
   {
     q: 'What Macs does LOOM run on?',
-    a: 'LOOM runs on Macs with Apple Silicon, on macOS 13.3 Ventura or later. There is no Intel build and no Windows or iPad version.',
+    a: 'LOOM runs on Macs with Apple Silicon, on macOS 13.3 Ventura or later. There is no Intel build and no iPad version. A Windows version is coming.',
   },
   {
     q: 'Does LOOM need an internet connection?',
@@ -31,7 +31,8 @@ module.exports = [
   },
   {
     q: 'Can I use my own plug-ins in LOOM?',
-    a: 'Not yet, but it is coming. Support for third-party Audio Unit and VST3 instruments and effects is well along and most of it is already built. Until it ships, LOOM has its own synth, drum machine and sampler, and its own effects: parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner.',
+    a: 'Yes, if they are Audio Unit or VST3 plug-ins. Put an effect in any slot of a loop track, an input or an instrument track, or choose an instrument plug-in for an instrument track. Each plug-in runs in a helper process of its own, outside LOOM. If a plug-in crashes or stops responding, an effect passes its input through unchanged, or an instrument goes quiet, while LOOM restarts the plug-in with its last settings. LOOM also has its own synth, drum machine and sampler, and its own effects: parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner.',
+    link: { href: '/loom/manual/plugins/', text: 'Plugins in the manual' },
   },
   {
     q: 'Can I record a live looping set as separate tracks?',

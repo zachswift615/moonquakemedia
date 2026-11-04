@@ -90,7 +90,7 @@ A tabletop looper is the contrast case. The Boss RC-505mkII has five simultaneou
 
 ## LOOM
 
-[LOOM](/loom/) is the looper I build. It is a live looper for the Mac with five audio loop tracks you play like a hardware looper, plus four instrument tracks that play its own synth, drum machine and sampler from MIDI.
+[LOOM](/loom/) is the looper I build. It is a live looper for the Mac with five audio loop tracks you play like a hardware looper, plus four instrument tracks that play its own synth, drum machine and sampler, or your instrument plug-ins, from MIDI.
 
 {% blogshot "/images/blog/best-live-looping-software-mac-2026/looper.png", "LOOM's looper with five audio tracks above and four instrument tracks below. The rings read PLAY, DUB, REC, STOPPED and EMPTY, and a MIDI IN card lists the connected controllers", "The looper: five audio tracks above, four instrument tracks below." %}
 
@@ -104,9 +104,11 @@ The arrangement drives the same engine as the looper, so a region does exactly w
 
 ### Instruments and effects built for the stage
 
-Today, everything you can put in a LOOM chain is LOOM's own: the synth, drum machine and sampler, and the parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner. Support for third-party Audio Unit and VST3 instruments and effects is coming, and most of it is already built.
+LOOM has its own synth, drum machine and sampler, and its own parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner. It also loads your Audio Unit and VST3 plug-ins: an effect in any slot of a loop track, an input or an instrument track, or an instrument plug-in on an instrument track. LOOM draws a plug-in's controls as its own, so you can map them to your controller, automate them in the arrangement and put them on macros.
 
-Because LOOM owns the code behind its own instruments and effects, it decides exactly how much memory and processing each part uses. Its audio code never allocates memory, waits on a lock or touches the disk while it plays, and LOOM's tests run under a real-time sanitizer that flags any code that does. If your sound depends on one particular plug-in and you need it on stage now, a plug-in host such as MainStage or Gig Performer is the better home for it until LOOM's plug-in support ships.
+Because LOOM owns the code behind its own instruments and effects, it decides exactly how much memory and processing each part uses. Its audio code never allocates memory, waits on a lock or touches the disk while it plays, and LOOM's tests run under a real-time sanitizer that flags any code that does.
+
+Each plug-in runs in a helper process of its own, outside LOOM. If a plug-in crashes or stops responding, an effect passes its input through unchanged, or an instrument goes quiet, while LOOM restarts the plug-in with its last settings. Plug-ins load when a song opens, never in the middle of a set, and LOOM does not load a plug-in that would take the song over the memory budget you set.
 
 The rest:
 
@@ -114,7 +116,7 @@ The rest:
 - Performance recording to separate WAV files: one per loop track, instrument track and effects bus, plus the main mix and groups of live inputs, all starting in sync. See [how to record a looping set as stems](/blog/record-live-looping-set-separate-stems/).
 - No network code. It never connects to the internet, and the licence is checked on your Mac.
 
-**What it does not do yet:** it does not host third-party plug-ins yet (that support is coming), there is no piano roll and no MIDI file import or export. LOOM sends MIDI clock and lights your controller's pads, but it does not follow incoming MIDI clock or send the notes its instrument tracks play. It runs on Apple Silicon Macs only, with macOS 13.3 or later, and there is no iPad version.
+**What it does not do yet:** there is no piano roll and no MIDI file import or export. LOOM sends MIDI clock and lights your controller's pads, but it does not follow incoming MIDI clock or send the notes its instrument tracks play. It needs an Apple Silicon Mac with macOS 13.3 or later, and there is no iPad version.
 
 **Price:** a one-time licence at ${{ loomPricing.listPrice }}{% if loomPricing.onLaunch %}, with a launch price of ${{ loomPricing.price | replace(".00", "") }} until {{ loomPricing.launchEndsReadable }}, 2026{% endif %}. There is a 14-day trial with every feature unlocked.
 
@@ -147,7 +149,7 @@ Yes, in LOOM. Draw the song's `REC`, `DUB` and `PLAY` moves in the arrange view 
 
 ### Can I use my own AU or VST plug-ins in LOOM?
 
-Not yet. Support for third-party Audio Unit and VST3 instruments and effects is coming, and most of it is already built. Until then, LOOM comes with its own synth, drum machine and sampler and a full set of effects, and because it owns that code, it controls the memory and processing every sound uses.
+Yes, if they are Audio Unit or VST3 plug-ins. Put an effect plug-in in any slot of a loop track, an input or an instrument track, or choose an instrument plug-in for an instrument track. Each plug-in runs in a helper process of its own, outside LOOM, and LOOM restarts a plug-in that crashes. LOOM also comes with its own synth, drum machine and sampler and a full set of effects.
 
 ### Does live looping software need an internet connection?
 

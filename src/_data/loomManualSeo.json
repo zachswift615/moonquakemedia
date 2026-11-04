@@ -50,7 +50,11 @@
   },
   "instrument-tracks": {
     "title": "Instrument Tracks: Synth, Drum Machine and Sampler",
-    "description": "Loop MIDI on LOOM's instrument tracks with its own synth, drum machine and sampler. Change the sound while the loop plays, and undo overdubs pass by pass."
+    "description": "Loop MIDI on LOOM's instrument tracks with its synth, drum machine, sampler or an instrument plug-in. Save sounds, change them while the loop plays."
+  },
+  "plugins": {
+    "title": "Using AU and VST3 Plug-ins in LOOM",
+    "description": "Load Audio Unit and VST3 effects and instruments in LOOM, map and automate their controls, and see what happens when a plug-in crashes or is missing."
   },
   "your-recordings": {
     "title": "Where Your Loops and Recordings Are Saved",
@@ -63,5 +67,9 @@
   "reporting-a-problem": {
     "title": "Reporting a Problem with LOOM",
     "description": "If LOOM does something you did not expect, it writes a report to a file you can send. What the report contains and where to send it."
+  },
+  "performance-overlay": {
+    "title": "Export a Performance Overlay Video",
+    "description": "Export a transparent video of LOOM's track rings, names, preset changes and moving controls, and lay it over the camera footage of your set."
   }
 }
