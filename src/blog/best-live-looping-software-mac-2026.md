@@ -114,7 +114,7 @@ The rest:
 
 - A mixer with eight insert slots per strip. Presets and whole racks of effects can load from the arrangement mid-song.
 - Performance recording to separate WAV files: one per loop track, instrument track and effects bus, plus the main mix and groups of live inputs, all starting in sync. See [how to record a looping set as stems](/blog/record-live-looping-set-separate-stems/).
-- No network code. It never connects to the internet, and the licence is checked on your Mac.
+- No network code. LOOM itself never connects to the internet, and the licence is checked on your Mac. A third-party plug-in you choose to use may connect on its own, for example for its own licence check.
 
 **What it does not do yet:** there is no piano roll and no MIDI file import or export. LOOM sends MIDI clock and lights your controller's pads, but it does not follow incoming MIDI clock or send the notes its instrument tracks play. It needs an Apple Silicon Mac with macOS 13.3 or later, and there is no iPad version.
 
@@ -153,4 +153,4 @@ Yes, if they are Audio Unit or VST3 plug-ins. Put an effect plug-in in any slot 
 
 ### Does live looping software need an internet connection?
 
-It depends on the product. Ableton lists internet access for authorization among Live's requirements. LOOM makes no network calls at all, so it runs at a venue with no Wi-Fi.
+It depends on the product. Ableton lists internet access for authorization among Live's requirements. LOOM itself makes no network calls, so it runs at a venue with no Wi-Fi. A third-party plug-in you choose to use may still need the internet, for example for its own licence check.

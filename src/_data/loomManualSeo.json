@@ -13,8 +13,8 @@
     "description": "The MIDI notes that run every LOOM track and the transport. Set up a foot controller or pad controller to record, overdub, stop, undo and clear loops."
   },
   "privacy": {
-    "title": "Privacy: LOOM Makes No Network Calls",
-    "description": "LOOM collects nothing and makes no network calls. It never calls home, checks your licence online or fetches anything, so venue WiFi never matters."
+    "title": "Privacy: LOOM Itself Makes No Network Calls",
+    "description": "LOOM itself collects nothing and makes no network calls, and never checks your licence online. A third-party plug-in you load may connect on its own."
   },
   "the-window": {
     "title": "The LOOM Window: Looper, Arrange and Mixer",

@@ -715,8 +715,8 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:20px;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#35D07F;">FULLY OFFLINE</div>
         <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">The venue’s WiFi isn’t your problem.</h2>
-        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">LOOM never connects to the internet, at launch or at any time after. It doesn’t phone home to check your licence, and it doesn’t download anything. There’s no account or activation server. Your licence is checked right on your Mac.</p>
-        <p style="margin:0;font-size:16px;line-height:1.6;color:#8A9099;text-wrap:pretty;">The only exceptions are two buttons that open your web browser: one to buy a licence and one to check for the latest version. But these are initiated by you only.</p>
+        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">LOOM itself never connects to the internet, at launch or at any time after. It doesn’t phone home to check your licence, and it doesn’t download anything. There’s no account or activation server. Your licence is checked right on your Mac.</p>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#8A9099;text-wrap:pretty;">In LOOM itself, the only exceptions are two buttons that open your web browser: one to buy a licence and one to check for the latest version. But these are initiated by you only. If you choose to use a third-party plug-in that connects to the internet, for example for its own licence check, that connection is the plug-in’s, not LOOM’s.</p>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#23262C;border:1px solid #23262C;border-radius:12px;overflow:hidden;">
         
@@ -732,7 +732,7 @@ layout: layouts/base.njk
         
           <div style="background:#0F1114;padding:22px 20px;display:flex;flex-direction:column;gap:6px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:#35D07F;">0</div>
-            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;line-height:1.5;color:#8A9099;">REQUESTS SENT</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;line-height:1.5;color:#8A9099;">REQUESTS SENT BY LOOM</div>
           </div>
         
           <div style="background:#0F1114;padding:22px 20px;display:flex;flex-direction:column;gap:6px;">
@@ -899,7 +899,7 @@ layout: layouts/base.njk
             
               <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
                 <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">NETWORK</div>
-                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">Not needed, ever</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">Not needed by LOOM, ever. A third-party plug-in you use may need it for its own licence check.</div>
               </div>
             
               <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
@@ -1015,7 +1015,7 @@ layout: layouts/base.njk
         "Performance overlay export: a transparent video of the loops, lanes and preset changes",
         "MIDI control of every track and the transport, with MIDI learn, eight macros per track, plug-in controls and MIDI clock out",
         "Loops follow tempo changes: stretch, pitch like tape, or render a clean copy at the new tempo",
-        "Fully offline, with no account and no activation server"
+        "Fully offline: LOOM itself makes no network connections, and has no account and no activation server"
       ],
       "isAccessibleForFree": false,
       "offers": {

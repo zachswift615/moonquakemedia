@@ -21,7 +21,7 @@ module.exports = [
   },
   {
     q: 'Does LOOM need an internet connection?',
-    a: 'No. LOOM contains no networking code. It never checks your licence online, never downloads anything and sends nothing, so it works the same on a stage with no WiFi.',
+    a: 'No. LOOM contains no networking code. It never checks your licence online, never downloads anything and sends nothing, so it works the same on a stage with no WiFi. The exception is a third-party plug-in you choose to use that connects to the internet on its own, for example for its own licence check.',
     link: { href: '/loom/manual/privacy/', text: 'Privacy in the manual' },
   },
   {

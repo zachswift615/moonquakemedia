@@ -3,14 +3,15 @@ title: Privacy Policy - LOOM
 slug: loom
 appName: LOOM
 backUrl: /loom/
-lastUpdated: September 8, 2026
-summary: "LOOM makes no network calls. It has no accounts, no analytics and no crash reporting, and it never sends us anything — including whether you have ever opened it. Buying a licence does involve data, because a payment does. Our checkout provider Polar handles the transaction, and we keep one line per sale so we can re-issue your licence file forever."
+lastUpdated: November 4, 2026
+summary: "LOOM itself makes no network calls, unless you choose to use a third-party plug-in that connects to the internet on its own. It has no accounts, no analytics and no crash reporting, and it never sends us anything, including whether you have ever opened it. Buying a licence does involve data, because a payment does. Our checkout provider Polar handles the transaction, and we keep one line per sale so we can re-issue your licence file forever."
 ---
 
 ## The short version
 
 Most privacy policies for a paid app describe what the app sends home. This one cannot, because
-LOOM does not send anything home, and it is built so that it cannot start doing so by accident.
+LOOM itself does not send anything home, and it is built so that it cannot start doing so by
+accident. A third-party plug-in you choose to use is its maker's code, and is covered below.
 
 Buying it is a different matter. A payment involves a card, an email address and a merchant, and
 this policy is mostly about that — because that is where the data actually is.
@@ -26,6 +27,11 @@ on captive-portal WiFi, and captive-portal WiFi does not fail cleanly — it han
 guarantee that nothing hangs at soundcheck is for there to be no code that could. Privacy is what
 that choice happens to buy you as well.
 
+**A third-party plug-in is its maker's code, not LOOM's.** LOOM can load Audio Unit and VST3
+plug-ins that you install, each in a helper process of its own. If you choose to use a plug-in that
+connects to the internet, for example for its own licence check, that connection is made by the
+plug-in. What it sends is covered by its maker's privacy policy, not this one.
+
 Concretely, LOOM does not:
 
 - create an account or ask you to sign in
@@ -39,8 +45,8 @@ Concretely, LOOM does not:
 [moonquakemedia.com/loom/buy](/loom/buy), and the version check opens
 [moonquakemedia.com/loom/version](/loom/version). In both cases LOOM opens your browser and
 **reads nothing back** — there is no response for it to read, because it never made the request.
-Your browser did. If you never press either button, LOOM never causes a single network request in
-its life.
+Your browser did. If you never press either button, LOOM itself never causes a single network request in
+its life. A plug-in you choose to use is the one exception, described above.
 
 ## What LOOM stores on your Mac
 
