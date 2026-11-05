@@ -17,7 +17,7 @@ title: "LOOM: A Loop Station That Plays Itself"
 seoTitle: "LOOM: Live Looper for Mac with Synth, Drums and Arranger"
 tagline: A loop station that plays itself
 # Kept under ~155 characters, which is what a search result shows before it cuts.
-description: "LOOM is a live looper for Mac with a synth, drum machine and sampler, and an arrange view that plays the looper for you. Free 14-day trial. Works offline."
+description: "LOOM is a live looper for Mac with a synth, drum machine and sampler, AU and VST3 plug-ins, and an arrange view that plays the looper. Free 14-day trial."
 # The link-preview card, designed at 1200 x 630 (docs/marketing/claude-design-seo-assets-prompt.md
 # in the LOOM repository). shot-looper.png was the card before it and stays where it is: platforms
 # cache an og:image by URL, and the structured data still lists it as a screenshot.

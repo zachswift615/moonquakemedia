@@ -92,7 +92,7 @@ One practical use: if a vocal mic is open beside you while you record a drum tak
 
 ### Rack and preset lanes: name the sections of the song
 
-A rack lane loads a saved rack, a whole effects chain, into a strip at the bar you choose. A preset lane loads a saved preset into one slot. On an instrument track, a preset lane can load a synth preset or drum kit, and a pattern lane can change the drum pattern.
+A rack lane loads a saved rack, a whole effects chain, into a strip at the bar you choose. A preset lane loads a saved preset into one slot. On an instrument track, a preset lane loads a sound, such as a synth preset, a drum kit or an instrument plug-in with its settings, and a pattern lane can change the drum pattern.
 
 Each change is a node, and the band after it carries the name of what is loaded until the next change. So the lane reads as a row of named sections: a clean verse rack, a heavier chorus rack, a dub breakdown. You can read the song's structure off the screen.
 

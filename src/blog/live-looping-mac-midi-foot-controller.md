@@ -57,7 +57,7 @@ So the audio tracks land here:
 | Track 4 | 36 to 42 |
 | Track 5 | 48 to 54 |
 
-Notes 60 to 71 are reserved and do nothing. The instrument tracks (LOOM's own synth, drum machine and sampler) take the next octaves: 72 to 78, 84 to 90, 96 to 102 and 108 to 114. The global commands sit at 120 to 125.
+Notes 60 to 71 are reserved and do nothing. The instrument tracks (which play LOOM's synth, drum machine and sampler, or an instrument plug-in) take the next octaves: 72 to 78, 84 to 90, 96 to 102 and 108 to 114. The global commands sit at 120 to 125.
 
 ### One footswitch per track gets you a long way
 
