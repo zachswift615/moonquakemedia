@@ -5,9 +5,9 @@ manualSlug: side-panel
 ---
 {% raw %}
 <p>The side panel runs down the right edge of the window in the looper, the arrange view and the mixer. It has three modes and shows one at a time: <code>GLOBAL</code> for the song's global settings, <code>TRACK n</code> for the focused track's settings, and <code>SONG</code> for this song's own settings. The <a href="/loom/manual/top-bar/#the-panel-toggle">panel toggle</a> in the top bar hides the panel and brings it back in the mode you left it in. In the mixer, you reach a track's settings through this panel (see <a href="/loom/manual/the-mixer/">The mixer</a>).</p>
-<p>The effect editor is not part of this panel. It is a drawer that opens inside the mixer, beside the strip you tapped, and is described under <a href="/loom/manual/the-mixer/#the-effect-rack">The effect rack</a>. It never opens as a floating window, so nothing sits on top of the mixer you are performing on.</p>
+<p>The effect editor is not part of this panel. It is a drawer that opens just left of the panel when you click a slot in the <code>MIX</code> tab or on a mixer strip, and is described under <a href="/loom/manual/the-mixer/#the-effect-rack">The effect rack</a>. It stays open when you switch between the looper, the arrange view and the mixer. It never opens as a floating window, so nothing sits on top of the view you are performing on.</p>
 <p>The panel is 310 px wide in every mode, so the tabs do not move under your pointer when you switch modes. 310 px is the width of the <code>GLOBAL</code> mode's settings column, and <code>GLOBAL</code> is the widest of the three modes.</p>
-<p>Below a window width of about 1400 px, the effect drawer and this panel do not both fit. Opening the drawer hides the panel. The panel toggle brings the panel back in the mode you left it in and closes the drawer. Above that width, both stay open and neither moves.</p>
+<p>Below a window width of about 1400 px, the effect drawer and this panel do not both fit. Opening the drawer hides the panel. The panel toggle brings the panel back in the mode you left it in and closes the drawer. Above that width, both stay open and neither moves. In the looper, while the instrument editor dock is also open, the drawer hides the panel at every width.</p>
 <p>If you resize the window across that width while a drawer is open, the panel hides and returns on its own. Widening past it brings the panel back in the mode you left it in. Narrowing past it hides the panel and leaves the drawer where it is, because the drawer is what you just asked for.</p>
 <p>The panel, its three tabs and the way it collapses are the same on every surface, and it always comes back in the mode you left it in.</p>
 <p>In ARRANGE, the timeline gives up width to the panel instead of being drawn underneath it. The body is divided before the arrange view lays itself out, so the ruler, the lanes and the end marker all stop at the panel's border. Collapse the panel and the timeline takes the width back. The mixer's rack is divided the same way, so opening the panel narrows every strip instead of covering the strips on the right.</p>
@@ -78,7 +78,7 @@ manualSlug: side-panel
 <ol>
 <li>Open the block, or press an empty tile and LOOM opens it for you.</li>
 <li>Press an <code>EMPTY</code> tile. To change an assigned macro, press its tile, or Control-click or right-click it, and choose <code>REPLACE</code>.</li>
-<li>The control chooser opens, titled for the macro, for example <code>MACRO 7 · CHOOSE A CONTROL</code>. It lists the track's instrument and, for each filled slot, the slot's <code>ON / OFF</code> and the controls of its effect. Type in the search field to narrow the list. A control that is already on a macro shows that macro's number.</li>
+<li>The control chooser opens, titled for the macro, for example <code>MACRO 7 · CHOOSE A CONTROL</code>. It lists the track's instrument and, for each filled slot, the slot's <code>ON / OFF</code> and the controls of its effect or plugin. A plugin's control that the plugin does not let a host automate is listed greyed, and pressing it assigns nothing. Type in the search field to narrow the list. A control that is already on a macro shows that macro's number.</li>
 <li>Choose a control. If it was on another macro, it moves to this one and the other macro is left empty. Press <code>Escape</code> to close the chooser without assigning anything.</li>
 </ol>
 <p>To empty a macro, press its tile, or Control-click or right-click it, and choose <code>CLEAR</code>.</p>
@@ -109,7 +109,7 @@ manualSlug: side-panel
 <p>Hold the pointer over a knob to see which macro it is, for example <code>MACRO 1 on INST 1</code>. Automation and pickup keep their own marks: a macro does not change them.</p>
 <h2 id="the-global-panel">The GLOBAL panel</h2>
 <p>Everything here is the song's global default: the value a track inherits until you change it on that track. Changing a setting here does not overwrite every track. A strip you have set differently in the <code>i</code> panel keeps its own value and shows an asterisk on its <code>STOP</code> face.</p>
-<div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-settings.webp" width="309" height="602" loading="lazy" decoding="async" alt="The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections."><figcaption>The top of the GLOBAL panel as the window opens: its GLOBAL and RESPONDS TO GLOBALS sections.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-device.webp" width="320" height="466" loading="lazy" decoding="async" alt="The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open."><figcaption>The rest of the GLOBAL panel: its AUDIO DEVICE, MIDI and ACCESSIBILITY sections, with no audio device open.</figcaption></figure></div>
+<div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-settings.webp" width="309" height="602" loading="lazy" decoding="async" alt="The top of the GLOBAL panel as the window opens: its GLOBAL, TEMPO and RESPONDS TO GLOBALS sections."><figcaption>The top of the GLOBAL panel as the window opens: its GLOBAL, TEMPO and RESPONDS TO GLOBALS sections.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-device.webp" width="320" height="720" loading="lazy" decoding="async" alt="The GLOBAL panel's AUDIO DEVICE and MIDI sections, with no audio device open and no MIDI outputs connected."><figcaption>The GLOBAL panel's AUDIO DEVICE and MIDI sections, with no audio device open and no MIDI outputs connected.</figcaption></figure></div>
 <h3 id="global">GLOBAL</h3>
 <table>
 <thead>
@@ -288,19 +288,79 @@ manualSlug: side-panel
 <p><code>TAKEOVER</code> takes effect immediately and destroys nothing. Changing it ends every wait, so a control that was waiting under <code>PICKUP</code> meets the hardware afresh on the next message. The MIDI Mapping window shows the same setting at the right of its bottom line, and <code>CHANGE IN GLOBAL › MIDI</code> beside it brings this section into view. See <a href="/loom/manual/midi-mapping/#when-a-fader-does-not-move-straight-away">When a fader does not move straight away</a> for what a waiting control looks like.</p>
 <p>The channel, the layout, the output and the takeover are stored per machine, not in the song. Take a set to another rig and it uses that rig's channel, layout, output and takeover, since the controller there is a different one.</p>
 <p>To check the channel, watch the <code>MIDI</code> cell on the bottom rail while you press a pad (see <a href="/loom/manual/bottom-rails/">The bottom rails</a>). A message on the wrong channel shows there as received but unmatched, which is the problem this chip fixes.</p>
+<h3 id="plugins">PLUGINS</h3>
+<p>This section is about plugins from other makers: the plugins installed on this Mac in the formats LOOM hosts. LOOM lists them in the effect chooser beside its own effects (see <a href="/loom/manual/the-mixer/#plugins-in-the-chooser">Plugins in the chooser</a>).</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AU</code> and <code>VST3</code></td>
+<td>Whether the chooser offers plugins of that format. Each shows how many plugins of that format are in LOOM's plugin list. Switching one off hides those plugins; it does not remove them from the list.</td>
+</tr>
+<tr>
+<td><code>WHEN A PLUGIN IS BOTH</code></td>
+<td>Which format loads when a plugin is installed as both an Audio Unit and a VST3: <code>LOAD VST3</code>, the default, or <code>LOAD AU</code>. Press it to switch. The chooser shows such a plugin once.</td>
+</tr>
+<tr>
+<td><code>MEMORY BUDGET</code></td>
+<td>How much memory the plugins in a song may use together. Press <code>-</code> and <code>+</code> to change it in steps of half a gigabyte. The line under it says how much memory this Mac has and how much the plugins in this song use now.</td>
+</tr>
+<tr>
+<td><code>FOLDERS</code></td>
+<td>The folders LOOM looks in for VST3 plugins. Audio Units are found through macOS whatever these folders are. <code>+ FOLDER</code> adds a folder.</td>
+</tr>
+<tr>
+<td><code>RESCAN</code></td>
+<td>Looks for plugins again. The line under it says when the last scan ran, how many plugins it found and how many failed.</td>
+</tr>
+<tr>
+<td><code>BLOCKLIST</code></td>
+<td>Opens the list of plugins LOOM does not offer, with the reason for each. It is amber while the list has anything on it.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="how-loom-finds-plugins">How LOOM finds plugins</h4>
+<p>The first time you open LOOM, it asks before it looks for plugins. The question warns that some plugins show their own window while they are scanned. Choose <code>SCAN FOR PLUGINS</code> to start the scan, or <code>NOT NOW</code> to scan nothing. LOOM remembers <code>NOT NOW</code> and does not ask again when it opens. See <a href="/loom/manual/dialogs/#look-for-plugins">Look for plugins</a>.</p>
+<p>After that, LOOM looks for plugins only when you ask it to: press <code>RESCAN</code>, or choose <em>File ▸ Scan for Plugins…</em> (<code>⌥⌘P</code>) and then <code>SCAN FOR PLUGINS</code>. A scan never starts by itself in the middle of a set. LOOM does not start a scan while any track is playing or recording; stop every track first.</p>
+<p>While a scan runs, <code>RESCAN</code> reads <code>SCANNING</code> with how far it has got, for example <code>SCANNING 3 OF 40</code>, and the line under it names the plugin being scanned. The notice line says when the scan is finished. You can keep playing while it runs.</p>
+<p>LOOM scans each plugin in a separate process, one at a time, and never loads a plugin into LOOM itself to scan it. A plugin that crashes, hangs or uses too much memory while it is scanned goes on the blocklist with the reason, and LOOM carries on with the next one. A plugin that has not changed since the last scan is not scanned again.</p>
+<p>Some plugins show their own window while they are scanned, for example to ask for a licence. That window is the plugin's, not LOOM's. LOOM waits for the plugin for a limited time; a plugin still waiting when that time is up goes on the blocklist with <code>Scan timed out</code>.</p>
+<h4 id="the-blocklist">The blocklist</h4>
+<p>Each row names a plugin, struck through, with the reason LOOM does not offer it, for example <code>Scan timed out after 30 s.</code> Press <code>RETRY</code> to scan that plugin again. If it passes, it joins the chooser. If it fails again, the reason is updated. Press <code>Esc</code> to close the list.</p>
+<p>The format settings, the budget, the folders and the chooser's favourites are stored per machine, not in the song.</p>
 <h3 id="accessibility">ACCESSIBILITY</h3>
 <p><code>ANNOUNCE</code> is a toggle and the only control in this section. It turns spoken announcements on and off. They help during setup and are worse than silence during a live set.</p>
 <p>It is named <code>Announce state changes</code>. Turning it on announces that it is on; turning it off is silent. It silences speech only: every name, role and description stays as it is, and the notice line still shows its text.</p>
 <p>The switch is not saved. It starts on at every launch, so if you turned it off last night, turn it off again tonight.</p>
 <h2 id="the-track-panel">The TRACK panel</h2>
-<figure class="shot shot-beside"><img src="/assets/loom/manual/panel.track-top.webp" width="309" height="688" loading="lazy" decoding="async" alt="The top of the TRACK panel on track 1: its SOURCE and TIMING sections."><figcaption>The top of the TRACK panel on track 1: its SOURCE and TIMING sections.</figcaption></figure>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/panel.track-top.webp" width="309" height="240" loading="lazy" decoding="async" alt="The top of the TRACK panel on track 1, on its MIX tab."><figcaption>The top of the TRACK panel on track 1, on its MIX tab.</figcaption></figure>
 <p>This is a single panel that moves between tracks, rather than one panel per strip, and its controls are editable.</p>
 <p>The panel follows the focused track however focus moved: a strip press, an arrow key, or any strip verb, since each one focuses the track first. The tab, the body and the settings the chips write always refer to the same track.</p>
-<h3 id="the-track-panel-is-the-tracks-settings">The TRACK panel is the track's settings</h3>
-<p>This panel holds the focused track's settings and nothing else. The track's effect chain and the editor for each effect are in the <strong>effect drawer</strong>, which opens inside the mixer along the right edge of the rack and is described under <a href="/loom/manual/the-mixer/#the-effect-rack">The effect rack</a>. The breadcrumb described there belongs to the drawer.</p>
-<h3 id="the-settings">The settings</h3>
-<p>There are five sections, in the order you work through them when you set up a track.</p>
-<h3 id="source">SOURCE</h3>
+<h3 id="mix-and-loop">MIX and LOOP</h3>
+<p>Under the <code>MACROS</code> block, a <code>MIX</code> / <code>LOOP</code> switch chooses which half of the track's panel shows. <code>MACROS</code> stays above the switch in both.</p>
+<ul>
+<li><code>MIX</code> is the track's place in the mix, in the order the signal passes through it: its level, pan, <code>MUTE</code> and <code>SOLO</code>, what it records, its effects and its sends.</li>
+<li><code>LOOP</code> is how the track launches, stops and records, and its state: <code>TIMING</code>, <code>RECORDING</code>, <code>RESPONDS TO GLOBALS</code> and <code>STATE</code>.</li>
+</ul>
+<p>The panel opens on <code>MIX</code>. The choice stays when you move to another track, so you can compare two tracks' sends, or two tracks' quantizes, by moving between them. It is not saved with the song.</p>
+<p>The switch is one <code>Tab</code> stop, after the <code>MACROS</code> block. Press <code>←</code> or <code>→</code> to move between <code>MIX</code> and <code>LOOP</code>. A screen reader reads it as <code>TRACK TAB</code>, with the half that is showing.</p>
+<h3 id="mix">MIX</h3>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/panel.track-mix.webp" width="309" height="681" loading="lazy" decoding="async" alt="The MIX tab on track 1. Slots 1 and 2 hold effects, slot 3 is bypassed and the rest are empty."><figcaption>The MIX tab on track 1. Slots 1 and 2 hold effects, slot 3 is bypassed and the rest are empty.</figcaption></figure>
+<h4 id="the-level-pan-mute-and-solo">The level, pan, MUTE and SOLO</h4>
+<p>These are the mixer strip's controls, laid out across the panel. Each one changes the same setting as its twin on the track's mixer strip, so a change in either place shows in both.</p>
+<ul>
+<li><strong>The level</strong> is a fader that runs from silence at the left to unity at the right, with the level in decibels at its right. <code>↑</code> and <code>↓</code> move it by a decibel, with <code>Shift</code> for a tenth of one. <code>Home</code> sets unity and <code>End</code> sets silence. <code>←</code> and <code>→</code> still move the focused track, as they do on every fader.</li>
+<li><strong><code>PAN</code></strong> is the mixer strip's pan slider. <code>←</code> and <code>→</code> move it. See <a href="/loom/manual/the-mixer/#pan">Pan</a>.</li>
+<li><strong><code>MUTE</code></strong> and <strong><code>SOLO</code></strong> do what the mixer strip's buttons do. A plain press on <code>SOLO</code> clears the other tracks' solos; hold <code>Option</code> to build up a set. See <a href="/loom/manual/the-mixer/#mute-and-solo">Mute and solo</a>.</li>
+</ul>
+<p>The level fader always sets the track's level, whichever bus the <code>FADERS</code> row addresses. The sends have faders of their own, below.</p>
+<p>The panel has no <code>OUTPUT</code> control. Every track plays into the main mix; the mixer's master and bus strips choose the outputs.</p>
+<h4 id="source">SOURCE</h4>
 <table>
 <thead>
 <tr>
@@ -322,18 +382,27 @@ manualSlug: side-panel
 </tr>
 </tbody>
 </table>
-<p>There is one switch for each channel the open audio device offers, and one switch before a device is open. Above the switches, a line reads <code>INPUT 1</code>, <code>INPUTS 1, 3 AND 4</code>, or <code>NO INPUTS</code>.</p>
+<p>The switches form a grid four wide: the device's inputs first, then a row for the instrument tracks. There is one input switch for each channel the open audio device offers, and one before a device is open. Above the switches, a line reads <code>INPUT 1</code>, <code>INPUTS 1, 3 AND 4</code>, or <code>NO INPUTS</code>.</p>
 <p>A track records the sum of every input you switch on. Switch on all four drum microphones and the DRUMS track records all four mixed together. That is what a single track is for on a loop pedal, and it is why this is a row of switches rather than a list you pick one from.</p>
 <p>Each input keeps its own trim, cue send and effects. Four microphones summed onto one track are still four inputs on the mixer, each with its own fader and EQ. A Boss loop station cannot do this.</p>
 <p>Inputs are summed at full level. Switching on a fifth microphone does not turn the other four down. If four hot microphones together are too loud, lower the preamp gain. The track meter shows the summed signal while you record, so you can see the level.</p>
 <p>Each track may record a different set of inputs, and two tracks may record the same input.</p>
-<p>Below the inputs, under <code>INSTRUMENTS · AFTER FX, BEFORE FADER</code>, there is one switch for each <a href="/loom/manual/instrument-tracks/">instrument track</a>, such as <code>INST 1  SYNTH · Pad</code>. Switch one on to record that instrument track on this audio track. The line above the switches then adds it, for example <code>INPUT 1 + INST 1</code>.</p>
-<p>LOOM records the instrument after its effects and before its fader and pan, and the take lines up with the loop exactly. LOOM does not apply the latency correction it uses for a device input, because an instrument does not pass through your interface. You hear the instrument from its own strip, not from this track. A muted instrument track records silence, and its switch reads <code>MUTED</code>, for example <code>INST 1  SYNTH · Pad · MUTED</code>.</p>
+<p>Below the inputs there is one switch for each <a href="/loom/manual/instrument-tracks/">instrument track</a>, such as <code>INST 1</code>. Hold the pointer over a switch to see what that track plays, for example <code>SYNTH · Pad</code>. Switch one on to record that instrument track on this audio track. The line above the switches then adds it, for example <code>INPUT 1 + INST 1</code>.</p>
+<p>The line under the switches reads <code>INST chips join after their FX, before their fader.</code> Press the <code>i</code> beside the <code>SOURCE</code> heading for more. LOOM records the instrument after its effects and before its fader and pan, and the take lines up with the loop exactly. LOOM does not apply the latency correction it uses for a device input, because an instrument does not pass through your interface. You hear the instrument from its own strip, not from this track. A muted instrument track records silence, and its switch's tooltip ends in <code>MUTED</code>.</p>
 <p>With no inputs switched on, the line reads <code>NO INPUTS</code> and the track records silence. This is a valid setting, not an error: the track records for its full length, closes normally and plays back silent, and nothing warns you. If a take comes back silent, check this line first.</p>
 <p>These switches decide only what the track records. Whether you <em>hear</em> an input is set on the mixer's <code>INPUTS</code> bank (see <a href="/loom/manual/the-mixer/">The mixer</a>), and the two are independent. An input you cannot hear is still recorded, and an input you can hear is audible whether or not any track records it. You never have to arm a track to hear yourself, and pressing record does not make you louder, whether one track is recording or five.</p>
 <p>When you open a song on a smaller interface, LOOM drops the inputs it cannot reach and tells you which ones. For example, record a track on inputs 1, 5 and 9 at home, then open the song on a two-input interface at a venue. The track records input 1 tonight, and the notice lists the numbers: <em>"track 2 recorded inputs 1, 5 and 9 … it drops inputs 5 and 9 and records input 1 tonight, and the song still says inputs 1, 5 and 9."</em> The song itself does not change. Plug the larger interface back in and all three inputs come back. If every input a track uses is missing, the track records silence and the notice says so.</p>
-<p>Each switch is its own tab stop. A screen reader reads each one as <code>Record input 3</code>, with its on or off state.</p>
-<h3 id="timing">TIMING</h3>
+<p>Each switch is its own tab stop. A screen reader reads each one as <code>Record input 3</code> or <code>Record instrument track 1</code>, with its on or off state; an instrument switch's description says what that track plays.</p>
+<h4 id="chain">CHAIN</h4>
+<p>The track's insert slots, in the tile states the mixer strip and the effect drawer use: a filled slot is solid and names its effect, a bypassed slot has its number struck through, and an empty slot is an outline marked <code>+ ADD</code>. The slot the effect drawer has open is outlined in cyan.</p>
+<p>⌥-click a filled slot to bypass it or bring it back. Drag an effect onto another slot to move it there; the effects between slide along by one. Click a slot to open it in the effect drawer, in any view: a filled slot shows its effect's controls and an empty one the effects you can add. The drawer opens just left of this panel, or in its place when the window is narrower than about 1400 px or the looper's instrument editor dock is open. <code>CLOSE</code> gives the width back. See <a href="/loom/manual/the-mixer/#the-effect-rack">The effect rack</a>.</p>
+<p>The slots are one <code>Tab</code> stop for each slot. The arrow keys move between them.</p>
+<h4 id="sends">SENDS</h4>
+<p>One fader for each bus the track sends to: <code>CUE</code>, <code>FX 1</code> and <code>FX 2</code>. Each is the same setting the mixer's faders change when the <code>FADERS</code> row addresses that bus, and it works like the level fader above. All three are visible at once here, while the mixer's faders address one bus at a time.</p>
+<h3 id="loop">LOOP</h3>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/panel.track-loop.webp" width="309" height="448" loading="lazy" decoding="async" alt="The LOOP tab on track 1."><figcaption>The LOOP tab on track 1.</figcaption></figure>
+<p>There are four sections, in the order you work through them when you set up a track.</p>
+<h4 id="timing">TIMING</h4>
 <table>
 <thead>
 <tr>
@@ -382,7 +451,7 @@ manualSlug: side-panel
 <p>Overdubbing a stretched track keeps the stretch for good. After the overdub, the track plays the render at the song's tempo, as if you had recorded the loop at that tempo. <code>UNDO</code> removes your overdub and returns to the render. Press <code>UNDO</code> again to bring back the loop as it was before the render, at the tempo it was recorded at. The overdubs you made before the tempo change can no longer be undone one at a time. LOOM saves the render as a take of its own, at the song's tempo, and keeps the loop as it was before the render in the song's folder, so both are still there when you open the song again.</p>
 <p>A loop can be at most 240 seconds long at the tempo it follows. If slowing the tempo would make the loop longer than that, an overdub press is refused and the notice line names both lengths. Set the tempo closer to the one the loop was recorded at, or set <code>FOLLOW TEMPO</code> to <code>OFF</code>, to overdub it.</p>
 <p><code>ON LAUNCH</code> sets <em>where</em> a track starts; <code>LAUNCH QUANTIZE</code> sets <em>when</em>. <code>FROM THE TOP</code> starts the track at its own beginning, whatever the rest of the set is doing. <code>KEEP PHASE</code> starts it at the point it would have reached if it had never stopped.</p>
-<h4 id="render">RENDER</h4>
+<h5 id="render">RENDER</h5>
 <p><code>RENDER</code> re-renders the track's loop at the song's tempo with a high-quality stretch, and the clean render replaces the live stretch. It appears under the <code>FOLLOW TEMPO</code> line on a track set to <code>STRETCH</code>, and the same control is the <code>RENDER</code> chip in the track's strip header. Tracks set to <code>OFF</code> or <code>PITCH</code> do not show it.</p>
 <p>Use it when you want the cleanest sound at the new tempo. A render sounds cleaner than the live stretch whether the loop is sped up or slowed down: the live stretch can soften or double drums and vocals, and the render avoids that.</p>
 <p>To overdub over a clean stretch, render the track first with <code>RENDER</code>. An overdub on a stretched track that has not been rendered keeps the lo-fi stretch for good. See <a href="#timing">Overdubbing a track that follows the tempo</a> above.</p>
@@ -405,7 +474,7 @@ manualSlug: side-panel
 <li><strong>The arrangement is playing.</strong> The button shows a lock and the line under it reads <code>NOT WHILE THE ARRANGEMENT PLAYS</code>. Rendering is a looper-view feature, and starting the arrangement is refused while a render runs.</li>
 <li><strong>LOOM cannot render the loop.</strong> For example, the rendered loop would be longer than the longest loop a track can hold. The notice line says why, and the track goes on playing the live stretch.</li>
 </ul>
-<h3 id="recording">RECORDING</h3>
+<h4 id="recording">RECORDING</h4>
 <p>The four chips read from top to bottom in the order of the recording lifecycle.</p>
 <table>
 <thead>
@@ -440,7 +509,7 @@ manualSlug: side-panel
 </table>
 <p><code>SUM</code> keeps every layer, as loopers always have. <code>REPLACE</code> overwrites what is under the pass. In both modes the loop and its length stay the same, so <code>UNDO</code> takes back the whole pass.</p>
 <p><code>DUB MODE</code> goes dead while an overdub pass is running on this track. The face reads <code>LOCKED: DUBBING</code> and the box still shows <code>SUM</code> or <code>REPLACE</code>. The pass keeps the mode it started with. End the pass with the track's ring, and you can change the chip again.</p>
-<h3 id="responds-to-globals_1">RESPONDS TO GLOBALS</h3>
+<h4 id="responds-to-globals_1">RESPONDS TO GLOBALS</h4>
 <table>
 <thead>
 <tr>
@@ -466,9 +535,9 @@ manualSlug: side-panel
 <p><code>FOLLOWS ALL START = OFF</code> does not take the strip out of the transport. <code>ALL START</code> starts a stopped transport, and time then runs under every track, whether or not the button started it.</p>
 <p>Both start at <code>ON</code>, so if you never open this panel, every strip follows both buttons.</p>
 <p>They sit side by side because you compare them: a track you never want the button to <em>start</em> is often one you do want it to stop.</p>
-<h3 id="state">STATE</h3>
-<figure class="shot shot-beside"><img src="/assets/loom/manual/song.track-panel-state.webp" width="321" height="122" loading="lazy" decoding="async" alt="The bottom of the TRACK panel on track 3, which holds a stopped loop: its RESPONDS TO GLOBALS and STATE sections."><figcaption>The bottom of the TRACK panel on track 3, which holds a stopped loop: its RESPONDS TO GLOBALS and STATE sections.</figcaption></figure>
-<p>Six readouts, none of them a tab stop.</p>
+<h4 id="state">STATE</h4>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/song.track-panel-state.webp" width="321" height="330" loading="lazy" decoding="async" alt="The bottom of the TRACK panel on track 3, which holds a stopped loop: its RESPONDS TO GLOBALS and STATE sections."><figcaption>The bottom of the TRACK panel on track 3, which holds a stopped loop: its RESPONDS TO GLOBALS and STATE sections.</figcaption></figure>
+<p>These readouts are not tab stops.</p>
 <table>
 <thead>
 <tr>
@@ -480,10 +549,6 @@ manualSlug: side-panel
 <tr>
 <td><code>OVERRIDES</code></td>
 <td>Which of this track's settings differ from the song's default, as words (<code>stop, rec action</code>), or <code>none — inherits global</code>.</td>
-</tr>
-<tr>
-<td><code>SENDS</code></td>
-<td>This track's level to each bus, in the same decibels the faders show (<code>CUE -6.0 dB, FX 1 off (on faders), FX 2 off</code>), or <code>none</code>. The bus the faders currently address is marked <code>(on faders)</code>.</td>
 </tr>
 <tr>
 <td><code>STATE</code></td>
@@ -504,7 +569,6 @@ manualSlug: side-panel
 </tbody>
 </table>
 <p><code>OVERRIDES</code> names the settings rather than counting them, including settings that have no chip in the panel, so a song someone else set up shows you the whole list. The strip's <code>*</code> and this line show the same fact.</p>
-<p><code>SENDS</code> is the only place where all three buses are visible at once. The faders address one bus at a time, so this line shows what a track sends to the other two without leaving the page you are working on. A send at the bottom of its range reads <code>off</code> rather than a very quiet number.</p>
 <p>Two of the settings <code>OVERRIDES</code> can name have no chip anywhere, and neither has any effect in this build: a sub-cycle divisor, which would govern a sub-cycle quantize that nothing in LOOM reaches, and a phase lock. A song that sets either one still lists it here, because an override is a fact about the track whether or not this build draws a control for it. If <code>OVERRIDES</code> names either one, there is no control to find and nothing you can hear is affected.</p>
 <p>For someone who cannot see the strip, these readouts are the only accessible view of track state.</p>
 <h2 id="how-the-panels-controls-take-keys">How the panel's controls take keys</h2>

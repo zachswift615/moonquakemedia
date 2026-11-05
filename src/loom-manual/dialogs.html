@@ -4,7 +4,7 @@ permalink: /loom/manual/dialogs/
 manualSlug: dialogs
 ---
 {% raw %}
-<p>LOOM has five dialogs: <strong>Save song</strong>, <strong>Replace a saved song</strong>, the <strong>at-risk warning</strong> (which appears before three different gestures), <strong>Open song</strong> and the <strong>session log</strong>. They all work the same way.</p>
+<p>LOOM's dialogs are <strong>Save song</strong>, <strong>Replace a saved song</strong>, the <strong>at-risk warning</strong> (which appears before three different gestures), <strong>Open song</strong>, the <strong>session log</strong>, <strong>Record setup</strong> and <strong>Look for plugins</strong>. They all work the same way.</p>
 <p>Keys are in <a href="/loom/manual/keyboard/">Keyboard shortcuts</a>.</p>
 <h2 id="how-every-dialog-behaves">How every dialog behaves</h2>
 <p>Nothing stops while a dialog is open. The loops keep playing, the clock keeps running, and the audio engine is untouched. The destructive dialogs say so in a banner across the top:</p>
@@ -291,4 +291,14 @@ manualSlug: dialogs
 <p><strong>Last recording</strong> names the last recording made in this session: its folder, its number of files, its length and its gaps. <code>REVEAL IN FINDER</code> opens its folder.</p>
 <p><strong>The footer</strong> says how many files the next recording writes, and reminds you that a song change stops a recording.</p>
 <p><code>Close</code> or <code>Esc</code> closes the sheet. Your ticks are already kept.</p>
+<h2 id="look-for-plugins">Look for plugins</h2>
+<p>Opens the first time you open LOOM, before LOOM has a plugin list, and from <strong>File ▸ Scan for Plugins…</strong> or <code>⌥⌘P</code>.</p>
+<figure class="shot shot-full"><img src="/assets/loom/manual/dialog.plugin-scan-ask.webp" width="560" height="250" loading="lazy" decoding="async" alt="The Look for plugins question."><figcaption>The Look for plugins question.</figcaption></figure>
+<p>It asks before LOOM looks for the plugins installed on this computer. It warns that some plugins show a window of their own while they are scanned, for example to ask for a licence. That window is the plugin's, not LOOM's.</p>
+<ul>
+<li><code>SCAN FOR PLUGINS</code> closes the question and starts the scan. It is the same scan as <code>RESCAN</code> in <code>GLOBAL › PLUGINS</code>. See <a href="/loom/manual/side-panel/#how-loom-finds-plugins">How LOOM finds plugins</a>.</li>
+<li><code>NOT NOW</code> closes the question and scans nothing. When you choose it the first time LOOM opens, LOOM remembers it and does not ask again at launch. The keyboard starts on <code>NOT NOW</code>.</li>
+</ul>
+<p><code>Esc</code> does what <code>NOT NOW</code> does.</p>
+<p>While any track is playing or recording, or while a scan is running, <em>File ▸ Scan for Plugins…</em> does not open the question. The notice line says why, as it does for <code>RESCAN</code>.</p>
 {% endraw %}

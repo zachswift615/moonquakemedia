@@ -1,0 +1,117 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/performance-overlay/
+manualSlug: performance-overlay
+---
+{% raw %}
+<p>A performance overlay is a video of what the looper does during a song: a ring for each track, the names under them, and short captions when a preset changes or a control moves. Its background is transparent, so you can lay it over the camera footage of your performance in a video editor.</p>
+<p>LOOM makes the overlay from the song after you have performed it. It does not record your screen.</p>
+<h2 id="opening-the-export-window">Opening the export window</h2>
+<p>Choose <strong>File ▸ Export Performance Overlay…</strong>, or press <code>⌥⌘E</code>. The export window opens beside the main window. You can keep playing while it is open.</p>
+<p>The window works on the song that is open in LOOM. Its title bar shows the song's name.</p>
+<h2 id="what-the-overlay-shows">What the overlay shows</h2>
+<p>The overlay sits in a dark rounded plate near the bottom of a 9:16 frame, above the area where TikTok, YouTube Shorts and Instagram Reels print the caption and the username, and to the left of the column of like and share buttons.</p>
+<h3 id="rings">Rings</h3>
+<p>There is one ring for each track that has a region in the part of the song you export. Loop tracks come first, then instrument tracks. Five or fewer rings sit in one row. Six or more use two rows, and the second row is centred under the first. The rings keep their places for the whole video, even when a track is silent.</p>
+<p>Each ring shows the track's state with a colour and a shape, so the states can be told apart without colour:</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Ring</th>
+<th>Centre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recording</td>
+<td>Red, a thick sweep</td>
+<td>A solid dot</td>
+</tr>
+<tr>
+<td>Overdubbing</td>
+<td>Amber, two sweeps</td>
+<td>The inner sweep</td>
+</tr>
+<tr>
+<td>Playing</td>
+<td>Green, a thin sweep</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Stopped</td>
+<td>A full grey ring</td>
+<td>A square</td>
+</tr>
+<tr>
+<td>Empty</td>
+<td>A dim dashed ring</td>
+<td>Open</td>
+</tr>
+</tbody>
+</table>
+<p>The sweep starts at twelve o'clock and follows the loop's position. While a track records, it shows how far through its Record region the take is.</p>
+<h3 id="names-under-the-rings">Names under the rings</h3>
+<p>Each ring has a name under it. A name too wide for the space under the ring ends in an ellipsis.</p>
+<p>For an instrument track, the overlay uses the first of these that the track has:</p>
+<ol>
+<li>The track's name.</li>
+<li>The sound or preset playing at that moment. When a preset node in the song changes the sound, the name under the ring changes at that point in the video.</li>
+<li>The instrument: <code>SYNTH</code>, <code>DRUMS</code>, <code>SAMPLER</code>, or the name of the plugin the track hosts.</li>
+<li><code>INST</code> and the track's number.</li>
+</ol>
+<p>For a loop track, the overlay uses the first of these that the track has:</p>
+<ol>
+<li>The track's name.</li>
+<li>The rack loaded at that moment. A rack node in the song changes it.</li>
+<li>The preset on the lowest-numbered slot that has one, at that moment.</li>
+<li><code>TRACK</code> and the track's number.</li>
+</ol>
+<p>Captions and moving controls name the track or input they belong to by the same list. An input uses the loop track's list, ending in <code>IN</code> and the input's number. A caption about a preset or rack change names its owner as it was just before the change.</p>
+<p>The overlay's names differ from the rest of LOOM in one way: everywhere else an unnamed instrument track is called <code>INST</code> and its number. See <a href="/loom/manual/instrument-tracks/">Instrument tracks</a>.</p>
+<h3 id="captions-and-moving-controls">Captions and moving controls</h3>
+<p>A second row of small panels appears above the plate while something happens, and goes away afterwards. The plate itself does not change size.</p>
+<ul>
+<li><strong>Captions</strong> appear on the left for about two seconds when a preset, a rack or an instrument's sound changes, or when a setting such as a delay's on/off switch changes. A setting's caption shows the value before and after, for example <code>Off → ON</code>. A new caption replaces the one showing.</li>
+<li><strong>Moving controls</strong> appear on the right while an automation lane moves: a knob, the owner's name, the parameter and its value, for example <code>VOX IN</code> and <code>PAN L40</code>. Up to two show at once, chosen from the lanes that are moving. A control appears just before its value starts to change. It stays for about two seconds after the value stops changing, the same time a caption stays, and then fades out. It comes back when the lane moves again. A ramp between two nodes with the same value does not count as moving.</li>
+<li><strong>Values</strong> print at a fixed precision: a level to a tenth of a decibel, a frequency to the nearest hertz below 1 kHz, to a tenth of a kilohertz below 10 kHz and to the nearest kilohertz above that, a pan and a percentage to the nearest whole number. Each value sits right-aligned in a space as wide as that control's widest value, so the digits stay in place as the value changes, for example from <code>-9.9</code> to <code>-10.0</code>.</li>
+</ul>
+<p>When a caption and two controls do not fit side by side, the caption moves up onto its own line.</p>
+<h3 id="what-the-overlay-does-not-show">What the overlay does not show</h3>
+<p>The overlay shows the arrangement as the song holds it. Anything you do by hand during the take, such as muting a track, starting an overdub from a strip or moving a controller, is not in the song and does not appear in the video. The window says so above its footer.</p>
+<h2 id="settings">Settings</h2>
+<h3 id="names">Names</h3>
+<p>The <strong>NAMES</strong> list has a row for each track in the video, and for each input whose lanes move. The name in each row is the song's own name for that strip, so changing it here renames the track everywhere in LOOM. An empty row uses the default name.</p>
+<p>Keep names to about eight characters so they are readable on a phone. Each row shows a count. A name longer than eight characters turns the count amber, and a line under the list says the name will be cut short in the overlay.</p>
+<h3 id="preset-names-in-the-video">Preset names in the video</h3>
+<p>Preset and rack names from your library can be long. The <strong>PRESET NAMES IN THE VIDEO</strong> list shows each name that can appear in this video, with a field beside it for the name the video prints instead. For example, you can print <code>Zach Input Vocal Chorus</code> as <code>Vocal Chorus</code>. These names apply to the overlay only. Your library is not changed.</p>
+<h3 id="range">Range</h3>
+<p>Choose <strong>WHOLE SONG</strong> to export from the start of <code>PERFORM FROM TOP</code>, including any count-in, to the song's end marker. Choose <strong>BARS</strong> to export a range of bars, and set the first and last bar with the arrows beside <em>From</em> and <em>to</em>. The line under them shows the number of bars and how long the video runs.</p>
+<h3 id="video">Video</h3>
+<ul>
+<li><strong>Frame rate:</strong> 30 or 60 frames per second.</li>
+<li><strong>Size:</strong> the frame size in pixels. The default is 1080 × 1920.</li>
+<li><strong>Sync flash:</strong> makes the first frame of the video solid white, which helps you line the overlay up with your footage by eye.</li>
+</ul>
+<h3 id="placement">Placement</h3>
+<ul>
+<li><strong>Height</strong> raises the plate and everything above it. It never lowers the plate, because the default position is the lowest one that clears every platform's caption area.</li>
+<li><strong>Plate</strong> sets how opaque the dark plate is. The default is 72%.</li>
+<li><strong>Safe zones</strong> chooses which platforms' screen areas the preview marks: <strong>ALL</strong>, <strong>TIKTOK</strong>, <strong>SHORTS</strong> or <strong>REELS</strong>.</li>
+</ul>
+<h2 id="preview">Preview</h2>
+<p>The preview on the right shows the overlay as it looks at the bar you choose with the <strong>BAR</strong> slider. It is painted the same way as the video. To see it over your own footage, press <strong>Choose still…</strong> and pick a picture saved from your camera video. The preview marks the areas each platform covers, so you can see whether anything sits under them.</p>
+<h2 id="creating-the-video">Creating the video</h2>
+<p>Press <strong>Create</strong>. LOOM renders the video and shows its progress at the bottom of the window: the frame it is on, the number of frames, and about how long is left. Rendering does not use the audio engine, so you can keep the song playing.</p>
+<p>To stop, press <strong>Cancel</strong>. LOOM removes the unfinished file, and nothing is saved.</p>
+<p>When the video is finished, the footer shows its file name, its length and its size.
+Press <strong>Show in Finder</strong> to see the file.</p>
+<h3 id="where-the-video-is-saved">Where the video is saved</h3>
+<p>LOOM saves the video inside the song's folder, in a <code>video</code> folder, for example <code>Pink Guitar.loom/video/2026-10-30 14-22.mov</code>. Each file is named with the date and time it was made, so a new export never replaces an earlier one. The window's settings are saved in the same song folder, in <code>overlay.json</code>, so they are there the next time you open the window.</p>
+<p>Saving the song does not change the <code>video</code> folder or <code>overlay.json</code>.</p>
+<h3 id="a-song-you-have-not-saved">A song you have not saved</h3>
+<p>A song needs a folder before LOOM can save a video in it. If the song has not been saved, the footer says so, shows <strong>Save Song…</strong>, and does not offer <strong>Create</strong> until you save.</p>
+<h2 id="using-the-video">Using the video</h2>
+<p>The video is a QuickTime <code>.mov</code> file. Each frame is a PNG image with a transparent background, which keeps the file small because most of the frame is empty. Put the file on a video track above your camera footage in your editor.</p>
+<p>Frame 0 is the moment <code>PERFORM FROM TOP</code> starts, or the first bar of the range you chose. To line the overlay up with your footage, match the song's audio in your editor to the audio your camera recorded, or use the sync flash.</p>
+{% endraw %}

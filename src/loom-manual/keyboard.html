@@ -35,8 +35,16 @@ manualSlug: keyboard
 <td>Save As…</td>
 </tr>
 <tr>
+<td><code>⌥⌘E</code></td>
+<td>Export Performance Overlay…</td>
+</tr>
+<tr>
 <td><code>⌥⌘R</code></td>
 <td>Record Setup…</td>
+</tr>
+<tr>
+<td><code>⌥⌘P</code></td>
+<td>Scan for Plugins…</td>
 </tr>
 <tr>
 <td><code>⌘/</code></td>
@@ -77,8 +85,10 @@ manualSlug: keyboard
 </tbody>
 </table>
 <p><code>⌘Q</code> quits. It is the standard macOS item in the application menu rather than one of LOOM's own. LOOM saves your song when it quits.</p>
-<p>The <strong>File</strong> menu holds the four song items, <em>Record Setup…</em>, <em>User Guide</em> and <em>Report a Problem</em>, divided by three separators: one between <em>Open Song…</em> and <em>Save</em>, one between <em>Save As…</em> and <em>Record Setup…</em>, and one between <em>Record Setup…</em> and <em>User Guide</em>. <em>Record Setup…</em> has a section of its own because it configures your rig rather than the song. The last separator starts the help section, which holds this manual and the problem report.</p>
+<p>The <strong>File</strong> menu holds the song items, <em>Export Performance Overlay…</em>, <em>Record Setup…</em>, <em>Scan for Plugins…</em>, <em>User Guide</em> and <em>Report a Problem</em>, divided by three separators: one between <em>Open Song…</em> and <em>Save</em>, one between <em>Export Performance Overlay…</em> and <em>Record Setup…</em>, and one between <em>Scan for Plugins…</em> and <em>User Guide</em>. <em>Record Setup…</em> and <em>Scan for Plugins…</em> have a section of their own because they configure your rig rather than the song. The last separator starts the help section, which holds this manual and the problem report.</p>
+<p><code>⌥⌘E</code> opens the Export Performance Overlay window, which renders what the looper does in this song as a transparent video. See <a href="/loom/manual/performance-overlay/">Performance overlay</a>.</p>
 <p><code>⌥⌘R</code> opens the Record setup sheet, where you choose what <code>RECORD</code> on the transport writes. See <a href="/loom/manual/dialogs/#record-setup">Record setup</a>.</p>
+<p><code>⌥⌘P</code> asks whether to look for plugins, and <code>SCAN FOR PLUGINS</code> starts the scan. See <a href="/loom/manual/dialogs/#look-for-plugins">Look for plugins</a>.</p>
 <p><code>⌘/</code> opens this manual. The manual is a PDF that ships inside LOOM, so it opens in your default PDF application.</p>
 <p>macOS reserves <code>⌘?</code> for its own <em>Show Help menu</em> shortcut, so an application cannot use it for anything else. LOOM uses <code>⌘/</code>, which is the same key without the shift.</p>
 <p><code>⇧⌘R</code> writes a report of what LOOM did this session and opens it for you to read. LOOM does not send it anywhere. To send it, attach the file to a message yourself. See <a href="/loom/manual/reporting-a-problem/">Reporting a problem</a>.</p>
@@ -174,6 +184,22 @@ manualSlug: keyboard
 <tr>
 <td><code>Return</code></td>
 <td><strong>Always with <code>Shift</code> held. A bare <code>Return</code> does nothing here.</strong> <code>Shift-Return</code> performs the arrangement from bar 1 (<code>PERFORM FROM TOP</code>) from anywhere in the arrange view, with no <code>Tab</code> needed first. Only while the arrange view is showing, because <code>Return</code> means other things in the other two views. The restriction applies only to the key: MIDI note 125 (101 in the 1.0 layout) performs from the top in any view (see <a href="/loom/manual/midi-mapping/">MIDI mapping</a>).</td>
+</tr>
+<tr>
+<td><code>⌥⌘S</code></td>
+<td>Saves the sound on the instrument track the editor dock shows, or on the focused instrument track when the dock is closed: <code>SAVE</code> on the <code>SOUND</code> row. See <a href="/loom/manual/instrument-tracks/#sound">SOUND</a>.</td>
+</tr>
+<tr>
+<td><code>⌥⇧⌘S</code></td>
+<td><code>SAVE AS…</code> for that track's sound.</td>
+</tr>
+<tr>
+<td><code>⌥⌘O</code></td>
+<td>Opens the sound library for that track.</td>
+</tr>
+<tr>
+<td><code>⌥⌘I</code></td>
+<td>Opens the instrument chooser for that track, as <code>KIND</code> on the <code>INST</code> tab does.</td>
 </tr>
 <tr>
 <td><code>⇧⌘P</code></td>

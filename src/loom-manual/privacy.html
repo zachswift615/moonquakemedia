@@ -4,7 +4,7 @@ permalink: /loom/manual/privacy/
 manualSlug: privacy
 ---
 {% raw %}
-<p>LOOM collects nothing and makes no network calls. It does not call home at launch, check anything on a schedule, or fetch a font. A venue's captive-portal WiFi makes no difference to it.</p>
+<p>LOOM collects nothing and never connects to the internet unless you choose to use a third-party plugin that does. It does not call home at launch, check anything on a schedule, or fetch a font. A venue's captive-portal WiFi makes no difference to it.</p>
 <p>LOOM has no account, telemetry, crash uploader or subscription.</p>
 <p><em>File ▸ Report a Problem</em> writes a file describing what LOOM did, then opens it so you can read it. It does nothing else. Nothing is uploaded, and no one receives a report until you attach the file to a message yourself. See <a href="/loom/manual/reporting-a-problem/">Reporting a problem</a> for what the file contains.</p>
 <p>LOOM keeps a log of the messages it shows on the notice line, for this session and the one before it, in your LOOM folder. The log stays on your disk, and the report reads from it.</p>
@@ -13,4 +13,7 @@ manualSlug: privacy
 <p>LOOM does not check for updates and does not know whether a newer version exists. To find out, compare the version stated on the web page with the one in <strong>LOOM ▸ About LOOM</strong>.</p>
 <p>Your songs and recordings stay on your own disk, in a folder you can open and copy. See <a href="/loom/manual/your-recordings/">Where your recordings live</a>.</p>
 <p>LOOM checks your licence on your own Mac, against a key built into LOOM, and sends nothing anywhere. See <a href="/loom/manual/your-licence/">Your licence</a>.</p>
+<h2 id="third-party-plugins">Third-party plugins</h2>
+<p>A plugin from another maker runs that maker's code, in a helper process of its own outside LOOM. Some plugins connect to the internet themselves, for example to check their own licence, look for updates or send usage data. LOOM does not make these connections and does not block them. Ask the plugin's maker what it sends. See <a href="/loom/manual/plugins/#how-loom-runs-a-plugin">How LOOM runs a plugin</a>.</p>
+<p>To keep LOOM entirely offline, use LOOM's own effects and instruments, or plugins whose makers state that they do not connect to the internet.</p>
 {% endraw %}

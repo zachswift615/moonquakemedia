@@ -1,6 +1,6 @@
 {
-  "version": "1.7.0",
-  "sourceCommit": "637f93f3",
+  "version": "1.8.0",
+  "sourceCommit": "bee6d3c2",
   "chapters": [
     {
       "order": 1,
@@ -28,7 +28,7 @@
       "slug": "privacy",
       "url": "/loom/manual/privacy/",
       "title": "Privacy",
-      "description": "LOOM collects nothing and makes no network calls. It does not call home at launch, check anything on a schedule, or fetch a font. A venue's..."
+      "description": "LOOM collects nothing and never connects to the internet unless you choose to use a third-party plugin that does. It does not call home at launch..."
     },
     {
       "order": 5,
@@ -84,7 +84,7 @@
       "slug": "dialogs",
       "url": "/loom/manual/dialogs/",
       "title": "Dialogs",
-      "description": "LOOM has five dialogs: Save song, Replace a saved song, the at-risk warning (which appears before three different gestures), Open song and the session..."
+      "description": "LOOM's dialogs are Save song, Replace a saved song, the at-risk warning (which appears before three different gestures), Open song, the session log..."
     },
     {
       "order": 13,
@@ -95,24 +95,38 @@
     },
     {
       "order": 14,
+      "slug": "plugins",
+      "url": "/loom/manual/plugins/",
+      "title": "Plugins",
+      "description": "LOOM plays effects and instruments from other makers: Audio Units and VST3 plugins installed on this Mac. You load them into the same slots as LOOM's..."
+    },
+    {
+      "order": 15,
       "slug": "your-recordings",
       "url": "/loom/manual/your-recordings/",
       "title": "Where your recordings live",
       "description": "Everything you play is a file on your own disk, in a folder you can open, copy and back up."
     },
     {
-      "order": 15,
+      "order": 16,
       "slug": "your-licence",
       "url": "/loom/manual/your-licence/",
       "title": "Your licence",
       "description": "LOOM checks your licence when it starts and when you enter a new licence. It does not check again while it runs. If LOOM opened, it keeps working until..."
     },
     {
-      "order": 16,
+      "order": 17,
       "slug": "reporting-a-problem",
       "url": "/loom/manual/reporting-a-problem/",
       "title": "Reporting a problem",
       "description": "If LOOM does something you did not expect, you can send a report to the person who makes it. LOOM writes the report to a file, and you send the file."
+    },
+    {
+      "order": 18,
+      "slug": "performance-overlay",
+      "url": "/loom/manual/performance-overlay/",
+      "title": "Performance overlay",
+      "description": "A performance overlay is a video of what the looper does during a song: a ring for each track, the names under them, and short captions when a preset..."
     }
   ]
 }

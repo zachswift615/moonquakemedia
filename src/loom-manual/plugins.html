@@ -1,0 +1,192 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/plugins/
+manualSlug: plugins
+---
+{% raw %}
+<p>LOOM plays effects and instruments from other makers: Audio Units and VST3 plugins installed on this Mac. You load them into the same slots as LOOM's own effects, and on an instrument track in place of LOOM's own instrument. LOOM draws each plugin's controls as its own, so you map them, automate them and put them on macros as you do LOOM's.</p>
+<p>This chapter is where to start. It says what LOOM does with a plugin and links to the page that describes each part in detail.</p>
+<h2 id="mapping-automating-and-macros-on-a-plugins-controls">Mapping, automating and macros on a plugin's controls</h2>
+<p>Right-click a control in a plugin's drawer to open its menu:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAP…</code></td>
+<td>Opens the MIDI Mapping window, listening, with the control already chosen. Move the knob or press the button on your hardware, then press <code>USE</code>.</td>
+</tr>
+<tr>
+<td><code>ADD LANE</code></td>
+<td>Adds an automation lane for the control under the plugin's track in the arrange view.</td>
+</tr>
+<tr>
+<td><code>MAKE MACRO</code></td>
+<td>Points the track's first empty macro at the control.</td>
+</tr>
+<tr>
+<td><code>DRAW AS</code></td>
+<td>Chooses how the drawer draws the control. See <a href="#how-the-drawer-draws-a-control">How the drawer draws a control</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>You can also hold <code>Control</code> and click the control.</p>
+<p>The same menu is on an instrument plugin's controls in the editor dock. <a href="/loom/manual/the-mixer/#mapping-automating-and-making-a-macro-of-a-plugins-control">Mapping, automating and making a macro of a plugin's control</a> describes each item in full.</p>
+<p>You can also start from the chooser instead of the control. Each of these lists a slot that holds a plugin by the plugin's name, with its controls under it:</p>
+<ul>
+<li><strong>The Map a control chooser</strong>, from <code>+ ADD MAPPING</code> in the MIDI Mapping window. See <a href="/loom/manual/midi-mapping/#adding-a-mapping">Adding a mapping</a>.</li>
+<li><strong>The lane chooser</strong>, from the <code>+</code> on a track's row in the arrange view. See <a href="/loom/manual/the-arrange-view/#a-plugins-controls">A plugin's controls</a>.</li>
+<li><strong>The macro chooser</strong>, from an empty macro in the side panel. See <a href="/loom/manual/side-panel/#assigning-a-macro">Assigning a macro</a>.</li>
+</ul>
+<p>A plugin can have hundreds of controls. Type part of a control's name in the chooser's search field to find it.</p>
+<p>A plugin can mark a control as one a host must not change while it plays. On such a control, <code>MAP…</code>, <code>ADD LANE</code> and <code>MAKE MACRO</code> are greyed out, and the lane chooser lists it greyed. The Map a control chooser still offers it, because a mapping can still set it.</p>
+<p>A lane, mapping or macro on a plugin's control is kept with the song when the plugin is missing or no longer has that control. It does nothing until the plugin is back, and you can point it at another of the plugin's controls. See <a href="/loom/manual/the-mixer/#mapping-automating-and-making-a-macro-of-a-plugins-control">Re-binding a lane or mapping</a>.</p>
+<h2 id="how-loom-runs-a-plugin">How LOOM runs a plugin</h2>
+<p>Each plugin you load runs in a helper process of its own, outside LOOM. LOOM sends it each block of audio and plays the block it returns one block later. On a loop track, LOOM reads the loop that much earlier, so the plugin's output lands on time.</p>
+<p>Because the plugin is not inside LOOM, a plugin that crashes or stops responding takes only its own slot with it. LOOM and the rest of the song keep playing, and LOOM restarts the plugin. See <a href="#when-a-plugin-crashes-or-stops-responding">When a plugin crashes or stops responding</a>.</p>
+<p>LOOM finds your plugins the same way: it scans each one in a separate process, so a plugin that fails its scan cannot stop LOOM. See <a href="/loom/manual/side-panel/#how-loom-finds-plugins">How LOOM finds plugins</a>.</p>
+<h2 id="finding-your-plugins">Finding your plugins</h2>
+<p>LOOM offers a plugin only after it has scanned it.</p>
+<ul>
+<li><strong>The first time you open LOOM</strong>, it asks before it scans. See <a href="/loom/manual/dialogs/#look-for-plugins">Look for plugins</a>.</li>
+<li><strong>To scan again</strong>, for example after you install a plugin, choose <em>File ▸ Scan for Plugins…</em> (<code>⌥⌘P</code>) or press <code>RESCAN</code> in <code>GLOBAL › PLUGINS</code>. LOOM never starts a scan by itself, and does not start one while any track is playing or recording.</li>
+<li><strong>A plugin that fails its scan</strong> goes on the blocklist with the reason, and LOOM does not offer it. You can scan it again from there. See <a href="/loom/manual/side-panel/#the-blocklist">The blocklist</a>.</li>
+</ul>
+<p><code>GLOBAL › PLUGINS</code> also holds the folders LOOM looks in, which formats the choosers offer, and the memory budget. See <a href="#plugins">PLUGINS</a>.</p>
+<h2 id="putting-a-plugin-on-a-track">Putting a plugin on a track</h2>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>How</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>An effect slot on a loop track or an instrument track</td>
+<td>Click the slot and choose the plugin in the chooser, beside LOOM's own effects. The <code>PLUGINS</code> chip shows only the plugins.</td>
+<td><a href="/loom/manual/the-mixer/#plugins-in-the-chooser">Plugins in the chooser</a></td>
+</tr>
+<tr>
+<td>An effect slot on an input</td>
+<td>The same as on a track. What the plugin does is recorded into the take, and you hear the input later.</td>
+<td><a href="/loom/manual/the-mixer/#a-plugin-on-an-input">A plugin on an input</a></td>
+</tr>
+<tr>
+<td>An instrument track's instrument</td>
+<td>Press <code>KIND</code> on the track's <code>INST</code> tab, or press <code>⌥⌘I</code>, and choose the plugin. It replaces LOOM's instrument on the track.</td>
+<td><a href="/loom/manual/instrument-tracks/#instrument">INSTRUMENT</a></td>
+</tr>
+</tbody>
+</table>
+<p>Instrument plugins are listed only by <code>KIND</code>. The effect chooser lists effects.</p>
+<p>When LOOM loads a plugin, the slot's tile shows a dashed outline and <code>LOADING</code> until the plugin is ready, then the time the plugin adds, such as <code>+2.7 ms</code>. A large plugin can take several seconds to load. While it loads, its drawer shows the plugin's name and maker, and <code>LOADING…</code> in place of the search field, with a short line that moves across under it for as long as the plugin loads. The controls appear when the plugin is ready. A screen reader gets the same state: the plugin panel's description, and a line of text in the search field's place, read <code>Loading</code> followed by the plugin's name. When a plugin whose loading you have seen in the drawer or the instrument dock is ready, LOOM announces its name followed by <code>is ready.</code> If it cannot load, LOOM announces the words its drawer then shows. The <code>ANNOUNCE</code> switch controls these announcements; see <a href="/loom/manual/the-window/#what-accessible-means-in-loom">What "accessible" means in LOOM</a>. If LOOM cannot find the plugin, the slot reads <code>MISSING</code> and the drawer shows the same words and buttons as for a song with a missing plugin. See <a href="#a-song-with-a-missing-plugin">A song with a missing plugin</a>.</p>
+<h2 id="the-plugins-drawer">The plugin's drawer</h2>
+<p>Click a slot that holds a plugin to open it in the drawer, as you open one of LOOM's effects. For an instrument plugin, open the editor dock from the track's <code>INST</code> tab. The drawer draws the plugin's controls as LOOM controls, so you edit the plugin with the mouse and the keyboard as you edit LOOM's own effects.</p>
+<p>From top to bottom, the drawer holds:</p>
+<ul>
+<li><strong>The header.</strong> The plugin's name, its maker, its format and its version, then three readouts: <code>CPU</code>, <code>MEMORY</code> and <code>LATENCY</code>. See <a href="#memory-and-cpu">Memory and CPU</a>. <code>OPEN WINDOW</code> opens the plugin's own window.</li>
+<li><strong>The <code>PRESET</code> bar.</strong> It lists the plugin's own presets and the ones you saved in LOOM. See <a href="#presets-racks-and-sounds">Presets, racks and sounds</a>.</li>
+<li><strong>The search field.</strong> Type part of a control's name, and the drawer shows only the controls that match, under <code>RESULTS</code>. <code>MAPPED ONLY</code> shows only the controls that a mapping, a lane or a macro uses.</li>
+<li><strong>The controls.</strong> The ones the plugin's maker marks as its main controls come first, under <code>IMPORTANT</code>. Then come the plugin's own groups, under the names the plugin gives them, and last <code>ALL OTHERS</code>. A plugin with few controls shows them in one list, with no headings. A group with many controls shows them as compact rows, with a line such as <code>+ 12 MORE IN FILTER · SHOW ALL</code> at its foot. In a compact row, a control that would be a knob is drawn as a horizontal slider, to save space. Press that line to show the rest. Press a group's heading to fold the group away.</li>
+<li><strong><code>BYPASS SLOT</code> and <code>REMOVE</code></strong>, at the foot, as on LOOM's own effects. An instrument plugin has no <code>BYPASS SLOT</code>.</li>
+</ul>
+<h3 id="how-the-drawer-draws-a-control">How the drawer draws a control</h3>
+<p>LOOM chooses a control for each of the plugin's settings from what the plugin reports about it: <code>TOGGLE</code>, <code>SEGMENTED PAIR</code>, <code>CELLS</code>, <code>STEPPED KNOB</code>, <code>STEPPER</code>, <code>KNOB</code> or <code>BIPOLAR</code>, a knob centred on zero. A plugin's own bypass is not drawn, because <code>BYPASS SLOT</code> does that job.</p>
+<p>To draw a control another way, right-click it and open <code>DRAW AS</code>. The control drawn now is ticked, and the one LOOM chose reads <code>inferred</code>. In a compact group, the tick shows the control the parameter gets when its group is drawn as a grid; the compact row still draws a knob as a slider. A control that does not suit the setting is greyed out, with the reason beside it. <code>RESET TO INFERRED</code> goes back to LOOM's choice.</p>
+<p>Your choices are kept for each plugin on this Mac, not in the song. Every song that uses the plugin draws it your way.</p>
+<h3 id="the-plugins-own-window">The plugin's own window</h3>
+<p><code>OPEN WINDOW</code> opens the editor the plugin's maker drew, in a window of its own. A change you make in either place reaches the plugin. See <a href="/loom/manual/the-mixer/#a-plugins-own-window">A plugin's own window</a> for where it opens, how long it stays open and which keys reach LOOM while it is in front.</p>
+<p><code>⌘Z</code> does not undo a change you make in the plugin's own window.</p>
+<h2 id="presets-racks-and-sounds">Presets, racks and sounds</h2>
+<ul>
+<li><strong>A slot's <code>PRESET</code> bar</strong> lists the plugin's own presets under <code>FROM</code> and the plugin's name, and the presets you saved in LOOM under <code>USER</code>. A <code>USER</code> preset holds the plugin's whole state. See <a href="/loom/manual/the-mixer/#racks-and-presets">Racks and presets</a>.</li>
+<li><strong>A rack</strong> holds the whole chain, with each plugin's settings, and can mix plugins with LOOM's own effects. See <a href="/loom/manual/the-mixer/#racks-and-presets">Racks and presets</a>.</li>
+<li><strong>An instrument plugin's programs</strong> are listed by the <code>PROGRAM</code> row in the editor dock, under <code>FROM</code> and the plugin's name. A program is not a sound: save the sound to keep the change. See <a href="/loom/manual/instrument-tracks/#the-editor-dock">The editor dock</a>.</li>
+<li><strong>A sound</strong> can hold an instrument plugin with its settings, and the plugins in the track's effect slots. See <a href="/loom/manual/instrument-tracks/#sound">SOUND</a> and <a href="/loom/manual/instrument-tracks/#presets-with-effects">Presets with effects</a>.</li>
+<li><strong>In the arrange view</strong>, a node on a slot's <code>PRESET</code> lane switches the plugin to one of its presets at a bar. See <a href="/loom/manual/the-arrange-view/#a-plugins-presets">A plugin's presets</a>. LOOM loads the plugins that rack and preset nodes need when you open the song, never while it plays. See <a href="/loom/manual/the-arrange-view/#plugins-at-a-node">Plugins at a node</a>.</li>
+</ul>
+<h2 id="memory-and-cpu">Memory and CPU</h2>
+<p>LOOM keeps the plugins in a song inside a memory budget, and does not load a plugin that would take the song over it. When a song or a rack brings back a plugin that does not fit, its slot reads <code>OVERLOADED</code> and keeps the plugin's settings. See <a href="/loom/manual/the-mixer/#a-plugins-memory">A plugin's memory</a>. You set the budget under <code>MEMORY BUDGET</code> in <code>GLOBAL › PLUGINS</code>. The line under it says how much memory the plugins in this song use now.</p>
+<p>The drawer's header shows what the plugin uses now:</p>
+<table>
+<thead>
+<tr>
+<th>Readout</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CPU</code></td>
+<td>How much of its share of each audio block the plugin uses, as a percentage averaged over about the last second. It reads <code>CPU HIGH</code> in amber when that average reaches 70%.</td>
+</tr>
+<tr>
+<td><code>MEMORY</code></td>
+<td>How much memory the plugin's process uses.</td>
+</tr>
+<tr>
+<td><code>LATENCY</code></td>
+<td>How much later the plugin's output is than its input.</td>
+</tr>
+</tbody>
+</table>
+<p>While <code>CPU HIGH</code> shows, the slot's tile carries an amber bar along its top and reads <code>CPU HIGH</code> with the same average. The warning clears when the average stays below 60% for about two seconds, so a plugin whose load varies from block to block does not switch it on and off. While a plugin is not running, all three readouts read <code>—</code>.</p>
+<h2 id="latency">Latency</h2>
+<p>A plugin's output is later than its input. What that means depends on where the plugin is:</p>
+<ul>
+<li><strong>On a loop track</strong>, LOOM reads the loop early, so the loop plays on time. The tile shows what the plugin adds, such as <code>+2.7 ms</code>.</li>
+<li><strong>On an input</strong>, you hear the input later, because LOOM cannot read a live input early. The tile carries a small clock badge, and the input's drawer header says how late, such as <code>YOU HEAR IN 1 +5.3 ms LATE</code>. LOOM places the take where you played it. See <a href="/loom/manual/the-mixer/#a-plugin-on-an-input">A plugin on an input</a>.</li>
+<li><strong>On an instrument track</strong>, notes you play live sound slightly late, and the notice line says by how much when the plugin loads. Notes the loop plays are on time. See <a href="/loom/manual/instrument-tracks/#instrument">INSTRUMENT</a>.</li>
+</ul>
+<p>Some audio interfaces deliver their blocks unevenly. On one of those, LOOM gives every plugin one more block, and what you play live through a plugin is one block later. See <a href="/loom/manual/the-mixer/#a-plugin-and-an-audio-device-that-delivers-its-blocks-unevenly">A plugin and an audio device that delivers its blocks unevenly</a>.</p>
+<h2 id="a-song-with-a-missing-plugin">A song with a missing plugin</h2>
+<p>When you open a song that uses a plugin this Mac does not have, LOOM opens the song anyway and keeps the plugin's settings:</p>
+<ul>
+<li><strong>An effect</strong> slot reads <code>MISSING</code>, with the plugin's name struck through, and passes the sound through unchanged.</li>
+<li><strong>An instrument plugin</strong> leaves its track silent. What you play on the track is still recorded.</li>
+</ul>
+<p>The notice line names the plugins that are missing. The slot's drawer says where LOOM looked for the plugin and lists the settings it kept, which you cannot change. Each kept setting has a dashed track, because you cannot move it. <code>REPLACE…</code> takes the plugin and its kept settings out of the slot and opens the chooser, so you can choose something else. For a missing instrument plugin, see <a href="/loom/manual/instrument-tracks/#the-editor-dock">The editor dock</a>.</p>
+<p>To load the plugin once it is installed, press <code>RESCAN</code> in the drawer or the instrument dock. <code>RESCAN</code> looks for the plugin where the song says it was installed: for a VST3, the path the drawer names. It does not scan your plugin folders; to do that, see <a href="#finding-your-plugins">Finding your plugins</a>.</p>
+<ul>
+<li><strong>While it looks</strong>, the button reads <code>SCANNING…</code> and you cannot press it, and <code>SCANNING…</code> with a short moving line appears under it. LOOM looks for one plugin at a time. A screen reader gets <code>Scanning for</code> followed by the plugin's name, and LOOM announces what it is looking for.</li>
+<li><strong>If the plugin is there</strong>, the notice line says where LOOM found it, and the slot loads it with the kept settings. The drawer shows <code>LOADING…</code> until the plugin is ready.</li>
+<li><strong>For an Audio Unit</strong>, LOOM can only find the plugin by loading it, so the slot tries to load it each time, and the notice line says that LOOM is looking for it again.</li>
+<li><strong>If the plugin is not there</strong>, the drawer, the notice line and the announcement say what LOOM looked for and where. Install the plugin at that path, then press <code>RESCAN</code> again.</li>
+<li><strong>If the plugin is there but does not load</strong>, the slot reads <code>MISSING</code> again, and the drawer says that LOOM found the plugin and it did not load, below the drawer's reason.</li>
+</ul>
+<p>Saving the song keeps the missing plugin's settings, so the song plays as it did once the plugin is installed. Lanes, mappings and macros on its controls are kept too, and do nothing until it is back.</p>
+<p>A sound or preset whose plugin is missing asks for a second <code>Return</code> before it loads. See <a href="/loom/manual/instrument-tracks/#the-sound-library">The sound library</a>.</p>
+<h3 id="opening-the-song-in-an-older-loom">Opening the song in an older LOOM</h3>
+<p>A version of LOOM that cannot automate a plugin's controls cannot read an arrangement that has lanes on them. It opens such a song with an empty arrangement, and the notice line reads <code>the Score could not be read (RefusedUnknownControlDestination)</code>. To get the arrangement back, open the song in this version of LOOM or a later one.</p>
+<h2 id="a-plugin-that-did-not-start">A plugin that did not start</h2>
+<p>LOOM connects each plugin to the audio device's timing, so that the plugin keeps time with the device. Some audio devices do not let LOOM do this. This can happen when two audio devices have the same name. LOOM then does not start the plugin, and keeps its settings:</p>
+<ul>
+<li><strong>An effect</strong> slot reads <code>NOT STARTED</code> and passes the sound through unchanged. <strong>An instrument plugin</strong> leaves its track silent. The plugin's name is not struck through, because the plugin is installed.</li>
+<li>For an instrument plugin, the editor dock's header and <code>KIND</code> show the plugin's name followed by <code>· NOT STARTED</code>, where a plugin that is not installed shows <code>· MISSING</code>.</li>
+<li>The notice line says the plugin did not start because LOOM could not connect it to the audio device's timing. It does not say the plugin is missing, because LOOM did not look for it.</li>
+<li>The slot's drawer says why the plugin did not start and lists the settings it kept. It offers <code>REPLACE…</code> and no <code>RESCAN</code>, because looking for the plugin again does not change the audio device.</li>
+<li>A plugin you load on that device is refused for the same reason.</li>
+</ul>
+<p>Choose another audio device in LOOM. When LOOM can connect to the new device's timing, each of these slots loads as it was, with its settings, and you do not need to quit LOOM.</p>
+<h2 id="when-a-plugin-crashes-or-stops-responding">When a plugin crashes or stops responding</h2>
+<p>A plugin that crashes, or stops returning audio, takes only its own slot with it:</p>
+<ul>
+<li><strong>An effect</strong> passes the sound through unchanged until the plugin is back.</li>
+<li><strong>An instrument plugin</strong> is silent until the plugin is back. The notes it was holding stop.</li>
+</ul>
+<p>LOOM restarts the plugin by itself, with the settings it had a moment before. While it restarts, its tile reads <code>RESTARTING</code> with a count, such as <code>RESTARTING 1 OF 3</code>, and the notice line says so, for example:</p>
+<p><code>Plate 140 on TRACK 2 · SLOT 3 stopped responding and is restarting with its last settings. It passes dry until it is back.</code></p>
+<p>When it is back, the notice line says it restarted and is playing again. If the plugin's own window was open, it opens again in the same place.</p>
+<p>A plugin that stops responding is treated as a crash: LOOM ends its process and starts it again.</p>
+<p>If a plugin crashes again and again within a minute, LOOM stops restarting it. Its tile reads <code>STOPPED · CRASHED</code> in red, the slot passes the sound through unchanged, or an instrument stays silent. The notice line says so, for example <code>Plate 140 on TRACK 2 · SLOT 3 crashed 3 times in a minute and has stopped. It passes dry. Open its drawer to restart or remove it.</code> The drawer says why the plugin stopped and shows its settings, read only.</p>
+<p>To start the plugin again, press <code>RESTART</code> in its drawer. It loads with the settings it had when it stopped, and its count of crashes starts again. To take it out, press <code>REMOVE</code>: the slot then opens the chooser. A stopped instrument plugin has the same two buttons in the editor dock, where <code>REMOVE</code> takes the plugin off the track and the track plays the synth at its default settings.</p>
+<h3 id="when-a-plugin-is-late">When a plugin is late</h3>
+<p>A plugin that misses a block, without crashing, plays nothing for that block: an effect passes the sound through unchanged and an instrument is silent. Its tile shows an amber notch and reads <code>MISSED</code> with how many blocks it missed and when, for a few seconds. The notice line says how many blocks were late, for example <code>Plate 140 on TRACK 2 · SLOT 3 was late 3 times; those blocks passed dry.</code></p>
+<p>A plugin that takes too long to load is not loaded. The notice line says so with the red tag <code>NOT LOADED</code>.</p>
+{% endraw %}
