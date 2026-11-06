@@ -1,6 +1,7 @@
 ---
 title: "Arranging a Live Looping Song in Advance: Let the Song Press the Buttons"
 date: 2026-10-01T13:00:00-05:00
+updated: 2026-11-05T18:30:00-06:00
 description: "Draw record, overdub and play regions on a timeline, add automation for effects and presets, and let a live looping song run itself while you play."
 tags:
   - how-to
@@ -92,7 +93,7 @@ One practical use: if a vocal mic is open beside you while you record a drum tak
 
 ### Rack and preset lanes: name the sections of the song
 
-A rack lane loads a saved rack, a whole effects chain, into a strip at the bar you choose. A preset lane loads a saved preset into one slot. On an instrument track, a preset lane loads a sound, such as a synth preset, a drum kit or an instrument plug-in with its settings, and a pattern lane can change the drum pattern.
+A rack lane loads a saved rack, a whole effects chain, into a strip at the bar you choose. A preset lane loads a saved preset into one slot. On an instrument track, a preset lane loads a sound, such as a synth preset, a drum kit or an instrument plug-in with its settings, and a pattern lane can change the drum pattern. A preset lane on a slot that holds a plug-in switches the plug-in to one of its own presets, so an amp sim can go from a clean tone to a lead tone on the chorus. See [using Audio Unit and VST3 plug-ins in LOOM](/blog/plugins-in-a-live-looper-mac/).
 
 Each change is a node, and the band after it carries the name of what is loaded until the next change. So the lane reads as a row of named sections: a clean verse rack, a heavier chorus rack, a dub breakdown. You can read the song's structure off the screen.
 
