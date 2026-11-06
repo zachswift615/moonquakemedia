@@ -1,6 +1,7 @@
 ---
 title: "MIDI Learn in a Mac Looper: Map Any Knob, Fader or Footswitch in LOOM"
 date: 2026-10-18T10:00:00-05:00
+updated: 2026-11-05T18:30:00-06:00
 description: "A step-by-step guide to LOOM's MIDI Mapping window: learn a knob, fader, pad or footswitch, choose how it behaves, keep it for every song or one, and read what LOOM did with each message."
 tags:
   - how-to
@@ -14,6 +15,8 @@ ogImageAlt: "MIDI Learn: Map Any Knob in LOOM, beside LOOM's MIDI Mapping table"
 ---
 
 Most controllers have more knobs than a looper has uses for. Until version 1.5, [LOOM](/loom/) answered only a fixed set of notes for the loop commands. LOOM 1.5 added a MIDI Mapping window, so you can send any knob, fader, pad or footswitch to nearly any control in LOOM. Anything the arrange view can automate can be mapped, which covers every fader, send, pan and mute, and almost every control on the instruments and effects, including settings such as a delay's `DIVISION`. So can instrument controls the arrange view leaves out, such as the synth's `FILTER TYPE`, and commands that automation cannot run, such as recording a track, changing the tempo or loading the next preset.
+
+Since LOOM 1.8 that includes the controls of the Audio Unit and VST3 plug-ins you load. Right-click a control in the plug-in's drawer and choose `MAP…`, and the mapping window opens with that control already chosen. See [using Audio Unit and VST3 plug-ins in LOOM](/blog/plugins-in-a-live-looper-mac/).
 
 This post walks through the window from an empty table to a working rig. The full reference is the [MIDI mapping chapter of the manual](/loom/manual/midi-mapping/#the-midi-mapping-window). If you are setting up a pedalboard with the built-in note layout, start with [live looping on a Mac with a MIDI foot controller](/blog/live-looping-mac-midi-foot-controller/) instead.
 

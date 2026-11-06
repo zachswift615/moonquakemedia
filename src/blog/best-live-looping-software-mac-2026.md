@@ -1,6 +1,7 @@
 ---
 title: "Best Live Looping Software for Mac in 2026"
 date: 2026-10-01T10:00:00-05:00
+updated: 2026-11-05T18:30:00-06:00
 description: "An honest look at live looping software for Mac in 2026: LOOM, Ableton Live, Logic Pro, MainStage, SooperLooper, Möbius and Loopy Pro, with prices."
 tags:
   - looping
@@ -104,7 +105,7 @@ The arrangement drives the same engine as the looper, so a region does exactly w
 
 ### Instruments and effects built for the stage
 
-LOOM has its own synth, drum machine and sampler, and its own parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner. It also loads your Audio Unit and VST3 plug-ins: an effect in any slot of a loop track, an input or an instrument track, or an instrument plug-in on an instrument track. LOOM draws a plug-in's controls as its own, so you can map them to your controller, automate them in the arrangement and put them on macros.
+LOOM has its own synth, drum machine and sampler, and its own parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner. It also loads your Audio Unit and VST3 plug-ins: an effect in any slot of a loop track, an input or an instrument track, or an instrument plug-in on an instrument track. LOOM draws a plug-in's controls as its own, so you can map them to your controller, automate them in the arrangement and put them on macros. There is a separate guide on [using Audio Unit and VST3 plug-ins in LOOM](/blog/plugins-in-a-live-looper-mac/).
 
 Because LOOM owns the code behind its own instruments and effects, it decides exactly how much memory and processing each part uses. Its audio code never allocates memory, waits on a lock or touches the disk while it plays, and LOOM's tests run under a real-time sanitizer that flags any code that does.
 
@@ -149,7 +150,7 @@ Yes, in LOOM. Draw the song's `REC`, `DUB` and `PLAY` moves in the arrange view 
 
 ### Can I use my own AU or VST plug-ins in LOOM?
 
-Yes, if they are Audio Unit or VST3 plug-ins. Put an effect plug-in in any slot of a loop track, an input or an instrument track, or choose an instrument plug-in for an instrument track. Each plug-in runs in a helper process of its own, outside LOOM, and LOOM restarts a plug-in that crashes. LOOM also comes with its own synth, drum machine and sampler and a full set of effects.
+Yes, if they are Audio Unit or VST3 plug-ins. Put an effect plug-in in any slot of a loop track, an input or an instrument track, or choose an instrument plug-in for an instrument track. Each plug-in runs in a helper process of its own, outside LOOM, and LOOM restarts a plug-in that crashes. LOOM also comes with its own synth, drum machine and sampler and a full set of effects. See [using Audio Unit and VST3 plug-ins in LOOM](/blog/plugins-in-a-live-looper-mac/).
 
 ### Does live looping software need an internet connection?
 
