@@ -1,4 +1,6 @@
 {
   "layout": "layouts/guide.njk",
-  "slug": "listen2"
+  "slug": "listen2",
+  "listen2Brand": true,
+  "themeColor": "#0B0B0C"
 }

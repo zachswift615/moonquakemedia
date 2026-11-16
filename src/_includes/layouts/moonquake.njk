@@ -71,10 +71,23 @@ themeColor: "#121317"
   @media (max-width: 519px) {
     .mq-links .mq-link-extra { display: none; }
   }
+{% if listen2Brand %}{% include "components/listen2-theme.njk" %}{% endif %}
 </style>
 
 <nav class="mq-nav" aria-label="Main navigation">
   <div class="mq-wrap">
+    {%- if listen2Brand %}
+    <a href="/apps/listen2/" class="l2-brand" aria-label="Listen2 home">
+      <img src="/assets/listen2/web/logo-mark.svg" alt="">
+      <span class="l2-wordmark" aria-hidden="true">Listen<span>2</span></span>
+    </a>
+    <div class="mq-links">
+      <a href="/guides/listen2/">User guide</a>
+      <a href="/blog/"{% if page.url == "/blog/" %} aria-current="page"{% endif %} class="mq-link-extra">Blog</a>
+      <a href="mailto:{{ site.email }}" class="mq-link-extra">Support</a>
+      <a href="https://apps.apple.com/us/app/listen-2-reader/id6755753624" class="l2-get">Get Listen2</a>
+    </div>
+    {%- else %}
     <a href="/" class="mq-brand" {% if page.url == "/" %}aria-current="page" {% endif %}aria-label="{{ site.name }} home">
       {{ mark(23) }}
       <span class="mq-wordmark" aria-hidden="true">moonquake</span>
@@ -86,6 +99,7 @@ themeColor: "#121317"
       <a href="/blog/"{% if page.url == "/blog/" %} aria-current="page"{% endif %}>Blog</a>
       <a href="mailto:{{ site.email }}">Support</a>
     </div>
+    {%- endif %}
   </div>
 </nav>
 

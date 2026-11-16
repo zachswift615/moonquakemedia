@@ -104,7 +104,8 @@ summary{cursor:pointer;list-style:none}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+" / "";float:right;margin-left:16px;color:#A3A3A0;font-weight:400}
 details[open] summary::after{content:"\2212" / ""}
-@media (max-width: 640px){nav[aria-label="Main"] .l2-navlinks{display:none !important}}
+@media (max-width: 640px){nav[aria-label="Main"] .l2-navlinks a:not([href="/guides/listen2/"]){display:none !important}}
+@media (max-width: 640px){nav[aria-label="Main"]{gap:12px !important;padding:12px 16px !important;flex-wrap:nowrap !important}nav[aria-label="Main"]>a:first-child{font-size:22px !important;gap:8px !important}nav[aria-label="Main"]>a:first-child img{width:36px !important}nav[aria-label="Main"]>div:not(.l2-navlinks){display:none}nav[aria-label="Main"] .l2-navlinks{margin-left:auto}nav[aria-label="Main"]>a:last-child{padding:0 14px !important;white-space:nowrap}}
 @media (max-width: 640px){.l2-hero-ctas{justify-content:center}}
 </style>
 <div class="l2-page">
