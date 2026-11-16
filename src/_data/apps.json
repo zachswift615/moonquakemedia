@@ -11,7 +11,7 @@
   {
     "slug": "listen2",
     "name": "Listen2",
-    "tagline": "Your personal audiobook narrator with natural voices",
+    "tagline": "Text to speech reader with natural voices that work offline",
     "icon": "/images/Listen2AppIcon.png",
     "status": "available",
     "statusText": "Available Now"
