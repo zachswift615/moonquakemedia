@@ -17,7 +17,7 @@ module.exports = [
   },
   {
     q: 'What computers does LOOM run on?',
-    a: 'LOOM runs on Macs with Apple Silicon, on macOS 13.3 Ventura or later, and on 64-bit (x64) PCs with Windows 10 or later. There is no build for Intel Macs and no iPad version. One licence covers LOOM on both Mac and Windows, with the same price and the same 14-day trial. On Windows, the keyboard shortcuts use Ctrl where the Mac uses Command.',
+    a: 'LOOM runs on Macs with Apple Silicon, on macOS 13.3 Ventura or later, and on 64-bit (x64) PCs with Windows 10 or later. There is no build for Intel Macs or for iPad, and Windows on Arm is not supported. One licence covers LOOM on both Mac and Windows, with the same price and the same 14-day trial. On Windows, the keyboard shortcuts use Ctrl where the Mac uses Command.',
   },
   {
     q: 'Does LOOM need an internet connection?',
