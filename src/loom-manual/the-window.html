@@ -2,6 +2,7 @@
 layout: layouts/loom-manual.njk
 permalink: /loom/manual/the-window/
 manualSlug: the-window
+manualEdition: mac
 ---
 {% raw %}
 <p>This chapter and the ones after it describe the LOOM window control by control, in the order you meet things on screen: this page, then <a href="/loom/manual/top-bar/">the top bar</a>, <a href="/loom/manual/track-strips/">the globals row and the track strips</a>, <a href="/loom/manual/the-arrange-view/">the arrange view</a>, <a href="/loom/manual/the-mixer/">the mixer</a>, <a href="/loom/manual/side-panel/">the side panel</a>, <a href="/loom/manual/bottom-rails/">the bottom rails</a> and <a href="/loom/manual/dialogs/">the dialogs</a>.</p>
@@ -77,7 +78,7 @@ manualSlug: the-window
 </table>
 <p>The top bar and both bottom bands are on screen in every view. Only the body changes, so switching views never moves the transport, the tempo, or the line that tells you what just went wrong.</p>
 <p>In the looper view the body is a globals row (2) across the top, the track strips under it (3 marks the first), and a 310 px side panel (4) down the right edge. When the side panel opens, the strips get narrower to make room for it, so the panel never covers them.</p>
-<p>The looper draws a strip for every audio track and every instrument track. In the <code>ROWS</code> layout, the default, the audio tracks fill the top row and the instrument tracks the row under it. See <a href="/loom/manual/instrument-tracks/#where-the-instrument-tracks-are">Instrument tracks</a>.</p>
+<p>The looper draws a strip for every audio track and every instrument track. The audio tracks fill the top row and the instrument tracks the row under it. See <a href="/loom/manual/instrument-tracks/#where-the-instrument-tracks-are">Instrument tracks</a>.</p>
 <p>At the window's minimum width the top bar runs out of room: <code>BAR.BEAT.TICK</code> truncates and <code>FOCUS</code> gets no width at all. The view switcher keeps its full width at every size.</p>
 <h2 id="the-type">The type</h2>
 <p>LOOM draws its own text in two typefaces, and the typeface tells you what kind of text you are looking at. The rule is whether the text is measured or read. A value that changes, and the label naming its control, are set in the monospaced face, so a column of them lines up and nothing shifts sideways when a number gains a digit.</p>
@@ -150,7 +151,7 @@ manualSlug: the-window
 </tr>
 <tr>
 <td><strong>Focused track</strong></td>
-<td>The track that the focused-track verbs and the <code>i</code> panel act on. Exactly one track is focused at a time.</td>
+<td>The track that the focused-track verbs and the side panel's <code>TRACK</code> tab act on. Exactly one track is focused at a time.</td>
 </tr>
 <tr>
 <td><strong>The notice line</strong></td>
@@ -187,8 +188,8 @@ manualSlug: the-window
 <p><strong>Ordered.</strong> Focus order is set explicitly and follows reading order:</p>
 <ol>
 <li>the view switcher, then the panel toggle beside it;</li>
-<li>the globals row — ALL START, ALL STOP, ALL CLEAR, FADERS;</li>
-<li>the body of the view — in the looper each strip in turn, and within a strip: the track number, <code>i</code>, the ring, the fader, MUTE, SOLO, STOP, UNDO, REDO, CLEAR; in the mixer <code>BANK</code> and <code>SHOW</code>, then each strip in turn, left to right; in the arrange view TOOL, SNAP and VERB, then <code>PERFORM FROM TOP</code>, then <code>PERFORM FROM HERE</code>, the playhead, the song end marker, the track rows, the lanes, and the scroll strip and zoom controls under them;</li>
+<li>the globals row — ALL START, ALL STOP, ALL CLEAR, the solo clear <code>S</code>, FADERS;</li>
+<li>the body of the view — in the looper each strip in turn, and within a strip: the track number, the ring, the fader, MUTE, SOLO, STOP, UNDO, REDO, CLEAR; in the mixer <code>BANK</code> and <code>SHOW</code>, then each strip in turn, left to right; in the arrange view TOOL, SNAP and VERB, then <code>PERFORM FROM TOP</code>, then <code>PERFORM FROM HERE</code>, the playhead, the song end marker, the track rows, the lanes, and the scroll strip and zoom controls under them;</li>
 <li><code>TO TOP</code>, <code>ROLL</code>, <code>STOP</code>, TEMPO, CLICK;</li>
 <li>the three panel tabs, then the open panel's controls in the order they are drawn;</li>
 <li><code>LOG</code>, at the right-hand end of the notice line — see <a href="/loom/manual/bottom-rails/#log">The bottom rails</a>;</li>

@@ -2,6 +2,7 @@
 layout: layouts/loom-manual.njk
 permalink: /loom/manual/midi-mapping/
 manualSlug: midi-mapping
+manualEdition: mac
 ---
 {% raw %}
 <p>LOOM responds to a fixed, built-in set of notes that covers every track and the global controls, and to a fixed set of controller numbers that move the faders, the sends, the mutes, the click and the master level. Set your controller to send the notes and controller numbers on this page. The <a href="#the-midi-mapping-window">MIDI Mapping window</a> lists any mappings of your own, which act on top of these, and shows every message LOOM receives.</p>
@@ -655,7 +656,7 @@ manualSlug: midi-mapping
 </tbody>
 </table>
 <p>Any other row shows LOOM's value of the control, or <code>ready</code> for a mapping that runs a command.</p>
-<p>A mapping on <code>NEXT TRACK</code> or <code>PREVIOUS TRACK</code> moves the focus exactly as <code>→</code> and <code>←</code> do in the view you are in. In the LOOPER view the step covers the instrument tracks too, and the <code>BANKS</code> switch, the side panel and the keyboard focus follow it. In the ARRANGE and MIXER views the step covers the audio tracks only.</p>
+<p>A mapping on <code>NEXT TRACK</code> or <code>PREVIOUS TRACK</code> moves the focus exactly as <code>→</code> and <code>←</code> do in the view you are in. In the LOOPER view the step covers the instrument tracks too, and the side panel and the keyboard focus follow it. In the ARRANGE and MIXER views the step covers the audio tracks only.</p>
 <h3 id="deleting-a-mapping-and-undo">Deleting a mapping, and undo</h3>
 <p>Press <code>×</code> at the end of a row to delete the mapping. LOOM does not ask you to confirm.</p>
 <p>While the MIDI Mapping window has keyboard focus, <code>⌘Z</code> undoes the last change to the table and <code>⇧⌘Z</code> redoes it. Undo covers adding a row, replacing a row, deleting a row and editing a row. When a new mapping replaces one on the same message, <code>⌘Z</code> puts the replaced mapping back. These keys change the mapping table only. They do not undo anything in your song, and the song's own undo does not change the table.</p>

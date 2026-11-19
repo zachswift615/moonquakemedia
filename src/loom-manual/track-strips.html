@@ -2,6 +2,7 @@
 layout: layouts/loom-manual.njk
 permalink: /loom/manual/track-strips/
 manualSlug: track-strips
+manualEdition: mac
 ---
 {% raw %}
 <p>The looper view's body has three parts: the globals row across the top, the track strips under it, and the side panel down the right edge. The side panel is covered on the next page.</p>
@@ -50,7 +51,7 @@ manualSlug: track-strips
 <p>LOOM has five tracks, and every one of them records in stereo.</p>
 <h3 id="every-track-is-a-stereo-track">Every track is a stereo track</h3>
 <p>A track always records two channels. There is no mono track and no setting that makes one.</p>
-<p>The <code>TRACK</code> input section, which the strip's <code>i</code> button opens, chooses which inputs a track records. The track sums them, and each input arrives at the position set by its own <code>PAN</code>.</p>
+<p>The <code>TRACK</code> tab's input section chooses which inputs a track records. The track sums them, and each input arrives at the position set by its own <code>PAN</code>.</p>
 <p>A centred input records onto both channels equally. A track fed one microphone at centre records that microphone onto both channels, with nothing spread.</p>
 <p>To record a stereo track, pan the inputs apart. On the mixer's <code>INPUTS</code> bank, put one input hard left and another hard right, then arm both onto one track. The track records two different signals, one source on each channel. The input's pan decides this. See <a href="/loom/manual/the-mixer/#pan-on-an-input">The mixer</a>.</p>
 <p>Two consequences are worth knowing in advance:</p>
@@ -68,25 +69,26 @@ manualSlug: track-strips
 <h3 id="how-long-you-can-go-on-overdubbing">How long you can go on overdubbing</h3>
 <p>The undo history lives in the same space as the loop, so a longer loop leaves room for fewer passes over it. Loops under about eighty seconds can be overdubbed indefinitely: LOOM folds the older layers down in the background as you go, and you never reach an edge. Above that, the folding cannot keep up, and an overdub eventually stops partway through its pass. The loop keeps playing. The <code>NOTICE</code> line tells you when that happens.</p>
 <h2 id="the-track-strips">The track strips</h2>
-<figure class="shot shot-beside"><img src="/assets/loom/manual/looper.track-strip.webp" width="260" height="387" loading="lazy" decoding="async" alt="An empty strip on the focused track."><figcaption>An empty strip on the focused track.</figcaption></figure>
-<p>Each track has one vertical strip, and the strips sit side by side in equal columns. An empty strip looks exactly like a full one without the loop: the same header, ring, <code>STOP</code> and <code>i</code>. One press records into it.</p>
-<p>A strip has one form for each <code>LAYOUT</code>. See <a href="/loom/manual/instrument-tracks/#where-the-instrument-tracks-are">Where the instrument tracks are</a>.</p>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/looper.track-strip.webp" width="260" height="300" loading="lazy" decoding="async" alt="An empty strip on the focused track."><figcaption>An empty strip on the focused track.</figcaption></figure>
+<p>Each track has one vertical strip, and the strips sit side by side in equal columns. An empty strip looks exactly like a full one without the loop: the same header, ring, <code>STOP</code> and <code>CLEAR</code>. One press records into it.</p>
+<p>A strip is only as tall as its controls need, and the strips sit at the top of the view: the audio tracks in the top row and the instrument tracks in the row under it. See <a href="/loom/manual/instrument-tracks/#where-the-instrument-tracks-are">Where the instrument tracks are</a>.</p>
 <ul>
-<li><strong>In <code>BANKS</code></strong>, from top to bottom, a strip has the header (number and <code>i</code>), the ring, the fader, <code>MUTE</code> and <code>SOLO</code>, <code>STOP</code>, the <code>UNDO</code>/<code>REDO</code> row, a caption line, a divider, and <code>CLEAR</code>.</li>
-<li><strong>In <code>ROWS</code></strong>, the fader runs the height of the strip on its right side, and its level is printed above it in the header. Down the left side are the ring, <code>MUTE</code> and <code>SOLO</code>, <code>STOP</code>, the <code>UNDO</code>/<code>REDO</code> row, a divider, and <code>CLEAR</code>. There is no caption line.</li>
+<li><strong>On a wide strip</strong>, the ring is under the header, and the fader stands in a column to its right, as tall as the ring, with <code>M</code> (mute) and <code>S</code> (solo) under it. The fader's level is printed above it in the header. One row runs along the bottom of the strip: <code>STOP</code>, <code>UNDO</code> and <code>REDO</code> drawn as arrows, and <code>CLEAR</code> at the right, under <code>M</code> and <code>S</code>.</li>
+<li><strong>On a narrow strip</strong>, such as at the window's smallest width, the strip leaves out <code>M</code>, <code>S</code>, <code>UNDO</code> and <code>REDO</code>. The fader lies across the strip under the ring, and <code>STOP</code> and <code>CLEAR</code> sit side by side as a square and a cross. Mute and solo the track from <a href="/loom/manual/the-mixer/">the mixer</a> or the side panel's <code>MIX</code> tab, and undo and redo with the <code>+2</code> and <code>+3</code> MIDI commands (see <a href="/loom/manual/midi-mapping/">MIDI mapping</a>).</li>
 </ul>
-<p>The header also names the track's input, such as <code>IN 1</code>. It sits between the number and the <code>i</code> when the strip is wide enough to hold a sampler's <code>SLICE · C3–G3</code> there. On narrower strips it has a line of its own under the header, and the ring sits below it. The small strips beside the open editor dock never give it a line of its own. See <a href="/loom/manual/instrument-tracks/#the-track-strips-while-the-dock-is-open">The track strips while the dock is open</a>.</p>
-<p>The heights are ordered so that the most-pressed control is the biggest and the destructive one is not. <code>STOP</code> is the tallest button under the ring, and <code>CLEAR</code> is shorter.</p>
-<p>Every cell keeps its position regardless of what is available. Availability can change the word on a face but never the layout, and in <code>BANKS</code> the caption line is reserved on every strip in every state, so a hand reaching for <code>REDO</code>'s position always lands on <code>REDO</code>.</p>
+<p>A key drawn as an icon names itself when you hold the pointer over it: <code>UNDO</code>, <code>REDO</code>, <code>CLEAR (HOLD)</code>, or <code>STOP</code> with its timing, such as <code>STOP @ LOOP</code>. A screen reader reads the same names as on a wider strip.</p>
+<p><code>M</code> and <code>S</code> show their colour as a thin edge while they are off, cyan for mute and amber for solo, and fill with that colour while they are on. While a track waits to stop, <code>STOP</code> has an amber edge that pulses with the beat.</p>
+<p>The header also names the track's input, such as <code>IN 1</code>. It sits to the right of the number when the strip is wide enough to hold a sampler's <code>SLICE · C3–G3</code> there. On narrower strips it has a line of its own under the header, and the ring sits below it. The small strips beside the open editor dock never give it a line of its own. See <a href="/loom/manual/instrument-tracks/#the-track-strips-while-the-dock-is-open">The track strips while the dock is open</a>.</p>
+<p>Every key keeps its position regardless of what is available. Availability can change the border of a key but never the layout, so a hand reaching for <code>REDO</code>'s position always lands on <code>REDO</code>.</p>
 <h3 id="the-strip-itself">The strip itself</h3>
-<p>Press anywhere on a strip's background to focus that track. The keyboard focus goes to that strip's ring. The header number and the <code>i</code> are small, but the whole strip responds, so you can select a track without aiming at either of them.</p>
+<p>Press anywhere on a strip's background to focus that track. The keyboard focus goes to that strip's ring. The header number is small, but the whole strip responds, so you can select a track without aiming at it.</p>
 <p>The background responds on mouse <strong>down</strong>, so the caret, the cap and the border move under your finger instead of after it.</p>
-<p>An unavailable <code>UNDO</code>/<code>REDO</code> row passes its clicks through. It has nothing to act on, so it claims nothing, and pressing it focuses the track instead. <code>■ STOP</code> and <code>CLEAR</code> do not pass clicks through. They keep their words when they cannot act, so you read and press them as controls, and they answer on the notice line instead of quietly selecting the track under them.</p>
+<p>An unavailable <code>UNDO</code> or <code>REDO</code> passes its clicks through. It has nothing to act on, so it claims nothing, and pressing it focuses the track instead. <code>■ STOP</code> and <code>CLEAR</code> do not pass clicks through. They keep their words when they cannot act, so you read and press them as controls, and they answer on the notice line instead of quietly selecting the track under them.</p>
 <p>Focus is shown four ways: a filled cap across the top edge (shape), a border that both tints and thickens (colour and width), a caret before the number (text), and the strip's own accessible description (words). Each of the first three still works without colour.</p>
 <p>The cap is on the top edge because strips stand side by side. On the left edge it would sit in the gutter between two strips and read as a divider rather than as a mark on one of them.</p>
 <p>Its accessible name is <code>Track 3 strip</code> in every state. Its description says whether this is the focused track, that pressing anywhere on it outside its own controls focuses it, and that the left and right arrow keys move focus between strips.</p>
 <h3 id="the-track-number">The track number</h3>
-<p>A small button in the strip header that shows the track number, such as <code>3</code>, or <code>I2</code> on an instrument track, with a caret in front of it when the track is focused. When you name the track, the button shows the name instead wherever the header has room for a readable part of it, and widens to the <code>i</code>. The name stays on one line with the caret: a name too long for the button ends in an ellipsis, and the whole name shows on the mixer and the arrange view. Where the header is too narrow for a readable part of the name, such as on the narrow strips beside the open editor dock, the button shows the track number, as it does for an unnamed track. The input label sits beside or under whichever the button shows. The header is the select button, so you focus a strip by clicking it. The header also shows which input the track records, as <code>IN 1</code>. It says nothing about what you hear; for that, see the <code>INPUTS</code> bank on <a href="/loom/manual/the-mixer/">the mixer</a>.</p>
+<p>A small button in the strip header that shows the track number, such as <code>3</code>, or <code>I2</code> on an instrument track, with a caret in front of it when the track is focused. When you name the track, the button shows the name instead wherever the header has room for a readable part of it, and widens across the header. The name stays on one line with the caret: a name too long for the button ends in an ellipsis, and the whole name shows on the mixer and the arrange view. Where the header is too narrow for a readable part of the name, such as on the narrow strips beside the open editor dock, the button shows the track number, as it does for an unnamed track. The input label sits beside or under whichever the button shows. The header is the select button, so you focus a strip by clicking it. The header also shows which input the track records, as <code>IN 1</code>. It says nothing about what you hear; for that, see the <code>INPUTS</code> bank on <a href="/loom/manual/the-mixer/">the mixer</a>.</p>
 <p>Its accessible name is <code>Select track 3</code>, or <code>Select track 3, Choir</code> once the track is named. Its description says that the ring, the undo family and the track verbs act on the focused track only. The input line is painted text, not a component, so a screen reader reaches it through the <code>IN</code> switches in the side panel's <code>SOURCE</code> section instead.</p>
 <p>Pressing the number leaves the keyboard focus on the number you just pressed. Pressing the strip's empty background moves the focus to the ring, which is also where the arrow keys put it.</p>
 <h3 id="naming-a-track">Naming a track</h3>
@@ -100,12 +102,8 @@ manualSlug: track-strips
 <p>To go back to the default name, clear the field and press <code>Return</code>. An unnamed loop track is called <code>TRACK 3</code>, an unnamed instrument track <code>INST 2</code>, and an unnamed input <code>IN 1</code> (<code>IN 1-2</code> for a linked stereo pair).</p>
 <p><code>⌘Z</code> takes back the last rename and <code>⇧⌘Z</code> puts it back. In the looper view and the mixer they work wherever the keyboard is, except in places with their own undo, such as the effect drawer and the macros. In the arrange view, <code>⌘Z</code> undoes arrangement edits, so press it with the keyboard on the track row you renamed.</p>
 <p>Names are saved with the song. A song saved by an older version of LOOM opens with every track unnamed.</p>
-<h3 id="the-i-button">The i button</h3>
-<p>A small <code>i</code> at the right of the strip header. It opens the side panel's <code>TRACK</code> mode on this track and focuses the track, and it lights while its panel is open.</p>
-<p>Pressing it again while its panel is open switches the panel back to <code>GLOBAL</code>, the panel's other mode, rather than closing it. To collapse the panel, use the <a href="/loom/manual/top-bar/#the-panel-toggle">panel toggle</a>.</p>
-<p>Its accessible name is <code>Track 3 info</code>. Its description says it opens the info panel for that track, where you choose its input.</p>
 <h3 id="render">RENDER</h3>
-<p>On a track set to <code>STRETCH</code>, the strip header shows a <code>RENDER</code> chip to the left of the <code>i</code>. It is the same control as <code>RENDER</code> in the side panel, and the two always show the same state. See <a href="/loom/manual/side-panel/#render">RENDER</a> for what it does. When the header is too narrow to hold the word beside the track's name, the chip shows only its icon: two bar lines with an arrow between them, as on <code>RENDER ALL</code> in the top bar. The small strips beside the open editor dock, and a header with no room even for the icon, do not show it; use the side panel.</p>
+<p>On a track set to <code>STRETCH</code>, the strip header shows a <code>RENDER</code> chip at its right. It is the same control as <code>RENDER</code> in the side panel, and the two always show the same state. See <a href="/loom/manual/side-panel/#render">RENDER</a> for what it does. When the header is too narrow to hold the word beside the track's name, the chip shows only its icon: two bar lines with an arrow between them, as on <code>RENDER ALL</code> in the top bar. The small strips beside the open editor dock, and a header with no room even for the icon, do not show it; use the side panel.</p>
 <ul>
 <li>A cyan frame means there is something to render. A dashed grey frame means the track is already at the song's tempo.</li>
 <li>While the track renders, the chip fills and shows the percent, a thin cyan ring runs inside the strip's ring, and the ring's caption reads <code>RENDERING 40%</code> instead of the next press. <code>UNDO</code>, <code>REDO</code> and <code>CLEAR</code> get a cyan dashed frame: they are refused until the render lands, and pressing one says why on the notice line.</li>
@@ -113,7 +111,7 @@ manualSlug: track-strips
 <li>A lock means the arrangement is playing.</li>
 </ul>
 <h3 id="the-ring">The ring</h3>
-<figure class="shot shot-beside"><img src="/assets/loom/manual/session.track-strip-playing.webp" width="260" height="387" loading="lazy" decoding="async" alt="Track 1 playing a loop. The ring reads -0.2, two beats before the loop point, and the next press will overdub."><figcaption>Track 1 playing a loop. The ring reads -0.2, two beats before the loop point, and the next press will overdub.</figcaption></figure>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/session.track-strip-playing.webp" width="260" height="300" loading="lazy" decoding="async" alt="Track 1 playing a loop. The ring reads -0.2, two beats before the loop point, and the next press will overdub."><figcaption>Track 1 playing a loop. The ring reads -0.2, two beats before the loop point, and the next press will overdub.</figcaption></figure>
 <p>The big round button with the light ring around it, at the top of the strip under the header. It is the control you look at while playing.</p>
 <p>The centre of the ring shows three lines: the state word, the countdown below it, and a small arrowed word (<code>→ RECORD</code>, <code>→ OVERDUB</code>, <code>→ PLAY</code> or <code>→ STOP</code>) that says what the next press will do. During an overdub, the next press ends the pass and the track plays, so the arrowed word is <code>→ PLAY</code>. While a track records its first take, the next press closes the loop, so the arrowed word is what the track does next as set by its <code>REC ACTION</code>: <code>→ PLAY</code>, <code>→ OVERDUB</code> or <code>→ STOP</code>. See <a href="/loom/manual/side-panel/#recording">RECORDING</a> in the side panel. If the close waits for the next bar, the state word shows where the track is going: <code>WAIT PLAY</code>, <code>WAIT DUB</code> or <code>WAIT STOP</code>. Pressing the ring during the wait closes the loop at once. Pressing a strip's ring also focuses that track first, so a press never lands on a track you did not point at. After you move focus with <code>←</code> or <code>→</code>, the keyboard lands on the new strip's ring, so <code>←</code> <code>←</code> <code>Space</code> is a complete gesture.</p>
 <p>The ring's fill angle is the loop position.</p>
@@ -213,7 +211,7 @@ manualSlug: track-strips
 </tr>
 </tbody>
 </table>
-<figure class="shot shot-full"><img src="/assets/loom/manual/song.rings.webp" width="1220" height="209" loading="lazy" decoding="async" alt="Five rings from one moment, left to right: DUB with its two concentric sweeps, WAIT PLAY with the wedge at twelve o'clock, STOPPED, PLAY, and REC counting up in seconds."><figcaption>Five rings from one moment, left to right: DUB with its two concentric sweeps, WAIT PLAY with the wedge at twelve o'clock, STOPPED, PLAY, and REC counting up in seconds.</figcaption></figure>
+<figure class="shot shot-full"><img src="/assets/loom/manual/song.rings.webp" width="1224" height="208" loading="lazy" decoding="async" alt="Five rings from one moment, left to right: DUB with its two concentric sweeps, WAIT PLAY with the wedge at twelve o'clock, STOPPED, PLAY, and REC counting up in seconds."><figcaption>Five rings from one moment, left to right: DUB with its two concentric sweeps, WAIT PLAY with the wedge at twelve o'clock, STOPPED, PLAY, and REC counting up in seconds.</figcaption></figure>
 <p><code>WAIT TOP</code> is a playing loop that waits to start again from its top.</p>
 <p>A track waiting to play from a stop has not started its loop yet, so its sweep has no length and only the wedge marks it, as on the second ring above.</p>
 <figure class="shot shot-beside"><img src="/assets/loom/manual/session.ring-wait-dub.webp" width="206" height="206" loading="lazy" decoding="async" alt="A ring that reads WAIT DUB, with the wedge at twelve o'clock, — for the count, and → OVERDUB below."><figcaption>A ring that reads WAIT DUB, with the wedge at twelve o'clock, — for the count, and → OVERDUB below.</figcaption></figure>
@@ -225,12 +223,12 @@ manualSlug: track-strips
 <p>Only the circle responds to a press. The four corners of its square are strip background, and pressing them focuses the track.</p>
 <p>Unlike the strip background, the ring acts on mouse <strong>up</strong>, so dragging off the ring cancels the press. A press can start a take, so it is worth being able to call it off.</p>
 <h3 id="the-fader-and-its-meter">The fader and its meter</h3>
-<p>A vertical level control whose slot is its meter. The handle sits inside the slot, at the slot's width. It sets this track's level on whichever bus the globals row's <code>FADERS</code> setting is showing.</p>
-<p>In <code>BANKS</code> the fader fills the strip below the ring. To its left are a caption saying which bus it addresses and, under the caption, its value in decibels. In <code>ROWS</code> the fader runs the height of the strip on its right side, and its value is printed above it, in the header.</p>
+<p>A level control whose slot is its meter. The handle sits inside the slot, at the slot's width. It sets this track's level on whichever bus the globals row's <code>FADERS</code> setting is showing.</p>
+<p>On a wide strip the fader stands in a column to the right of the ring, as tall as the ring, and its value is printed above it, at the right of the header. On a narrow strip the fader lies across the strip under the ring, and its value is printed at the right of the header.</p>
 <p>Drag the slot or the handle. The handle moves one pixel for every pixel your hand moves, and the drag is measured from where you pressed, so returning your hand to where it started returns the fader to where it started.</p>
-<p><code>Home</code> is unity and <code>End</code> is silence. This reverses the platform's convention for numeric sliders because the fader is vertical and has no boost, so unity is at the top of its travel.</p>
+<p><code>Home</code> is unity and <code>End</code> is silence. This reverses the platform's convention for numeric sliders because the fader has no boost, so unity is at the end of its travel: the top on a wide strip, the right on a narrow one.</p>
 <p>The range runs from silence to unity, with no gain above unity. The bottom of the travel is an exact mute, not just a very quiet level.</p>
-<p>In <code>BANKS</code> the caption reads <code>LEVEL</code> on the main mix, and the bus's own name on a send: <code>CUE</code>, <code>FX 1</code> or <code>FX 2</code>. In <code>ROWS</code> there is no caption on the main mix, and on a send the bus's name is printed above the value. The bus's name is the part of the setting you can read without colour.</p>
+<p>On the main mix the header shows the value alone. On a send it shows the bus's name above the value: <code>CUE</code>, <code>FX 1</code> or <code>FX 2</code>. The bus's name is the part of the setting you can read without colour.</p>
 <p>Each send also has its own colour. On a send, the slot takes a faint tint and an outline in that bus's colour, and the bus's name and the line across the handle are drawn in it: blue for <code>CUE</code>, violet for <code>FX 1</code>, magenta for <code>FX 2</code>. On the main mix the slot has no tint at all, which tells you at a glance that a fader is setting the level front of house hears. The colour repeats what the bus's name already says in words, so nothing is lost if the three colours look alike to you.</p>
 <p>The value shows the level in decibels to one decimal place, or <code>-INF</code> at the floor. On a track that holds nothing, it shows a bare <code>—</code> instead. The readout takes this from the session itself and never infers it from a zero level, because a stopped loop and a cleared track both meter at zero and only one of them has nothing to say.</p>
 <p>The handle shows the same thing by its brightness. On a track that holds a loop it is white. On a track that holds nothing it is grey, the same size and in the same place. Use it to see which strips are carrying something without reading each value. The value's dash says the same thing in a character, so you do not need to tell the two shades apart.</p>
@@ -241,25 +239,25 @@ manualSlug: track-strips
 <p>While you are recording, and before there is anything to play back, both bars show the same level. The take is metered as one figure until it plays.</p>
 <p>The meter is not a tab stop and is not read out, because a level that changes thirty times a second is out of date by the time it is spoken. The fader's description says the meter has two bars and which is which.</p>
 <p>Its accessible name is <code>Track 3 level</code> on the main mix, and <code>Track 3 CUE send</code>, <code>Track 3 FX 1 send</code> or <code>Track 3 FX 2 send</code> on a send, following whichever bus <code>FADERS</code> is on. It has a settable value interface, so a screen reader can set this control as well as read it. It reads out the value it draws, so the two cannot disagree: the number where a number is drawn, and the words <code>no value</code> where the bare <code>—</code> is. It never reads out a level on a track that shows a dash. The description covers the arrow rules, the <code>Home</code>/<code>End</code> rule, that <code>←</code>/<code>→</code> move the focused track instead, that there is no gain above unity, that the meter is post-fader, and that it has two bars with the left channel on the left.</p>
-<p>Only the slot and the handle respond to a press. The meter is inside the slot, so pressing it moves the fader. The caption and the value are readouts; a press on either passes through and focuses the track. A drag that starts in the slot keeps tracking your hand outside it.</p>
+<p>Only the slot and the handle respond to a press. The meter is inside the slot, so pressing it moves the fader. The value in the header is a readout; a press on it focuses the track. A drag that starts in the slot keeps tracking your hand outside it.</p>
 <h3 id="mute-and-solo">MUTE and SOLO</h3>
-<p>Two equal buttons side by side, under the fader in <code>BANKS</code> and under the ring in <code>ROWS</code>. They are the same two controls the mixer draws on its track strips, acting on the same track, so a change on either surface shows on the other.</p>
-<p><code>MUTE</code> takes this track out of the main mix and leaves its cue send alone, so a track you mute for the room stays in your headphones. The level ramps rather than jumping, so muting in the middle of a loop does not click. The loop keeps playing and stays in phase, so when you unmute, the track comes back in wherever the loop has reached, not where you left it.</p>
-<p><code>SOLO</code> puts this track in the soloed set. While anything is soloed, only the soloed tracks reach the main mix. Clearing the last solo restores exactly the mix you had, because solo never writes a mute.</p>
-<p>A plain press on <code>SOLO</code> clears the other tracks' solos, so one press moves the solo to the track you pressed. To build up a set instead, hold <code>Option</code> while you press. This adds the track to what is already soloed.</p>
+<p>Two keys, <code>M</code> (mute) and <code>S</code> (solo), one above the other under the fader, in its column. The narrow strip leaves them out. They are the same two controls the mixer draws on its track strips as <code>MUTE</code> and <code>SOLO</code>, acting on the same track, so a change on either surface shows on the other.</p>
+<p><code>M</code> takes this track out of the main mix and leaves its cue send alone, so a track you mute for the room stays in your headphones. The level ramps rather than jumping, so muting in the middle of a loop does not click. The loop keeps playing and stays in phase, so when you unmute, the track comes back in wherever the loop has reached, not where you left it.</p>
+<p><code>S</code> puts this track in the soloed set. While anything is soloed, only the soloed tracks reach the main mix. Clearing the last solo restores exactly the mix you had, because solo never writes a mute.</p>
+<p>A plain press on <code>S</code> clears the other tracks' solos, so one press moves the solo to the track you pressed. To build up a set instead, hold <code>Option</code> while you press. This adds the track to what is already soloed.</p>
 <p>Mute wins over solo. A track that is both muted and soloed stays silent.</p>
 <p>The buttons show what the engine holds, not what you last pressed. If a press is refused, the button does not change and the notice line says why.</p>
 <h4 id="when-another-tracks-solo-is-silencing-this-one">When another track's solo is silencing this one</h4>
-<p>While anything in the mixer is soloed, every track that is not in the soloed set is silent. On those strips the word <code>MUTE</code> blinks in blue, the meter narrows and turns grey, and the line across the fader's handle turns grey.</p>
-<p>The blink does not mean the button is on. The button's fill stays dark because you have not muted the track; something else is keeping it out of the mix. Press <code>SOLO</code> on a blinking strip to bring it into the soloed set, or clear every solo with the <code>S</code> button in the view's second row.</p>
-<p>A track you muted yourself does not blink. Its <code>MUTE</code> is lit, which already tells you why it is silent.</p>
+<p>While anything in the mixer is soloed, every track that is not in the soloed set is silent. On those strips <code>M</code> blinks in blue, the meter narrows and turns grey, and the line across the fader's handle turns grey.</p>
+<p>The blink does not mean the button is on. The button's fill stays dark because you have not muted the track; something else is keeping it out of the mix. Press <code>S</code> on a blinking strip to bring it into the soloed set, or clear every solo with the <code>S</code> button in the view's second row.</p>
+<p>A track you muted yourself does not blink. Its <code>M</code> is lit, which already tells you why it is silent.</p>
 <p>The blink runs at one beat while the transport is rolling, and slower when it is stopped.</p>
 <p>Other tracks' solos are not the only cause. Soloing an effect bus in the mixer silences every track that does not send to it, and those strips blink for the same reason.</p>
 <h4 id="names-and-keys">Names and keys</h4>
 <p>Their accessible names are <code>Mute track 3 in the looper</code> and <code>Solo track 3 in the looper</code>, which tells them apart from the mixer's pair. Each announces itself as a two-state control and reports whether it is on. The descriptions say what each button does to the mix, that mute leaves the cue send alone, and what <code>Option</code> does to a solo press.</p>
 <p>With the keyboard focus anywhere in the looper view, <code>M</code> mutes the focused track and <code>S</code> solos it. <code>Option</code>+<code>S</code> solos it additively. The same two keys do the same two things in the mixer.</p>
 <h3 id="stop">STOP</h3>
-<p>The wide button under <code>MUTE</code> and <code>SOLO</code>, with the stop quantize printed on its face. It stops <strong>this one track</strong>, at the moment its own stop quantize sets.</p>
+<p>The first key of the command row along the bottom of the strip, with the stop quantize printed on its face. It stops <strong>this one track</strong>, at the moment its own stop quantize sets.</p>
 <p>To stop one track from the keyboard, tab to this button.</p>
 <table>
 <thead>
@@ -291,7 +289,7 @@ manualSlug: track-strips
 </tr>
 </tbody>
 </table>
-<p>In a narrow strip, the <code>STOP</code> button leaves out the <code>■</code> so that its words fit on one line, for example <code>STOP @ LOOP</code>. If they still do not fit, <code>STOP</code> and the quantize go on two lines.</p>
+<p>When the key is too narrow for <code>■ STOP @ LOOP</code> on one line, it leaves out the <code>■</code>, for example <code>STOP @ LOOP</code>. If the words still do not fit, <code>STOP</code> and the quantize go on two lines. If they do not fit on two lines, and always on the narrow strip, the key shows the <code>■</code> alone, and holding the pointer over it shows <code>STOP</code> and the quantize.</p>
 <p>The quantize is on the face because you need to know <em>when</em> the stop will happen before you press. It stays there, asterisk and all, when the track has nothing to stop, so an empty strip still tells you what the track will do once you record on it.</p>
 <p><strong>When it cannot act</strong>, the button keeps its whole face and is drawn with a dashed border instead of a solid one. The border shows the state, so it reads the same without colour.</p>
 <p>A stop fades out over about two milliseconds instead of cutting the sound off. The fade is far shorter than a note, so you do not hear it, and you do not hear a click either, whatever the stop quantize is and wherever in the waveform the stop lands. A stop that lands exactly on the end of a loop is already silent there and is left alone.</p>
@@ -299,51 +297,25 @@ manualSlug: track-strips
 <p>Its accessible name is <code>Stop track 3</code> in both states. The description says when the stop takes effect and whether this track is set apart from the song's default, and names the top bar's <code>STOP</code> and <code>ALL STOP</code> so you can tell the three stops apart.</p>
 <p>If you press it when the track has nothing to stop, the notice line gives the reason and names the track. It does not select the track: nothing happened, so nothing moves.</p>
 <h3 id="undo-and-redo">UNDO and REDO</h3>
-<figure class="shot shot-beside"><img src="/assets/loom/manual/song.strip-undo.webp" width="240" height="136" loading="lazy" decoding="async" alt="The bottom of track 1's strip after an overdub has closed. UNDO is live, REDO has a dashed border, and the caption reads UNDO READY."><figcaption>The bottom of track 1's strip after an overdub has closed. UNDO is live, REDO has a dashed border, and the caption reads UNDO READY.</figcaption></figure>
-<p>Two equal cells in a row under <code>STOP</code>. In <code>BANKS</code> a caption line sits beneath them. <code>UNDO</code> takes the last layer off this track, from its start; <code>REDO</code> puts back the layer last undone. Both act on this track only, and the other strips keep theirs.</p>
-<p>The caption line says what the row can do. In <code>BANKS</code> it appears on every strip in every state. The <code>ROWS</code> strip has no caption line.</p>
-<table>
-<thead>
-<tr>
-<th>Caption</th>
-<th>Means</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>NO LAYERS</code></td>
-<td>Neither verb would move anything.</td>
-</tr>
-<tr>
-<td><code>UNDO READY</code></td>
-<td>Undo is available.</td>
-</tr>
-<tr>
-<td><code>REDO READY</code></td>
-<td>Redo is available.</td>
-</tr>
-<tr>
-<td><code>UNDO + REDO</code></td>
-<td>Both are available.</td>
-</tr>
-</tbody>
-</table>
+<figure class="shot shot-beside"><img src="/assets/loom/manual/song.strip-undo.webp" width="240" height="38" loading="lazy" decoding="async" alt="The command row of track 1's strip after an overdub has closed. UNDO is live and REDO has a dashed border."><figcaption>The command row of track 1's strip after an overdub has closed. UNDO is live and REDO has a dashed border.</figcaption></figure>
+<p>Two keys in the command row, after <code>STOP</code>, drawn as arrows: <code>UNDO</code> points back and <code>REDO</code> points forward. The narrow strip leaves them out. <code>UNDO</code> takes the last layer off this track, from its start; <code>REDO</code> puts back the layer last undone. Both act on this track only, and the other strips keep theirs.</p>
+<p>A key that has nothing to act on is drawn with a dashed border.</p>
 <p>Their accessible names are <code>Undo track 3</code> and <code>Redo track 3</code> in both states. The descriptions say what is available and what to do about it: an unavailable <code>UNDO</code> says that recording or overdubbing onto the track makes a layer, and an unavailable <code>REDO</code> says to undo first.</p>
-<p>The undo depth is one per track, so this caption shows availability, not a stack depth.</p>
+<p>The undo depth is one per track, so the keys show availability, not a stack depth.</p>
 <blockquote>
-<p><strong><code>UNDO</code> DOES NOT REACH A TAKE REPLACED BY A <code>REC</code> REGION.</strong> Playing an arrangement whose <code>REC</code> region lands on a track that already holds a loop <strong>replaces that loop permanently.</strong> <code>UNDO</code> accepts the press and the track goes on playing the new take. Opening the song again brings back the new take too, because a track comes back holding the take it held when you saved. The caption may read <code>UNDO READY</code> for a layer you have added since, but the replaced take is not behind it.</p>
+<p><strong><code>UNDO</code> DOES NOT REACH A TAKE REPLACED BY A <code>REC</code> REGION.</strong> Playing an arrangement whose <code>REC</code> region lands on a track that already holds a loop <strong>replaces that loop permanently.</strong> <code>UNDO</code> accepts the press and the track goes on playing the new take. Opening the song again brings back the new take too, because a track comes back holding the take it held when you saved. <code>UNDO</code> may be live for a layer you have added since, but the replaced take is not behind it.</p>
 <p>An arrangement is the only thing in LOOM that records onto a track already holding a loop. This strip refuses it; you make that decision where you draw the region. See <a href="/loom/manual/the-arrange-view/#playing-the-arrangement-the-perform-buttons">the PERFORM buttons</a>.</p>
 <p>A <code>DUB</code> region is different. An overdub region, scored or played by hand, makes an ordinary layer, and <code>UNDO</code> takes it off.</p>
 </blockquote>
 <h3 id="clear">CLEAR</h3>
-<p>The last cell on the strip, below a drawn divider, styled as destructive. It clears <strong>this track</strong> and discards its material. The other strips keep theirs.</p>
-<p><code>CLEAR</code> cannot be undone. Once a track is cleared, neither <code>UNDO</code> nor reopening the song brings its material back. The destructive style and the drawn divider are there to mark this.</p>
+<p>The last key of the command row, at the right, a wider gap away from <code>REDO</code> and styled as destructive. On the narrow strip it is drawn as a cross, and holding the pointer over it shows <code>CLEAR (HOLD)</code>. It clears <strong>this track</strong> and discards its material. The other strips keep theirs.</p>
+<p><code>CLEAR</code> cannot be undone. Once a track is cleared, neither <code>UNDO</code> nor reopening the song brings its material back. The destructive style and the gap are there to mark this.</p>
 <p>Clearing a track that is playing fades it out over about two milliseconds instead of cutting the sound off, the same fade a <a href="#stop"><code>STOP</code></a> uses. You can clear a track mid-phrase without hearing a click.</p>
 <p>You have to hold it, exactly as you hold <a href="#all-clear"><code>ALL CLEAR</code></a>: press and hold the mouse button, or <code>Return</code> with the button focused, for <strong>one second</strong>. The button fills as it arms and fires when the fill is full. If you release early, nothing happens.</p>
 <p>It is the same gesture, the same second and the same fill as the globals row's button, because it is the same control underneath. A single <code>Return</code> on a focused <code>CLEAR</code> does not clear the track. It starts the hold, and releasing the key ends it. A modified <code>Return</code> is declined outright, and so is <code>Space</code>.</p>
 <p><strong>When it cannot act:</strong> the button still reads <code>CLEAR</code>, is drawn with a dashed border, and refuses the hold. Pressing it puts the reason on the notice line, naming the track.</p>
 <p>Its accessible name is <code>Clear track 3</code> in both states. As with <code>ALL CLEAR</code>, its description is written as the confirmation step, not as help text. It says what is discarded, that it affects this track and not the others, that it cannot be undone, and how the hold works.</p>
-<p>Because of the drawn divider above it, <code>CLEAR</code> is never adjacent to the button you press constantly mid-take.</p>
+<p>On a wide strip, <code>CLEAR</code> is at the far end of the row from <code>STOP</code>, so it is never next to the key you press constantly mid-take. On the narrow strip the two sit side by side, and the one-second hold is what keeps a press meant for <code>STOP</code> from clearing the track.</p>
 <blockquote>
 <p><strong>VoiceOver:</strong> as on <code>ALL CLEAR</code>, the gesture is different here. The accessibility layer cannot express a hold, so a VoiceOver activation clears the track on a single press, with no hold and no fill. The description you hear when you land on the button is your only confirmation step.</p>
 </blockquote>
