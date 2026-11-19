@@ -1,6 +1,6 @@
 {
-  "version": "1.8.2",
-  "sourceCommit": "c0ec1cd8",
+  "version": "1.9.0",
+  "sourceCommit": "1e71b2c7",
   "chapters": [
     {
       "order": 1,
@@ -130,7 +130,7 @@
     }
   ],
   "windows": {
-    "version": "1.8.2",
+    "version": "1.9.0",
     "url": "/loom/manual/windows/",
     "chapters": [
       {
