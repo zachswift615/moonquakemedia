@@ -238,12 +238,16 @@ layout: layouts/base.njk
                shot-tuner.png         <- strobe-tune.png            (new)
                shot-tuner-needle.png  <- needle-tune-2.png          (new)
                shot-tuner-strings.png <- poly-tune.png              (new)
+             The 1.9 refresh, off ~/Desktop/loom-1.9-looper-view (screen recording):
+               loops/loop-looper.mp4  <- 7.5 s to 17.8 s of the recording, in place of the still (redesigned strips)
+               shot-looper.png        <- the recording's frame at 7.5 s (kept for ogImage and the structured data)
+               shot-looper-banks.png  removed from the page: 1.9 has no BANKS layout (file left for old links)
              ⚠️ EVERY ALT HERE MAKES A COUNTABLE CLAIM — "six bands", "thirteen divisions",
              "ten files" — so each was read off the new image before this commit rather than
              carried across. An alt that describes the previous build is worse than a stale
              screenshot: the screenshot is merely old, the alt is untrue, and the only reader
              who gets the untrue one is the reader who cannot see the image. -->
-        {% shot "/assets/loom/shot-looper.png", "LOOM’s looper in two rows: five audio tracks above, their rings showing PLAY, DUB, REC, STOPPED and EMPTY, and four instrument tracks below, all playing. A MIDI IN card lists the connected controllers, and the side panel is open on instrument track 4, a sampler" %}
+        {% loop "looper", 1800, 1130, "LOOM’s looper in two rows while a song plays: five audio tracks above and four instrument tracks below. Track 2 finishes an overdub and plays, track 3 finishes recording and plays, and track 1 starts an overdub, while instrument track 2 records and counts up. Track 4 is stopped, track 5 and two instrument tracks are empty, a MIDI IN card lists IAC Driver Bus 1 and Arturia MINILAB, and the side panel is open on instrument track 2, a synth" %}
       </div>
       <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">LOOPER · FIVE AUDIO TRACKS AND FOUR INSTRUMENT TRACKS · EACH RING SHOWS WHAT YOUR NEXT PRESS WILL DO</div>
     </div>
@@ -344,12 +348,6 @@ layout: layouts/base.njk
 
       </div>
       <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;max-width:74ch;text-wrap:pretty;">There is not currently a piano roll, and no MIDI file import or export. LOOM’s MIDI output lights your controller’s pads, moves its faders and sends MIDI clock to your gear, but it does not send the notes your instrument tracks play.</p>
-      <div style="padding-top:16px;">
-        <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
-          {% shot "/assets/loom/shot-looper-banks.png", "The looper in BANKS layout: the five audio tracks at full size, their rings showing PLAY, DUB, REC, STOPPED and EMPTY, with AUDIO and INST tabs above them that switch to the four instrument tracks" %}
-        </div>
-        <div style="padding:14px 2px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8A9099;">LOOPER · BANKS LAYOUT · AUDIO OR INSTRUMENT TRACKS AT FULL SIZE</div>
-      </div>
     </div>
 
     <div id="arrange" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
