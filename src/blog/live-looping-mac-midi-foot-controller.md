@@ -16,7 +16,7 @@ ogImageAlt: "Live Looping on a Mac with a MIDI Foot Controller, beside LOOM's MI
 
 A looper on a laptop screen is fine for rehearsal. On stage your hands are on a guitar or a keyboard, and the only thing free is your feet. A software looper starts to feel like a pedal once a footswitch can record, overdub, undo and stop a track without you looking at the screen.
 
-This guide shows how to set that up with [LOOM](/loom/), the live looper I build for macOS. There are two ways to do it, and you can use both on one board:
+This guide shows how to set that up with [LOOM](/loom/), the live looper I build for Mac and Windows. There are two ways to do it, and you can use both on one board:
 
 - **Program your controller to LOOM's built-in layout.** LOOM answers a fixed set of MIDI notes, so you set each switch to the note number LOOM expects. Most of this post covers that, because it needs no setup in LOOM at all.
 - **Map your switches in LOOM.** Since LOOM 1.5, you can choose a command in LOOM's MIDI Mapping window and press the switch you want to use for it. This is the way to go when your controller's switches are hard to reprogram, or only send control changes. See *Map a switch that sends control changes*, below, and the [MIDI mapping tutorial](/blog/midi-learn-map-controller-looper-mac/) for the full walkthrough.

@@ -11,7 +11,7 @@ excerpt: "Your amp sim and your favorite reverb shouldn't have to stay in the DA
 
 Most of my sound lives in plug-ins. My guitar goes through an amp sim, my vocal chops go through a plate reverb, and half my synth parts are Surge XT. For a long time that meant a live looper was a separate world from the tone I'd built in the studio.
 
-[LOOM](/loom/), the live looper I build for macOS, hosts Audio Unit and VST3 plug-ins as of version 1.8. This guide shows where you can put a plug-in, how you control it while you play, and what LOOM does when a plug-in crashes in the middle of a song. If you use plug-ins protected by iLok or PACE, such as Neural DSP's, you need LOOM 1.8.1 or later.
+[LOOM](/loom/), the live looper I build for Mac and Windows, hosts Audio Unit and VST3 plug-ins as of version 1.8. This guide shows where you can put a plug-in, how you control it while you play, and what LOOM does when a plug-in crashes in the middle of a song. If you use plug-ins protected by iLok or PACE, such as Neural DSP's, you need LOOM 1.8.1 or later.
 
 ## Finding your plug-ins
 
@@ -95,4 +95,4 @@ LOOM itself never connects to the internet. A third-party plug-in you choose to 
 
 ## Try it
 
-LOOM is a live looper for macOS, with a free 14-day trial. [Download it here](/loom/). The [plug-ins chapter of the manual](/loom/manual/plugins/) covers everything in this post in more detail.
+LOOM is a live looper for Mac and Windows, with a free 14-day trial. On Windows it hosts VST3 plug-ins only. [Download it here](/loom/). The [plug-ins chapter of the manual](/loom/manual/plugins/) covers everything in this post in more detail.

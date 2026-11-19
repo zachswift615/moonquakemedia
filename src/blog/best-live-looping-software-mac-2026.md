@@ -14,7 +14,7 @@ ogImageHeight: 630
 ogImageAlt: "Best Live Looping Software for Mac in 2026, beside the LOOM window"
 ---
 
-I build a live looper for the Mac, [LOOM](/loom/), so read this with that in mind. I have tried to be fair to the other options, and every price and feature below comes from the product's own page, checked in October 2026. Where another tool is the better choice for you, I say so.
+I build a live looper for Mac and Windows, [LOOM](/loom/), so read this with that in mind. I have tried to be fair to the other options, and every price and feature below comes from the product's own page, checked in October 2026. Where another tool is the better choice for you, I say so.
 
 Live looping software for the Mac falls into three groups. There are DAWs with looping built in, dedicated looper apps, and plug-in hosts for live performance that can loop with the right plug-in. Which one suits you depends on how you perform.
 
@@ -91,7 +91,7 @@ A tabletop looper is the contrast case. The Boss RC-505mkII has five simultaneou
 
 ## LOOM
 
-[LOOM](/loom/) is the looper I build. It is a live looper for the Mac with five audio loop tracks you play like a hardware looper, plus four instrument tracks that play its own synth, drum machine and sampler, or your instrument plug-ins, from MIDI.
+[LOOM](/loom/) is the looper I build. It is a live looper for Mac and Windows with five audio loop tracks you play like a hardware looper, plus four instrument tracks that play its own synth, drum machine and sampler, or your instrument plug-ins, from MIDI.
 
 {% blogshot "/images/blog/best-live-looping-software-mac-2026/looper.png", "LOOM's looper with five audio tracks above and four instrument tracks below. The rings read PLAY, DUB, REC, STOPPED and EMPTY, and a MIDI IN card lists the connected controllers", "The looper: five audio tracks above, four instrument tracks below." %}
 
