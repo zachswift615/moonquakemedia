@@ -13,15 +13,23 @@
 // build, so the previous version number stays up and correct while the failure is visible in
 // Actions. Degrading gracefully would replace a loud failure with a quiet wrong answer.
 const REPO = 'zachswift615/loom-releases';
+// The Windows installer's name in every release that has one (scripts/release-windows.ps1).
+const WINDOWS_ASSET = 'LOOM-Windows-Setup.exe';
 const markdown = require('markdown-it')();
 
 // The release notes are the top of the release's description, written by hand for each release
-// (docs/release-notes/ in the LOOM repository). LOOM's make-dmg.sh appends the same install and
-// SHA-256 block to every release, starting with this line, and that block is not shown here: the
-// page already has its own download button. A release without notes yields an empty string.
+// (docs/release-notes/ in the LOOM repository). LOOM's make-dmg.sh appends an install and SHA-256
+// block starting `**LOOM <version>** for macOS`, and scripts/release-windows.ps1 appends a second
+// one after it starting `**LOOM <version>** for Windows`. Neither is shown here: the page has its
+// own download buttons. The notes end at whichever block comes first, so a release with only the
+// Windows block, or with the two in either order, still shows only the notes. A release without
+// notes yields an empty string.
 function releaseNotes(body, version) {
   const text = String(body || '').replace(/\r\n/g, '\n');
-  const footer = text.indexOf(`**LOOM ${version}** for macOS`);
+  const footers = ['macOS', 'Windows']
+    .map((platform) => text.indexOf(`**LOOM ${version}** for ${platform}`))
+    .filter((at) => at !== -1);
+  const footer = footers.length ? Math.min(...footers) : -1;
   const notes = (footer === -1 ? text : text.slice(0, footer)).replace(/\n-{3,}\s*$/, '').trim();
   return notes ? markdown.render(notes) : '';
 }
@@ -67,6 +75,10 @@ module.exports = async function releases() {
       // <name>` only resolves for a name that is identical across releases, so versioning the
       // filename would destroy the stable download URL the site links at.
       const dmg = (r.assets || []).find((a) => a.name === 'LOOM.dmg');
+      // The Windows installer, when this release has one. Unlike the DMG there is no fallback
+      // address: a release published before LOOM ran on Windows has no installer, and a URL built
+      // from the tag would be a 404 behind a button.
+      const win = (r.assets || []).find((a) => a.name === WINDOWS_ASSET);
       return {
         tag: r.tag_name,
         version: String(r.tag_name).replace(/^v/, ''),
@@ -78,6 +90,8 @@ module.exports = async function releases() {
           ? dmg.browser_download_url
           : `https://github.com/${REPO}/releases/download/${r.tag_name}/LOOM.dmg`,
         dmgSize: megabytes(dmg && dmg.size),
+        winUrl: win ? win.browser_download_url : null,
+        winSize: win ? megabytes(win.size) : null,
         notesHtml: releaseNotes(r.body, String(r.tag_name).replace(/^v/, '')),
       };
     });
@@ -89,6 +103,13 @@ module.exports = async function releases() {
   return {
     // The URL that never changes, and the reason the site needs no edit to ship a new version.
     latestDmgUrl: `https://github.com/${REPO}/releases/latest/download/LOOM.dmg`,
+    // ⛔ THE WINDOWS DOWNLOAD IS NOT `releases/latest/download/LOOM-Windows-Setup.exe`. "Latest"
+    // is the newest release of either platform, and a Mac-only release on top makes that URL a
+    // 404. This is the newest release that HAS the installer, with its own version and size, so
+    // the button always names what it gives you. It is null until a release carries the
+    // installer, and every page draws no Windows button while it is null. The next site build
+    // after an upload picks it up with no edit here.
+    latestWindows: published.find((r) => r.winUrl) || null,
     latest: published[0],
     older: published.slice(1),
     all: published,

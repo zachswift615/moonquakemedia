@@ -134,7 +134,7 @@ favicon: /assets/loom/favicon-32.png
   <div class="sc-hero">
     <div class="sc-eyebrow"><div class="sc-dot"></div><div class="sc-label">YOU’RE ON THE LIST</div></div>
     <h1>Here are your LOOM downloads.</h1>
-    <p>The keyboard shortcuts, with every key LOOM answers to, and mapping sheets for four MIDI controllers. Print the light shortcuts and keep them by your rig, or keep the dark ones open on a second screen. Thanks for signing up.</p>
+    <p>The keyboard shortcuts, with every key LOOM answers to, and mapping sheets for four MIDI controllers. Print the light shortcuts and keep them by your rig, or keep the dark ones open on a second screen. The shortcut sheets show the Mac keys. On Windows, press Ctrl where a sheet shows ⌘, and Alt where it shows ⌥. Thanks for signing up.</p>
   </div>
 
   <div class="sc-pdfs">
@@ -207,6 +207,7 @@ favicon: /assets/loom/favicon-32.png
     <div style="display:flex;flex-direction:column;gap:14px;">
       <div class="sc-label">IF YOU LEARN ONLY FOUR</div>
       <h2 class="sc-h">Start with these.</h2>
+      <p style="margin:0;font-size:15px;line-height:1.55;color:#8A9099;">These are the Mac keys. On Windows, press Ctrl where you see ⌘.</p>
     </div>
     <div class="sc-keys">
       <div class="sc-key">
@@ -227,7 +228,7 @@ favicon: /assets/loom/favicon-32.png
       <div class="sc-key">
         <div class="sc-caps"><span class="sc-cap sc-sym">⌘</span><span class="sc-cap">/</span></div>
         <div class="sc-key-what">Open the User Guide</div>
-        <div class="sc-key-why">The full manual, as a PDF on your Mac. It opens with no internet.</div>
+        <div class="sc-key-why">The full manual, as a PDF on your computer. It opens with no internet.</div>
       </div>
     </div>
   </div>
@@ -242,9 +243,14 @@ favicon: /assets/loom/favicon-32.png
         <div class="sc-label" style="color:#35D07F;">FREE FOR 14 DAYS</div>
         <h3>Haven’t tried LOOM yet?</h3>
         <p>The trial has every feature unlocked, with no watermark, no account and no card. When it ends, a licence is a one-time purchase.</p>
-        <div class="sc-label" style="letter-spacing:0.06em;color:#6B7078;">{{ releases.latest.version }} · {{ releases.latest.dmgSize }} · APPLE SILICON · MACOS 13.3+</div>
         <div class="sc-spacer"></div>
+        <div class="sc-label" style="letter-spacing:0.06em;color:#6B7078;">{{ releases.latest.version }} · {{ releases.latest.dmgSize }} · APPLE SILICON · MACOS 13.3+</div>
         <a class="sc-btn sc-btn-green" href="{{ releases.latestDmgUrl }}">DOWNLOAD FOR MACOS</a>
+        {%- if releases.latestWindows %}
+        <div class="sc-label" style="letter-spacing:0.06em;color:#6B7078;">{{ releases.latestWindows.version }} · {{ releases.latestWindows.winSize }} · WINDOWS 10+ · 64-BIT</div>
+        <a class="sc-btn sc-btn-green" href="{{ releases.latestWindows.winUrl }}">DOWNLOAD FOR WINDOWS</a>
+        <p>The signing certificate is new, so Windows SmartScreen may warn you before the installer runs. Choose More info, then Run anyway.</p>
+        {%- endif %}
       </div>
       <div class="sc-card">
         <div class="sc-label" style="color:#4CC9F0;">THE FULL OVERVIEW</div>

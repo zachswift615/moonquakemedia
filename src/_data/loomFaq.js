@@ -16,8 +16,8 @@ module.exports = [
     a: `${price} It is a one-time purchase, not a subscription, and the licence never expires. You can try every feature free for 14 days first, with no account and no card.`,
   },
   {
-    q: 'What Macs does LOOM run on?',
-    a: 'LOOM runs on Macs with Apple Silicon, on macOS 13.3 Ventura or later. There is no Intel build and no iPad version. A Windows version is coming.',
+    q: 'What computers does LOOM run on?',
+    a: 'LOOM runs on Macs with Apple Silicon, on macOS 13.3 Ventura or later, and on 64-bit (x64) PCs with Windows 10 or later. There is no build for Intel Macs and no iPad version. One licence covers LOOM on both Mac and Windows, with the same price and the same 14-day trial. On Windows, the keyboard shortcuts use Ctrl where the Mac uses Command.',
   },
   {
     q: 'Does LOOM need an internet connection?',
@@ -31,7 +31,7 @@ module.exports = [
   },
   {
     q: 'Can I use my own plug-ins in LOOM?',
-    a: 'Yes, if they are Audio Unit or VST3 plug-ins. Put an effect in any slot of a loop track, an input or an instrument track, or choose an instrument plug-in for an instrument track. Each plug-in runs in a helper process of its own, outside LOOM. If a plug-in crashes or stops responding, an effect passes its input through unchanged, or an instrument goes quiet, while LOOM restarts the plug-in with its last settings. LOOM also has its own synth, drum machine and sampler, and its own effects: parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner.',
+    a: 'Yes. On a Mac, LOOM hosts Audio Unit and VST3 plug-ins. On Windows, it hosts VST3 plug-ins. Put an effect in any slot of a loop track, an input or an instrument track, or choose an instrument plug-in for an instrument track. Each plug-in runs in a helper process of its own, outside LOOM. If a plug-in crashes or stops responding, an effect passes its input through unchanged, or an instrument goes quiet, while LOOM restarts the plug-in with its last settings. LOOM also has its own synth, drum machine and sampler, and its own effects: parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner.',
     link: { href: '/loom/manual/plugins/', text: 'Plugins in the manual' },
   },
   {

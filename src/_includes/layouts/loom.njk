@@ -83,7 +83,7 @@ layout: layouts/base.njk
     <div style="padding:104px 0 0;display:flex;flex-direction:column;gap:34px;">
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:7px;height:7px;border-radius:2px;background:#35D07F;flex:none;"></div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.2em;color:#8A9099;">LIVE LOOPER FOR MACOS</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.2em;color:#8A9099;">LIVE LOOPER FOR MAC AND WINDOWS</div>
       </div>
       <h1 style="margin:0;font-size:clamp(46px,6.4vw,88px);font-weight:700;letter-spacing:-0.035em;line-height:0.98;max-width:15ch;text-wrap:balance;">A loop station that plays itself.</h1>
       <p style="margin:0;font-size:clamp(18px,2vw,23px);line-height:1.5;color:#C7CDD4;max-width:60ch;text-wrap:pretty;">Record and overdub on five audio tracks like you would on a hardware looper, and loop a synth, drums, a sampler or your own instrument plug-ins on four more. Then draw the same moves on a timeline, and the song presses its own buttons while you play. It’s one engine underneath, so everything you learn looping live works the same way in the arrangement.</p>
@@ -93,23 +93,33 @@ layout: layouts/base.njk
      page — strictly worse than an anchor, for no gain: unlike /loom/buy, this URL is not compiled
      into any shipped binary, so there is nothing to protect from becoming unchangeable. The
      `latest/download/LOOM.dmg` form resolves to the newest release forever, which is why
-     publishing a version needs no edit here. -->
+     publishing a version needs no edit here. The Windows button cannot use that form, because
+     a Mac-only release on top would make it a 404: it links the newest release that has the
+     installer (`releases.latestWindows`, src/_data/releases.js), and is not drawn until one does. -->
         <a href="{{ releases.latestDmgUrl }}" style="padding:15px 28px;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD FOR MACOS</a>
+        {%- if releases.latestWindows %}
+        <a href="{{ releases.latestWindows.winUrl }}" style="padding:15px 28px;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD FOR WINDOWS</a>
+        {%- endif %}
         <!-- ⛔ /loom/buy AND NOT THE POLAR URL. That path is `loom::licence::kPurchaseUrl`,
      compiled into every shipped binary and unchangeable for a copy already sold, so it is the
      one place in the world that names the merchant. Pointing this button at Polar directly
      would leave that redirect exercised only by the in-app button — a path nobody tests until
      it is broken. See src/loom-buy.njk. -->
         <a href="/loom/buy" style="padding:15px 28px;border-radius:8px;background:#171A1F;border:1px solid #2C3038;color:#E8EAED;font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;letter-spacing:0.09em;">BUY A LICENCE</a>
-        <!-- ⭐ THE VERSION IS ALWAYS LABELLED "LATEST" AND IS NEVER A CHOICE HERE. Both download
+        <!-- ⭐ THE VERSION IS ALWAYS LABELLED "LATEST" AND IS NEVER A CHOICE HERE. The Mac download
              buttons resolve to releases/latest/download, so what this line names is exactly what
              the button gives you — it comes from the same `releases` data, read from the GitHub
              Releases API at build time, so the page cannot advertise a version it does not ship.
+             The Windows line names its own version only when the newest installer is older than
+             the newest release, which is the one time the two differ.
              Older builds exist and have permanent addresses, but they live on /loom/version where
              somebody has gone looking for them. Nobody should have to decide which LOOM to
              download on the page whose job is to give them LOOM. -->
-        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;color:#8A9099;">Latest ({{ releases.latest.version }}) · {{ releases.latest.dmgSize }} · 14-day free trial<br>{% include "components/loom-price.njk" %}<br>Apple Silicon · macOS 13.3+ · <a href="/loom/version">all versions</a></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;color:#8A9099;">Latest ({{ releases.latest.version }}) · 14-day free trial<br>{% include "components/loom-price.njk" %}<br>Mac: Apple Silicon · macOS 13.3+ · {{ releases.latest.dmgSize }}<br>Windows: 10 or later · 64-bit{% if releases.latestWindows %} · {% if releases.latestWindows.version != releases.latest.version %}{{ releases.latestWindows.version }} · {% endif %}{{ releases.latestWindows.winSize }}{% endif %}<br><a href="/loom/version">all versions</a></div>
       </div>
+      {%- if releases.latestWindows %}
+      <p style="margin:-16px 0 0;font-size:14px;line-height:1.55;color:#8A9099;max-width:74ch;text-wrap:pretty;">The Windows installer is signed by Zach Swift. The signing certificate is new, so Windows SmartScreen may warn you before the installer runs. Choose More info, then Run anyway.</p>
+      {%- endif %}
     </div>
 
     <!-- WHAT'S NEW IN 1.4, FIRST: one minute of the new pictures with no talking, so it is the
@@ -286,7 +296,7 @@ layout: layouts/base.njk
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Loop a synth, drums and a sampler via MIDI</h2>
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Four instrument tracks sit beside the five audio tracks. Each one plays LOOM’s synth, drum machine or sampler, or an Audio Unit or VST3 instrument plug-in, from a MIDI keyboard or pad controller, with the same ring, STOP, UNDO and CLEAR as an audio track.</p>
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">LOOM loops the notes, not the sound. Change the sound, the instrument or any setting while the loop plays, and the loop plays on with the new sound. You never have to play the part again to hear it on a different instrument.</p>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">A sound is an instrument with its settings, and it can keep the track’s effects too. Every sound is in one library, whichever instrument plays it: the synth, the drum machine, the sampler or a plug-in. Press ⌥⌘O to open the library and ⌥⌘S to save the sound you are playing.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">A sound is an instrument with its settings, and it can keep the track’s effects too. Every sound is in one library, whichever instrument plays it: the synth, the drum machine, the sampler or a plug-in. Press ⌥⌘O (Ctrl+Alt+O on Windows) to open the library and ⌥⌘S (Ctrl+Alt+S) to save the sound you are playing.</p>
       </div>
       <div>
         <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
@@ -347,7 +357,7 @@ layout: layouts/base.njk
           </div>
 
       </div>
-      <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;max-width:74ch;text-wrap:pretty;">There is not currently a piano roll, and no MIDI file import or export. LOOM’s MIDI output lights your controller’s pads, moves its faders and sends MIDI clock to your gear, but it does not send the notes your instrument tracks play.</p>
+      <p style="margin:0;font-size:15.5px;line-height:1.6;color:#8A9099;max-width:74ch;text-wrap:pretty;">There is not currently a piano roll, and no MIDI file import or export. LOOM’s MIDI output lights your controller’s pads and moves its faders, and on a Mac it sends MIDI clock to your gear, but it does not send the notes your instrument tracks play.</p>
     </div>
 
     <div id="arrange" style="scroll-margin-top:88px;padding:128px 0 0;display:flex;flex-direction:column;gap:32px;">
@@ -369,7 +379,7 @@ layout: layouts/base.njk
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
             <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Mouse or keyboard</h3>
-            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Drag a region to move it, drag an edge to trim it, and drag past the edge of the window to scroll. The arrangement has its own undo on ⌘Z, and one drag is one undo step, even if it pushed three other regions out of the way.</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Drag a region to move it, drag an edge to trim it, and drag past the edge of the window to scroll. The arrangement has its own undo on ⌘Z or Ctrl+Z, and one drag is one undo step, even if it pushed three other regions out of the way.</div>
           </div>
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
@@ -536,6 +546,7 @@ layout: layouts/base.njk
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#4CC9F0;">PLUG-INS</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Use your Audio Unit and VST3 plug-ins.</h2>
         <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">Put an effect plug-in in any slot of a loop track, an input or an instrument track, or choose an instrument plug-in for an instrument track. LOOM draws each plug-in’s controls as its own knobs, switches and lists, so you edit, map and automate them the way you do LOOM’s effects. Right-click a control and choose <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#C7CDD4;">DRAW AS</span> to draw it another way, or press <span style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#C7CDD4;">OPEN WINDOW</span> for the plug-in’s own window.</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#8A9099;text-wrap:pretty;">On a Mac, LOOM hosts Audio Unit and VST3 plug-ins. On Windows, it hosts VST3 plug-ins.</p>
         <p style="margin:0;font-size:17px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Each plug-in runs in a helper process of its own, outside LOOM. If a plug-in crashes or stops responding, an effect passes its input through unchanged, or an instrument goes quiet, while LOOM restarts the plug-in with its last settings. A plug-in that keeps crashing stops, and its drawer offers <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#C7CDD4;">RESTART</span>. <a href="/loom/manual/plugins/">Plugins in the manual</a> describes each part.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:28px;padding-top:8px;">
@@ -570,7 +581,7 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:74ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#A78BFA;">PRESETS &amp; RACKS</div>
         <h2 style="margin:0;font-size:clamp(32px,3.8vw,50px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">Save a sound. Recall it mid-song.</h2>
-        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">A preset holds one effect’s settings. A rack holds a whole chain: which effect sits in each slot, all their settings, and which slots are bypassed. LOOM comes with a library of both, and the ones you save sit right alongside them. Loading a rack swaps the whole chain at once, and ⌘Z puts it back.</p>
+        <p style="margin:0;font-size:18.5px;line-height:1.55;color:#C7CDD4;text-wrap:pretty;">A preset holds one effect’s settings. A rack holds a whole chain: which effect sits in each slot, all their settings, and which slots are bypassed. LOOM comes with a library of both, and the ones you save sit right alongside them. Loading a rack swaps the whole chain at once, and ⌘Z or Ctrl+Z puts it back.</p>
       </div>
       <div style="border:1px solid #23262C;border-radius:12px;overflow:hidden;background:#101216;box-shadow:0 40px 120px rgba(0,0,0,0.7);">
         {% shot "/assets/loom/shot-racks.png", "LOOM’s rack browser over the mixer, listing the factory racks Vocal Air, Guitar Ambient, Drum Glue, Acoustic Stage, G2B, Bass DI, Pad Wash, Octave Lead and Wide Clean, each with chips naming the effects in it, above the user’s own saved racks" %}
@@ -599,7 +610,7 @@ layout: layouts/base.njk
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
             <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">Each FX chain has its own undo</h3>
-            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">⌘Z undoes changes to the chain you’re working on, separately from the arrangement.</div>
+            <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;">⌘Z or Ctrl+Z undoes changes to the chain you’re working on, separately from the arrangement.</div>
           </div>
         
           <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #23262C;padding-top:16px;">
@@ -667,7 +678,7 @@ layout: layouts/base.njk
               <div style="width:6px;height:6px;border-radius:2px;background:#4CC9F0;flex:none;margin-top:8px;"></div>
               <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;">
                 <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;">MIDI clock out</h3>
-                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">CLOCK OUT</span> sends MIDI clock to each output you turn on, so a drum machine, an arpeggiator or a sequencer follows LOOM’s tempo and starts and stops with its transport. <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">CLOCK MODE</span> starts your gear on a pattern boundary or at LOOM’s bar. LOOM does not follow incoming clock.</div>
+                <div style="font-size:14.5px;line-height:1.55;color:#8A9099;text-wrap:pretty;"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">CLOCK OUT</span> sends MIDI clock to each output you turn on, so a drum machine, an arpeggiator or a sequencer follows LOOM’s tempo and starts and stops with its transport. <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C7CDD4;white-space:nowrap;">CLOCK MODE</span> starts your gear on a pattern boundary or at LOOM’s bar. LOOM does not follow incoming clock. LOOM for Windows does not send MIDI clock yet.</div>
               </div>
             </div>
       </div>
@@ -713,7 +724,7 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:20px;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#35D07F;">FULLY OFFLINE</div>
         <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;">The venue’s WiFi isn’t your problem.</h2>
-        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">LOOM itself never connects to the internet, at launch or at any time after. It doesn’t phone home to check your licence, and it doesn’t download anything. There’s no account or activation server. Your licence is checked right on your Mac.</p>
+        <p style="margin:0;font-size:17.5px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">LOOM itself never connects to the internet, at launch or at any time after. It doesn’t phone home to check your licence, and it doesn’t download anything. There’s no account or activation server. Your licence is checked right on your computer.</p>
         <p style="margin:0;font-size:16px;line-height:1.6;color:#8A9099;text-wrap:pretty;">In LOOM itself, the only exceptions are two buttons that open your web browser: one to buy a licence and one to check for the latest version. But these are initiated by you only. If you choose to use a third-party plug-in that connects to the internet, for example for its own licence check, that connection is the plug-in’s, not LOOM’s.</p>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#23262C;border:1px solid #23262C;border-radius:12px;overflow:hidden;">
@@ -809,7 +820,7 @@ layout: layouts/base.njk
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4CC9F0;">THE MANUAL</div>
             <h3 style="margin:0;font-size:17.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;">Built into the app</h3>
-            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Press ⌘/ to open it. It’s a PDF on your Mac, not a web page, so it opens even with no WiFi. You can also <a href="/loom/manual/">read it here</a> before you download.</div>
+            <div style="font-size:14.5px;line-height:1.6;color:#8A9099;text-wrap:pretty;">Press ⌘/ on a Mac or Ctrl+/ on Windows to open it. It’s a PDF on your computer, not a web page, so it opens even with no WiFi. You can also <a href="/loom/manual/">read it here</a> before you download.</div>
           </div>
 
           <div style="background:#0F1114;border:1px solid #23262C;border-radius:12px;padding:28px 26px 30px;display:flex;flex-direction:column;gap:11px;">
@@ -850,23 +861,28 @@ layout: layouts/base.njk
       <div style="display:flex;flex-direction:column;gap:18px;max-width:62ch;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#35D07F;">GET LOOM</div>
         <h2 style="margin:0;font-size:clamp(32px,4vw,54px);font-weight:700;letter-spacing:-0.03em;line-height:1.02;text-wrap:balance;">Fourteen days, everything unlocked.</h2>
-        <p style="margin:0;font-size:18px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">No watermarks, no session limits, no account. When the trial’s up, your licence is a small file you open once. LOOM checks it on your Mac at launch and never again, so a licence check will never interrupt you mid-set.</p>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#C7CDD4;text-wrap:pretty;">No watermarks, no session limits, no account. When the trial’s up, your licence is a small file you open once. LOOM checks it on your computer at launch and never again, so a licence check will never interrupt you mid-set.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:20px;">
         <div style="border:1px solid #2C3038;border-radius:12px;background:linear-gradient(180deg,#12201A,#0F1114);padding:30px 28px;display:flex;flex-direction:column;gap:16px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#35D07F;">STEP ONE</div>
           <h3 style="margin:0;font-size:21px;font-weight:600;letter-spacing:-0.02em;">Download and play</h3>
-          <div style="font-size:15px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Download the disk image, drag LOOM into Applications, and open it from the Applications folder.</div>
+          <div style="font-size:15px;line-height:1.55;color:#8A9099;text-wrap:pretty;">On a Mac, open the disk image, drag LOOM into Applications, and open it from the Applications folder.{% if releases.latestWindows %} On Windows, run the installer, then open LOOM from the Start menu.{% endif %}</div>
           <div style="flex:1;min-height:8px;"></div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6B7078;">LATEST · {{ releases.latest.version }} · {{ releases.latest.dmgSize }}</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6B7078;">MAC · {{ releases.latest.version }} · {{ releases.latest.dmgSize }}</div>
           <!-- Direct to GitHub Releases, for the reason written at the hero button above. -->
-          <a href="{{ releases.latestDmgUrl }}" style="padding:14px 0;text-align:center;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD .DMG</a>
+          <a href="{{ releases.latestDmgUrl }}" style="padding:14px 0;text-align:center;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD FOR MACOS</a>
+          {%- if releases.latestWindows %}
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6B7078;padding-top:4px;">WINDOWS · {{ releases.latestWindows.version }} · {{ releases.latestWindows.winSize }}</div>
+          <a href="{{ releases.latestWindows.winUrl }}" style="padding:14px 0;text-align:center;border-radius:8px;background:#35D07F;color:#08090B;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">DOWNLOAD FOR WINDOWS</a>
+          <div style="font-size:13.5px;line-height:1.5;color:#8A9099;text-wrap:pretty;">The installer is signed by Zach Swift. The signing certificate is new, so Windows SmartScreen may warn you before the installer runs. Choose More info, then Run anyway.</div>
+          {%- endif %}
         </div>
         <div style="border:1px solid #2C3038;border-radius:12px;background:#0F1114;padding:30px 28px;display:flex;flex-direction:column;gap:16px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#4CC9F0;">STEP TWO</div>
           <h3 style="margin:0;font-size:21px;font-weight:600;letter-spacing:-0.02em;">Buy a licence</h3>
           <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#C7CDD4;">{% include "components/loom-price.njk" %}</div>
-          <div style="font-size:15px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Checkout is handled by Polar. You’ll get a licence key, which you exchange for your licence file. Hang on to that file: it never expires, and moving to a new Mac is just a matter of copying it over.</div>
+          <div style="font-size:15px;line-height:1.55;color:#8A9099;text-wrap:pretty;">Checkout is handled by Polar. You’ll get a licence key, which you exchange for your licence file. Hang on to that file: it never expires, one licence covers LOOM on Mac and Windows, and moving to a new computer is just a matter of copying it over.</div>
           <div style="flex:1;min-height:8px;"></div>
           <!-- /loom/buy, for the reason written at the hero button above. -->
           <a href="/loom/buy" style="padding:14px 0;text-align:center;border-radius:8px;background:#171A1F;border:1px solid #2C3038;color:#E8EAED;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.09em;">BUY ON POLAR</a>
@@ -876,18 +892,23 @@ layout: layouts/base.njk
           <div style="display:flex;flex-direction:column;gap:0;">
             
               <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">MACOS</div>
-                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">13.3 Ventura or later</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">MAC</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">macOS 13.3 Ventura or later, on Apple Silicon only (no Intel build)</div>
               </div>
             
               <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">CHIP</div>
-                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">Apple Silicon only (no Intel build)</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">WINDOWS</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">Windows 10 or later, 64-bit (x64)</div>
               </div>
             
               <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
                 <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">AUDIO</div>
-                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">An audio interface, or the Mac’s built-in input</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">An audio interface, or your computer’s built-in input. On Windows, LOOM plays through your interface’s ASIO® driver or through Windows Audio.</div>
+              </div>
+            
+              <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.13em;color:#8A9099;width:74px;flex:none;">PLUG-INS</div>
+                <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">Audio Unit and VST3 on a Mac. VST3 on Windows.</div>
               </div>
             
               <div style="padding:11px 0;border-bottom:1px solid #1A1D22;display:flex;gap:12px;align-items:baseline;">
@@ -905,6 +926,15 @@ layout: layouts/base.njk
                 <div style="font-size:14.5px;line-height:1.45;color:#C7CDD4;flex:1;min-width:0;">{{ releases.latest.version }} (<a href="/loom/version">release history</a>)</div>
               </div>
             
+          </div>
+          <!-- ⛔ STEINBERG'S TERMS, NOT A DESIGN CHOICE. A page that says "ASIO" shows the ASIO compatible
+               logo near that mention, with Steinberg's notice word for word, and a site footer does
+               not count (Steinberg ASIO Usage Guidelines, and the licence LOOM's Windows build is
+               published under: installer/windows/ASIO_COUNTERSIGNED in the LOOM repository). The
+               artwork is Steinberg's file, unaltered. -->
+          <div style="display:flex;gap:14px;align-items:center;padding-top:6px;">
+            <img src="/assets/loom/asio-compatible.svg" alt="ASIO compatible" width="113" height="72" style="width:76px;height:auto;flex:none;display:block;">
+            <div style="font-size:12px;line-height:1.5;color:#8A9099;text-wrap:pretty;">ASIO is a trademark of Steinberg Media Technologies GmbH, registered in Europe and other countries.</div>
           </div>
         </div>
       </div>
@@ -979,13 +1009,13 @@ layout: layouts/base.njk
       "url": "{{ site.url }}/loom/",
       "applicationCategory": "MultimediaApplication",
       "applicationSubCategory": "Live looper",
-      "operatingSystem": "macOS 13.3 or later",
-      "processorRequirements": "Apple Silicon",
+      "operatingSystem": "macOS 13.3 or later, Windows 10 or later",
+      "processorRequirements": "Apple Silicon on macOS, 64-bit (x64) on Windows",
       "softwareVersion": "{{ releases.latest.version }}",
       "datePublished": "{{ ((releases.older | last) if releases.older.length else releases.latest).publishedAt | isoDate }}",
       "dateModified": "{{ releases.latest.publishedAt | isoDate }}",
-      "downloadUrl": "{{ releases.latestDmgUrl }}",
-      "installUrl": "{{ releases.latestDmgUrl }}",
+      "downloadUrl": {% if releases.latestWindows %}["{{ releases.latestDmgUrl }}", "{{ releases.latestWindows.winUrl }}"]{% else %}"{{ releases.latestDmgUrl }}"{% endif %},
+      "installUrl": {% if releases.latestWindows %}["{{ releases.latestDmgUrl }}", "{{ releases.latestWindows.winUrl }}"]{% else %}"{{ releases.latestDmgUrl }}"{% endif %},
       "releaseNotes": "{{ site.url }}/loom/version",
       "softwareHelp": { "@type": "CreativeWork", "url": "{{ site.url }}/loom/manual/" },
       "image": "{{ site.url }}/assets/loom/loom-icon.png",
@@ -1002,7 +1032,7 @@ layout: layouts/base.njk
       "featureList": [
         "Five audio loop tracks with record, overdub, replace, undo and redo",
         "Four MIDI instrument tracks that play a built-in synth, drum machine and sampler, or an instrument plug-in",
-        "Audio Unit and VST3 effect and instrument plug-ins, each in a helper process of its own, with their controls drawn as LOOM controls",
+        "VST3 effect and instrument plug-ins, and Audio Unit plug-ins on macOS, each in a helper process of its own, with their controls drawn as LOOM controls",
         "Sounds: an instrument with its settings and effects, saved and loaded from one library",
         "Arrange view: draw REC, DUB and PLAY regions and the song plays the looper",
         "Automation of faders, pans, mutes, effect and instrument parameters, settings such as delay division and amp model, presets and racks",
@@ -1011,7 +1041,7 @@ layout: layouts/base.njk
         "Parametric EQ, compressor, delay, reverb, noise gate, chorus, octave, transparent overdrive, cab, guitar amp, harmony, gain and a tuner",
         "Performance recording to separate synced WAV files",
         "Performance overlay export: a transparent video of the loops, lanes and preset changes",
-        "MIDI control of every track and the transport, with MIDI learn, eight macros per track, plug-in controls and MIDI clock out",
+        "MIDI control of every track and the transport, with MIDI learn, eight macros per track, plug-in controls and, on macOS, MIDI clock out",
         "Loops follow tempo changes: stretch, pitch like tape, or render a clean copy at the new tempo",
         "Fully offline: LOOM itself makes no network connections, and has no account and no activation server"
       ],

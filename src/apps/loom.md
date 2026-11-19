@@ -14,23 +14,23 @@ slug: loom
 title: "LOOM: A Loop Station That Plays Itself"
 # The whole <title>, written for search results: what it is, for what, and the three things
 # nothing else in the category has together. No em dash, by the owner's ruling (2026-10-01).
-seoTitle: "LOOM: Live Looper for Mac with Synth, Drums and Arranger"
+seoTitle: "LOOM: Mac and Windows Live Looper with Synth, Drums and Arranger"
 tagline: A loop station that plays itself
 # Kept under ~155 characters, which is what a search result shows before it cuts.
-description: "LOOM is a live looper for Mac with a synth, drum machine and sampler, AU and VST3 plug-ins, and an arrange view that plays the looper. Free 14-day trial."
+description: "LOOM is a live looper for Mac and Windows with a synth, drum machine, sampler, plug-ins and an arrange view that plays the looper. Free 14-day trial."
 # The link-preview card, designed at 1200 x 630 (docs/marketing/claude-design-seo-assets-prompt.md
 # in the LOOM repository). shot-looper.png was the card before it and stays where it is: platforms
 # cache an og:image by URL, and the structured data still lists it as a screenshot.
 ogImage: /images/og-loom.png
 ogImageWidth: 1200
 ogImageHeight: 630
-ogImageAlt: "LOOM, a live looper for Mac: a loop station that plays itself, beside its track rings showing PLAY, DUB and REC"
+ogImageAlt: "LOOM, a live looper for Mac and Windows: a loop station that plays itself, beside its track rings showing PLAY, DUB and REC"
 faviconSvg: /assets/loom/loom-favicon.svg
 favicon16: /assets/loom/favicon-16.png
 favicon: /assets/loom/favicon-32.png
 appleTouchIcon: /assets/loom/apple-touch-icon.png
 themeColor: "#0B0C0E"
-# LOOM is a macOS app. It has no App Store listing, so base.njk must not
+# LOOM is a Mac and Windows app. It has no App Store listing, so base.njk must not
 # advertise one — without this the page would carry the site's default
 # iOS smart-app-banner, which points at a different product entirely.
 appStoreId: false

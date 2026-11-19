@@ -23,7 +23,7 @@ permalink: /loom/version/index.html
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>LOOM {{ releases.latest.version }}: Latest Version and Release History</title>
-<meta name="description" content="Download LOOM {{ releases.latest.version }}, the latest version of the live looper for Mac, or any previous build, with the date each was released.">
+<meta name="description" content="Download LOOM {{ releases.latest.version }}, the latest version of the live looper for Mac and Windows, or any previous build, with the date each was released.">
 <link rel="canonical" href="{{ site.url }}/loom/version/">
 <link rel="icon" type="image/svg+xml" href="/assets/loom/loom-favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/loom/favicon-32.png">
@@ -130,13 +130,26 @@ permalink: /loom/version/index.html
     <p class="eyebrow">LOOM · LATEST VERSION</p>
     <h1>LOOM {{ releases.latest.version }}</h1>
     <p>Released {{ releases.latest.publishedOn }}. If the copy you are running shows
-       an older number under <strong>LOOM &rsaquo; About LOOM</strong>, this is the one to download.</p>
+       an older number under <strong>LOOM &rsaquo; About LOOM</strong> on a Mac, or
+       <strong>Help &rsaquo; About LOOM</strong> on Windows, this is the one to download.</p>
   </div>
 
   <div class="row">
-    <a class="btn" href="{{ releases.latestDmgUrl }}">DOWNLOAD LATEST &middot; {{ releases.latest.version }}</a>
+    <a class="btn" href="{{ releases.latestDmgUrl }}">DOWNLOAD FOR MACOS &middot; {{ releases.latest.version }}</a>
     <span class="meta">{{ releases.latest.dmgSize }} &middot; macOS 13.3+<br>Apple silicon &middot; 14-day trial, every feature</span>
   </div>
+  {%- if releases.latestWindows %}
+  <!-- ⛔ The newest release WITH the installer, not releases/latest: see `latestWindows` in
+       src/_data/releases.js. Its version is on the button because it can be older than the
+       heading's, when a release ships for the Mac only. -->
+  <div class="row">
+    <a class="btn" href="{{ releases.latestWindows.winUrl }}">DOWNLOAD FOR WINDOWS &middot; {{ releases.latestWindows.version }}</a>
+    <span class="meta">{{ releases.latestWindows.winSize }} &middot; Windows 10+<br>64-bit (x64) &middot; 14-day trial, every feature</span>
+  </div>
+  <p>The installer is signed by Zach Swift. The signing certificate is new, so Windows SmartScreen
+     may warn you before the installer runs. Choose <strong>More info</strong>, then
+     <strong>Run anyway</strong>.</p>
+  {%- endif %}
 
   {% if releases.latest.notesHtml %}
   <div>
@@ -149,9 +162,9 @@ permalink: /loom/version/index.html
 
   <div>
     <h2>Updating</h2>
-    <p>Download, drag it into Applications, and replace the copy that is there. Your licence file
-       is not touched — it lives outside the app, so an update never asks you to enter anything
-       again.</p>
+    <p>On a Mac, download the disk image, drag LOOM into Applications, and replace the copy that is
+       there. On Windows, close LOOM, then run the new installer. Your licence file is not touched. It
+       lives outside the app, so an update never asks you to enter anything again.</p>
   </div>
 
   {% if releases.older.length %}
@@ -162,14 +175,17 @@ permalink: /loom/version/index.html
          the same for almost everybody. Saying so costs one sentence and removes the deliberation;
          the older builds stay reachable for the person who actually has a reason. -->
     <p style="margin:0 0 18px">Kept so an old build stays reachable at a permanent address. Unless
-       you are pinning a specific version, <strong style="color:#C7CDD4">take the latest above</strong>
-       — it is the one both download buttons on the LOOM page give you.</p>
+       you are pinning a specific version, <strong style="color:#C7CDD4">take the latest above</strong>:
+       it is the one the download buttons on the LOOM page give you.</p>
     <ul>
       {% for r in releases.older %}
       <li>
         <span class="v">{{ r.version }}</span>
         <span class="d">{{ r.publishedOn }}</span>
-        <a class="dl" href="{{ r.dmgUrl }}">DOWNLOAD{% if r.dmgSize %} &middot; {{ r.dmgSize }}{% endif %}</a>
+        <a class="dl" href="{{ r.dmgUrl }}">MACOS{% if r.dmgSize %} &middot; {{ r.dmgSize }}{% endif %}</a>
+        {%- if r.winUrl %}
+        <a class="dl" href="{{ r.winUrl }}">WINDOWS{% if r.winSize %} &middot; {{ r.winSize }}{% endif %}</a>
+        {%- endif %}
         {% if r.notesHtml %}
         <details class="rn">
           <summary>Release notes</summary>
