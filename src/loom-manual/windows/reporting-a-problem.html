@@ -1,0 +1,37 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/windows/reporting-a-problem/
+manualSlug: reporting-a-problem
+manualEdition: windows
+---
+{% raw %}
+<p>If LOOM does something you did not expect, you can send a report to the person who makes it. LOOM writes the report to a file, and you send the file.</p>
+<h2 id="writing-a-report">Writing a report</h2>
+<p>Choose <strong>File ▸ Report a Problem</strong>, or press <code>Ctrl+Shift+R</code>.</p>
+<p>LOOM writes a text file to your LOOM folder and opens it. The notice line at the bottom of the window shows the file's full path. The file is named <code>loom-report-</code> followed by the date and time, so two reports never overwrite each other.</p>
+<p>Read the file before you send it. What you see in it is the whole report. When you are ready, attach it to an email to <code>support@moonquakemedia.com</code> and describe what you were doing.</p>
+<h2 id="what-is-in-the-report">What is in the report</h2>
+<p>The report has three parts.</p>
+<p><strong>What LOOM told you this session.</strong> Every message LOOM put on the notice line, newest first, with the time it appeared. This is the same text you saw at the bottom of the window.</p>
+<p><strong>The session before this one</strong>, if there was one. LOOM keeps the previous session's messages as well as the current one. If LOOM stopped unexpectedly, the report says so and includes the session that stopped, because by the time you write the report you have already restarted LOOM.</p>
+<p><strong>The loop geometry.</strong> For each track: where its loop starts, how long it is, where its read and write cursors are, how many times it has turned, and how far each pair of tracks has drifted apart. For each instrument track: how long its loop is, where its first pass began, and where the loop is now. This records what the audio engine did rather than what LOOM said about it, and it often answers a timing question on its own. It covers the current session only. To write it on its own at any time, press <code>Ctrl+Shift+G</code>.</p>
+<h2 id="what-is-not-in-the-report">What is not in the report</h2>
+<p>The report does not contain audio, recordings or any part of your songs. It does not contain your licence, your email address, or anything about your computer beyond LOOM's own version number.</p>
+<h2 id="loom-does-not-send-it">LOOM does not send it</h2>
+<p>LOOM makes no network connection. It writes the file and opens it, and nothing else happens until you attach the file to a message yourself. See <a href="/loom/manual/windows/privacy/">Privacy</a>.</p>
+<h2 id="the-session-log">The session log</h2>
+<p>The report reads from a record LOOM keeps while it runs.</p>
+<p>To read this session's record in LOOM, choose <strong>View ▸ Show Logs</strong>, press <code>Ctrl+Shift+L</code>, or press <code>LOG</code> at the right-hand end of the notice line. It shows the same messages as the report, newest first, without your having to write a report. You can select and copy any of it. See <a href="/loom/manual/windows/dialogs/#session-log">Session log</a>.</p>
+<p>The record is also kept as two files on disk. The report reads these files, and they hold the session before this one:</p>
+<ul>
+<li><code>session-log.txt</code> — this session</li>
+<li><code>session-log-previous.txt</code> — the session before it</li>
+</ul>
+<p>Both are in your LOOM folder, at <code>%APPDATA%\LOOM\</code>. LOOM keeps only these two files. When you start LOOM, the current log becomes the previous one and replaces the older file.</p>
+<p>To open that folder, type <code>%APPDATA%\LOOM</code> into the address bar of File Explorer and press <code>Enter</code>.</p>
+<p>The log records what LOOM displayed on the notice line, in the same order. It adds a line only when the notice line changes, so a message that repeats appears once, as you saw it. The log also begins with a line of its own, naming the version of LOOM you are running and the time the session started.</p>
+<h2 id="if-loom-crashes">If LOOM crashes</h2>
+<p>If LOOM stops unexpectedly, it saves a crash dump, <code>crash-minidump.dmp</code>, in the same folder as the session log, and the last line of that session's log says so. The next time you open LOOM, its new session log says that the previous session ended in a crash.</p>
+<p>Attach the crash dump to your email as well as the report. The report does not include it. The dump records where in LOOM the crash happened: what each of LOOM's threads was doing, which program files were loaded into LOOM, and the version of Windows. It does not contain your recordings or your songs.</p>
+<p>LOOM keeps one crash dump. If LOOM crashes again, the new dump replaces the old one, so send it before you go on playing.</p>
+{% endraw %}

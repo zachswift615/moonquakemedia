@@ -1,0 +1,14 @@
+---
+layout: layouts/loom-manual.njk
+permalink: /loom/manual/windows/
+manualEdition: windows
+title: LOOM User Manual for Windows
+seoTitle: "LOOM User Manual for Windows: Live Looper"
+description: "The LOOM user manual for Windows: looping, ASIO and Windows Audio devices, MIDI controllers, the arrange view, the mixer and effects, instrument tracks, recording and your licence."
+---
+<p>This is the Windows edition of the manual for LOOM {{ loomManual.windows.version }}, a live looper. It covers every control in the order you meet it on screen, starting with how to record your first loop. For the Mac, use the switch above to open the Mac edition.</p>
+<ol class="manual-toc">
+{%- for c in loomManual.windows.chapters %}
+  <li><a href="{{ c.url }}"><span class="manual-toc-title">{{ c.title }}</span> <span class="manual-toc-desc">{{ c.description }}</span></a></li>
+{%- endfor %}
+</ol>

@@ -2,6 +2,7 @@
 layout: layouts/loom-manual.njk
 permalink: /loom/manual/side-panel/
 manualSlug: side-panel
+manualEdition: mac
 ---
 {% raw %}
 <p>The side panel runs down the right edge of the window in the looper, the arrange view and the mixer. It has three modes and shows one at a time: <code>GLOBAL</code> for the song's global settings, <code>TRACK n</code> for the focused track's settings, and <code>SONG</code> for this song's own settings. The <a href="/loom/manual/top-bar/#the-panel-toggle">panel toggle</a> in the top bar hides the panel and brings it back in the mode you left it in. In the mixer, you reach a track's settings through this panel (see <a href="/loom/manual/the-mixer/">The mixer</a>).</p>
@@ -16,7 +17,7 @@ manualSlug: side-panel
 <p><code>Tab</code> and <code>⇧Tab</code> move between controls. When the scroller itself has focus, <code>Page Up</code>, <code>Page Down</code>, <code>Home</code> and <code>End</code> scroll it.</p>
 <p>Every off-screen control stays reachable from the keyboard and stays in the accessibility tree. The scrolling region and both of its scrollbars are named: <code>Song settings scroller</code>, <code>Song settings scrollbar</code> and <code>Song settings horizontal scrollbar</code> on the <code>GLOBAL</code> side, with the matching <code>Track settings</code> names on the <code>TRACK</code> side.</p>
 <h2 id="the-global-track-and-song-tabs">The GLOBAL, TRACK and SONG tabs</h2>
-<p>Three tabs run across the top edge of the panel, each in a fixed third of its width. <code>GLOBAL</code> shows the song's global settings. <code>TRACK n</code> shows the focused track's settings. It does the same thing as a strip's <code>i</code> button, so the two gestures cannot disagree. <code>SONG</code> shows this song's own settings, under the <code>ARRANGEMENT</code> and <code>MIDI</code> headings.</p>
+<p>Three tabs run across the top edge of the panel, each in a fixed third of its width. <code>GLOBAL</code> shows the song's global settings. <code>TRACK n</code> shows the focused track's settings. <code>SONG</code> shows this song's own settings, under the <code>ARRANGEMENT</code> and <code>MIDI</code> headings.</p>
 <p>The <code>TRACK</code> tab always names the focused track. It is never disabled, because there is always a focused track. Focus another strip and the tab names that one. While an instrument track has focus, the tab reads <code>INST 1</code>, <code>INST 2</code> and so on, and shows that track's settings; see <a href="/loom/manual/instrument-tracks/#the-inst-tab">Instrument tracks</a>.</p>
 <p>The active tab has white text and a 2 px cyan line under it; the other two have grey text and no line. The line tells you which mode you are in without relying on colour alone. The tabs have no box around them, so they read as part of the panel. The <code>VIEW</code> switch in the top bar keeps its box, because it changes the whole window rather than the panel.</p>
 <p>When the focus moves between a loop track and an instrument track, <code>TRACK n</code> and <code>INST n</code> change in place, so nothing moves under your pointer.</p>
@@ -108,7 +109,7 @@ manualSlug: side-panel
 </ul>
 <p>Hold the pointer over a knob to see which macro it is, for example <code>MACRO 1 on INST 1</code>. Automation and pickup keep their own marks: a macro does not change them.</p>
 <h2 id="the-global-panel">The GLOBAL panel</h2>
-<p>Everything here is the song's global default: the value a track inherits until you change it on that track. Changing a setting here does not overwrite every track. A strip you have set differently in the <code>i</code> panel keeps its own value and shows an asterisk on its <code>STOP</code> face.</p>
+<p>Everything here is the song's global default: the value a track inherits until you change it on that track. Changing a setting here does not overwrite every track. A strip you have set differently in the <code>TRACK</code> tab keeps its own value and shows an asterisk on its <code>STOP</code> face.</p>
 <div class="shot-pair"><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-settings.webp" width="309" height="602" loading="lazy" decoding="async" alt="The top of the GLOBAL panel as the window opens: its GLOBAL, TEMPO and RESPONDS TO GLOBALS sections."><figcaption>The top of the GLOBAL panel as the window opens: its GLOBAL, TEMPO and RESPONDS TO GLOBALS sections.</figcaption></figure><figure class="shot shot-pair"><img src="/assets/loom/manual/panel.global-device.webp" width="320" height="720" loading="lazy" decoding="async" alt="The GLOBAL panel's AUDIO DEVICE and MIDI sections, with no audio device open and no MIDI outputs connected."><figcaption>The GLOBAL panel's AUDIO DEVICE and MIDI sections, with no audio device open and no MIDI outputs connected.</figcaption></figure></div>
 <h3 id="global">GLOBAL</h3>
 <table>
