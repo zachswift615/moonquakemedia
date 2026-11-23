@@ -1,0 +1,40 @@
+{#- Listen2 2.0 draft: "Create a Listen2 Voice". Flow and quoted UI copy: create-voice design (Listen2 repo,
+    docs/release/2026-11-23-create-listen2-voice-design.md, sections 2.0 to 2.8). Claims 15 to 20, plan
+    section 5. Never "clone", "sounds like you" or "indistinguishable" (fact sheet, Do not claim). -#}
+{% from "components/listen2-2/slots.njk" import screenSlot, confirm %}
+    <!-- Your own voice -->
+    <section id="create-voice" style="background: #131315; border-top: 1px solid #2A2A2D; border-bottom: 1px solid #2A2A2D" aria-labelledby="l2-create">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 48px">
+        <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+          <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+            <div style="font-family: 'Atkinson Hyperlegible Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #FF66C4">Your own voice</div>
+            <h2 id="l2-create" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em">Make a voice from twenty seconds of reading</h2>
+            <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #D4D4D0">Some people would rather hear a book in a voice they know. In Listen2 2.0 you can read a short passage aloud, and Listen2 makes a voice shaped by your recording that can read any of your documents back to you.</p>
+            <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #A3A3A0">The new voice takes on the general character of the voice it heard. It is not an exact copy. You hear a sample and the voice reading a paragraph before you save it, and you can record again if you want to.</p>
+            <div><span class="l2-tag l2-tag--green">Made on your iPhone. Nothing is uploaded.</span></div>
+          </div>
+          <ol class="l2-steps" style="flex: 1 1 420px; min-width: 0">
+            <li><strong>Choose a microphone</strong><span>The iPhone microphone works. So do EarPods or another wired headset, and an audio interface, where you pick the input you are using.</span></li>
+            <li><strong>Let Listen2 hear the room</strong><span>Three seconds of quiet. The voice copies whatever it hears in the room, so Listen2 tells you if a fan or the traffic will end up in it.</span></li>
+            <li><strong>Read the passage aloud</strong><span>About twenty seconds, at your own pace. If reading and recording at the same time is hard, you can talk in your own words instead.</span></li>
+            <li><strong>Say one sentence to agree</strong><span>The person whose voice it is says it aloud, and Listen2 checks that the same person spoke both times.</span></li>
+          </ol>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+          <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+            <h3 style="margin: 0; font-size: 26px; line-height: 1.25; font-weight: 700">A voice belongs to its speaker</h3>
+            <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #A3A3A0">Before Listen2 makes a voice, the person who read the passage says this sentence:</p>
+            <blockquote style="margin: 0; display: flex; gap: 18px">
+              <div style="width: 8px; border-radius: 4px; background: #FF751F; flex-shrink: 0"></div>
+              <p style="margin: 0; font-size: 21px; line-height: 1.45">"This is my voice, and I agree to Listen2 using it to read aloud on this iPhone. Lantern, orchard, seven."</p>
+            </blockquote>
+            <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #A3A3A0">The three words at the end change every time, so an old recording cannot stand in for the speaker. If you start from an audio file instead of recording, the person in the file still says the sentence. {{ confirm("consent for audio files, design question 1") }} The check runs on your iPhone. It cannot catch every imitation, so please make voices only of people who have agreed.</p>
+          </div>
+          <div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap">
+            {{ screenSlot(listen2Voices.screens.createCard, 200) }}
+            {{ screenSlot(listen2Voices.screens.createConsent, 200) }}
+            {{ screenSlot(listen2Voices.screens.createResult, 200) }}
+          </div>
+        </div>
+      </div>
+    </section>

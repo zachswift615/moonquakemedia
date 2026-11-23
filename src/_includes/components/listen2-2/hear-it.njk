@@ -1,0 +1,62 @@
+{#- Listen2 2.0 draft: "Hear it". One paragraph full of the hard parts, read at three paces by one voice and by
+    three voices. The other-engines row is built but off (hearIt.showOtherEngines): the fact sheet says we have
+    tested no other product and must not imply a comparison. Plan section 4. -#}
+{% from "components/listen2-2/slots.njk" import audioSlot %}
+{%- set h = listen2Voices.hearIt -%}
+{%- set dir = listen2Voices.voiceDir -%}
+    <!-- Hear it -->
+    <section id="hear-it" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 40px" aria-labelledby="l2-hear">
+      <div style="max-width: 760px; display: flex; flex-direction: column; gap: 16px">
+        <div style="font-family: 'Atkinson Hyperlegible Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #FF66C4">Hear it</div>
+        <h2 id="l2-hear" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em">Listen to the hard parts</h2>
+        <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #D4D4D0">Any voice sounds fine on a line of poetry. Real documents are full of harder things: a time, a price, an initialism, a word whose sound depends on what it means. This paragraph has all of them. Read it, then hear what the Listen2 voices do with it.</p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+        <figure style="flex: 1 1 420px; min-width: 0; margin: 0; border: 1px solid #2A2A2D; border-radius: 24px; background: #131315; padding: clamp(24px, 3vw, 36px); display: flex; flex-direction: column; gap: 14px">
+          <figcaption style="font-family: 'Atkinson Hyperlegible Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #A3A3A0">The paragraph</figcaption>
+          {%- set parts = h.passage.split(" " + h.highlightWord + " ") %}
+          <p style="margin: 0; font-size: 21px; line-height: 1.5; color: #F5F5F2">{% if parts.length > 1 %}{{ parts[0] }} <span class="l2-hl">{{ h.highlightWord }}</span> {{ parts.slice(1).join(" " + h.highlightWord + " ") }}{% else %}{{ h.passage }}{% endif %}</p>
+        </figure>
+        <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 32px">
+          <div style="display: flex; flex-direction: column; gap: 14px">
+            <h3 style="margin: 0; font-size: 22px; font-weight: 700">One voice, three paces</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #A3A3A0">Pace changes how fast the voice reads, not who it sounds like. Here is {{ h.paceVoice }} at the slowest step, at Natural and at the fastest step.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px">
+              {%- for s in h.pace %}
+              {{ audioSlot("Pace " + s.label, dir + s.file, s.ready) }}
+              {%- endfor %}
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px">
+            <h3 style="margin: 0; font-size: 22px; font-weight: 700">Three voices, one paragraph</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px">
+              {%- for s in h.voices %}
+              {{ audioSlot(s.label, dir + s.file, s.ready) }}
+              {%- endfor %}
+            </div>
+          </div>
+          {%- if h.showOtherEngines %}
+          <div style="display: flex; flex-direction: column; gap: 14px">
+            <h3 style="margin: 0; font-size: 22px; font-weight: 700">The same paragraph from each kind of voice in Listen2</h3>
+            <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #A3A3A0">Listen2 has more than one kind of voice, and people like different ones. Here is the paragraph from each.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px">
+              {%- for s in h.otherEngines %}
+              {{ audioSlot(s.label, dir + s.file, s.ready) }}
+              {%- endfor %}
+            </div>
+          </div>
+          {%- endif %}
+        </div>
+      </div>
+      <details class="l2-measured" style="max-width: 860px; border-top: 1px solid #2A2A2D; border-bottom: 1px solid #2A2A2D; padding: 8px 0">
+        <summary>How we measured this</summary>
+        <p style="margin: 8px 0 0">The figures on this page come from our own test: 6,027 clips, about nine hours of speech, with the same texts and voices every time. Two speech recognizers wrote down what each clip said, and we compared that with the text. No panel of listeners was involved.</p>
+        <ul style="margin: 12px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px">
+          <li>Words read exactly as written: about 99 in 100, on old-book text and on modern text. The recognizers make mistakes of their own, so the true rate is a little better than that.</li>
+          <li>Hard modern words (brands, technical terms, recent names): 98.8 in 100 heard correctly. The list is our own, tested in 724 sentences written around those words, and it is not an industry test.</li>
+          <li>Numbers and initialisms: fewer than 1 character in 100 wrong. This depends on how Listen2 prepares the text as much as on the voice.</li>
+          <li>Skipped text: none. In 192 long paragraphs, no run of four or more words went missing.</li>
+          <li>Naturalness: an automatic score that predicts how listeners would rate a clip put the voices in the range of real human recordings. That is a machine's estimate, not a listening study.</li>
+        </ul>
+      </details>
+    </section>

@@ -1,0 +1,24 @@
+{#- Listen2 2.0 draft styles, included inside the layout's <style> block. Values come from the Listen2 brand
+    tokens (brand/tokens.json): Night #0B0B0C, Surface #131315, Border #2A2A2D, Paper #F5F5F2, Mist #A3A3A0,
+    Voice Pink #FF66C4, Offline Green #7ED957, dark highlight #006E99, radius sm 12 / md 20 / highlight 3. -#}
+.l2-slot{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+.l2-slot-name{font-size:16px;font-weight:700;color:#F5F5F2}
+.l2-slot-tag,.l2-slot-label{font-family:'Atkinson Hyperlegible Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#A3A3A0}
+.l2-slot-tag{margin-left:6px;white-space:nowrap}
+.l2-slot audio{width:100%;min-height:44px}
+.l2-slot-box{border:2px dashed #2A2A2D;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-height:44px;justify-content:center}
+.l2-slot-box code{font-family:'Atkinson Hyperlegible Mono',ui-monospace,monospace;font-size:13px;color:#FF66C4;overflow-wrap:anywhere}
+.l2-slot-box--screen{height:100%;box-sizing:border-box;border-radius:40px;padding:24px;font-size:15px;line-height:1.45;color:#A3A3A0;text-align:center;align-items:center}
+.l2-phone{flex:0 0 auto;max-width:100%;aspect-ratio:1320 / 2868;box-sizing:border-box;padding:9px;border-radius:48px;background:#1C1C1E;border:1px solid #3A3A3D}
+.l2-confirm{display:inline-block;margin:0 4px;padding:2px 8px;border-radius:9999px;border:1px dashed #FF66C4;font-family:'Atkinson Hyperlegible Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:0.04em;color:#FF66C4;vertical-align:middle;line-height:1.5}
+.l2-tag{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:9999px;font-size:14px;font-weight:700;text-decoration:none}
+.l2-tag::before{content:"";width:8px;height:8px;border-radius:4px;background:currentColor}
+.l2-tag--pink{background:rgba(255,102,196,0.14);color:#FF66C4}
+.l2-tag--green{background:rgba(126,217,87,0.14);color:#7ED957}
+.l2-hl{background:#006E99;color:#FFFFFF;border-radius:3px;padding:0 4px}
+.l2-steps{margin:0;padding:0;list-style:none;counter-reset:l2step;display:flex;flex-direction:column;gap:16px}
+.l2-steps li{counter-increment:l2step;display:grid;grid-template-columns:40px 1fr;gap:4px 14px;font-size:17px;line-height:1.55;color:#A3A3A0}
+.l2-steps li::before{content:counter(l2step);grid-row:span 2;width:40px;height:40px;border-radius:20px;border:2px solid #FF66C4;color:#FF66C4;font-weight:700;display:flex;align-items:center;justify-content:center}
+.l2-steps strong{color:#F5F5F2;font-size:18px}
+.l2-measured summary{font-size:18px;font-weight:700;padding:10px 0;display:block;color:#F5F5F2}
+.l2-measured p,.l2-measured li{font-size:16px;line-height:1.6;color:#A3A3A0}
