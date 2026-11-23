@@ -1,7 +1,7 @@
 {
-  "$comment": "Listen2 2.0 page data. voiceCount stays the literal token until the roster is final; never put a guessed number here. Set ready: true on a slot when its file is at its path. showBluetoothCard stays false until the playback QA passes on a device and in the car (Zach, 2026-11-23); while false, the car and Bluetooth card and its intro sentence are not rendered. Plan: docs/plans/2026-11-23-listen2-2.0-site-plan.md showPronunciationCard stays false while language coverage is on hold (Zach, 2026-11-23). Each roster voice has an accent field (American, British, or another such as Scottish where confirmed); Zach labels them by ear, so it stays null until he does. Never guess.",
+  "$comment": "Listen2 2.0 page data. voiceCount stays the literal token until the roster is final; never put a guessed number here. Set ready: true on a slot when its file is at its path. showBluetoothCard stays false until the playback QA passes on a device and in the car (Zach, 2026-11-23); while false, the car and Bluetooth card and its intro sentence are not rendered. Plan: docs/plans/2026-11-23-listen2-2.0-site-plan.md showPronunciationCard is true: the language coverage question is answered (plan, question 7). Each roster voice has an accent field (American, British, or another such as Scottish where confirmed); Zach labels them by ear, so it stays null until he does. Never guess.",
   "showBluetoothCard": false,
-  "showPronunciationCard": false,
+  "showPronunciationCard": true,
   "voiceCount": "{{VOICE_COUNT}}",
   "voiceDir": "/assets/listen2/voices/",
   "sampleText": "Chapter one. On the morning of the 3rd of May, I read the letter twice before I opened the window. It said the house had been empty for forty-two years.",
