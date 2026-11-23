@@ -1,17 +1,18 @@
-{#- Listen2 2.0 draft: the Listen2 voices block, first inside the Voices section. One sample slot per voice from
-    src/_data/listen2Voices.json. Claims 2, 3, 4, 6: plan section 5. No accent labels (fact sheet: do not
-    advertise accents for this engine). -#}
+{#- Listen2 2.0 draft: the Listen2 Voices block, first inside the Voices section. One sample slot per voice from
+    src/_data/listen2Voices.json. Claims 2, 3, 4, 6: plan section 5. Accent labels (Zach, 2026-11-23): each voice
+    is labelled American or British, or another accent such as Scottish where confirmed, from the roster's
+    "accent" field. Zach is labelling them by ear: leave "accent" null until he does; never guess. -#}
 {% from "components/listen2-2/slots.njk" import audioSlot %}
         <div id="listen2-voices" style="display: flex; flex-direction: column; gap: 16px">
           <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px">
-            <h3 style="margin: 0; font-size: 22px; font-weight: 700"><span style="display: inline-block; width: 10px; height: 10px; border-radius: 5px; background: #FF66C4; margin-right: 10px; vertical-align: middle"></span>Listen2 voices</h3>
+            <h3 style="margin: 0; font-size: 22px; font-weight: 700"><span style="display: inline-block; width: 10px; height: 10px; border-radius: 5px; background: #FF66C4; margin-right: 10px; vertical-align: middle"></span>Listen2 Voices</h3>
             <span style="font-size: 16px; color: #A3A3A0">{{ listen2Voices.voiceCount }} English voices from our own engine, new in 2.0</span>
           </div>
           <p style="margin: 0; max-width: 820px; font-size: 17px; line-height: 1.6; color: #D4D4D0">We trained this engine ourselves, from scratch, on 7,410 hours of speech from 7,924 speakers. It runs entirely on your iPhone, with no account and no network needed to speak, so no audio or text leaves your phone. In our tests it read about 99 of every 100 words exactly as written, on old books and on modern text alike, and in nine hours of test reading it did not skip a clause.</p>
           <p style="margin: 0; max-width: 820px; font-size: 16px; line-height: 1.55; color: #A3A3A0">Every voice below reads the same short passage, as the app makes it, so you can compare the voices and not the texts.</p>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px 20px">
             {%- for v in listen2Voices.roster %}
-            {{ audioSlot(v.name, listen2Voices.voiceDir + v.id + ".m4a", v.ready, (not v.nameFinal) and "Name not final") }}
+            {{ audioSlot(v.name + (v.accent and (" <span class=\"l2-slot-tag\">" + v.accent + "</span>") or ""), listen2Voices.voiceDir + v.id + ".m4a", v.ready, (not v.nameFinal) and "Name not final") }}
             {%- endfor %}
           </div>
         </div>
