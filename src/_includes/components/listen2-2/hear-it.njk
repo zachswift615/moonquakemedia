@@ -20,7 +20,7 @@
         <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 32px">
           <div style="display: flex; flex-direction: column; gap: 14px">
             <h3 style="margin: 0; font-size: 22px; font-weight: 700">One voice, three paces</h3>
-            <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #A3A3A0">Pace changes how fast the voice reads, not who it sounds like. Here is {{ h.paceVoice }} at the slowest step, at Natural and at the fastest step.</p>
+            <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #A3A3A0">Pace changes how fast the voice reads, not who it sounds like. Here is {{ h.paceVoice }} at the slowest step, at Normal and at the fastest step.</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px">
               {%- for s in h.pace %}
               {{ audioSlot("Pace " + s.label, dir + s.file, s.ready) }}
