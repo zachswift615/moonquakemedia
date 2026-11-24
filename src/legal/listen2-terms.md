@@ -47,6 +47,8 @@ The Listen2 speech model, the Listen2 Voices, their voice files and the software
 - run them outside the App, or build another product or service with them;
 - use the App's audio output, or any recording of it, to train, fine-tune, evaluate or improve any speech, voice or other machine learning model, or to build a dataset for that purpose.
 
+These limits do not apply to the parts made by others under open licences, which are described under "Voices and components from other makers".
+
 ## Using the audio Listen2 makes
 
 You may listen to anything the App reads. The App does not offer an audio export. If you record what it reads, for example with a screen recording, you may use that recording only under these rules:
@@ -110,23 +112,38 @@ We may add, change or retire voices, including voices from other makers. If a vo
 
 ## Voices and components from other makers
 
-Some voices and parts of the App are made by others and are used under their own licences. They are listed with their licences under Settings, then About, then Acknowledgements. By using them, you agree to follow those licences as they apply to you.
+The App's voices come from these sources:
 
-The Supertonic voices use a model licensed under the OpenRAIL-M licence, which sets limits on how the model and its output may be used. When you use those voices, you agree not to use them, or the audio they make:
+- **Listen2 Voices** are made by Moonquake Media with our own speech model. The model's audio decoder is a modified version of the Mimi codec by Kyutai, licensed under the Creative Commons Attribution 4.0 licence, and the software that runs it is based on Gradium's xn-ptts, licensed under the MIT or Apache 2.0 licence.
+- **Supertonic voices** use the Supertonic model by Supertone, licensed under the BigScience OpenRAIL-M licence.
+- **Phonon voices** use the Phonon model and voices by Gradium, licensed under the Apache 2.0 licence.
+- **Kokoro voices** use the Kokoro model and voices by hexgrad, licensed under the Apache 2.0 licence.
+- **Piper-format voices** are voices in the format of the Piper project. Each is offered under the licence of the recordings it was trained on, such as public domain, CC0, Creative Commons Attribution, M-AILABS or the Jenny dataset licence.
+- **Apple voices** are part of your device's operating system and are covered by Apple's terms.
 
-- in any way that breaks a law or regulation;
-- to exploit or harm minors;
-- to make or spread false information meant to harm others;
-- to make or spread personal information that could be used to harm someone;
-- to publish machine-generated content without clearly saying that it is machine-generated;
-- to defame, disparage or harass others;
-- to impersonate anyone without their consent;
-- for fully automated decisions that harm a person's legal rights or create binding obligations;
-- to discriminate against or harm people based on their social behaviour, their personal characteristics or any legally protected characteristic, or to exploit the vulnerabilities of a group;
-- to give medical advice or interpret medical results;
-- to produce information for the administration of justice, law enforcement or immigration and asylum decisions, including predicting crime.
+These voices, and the other software in the App made by others, are listed with their licences under Settings, then About, then Acknowledgements. The full licence texts and copyright notices are there too, and you can read them without a connection. By using a voice or component, you agree to follow its licence as it applies to you.
 
-The full licence is linked from the Acknowledgements screen.
+Nothing in these Terms limits any right that an open-source or Creative Commons licence gives you in the part of the App it covers. Where such a licence conflicts with these Terms for that part, the licence applies to it.
+
+### Rules for the Supertonic voices
+
+The OpenRAIL-M licence requires us to pass its use restrictions on to you. When you use the Supertonic voices, you agree not to use them, or the audio they make:
+
+- in any way that violates any applicable national, federal, state, local or international law or regulation;
+- to exploit or harm minors in any way, or to try to;
+- to make or spread verifiably false information or content meant to harm others;
+- to make or spread personal information that can be used to harm a person;
+- to make or spread content, or place it in any context, without clearly saying that it is machine-generated;
+- to defame, disparage or otherwise harass others;
+- to impersonate or try to impersonate others without their consent, for example with deepfakes;
+- for fully automated decision-making that adversely affects a person's legal rights or creates or changes a binding, enforceable obligation;
+- for any use meant to, or that has the effect of, discriminating against or harming people or groups based on their online or offline social behaviour or their known or predicted personal or personality characteristics;
+- to exploit the vulnerabilities of a specific group of people, based on their age or their social, physical or mental characteristics, in a way that materially distorts the behaviour of a person in that group and causes or is likely to cause that person or someone else physical or psychological harm;
+- for any use meant to, or that has the effect of, discriminating against people or groups based on legally protected characteristics or categories;
+- to provide medical advice or interpret medical results;
+- to make or spread information for use in the administration of justice, law enforcement, or immigration or asylum processes, such as predicting that a person will commit fraud or a crime.
+
+### Voice files from Supertone's Voice Builder
 
 You may also import voice files made with Supertone's Voice Builder. That service is run by Supertone under its own terms, and the rules in "Your Listen2 Voices" apply to any voice you import in the same way as to a voice you make in the App.
 
