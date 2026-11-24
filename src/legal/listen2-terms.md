@@ -208,4 +208,4 @@ Questions about these Terms:
 
 **Website:** [moonquakemedia.com](https://moonquakemedia.com)
 
-**Developer:** Moonquake Media, [ZACH: postal address for Apple's EULA terms]
+**Developer:** Moonquake Media, 37027
