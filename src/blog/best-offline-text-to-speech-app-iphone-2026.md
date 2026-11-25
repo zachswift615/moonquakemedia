@@ -1,85 +1,68 @@
 ---
 title: "The Best Offline Text-to-Speech App for iPhone in 2026"
 date: 2026-02-25
-description: "Looking for offline text to speech on iOS? Listen2 runs two neural TTS engines entirely on-device — no internet, no cloud, no subscription. 10 languages."
+updated: 2026-11-25T12:00:00-06:00
+description: "Looking for offline text to speech on iPhone? Listen2 reads PDFs, books and articles aloud with natural voices that run on the phone itself. No internet, no account."
 tags:
   - review
   - tts
   - listen2
-excerpt: "You are on a plane. You have a two-hour flight and a 30-page report you need to get through before landing. You open your text-to-speech app and hit play. Nothing happens. The app needs an internet connection to access its voices."
+excerpt: "You are on a plane with a two-hour flight and a 30-page report to get through before landing. You open your text-to-speech app and press play. Nothing happens, because the voices live on a server."
+ogImage: /images/listen2-og.png
 ---
 
-You are on a plane. You have a two-hour flight and a 30-page report you need to get through before landing. You open your text-to-speech app and hit play. Nothing happens. The app needs an internet connection to access its voices.
+You are on a plane. You have a two-hour flight and a 30-page report you need to get through before landing. You open your text-to-speech app and press play. Nothing happens. The app needs an internet connection to reach its voices.
 
-This is the fundamental problem with most TTS apps in 2026. The best-sounding voices live on remote servers. Companies like Speechify, NaturalReader, and ElevenLabs process your text in the cloud, which means when you lose your connection — on a plane, in a subway, in a rural area, or just in a building with thick walls — the app becomes useless.
+This is the usual trade with text-to-speech apps. The voices that sound human run on someone else's servers, so your text is sent away to be read and the app stops working when the connection does: on a plane, in a subway, in the mountains, or in a building with thick walls. The voices built into iOS do work offline, but many apps can only offer the older, flatter ones.
 
-The built-in iOS voices work offline, but they sound flat and robotic compared to modern neural voices. You should not have to choose between voice quality and reliability.
+You should not have to choose between a voice you can stand to listen to and an app that works everywhere.
 
-## What Makes a Good Offline TTS App
+## What to Look For in an Offline Text-to-Speech App
 
-Before looking at any specific app, here is what actually matters for offline text-to-speech:
+Here is what matters, whichever app you end up with:
 
-- **Voice quality** — Neural voices that sound natural, not the choppy, monotone voices of five years ago
-- **True offline capability** — Not "mostly offline" or "some voices work offline." Everything should work without any connection
-- **Language support** — Multiple languages with natural pronunciation, not just English
-- **Format support** — The app should handle PDFs, EPUBs, Word docs, and other common formats
-- **No subscription** — If you are paying monthly for something that runs on your own device, something is wrong
+- **Everything works offline.** Not "some voices" or "after a sync". Turn on airplane mode and try it before you rely on it.
+- **The voices sound like people.** You will be listening for hours. A voice that is tiring after ten minutes is not a real option.
+- **It reads the page as written.** A voice that skips a sentence or stumbles on a number is worse than no voice, because you do not know what you missed.
+- **It opens your files.** PDFs, EPUB books, Word documents and web articles, without converting them first.
+- **You can follow along.** Seeing each word highlighted as it is spoken makes it much easier to keep your place.
+- **Your reading stays private.** If the voices run on the phone, your documents never have to leave it.
 
-## Listen2: Two Neural Engines, Zero Internet
+## Listen2: Every Voice Runs on Your iPhone
 
-[Listen2](https://apps.apple.com/us/app/listen-2-reader/id6755753624) runs two fully offline neural TTS engines on your iPhone: **Piper** and **Supertonic**.
+[Listen2](/apps/listen2/) is the app I build, and it was built around that list. Every voice in it runs on the iPhone itself. There is no account, and nothing you read is sent anywhere.
 
-**Piper** is an open-source neural TTS engine that delivers natural-sounding voices across multiple languages. The voices are compact enough to run efficiently on mobile hardware while still sounding remarkably human — with natural pacing, intonation, and rhythm.
+Version 2.0, released in November 2026, added voices of our own. We trained the voice model ourselves, from the ground up, and 34 English voices come with the app, so you can press play as soon as it is installed. They were trained on the things reading voices usually get wrong: product names, initialisms, numbers and dates. In our testing, about 99 words in 100 came back exactly as written, and in nine hours of test reading they did not skip a single clause.
 
-**Supertonic** is Listen2's custom engine optimized for clarity and expressiveness. It supports fine-grained voice tuning so you can adjust how the voice sounds to your preference.
+There are more voices if you want them, all running on the phone:
 
-Both engines run entirely on the Neural Engine and CPU of your iPhone. No network requests. No cloud processing. No fallback to a server when things get complex. Your text never leaves your device.
+- **Phonon** adds 25 English voices with American and British accents, as a free download.
+- **Supertonic** has 10 voices, and each one reads 13 languages: English, Spanish, Portuguese, Italian, French, German, Hungarian, Turkish, Swedish, Russian, Greek, Hindi and Vietnamese. The same voice can take you from an English novel to a German newspaper.
+- **Apple's Premium and Enhanced voices** are available too, and they cover nearly every language.
 
-## 10 Languages with Downloadable Voices
+Download a voice once and it works anywhere after that.
 
-Listen2 currently supports voices in 10 languages:
+## It Reads What You Already Have
 
-- **English** (multiple accents and speakers)
-- **Spanish**
-- **French**
-- **German**
-- **Italian**
-- **Swedish**
-- **Hungarian**
-- **Russian**
-- **Vietnamese**
-- **Portuguese**
+Listen2 opens PDFs, EPUB books, Word documents, plain text and web articles. Two-column papers are read in the right order, and books keep their chapters. Each word is highlighted as it is spoken, with every voice, so your eyes and your ears stay in the same place. If you look away, you can find your spot again at a glance.
 
-Each language has multiple voice options. You download a voice once — typically 15 to 80 MB depending on quality — and it is available permanently. No re-downloading, no expiration, no "premium tier" voices that require a subscription.
+You can also group documents into a collection and listen to them one after another, like a [personal podcast](/blog/turn-saved-articles-into-personal-podcast/).
 
-## Voice Tuning and Pronunciation
+## Make the Voice Read It Your Way
 
-Most TTS apps give you a speed slider and call it a day. Listen2 goes deeper. You can adjust:
+Most apps give you a speed slider and stop there. Listen2 has speed from 0.5x to 2.5x, and it goes further:
 
-- **Expressiveness** — How much the voice varies its pitch and energy
-- **Pacing** — The rhythm and timing of speech, separate from raw speed
-- **Articulation** — How clearly consonants and syllables are pronounced
+- **Voice Profile.** Each Listen2 voice has a Pace control for how fast it speaks and a Liveliness control for how much it rises and falls. Slower for a contract, livelier for a novel.
+- **Pronunciation rules.** When a name comes out wrong, write it the way it sounds, such as SEER-shuh, and the voice says that from then on.
+- **Words with two readings.** English has many words that are spelled one way and said two ways: read, lead, tear, record. The Listen2 voices say them the way the sentence means them.
+- **Your own voice.** Read a short passage aloud and Listen2 makes a voice shaped by your recording, on your phone. It can then read any document to you.
 
-You can also set **pronunciation rules** for specific names and terms. If you regularly read documents that mention "Nguyen" or "CRISPR" or a client name that every TTS engine gets wrong, you can teach Listen2 the correct pronunciation once and it will remember.
+## What It Costs
 
-## What You Get for $24.99
-
-Listen2 is a one-time purchase. Not $24.99 per month. Not $24.99 per year. One payment, and you own the app. There is a full-featured 7-day free trial so you can test everything before paying.
-
-For context, Speechify charges $139 per year. NaturalReader charges $99 per year. Voice Dream Reader recently moved to a subscription model as well. Over two years, Listen2 costs less than two months of Speechify.
-
-There is no account to create. No email to enter. No tracking of any kind. You download the app, try it for a week, and decide. That is it.
-
-## Beyond Basic TTS
-
-Listen2 is not just a "paste text and press play" app. It includes:
-
-- **Word-level highlighting** — Every word lights up as it is spoken, improving comprehension and making it easy to follow along
-- **Collections** — Group documents into playlists with narrated intros and transition chimes, like a [personal podcast](/blog/turn-saved-articles-into-personal-podcast/)
-- **DAISY book support** — The accessibility-focused audiobook format used by libraries and organizations serving readers with disabilities
-- **Multi-format import** — PDF (with smart text extraction), EPUB (with chapter detection), DOCX, plain text, Markdown, and clipboard
-- **Bookmarks and full-text search** across your entire library
+Listen2 is free to try for seven days with everything unlocked. After that it is a single purchase of $24.99. There is no subscription, nothing is metered by the hour, and there is no account to create.
 
 ## The Bottom Line
 
-If you need text-to-speech that works everywhere — on planes, in tunnels, in the middle of a national park — the answer is an app that does not depend on the internet at all. [Listen2](/apps/listen2/) puts two neural TTS engines on your device, supports 10 languages, and costs less than a single month of most competitors. [Try it free for 7 days](https://apps.apple.com/us/app/listen-2-reader/id6755753624) and hear the difference. For specific use cases, see how to [listen to PDFs on your iPhone](/blog/how-to-listen-to-pdfs-on-your-iphone/) or learn about Listen2's [full VoiceOver accessibility support](/blog/listen2-voiceover-accessibility/).
+If you need text to speech that works on a plane, in a tunnel or in the middle of a national park, pick an app that does not depend on the internet at all, and test it in airplane mode before you trust it. [Listen2](/apps/listen2/) runs every voice on your iPhone, reads the page as written and highlights each word as it goes. [Try it free for seven days](https://apps.apple.com/us/app/listen-2-reader/id6755753624).
+
+For specific uses, see how to [listen to PDFs on your iPhone](/blog/how-to-listen-to-pdfs-on-your-iphone/), or read about [using Listen2 with VoiceOver](/blog/listen2-voiceover-accessibility/).
