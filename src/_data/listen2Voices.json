@@ -1,0 +1,298 @@
+{
+  "$comment": "Listen2 2.0 page data. roster = the 34 voices of the shipped engine manifest (Listen2 repo, BundledAssets/Listen2Engine/listen2-engine-manifest.json), in its order; accent from the voice's locale. Each sample is /assets/listen2/samples/listen2-<id>.mp3, the same file the app plays (the rainbow sentence). showHearIt stays false until the hear-it clips exist (hearIt.*.ready). A screenshot slot renders nothing until its ready flag is true. showBluetoothCard is true: the car and Bluetooth fixes shipped in 2.0.0 (WHATS_NEW). Plan: docs/plans/2026-11-23-listen2-2.0-site-plan.md",
+  "showBluetoothCard": true,
+  "showPronunciationCard": true,
+  "voiceCount": "34",
+  "voiceDir": "/assets/listen2/samples/",
+  "roster": [
+    {
+      "id": "zach",
+      "name": "Zach",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "graham",
+      "name": "Graham",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "jess",
+      "name": "Jess",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "walt",
+      "name": "Walt",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "marcus",
+      "name": "Marcus",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "larry",
+      "name": "Larry",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "dana",
+      "name": "Dana",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "ivy",
+      "name": "Ivy",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "claire",
+      "name": "Claire",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "naomi",
+      "name": "Naomi",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "nina",
+      "name": "Nina",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "paige",
+      "name": "Paige",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "eleanor",
+      "name": "Eleanor",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "charlotte",
+      "name": "Charlotte",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "daniel",
+      "name": "Daniel",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "clayton",
+      "name": "Clayton",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "tyler",
+      "name": "Tyler",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "tom",
+      "name": "Tom",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "owen",
+      "name": "Owen",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "cole",
+      "name": "Cole",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "gary",
+      "name": "Gary",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "callum",
+      "name": "Callum",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "oliver",
+      "name": "Oliver",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "joanne",
+      "name": "Joanne",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "audrey",
+      "name": "Audrey",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "helen",
+      "name": "Helen",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "megan",
+      "name": "Megan",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "wesley",
+      "name": "Wesley",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "howard",
+      "name": "Howard",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "ambrose",
+      "name": "Ambrose",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "clement",
+      "name": "Clement",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "stanley",
+      "name": "Stanley",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "bronwyn",
+      "name": "Bronwyn",
+      "accent": "Australian",
+      "ready": true
+    },
+    {
+      "id": "tahlia",
+      "name": "Tahlia",
+      "accent": "Australian",
+      "ready": true
+    }
+  ],
+  "hearIt": {
+    "passage": "Last Tuesday I read the 42-page PDF on the 7:45 train. Today I will read it again, because the lead engineer found lead in the 1920s pipes, and the repair will cost $18,400. Her résumé lists six years at NASA and two at the FDA.",
+    "highlightWord": "lead",
+    "pace": [
+      {
+        "label": "Slowest",
+        "file": "hear-it/pace-slowest--VOICE.m4a",
+        "ready": false
+      },
+      {
+        "label": "Normal",
+        "file": "hear-it/pace-normal--VOICE.m4a",
+        "ready": false
+      },
+      {
+        "label": "Fastest",
+        "file": "hear-it/pace-fastest--VOICE.m4a",
+        "ready": false
+      }
+    ],
+    "paceVoice": "Voice to be chosen",
+    "voices": [
+      {
+        "label": "Voice to be chosen",
+        "file": "hear-it/voice--VOICE-1.m4a",
+        "ready": false
+      },
+      {
+        "label": "Voice to be chosen",
+        "file": "hear-it/voice--VOICE-2.m4a",
+        "ready": false
+      },
+      {
+        "label": "Voice to be chosen",
+        "file": "hear-it/voice--VOICE-3.m4a",
+        "ready": false
+      }
+    ],
+    "showOtherEngines": false,
+    "otherEngines": [
+      {
+        "label": "Listen2 voice",
+        "file": "hear-it/engine--listen2-VOICE.m4a",
+        "ready": false
+      },
+      {
+        "label": "Phonon",
+        "file": "hear-it/engine--phonon-VOICE.m4a",
+        "ready": false
+      },
+      {
+        "label": "Supertonic",
+        "file": "hear-it/engine--supertonic-VOICE.m4a",
+        "ready": false
+      },
+      {
+        "label": "Apple Premium",
+        "file": "hear-it/engine--apple-VOICE.m4a",
+        "ready": false
+      }
+    ]
+  },
+  "screens": {
+    "voiceProfile": {
+      "file": "/assets/listen2/web/voice-profile.webp",
+      "alt": "A Listen2 voice's Voice Profile, with the Pace and Liveliness settings",
+      "ready": false
+    },
+    "createCard": {
+      "file": "/assets/listen2/web/create-voice-card.webp",
+      "alt": "The Create a Listen2 Voice card at the top of the Voice Library",
+      "ready": false
+    },
+    "createConsent": {
+      "file": "/assets/listen2/web/create-voice-consent.webp",
+      "alt": "The consent step: the sentence the speaker says aloud, ending with three words that change every time",
+      "ready": false
+    },
+    "createResult": {
+      "file": "/assets/listen2/web/create-voice-result.webp",
+      "alt": "The new voice reading a paragraph with each spoken word highlighted, and a button to save it",
+      "ready": false
+    }
+  },
+  "showHearIt": false
+}

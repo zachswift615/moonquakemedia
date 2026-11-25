@@ -1,0 +1,24 @@
+{#- Listen2 2.0 draft: sample and screenshot slots, and the CONFIRM tag.
+    A slot with ready: false shows a dashed placeholder with the expected path, so the page builds without the
+    files. Set ready: true in src/_data/listen2Voices.json once the file is at its path. -#}
+
+{% macro audioSlot(label, path, ready, note) %}
+<figure class="l2-slot{% if not ready %} l2-slot--empty{% endif %}">
+  <figcaption class="l2-slot-name">{{ label | safe }}{% if note %} <span class="l2-slot-tag">{{ note }}</span>{% endif %}</figcaption>
+  {%- if ready %}
+  <audio controls preload="none" src="{{ path }}" aria-label="{{ label | striptags }}"></audio>
+  {%- else %}
+  <div class="l2-slot-box"><span class="l2-slot-label">Sample slot</span><code>{{ path }}</code></div>
+  {%- endif %}
+</figure>
+{% endmacro %}
+
+{% macro screenSlot(screen, width) %}
+{%- if screen.ready %}
+<div class="l2-phone" style="width: {{ width or 240 }}px">
+  <img loading="lazy" decoding="async" src="{{ screen.file }}" alt="{{ screen.alt }}" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 40px">
+</div>
+{%- endif %}
+{% endmacro %}
+
+{% macro confirm(text) %}<span class="l2-confirm">Confirm: {{ text }}</span>{% endmacro %}

@@ -1,0 +1,9 @@
+---
+layout: layouts/moonquake.njk
+---
+{#- A short support page in the Moonquake brand, laid out like the legal pages: title, date, summary box,
+    then the body. Used for pages an app links to (for example a "Learn More" in an in-app notice).
+    Such pages set robots: "noindex, follow" and eleventyExcludeFromCollections: true, so they stay out of
+    search, the nav and the sitemap. -#}
+{%- set legalTitle = title -%}
+{% include "components/legal-page.njk" %}
