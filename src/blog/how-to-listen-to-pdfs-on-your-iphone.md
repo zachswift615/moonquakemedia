@@ -36,6 +36,17 @@ During import, Listen2:
 - re-joins words that were hyphenated across a line break,
 - removes bracket citations such as [1] or [24, 55] from the body text, so a research paper does not stop every other sentence. If you want them read, you can turn that off in Settings under PDF Import.
 
+A word of honesty here. Reading a PDF is as much craft as science. There are thousands of ways to lay out a page, and working out the columns, or joining a sentence that runs from one page onto the next, is a best effort. Most documents come out clean. Some come out with a heading in the wrong place or a stray line from a table. When that happens, there is a second way to import the same file.
+
+## Two Ways to Import, and Why to Try Both
+
+On iOS 26 or later, the import screen lets you choose how the PDF is read:
+
+- **Standard** is the default. It reads the text stored in the PDF and applies the cleanup described above. It is fast, and it is right for most documents.
+- **AI Vision** looks at each page the way you would, as a picture, and uses Apple's on-device layout analysis to decide what order things go in. It can do better on complicated pages: several columns, unusual formatting, text that wraps around figures.
+
+Neither one wins every time. If a document sounds wrong with one method, import it again with the other and compare. It takes a minute, and for a long paper or a book it is worth it.
+
 ## Step by Step
 
 1. Open Listen2 and tap the **+** button, then **Import File**.
@@ -61,7 +72,7 @@ Some PDFs are not really text. They are photographs of pages inside a PDF file, 
 
 Listen2 notices this during import and offers to read the pages with text recognition instead. On iOS 26 or later, the recognition keeps the layout, so tables and two-column pages come out in the right order. On earlier versions of iOS it reads top to bottom, and the app tells you about that limit before you confirm.
 
-If a PDF has text but it comes out as gibberish, which happens with unusual fonts, you can choose the recognition method yourself when you import on iOS 26 or later.
+If a PDF has text but it comes out as gibberish, which happens with unusual fonts, there is a third choice on the same import screen, Vision OCR, which ignores the stored text and reads the pages as images.
 
 One limit to know about: password-protected PDFs cannot be imported. Remove the password in another app first.
 
