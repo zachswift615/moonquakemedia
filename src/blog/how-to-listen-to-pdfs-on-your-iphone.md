@@ -42,7 +42,7 @@ A word of honesty here. Reading a PDF is as much craft as science. There are tho
 
 On iOS 26 or later, the import screen lets you choose how the PDF is read:
 
-- **Standard** is the default. It reads the text stored in the PDF and applies the cleanup described above. It is fast, and it is right for most documents.
+- **Standard** is the default. It runs on VoxPDF, a PDF engine we wrote ourselves on top of PDFium, the open-source library behind Chrome's PDF viewer. It does far more than copy the text out. It works out the columns and the reading order, tells body text from footnotes and page furniture, and does all the cleanup described above. It is fast, and it is right for most documents.
 - **AI Vision** looks at each page the way you would, as a picture, and uses Apple's on-device layout analysis to decide what order things go in. It can do better on complicated pages: several columns, unusual formatting, text that wraps around figures.
 
 Neither one wins every time. If a document sounds wrong with one method, import it again with the other and compare. It takes a minute, and for a long paper or a book it is worth it.
