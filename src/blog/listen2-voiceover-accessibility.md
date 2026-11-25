@@ -1,62 +1,102 @@
 ---
-title: "Using Listen2 with VoiceOver: Accessibility from the Ground Up"
+title: "Using Listen2 with VoiceOver: A Reader Built for It"
 date: 2026-03-05
-description: "Listen2 is built with full VoiceOver support on every screen. Learn how the app works with screen readers, accessible fonts, and on-device TTS."
+updated: 2026-11-25T16:00:00-06:00
+description: "Listen2 2.0 has a reader made for VoiceOver. Every paragraph is its own stop, a double-tap plays from where you are, and the controls never move."
 tags:
   - accessibility
   - voiceover
   - listen2
-excerpt: "A text-to-speech app should be, by definition, an accessibility tool. But most TTS apps treat VoiceOver support as a checkbox rather than a design principle. Listen2 takes a different approach."
+excerpt: "In most reading apps, swiping through a book with VoiceOver takes you out of the text and into the buttons. Listen2 2.0 has a reader built to fix that."
+ogImage: /images/listen2-og.png
 ---
 
-A text-to-speech app should be, by definition, an accessibility tool. It takes text and turns it into audio. But if you are a VoiceOver user, you have probably noticed that many TTS apps treat screen reader support as an afterthought. Buttons without labels. Controls that do not announce their state. Gestures that conflict with VoiceOver navigation. The irony is hard to miss.
+A text-to-speech app ought to be easy to use with a screen reader. Many are not. Buttons have no labels, controls do not say what state they are in, and the text of the book is one large block, so a single swipe takes you out of the page and into the toolbar.
 
-Listen2 was built differently. VoiceOver support is not a feature that was added later — it shaped the design of every screen from the beginning.
+Listen2 had that last problem too. The app has had labels, hints and rotor actions on every screen for a long time, but reading itself was still awkward. With VoiceOver on, you were fighting the reader to inspect a sentence or find your place.
 
-## What "Full VoiceOver Support" Actually Means
+Version 2.0 fixes it with a reader made for VoiceOver.
 
-It is easy to claim VoiceOver compatibility. It is harder to make an app that genuinely feels good to use with a screen reader. Here is what Listen2 does:
+## The VoiceOver Reader
 
-**Every button has a descriptive label and hint.** Not generic placeholders like "button" or "image." Each label tells you what the control does. Each hint tells you what happens when you activate it.
+When VoiceOver is on, the reading screen changes. You do not have to turn anything on.
 
-**Interactive elements use appropriate traits.** Sliders are adjustable — swipe up to increase, swipe down to decrease. Active states are announced as selected. Section titles carry the header trait so you can navigate by heading with the rotor.
+{% blogshot "/images/blog/listen2-voiceover-accessibility/voiceover-reader.png", "The VoiceOver reader in Listen2 showing Walden. At the top are three large buttons, Library, Bookmark and Contents, and under them a heading with the title, the section and the percentage read. The chapter title has the VoiceOver focus box around it. The text is plain paragraphs. At the bottom are five large buttons: Speed 1.0x, Back, Play in orange, Forward and More", "The VoiceOver reader. Two rows of large buttons that stay where they are, and plain text in between.", 340 %}
 
-**Rotor actions show up where they add value.** In the Voice Library, you can Play Sample or Stop Sample directly from the rotor without hunting for separate buttons. In document lists, delete is available as a custom action. These details make the difference between an app that technically works with VoiceOver and one that feels natural.
+Here is how it works:
 
-**The reader pauses auto-scroll when you explore.** When you touch the reading area to explore text with VoiceOver, auto-scrolling stops so the content stays still while you navigate. A "Jump to Playback Position" button brings the current reading line back into view whenever you need to re-orient.
+- **Every paragraph is its own stop.** Swipe right or left to move one paragraph at a time. You stay in the text.
+- **Double-tap to play from there.** Double-tap a paragraph and the Listen2 voice starts reading from it. Double-tap again to pause.
+- **Two-finger double-tap to pause or carry on.** It works anywhere on the screen, on the text and on every button.
+- **Move, and the voice waits.** Swipe to another paragraph while Listen2 is reading, and the reading pauses.
 
-## Screen-by-Screen
+One way to remember it: one finger means "from here", two fingers means "carry on".
 
-VoiceOver support is not limited to one part of the app. Every screen is navigable:
+## Finding Your Place
 
-- **Library** — Swipe through your documents. Each row announces the title, reading progress, and time since last read. Delete is a custom action on each row.
-- **Import** — The import menu is a standard action sheet, and the file picker is the system Files app picker — fully accessible with the same navigation you use everywhere else on iOS.
-- **Reader** — Top and bottom bars work like standard toolbars. The reading area supports exploration. Playback controls announce their state, and the speed control supports adjustable actions in 0.1x increments.
-- **Voice Management** — Browse, preview, and download voices. Each voice row announces the name, language, quality tier, and download status. The download button updates its label to reflect progress.
-- **Collections** — Drag-to-reorder uses standard VoiceOver drag-and-drop actions. Each item announces its title and progress. Intro text segments have their own Play button as a separate accessible element.
-- **Settings** — Every toggle, slider, and picker is labeled and announces its current value.
+When you open a document, VoiceOver lands in the text at the place you left off.
 
-## Accessible Fonts and Dynamic Type
+When you pause, VoiceOver moves to the sentence that was being read and reads it. That tells you where you are, and it puts you in the right spot to check a spelling.
 
-Listen2 includes two fonts specifically designed for readers with visual or cognitive needs:
+Chapter titles are headings. The rotor has Lines, Words and Characters, and they work across the whole chapter. After a flick to a line, a double-tap plays from that line.
 
-- **OpenDyslexic** — weighted letter shapes that reduce letter-swapping for readers with dyslexia
-- **Atkinson Hyperlegible** — designed by the Braille Institute to maximize the visual distinction between similar-looking characters
+## Controls That Stay Put
 
-These are not buried in a submenu. They sit right alongside every other font in the picker.
+The controls are two rows of large buttons. They never hide and they never move, so you can learn where each one is by touch.
 
-Dynamic Type is supported through a "Use System Text Size" toggle. Turn it on and Listen2 follows whatever text size you have set in iOS Settings, including all the larger accessibility size categories. Line spacing goes up to 2.0x and character spacing up to 20%, both meeting or exceeding WCAG guidelines.
+**The top row** has Library, Bookmark and Contents, and then a wide heading that says where you are: the title, the section and the percentage. Double-tap that heading and VoiceOver goes to the sentence the voice is on. Bookmark always marks the sentence the voice is on.
 
-## Coming Soon: Figure Descriptions
+**The bottom row** has five buttons, with Play in the middle: Speed, Back, Play, Forward and More.
 
-A future update will introduce AI-powered figure descriptions. When a document contains images or figures, Listen2 will use an on-device vision model to generate spoken descriptions — so the content of charts, diagrams, and photos is not simply skipped over. This processing will happen entirely on your device, just like everything else in the app. More details when the feature ships.
+- Swipe up or down on Speed to change it by 0.1, even while the voice is reading.
+- Back and Forward move one sentence. While the voice is paused, VoiceOver stays on the button and reads the new sentence aloud, so you can step through several sentences without finding the button again.
+- More holds everything else: search, go to a percentage, copy the current sentence, voice, sleep timer, audio settings and text size.
 
-## An Ongoing Conversation
+To change chapter, open Contents and choose one. The voice pauses, and VoiceOver lands on that chapter's heading. A two-finger scrub goes back to the library.
 
-Accessibility is not a box you check once and move on. It is an ongoing process, and we know there are always gaps to find. If you are a VoiceOver user and you run into something that does not work the way you expect — a missing label, an awkward navigation flow, a control that does not announce its state — we genuinely want to hear about it.
+## What Is Not Finished
 
-Reach out at [support@moonquakemedia.com](mailto:support@moonquakemedia.com). Feedback from screen reader users directly shapes how the app evolves. Every report helps.
+Two things you should know before you rely on it:
 
-## Try It Yourself
+- After a swipe to a paragraph that was partly off the screen, the text scrolls into view and the VoiceOver focus box can stay where the paragraph was. VoiceOver is on the right paragraph, it reads it, and a double-tap plays from it. Only the box is in the wrong place. This matters if you also watch the screen.
+- It has been tested mainly on an iPhone. It has not yet been tested properly with a braille display, a hardware keyboard, or on iPad.
 
-Listen2 is available on the [App Store](https://apps.apple.com/us/app/listen-2-reader/id6755753624) with a 7-day free trial. One-time purchase after that — no subscription, no account, no tracking. If you want a deeper look at how every screen works with VoiceOver, the [full user guide](/guides/listen2/) has VoiceOver-specific callouts throughout each section. You can also read about [how Listen2 handles PDFs](/blog/how-to-listen-to-pdfs-on-your-iphone/) or explore the [offline TTS technology](/blog/best-offline-text-to-speech-app-iphone-2026/) that powers it.
+There is no word highlighting in this reader. The sentence being read has a calm tint.
+
+## If You Prefer the Classic Reader
+
+It is still there, with its Sentences and Paragraphs rotors and its copy actions on the text. Open More and choose "Use the classic reader", or turn off "Use When VoiceOver Is On" under VoiceOver Reader in Settings.
+
+The same settings screen has a second switch, "Use Without VoiceOver". Turn it on if you want the large buttons and plain text without VoiceOver running.
+
+## The Rest of the App
+
+VoiceOver support is not limited to the reader:
+
+- **Library.** Each row announces the title, reading progress and time since you last read it. Delete is a custom action on each row.
+- **Import.** The import menu is a standard menu and the file picker is the system Files picker. PDF import announces its progress, for example "Extracting page 42 of 300".
+- **Voice Library.** Each voice announces its name, language, quality and download status. Play Sample and Stop Sample are rotor actions, so the list is not cluttered with extra buttons.
+- **Settings.** Every toggle, slider and picker is labeled and announces its value.
+
+## Voices That Run on Your Phone
+
+Every voice in Listen2 runs on the phone itself, so it works with no connection and nothing you read is sent anywhere. Version 2.0 added 34 English voices we trained ourselves, and you can read more about those in [the offline text-to-speech post](/blog/best-offline-text-to-speech-app-iphone-2026/).
+
+Pictures are not skipped either. When a PDF or EPUB contains images, Listen2 can write a description of each one on the phone and read it aloud. The descriptions come from a model and can be wrong, and the app says so.
+
+## If You Have Some Vision
+
+Listen2 includes two fonts made for legibility, in the same list as every other font:
+
+- **Atkinson Hyperlegible**, designed by the Braille Institute to make similar letters easier to tell apart.
+- **OpenDyslexic**, with weighted letter shapes for readers with dyslexia.
+
+Turn on "Use System Text Size" and Listen2 follows the text size you set in iOS, including the larger accessibility sizes. Line spacing and character spacing can both be widened.
+
+## Tell Us What Does Not Work
+
+The VoiceOver reader exists because blind and low-vision readers wrote in and explained, patiently, how they actually read. If something does not behave the way you expect, such as a missing label, an awkward order or a control that does not announce its state, write to [support@moonquakemedia.com](mailto:support@moonquakemedia.com). Reports from screen reader users decide what gets fixed next.
+
+## Try It
+
+[Listen2](https://apps.apple.com/us/app/listen-2-reader/id6755753624) is free to try for seven days. After that it is a single purchase of $24.99, with no subscription and no account. The [user guide](/guides/listen2/) has a VoiceOver section for each screen.
