@@ -1,18 +1,27 @@
-{#- Listen2 2.0 draft: the Listen2 Voices block, first inside the Voices section. One sample slot per voice from
-    src/_data/listen2Voices.json. Claims 2, 3, 4, 6: plan section 5. Accent labels (Zach, 2026-11-23): each voice
-    is labelled American or British, or another accent such as Scottish where confirmed, from the roster's
-    "accent" field. Zach is labelling them by ear: leave "accent" null until he does; never guess. -#}
-{% from "components/listen2-2/slots.njk" import audioSlot %}
+{#- The Listen2 Voices block, first inside the Voices section. Roster, waveforms (peaks, from the sample files) and
+    accents: src/_data/listen2Voices.json. Each player is a real <audio controls> until the script below takes it
+    over, so the samples still play without JavaScript. Brand kit (brand/README.md): the play button is Spine
+    Orange with an ink icon (orange is the play button's job), the waveform is Voice Pink pill bars on a shared
+    center line, labels in Atkinson Hyperlegible Mono. The bars only change color while a sample plays; nothing
+    moves while idle. Claims: docs/plans/2026-11-23-listen2-2.0-site-plan.md, section 5, and the fact sheet. -#}
         <div id="listen2-voices" style="display: flex; flex-direction: column; gap: 16px">
           <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px">
             <h3 style="margin: 0; font-size: 22px; font-weight: 700"><span style="display: inline-block; width: 10px; height: 10px; border-radius: 5px; background: #FF66C4; margin-right: 10px; vertical-align: middle"></span>Listen2 Voices</h3>
             <span style="font-size: 16px; color: #A3A3A0">{{ listen2Voices.voiceCount }} English voices from our own engine, new in 2.0</span>
           </div>
-          <p style="margin: 0; max-width: 820px; font-size: 17px; line-height: 1.6; color: #D4D4D0">We trained this engine ourselves, from scratch, on 7,410 hours of speech from 7,924 speakers. It runs entirely on your iPhone, with no account and no network needed to speak, so no audio or text leaves your phone. In our tests it read about 99 of every 100 words exactly as written, on old books and on modern text alike, and in nine hours of test reading it did not skip a clause.</p>
-          <p style="margin: 0; max-width: 820px; font-size: 16px; line-height: 1.55; color: #A3A3A0">Every voice below reads the same sentence, the sample you hear in the app, so you can compare the voices and not the texts. Twenty-six are American, six British and two Australian. Graham reads to you first.</p>
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px 20px">
+          <p style="margin: 0; max-width: 820px; font-size: 17px; line-height: 1.6; color: #D4D4D0">We trained this engine ourselves, from scratch, on 7,410 hours of speech from 7,924 speakers. Old books alone would leave a voice lost in a lab report or a recipe, so we added our own collection of modern text from many subjects, among them medicine, animals, music, science and food, along with today's company and brand names. It runs entirely on your iPhone, with no account and no network needed to speak, so no audio or text leaves your phone. In our tests it read about 99 of every 100 words exactly as written, on old books and on modern text alike, and in nine hours of test reading it did not skip a clause.</p>
+          <p style="margin: 0; max-width: 820px; font-size: 16px; line-height: 1.55; color: #A3A3A0">Every voice below reads the same sentence, the sample you hear in the app, so you can compare the voices and not the texts. Graham reads to you first.</p>
+          <div class="l2-players">
             {%- for v in listen2Voices.roster %}
-            {{ audioSlot(v.name + (v.accent and (" <span class=\"l2-slot-tag\">" + v.accent + "</span>") or ""), listen2Voices.voiceDir + "listen2-" + v.id + ".mp3", v.ready) }}
+            <div class="l2-player">
+              <button type="button" class="l2-play" aria-label="Play {{ v.name }}" hidden><svg class="l2-ico-play" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="#111113" stroke="#111113" stroke-width="1.5" stroke-linejoin="round"/></svg><svg class="l2-ico-pause" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5.5" width="4" height="13" rx="1.5" fill="#111113"/><rect x="13.5" y="5.5" width="4" height="13" rx="1.5" fill="#111113"/></svg></button>
+              <div class="l2-pbody">
+                <div class="l2-pname">{{ v.name }}{% if v.accent %} <span class="l2-slot-tag">{{ v.accent }}</span>{% endif %}</div>
+                <div class="l2-wave" aria-hidden="true" hidden>{% for p in v.peaks %}<i style="height: {{ p }}%"></i>{% endfor %}</div>
+                <audio controls preload="none" src="{{ listen2Voices.voiceDir }}listen2-{{ v.id }}.mp3" aria-label="{{ v.name }} reading the sample sentence"></audio>
+              </div>
+              <span class="l2-ptime" aria-hidden="true" hidden>{{ v.seconds | round(0) }}s</span>
+            </div>
             {%- endfor %}
           </div>
           <details class="l2-measured" style="max-width: 860px; border-top: 1px solid #2A2A2D; border-bottom: 1px solid #2A2A2D; padding: 8px 0">
@@ -23,7 +32,46 @@
               <li>Hard modern words (brands, technical terms, recent names): 98.8 in 100 heard correctly. The list is our own, tested in 724 sentences written around those words, and it is not an industry test.</li>
               <li>Numbers and initialisms: fewer than 1 character in 100 wrong. This depends on how Listen2 prepares the text as much as on the voice.</li>
               <li>Skipped text: none. In 192 long paragraphs, no run of four or more words went missing.</li>
+              <li>Pronunciation by sounds: given the sounds of a word, the voices said those sounds in 96 to 98 of 100 cases.</li>
               <li>Naturalness: an automatic score that predicts how listeners would rate a clip put the voices in the range of real human recordings. That is a machine's estimate, not a listening study.</li>
             </ul>
           </details>
         </div>
+        <script>
+        (function () {
+          var players = document.querySelectorAll('.l2-player');
+          var current = null;
+          function paint(p, a) {
+            var bars = p.querySelectorAll('.l2-wave i');
+            var done = a.duration ? a.currentTime / a.duration : 0;
+            for (var i = 0; i < bars.length; i++) bars[i].classList.toggle('on', (i + 0.5) / bars.length <= done);
+          }
+          function setState(p, playing) {
+            p.classList.toggle('is-playing', playing);
+            var name = p.querySelector('.l2-pname').firstChild.textContent.trim();
+            p.querySelector('.l2-play').setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + name);
+          }
+          players.forEach(function (p) {
+            var a = p.querySelector('audio'), btn = p.querySelector('.l2-play'), wave = p.querySelector('.l2-wave');
+            a.removeAttribute('controls');
+            btn.hidden = false; wave.hidden = false; p.querySelector('.l2-ptime').hidden = false;
+            p.classList.add('is-ready');
+            btn.addEventListener('click', function () {
+              if (a.paused) {
+                if (current && current !== a) current.pause();
+                current = a; a.play();
+              } else a.pause();
+            });
+            wave.addEventListener('click', function (e) {
+              var r = wave.getBoundingClientRect();
+              var seek = function () { a.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * a.duration; paint(p, a); };
+              if (a.duration) seek(); else a.addEventListener('loadedmetadata', seek, { once: true });
+              if (a.paused) { if (current && current !== a) current.pause(); current = a; a.play(); }
+            });
+            a.addEventListener('play', function () { setState(p, true); });
+            a.addEventListener('pause', function () { setState(p, false); });
+            a.addEventListener('ended', function () { setState(p, false); a.currentTime = 0; paint(p, a); });
+            a.addEventListener('timeupdate', function () { paint(p, a); });
+          });
+        })();
+        </script>
