@@ -44,6 +44,8 @@ There are more voices if you want them, all running on the phone:
 
 - **Phonon** adds 25 English voices with American and British accents, as a free download.
 - **Supertonic** has 10 voices, and each one reads 13 languages: English, Spanish, Portuguese, Italian, French, German, Hungarian, Turkish, Swedish, Russian, Greek, Hindi and Vietnamese. The same voice can take you from an English novel to a German newspaper.
+- **Kokoro** adds 53 voices in 8 languages, on phones with enough memory to run it.
+- **Piper** voices are small and quick, and they cover nine languages.
 - **Apple's Premium and Enhanced voices** are available too, and they cover nearly every language.
 
 Download a voice once and it works anywhere after that.
