@@ -56,7 +56,7 @@ themeColor: "#0B0B0C"
       "name": "Do I need an internet connection?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Every voice runs on your iPhone, and the 25 Phonon voices come with the app, so you can listen offline from the start. Listen2 Voices need no network to speak. You only need a connection to download a voice, import a web page or turn on iCloud Sync."
+        "text": "No. Every voice runs on your iPhone, and the {{ listen2Voices.voiceCount }} Listen2 Voices come with the app, so you can listen offline from the start. You only need a connection to download more voices, import a web page or turn on iCloud Sync."
       }
     },
     {
@@ -64,7 +64,7 @@ themeColor: "#0B0B0C"
       "name": "Which devices does it run on?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "iPhone and iPad running iOS 18.2 or later. Phonon and Apple's voices work on any supported device. Supertonic needs an iPhone or iPad with at least 6 GB of memory."
+        "text": "iPhone and iPad running iOS 18.2 or later. The Listen2 Voices, Phonon, Supertonic and Apple's voices all work on any supported device. Listen2 picks the version of its own voice model that suits your device's memory."
       }
     },
     {
@@ -161,7 +161,7 @@ details[open] summary::after{content:"\2212" / ""}
       <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px"><a href="#new" class="l2-tag l2-tag--pink">New in 2.0: our own voices</a><span style="font-family: 'Atkinson Hyperlegible Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #A3A3A0">Text to speech reader for iPhone and iPad</span></div>
         <h1 id="l2-s1" style="margin: 0; font-size: clamp(44px, 6vw, 76px); line-height: 1.02; font-weight: 500; letter-spacing: -0.03em">Listen to the <span style="background: #006E99; border-radius: 3px; padding: 0 6px">reading</span> you keep putting off.</h1>
-        <p style="margin: 0; font-size: clamp(18px, 2vw, 21px); line-height: 1.55; color: #D4D4D0; max-width: 620px">Listen2 turns your PDFs, books and saved articles into audiobooks: a natural voice reads them aloud and each word is highlighted as it is spoken. Version 2.0 adds {{ listen2Voices.voiceCount }} English voices that we trained ourselves, from the ground up. Every voice runs on your iPhone itself, so Listen2 keeps working on a plane or in the mountains, and nothing you read is sent to us.</p>
+        <p style="margin: 0; font-size: clamp(18px, 2vw, 21px); line-height: 1.55; color: #D4D4D0; max-width: 620px">Listen2 turns your PDFs, books and saved articles into audiobooks: a natural voice reads them aloud and each word is highlighted as it is spoken. Version 2.0 adds {{ listen2Voices.voiceCount }} English voices that we trained ourselves, from the ground up, and they come with the app, so you can press play as soon as it is installed. Every voice runs on your iPhone itself, so Listen2 keeps working on a plane or in the mountains, and nothing you read is sent to us.</p>
         <div class="l2-hero-ctas" style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center">
           <a id="download" href="https://apps.apple.com/us/app/listen-2-reader/id6755753624" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 28px; border-radius: 28px; background: #FF751F; color: #111113; font-weight: 700; font-size: 18px; text-decoration: none">Download on the App Store</a>
           <a href="#voices" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 26px; border-radius: 28px; border: 2px solid #38B6FF; color: #38B6FF; font-weight: 700; font-size: 18px; text-decoration: none">Hear the voices</a>
@@ -275,7 +275,7 @@ details[open] summary::after{content:"\2212" / ""}
           <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
             <div style="font-family: 'Atkinson Hyperlegible Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #FF66C4">Voices</div>
             <h2 id="l2-s5" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em">Voices that sound like people, running on your phone</h2>
-            <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #D4D4D0">Listen2 runs three neural voice engines on your iPhone. The newest is our own: {{ listen2Voices.voiceCount }} English voices that we trained ourselves, new in 2.0. Phonon, from Gradium, has 25 English voices with American and British accents. They come with the app, so they work the first time you open it, on every device Listen2 supports. Supertonic has 10 voices, and each one can read all 13 of Listen2's languages, so the same voice can take you from an English novel to a German newspaper. Supertonic is a single download, and after that it works anywhere too.</p>
+            <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #D4D4D0">Listen2 runs three neural voice engines on your iPhone. The newest is our own: {{ listen2Voices.voiceCount }} English voices that we trained ourselves, new in 2.0. They come with the app, so they work the first time you open it, on every device Listen2 supports. Phonon, from Gradium, has 25 English voices with American and British accents, and they are a free download. Supertonic has 10 voices, and each one can read all 13 of Listen2's languages, so the same voice can take you from an English novel to a German newspaper. Each is a single download, and after that it works anywhere too.</p>
             <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #A3A3A0">Apple's Premium and Enhanced voices are built in as well. They are reliable, they cover nearly every language, and Listen2 highlights them word by word like the others. If you have made your own voice with Supertone's Voice Builder, you can import it and read with it.</p>
           </div>
           <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 1.5; color: #D4D4D0">
@@ -297,7 +297,7 @@ details[open] summary::after{content:"\2212" / ""}
         <div style="display: flex; flex-direction: column; gap: 16px">
           <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px">
             <h3 style="margin: 0; font-size: 22px; font-weight: 700"><span style="display: inline-block; width: 10px; height: 10px; border-radius: 5px; background: #FF66C4; margin-right: 10px; vertical-align: middle"></span>Phonon</h3>
-            <span style="font-size: 16px; color: #A3A3A0">25 English voices, included with the app</span>
+            <span style="font-size: 16px; color: #A3A3A0">25 English voices, a free download</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px">
             <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
@@ -361,7 +361,7 @@ details[open] summary::after{content:"\2212" / ""}
       </div>
     </section>
 
-    {% include "components/listen2-2/hear-it.njk" %}
+    {% if listen2Voices.showHearIt %}{% include "components/listen2-2/hear-it.njk" %}{% endif %}
     {% include "components/listen2-2/voice-profile.njk" %}
     {% include "components/listen2-2/pronunciation.njk" %}
     {% include "components/listen2-2/create-voice.njk" %}
@@ -533,11 +533,11 @@ details[open] summary::after{content:"\2212" / ""}
       <h2 id="l2-s13" style="margin: 0; font-size: clamp(30px, 3.5vw, 42px); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em">Questions people ask first</h2>
       <details style="border-bottom: 1px solid #2A2A2D; padding: 18px 0">
         <summary style="font-size: 20px; font-weight: 700; padding: 10px 0; display: block">Do I need an internet connection?</summary>
-        <p style="margin: 12px 0 0; font-size: 17px; line-height: 1.6; color: #D4D4D0">No. Every voice runs on your iPhone, and the 25 Phonon voices come with the app, so you can listen offline from the start. Listen2 Voices need no network to speak. You only need a connection to download a voice, import a web page or turn on iCloud Sync. <span class="l2-confirm">Confirm: whether some phones download the Listen2 Voices first (plan, question 3)</span></p>
+        <p style="margin: 12px 0 0; font-size: 17px; line-height: 1.6; color: #D4D4D0">No. Every voice runs on your iPhone, and the {{ listen2Voices.voiceCount }} Listen2 Voices come with the app, so you can listen offline from the start. You only need a connection to download more voices, import a web page or turn on iCloud Sync.</p>
       </details>
       <details style="border-bottom: 1px solid #2A2A2D; padding: 18px 0">
         <summary style="font-size: 20px; font-weight: 700; padding: 10px 0; display: block">Which devices does it run on?</summary>
-        <p style="margin: 12px 0 0; font-size: 17px; line-height: 1.6; color: #D4D4D0">iPhone and iPad running iOS 18.2 or later. Phonon and Apple's voices work on any supported device. Supertonic needs an iPhone or iPad with at least 6 GB of memory. <span class="l2-confirm">Confirm: which devices run the Listen2 Voices, after the phone measurements</span></p>
+        <p style="margin: 12px 0 0; font-size: 17px; line-height: 1.6; color: #D4D4D0">iPhone and iPad running iOS 18.2 or later. The Listen2 Voices, Phonon, Supertonic and Apple's voices all work on any supported device. Listen2 picks the version of its own voice model that suits your device's memory.</p>
       </details>
       <details style="border-bottom: 1px solid #2A2A2D; padding: 18px 0">
         <summary style="font-size: 20px; font-weight: 700; padding: 10px 0; display: block">Which languages are there?</summary>

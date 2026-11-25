@@ -7,7 +7,7 @@
         <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
           <div style="font-family: 'Atkinson Hyperlegible Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #FF66C4">Voice Profile</div>
           <h2 id="l2-profile" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em">Set each voice the way you like to hear it</h2>
-          <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #D4D4D0">A voice that suits a novel can feel rushed in a contract. Each Listen2 voice now has its own Voice Profile, and Listen2 keeps your settings with that voice. Switch to another voice and it has its own, and switch back and yours are still there. The new voices start at a Pace of Normal and a Liveliness of Most lively, and you can change either one.</p>
+          <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #D4D4D0">A voice that suits a novel can feel rushed in a contract. Each Listen2 voice now has its own Voice Profile, and Listen2 keeps your settings with that voice. Switch to another voice and it has its own, and switch back and yours are still there. Most voices start at a Pace of Normal and a Liveliness of Most lively, and you can change either one.</p>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
             <div style="border: 1px solid #2A2A2D; border-radius: 20px; padding: 22px; background: #0B0B0C; display: flex; flex-direction: column; gap: 8px">
               <div style="font-family: 'Atkinson Hyperlegible Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #A3A3A0">7 steps, plus Voice decides</div>
@@ -20,10 +20,12 @@
               <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #A3A3A0">The second setting in the profile. Try a step up or down on a page you know and keep whichever you like listening to.</p>
             </div>
           </div>
-          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #A3A3A0">You can change both from the reader while you listen, and save a profile you like as a preset to use on another Listen2 voice.</p>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #A3A3A0">You find it in Settings, or in Audio Settings while you read, and save a profile you like as a preset to use on another Listen2 voice.</p>
         </div>
+        {%- if listen2Voices.screens.voiceProfile.ready %}
         <div style="flex: 0 1 280px; margin: 0 auto; display: flex; justify-content: center">
           {{ screenSlot(listen2Voices.screens.voiceProfile, 260) }}
         </div>
+        {%- endif %}
       </div>
     </section>

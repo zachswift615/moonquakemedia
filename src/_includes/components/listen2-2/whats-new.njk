@@ -10,7 +10,7 @@
       <div style="max-width: 760px; display: flex; flex-direction: column; gap: 16px">
         <div style="font-family: 'Atkinson Hyperlegible Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #FF66C4">New in 2.0</div>
         <h2 id="l2-new" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em">What changed in Listen2 2.0</h2>
-        <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #D4D4D0">The largest change is a voice engine we trained ourselves. Most of the rest of this release is about fitting the voices to the way you read.{% if listen2Voices.showBluetoothCard %} The last part is a fix for a playback bug that showed up in the car.{% endif %}</p>
+        <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #D4D4D0">The largest change is a voice engine we trained ourselves. Most of the rest of this release is about fitting the voices to the way you read.{% if listen2Voices.showBluetoothCard %} The last part fixes playback from the car and from Bluetooth headsets.{% endif %}</p>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
         <a href="#listen2-voices" style="border: 1px solid #2A2A2D; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: inherit">
@@ -37,14 +37,14 @@
         <div style="border: 1px solid #2A2A2D; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
           <div style="width: 40px; height: 6px; border-radius: 3px; background: #38B6FF"></div>
           <h3 style="margin: 0; font-size: 21px; font-weight: 700">Pronunciation in 13 languages</h3>
-          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #A3A3A0">The downloadable voices now read with pronunciation models we trained ourselves, in all 13 of Listen2's languages, and several of those voices were retrained to match. {{ confirm("whether this card belongs on the site, and its wording (plan, question 7)") }}</p>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #A3A3A0">The downloadable voices now read with pronunciation models we trained ourselves, in all 13 of Listen2's languages, and several of those voices were retrained to match.</p>
         </div>
         {%- endif %}
         {%- if listen2Voices.showBluetoothCard %}
         <div style="border: 1px solid #2A2A2D; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
           <div style="width: 40px; height: 6px; border-radius: 3px; background: #A3A3A0"></div>
           <h3 style="margin: 0; font-size: 21px; font-weight: 700">Car and Bluetooth controls</h3>
-          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #A3A3A0">Pausing from a car or from Bluetooth headphones and then pressing play could leave the highlight moving with no sound until Listen2 was closed. That is fixed, and Listen2 now stays paused when headphones disconnect.</p>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #A3A3A0">Pausing from a car's screen could leave Listen2 stuck with no sound, and some headsets made it start playing on the phone speaker as they disconnected. Both are fixed.</p>
         </div>
         {%- endif %}
       </div>

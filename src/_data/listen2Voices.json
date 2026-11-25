@@ -1,178 +1,213 @@
 {
-  "$comment": "Listen2 2.0 page data. voiceCount stays the literal token until the roster is final; never put a guessed number here. Set ready: true on a slot when its file is at its path. showBluetoothCard stays false until the playback QA passes on a device and in the car (Zach, 2026-11-23); while false, the car and Bluetooth card and its intro sentence are not rendered. Plan: docs/plans/2026-11-23-listen2-2.0-site-plan.md showPronunciationCard is true: the language coverage question is answered (plan, question 7). Each roster voice has an accent field (American, British, or another such as Scottish where confirmed); Zach labels them by ear, so it stays null until he does. Never guess.",
-  "showBluetoothCard": false,
+  "$comment": "Listen2 2.0 page data. roster = the 34 voices of the shipped engine manifest (Listen2 repo, BundledAssets/Listen2Engine/listen2-engine-manifest.json), in its order; accent from the voice's locale. Each sample is /assets/listen2/samples/listen2-<id>.mp3, the same file the app plays (the rainbow sentence). showHearIt stays false until the hear-it clips exist (hearIt.*.ready). A screenshot slot renders nothing until its ready flag is true. showBluetoothCard is true: the car and Bluetooth fixes shipped in 2.0.0 (WHATS_NEW). Plan: docs/plans/2026-11-23-listen2-2.0-site-plan.md",
+  "showBluetoothCard": true,
   "showPronunciationCard": true,
-  "voiceCount": "{{VOICE_COUNT}}",
-  "voiceDir": "/assets/listen2/voices/",
-  "sampleText": "Chapter one. On the morning of the 3rd of May, I read the letter twice before I opened the window. It said the house had been empty for forty-two years.",
+  "voiceCount": "34",
+  "voiceDir": "/assets/listen2/samples/",
   "roster": [
     {
-      "id": "callum",
-      "name": "Callum",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "charlotte",
-      "name": "Charlotte",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "claire",
-      "name": "Claire",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "clayton",
-      "name": "Clayton",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "cole",
-      "name": "Cole",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "dana",
-      "name": "Dana",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "daniel",
-      "name": "Daniel",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "eleanor",
-      "name": "Eleanor",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "gary",
-      "name": "Gary",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
+      "id": "zach",
+      "name": "Zach",
+      "accent": "American",
+      "ready": true
     },
     {
       "id": "graham",
       "name": "Graham",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "ivy",
-      "name": "Ivy",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
+      "accent": "American",
+      "ready": true
     },
     {
       "id": "jess",
       "name": "Jess",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "larry",
-      "name": "Larry",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "marcus",
-      "name": "Marcus",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "naomi",
-      "name": "Naomi",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "nina",
-      "name": "Nina",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "oliver",
-      "name": "Oliver",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "owen",
-      "name": "Owen",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "paige",
-      "name": "Paige",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "riley",
-      "name": "Riley",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "tom",
-      "name": "Tom",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
-    },
-    {
-      "id": "tyler",
-      "name": "Tyler",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
+      "accent": "American",
+      "ready": true
     },
     {
       "id": "walt",
       "name": "Walt",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
+      "accent": "American",
+      "ready": true
     },
     {
-      "id": "zach",
-      "name": "Zach",
-      "nameFinal": false,
-      "ready": false,
-      "accent": null
+      "id": "marcus",
+      "name": "Marcus",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "larry",
+      "name": "Larry",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "dana",
+      "name": "Dana",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "ivy",
+      "name": "Ivy",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "claire",
+      "name": "Claire",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "naomi",
+      "name": "Naomi",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "nina",
+      "name": "Nina",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "paige",
+      "name": "Paige",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "eleanor",
+      "name": "Eleanor",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "charlotte",
+      "name": "Charlotte",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "daniel",
+      "name": "Daniel",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "clayton",
+      "name": "Clayton",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "tyler",
+      "name": "Tyler",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "tom",
+      "name": "Tom",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "owen",
+      "name": "Owen",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "cole",
+      "name": "Cole",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "gary",
+      "name": "Gary",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "callum",
+      "name": "Callum",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "oliver",
+      "name": "Oliver",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "joanne",
+      "name": "Joanne",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "audrey",
+      "name": "Audrey",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "helen",
+      "name": "Helen",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "megan",
+      "name": "Megan",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "wesley",
+      "name": "Wesley",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "howard",
+      "name": "Howard",
+      "accent": "American",
+      "ready": true
+    },
+    {
+      "id": "ambrose",
+      "name": "Ambrose",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "clement",
+      "name": "Clement",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "stanley",
+      "name": "Stanley",
+      "accent": "British",
+      "ready": true
+    },
+    {
+      "id": "bronwyn",
+      "name": "Bronwyn",
+      "accent": "Australian",
+      "ready": true
+    },
+    {
+      "id": "tahlia",
+      "name": "Tahlia",
+      "accent": "Australian",
+      "ready": true
     }
   ],
   "hearIt": {
@@ -258,5 +293,6 @@
       "alt": "The new voice reading a paragraph with each spoken word highlighted, and a button to save it",
       "ready": false
     }
-  }
+  },
+  "showHearIt": false
 }
