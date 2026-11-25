@@ -17,6 +17,8 @@ This is the usual trade with text-to-speech apps. The voices that sound human ru
 
 You should not have to choose between a voice you can stand to listen to and an app that works everywhere.
 
+<figure class="blog-video" style="max-width:340px;margin:2rem auto;"><video controls playsinline preload="none" poster="/images/blog/best-offline-text-to-speech-app-iphone-2026/airplane-mode-walden.jpg" style="width:100%;height:auto;border-radius:16px;" aria-label="Screen recording: an iPhone is put into airplane mode with Wi-Fi off, then Listen2 reads a sentence from Walden aloud while each word is highlighted"><source src="/images/blog/best-offline-text-to-speech-app-iphone-2026/airplane-mode-walden.mp4" type="video/mp4"></video><figcaption>Airplane mode on, Wi-Fi off. Listen2 reads a sentence from <em>Walden</em> with one of its own voices, and the highlight follows each word.</figcaption></figure>
+
 ## What to Look For in an Offline Text-to-Speech App
 
 Here is what matters, whichever app you end up with:
