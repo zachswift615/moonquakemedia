@@ -49,7 +49,7 @@ Neither one wins every time. If a document sounds wrong with one method, import 
 
 ## Found a PDF That Came Out Wrong?
 
-If neither method gets a document right, I would like to see it. Send the PDF, or just the page that went wrong, to [support@moonquakemedia.com](mailto:support@moonquakemedia.com) with a line about what you expected. Every layout I have fixed so far started with a file somebody sent me. Only send something you are comfortable sharing.
+If neither method gets a document right, we would like to see it. Send the PDF, or just the page that went wrong, to [support@moonquakemedia.com](mailto:support@moonquakemedia.com) with a line about what you expected. Many of the layouts we handle correctly now started with an email from one of our users showing how something was handled poorly. Only send something you are comfortable sharing.
 
 ## Step by Step
 
