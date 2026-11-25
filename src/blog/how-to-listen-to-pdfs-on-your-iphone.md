@@ -90,7 +90,7 @@ The descriptions are written by a model, and they can be wrong. Listen2 says so 
 
 ## Not Only PDFs
 
-Listen2 also reads EPUB books, Word documents, DAISY books, plain text and Markdown. You can paste text from the clipboard or share an article from Safari. If you read a lot on the web, see how to [turn saved articles into a personal podcast](/blog/turn-saved-articles-into-personal-podcast/).
+Listen2 also reads EPUB books, Word documents, DAISY books, plain text and Markdown. You can paste text from the clipboard or share an article from Safari.
 
 ## Try It With Your Own PDF
 

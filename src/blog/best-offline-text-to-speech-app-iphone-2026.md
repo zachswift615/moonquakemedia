@@ -54,7 +54,7 @@ Download a voice once and it works anywhere after that.
 
 Listen2 opens PDFs, EPUB books, Word documents, plain text and web articles. Two-column papers are read in the right order, and books keep their chapters. Each word is highlighted as it is spoken, with every voice, so your eyes and your ears stay in the same place. If you look away, you can find your spot again at a glance.
 
-You can also group documents into a collection and listen to them one after another, like a [personal podcast](/blog/turn-saved-articles-into-personal-podcast/).
+You can also group documents into a collection and listen to them one after another, like a personal podcast.
 
 ## When a Name Comes Out Wrong
 
