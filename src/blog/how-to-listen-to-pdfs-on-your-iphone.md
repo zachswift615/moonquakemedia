@@ -47,6 +47,10 @@ On iOS 26 or later, the import screen lets you choose how the PDF is read:
 
 Neither one wins every time. If a document sounds wrong with one method, import it again with the other and compare. It takes a minute, and for a long paper or a book it is worth it.
 
+## Found a PDF That Came Out Wrong?
+
+If neither method gets a document right, I would like to see it. Send the PDF, or just the page that went wrong, to [support@moonquakemedia.com](mailto:support@moonquakemedia.com) with a line about what you expected. Every layout I have fixed so far started with a file somebody sent me. Only send something you are comfortable sharing.
+
 ## Step by Step
 
 1. Open Listen2 and tap the **+** button, then **Import File**.
