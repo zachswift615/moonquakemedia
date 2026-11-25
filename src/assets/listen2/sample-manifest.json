@@ -29,6 +29,9 @@
   "de_DE-kerstin-low": {
     "num_speakers": 1
   },
+  "de_DE-kerstin-medium-v2": {
+    "num_speakers": 1
+  },
   "de_DE-miro-high": {
     "num_speakers": 1
   },
@@ -45,6 +48,9 @@
     "num_speakers": 1
   },
   "de_DE-thorsten-medium": {
+    "num_speakers": 1
+  },
+  "de_DE-thorsten-medium-v2": {
     "num_speakers": 1
   },
   "de_DE-thorsten_emotional-medium": {
@@ -69,6 +75,9 @@
   "en_GB-alba-medium": {
     "num_speakers": 1
   },
+  "en_GB-alba-medium-v2": {
+    "num_speakers": 1
+  },
   "en_GB-aru-medium": {
     "num_speakers": 12,
     "speaker_id_map": {
@@ -90,6 +99,9 @@
     "num_speakers": 1
   },
   "en_GB-jenny_dioco-medium": {
+    "num_speakers": 1
+  },
+  "en_GB-jenny_dioco-medium-v2": {
     "num_speakers": 1
   },
   "en_GB-northern_english_male-medium": {
@@ -277,7 +289,13 @@
   "en_US-joe-medium": {
     "num_speakers": 1
   },
+  "en_US-joe-medium-v2": {
+    "num_speakers": 1
+  },
   "en_US-john-medium": {
+    "num_speakers": 1
+  },
+  "en_US-kathleen-medium-v2": {
     "num_speakers": 1
   },
   "en_US-kristin-medium": {
@@ -1233,6 +1251,9 @@
   "en_US-ljspeech-medium": {
     "num_speakers": 1
   },
+  "en_US-mike-medium-v2": {
+    "num_speakers": 1
+  },
   "en_US-norman-medium": {
     "num_speakers": 1
   },
@@ -1257,6 +1278,9 @@
   "es_ES-davefx-medium": {
     "num_speakers": 1
   },
+  "es_ES-davefx-medium-v2": {
+    "num_speakers": 1
+  },
   "es_ES-glados-medium": {
     "num_speakers": 1
   },
@@ -1264,6 +1288,13 @@
     "num_speakers": 1
   },
   "es_ES-sharvard-medium": {
+    "num_speakers": 2,
+    "speaker_id_map": {
+      "F": 1,
+      "M": 0
+    }
+  },
+  "es_ES-sharvard-medium-v2": {
     "num_speakers": 2,
     "speaker_id_map": {
       "F": 1,
@@ -1286,6 +1317,9 @@
     "num_speakers": 1
   },
   "fr_FR-siwis-medium": {
+    "num_speakers": 1
+  },
+  "fr_FR-siwis-medium-v2": {
     "num_speakers": 1
   },
   "fr_FR-tjiho-model1": {
@@ -1319,10 +1353,19 @@
   "hu_HU-anna-medium": {
     "num_speakers": 1
   },
+  "hu_HU-anna-medium-v2": {
+    "num_speakers": 1
+  },
   "hu_HU-berta-medium": {
     "num_speakers": 1
   },
+  "hu_HU-berta-medium-v2": {
+    "num_speakers": 1
+  },
   "hu_HU-imre-medium": {
+    "num_speakers": 1
+  },
+  "hu_HU-imre-medium-v2": {
     "num_speakers": 1
   },
   "it_IT-dii-high": {
@@ -1332,6 +1375,9 @@
     "num_speakers": 1
   },
   "it_IT-paola-medium": {
+    "num_speakers": 1
+  },
+  "it_IT-paola-medium-v2": {
     "num_speakers": 1
   },
   "it_IT-riccardo-x_low": {
@@ -1463,6 +1509,9 @@
   "pt_BR-cadu-medium": {
     "num_speakers": 1
   },
+  "pt_BR-cadu-medium-v2": {
+    "num_speakers": 1
+  },
   "pt_BR-dii-high": {
     "num_speakers": 1
   },
@@ -1472,7 +1521,13 @@
   "pt_BR-faber-medium": {
     "num_speakers": 1
   },
+  "pt_BR-faber-medium-v2": {
+    "num_speakers": 1
+  },
   "pt_BR-jeff-medium": {
+    "num_speakers": 1
+  },
+  "pt_BR-jeff-medium-v2": {
     "num_speakers": 1
   },
   "pt_BR-miro-high": {
@@ -1487,10 +1542,19 @@
   "pt_PT-tugao-medium": {
     "num_speakers": 1
   },
+  "pt_PT-tugao-medium-v2": {
+    "num_speakers": 1
+  },
   "ru_RU-denis-medium": {
     "num_speakers": 1
   },
+  "ru_RU-denis-medium-v2": {
+    "num_speakers": 1
+  },
   "ru_RU-dmitri-medium": {
+    "num_speakers": 1
+  },
+  "ru_RU-dmitri-medium-v2": {
     "num_speakers": 1
   },
   "ru_RU-irina-medium": {
