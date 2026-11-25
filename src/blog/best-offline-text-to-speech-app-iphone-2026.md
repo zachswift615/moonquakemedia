@@ -38,6 +38,8 @@ Here is what matters, whichever app you end up with:
 
 Version 2.0, released in November 2026, added voices of our own. We trained the voice model ourselves, from the ground up, and 34 English voices come with the app, so you can press play as soon as it is installed. They were trained on the things reading voices usually get wrong: product names, initialisms, numbers and dates. In our testing, about 99 words in 100 came back exactly as written, and in nine hours of test reading they did not skip a single clause.
 
+{% blogshot "/images/blog/best-offline-text-to-speech-app-iphone-2026/voice-library.png", "The Voice Library in Listen2. A card at the top says Create a Listen2 Voice, twenty seconds of reading. Below it are two voices made from the owner's own recordings, then Graham, marked Listen2 and selected, then Ambrose, Aria and Atlas", "The Voice Library. Graham is the voice a new install starts with.", 340 %}
+
 There are more voices if you want them, all running on the phone:
 
 - **Phonon** adds 25 English voices with American and British accents, as a free download.
@@ -52,14 +54,21 @@ Listen2 opens PDFs, EPUB books, Word documents, plain text and web articles. Two
 
 You can also group documents into a collection and listen to them one after another, like a [personal podcast](/blog/turn-saved-articles-into-personal-podcast/).
 
-## Make the Voice Read It Your Way
+## When a Name Comes Out Wrong
 
-Most apps give you a speed slider and stop there. Listen2 has speed from 0.5x to 2.5x, and it goes further:
+Every reading voice gets some names wrong. In Listen2 you can fix one yourself. Add a pronunciation rule, write the word the way it sounds, such as SEER-shuh for Saoirse, and the voice says that from then on. Reading speed goes from 0.5x to 2.5x.
 
-- **Voice Profile.** Each Listen2 voice has a Pace control for how fast it speaks and a Liveliness control for how much it rises and falls. Slower for a contract, livelier for a novel.
-- **Pronunciation rules.** When a name comes out wrong, write it the way it sounds, such as SEER-shuh, and the voice says that from then on.
-- **Words with two readings.** English has many words that are spelled one way and said two ways: read, lead, tear, record. The Listen2 voices say them the way the sentence means them.
-- **Your own voice.** Read a short passage aloud and Listen2 makes a voice shaped by your recording, on your phone. It can then read any document to you.
+{% blogshot "/images/blog/best-offline-text-to-speech-app-iphone-2026/sounds-like-rule.png", "A new pronunciation rule in Listen2. The word is Saoirse, the output is set to Sounds Like, and SEER-shuh is typed in. Underneath, the app spells out the sounds: s as in sun, EER as in near, sh as in she, uh as in about", "A Sounds Like rule. The line underneath shows how each part will be said.", 340 %}
+
+The Listen2 voices also handle words that are spelled one way and said two ways, such as read, lead, tear and record. They say them the way the sentence means them.
+
+## A Voice Made From Your Own Reading
+
+You can also make a voice of your own. Read a short passage aloud, about twenty seconds, and Listen2 makes a voice shaped by your recording. It happens on your phone, and that voice can then read any document to you.
+
+A voice belongs to the person who speaks it. Before Listen2 makes one, that person says a short sentence aloud, and the app checks that both recordings are the same person.
+
+{% blogshot "/images/blog/best-offline-text-to-speech-app-iphone-2026/create-voice.png", "Two steps of Create a Listen2 Voice. On the left, a short passage to read aloud at your own pace, with a Start recording button. On the right, the consent step, titled A voice belongs to its speaker, with a sentence to say aloud followed by three random words", "Making a voice: read a short passage, then say one sentence so Listen2 knows the voice is yours.", 672 %}
 
 ## What It Costs
 
